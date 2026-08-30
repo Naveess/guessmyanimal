@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Guess My Animal — the animal cheat sheet</title>
 <meta name="description" content="Type an animal, get the answers. Carnivore? Nocturnal? Dangerous? Everything you keep googling mid-game, on one screen.">
-<meta name="theme-color" content="#12211b">
+<meta name="theme-color" content="#ffce1f">
 
 <meta property="og:title" content="Guess My Animal — the animal cheat sheet">
 <meta property="og:description" content="Type an animal, get the answers. Carnivore? Nocturnal? Dangerous? Everything you keep googling mid-game, on one screen.">
@@ -20,78 +20,137 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://en.wikipedia.org" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="view-home">
 
-<div class="wrap">
+<!-- ============================================================
+     HOME. One flat field of colour, the mark, and the search box.
+     Nothing else competes with the one thing you came here to do.
+     ============================================================ -->
+<section class="home" id="home">
+  <div class="home-in">
 
-  <header class="masthead" id="masthead">
-    <h1><span class="paw">🐾</span> Guess my <em>animal</em></h1>
-    <p class="tagline">Someone's thinking of an animal. Ask better questions.</p>
+    <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="Guess My Animal">
+      <ellipse cx="32" cy="41" rx="14.5" ry="12"/>
+      <ellipse cx="14.5" cy="27" rx="6.4" ry="8"/>
+      <ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/>
+      <ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/>
+      <ellipse cx="49.5" cy="27" rx="6.4" ry="8"/>
+    </svg>
+
+    <h1 class="wordmark">Guess my<br>animal</h1>
+    <p class="tagline">Someone is thinking of an animal.<br>Ask better questions.</p>
+
+    <div class="dock" id="dockHome"></div>
+
+    <div class="starters">
+      <p class="starters-label">or try one of these</p>
+      <div class="chips" id="starterChips"></div>
+    </div>
+
+  </div>
+  <p class="home-foot" id="count"></p>
+</section>
+
+<!-- ============================================================
+     The search unit is a single element that gets moved between
+     the home hero and the top bar. One input, one listbox, one set
+     of handlers, in both places.
+     ============================================================ -->
+<div class="searchunit" id="searchunit">
+  <div class="searchrow">
+    <span class="mag" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+        <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+      </svg>
+    </span>
+    <input id="q" type="search" autocomplete="off" autocorrect="off" autocapitalize="off"
+           spellcheck="false" enterkeyhint="search"
+           placeholder="Type an animal…" aria-label="Search for an animal"
+           role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
+    <button class="dice" id="random" type="button" aria-label="Show me a random animal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/>
+        <circle cx="9" cy="9" r="1.35" fill="currentColor" stroke="none"/>
+        <circle cx="15" cy="15" r="1.35" fill="currentColor" stroke="none"/>
+        <circle cx="15" cy="9" r="1.35" fill="currentColor" stroke="none"/>
+        <circle cx="9" cy="15" r="1.35" fill="currentColor" stroke="none"/>
+      </svg>
+    </button>
+  </div>
+  <ul class="suggest" id="suggest" role="listbox" aria-label="Matching animals" hidden></ul>
+  <p class="noresult" id="noresult" hidden></p>
+</div>
+
+<!-- ============================================================
+     ANIMAL. Photo card first, then the answers, with more photos
+     folded in between the sections as you scroll.
+     ============================================================ -->
+<div class="animalview" id="animalview" hidden>
+
+  <header class="topbar">
+    <button class="back" id="back" type="button" aria-label="Back to search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 5 8 12l7 7"/>
+      </svg>
+    </button>
+    <div class="dock dock-top" id="dockTop"></div>
   </header>
 
-  <!-- Sticky, because during a game you type a new animal every 30 seconds. -->
-  <div class="searchbar" id="searchbar">
-    <div class="search-shell">
-      <input id="q" type="search" autocomplete="off" autocorrect="off" autocapitalize="off"
-             spellcheck="false" enterkeyhint="search"
-             placeholder="Type an animal…" aria-label="Search for an animal"
-             role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
-      <button class="dice" id="random" type="button" aria-label="Show a random animal">🎲</button>
-    </div>
-    <ul class="suggest" id="suggest" role="listbox" hidden></ul>
-  </div>
+  <main class="feed">
 
-  <main id="main">
-
-    <!-- Landing state: a few to tap, so the first screen is never empty. -->
-    <section class="starters" id="starters">
-      <p class="starters-label">Or start with one of these</p>
-      <div class="chips" id="starterChips"></div>
-    </section>
-
-    <article class="sheet" id="sheet" hidden>
-      <div class="photo-wrap">
-        <!-- Transparent 1x1 until a real photo arrives, so this is never a
-             broken-image box while Wikipedia is still being asked. -->
-        <img class="photo" id="photo" alt="" width="640" height="420"
-             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <div class="photo-fallback" id="photoFallback" aria-hidden="true"></div>
+    <article class="pcard" id="hero">
+      <!-- Same picture twice: blurred to fill the card, then whole and
+           uncropped on top. Wikipedia photos are mostly landscape, and a
+           portrait card cropped one of them straight through the tiger.
+           Transparent 1x1 until a real photo lands, so this is never a
+           broken-image box while Wikipedia is still being asked. -->
+      <img class="pcard-bg" id="photoBg" alt="" aria-hidden="true"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <img class="pcard-img" id="photo" alt="" width="800" height="1000"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <div class="pcard-fallback" id="photoFallback" aria-hidden="true"></div>
+      <div class="pcard-scrim" aria-hidden="true"></div>
+      <div class="pcard-meta">
+        <p class="pcard-kicker" id="kicker"></p>
+        <h2 class="pcard-name"><span id="name"></span> <span class="pcard-emoji" id="emoji" aria-hidden="true"></span></h2>
       </div>
-
-      <div class="titlebar">
-        <h2 id="name"></h2>
-        <span class="emoji" id="emoji" aria-hidden="true"></span>
-      </div>
-      <p class="blurb" id="blurb"></p>
-
-      <div class="answers" id="answers"></div>
-
-      <p class="fact" id="fact"></p>
-
-      <div class="sheet-foot">
-        <a class="wiki" id="wiki" href="#" target="_blank" rel="noopener">Read more on Wikipedia</a>
-        <button class="copy" id="copy" type="button">Copy link</button>
-      </div>
-      <p class="copied" id="copied" aria-live="polite"></p>
     </article>
 
-    <p class="noresult" id="noresult" hidden></p>
+    <p class="blurb" id="blurb"></p>
 
-    <!-- Reserved now so adding a unit later cannot shove the page around.
-         Holds its height whether or not anything fills it. -->
+    <h3 class="label">Quick answers</h3>
+    <div class="card"><div class="rows" id="answers"></div></div>
+
+    <div class="shot" id="shot2"></div>
+
+    <h3 class="label">At a glance</h3>
+    <div class="glance" id="glance"></div>
+
+    <h3 class="label">Did you know</h3>
+    <div class="factcard"><p id="fact"></p></div>
+
+    <div class="shot" id="shot3"></div>
+
+    <div class="actions">
+      <a class="btn" id="wiki" href="#" target="_blank" rel="noopener">Read on Wikipedia</a>
+      <button class="btn" id="copy" type="button">Copy link</button>
+      <button class="btn btn-solid" id="another" type="button">Another animal</button>
+    </div>
+    <p class="copied" id="copied" aria-live="polite"></p>
+
+    <!-- Reserved now so adding a unit later cannot shove the page around. -->
     <div class="adslot" id="adslot" aria-hidden="true"></div>
 
+    <footer class="foot">
+      <p>Built for a guessing game that got out of hand. Photos and summaries from
+        <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>.</p>
+    </footer>
+
   </main>
-
-  <footer class="foot">
-    <p>Built for a guessing game that got out of hand. Photos and summaries from
-      <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>.</p>
-    <p class="tiny" id="count"></p>
-  </footer>
-
 </div>
 
 <script src="animals.js"></script>

@@ -1,294 +1,484 @@
 /* ------------------------------------------------------------------
-   Guess My Animal — a field guide with the volume up.
+   Guess My Animal
 
-   Read on a phone, mid-argument, in about four seconds. That drives
-   everything: one thumb-sized search box pinned to the top, answers as
-   big tiles you can scan without reading, and the photo doing the work
-   of confirming you looked up the right beast.
+   Two screens, borrowed from the shape of a dating app because the job
+   turns out to be the same one: a flat field of brand colour with a
+   search box on it, then a photo card with a name across the bottom and
+   everything you want to know underneath it as you scroll.
 
-   Palette is deliberately not the warm-cream-and-serif default. Ground
-   is a pale sage, ink is a deep forest green, and the one loud colour
-   is a coral reserved for "yes, this thing can hurt you" and the
-   primary action. Marigold is the second voice, for the fun fact.
+   The colour does the branding so the layout does not have to. One
+   saturated yellow, one near-black, white cards, generous radii, and
+   nothing else - which leaves green, amber and red free to mean
+   something on the answer pills rather than just decorating them.
    ------------------------------------------------------------------ */
 
 :root {
-  --paper:   #e7f0e9;
-  --card:    #ffffff;
-  --ink:     #10201a;
-  --ink-2:   #4a6357;
-  --line:    #cfe0d5;
-  --coral:   #e8442a;
-  --coral-bg:#fde8e4;
-  --marigold:#b06d00;
-  --gold-bg: #fdf1d8;
-  --leaf:    #1d7a4c;
-  --leaf-bg: #dcefe2;
-  --shadow:  0 1px 0 rgba(16,32,26,.05), 0 8px 24px -12px rgba(16,32,26,.25);
+  /* Fixed regardless of theme: the home screen stays yellow in the dark,
+     so anything sitting on yellow needs an ink that never flips. */
+  --sun:      #ffce1f;
+  --sun-deep: #eab600;
+  --on-sun:   #17150f;
+
+  --paper:  #f3f1ea;
+  --card:   #ffffff;
+  --ink:    #17150f;
+  --muted:  #6f6a5b;
+  --line:   #e7e3d8;
+
+  --good:    #0b7c55;  --good-bg: #e1f3ea;
+  --warn:    #a06000;  --warn-bg: #fbeed5;
+  --bad:     #c93018;  --bad-bg:  #fce4df;
+  --flat-bg: #f0ede4;
+
+  --r-card:  20px;
+  --r-photo: 26px;
+  --shadow:   0 1px 2px rgba(23,21,15,.05), 0 6px 18px -10px rgba(23,21,15,.22);
+  --shadow-l: 0 2px 6px rgba(23,21,15,.07), 0 22px 44px -22px rgba(23,21,15,.42);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper:   #0e1713;
-    --card:    #16231d;
-    --ink:     #e6f0e9;
-    --ink-2:   #93ab9e;
-    --line:    #26372e;
-    --coral:   #ff7a5e;
-    --coral-bg:#3a1c17;
-    --marigold:#f0b95e;
-    --gold-bg: #33270f;
-    --leaf:    #5fd39a;
-    --leaf-bg: #163023;
-    --shadow:  0 8px 24px -14px rgba(0,0,0,.7);
+    --paper:  #131210;
+    --card:   #1e1c17;
+    --ink:    #f3f0e7;
+    --muted:  #9c9584;
+    --line:   #2d2a22;
+
+    --good:    #4fca97;  --good-bg: #13301f;
+    --warn:    #f0b95e;  --warn-bg: #33260f;
+    --bad:     #ff7a5e;  --bad-bg:  #381812;
+    --flat-bg: #26231c;
+
+    --shadow:   0 6px 18px -10px rgba(0,0,0,.8);
+    --shadow-l: 0 22px 44px -22px rgba(0,0,0,.9);
   }
 }
 
 * { box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Fredoka, ui-rounded, 'Segoe UI', system-ui, sans-serif;
-  font-size: 17px;
+  font-family: Figtree, ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  font-size: 16px;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
 }
+body.view-home { background: var(--sun); }
 
-.wrap { max-width: 680px; margin: 0 auto; padding: 0 16px 40px; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.home :focus-visible { outline-color: var(--on-sun); }
 
-/* -- Masthead ------------------------------------------------------ */
+/* ==================================================================
+   HOME
+   ================================================================== */
 
-.masthead { padding: 30px 0 18px; text-align: center; }
-
-h1 {
-  font-size: clamp(31px, 8.5vw, 46px);
-  font-weight: 700;
-  line-height: 1.03;
-  letter-spacing: -.02em;
-  margin: 0 0 8px;
+.home {
+  min-height: 100svh;
+  background: var(--sun);
+  color: var(--on-sun);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 30px;
+  padding: 36px 20px calc(20px + env(safe-area-inset-bottom));
+  text-align: center;
 }
-h1 em { font-style: normal; color: var(--coral); }
-.paw { font-style: normal; }
+.home[hidden] { display: none; }
 
-.tagline { margin: 0; color: var(--ink-2); font-size: 15px; font-weight: 500; }
+.home-in { width: 100%; max-width: 460px; }
 
-/* -- Search -------------------------------------------------------- */
-
-.searchbar {
-  position: sticky; top: 0; z-index: 20;
-  padding: 10px 0 12px;
-  background: var(--paper);
-}
-/* Fades the content out underneath rather than letting it slide behind a
-   hard edge while you scroll a long sheet. */
-.searchbar::after {
-  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 14px;
-  background: linear-gradient(var(--paper), transparent);
-  pointer-events: none;
+.mark {
+  width: 76px; height: 76px;
+  display: block; margin: 0 auto 20px;
+  fill: var(--on-sun);
 }
 
-.search-shell { display: flex; gap: 8px; }
+.wordmark {
+  margin: 0;
+  font-size: clamp(40px, 12vw, 60px);
+  font-weight: 900;
+  line-height: .93;
+  letter-spacing: -.045em;
+}
+
+.tagline {
+  margin: 14px 0 0;
+  font-size: 16px; font-weight: 500;
+  color: color-mix(in srgb, var(--on-sun) 68%, transparent);
+}
+
+/* The search box on the home screen: white, tall, unmissable.
+   The home ground stays yellow in both themes, so this one component
+   keeps the light palette rather than turning into a black bar on
+   yellow when the phone is in dark mode. Re-declaring the tokens here
+   covers the box, the suggestion list and the no-match message at once. */
+.home .searchunit {
+  --card:    #ffffff;
+  --line:    #e7e3d8;
+  --ink:     #17150f;
+  --muted:   #6f6a5b;
+  --flat-bg: #f0ede4;
+  margin: 30px auto 0;
+}
+.home .searchrow {
+  border-radius: 18px;
+  box-shadow: var(--shadow-l);
+  padding: 5px 5px 5px 16px;
+  min-height: 62px;
+}
+.home #q { font-size: 17px; }
+
+.starters { margin-top: 26px; }
+.starters-label {
+  margin: 0 0 11px;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--on-sun) 72%, transparent);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.chip {
+  font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+  color: var(--on-sun);
+  background: transparent;
+  border: 2px solid color-mix(in srgb, var(--on-sun) 22%, transparent);
+  border-radius: 999px;
+  padding: 9px 15px; min-height: 44px;
+  transition: background .14s ease, border-color .14s ease;
+}
+.chip:hover {
+  background: color-mix(in srgb, var(--on-sun) 8%, transparent);
+  border-color: color-mix(in srgb, var(--on-sun) 40%, transparent);
+}
+.chip:active { transform: translateY(1px); }
+
+.home-foot {
+  margin: 0; font-size: 13.5px; font-weight: 600;
+  color: color-mix(in srgb, var(--on-sun) 72%, transparent);
+}
+
+/* ==================================================================
+   SEARCH UNIT  (lives in the hero, then moves into the top bar)
+   ================================================================== */
+
+.searchunit { position: relative; width: 100%; }
+
+.searchrow {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 4px 4px 4px 13px;
+  min-height: 52px;
+}
+.mag { flex: none; width: 20px; height: 20px; color: var(--muted); }
+.mag svg { width: 100%; height: 100%; display: block; }
 
 #q {
   flex: 1; min-width: 0;
-  font: inherit; font-size: 18px; font-weight: 500;
+  font: inherit; font-size: 16px; font-weight: 600;
   color: var(--ink);
-  background: var(--card);
-  border: 2px solid var(--line);
-  border-radius: 14px;
-  padding: 14px 16px;
-  min-height: 54px;              /* thumb-sized, deliberately */
+  background: transparent;
+  border: 0; outline: none;
+  padding: 10px 0;
+  min-height: 44px;
 }
-#q::placeholder { color: var(--ink-2); opacity: .8; }
-#q:focus { outline: none; border-color: var(--coral); }
+#q::placeholder { color: var(--muted); font-weight: 500; }
 #q::-webkit-search-cancel-button { cursor: pointer; }
 
 .dice {
-  flex: none; width: 54px; min-height: 54px;
-  font-size: 22px; line-height: 1; cursor: pointer;
-  background: var(--card);
-  border: 2px solid var(--line);
-  border-radius: 14px;
+  flex: none; width: 44px; height: 44px;
+  display: grid; place-items: center; cursor: pointer;
+  color: var(--on-sun);
+  background: var(--sun);
+  border: 0; border-radius: 12px;
+  transition: background .14s ease;
 }
-.dice:hover { border-color: var(--coral); }
+.dice svg { width: 21px; height: 21px; }
+.dice:hover { background: var(--sun-deep); }
 .dice:active { transform: translateY(1px); }
 
-:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
-
-/* -- Suggestions --------------------------------------------------- */
-
 .suggest {
-  list-style: none; margin: 8px 0 0; padding: 6px;
+  position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40;
+  list-style: none; margin: 0; padding: 6px;
   background: var(--card);
-  border: 2px solid var(--line);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  max-height: 46vh; overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-l);
+  max-height: 52vh; overflow-y: auto;
+  text-align: left;
 }
 .suggest[hidden] { display: none; }
 .suggest li {
   display: flex; align-items: center; gap: 11px;
-  padding: 12px 12px; border-radius: 10px;
-  cursor: pointer; font-weight: 500;
+  padding: 11px 12px; border-radius: 11px;
+  cursor: pointer; font-weight: 600; color: var(--ink);
   min-height: 48px;
 }
-.suggest li[aria-selected="true"], .suggest li:hover { background: var(--leaf-bg); }
-.suggest .s-emoji { font-size: 21px; flex: none; }
-.suggest .s-alias { color: var(--ink-2); font-size: 14px; }
-
-/* -- Starters ------------------------------------------------------ */
-
-.starters { padding: 22px 0 6px; text-align: center; }
-.starters-label { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; font-weight: 500; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-.chip {
-  font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
-  background: var(--card); color: var(--ink);
-  border: 2px solid var(--line); border-radius: 999px;
-  padding: 9px 15px; min-height: 44px;
-}
-.chip:hover { border-color: var(--coral); }
-
-/* -- The sheet ----------------------------------------------------- */
-
-.sheet {
-  background: var(--card);
-  border: 2px solid var(--line);
-  border-radius: 20px;
-  padding: 0 0 18px;
-  margin-top: 14px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.sheet[hidden] { display: none; }
-
-.photo-wrap {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  background: var(--leaf-bg);
-  border-bottom: 2px solid var(--line);
-}
-.photo { display: block; width: 100%; height: 100%; object-fit: cover; }
-/* Sits under the photo and shows through only while there is nothing to
-   show, so a missing image is a big emoji rather than a hole. */
-.photo-fallback {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  font-size: 84px; line-height: 1;
-}
-.photo-wrap.has-photo .photo-fallback { display: none; }
-
-.titlebar {
-  display: flex; align-items: center; gap: 10px;
-  padding: 16px 18px 0;
-}
-.titlebar h2 {
-  margin: 0; font-size: clamp(25px, 6.4vw, 33px); font-weight: 700;
-  letter-spacing: -.015em; line-height: 1.1; flex: 1;
-}
-.emoji { font-size: 30px; flex: none; }
-
-.blurb {
-  margin: 8px 18px 0; color: var(--ink-2);
-  font-size: 15px; font-weight: 500;
-}
-
-/* -- Answer tiles --------------------------------------------------
-   Two columns on a phone. The label is small and quiet, the answer is
-   large, so the eye lands on the answer first - which is the whole job.
-   Colour is a second channel: every tile also says the word.          */
-
-.answers {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-  padding: 16px 18px 0;
-}
-@media (min-width: 560px) { .answers { grid-template-columns: 1fr 1fr 1fr; } }
-
-.tile {
-  background: var(--paper);
-  border: 2px solid var(--line);
-  border-radius: 13px;
-  padding: 10px 12px 11px;
-  min-width: 0;
-}
-.tile .k {
-  display: block; font-size: 11.5px; font-weight: 600;
-  letter-spacing: .07em; text-transform: uppercase;
-  color: var(--ink-2); margin-bottom: 3px;
-}
-.tile .v {
-  display: block; font-size: 17px; font-weight: 600;
-  line-height: 1.2; overflow-wrap: anywhere;
-}
-.tile.wide { grid-column: 1 / -1; }
-
-/* Green = yes. Plain = no. Coral is spent on one thing only: this animal
-   can hurt you. Amber is the honest middle. */
-.tile.yes    { background: var(--leaf-bg);  border-color: var(--leaf); }
-.tile.yes .v { color: var(--leaf); }
-.tile.maybe    { background: var(--gold-bg); border-color: var(--marigold); }
-.tile.maybe .v { color: var(--marigold); }
-.tile.danger    { background: var(--coral-bg); border-color: var(--coral); }
-.tile.danger .v { color: var(--coral); }
-
-/* -- Fact ---------------------------------------------------------- */
-
-.fact {
-  margin: 16px 18px 0; padding: 13px 15px;
-  background: var(--gold-bg);
-  border: 2px solid var(--marigold);
-  border-radius: 13px;
-  font-size: 15.5px; font-weight: 500;
-}
-.fact::before { content: "💡 "; }
-
-/* -- Sheet footer -------------------------------------------------- */
-
-.sheet-foot {
-  display: flex; gap: 10px; flex-wrap: wrap;
-  padding: 16px 18px 0;
-}
-.wiki, .copy {
-  font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
-  border-radius: 12px; padding: 11px 15px; min-height: 46px;
-  display: inline-flex; align-items: center; text-decoration: none;
-  border: 2px solid var(--line);
-  background: var(--card); color: var(--ink);
-}
-.wiki:hover, .copy:hover { border-color: var(--coral); }
-.copied { margin: 10px 18px 0; font-size: 14px; color: var(--leaf); font-weight: 500; min-height: 20px; }
+.suggest li[aria-selected="true"], .suggest li:hover { background: var(--flat-bg); }
+.s-emoji { font-size: 21px; flex: none; line-height: 1; }
+.s-alias { color: var(--muted); font-size: 14px; font-weight: 500; }
 
 .noresult {
-  margin: 26px 0 0; text-align: center; color: var(--ink-2);
-  font-size: 16px; font-weight: 500;
+  position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40;
+  margin: 0; padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-l);
+  font-size: 14.5px; font-weight: 500; color: var(--muted);
+  text-align: left;
 }
 .noresult[hidden] { display: none; }
 
-/* -- Ad slot -------------------------------------------------------
+/* ==================================================================
+   ANIMAL VIEW
+   ================================================================== */
+
+.animalview[hidden] { display: none; }
+
+.topbar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; gap: 9px;
+  padding: 10px 14px;
+  padding-top: calc(10px + env(safe-area-inset-top));
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.back {
+  flex: none; width: 44px; height: 44px;
+  display: grid; place-items: center; cursor: pointer;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line); border-radius: 13px;
+}
+.back svg { width: 21px; height: 21px; }
+.back:hover { background: var(--flat-bg); }
+.dock-top { flex: 1; min-width: 0; }
+
+.feed {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 14px 14px calc(30px + env(safe-area-inset-bottom));
+}
+
+/* -- The photo card ------------------------------------------------
+   Portrait, because it is read on a phone held upright and a wide crop
+   of an animal wastes the screen. The name sits on the photo rather
+   than under it, so the first thing on screen is one object, not two. */
+
+.pcard {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--r-photo);
+  overflow: hidden;
+  background: var(--flat-bg);
+  box-shadow: var(--shadow-l);
+}
+/* Blurred, over-scaled copy filling the card behind the real photo, so a
+   landscape photo in a portrait card gets bands of its own colour rather
+   than having the animal cropped out of frame. */
+.pcard-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  filter: blur(26px) saturate(1.5) brightness(.82);
+  transform: scale(1.3);
+}
+.pcard-img {
+  position: relative;
+  display: block; width: 100%; height: 100%;
+  object-fit: contain;
+  /* Sat high in the card so the empty band falls at the bottom, where the
+     name is going anyway, instead of being split evenly and wasted. */
+  object-position: center 30%;
+}
+/* Sits behind the photo and shows through only while there is nothing
+   to show, so a missing image is a big emoji rather than a hole. */
+.pcard-fallback {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-size: 96px; line-height: 1;
+}
+.pcard.has-photo .pcard-fallback { display: none; }
+
+.pcard-scrim {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 62%;
+  background: linear-gradient(to bottom, transparent, rgba(12,11,7,.28) 42%, rgba(12,11,7,.88));
+}
+.pcard-meta {
+  position: absolute; left: 20px; right: 20px; bottom: 17px;
+  color: #fff; text-align: left;
+}
+.pcard-kicker {
+  margin: 0 0 5px;
+  font-size: 12.5px; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--sun);
+}
+.pcard-name {
+  margin: 0;
+  font-size: clamp(31px, 8.6vw, 42px);
+  font-weight: 900; letter-spacing: -.035em; line-height: 1.02;
+  text-shadow: 0 2px 18px rgba(0,0,0,.35);
+}
+.pcard-emoji { font-size: .78em; }
+
+.blurb {
+  margin: 17px 4px 0;
+  font-size: 16px; font-weight: 500; color: var(--muted);
+}
+
+/* -- Section labels ------------------------------------------------ */
+
+.label {
+  margin: 30px 0 10px 4px;
+  font-size: 12.5px; font-weight: 800;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* -- Quick answers -------------------------------------------------
+   A list, not a grid. The question is quiet on the left and the answer
+   is a bold pill on the right, so the answers line up in one column the
+   eye can run straight down. Every pill says the answer in words;
+   colour is layered on top and is never the only signal. */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 2px 16px;
+  box-shadow: var(--shadow);
+}
+.row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+.row:last-child { border-bottom: 0; }
+.row .k { font-size: 15.5px; font-weight: 500; color: var(--muted); }
+
+.pill {
+  flex: none;
+  font-size: 15px; font-weight: 800; letter-spacing: -.01em;
+  padding: 6px 13px; border-radius: 999px;
+  background: var(--flat-bg); color: var(--ink);
+  text-align: center;
+}
+.pill.good { background: var(--good-bg); color: var(--good); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); }
+.pill.bad  { background: var(--bad-bg);  color: var(--bad); }
+
+/* -- At a glance ---------------------------------------------------- */
+
+.glance { display: flex; flex-wrap: wrap; gap: 8px; }
+.gchip {
+  display: inline-flex; align-items: baseline; gap: 7px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 15px;
+  font-size: 14.5px; font-weight: 600;
+  box-shadow: var(--shadow);
+}
+.gchip .ge { font-size: 15px; }
+.gchip .gk { color: var(--muted); font-weight: 500; }
+
+/* -- Fact ----------------------------------------------------------- */
+
+.factcard {
+  background: var(--sun);
+  color: var(--on-sun);
+  border-radius: var(--r-card);
+  padding: 17px 19px;
+  box-shadow: var(--shadow);
+}
+.factcard p { margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; }
+
+/* -- Extra photos folded into the scroll ---------------------------- */
+
+.shot:empty { display: none; }
+.shot { margin-top: 30px; }
+.shot figure { margin: 0; }
+.shot img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: var(--r-photo);
+  background: var(--flat-bg);
+  box-shadow: var(--shadow);
+}
+.shot figcaption {
+  margin: 9px 6px 0;
+  font-size: 13.5px; font-weight: 500; color: var(--muted);
+}
+
+/* -- Actions -------------------------------------------------------- */
+
+.actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
+.btn {
+  font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  padding: 12px 17px; min-height: 48px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card); color: var(--ink);
+  transition: background .14s ease;
+}
+.btn:hover { background: var(--flat-bg); }
+.btn:active { transform: translateY(1px); }
+.btn-solid {
+  background: var(--sun); color: var(--on-sun); border-color: var(--sun);
+  margin-left: auto;
+}
+.btn-solid:hover { background: var(--sun-deep); border-color: var(--sun-deep); }
+
+.copied {
+  margin: 10px 4px 0; min-height: 20px;
+  font-size: 14px; font-weight: 600; color: var(--good);
+}
+
+/* -- Ad slot --------------------------------------------------------
    Reserved from day one. An advert dropped into a page that never left
    room for it is what makes everything jump on load. */
 
 .adslot {
-  min-height: 100px; margin: 22px 0 0;
+  min-height: 100px; margin-top: 26px;
   display: grid; place-items: center;
-  border: 2px dashed var(--line); border-radius: 14px;
-  color: var(--ink-2); font-size: 13px; font-weight: 500;
+  border: 1px dashed var(--line); border-radius: var(--r-card);
+  color: var(--muted); font-size: 13px; font-weight: 500;
 }
-.adslot:empty::before { content: ""; }
-
-/* -- Footer -------------------------------------------------------- */
 
 .foot {
-  margin-top: 30px; text-align: center;
-  color: var(--ink-2); font-size: 13.5px; font-weight: 500;
+  margin-top: 26px; text-align: center;
+  color: var(--muted); font-size: 13.5px; font-weight: 500;
 }
-.foot p { margin: 0 0 6px; }
+.foot p { margin: 0; }
 .foot a { color: var(--ink); }
-.tiny { font-size: 12.5px; opacity: .8; }
+
+/* ==================================================================
+   Wider screens: the card stops being a phone card and the answers
+   go two-up rather than leaving half the row empty.
+   ================================================================== */
+
+@media (min-width: 620px) {
+  .feed { padding-top: 20px; }
+  .pcard { aspect-ratio: 3 / 2; }
+  .pcard-name { font-size: 46px; }
+  .rows { display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; }
+  /* In two columns the last row is the final pair, so the odd one of that
+     pair needs its divider removed too or it trails a line under nothing. */
+  .rows > .row:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
+  /* Keep the bar lined up with the feed instead of letting the search box
+     run the whole width of a desktop window. */
+  .topbar {
+    padding-left:  max(14px, calc((100% - 588px) / 2));
+    padding-right: max(14px, calc((100% - 588px) / 2));
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }

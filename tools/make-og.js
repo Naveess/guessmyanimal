@@ -11,37 +11,40 @@ const { chromium } = require('C:/Users/navee/Documents/lead-finder/node_modules/
 const OUT = path.join(__dirname, '..', 'og.png');
 
 const HTML = `<!doctype html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0}
-  body{width:1200px;height:630px;background:#e7f0e9;color:#10201a;
-       font-family:Fredoka,sans-serif;display:flex;flex-direction:column;
-       justify-content:center;padding:0 78px;position:relative;overflow:hidden}
-  .paws{position:absolute;inset:0;font-size:120px;opacity:.07;line-height:1.5;
-        letter-spacing:38px;word-spacing:38px;padding:26px;user-select:none}
-  .in{position:relative}
-  h1{font-size:104px;font-weight:700;letter-spacing:-.03em;line-height:.98}
-  em{font-style:normal;color:#e8442a}
-  p{font-size:35px;font-weight:500;color:#4a6357;margin-top:20px;max-width:20ch}
-  .row{display:flex;gap:14px;margin-top:38px}
-  .t{background:#fff;border:3px solid #cfe0d5;border-radius:16px;padding:12px 20px;
-     font-size:26px;font-weight:600}
-  .t.y{background:#dcefe2;border-color:#1d7a4c;color:#1d7a4c}
-  .t.d{background:#fde8e4;border-color:#e8442a;color:#e8442a}
-  /* Kept clear of the chip row: at 150px the sloth sat on top of the
-     "Dangerous" chip and made both unreadable. */
-  .zoo{position:absolute;right:64px;top:150px;font-size:128px;line-height:1;
-       display:flex;flex-direction:column;gap:2px;align-items:center}
-  .in{max-width:660px}
+  body{width:1200px;height:630px;background:#ffce1f;color:#17150f;
+       font-family:Figtree,sans-serif;display:flex;align-items:center;
+       padding:0 74px;position:relative;overflow:hidden}
+  .in{position:relative;max-width:680px}
+  .mark{width:96px;height:96px;fill:#17150f;margin-bottom:26px;display:block}
+  h1{font-size:96px;font-weight:900;letter-spacing:-.045em;line-height:.93}
+  p{font-size:33px;font-weight:500;color:rgba(23,21,15,.68);margin-top:22px}
+  .row{display:flex;gap:12px;margin-top:40px}
+  .t{background:#fff;border-radius:999px;padding:13px 24px;
+     font-size:26px;font-weight:800}
+  .t.g{background:#e1f3ea;color:#0b7c55}
+  .t.b{background:#fce4df;color:#c93018}
+  /* The emoji stack sits clear of the chip row - overlapping it made
+     both the animal and the chip underneath unreadable. */
+  .zoo{position:absolute;right:70px;top:96px;font-size:150px;line-height:1.06;
+       display:flex;flex-direction:column;align-items:center}
 </style></head><body>
-<div class="paws">🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾 🐾</div>
 <div class="in">
-  <h1>Guess my<br><em>animal</em></h1>
+  <svg class="mark" viewBox="0 0 64 64">
+    <ellipse cx="32" cy="41" rx="14.5" ry="12"/>
+    <ellipse cx="14.5" cy="27" rx="6.4" ry="8"/>
+    <ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/>
+    <ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/>
+    <ellipse cx="49.5" cy="27" rx="6.4" ry="8"/>
+  </svg>
+  <h1>Guess my<br>animal</h1>
   <p>The cheat sheet for the animal guessing game.</p>
   <div class="row">
     <span class="t">Carnivore?</span>
-    <span class="t y">Nocturnal ✓</span>
-    <span class="t d">Dangerous</span>
+    <span class="t g">Nocturnal</span>
+    <span class="t b">Dangerous</span>
   </div>
 </div>
 <div class="zoo">🦥🐙</div>

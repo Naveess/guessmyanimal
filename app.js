@@ -3,6 +3,9 @@
 
   const el = (id) => document.getElementById(id);
 
+  // Transparent 1x1. An <img> with no src at all is a broken-image icon.
+  const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
   /* -- Searching -----------------------------------------------------
      Typo tolerance matters more than cleverness here: people type this
      one-handed, mid-conversation, and "gorila" or "hipo" should still
@@ -10,11 +13,12 @@
      obvious answer sits at the top rather than an alphabetical one. */
 
   const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
+  const slugify = (s) => norm(s).replace(/ /g, '-');
 
   const INDEX = ANIMALS.map((a, i) => ({
     a,
     i,
-    slug: norm(a.n).replace(/ /g, '-'),
+    slug: slugify(a.n),
     hay: [norm(a.n)].concat((a.a || []).map(norm)),
   }));
 
@@ -58,158 +62,292 @@
       .map((r) => r.e);
   }
 
-  /* -- Turning data into answers -------------------------------------
-     Every tile says the answer in words. Colour is layered on top for
-     the two that carry a warning, never used as the only signal. */
+  const cap = (s) => String(s).charAt(0).toUpperCase() + String(s).slice(1);
 
-  /* Green means yes, plain means no, and coral is spent on exactly one
-     thing: this animal can hurt you. The first version painted every
-     "yes" coral, which made "Lays eggs? Yes" and "Can it swim? Yes"
-     look like warnings and buried the one tile that is actually a
-     warning. Amber sits in between for "can be". */
-  const YES = 'yes', PLAIN = '', DANGER = 'danger', MAYBE = 'maybe';
+  /* -- Quick answers -------------------------------------------------
+     Green means yes, plain means no, amber is the honest middle, and red
+     is spent on exactly one thing: this animal can hurt you. An earlier
+     version painted every "yes" red, which made "Lays eggs? Yes" look
+     like a warning and buried the one row that actually is one. */
 
-  function tiles(a) {
+  const GOOD = 'good', WARN = 'warn', BAD = 'bad', FLAT = '';
+
+  function answers(a) {
+    const yn = (b) => [b ? 'Yes' : 'No', b ? GOOD : FLAT];
+
+    const diet =
+      a.d === 'Carnivore'   ? ['Yes', GOOD] :
+      a.d === 'Omnivore'    ? ['Omnivore', WARN] :
+      a.d === 'Insectivore' ? ['Insects only', WARN] :
+                              ['No, herbivore', FLAT];
+
     return [
-      ['Class', a.c, PLAIN],
-      ['Diet', a.d, PLAIN],
+      ['What is it?', a.c, FLAT],
+      ['Carnivore?', diet[0], diet[1]],
       ['Dangerous?',
         a.dg === 'yes' ? 'Yes' : a.dg === 'some' ? 'Can be' : 'No',
-        a.dg === 'yes' ? DANGER : a.dg === 'some' ? MAYBE : PLAIN],
-      ['Active',
-        a.ac === 'night' ? 'Night' : a.ac === 'day' ? 'Daytime' : 'Day & night', PLAIN],
-      ['Hibernates?', a.h ? 'Yes' : 'No', a.h ? YES : PLAIN],
+        a.dg === 'yes' ? BAD : a.dg === 'some' ? WARN : FLAT],
+      ['Awake when?',
+        a.ac === 'night' ? 'Night' : a.ac === 'day' ? 'Daytime' : 'Day & night', FLAT],
+      ['Hibernates?'].concat(yn(a.h)),
       ['Kept as a pet?',
         a.p === 'common' ? 'Commonly' : a.p === 'some' ? 'Sometimes' : 'No',
-        a.p === 'common' ? YES : a.p === 'some' ? MAYBE : PLAIN],
-      ['Domesticated?', a.dm ? 'Yes' : 'No', a.dm ? YES : PLAIN],
+        a.p === 'common' ? GOOD : a.p === 'some' ? WARN : FLAT],
+      ['Domesticated?'].concat(yn(a.dm)),
       ['Do people eat it?',
         a.et === 'yes' ? 'Yes' : a.et === 'some' ? 'In places' : 'No',
-        a.et === 'yes' ? YES : a.et === 'some' ? MAYBE : PLAIN],
-      ['Covering', a.cv, PLAIN],
-      ['Legs', a.lg === 0 ? 'None' : String(a.lg), PLAIN],
-      ['Can it fly?', a.fl ? 'Yes' : 'No', a.fl ? YES : PLAIN],
-      ['Can it swim?', a.sw ? 'Yes' : 'No', a.sw ? YES : PLAIN],
-      ['Lays eggs?', a.eg ? 'Yes' : 'No', a.eg ? YES : PLAIN],
-      ['Size', cap(a.sz), PLAIN],
-      ['Lives', a.so, PLAIN],
-      ['Lifespan', a.lf, PLAIN],
+        a.et === 'yes' ? GOOD : a.et === 'some' ? WARN : FLAT],
     ];
   }
 
-  const cap = (s) => String(s).charAt(0).toUpperCase() + String(s).slice(1);
-
-  function renderTiles(a) {
+  function renderAnswers(a) {
     const box = el('answers');
     box.innerHTML = '';
-    for (const [k, v, state] of tiles(a)) {
-      const d = document.createElement('div');
-      d.className = 'tile' + (state ? ' ' + state : '');
+    for (const [k, v, state] of answers(a)) {
+      const row = document.createElement('div');
+      row.className = 'row';
       const kk = document.createElement('span');
       kk.className = 'k';
       kk.textContent = k;
       const vv = document.createElement('span');
-      vv.className = 'v';
+      vv.className = 'pill' + (state ? ' ' + state : '');
       vv.textContent = v;
-      d.append(kk, vv);
-      box.appendChild(d);
+      row.append(kk, vv);
+      box.appendChild(row);
     }
-    // The two long ones span the row rather than wrapping to three lines.
-    for (const [k, v] of [['Found in', a.r.join(', ')], ['Colours', a.co.map(cap).join(', ')]]) {
-      const d = document.createElement('div');
-      d.className = 'tile wide';
-      const kk = document.createElement('span');
-      kk.className = 'k';
-      kk.textContent = k;
-      const vv = document.createElement('span');
-      vv.className = 'v';
-      vv.textContent = v;
-      d.append(kk, vv);
-      box.appendChild(d);
+  }
+
+  /* -- At a glance ---------------------------------------------------
+     The details that are nice to have but nobody scans for first, so
+     they sit below the answers as loose chips rather than in the list. */
+
+  function renderGlance(a) {
+    const box = el('glance');
+    box.innerHTML = '';
+
+    const items = [
+      ['🌍', 'Found in', a.r.join(', ')],
+      ['🎨', 'Colours', a.co.map(cap).join(', ')],
+      ['📏', 'Size', cap(a.sz)],
+      // "Lives in Solitary" is not a sentence, so that one gets its own.
+      a.so === 'Solitary' ? ['👥', null, 'Lives alone'] : ['👥', 'Lives in', a.so.toLowerCase()],
+      ['⏳', 'Lives for', a.lf],
+      ['🦵', 'Legs', a.lg === 0 ? 'None' : String(a.lg)],
+    ];
+    if (a.cv && a.cv !== 'None') items.push(['🧥', 'Covered in', a.cv]);
+    if (a.fl) items.push(['🕊️', null, 'Can fly']);
+    if (a.sw) items.push(['🌊', null, 'Can swim']);
+    if (a.eg) items.push(['🥚', null, 'Lays eggs']);
+
+    for (const [emoji, key, value] of items) {
+      const c = document.createElement('div');
+      c.className = 'gchip';
+      const e = document.createElement('span');
+      e.className = 'ge';
+      e.setAttribute('aria-hidden', 'true');
+      e.textContent = emoji;
+      c.appendChild(e);
+      if (key) {
+        const k = document.createElement('span');
+        k.className = 'gk';
+        k.textContent = key;
+        c.appendChild(k);
+      }
+      const v = document.createElement('b');
+      v.textContent = value;
+      c.appendChild(v);
+      box.appendChild(c);
     }
   }
 
   /* -- Wikipedia -----------------------------------------------------
-     Photo and a one-line summary. Free, no key, CORS-open. Cached in
-     memory for the session because during a game you flick back and
-     forth between the same few animals. */
+     Two calls. The summary gives the lead photo and a one-line blurb.
+     The media list gives the rest of the article's pictures in document
+     order, which matters: asking the images API for them instead returns
+     whatever is on the page in no order at all, and a Tiger comes back
+     with a jaguar in it. Document order keeps the animal at the top.
+     Both cached for the session, because during a game you flick back
+     and forth between the same few animals. */
 
-  const wikiCache = new Map();
+  const summaryCache = new Map();
+  const mediaCache = new Map();
 
-  async function loadWiki(a) {
-    const title = a.w || a.n.replace(/ /g, '_');
-    if (wikiCache.has(title)) return wikiCache.get(title);
+  function wikiTitle(a) { return a.w || a.n.replace(/ /g, '_'); }
+
+  function loadSummary(a) {
+    const title = wikiTitle(a);
+    if (summaryCache.has(title)) return summaryCache.get(title);
     const p = fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(title))
       .then((r) => (r.ok ? r.json() : null))
       .catch(() => null);
-    wikiCache.set(title, p);
+    summaryCache.set(title, p);
     return p;
   }
 
-  /* -- Showing an animal --------------------------------------------- */
+  // Range maps, IUCN status badges, anatomy diagrams, skeletons and
+  // fossils are all in these articles and none of them are a picture of
+  // the animal, which is the only thing anyone came here to look at.
+  const JUNK_FILE = /(status[_ ]iucn|distribution|range[_ ]map|[_ ]range[_.]|locator|skeleton|skull|fossil|cladogram|phylogen|diagram|schematic|life[-_ ]?cycle|anatomy|_sem[_.]|micrograph|stamp|coat[_ ]of[_ ]arms|logo|icon|\.svg)/i;
+  const JUNK_CAPTION = /^(a )?(diagram|map|distribution|range|skeleton|phylogen|cladogram|illustration|drawing|chart)/i;
+
+  function fileOf(url) {
+    const m = String(url || '').match(/\/([^/?]+?)(\?|$)/);
+    return m ? decodeURIComponent(m[1]).replace(/^\d+px-/, '').toLowerCase() : '';
+  }
+
+  // Highest resolution the API actually offers for an image. Never build a
+  // URL by hand: rewriting the thumbnail width to something Wikimedia has
+  // not generated comes back as an error page, which the browser then
+  // blocks outright and the picture silently never appears.
+  function bestSrc(item) {
+    const set = item.srcset || [];
+    const best = set[set.length - 1] || set[0];
+    return best && best.src ? best.src.replace(/^\/\//, 'https://') : null;
+  }
+
+  function loadMedia(a) {
+    const title = wikiTitle(a);
+    if (mediaCache.has(title)) return mediaCache.get(title);
+    const p = fetch('https://en.wikipedia.org/api/rest_v1/page/media-list/' + encodeURIComponent(title))
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (!j || !j.items) return { lead: null, shots: [] };
+        const images = j.items.filter((i) => i.type === 'image' && i.showInGallery !== false);
+        const leadItem = images.find((i) => i.leadImage);
+        const shots = images
+          .filter((i) => !i.leadImage)
+          .filter((i) => !JUNK_FILE.test(i.title || ''))
+          .filter((i) => !(i.caption && JUNK_CAPTION.test(i.caption.text || '')))
+          .map((i) => {
+            const src = bestSrc(i);
+            return src ? { src, file: fileOf(src), caption: i.caption ? i.caption.text : '' } : null;
+          })
+          .filter(Boolean);
+        return { lead: leadItem ? bestSrc(leadItem) : null, shots };
+      })
+      .catch(() => ({ lead: null, shots: [] }));  // rate limited or offline: just no extras
+    mediaCache.set(title, p);
+    return p;
+  }
+
+  function renderShot(slot, shot, name) {
+    slot.innerHTML = '';
+    if (!shot) return;
+    const fig = document.createElement('figure');
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.alt = name;
+    // If it fails, take the whole figure out rather than leaving a grey box.
+    img.onerror = () => { slot.innerHTML = ''; };
+    img.src = shot.src;
+    fig.appendChild(img);
+    if (shot.caption) {
+      const cp = document.createElement('figcaption');
+      cp.textContent = shot.caption.length > 120
+        ? shot.caption.slice(0, 117).trim() + '…'
+        : shot.caption;
+      fig.appendChild(cp);
+    }
+    slot.appendChild(fig);
+  }
+
+  /* -- Views ---------------------------------------------------------
+     One search unit, moved between the hero and the top bar, so there is
+     only ever one input and one set of handlers to keep in step. */
 
   let current = null;
+
+  function dock(where) {
+    const unit = el('searchunit');
+    const target = el(where === 'top' ? 'dockTop' : 'dockHome');
+    if (unit.parentNode !== target) target.appendChild(unit);
+  }
+
+  function goHome(opts) {
+    current = null;
+    document.body.className = 'view-home';
+    el('animalview').hidden = true;
+    el('home').hidden = false;
+    dock('home');
+    el('q').value = '';
+    results = [];
+    renderSuggest();
+    el('noresult').hidden = true;
+    document.title = 'Guess My Animal — the animal cheat sheet';
+    if (!opts || !opts.noPush) push(location.pathname);
+    window.scrollTo(0, 0);
+  }
+
+  function push(url) {
+    try { history.pushState(null, '', url); }
+    catch (err) { /* file:// and some webviews refuse; harmless */ }
+  }
 
   function show(entry, opts) {
     const a = entry.a;
     current = entry;
 
-    el('starters').hidden = true;
-    el('noresult').hidden = true;
-    el('sheet').hidden = false;
+    document.body.className = 'view-animal';
+    el('home').hidden = true;
+    el('animalview').hidden = false;
+    dock('top');
     el('copied').textContent = '';
+    el('noresult').hidden = true;
 
     el('name').textContent = a.n;
     el('emoji').textContent = a.e || '';
+    el('kicker').textContent = a.c + ' · ' + a.r[0];
     el('blurb').textContent = '';
     el('fact').textContent = a.f;
-    el('wiki').href = 'https://en.wikipedia.org/wiki/' + encodeURIComponent(a.w || a.n.replace(/ /g, '_'));
-    renderTiles(a);
+    el('wiki').href = 'https://en.wikipedia.org/wiki/' + encodeURIComponent(wikiTitle(a));
+    renderAnswers(a);
+    renderGlance(a);
 
-    // Reset the photo before the request, or the previous animal's picture
-    // sits there looking like this animal until the new one arrives.
-    const wrap = document.querySelector('.photo-wrap');
-    wrap.classList.remove('has-photo');
+    // Reset the pictures before the requests, or the previous animal's
+    // photo sits there looking like this animal until the new one lands.
+    const hero = el('hero');
+    hero.classList.remove('has-photo');
     el('photoFallback').textContent = a.e || '🐾';
     el('photo').alt = '';
+    el('photo').src = BLANK;
+    el('photoBg').src = BLANK;
+    el('shot2').innerHTML = '';
+    el('shot3').innerHTML = '';
 
-    loadWiki(a).then((data) => {
+    let heroFile = '';
+
+    // The summary answers first and carries a small thumbnail, so the card
+    // fills straight away and the sharper lead image swaps in behind the
+    // scenes when the media list lands a moment later.
+    function setHero(src) {
+      if (!src) return;
+      heroFile = fileOf(src);
+      const img = el('photo');
+      img.onerror = () => { img.onerror = null; hero.classList.remove('has-photo'); };
+      img.alt = a.n;
+      img.src = src;
+      el('photoBg').src = src;
+      hero.classList.add('has-photo');
+    }
+
+    loadSummary(a).then((data) => {
       if (current !== entry) return;          // they typed something else
-      if (data && data.thumbnail && data.thumbnail.source) {
-        const small = data.thumbnail.source;
-        // Wikimedia only serves widths it can produce, and refuses to
-        // upscale: asking for 640px of an image whose original is 500px
-        // wide returns a 400 and a blank box. Clamp to what exists.
-        const originalWidth = (data.originalimage && data.originalimage.width) || 0;
-        const want = Math.min(640, originalWidth);
-        const big = want >= 320 ? small.replace(/\/\d+px-/, '/' + want + 'px-') : small;
-
-        const img = el('photo');
-        // If the larger crop fails for any reason, drop back to the size the
-        // API actually handed us before giving up and showing the emoji.
-        img.onerror = () => {
-          if (img.src !== small) { img.src = small; return; }
-          img.onerror = null;
-          wrap.classList.remove('has-photo');
-        };
-        img.alt = a.n;
-        img.src = big;
-        wrap.classList.add('has-photo');
-      }
-      if (data && data.extract) {
-        el('blurb').textContent = firstSentence(data.extract);
-      }
+      if (data && data.thumbnail && data.thumbnail.source) setHero(data.thumbnail.source);
+      if (data && data.extract) el('blurb').textContent = firstSentence(data.extract);
     });
 
-    const slug = entry.slug;
-    if (!opts || !opts.silent) {
-      try {
-        const url = new URL(location.href);
-        url.searchParams.set('a', slug);
-        history.replaceState(null, '', url);
-      } catch (err) { /* file:// and some webviews refuse; harmless */ }
-    }
+    loadMedia(a).then((media) => {
+      if (current !== entry) return;
+      if (media.lead) setHero(media.lead);
+      const usable = media.shots.filter((s) => s.file && s.file !== heroFile);
+      renderShot(el('shot2'), usable[0], a.n);
+      renderShot(el('shot3'), usable[1], a.n);
+    });
+
+    if (!opts || !opts.noPush) push('?a=' + entry.slug);
     document.title = a.n + ' — Guess My Animal';
+    window.scrollTo(0, 0);
   }
 
   function firstSentence(text) {
@@ -264,7 +402,6 @@
     cursor = -1;
     renderSuggest();
     show(entry);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   el('q').addEventListener('input', () => {
@@ -289,12 +426,16 @@
   });
 
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.searchbar')) { results = []; renderSuggest(); }
+    if (!e.target.closest('.searchunit')) {
+      results = [];
+      renderSuggest();
+      el('noresult').hidden = true;
+    }
   });
 
-  /* -- Starters, dice, copy ------------------------------------------ */
+  /* -- Starters, dice, back, copy ------------------------------------ */
 
-  const STARTERS = ['Octopus', 'Sloth', 'Platypus', 'Axolotl', 'Hyena', 'Pangolin', 'Mosquito', 'Seahorse'];
+  const STARTERS = ['Octopus', 'Sloth', 'Platypus', 'Axolotl', 'Hyena', 'Pangolin'];
 
   function renderStarters() {
     const box = el('starterChips');
@@ -310,13 +451,17 @@
     }
   }
 
-  el('random').addEventListener('click', () => {
+  function rollDice() {
     let next = INDEX[Math.floor(Math.random() * INDEX.length)];
     if (current && INDEX.length > 1) {
       while (next === current) next = INDEX[Math.floor(Math.random() * INDEX.length)];
     }
     pick(next);
-  });
+  }
+
+  el('random').addEventListener('click', rollDice);
+  el('another').addEventListener('click', rollDice);
+  el('back').addEventListener('click', () => goHome());
 
   el('copy').addEventListener('click', async () => {
     try {
@@ -327,17 +472,27 @@
     }
   });
 
+  /* -- Routing -------------------------------------------------------
+     /?a=octopus opens straight on that animal, and the phone's back
+     button steps back through what you looked up rather than leaving
+     the site from the middle of a game. */
+
+  function routeFromURL() {
+    let wanted = null;
+    try { wanted = new URL(location.href).searchParams.get('a'); }
+    catch (err) { /* no URL API worth worrying about */ }
+    if (wanted) {
+      const entry = INDEX.find((x) => x.slug === slugify(wanted));
+      if (entry) { show(entry, { noPush: true }); return; }
+    }
+    goHome({ noPush: true });
+  }
+
+  window.addEventListener('popstate', routeFromURL);
+
   /* -- Boot ---------------------------------------------------------- */
 
-  el('count').textContent = ANIMALS.length + ' animals and counting.';
+  el('count').textContent = ANIMALS.length + ' animals and counting';
   renderStarters();
-
-  // Deep link: /?a=octopus opens straight on that animal.
-  try {
-    const wanted = new URL(location.href).searchParams.get('a');
-    if (wanted) {
-      const entry = INDEX.find((x) => x.slug === norm(wanted).replace(/ /g, '-'));
-      if (entry) show(entry, { silent: true });
-    }
-  } catch (err) { /* no URL API worth worrying about */ }
+  routeFromURL();
 })();
