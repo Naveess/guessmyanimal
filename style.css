@@ -1,0 +1,295 @@
+/* ------------------------------------------------------------------
+   Guess My Animal — a field guide with the volume up.
+
+   Read on a phone, mid-argument, in about four seconds. That drives
+   everything: one thumb-sized search box pinned to the top, answers as
+   big tiles you can scan without reading, and the photo doing the work
+   of confirming you looked up the right beast.
+
+   Palette is deliberately not the warm-cream-and-serif default. Ground
+   is a pale sage, ink is a deep forest green, and the one loud colour
+   is a coral reserved for "yes, this thing can hurt you" and the
+   primary action. Marigold is the second voice, for the fun fact.
+   ------------------------------------------------------------------ */
+
+:root {
+  --paper:   #e7f0e9;
+  --card:    #ffffff;
+  --ink:     #10201a;
+  --ink-2:   #4a6357;
+  --line:    #cfe0d5;
+  --coral:   #e8442a;
+  --coral-bg:#fde8e4;
+  --marigold:#b06d00;
+  --gold-bg: #fdf1d8;
+  --leaf:    #1d7a4c;
+  --leaf-bg: #dcefe2;
+  --shadow:  0 1px 0 rgba(16,32,26,.05), 0 8px 24px -12px rgba(16,32,26,.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:   #0e1713;
+    --card:    #16231d;
+    --ink:     #e6f0e9;
+    --ink-2:   #93ab9e;
+    --line:    #26372e;
+    --coral:   #ff7a5e;
+    --coral-bg:#3a1c17;
+    --marigold:#f0b95e;
+    --gold-bg: #33270f;
+    --leaf:    #5fd39a;
+    --leaf-bg: #163023;
+    --shadow:  0 8px 24px -14px rgba(0,0,0,.7);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Fredoka, ui-rounded, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 680px; margin: 0 auto; padding: 0 16px 40px; }
+
+/* -- Masthead ------------------------------------------------------ */
+
+.masthead { padding: 30px 0 18px; text-align: center; }
+
+h1 {
+  font-size: clamp(31px, 8.5vw, 46px);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -.02em;
+  margin: 0 0 8px;
+}
+h1 em { font-style: normal; color: var(--coral); }
+.paw { font-style: normal; }
+
+.tagline { margin: 0; color: var(--ink-2); font-size: 15px; font-weight: 500; }
+
+/* -- Search -------------------------------------------------------- */
+
+.searchbar {
+  position: sticky; top: 0; z-index: 20;
+  padding: 10px 0 12px;
+  background: var(--paper);
+}
+/* Fades the content out underneath rather than letting it slide behind a
+   hard edge while you scroll a long sheet. */
+.searchbar::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 14px;
+  background: linear-gradient(var(--paper), transparent);
+  pointer-events: none;
+}
+
+.search-shell { display: flex; gap: 8px; }
+
+#q {
+  flex: 1; min-width: 0;
+  font: inherit; font-size: 18px; font-weight: 500;
+  color: var(--ink);
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  min-height: 54px;              /* thumb-sized, deliberately */
+}
+#q::placeholder { color: var(--ink-2); opacity: .8; }
+#q:focus { outline: none; border-color: var(--coral); }
+#q::-webkit-search-cancel-button { cursor: pointer; }
+
+.dice {
+  flex: none; width: 54px; min-height: 54px;
+  font-size: 22px; line-height: 1; cursor: pointer;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+}
+.dice:hover { border-color: var(--coral); }
+.dice:active { transform: translateY(1px); }
+
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+
+/* -- Suggestions --------------------------------------------------- */
+
+.suggest {
+  list-style: none; margin: 8px 0 0; padding: 6px;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  max-height: 46vh; overflow-y: auto;
+}
+.suggest[hidden] { display: none; }
+.suggest li {
+  display: flex; align-items: center; gap: 11px;
+  padding: 12px 12px; border-radius: 10px;
+  cursor: pointer; font-weight: 500;
+  min-height: 48px;
+}
+.suggest li[aria-selected="true"], .suggest li:hover { background: var(--leaf-bg); }
+.suggest .s-emoji { font-size: 21px; flex: none; }
+.suggest .s-alias { color: var(--ink-2); font-size: 14px; }
+
+/* -- Starters ------------------------------------------------------ */
+
+.starters { padding: 22px 0 6px; text-align: center; }
+.starters-label { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.chip {
+  font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
+  background: var(--card); color: var(--ink);
+  border: 2px solid var(--line); border-radius: 999px;
+  padding: 9px 15px; min-height: 44px;
+}
+.chip:hover { border-color: var(--coral); }
+
+/* -- The sheet ----------------------------------------------------- */
+
+.sheet {
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  padding: 0 0 18px;
+  margin-top: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.sheet[hidden] { display: none; }
+
+.photo-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--leaf-bg);
+  border-bottom: 2px solid var(--line);
+}
+.photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Sits under the photo and shows through only while there is nothing to
+   show, so a missing image is a big emoji rather than a hole. */
+.photo-fallback {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-size: 84px; line-height: 1;
+}
+.photo-wrap.has-photo .photo-fallback { display: none; }
+
+.titlebar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 16px 18px 0;
+}
+.titlebar h2 {
+  margin: 0; font-size: clamp(25px, 6.4vw, 33px); font-weight: 700;
+  letter-spacing: -.015em; line-height: 1.1; flex: 1;
+}
+.emoji { font-size: 30px; flex: none; }
+
+.blurb {
+  margin: 8px 18px 0; color: var(--ink-2);
+  font-size: 15px; font-weight: 500;
+}
+
+/* -- Answer tiles --------------------------------------------------
+   Two columns on a phone. The label is small and quiet, the answer is
+   large, so the eye lands on the answer first - which is the whole job.
+   Colour is a second channel: every tile also says the word.          */
+
+.answers {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  padding: 16px 18px 0;
+}
+@media (min-width: 560px) { .answers { grid-template-columns: 1fr 1fr 1fr; } }
+
+.tile {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 13px;
+  padding: 10px 12px 11px;
+  min-width: 0;
+}
+.tile .k {
+  display: block; font-size: 11.5px; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink-2); margin-bottom: 3px;
+}
+.tile .v {
+  display: block; font-size: 17px; font-weight: 600;
+  line-height: 1.2; overflow-wrap: anywhere;
+}
+.tile.wide { grid-column: 1 / -1; }
+
+/* Green = yes. Plain = no. Coral is spent on one thing only: this animal
+   can hurt you. Amber is the honest middle. */
+.tile.yes    { background: var(--leaf-bg);  border-color: var(--leaf); }
+.tile.yes .v { color: var(--leaf); }
+.tile.maybe    { background: var(--gold-bg); border-color: var(--marigold); }
+.tile.maybe .v { color: var(--marigold); }
+.tile.danger    { background: var(--coral-bg); border-color: var(--coral); }
+.tile.danger .v { color: var(--coral); }
+
+/* -- Fact ---------------------------------------------------------- */
+
+.fact {
+  margin: 16px 18px 0; padding: 13px 15px;
+  background: var(--gold-bg);
+  border: 2px solid var(--marigold);
+  border-radius: 13px;
+  font-size: 15.5px; font-weight: 500;
+}
+.fact::before { content: "💡 "; }
+
+/* -- Sheet footer -------------------------------------------------- */
+
+.sheet-foot {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding: 16px 18px 0;
+}
+.wiki, .copy {
+  font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
+  border-radius: 12px; padding: 11px 15px; min-height: 46px;
+  display: inline-flex; align-items: center; text-decoration: none;
+  border: 2px solid var(--line);
+  background: var(--card); color: var(--ink);
+}
+.wiki:hover, .copy:hover { border-color: var(--coral); }
+.copied { margin: 10px 18px 0; font-size: 14px; color: var(--leaf); font-weight: 500; min-height: 20px; }
+
+.noresult {
+  margin: 26px 0 0; text-align: center; color: var(--ink-2);
+  font-size: 16px; font-weight: 500;
+}
+.noresult[hidden] { display: none; }
+
+/* -- Ad slot -------------------------------------------------------
+   Reserved from day one. An advert dropped into a page that never left
+   room for it is what makes everything jump on load. */
+
+.adslot {
+  min-height: 100px; margin: 22px 0 0;
+  display: grid; place-items: center;
+  border: 2px dashed var(--line); border-radius: 14px;
+  color: var(--ink-2); font-size: 13px; font-weight: 500;
+}
+.adslot:empty::before { content: ""; }
+
+/* -- Footer -------------------------------------------------------- */
+
+.foot {
+  margin-top: 30px; text-align: center;
+  color: var(--ink-2); font-size: 13.5px; font-weight: 500;
+}
+.foot p { margin: 0 0 6px; }
+.foot a { color: var(--ink); }
+.tiny { font-size: 12.5px; opacity: .8; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guess My Animal — the animal cheat sheet</title>
+<meta name="description" content="Type an animal, get the answers. Carnivore? Nocturnal? Dangerous? Everything you keep googling mid-game, on one screen.">
+<meta name="theme-color" content="#12211b">
+
+<meta property="og:title" content="Guess My Animal — the animal cheat sheet">
+<meta property="og:description" content="Type an animal, get the answers. Carnivore? Nocturnal? Dangerous? Everything you keep googling mid-game, on one screen.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead" id="masthead">
+    <h1><span class="paw">🐾</span> Guess my <em>animal</em></h1>
+    <p class="tagline">Someone's thinking of an animal. Ask better questions.</p>
+  </header>
+
+  <!-- Sticky, because during a game you type a new animal every 30 seconds. -->
+  <div class="searchbar" id="searchbar">
+    <div class="search-shell">
+      <input id="q" type="search" autocomplete="off" autocorrect="off" autocapitalize="off"
+             spellcheck="false" enterkeyhint="search"
+             placeholder="Type an animal…" aria-label="Search for an animal"
+             role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
+      <button class="dice" id="random" type="button" aria-label="Show a random animal">🎲</button>
+    </div>
+    <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+  </div>
+
+  <main id="main">
+
+    <!-- Landing state: a few to tap, so the first screen is never empty. -->
+    <section class="starters" id="starters">
+      <p class="starters-label">Or start with one of these</p>
+      <div class="chips" id="starterChips"></div>
+    </section>
+
+    <article class="sheet" id="sheet" hidden>
+      <div class="photo-wrap">
+        <!-- Transparent 1x1 until a real photo arrives, so this is never a
+             broken-image box while Wikipedia is still being asked. -->
+        <img class="photo" id="photo" alt="" width="640" height="420"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <div class="photo-fallback" id="photoFallback" aria-hidden="true"></div>
+      </div>
+
+      <div class="titlebar">
+        <h2 id="name"></h2>
+        <span class="emoji" id="emoji" aria-hidden="true"></span>
+      </div>
+      <p class="blurb" id="blurb"></p>
+
+      <div class="answers" id="answers"></div>
+
+      <p class="fact" id="fact"></p>
+
+      <div class="sheet-foot">
+        <a class="wiki" id="wiki" href="#" target="_blank" rel="noopener">Read more on Wikipedia</a>
+        <button class="copy" id="copy" type="button">Copy link</button>
+      </div>
+      <p class="copied" id="copied" aria-live="polite"></p>
+    </article>
+
+    <p class="noresult" id="noresult" hidden></p>
+
+    <!-- Reserved now so adding a unit later cannot shove the page around.
+         Holds its height whether or not anything fills it. -->
+    <div class="adslot" id="adslot" aria-hidden="true"></div>
+
+  </main>
+
+  <footer class="foot">
+    <p>Built for a guessing game that got out of hand. Photos and summaries from
+      <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>.</p>
+    <p class="tiny" id="count"></p>
+  </footer>
+
+</div>
+
+<script src="animals.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
