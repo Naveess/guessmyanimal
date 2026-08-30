@@ -13,7 +13,11 @@
      obvious answer sits at the top rather than an alphabetical one. */
 
   const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
-  const slugify = (s) => norm(s).replace(/ /g, '-');
+  // Hyphens become spaces first, or the normaliser strips them and
+  // "snow-leopard" from a shared URL turns into "snowleopard", which
+  // matches no entry. That silently broke the link for every animal
+  // with a two-word name.
+  const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
 
   const INDEX = ANIMALS.map((a, i) => ({
     a,
@@ -103,9 +107,10 @@
   function renderAnswers(a) {
     const box = el('answers');
     box.innerHTML = '';
-    for (const [k, v, state] of answers(a)) {
+    answers(a).forEach(([k, v, state], i) => {
       const row = document.createElement('div');
       row.className = 'row';
+      row.style.setProperty('--i', i);
       const kk = document.createElement('span');
       kk.className = 'k';
       kk.textContent = k;
@@ -114,7 +119,39 @@
       vv.textContent = v;
       row.append(kk, vv);
       box.appendChild(row);
-    }
+    });
+  }
+
+  /* -- Icons ---------------------------------------------------------
+     Drawn, not emoji. Emoji render differently on every platform, carry
+     their own colour, and cannot be tinted to match the text they sit
+     beside. One 24px grid, one stroke weight, so the chips read as a
+     set. The animal emoji stay - those are content, not iconography. */
+
+  const ICONS = {
+    globe: '<circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2"/><path d="M12 3.4c2.5 2.9 2.5 14.3 0 17.2M12 3.4c-2.5 2.9-2.5 14.3 0 17.2"/>',
+    drop:  '<path d="M12 3.6c3.1 3.6 5.3 6.2 5.3 8.9a5.3 5.3 0 0 1-10.6 0c0-2.7 2.2-5.3 5.3-8.9Z"/>',
+    ruler: '<path d="M3.4 12h17.2"/><path d="M6.4 8.6v6.8M17.6 8.6v6.8"/>',
+    group: '<circle cx="9.2" cy="8.8" r="3.1"/><path d="M3.6 19a5.6 5.6 0 0 1 11.2 0"/><path d="M16.2 6.4a3 3 0 0 1 0 5.6M17.8 19a5.7 5.7 0 0 0-1.6-4"/>',
+    clock: '<circle cx="12" cy="12" r="8.6"/><path d="M12 6.9v5.4l3.4 2"/>',
+    leg:   '<path d="M8.2 3.8v6.4c0 1.4.5 2.2 1.6 3l4.3 3.1c1.1.8 1.7 1.6 1.7 3v.9"/><path d="M5.8 3.8h4.8M13.6 20.2h4.4"/>',
+    coat:  '<path d="M3.6 9.2c2.4 0 2.4-2.9 4.8-2.9s2.4 2.9 4.8 2.9 2.4-2.9 4.8-2.9 2.4 2.9 3.4 2.9"/><path d="M3.6 15.6c2.4 0 2.4-2.9 4.8-2.9s2.4 2.9 4.8 2.9 2.4-2.9 4.8-2.9 2.4 2.9 3.4 2.9"/>',
+    wing:  '<path d="M20.4 4.2c-9.3 0-15.6 4.8-15.6 11 0 2.6 1.5 4.2 3.8 4.2 5.6 0 10-5.9 11.8-15.2Z"/>',
+    wave:  '<path d="M2.8 8.4c2.3 0 2.3 2.1 4.6 2.1s2.3-2.1 4.6-2.1 2.3 2.1 4.6 2.1 2.3-2.1 4.6-2.1"/><path d="M2.8 14.8c2.3 0 2.3 2.1 4.6 2.1s2.3-2.1 4.6-2.1 2.3 2.1 4.6 2.1 2.3-2.1 4.6-2.1"/>',
+    egg:   '<path d="M12 3.4c3.2 0 5.6 5.1 5.6 9A5.6 5.6 0 0 1 12 20.6 5.6 5.6 0 0 1 6.4 12.4c0-3.9 2.4-9 5.6-9Z"/>',
+  };
+
+  function icon(name) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.75');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = ICONS[name] || '';
+    return svg;
   }
 
   /* -- At a glance ---------------------------------------------------
@@ -126,27 +163,24 @@
     box.innerHTML = '';
 
     const items = [
-      ['🌍', 'Found in', a.r.join(', ')],
-      ['🎨', 'Colours', a.co.map(cap).join(', ')],
-      ['📏', 'Size', cap(a.sz)],
+      ['globe', 'Found in', a.r.join(', ')],
+      ['drop',  'Colours', a.co.map(cap).join(', ')],
+      ['ruler', 'Size', cap(a.sz)],
       // "Lives in Solitary" is not a sentence, so that one gets its own.
-      a.so === 'Solitary' ? ['👥', null, 'Lives alone'] : ['👥', 'Lives in', a.so.toLowerCase()],
-      ['⏳', 'Lives for', a.lf],
-      ['🦵', 'Legs', a.lg === 0 ? 'None' : String(a.lg)],
+      a.so === 'Solitary' ? ['group', null, 'Lives alone'] : ['group', 'Lives in', a.so.toLowerCase()],
+      ['clock', 'Lives for', a.lf],
+      ['leg',   'Legs', a.lg === 0 ? 'None' : String(a.lg)],
     ];
-    if (a.cv && a.cv !== 'None') items.push(['🧥', 'Covered in', a.cv]);
-    if (a.fl) items.push(['🕊️', null, 'Can fly']);
-    if (a.sw) items.push(['🌊', null, 'Can swim']);
-    if (a.eg) items.push(['🥚', null, 'Lays eggs']);
+    if (a.cv && a.cv !== 'None') items.push(['coat', 'Covered in', a.cv]);
+    if (a.fl) items.push(['wing', null, 'Can fly']);
+    if (a.sw) items.push(['wave', null, 'Can swim']);
+    if (a.eg) items.push(['egg',  null, 'Lays eggs']);
 
-    for (const [emoji, key, value] of items) {
+    items.forEach(([ic, key, value], i) => {
       const c = document.createElement('div');
       c.className = 'gchip';
-      const e = document.createElement('span');
-      e.className = 'ge';
-      e.setAttribute('aria-hidden', 'true');
-      e.textContent = emoji;
-      c.appendChild(e);
+      c.style.setProperty('--i', i);
+      c.appendChild(icon(ic));
       if (key) {
         const k = document.createElement('span');
         k.className = 'gk';
@@ -157,7 +191,7 @@
       v.textContent = value;
       c.appendChild(v);
       box.appendChild(c);
-    }
+    });
   }
 
   /* -- Wikipedia -----------------------------------------------------
@@ -242,6 +276,7 @@
     img.onerror = () => { slot.innerHTML = ''; };
     img.src = shot.src;
     fig.appendChild(img);
+    if (shotWatcher) shotWatcher.observe(fig);
     if (shot.caption) {
       const cp = document.createElement('figcaption');
       cp.textContent = shot.caption.length > 120
@@ -251,6 +286,56 @@
     }
     slot.appendChild(fig);
   }
+
+  /* -- Motion --------------------------------------------------------
+     One authored moment: the card arriving. Everything below it follows
+     in a short, capped sequence, and that is the whole page-level story.
+     Nothing here hides content - the CSS animations run off a resting
+     state that is already visible, so if this never executes the page is
+     simply static rather than blank. */
+
+  function play(node, cls, delay) {
+    if (!node) return;
+    node.classList.remove('anim-rise', 'anim-deal');
+    void node.offsetWidth;                     // restart, not resume
+    node.style.animationDelay = (delay || 0) + 'ms';
+    node.classList.add(cls);
+  }
+
+  function stagger(node, base) {
+    if (!node) return;
+    node.classList.remove('stagger');
+    void node.offsetWidth;
+    node.style.setProperty('--base', base + 'ms');
+    node.classList.add('stagger');
+  }
+
+  // Kept short on purpose. This is a screen you came to read, not a
+  // title sequence, so everything has landed inside a second.
+  function playEntrance() {
+    play(el('hero'), 'anim-deal', 0);
+    play(el('blurb'), 'anim-rise', 110);
+    const labels = document.querySelectorAll('.feed .label');
+    play(labels[0], 'anim-rise', 165);
+    stagger(el('answers'), 200);
+    play(labels[1], 'anim-rise', 300);
+    stagger(el('glance'), 330);
+    play(labels[2], 'anim-rise', 390);
+    play(document.querySelector('.factcard'), 'anim-rise', 420);
+  }
+
+  /* The extra photos are the only thing that animates on scroll, and
+     they reuse the hero's arrival rather than a generic section fade -
+     a picture being dealt is the same idea as the card being dealt. */
+  const shotWatcher = ('IntersectionObserver' in window)
+    ? new IntersectionObserver((entries, obs) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          play(e.target, 'anim-deal', 0);
+          obs.unobserve(e.target);
+        }
+      }, { rootMargin: '0px 0px -12% 0px' })
+    : null;
 
   /* -- Views ---------------------------------------------------------
      One search unit, moved between the hero and the top bar, so there is
@@ -348,6 +433,7 @@
     if (!opts || !opts.noPush) push('?a=' + entry.slug);
     document.title = a.n + ' — Guess My Animal';
     window.scrollTo(0, 0);
+    playEntrance();
   }
 
   function firstSentence(text) {
@@ -459,7 +545,12 @@
     pick(next);
   }
 
-  el('random').addEventListener('click', rollDice);
+  el('random').addEventListener('click', (e) => {
+    const b = e.currentTarget;
+    b.classList.add('rolling');
+    setTimeout(() => b.classList.remove('rolling'), 400);
+    rollDice();
+  });
   el('another').addEventListener('click', rollDice);
   el('back').addEventListener('click', () => goHome());
 

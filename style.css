@@ -1,53 +1,70 @@
 /* ------------------------------------------------------------------
    Guess My Animal
 
-   Two screens, borrowed from the shape of a dating app because the job
-   turns out to be the same one: a flat field of brand colour with a
-   search box on it, then a photo card with a name across the bottom and
-   everything you want to know underneath it as you scroll.
+   Two screens. Home is a flat field of brand colour with a search box
+   on it; picking an animal swaps to a photo card with the name across
+   the bottom and the answers underneath as you scroll.
 
-   The colour does the branding so the layout does not have to. One
-   saturated yellow, one near-black, white cards, generous radii, and
-   nothing else - which leaves green, amber and red free to mean
-   something on the answer pills rather than just decorating them.
+   Ground and ink come from the warm end: a bone paper and an olive
+   near-black rather than white on grey, so the yellow reads as a
+   decision instead of the only colour present. Green, amber and red
+   are then free to mean something on the answer pills.
+
+   Motion has one authored moment - the card arriving - and quiet
+   feedback everywhere else. Nothing is hidden by default: entrances
+   are animations off a visible resting state, so a failed script
+   leaves a working page rather than a blank one.
    ------------------------------------------------------------------ */
 
+/* Variable, one file, 33 KB, self-hosted so the first paint does not
+   wait on a third party. */
+@font-face {
+  font-family: 'Onest';
+  src: url('fonts/onest-latin.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Fixed regardless of theme: the home screen stays yellow in the dark,
-     so anything sitting on yellow needs an ink that never flips. */
+  /* Fixed regardless of theme: the home screen stays yellow in the
+     dark, so anything sitting on yellow needs an ink that never flips. */
   --sun:      #ffce1f;
-  --sun-deep: #eab600;
-  --on-sun:   #17150f;
+  --sun-deep: #e8b400;
+  --on-sun:   #1d1e19;
 
-  --paper:  #f3f1ea;
-  --card:   #ffffff;
-  --ink:    #17150f;
-  --muted:  #6f6a5b;
-  --line:   #e7e3d8;
+  --paper:  #e9eae2;
+  --card:   #f8f9f3;
+  --ink:    #1d1e19;
+  --muted:  #5f6255;   /* tinted from the ink, never a neutral grey */
+  --line:   #d7d9cc;
 
-  --good:    #0b7c55;  --good-bg: #e1f3ea;
-  --warn:    #a06000;  --warn-bg: #fbeed5;
-  --bad:     #c93018;  --bad-bg:  #fce4df;
-  --flat-bg: #f0ede4;
+  --good:    #0a6b3d;  --good-bg: #dbe9dd;
+  --warn:    #8a5600;  --warn-bg: #f4e6c9;
+  --bad:     #b8321a;  --bad-bg:  #f2ddd6;
+  --flat-bg: #e4e6da;
 
   --r-card:  20px;
   --r-photo: 26px;
-  --shadow:   0 1px 2px rgba(23,21,15,.05), 0 6px 18px -10px rgba(23,21,15,.22);
-  --shadow-l: 0 2px 6px rgba(23,21,15,.07), 0 22px 44px -22px rgba(23,21,15,.42);
+  --shadow:   0 1px 2px rgba(29,30,25,.05), 0 6px 18px -10px rgba(29,30,25,.24);
+  --shadow-l: 0 2px 6px rgba(29,30,25,.07), 0 22px 44px -22px rgba(29,30,25,.45);
+
+  /* Confident arrival, no bounce. */
+  --ease: cubic-bezier(.16, 1, .3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper:  #131210;
-    --card:   #1e1c17;
-    --ink:    #f3f0e7;
-    --muted:  #9c9584;
-    --line:   #2d2a22;
+    --paper:  #14150f;
+    --card:   #1e2019;
+    --ink:    #eef0e4;
+    --muted:  #989c88;
+    --line:   #2c2f25;
 
-    --good:    #4fca97;  --good-bg: #13301f;
-    --warn:    #f0b95e;  --warn-bg: #33260f;
-    --bad:     #ff7a5e;  --bad-bg:  #381812;
-    --flat-bg: #26231c;
+    --good:    #58cf9b;  --good-bg: #12301f;
+    --warn:    #efbc63;  --warn-bg: #33270e;
+    --bad:     #ff7f63;  --bad-bg:  #3a1912;
+    --flat-bg: #262920;
 
     --shadow:   0 6px 18px -10px rgba(0,0,0,.8);
     --shadow-l: 0 22px 44px -22px rgba(0,0,0,.9);
@@ -61,15 +78,77 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Figtree, ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  font-family: Onest, ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 1.45;
+  letter-spacing: -.011em;
   -webkit-font-smoothing: antialiased;
 }
 body.view-home { background: var(--sun); }
 
-:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
-.home :focus-visible { outline-color: var(--on-sun); }
+/* -- Surfaces the browser would otherwise style for us ------------- */
+
+::selection { background: var(--sun); color: var(--on-sun); }
+.view-home ::selection { background: var(--on-sun); color: var(--sun); }
+#q { caret-color: var(--ink); }
+
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 5px; }
+body.view-home :focus-visible { outline-color: var(--on-sun); }
+
+* { scrollbar-color: var(--line) transparent; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--line); border-radius: 99px;
+  border: 3px solid var(--paper);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ==================================================================
+   MOTION
+
+   One keyframe does the work. Elements rest visible and the animation
+   plays off that resting state with `backwards` fill, so nothing is
+   ever stuck invisible if the script never runs.
+   ================================================================== */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* The authored moment: the card arrives. It lifts, settles, and
+   uncovers itself from the top edge down, which is the one beat this
+   product has - the answer showing up. */
+@keyframes deal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(.955);
+    clip-path: inset(14% 7% 0 7% round var(--r-photo));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0 round var(--r-photo));
+  }
+}
+
+.anim-rise { animation: rise .55s var(--ease) backwards; }
+.anim-deal { animation: deal .72s var(--ease) backwards; }
+/* Stagger is capped: this is a list arriving as a list, not every
+   section on the page reinterpreted as one. */
+.stagger > * {
+  animation: rise .5s var(--ease) backwards;
+  animation-delay: calc(var(--base, 0ms) + var(--i, 0) * 30ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Reduced, not removed: the fade still says something arrived. */
+  @keyframes rise { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes deal { from { opacity: 0; } to { opacity: 1; } }
+  .anim-rise, .anim-deal, .stagger > * { animation-duration: .2s; animation-delay: 0s !important; }
+  * { transition-duration: .05s !important; }
+}
 
 /* ==================================================================
    HOME
@@ -98,63 +177,65 @@ body.view-home { background: var(--sun); }
 .wordmark {
   margin: 0;
   font-size: clamp(40px, 12vw, 60px);
-  font-weight: 900;
-  line-height: .93;
-  letter-spacing: -.045em;
+  font-weight: 700;
+  line-height: .95;
+  letter-spacing: -.04em;
+  text-wrap: balance;
 }
 
 .tagline {
   margin: 14px 0 0;
-  font-size: 16px; font-weight: 500;
+  font-size: 16px; font-weight: 400;
   color: color-mix(in srgb, var(--on-sun) 68%, transparent);
 }
 
-/* The search box on the home screen: white, tall, unmissable.
+/* The search box on the home screen: warm white, tall, unmissable.
    The home ground stays yellow in both themes, so this one component
    keeps the light palette rather than turning into a black bar on
-   yellow when the phone is in dark mode. Re-declaring the tokens here
-   covers the box, the suggestion list and the no-match message at once. */
-.home .searchunit {
-  --card:    #ffffff;
-  --line:    #e7e3d8;
-  --ink:     #17150f;
-  --muted:   #6f6a5b;
-  --flat-bg: #f0ede4;
+   yellow in dark mode. Re-declaring the tokens here covers the box,
+   the suggestion list and the no-match message at once. */
+body.view-home .searchunit {
+  --card:    #f8f9f3;
+  --line:    #d7d9cc;
+  --ink:     #1d1e19;
+  --muted:   #5f6255;
+  --flat-bg: #e4e6da;
   margin: 30px auto 0;
 }
-.home .searchrow {
+body.view-home .searchrow {
+  border-color: transparent;
   border-radius: 18px;
   box-shadow: var(--shadow-l);
   padding: 5px 5px 5px 16px;
   min-height: 62px;
 }
-.home #q { font-size: 17px; }
+body.view-home #q { font-size: 17px; }
 
 .starters { margin-top: 26px; }
 .starters-label {
   margin: 0 0 11px;
-  font-size: 13px; font-weight: 700;
-  letter-spacing: .07em; text-transform: uppercase;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
   color: color-mix(in srgb, var(--on-sun) 72%, transparent);
 }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .chip {
-  font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+  font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
   color: var(--on-sun);
   background: transparent;
-  border: 2px solid color-mix(in srgb, var(--on-sun) 22%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--on-sun) 24%, transparent);
   border-radius: 999px;
   padding: 9px 15px; min-height: 44px;
-  transition: background .14s ease, border-color .14s ease;
+  transition: background .16s var(--ease), border-color .16s var(--ease), transform .16s var(--ease);
 }
 .chip:hover {
   background: color-mix(in srgb, var(--on-sun) 8%, transparent);
-  border-color: color-mix(in srgb, var(--on-sun) 40%, transparent);
+  border-color: color-mix(in srgb, var(--on-sun) 45%, transparent);
 }
-.chip:active { transform: translateY(1px); }
+.chip:active { transform: scale(.97); }
 
 .home-foot {
-  margin: 0; font-size: 13.5px; font-weight: 600;
+  margin: 0; font-size: 13.5px; font-weight: 500;
   color: color-mix(in srgb, var(--on-sun) 72%, transparent);
 }
 
@@ -171,20 +252,22 @@ body.view-home { background: var(--sun); }
   border-radius: 15px;
   padding: 4px 4px 4px 13px;
   min-height: 52px;
+  transition: border-color .16s var(--ease), box-shadow .16s var(--ease);
 }
+.searchrow:focus-within { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
 .mag { flex: none; width: 20px; height: 20px; color: var(--muted); }
 .mag svg { width: 100%; height: 100%; display: block; }
 
 #q {
   flex: 1; min-width: 0;
-  font: inherit; font-size: 16px; font-weight: 600;
+  font: inherit; font-size: 16px; font-weight: 500;
   color: var(--ink);
   background: transparent;
   border: 0; outline: none;
   padding: 10px 0;
   min-height: 44px;
 }
-#q::placeholder { color: var(--muted); font-weight: 500; }
+#q::placeholder { color: var(--muted); font-weight: 400; }
 #q::-webkit-search-cancel-button { cursor: pointer; }
 
 .dice {
@@ -193,42 +276,45 @@ body.view-home { background: var(--sun); }
   color: var(--on-sun);
   background: var(--sun);
   border: 0; border-radius: 12px;
-  transition: background .14s ease;
+  transition: background .16s var(--ease), transform .4s var(--ease);
 }
 .dice svg { width: 21px; height: 21px; }
 .dice:hover { background: var(--sun-deep); }
-.dice:active { transform: translateY(1px); }
+.dice:active { transform: scale(.94); }
+/* Rolled, not just pressed. */
+.dice.rolling { transform: rotate(180deg); }
 
 .suggest {
   position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40;
   list-style: none; margin: 0; padding: 6px;
   background: var(--card);
-  border: 1px solid var(--line);
   border-radius: 16px;
   box-shadow: var(--shadow-l);
   max-height: 52vh; overflow-y: auto;
   text-align: left;
+  animation: rise .22s var(--ease) backwards;
 }
 .suggest[hidden] { display: none; }
 .suggest li {
   display: flex; align-items: center; gap: 11px;
   padding: 11px 12px; border-radius: 11px;
-  cursor: pointer; font-weight: 600; color: var(--ink);
+  cursor: pointer; font-weight: 500; color: var(--ink);
   min-height: 48px;
+  transition: background .13s var(--ease);
 }
 .suggest li[aria-selected="true"], .suggest li:hover { background: var(--flat-bg); }
 .s-emoji { font-size: 21px; flex: none; line-height: 1; }
-.s-alias { color: var(--muted); font-size: 14px; font-weight: 500; }
+.s-alias { color: var(--muted); font-size: 14px; font-weight: 400; }
 
 .noresult {
   position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40;
   margin: 0; padding: 14px 16px;
   background: var(--card);
-  border: 1px solid var(--line);
   border-radius: 16px;
   box-shadow: var(--shadow-l);
-  font-size: 14.5px; font-weight: 500; color: var(--muted);
+  font-size: 14.5px; font-weight: 400; color: var(--muted);
   text-align: left;
+  animation: rise .22s var(--ease) backwards;
 }
 .noresult[hidden] { display: none; }
 
@@ -243,7 +329,7 @@ body.view-home { background: var(--sun); }
   display: flex; align-items: center; gap: 9px;
   padding: 10px 14px;
   padding-top: calc(10px + env(safe-area-inset-top));
-  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  background: color-mix(in srgb, var(--paper) 84%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
@@ -254,9 +340,11 @@ body.view-home { background: var(--sun); }
   color: var(--ink);
   background: var(--card);
   border: 1px solid var(--line); border-radius: 13px;
+  transition: background .16s var(--ease), transform .16s var(--ease);
 }
 .back svg { width: 21px; height: 21px; }
 .back:hover { background: var(--flat-bg); }
+.back:active { transform: scale(.94); }
 .dock-top { flex: 1; min-width: 0; }
 
 .feed {
@@ -278,9 +366,9 @@ body.view-home { background: var(--sun); }
   background: var(--flat-bg);
   box-shadow: var(--shadow-l);
 }
-/* Blurred, over-scaled copy filling the card behind the real photo, so a
-   landscape photo in a portrait card gets bands of its own colour rather
-   than having the animal cropped out of frame. */
+/* Blurred, over-scaled copy filling the card behind the real photo, so
+   a landscape photo in a portrait card gets bands of its own colour
+   rather than having the animal cropped out of frame. */
 .pcard-bg {
   position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover;
@@ -291,8 +379,8 @@ body.view-home { background: var(--sun); }
   position: relative;
   display: block; width: 100%; height: 100%;
   object-fit: contain;
-  /* Sat high in the card so the empty band falls at the bottom, where the
-     name is going anyway, instead of being split evenly and wasted. */
+  /* Sat high in the card so the empty band falls at the bottom, where
+     the name is going anyway, instead of being split evenly and wasted. */
   object-position: center 30%;
 }
 /* Sits behind the photo and shows through only while there is nothing
@@ -306,37 +394,40 @@ body.view-home { background: var(--sun); }
 
 .pcard-scrim {
   position: absolute; left: 0; right: 0; bottom: 0; height: 62%;
-  background: linear-gradient(to bottom, transparent, rgba(12,11,7,.28) 42%, rgba(12,11,7,.88));
+  background: linear-gradient(to bottom, transparent, rgba(10,11,7,.3) 42%, rgba(10,11,7,.9));
 }
 .pcard-meta {
   position: absolute; left: 20px; right: 20px; bottom: 17px;
   color: #fff; text-align: left;
 }
-.pcard-kicker {
-  margin: 0 0 5px;
-  font-size: 12.5px; font-weight: 700;
-  letter-spacing: .09em; text-transform: uppercase;
-  color: var(--sun);
-}
 .pcard-name {
   margin: 0;
   font-size: clamp(31px, 8.6vw, 42px);
-  font-weight: 900; letter-spacing: -.035em; line-height: 1.02;
-  text-shadow: 0 2px 18px rgba(0,0,0,.35);
+  font-weight: 700; letter-spacing: -.04em; line-height: 1.02;
+  text-shadow: 0 2px 18px rgba(0,0,0,.4);
 }
 .pcard-emoji { font-size: .78em; }
+/* Under the name, not above it. What it is and where it lives is
+   detail that follows the answer, not a label introducing it. */
+.pcard-sub {
+  margin: 5px 0 0;
+  font-size: 14.5px; font-weight: 500;
+  color: var(--sun);
+  text-shadow: 0 1px 10px rgba(0,0,0,.5);
+}
 
 .blurb {
   margin: 17px 4px 0;
-  font-size: 16px; font-weight: 500; color: var(--muted);
+  font-size: 16px; font-weight: 400; color: var(--muted);
+  max-width: 62ch;
 }
 
 /* -- Section labels ------------------------------------------------ */
 
 .label {
   margin: 30px 0 10px 4px;
-  font-size: 12.5px; font-weight: 800;
-  letter-spacing: .09em; text-transform: uppercase;
+  font-size: 12.5px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
   color: var(--muted);
 }
 
@@ -351,7 +442,6 @@ body.view-home { background: var(--sun); }
   border: 1px solid var(--line);
   border-radius: var(--r-card);
   padding: 2px 16px;
-  box-shadow: var(--shadow);
 }
 .row {
   display: flex; align-items: center; justify-content: space-between;
@@ -359,11 +449,11 @@ body.view-home { background: var(--sun); }
   border-bottom: 1px solid var(--line);
 }
 .row:last-child { border-bottom: 0; }
-.row .k { font-size: 15.5px; font-weight: 500; color: var(--muted); }
+.row .k { font-size: 15.5px; font-weight: 400; color: var(--muted); }
 
 .pill {
   flex: none;
-  font-size: 15px; font-weight: 800; letter-spacing: -.01em;
+  font-size: 15px; font-weight: 600; letter-spacing: -.015em;
   padding: 6px 13px; border-radius: 999px;
   background: var(--flat-bg); color: var(--ink);
   text-align: center;
@@ -376,16 +466,15 @@ body.view-home { background: var(--sun); }
 
 .glance { display: flex; flex-wrap: wrap; gap: 8px; }
 .gchip {
-  display: inline-flex; align-items: baseline; gap: 7px;
+  display: inline-flex; align-items: center; gap: 8px;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 9px 15px;
   font-size: 14.5px; font-weight: 600;
-  box-shadow: var(--shadow);
 }
-.gchip .ge { font-size: 15px; }
-.gchip .gk { color: var(--muted); font-weight: 500; }
+.gchip svg { width: 17px; height: 17px; flex: none; color: var(--muted); }
+.gchip .gk { color: var(--muted); font-weight: 400; }
 
 /* -- Fact ----------------------------------------------------------- */
 
@@ -394,9 +483,8 @@ body.view-home { background: var(--sun); }
   color: var(--on-sun);
   border-radius: var(--r-card);
   padding: 17px 19px;
-  box-shadow: var(--shadow);
 }
-.factcard p { margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; }
+.factcard p { margin: 0; font-size: 16.5px; font-weight: 500; line-height: 1.4; }
 
 /* -- Extra photos folded into the scroll ---------------------------- */
 
@@ -412,24 +500,24 @@ body.view-home { background: var(--sun); }
 }
 .shot figcaption {
   margin: 9px 6px 0;
-  font-size: 13.5px; font-weight: 500; color: var(--muted);
+  font-size: 13.5px; font-weight: 400; color: var(--muted);
 }
 
 /* -- Actions -------------------------------------------------------- */
 
 .actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
 .btn {
-  font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+  font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center;
   text-decoration: none;
   padding: 12px 17px; min-height: 48px;
   border-radius: 14px;
   border: 1px solid var(--line);
   background: var(--card); color: var(--ink);
-  transition: background .14s ease;
+  transition: background .16s var(--ease), transform .16s var(--ease);
 }
 .btn:hover { background: var(--flat-bg); }
-.btn:active { transform: translateY(1px); }
+.btn:active { transform: scale(.97); }
 .btn-solid {
   background: var(--sun); color: var(--on-sun); border-color: var(--sun);
   margin-left: auto;
@@ -440,6 +528,7 @@ body.view-home { background: var(--sun); }
   margin: 10px 4px 0; min-height: 20px;
   font-size: 14px; font-weight: 600; color: var(--good);
 }
+.copied:not(:empty) { animation: rise .3s var(--ease) backwards; }
 
 /* -- Ad slot --------------------------------------------------------
    Reserved from day one. An advert dropped into a page that never left
@@ -449,15 +538,15 @@ body.view-home { background: var(--sun); }
   min-height: 100px; margin-top: 26px;
   display: grid; place-items: center;
   border: 1px dashed var(--line); border-radius: var(--r-card);
-  color: var(--muted); font-size: 13px; font-weight: 500;
+  color: var(--muted); font-size: 13px; font-weight: 400;
 }
 
 .foot {
   margin-top: 26px; text-align: center;
-  color: var(--muted); font-size: 13.5px; font-weight: 500;
+  color: var(--muted); font-size: 13.5px; font-weight: 400;
 }
 .foot p { margin: 0; }
-.foot a { color: var(--ink); }
+.foot a { color: var(--ink); text-underline-offset: 3px; }
 
 /* ==================================================================
    Wider screens: the card stops being a phone card and the answers
@@ -469,17 +558,14 @@ body.view-home { background: var(--sun); }
   .pcard { aspect-ratio: 3 / 2; }
   .pcard-name { font-size: 46px; }
   .rows { display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; }
-  /* In two columns the last row is the final pair, so the odd one of that
-     pair needs its divider removed too or it trails a line under nothing. */
+  /* In two columns the last row is the final pair, so the odd one of
+     that pair needs its divider removed too or it trails a line under
+     nothing. */
   .rows > .row:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
-  /* Keep the bar lined up with the feed instead of letting the search box
-     run the whole width of a desktop window. */
+  /* Keep the bar lined up with the feed instead of letting the search
+     box run the whole width of a desktop window. */
   .topbar {
     padding-left:  max(14px, calc((100% - 588px) / 2));
     padding-right: max(14px, calc((100% - 588px) / 2));
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
 }
