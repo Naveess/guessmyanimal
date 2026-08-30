@@ -44,6 +44,13 @@
   --bad:     #b8321a;  --bad-bg:  #f2ddd6;
   --flat-bg: #e4e6da;
 
+  /* The splash's own ground. Light keeps the brand yellow; dark makes it
+     genuinely dark and moves the yellow onto the mark instead, because a
+     full screen of yellow is what people turn dark mode on to escape. */
+  --home-bg:   var(--sun);
+  --home-ink:  var(--on-sun);
+  --home-mark: var(--on-sun);
+
   --r-card:  20px;
   --r-photo: 26px;
   --shadow:   0 1px 2px rgba(29,30,25,.05), 0 6px 18px -10px rgba(29,30,25,.24);
@@ -53,8 +60,13 @@
   --ease: cubic-bezier(.16, 1, .3, 1);
 }
 
+/* The dark palette is applied through two selectors: the media query for
+   "follow the system", guarded so an explicit light choice still wins, and
+   the attribute for an explicit dark choice. CSS cannot share a declaration
+   block, so this pair is duplicated deliberately - edit both together or the
+   toggle and the system setting drift apart. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper:  #14150f;
     --card:   #1e2019;
     --ink:    #eef0e4;
@@ -66,9 +78,32 @@
     --bad:     #ff7f63;  --bad-bg:  #3a1912;
     --flat-bg: #262920;
 
+    --home-bg:   #14150f;
+    --home-ink:  #eef0e4;
+    --home-mark: #ffce1f;
+
     --shadow:   0 6px 18px -10px rgba(0,0,0,.8);
     --shadow-l: 0 22px 44px -22px rgba(0,0,0,.9);
   }
+}
+:root[data-theme="dark"] {
+    --paper:  #14150f;
+    --card:   #1e2019;
+    --ink:    #eef0e4;
+    --muted:  #989c88;
+    --line:   #2c2f25;
+
+    --good:    #58cf9b;  --good-bg: #12301f;
+    --warn:    #efbc63;  --warn-bg: #33270e;
+    --bad:     #ff7f63;  --bad-bg:  #3a1912;
+    --flat-bg: #262920;
+
+    --home-bg:   #14150f;
+    --home-ink:  #eef0e4;
+    --home-mark: #ffce1f;
+
+    --shadow:   0 6px 18px -10px rgba(0,0,0,.8);
+    --shadow-l: 0 22px 44px -22px rgba(0,0,0,.9);
 }
 
 * { box-sizing: border-box; }
@@ -84,16 +119,16 @@ body {
   letter-spacing: -.011em;
   -webkit-font-smoothing: antialiased;
 }
-body.view-home { background: var(--sun); }
+body.view-home { background: var(--home-bg); }
 
 /* -- Surfaces the browser would otherwise style for us ------------- */
 
 ::selection { background: var(--sun); color: var(--on-sun); }
-.view-home ::selection { background: var(--on-sun); color: var(--sun); }
+.view-home ::selection { background: var(--home-ink); color: var(--home-bg); }
 #q { caret-color: var(--ink); }
 
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 5px; }
-body.view-home :focus-visible { outline-color: var(--on-sun); }
+body.view-home :focus-visible { outline-color: var(--home-ink); }
 
 * { scrollbar-color: var(--line) transparent; scrollbar-width: thin; }
 ::-webkit-scrollbar { width: 11px; height: 11px; }
@@ -156,8 +191,8 @@ body.view-home :focus-visible { outline-color: var(--on-sun); }
 
 .home {
   min-height: 100svh;
-  background: var(--sun);
-  color: var(--on-sun);
+  background: var(--home-bg);
+  color: var(--home-ink);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 30px;
@@ -171,7 +206,7 @@ body.view-home :focus-visible { outline-color: var(--on-sun); }
 .mark {
   width: 76px; height: 76px;
   display: block; margin: 0 auto 20px;
-  fill: var(--on-sun);
+  fill: var(--home-mark);
 }
 
 .wordmark {
@@ -186,22 +221,13 @@ body.view-home :focus-visible { outline-color: var(--on-sun); }
 .tagline {
   margin: 14px 0 0;
   font-size: 16px; font-weight: 400;
-  color: color-mix(in srgb, var(--on-sun) 68%, transparent);
+  color: color-mix(in srgb, var(--home-ink) 68%, transparent);
 }
 
-/* The search box on the home screen: warm white, tall, unmissable.
-   The home ground stays yellow in both themes, so this one component
-   keeps the light palette rather than turning into a black bar on
-   yellow in dark mode. Re-declaring the tokens here covers the box,
-   the suggestion list and the no-match message at once. */
-body.view-home .searchunit {
-  --card:    #f8f9f3;
-  --line:    #d7d9cc;
-  --ink:     #1d1e19;
-  --muted:   #5f6255;
-  --flat-bg: #e4e6da;
-  margin: 30px auto 0;
-}
+/* The search box on the splash: tall and unmissable. It follows the
+   theme like everything else now that the splash is no longer pinned to
+   yellow in the dark. */
+body.view-home .searchunit { margin: 30px auto 0; }
 body.view-home .searchrow {
   border-color: transparent;
   border-radius: 18px;
@@ -216,27 +242,27 @@ body.view-home #q { font-size: 17px; }
   margin: 0 0 11px;
   font-size: 13px; font-weight: 600;
   letter-spacing: .06em; text-transform: uppercase;
-  color: color-mix(in srgb, var(--on-sun) 72%, transparent);
+  color: color-mix(in srgb, var(--home-ink) 72%, transparent);
 }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .chip {
   font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
-  color: var(--on-sun);
+  color: var(--home-ink);
   background: transparent;
-  border: 1.5px solid color-mix(in srgb, var(--on-sun) 24%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--home-ink) 24%, transparent);
   border-radius: 999px;
   padding: 9px 15px; min-height: 44px;
   transition: background .16s var(--ease), border-color .16s var(--ease), transform .16s var(--ease);
 }
 .chip:hover {
-  background: color-mix(in srgb, var(--on-sun) 8%, transparent);
-  border-color: color-mix(in srgb, var(--on-sun) 45%, transparent);
+  background: color-mix(in srgb, var(--home-ink) 8%, transparent);
+  border-color: color-mix(in srgb, var(--home-ink) 45%, transparent);
 }
 .chip:active { transform: scale(.97); }
 
 .home-foot {
   margin: 0; font-size: 13.5px; font-weight: 500;
-  color: color-mix(in srgb, var(--on-sun) 72%, transparent);
+  color: color-mix(in srgb, var(--home-ink) 72%, transparent);
 }
 
 /* ==================================================================
@@ -595,11 +621,11 @@ body.view-home #q { font-size: 17px; }
 /* On the splash the ground is already a strong colour, so the button
    is an outline on it rather than another filled box. */
 body.view-home .menu-btn {
-  color: var(--on-sun);
+  color: var(--home-ink);
   background: transparent;
-  border-color: color-mix(in srgb, var(--on-sun) 24%, transparent);
+  border-color: color-mix(in srgb, var(--home-ink) 24%, transparent);
 }
-body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--on-sun) 9%, transparent); }
+body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
 
 .menu-panel {
   position: absolute; right: 0; top: calc(100% + 8px);
@@ -749,3 +775,76 @@ body.view-page { background: var(--paper); }
 }
 
 .prose-foot { padding: 0 18px calc(34px + env(safe-area-inset-bottom)); }
+
+/* ==================================================================
+   SHARE
+
+   Native sheet on a touch device, where it reaches WhatsApp and
+   everything else properly. On a desktop, where that sheet is either
+   missing or drops the link, an explicit panel instead.
+   ================================================================== */
+
+.share { position: relative; display: inline-flex; }
+
+.share-panel {
+  position: absolute; left: 0; bottom: calc(100% + 8px); z-index: 50;
+  min-width: 194px;
+  display: flex; flex-direction: column;
+  padding: 6px;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow-l);
+  animation: rise .2s var(--ease) backwards;
+}
+.share-panel[hidden] { display: none; }
+
+.share-item {
+  display: flex; align-items: center; gap: 11px;
+  font: inherit; font-size: 15px; font-weight: 500; text-align: left;
+  cursor: pointer; text-decoration: none;
+  color: var(--ink); background: transparent; border: 0;
+  padding: 11px 12px; border-radius: 11px; min-height: 46px;
+  transition: background .13s var(--ease);
+}
+.share-item:hover { background: var(--flat-bg); }
+/* Brand marks are filled shapes, not part of the drawn stroke set. */
+.share-item svg { width: 19px; height: 19px; flex: none; fill: currentColor; }
+
+/* ==================================================================
+   THEME TOGGLE
+
+   Three states, because "follow my phone" is the right default and
+   removing it would be a downgrade for anyone who has set it once.
+   ================================================================== */
+
+.theme {
+  display: flex; gap: 3px;
+  margin: 5px 6px 3px;
+  padding: 3px;
+  background: var(--flat-bg);
+  border-radius: 12px;
+}
+.theme-btn {
+  flex: 1;
+  font: inherit; font-size: 13.5px; font-weight: 500;
+  cursor: pointer; color: var(--muted);
+  background: transparent; border: 0; border-radius: 9px;
+  padding: 8px 4px; min-height: 38px;
+  transition: background .14s var(--ease), color .14s var(--ease);
+}
+.theme-btn:hover { color: var(--ink); }
+/* The active state carries a surface and a weight change, not colour
+   alone, so it survives being read without colour. */
+.theme-btn[aria-pressed="true"] {
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(29,30,25,.14);
+}
+.theme-label {
+  margin: 9px 13px 2px;
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--muted);
+}
+.menu-sep { height: 1px; margin: 6px 8px; background: var(--line); border: 0; }

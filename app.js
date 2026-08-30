@@ -55,11 +55,40 @@
     return edits + (h.length - i) + (q.length - j) <= 1;
   }
 
+  /* Every name in the data is singular, and people type plurals. The
+     fuzzy matcher caps at one edit, so "bats" found "bat" by luck while
+     "wolves", "foxes", "geese" and "octopuses" found nothing at all. */
+
+  const IRREGULAR = {
+    mice: 'mouse', geese: 'goose', feet: 'foot', teeth: 'tooth',
+    children: 'child', men: 'man', women: 'woman', oxen: 'ox',
+    lice: 'louse', people: 'person', wolves: 'wolf', calves: 'calf',
+    halves: 'half', leaves: 'leaf', knives: 'knife', lives: 'life',
+    elves: 'elf', loaves: 'loaf', thieves: 'thief', dwarves: 'dwarf',
+  };
+
+  function singular(q) {
+    if (IRREGULAR[q]) return IRREGULAR[q];
+    if (/[^aeiou]ies$/.test(q)) return q.slice(0, -3) + 'y';        // puppies
+    if (/ves$/.test(q)) return q.slice(0, -3) + 'f';                // hooves
+    if (/(ses|xes|zes|ches|shes)$/.test(q)) return q.slice(0, -2);  // foxes, octopuses
+    if (/oes$/.test(q)) return q.slice(0, -2);                      // mosquitoes
+    if (/[^s]s$/.test(q)) return q.slice(0, -1);                    // bats
+    return null;                                                     // bass, fish, sheep
+  }
+
   function search(raw, limit) {
     const q = norm(raw);
     if (!q) return [];
+
+    // The literal query always outranks the singularised one, so typing an
+    // animal whose real name ends in "s" still beats a stemmed guess.
+    const forms = [q];
+    const one = singular(q);
+    if (one && one.length >= 3 && one !== q) forms.push(one);
+
     return INDEX
-      .map((e) => ({ e, s: score(e, q) }))
+      .map((e) => ({ e, s: Math.max.apply(null, forms.map((f, i) => score(e, f) - (i ? 1 : 0))) }))
       .filter((r) => r.s > 0)
       .sort((x, y) => y.s - x.s || x.e.a.n.length - y.e.a.n.length)
       .slice(0, limit || 8)
@@ -361,6 +390,7 @@
     el('noresult').hidden = true;
     document.title = 'Guess My Animal — the animal cheat sheet';
     if (!opts || !opts.noPush) push(location.pathname);
+    syncThemeColour();
     window.scrollTo(0, 0);
   }
 
@@ -433,6 +463,7 @@
     if (!opts || !opts.noPush) push('?a=' + entry.slug);
     document.title = a.n + ' — Guess My Animal';
     window.scrollTo(0, 0);
+    syncThemeColour();
     playEntrance();
   }
 
@@ -554,7 +585,51 @@
   el('another').addEventListener('click', rollDice);
   el('back').addEventListener('click', () => goHome());
 
-  el('copy').addEventListener('click', async () => {
+  /* -- Sharing -------------------------------------------------------
+     The whole point of this site is telling someone about it, and a bare
+     "copy link" is the weakest possible version of that. */
+
+  const share = el('share'), shareBtn = el('shareBtn'), sharePanel = el('sharePanel');
+
+  function shareText() {
+    return current
+      ? current.a.n + ' on Guess My Animal, the cheat sheet for the animal guessing game.'
+      : 'Guess My Animal, the cheat sheet for the animal guessing game.';
+  }
+
+  function setShare(open) {
+    sharePanel.hidden = !open;
+    shareBtn.setAttribute('aria-expanded', String(open));
+    if (!open) return;
+    const url = location.href;
+    const text = shareText();
+    el('shareWa').href = 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + url);
+    el('shareX').href = 'https://twitter.com/intent/tweet?text=' +
+      encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+    el('shareFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+  }
+
+  // A touch device gets the real share sheet, which already reaches
+  // WhatsApp and everything else. A desktop gets the panel instead:
+  // navigator.share is often missing there, and on Windows it has a habit
+  // of dropping the url field and sharing the text on its own.
+  const canShareNatively = () =>
+    typeof navigator.share === 'function' &&
+    window.matchMedia('(pointer: coarse)').matches;
+
+  shareBtn.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    if (canShareNatively()) {
+      try {
+        await navigator.share({ title: 'Guess My Animal', text: shareText(), url: location.href });
+      } catch (err) { /* dismissed, which is not an error */ }
+      return;
+    }
+    setShare(sharePanel.hidden);
+  });
+
+  el('shareCopy').addEventListener('click', async () => {
+    setShare(false);
     try {
       await navigator.clipboard.writeText(location.href);
       el('copied').textContent = 'Link copied.';
@@ -563,6 +638,59 @@
     }
   });
 
+  for (const a of [el('shareWa'), el('shareX'), el('shareFb')]) {
+    a.addEventListener('click', () => setShare(false));
+  }
+  document.addEventListener('click', (e) => {
+    if (!share.contains(e.target)) setShare(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !sharePanel.hidden) { setShare(false); shareBtn.focus(); }
+  });
+
+  /* -- Appearance ----------------------------------------------------
+     Three states, not two. "Follow the system" is the right default and
+     dropping it would be a downgrade for anyone who set it once. The
+     saved choice is applied by a tiny inline script in the head, before
+     the stylesheet paints, so dark never flashes light first. */
+
+  const THEME_KEY = 'gma-theme';
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function readTheme() {
+    try {
+      const v = localStorage.getItem(THEME_KEY);
+      return v === 'dark' || v === 'light' ? v : 'system';
+    } catch (err) { return 'system'; }
+  }
+
+  // Browser chrome should match whichever surface is actually on screen,
+  // and the splash and the feed are different colours.
+  function syncThemeColour() {
+    if (!themeMeta) return;
+    const bg = getComputedStyle(document.body).backgroundColor;
+    if (bg) themeMeta.setAttribute('content', bg);
+  }
+
+  function applyTheme(choice) {
+    if (choice === 'system') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', choice);
+
+    try {
+      if (choice === 'system') localStorage.removeItem(THEME_KEY);
+      else localStorage.setItem(THEME_KEY, choice);
+    } catch (err) { /* private mode: it just will not persist */ }
+
+    for (const b of document.querySelectorAll('[data-theme-set]')) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === choice));
+    }
+    syncThemeColour();
+  }
+
+  for (const b of document.querySelectorAll('[data-theme-set]')) {
+    b.addEventListener('click', () => applyTheme(b.dataset.themeSet));
+  }
+
   /* -- Menu ---------------------------------------------------------- */
 
   const menu = el('menu'), menuBtn = el('menuBtn'), menuPanel = el('menuPanel');
@@ -570,7 +698,7 @@
   function setMenu(open) {
     menuPanel.hidden = !open;
     menuBtn.setAttribute('aria-expanded', String(open));
-    if (open) { results = []; renderSuggest(); }   // two panels open at once is a mess
+    if (open) { results = []; renderSuggest(); setShare(false); }   // one panel at a time
   }
 
   menuBtn.addEventListener('click', (e) => {
@@ -677,6 +805,7 @@
 
   /* -- Boot ---------------------------------------------------------- */
 
+  applyTheme(readTheme());
   el('count').textContent = ANIMALS.length + ' animals and counting';
   renderStarters();
   routeFromURL();

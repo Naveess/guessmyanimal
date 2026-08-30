@@ -22,6 +22,10 @@
 <!-- Self-hosted variable face: one 33 KB file for the whole weight
      range, and no round trip to a font CDN before the first paint. -->
 <link rel="preload" href="fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){try{var t=localStorage.getItem('gma-theme');
+if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="view-home">
@@ -42,6 +46,13 @@
     <button class="menu-item" type="button" data-report>Report a problem</button>
     <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
        target="_blank" rel="noopener">Source on GitHub</a>
+    <hr class="menu-sep">
+    <p class="theme-label" id="themeLabel">Appearance</p>
+    <div class="theme" role="group" aria-labelledby="themeLabel">
+      <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
+      <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+    </div>
   </div>
 </nav>
 
@@ -156,7 +167,28 @@
 
     <div class="actions">
       <a class="btn" id="wiki" href="#" target="_blank" rel="noopener">Read on Wikipedia</a>
-      <button class="btn" id="copy" type="button">Copy link</button>
+      <div class="share" id="share">
+        <button class="btn" id="shareBtn" type="button"
+                aria-expanded="false" aria-controls="sharePanel">Share</button>
+        <div class="share-panel" id="sharePanel" hidden>
+          <a class="share-item" id="shareWa" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/></svg>
+            WhatsApp
+          </a>
+          <a class="share-item" id="shareX" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>
+            X
+          </a>
+          <a class="share-item" id="shareFb" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+            Facebook
+          </a>
+          <button class="share-item" id="shareCopy" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10 13.5a3.5 3.5 0 0 0 5 0l3-3a3.54 3.54 0 0 0-5-5l-1 1"/><path d="M14 10.5a3.5 3.5 0 0 0-5 0l-3 3a3.54 3.54 0 0 0 5 5l1-1"/></svg>
+            Copy link
+          </button>
+        </div>
+      </div>
       <!-- Contextual: a wrong photo is noticed here, not in a menu. -->
       <button class="btn" type="button" data-report>Report a problem</button>
       <button class="btn btn-solid" id="another" type="button">Another animal</button>
