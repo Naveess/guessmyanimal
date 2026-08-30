@@ -563,6 +563,100 @@
     }
   });
 
+  /* -- Menu ---------------------------------------------------------- */
+
+  const menu = el('menu'), menuBtn = el('menuBtn'), menuPanel = el('menuPanel');
+
+  function setMenu(open) {
+    menuPanel.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    if (open) { results = []; renderSuggest(); }   // two panels open at once is a mess
+  }
+
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMenu(menuPanel.hidden);
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) setMenu(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menuPanel.hidden) { setMenu(false); menuBtn.focus(); }
+  });
+
+  /* -- Reporting a problem -------------------------------------------
+     A native <dialog>, so focus trapping, Escape and the backdrop come
+     from the browser instead of being rebuilt badly. The animal being
+     looked at is attached automatically, because "the photo is wrong"
+     is useless without knowing which photo. */
+
+  const dlg = el('reportDlg');
+  let openedAt = 0;
+
+  function openReport() {
+    setMenu(false);
+    const status = el('reportStatus');
+    status.textContent = '';
+    status.className = 'dlg-status';
+    el('reportMsg').value = '';
+    el('reportHp').value = '';
+    el('reportSend').disabled = false;
+    el('reportCtx').textContent = current ? 'About ' + current.a.n + '.' : '';
+    // Guess the likely complaint from where they were: on an animal it is
+    // usually the picture, from the splash it is usually a missing animal.
+    const want = current ? 'photo' : 'missing';
+    const radio = dlg.querySelector('input[name="kind"][value="' + want + '"]');
+    if (radio) radio.checked = true;
+    openedAt = Date.now();
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');
+  }
+
+  for (const b of document.querySelectorAll('[data-report]')) {
+    b.addEventListener('click', openReport);
+  }
+  el('reportCancel').addEventListener('click', () => dlg.close());
+
+  el('reportForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = el('reportStatus');
+    const message = el('reportMsg').value.trim();
+
+    if (message.length < 3) {
+      status.textContent = 'Please say a little more about what is wrong.';
+      status.className = 'dlg-status err';
+      el('reportMsg').focus();
+      return;
+    }
+
+    el('reportSend').disabled = true;
+    status.textContent = 'Sending…';
+    status.className = 'dlg-status';
+
+    const picked = dlg.querySelector('input[name="kind"]:checked');
+    try {
+      const res = await fetch('api/report', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          animal: current ? current.a.n : '',
+          kind: picked ? picked.value : 'other',
+          message: message,
+          dwell: Date.now() - openedAt,
+          website: el('reportHp').value,
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      status.textContent = 'Thank you, that is logged.';
+      status.className = 'dlg-status ok';
+      setTimeout(() => { if (dlg.open) dlg.close(); }, 1100);
+    } catch (err) {
+      status.textContent = 'That did not send. Please try again in a moment.';
+      status.className = 'dlg-status err';
+      el('reportSend').disabled = false;
+    }
+  });
+
   /* -- Routing -------------------------------------------------------
      /?a=octopus opens straight on that animal, and the phone's back
      button steps back through what you looked up rather than leaving
@@ -586,4 +680,15 @@
   el('count').textContent = ANIMALS.length + ' animals and counting';
   renderStarters();
   routeFromURL();
+
+  // The about page links here with ?report=1. Drop the parameter once the
+  // dialog is up so a refresh does not reopen it.
+  try {
+    const url = new URL(location.href);
+    if (url.searchParams.get('report')) {
+      url.searchParams.delete('report');
+      history.replaceState(null, '', url.pathname + url.search);
+      openReport();
+    }
+  } catch (err) { /* no URL API worth worrying about */ }
 })();

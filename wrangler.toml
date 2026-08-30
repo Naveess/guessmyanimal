@@ -1,0 +1,10 @@
+name = "guessmyanimal"
+compatibility_date = "2026-08-30"
+pages_build_output_dir = "."
+
+# Stores problem reports sent from the site. No IP addresses, no cookies,
+# nothing that identifies who sent it - just what was wrong and where.
+[[d1_databases]]
+binding = "DB"
+database_name = "guessmyanimal"
+database_id = "20fafa53-448d-4406-aa71-1364cedd3de6"

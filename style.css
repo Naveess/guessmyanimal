@@ -569,3 +569,183 @@ body.view-home #q { font-size: 17px; }
     padding-right: max(14px, calc((100% - 588px) / 2));
   }
 }
+
+/* ==================================================================
+   MENU
+
+   Fixed to the corner so it sits in the same place on the splash and
+   on an animal. On the yellow it is drawn in ink; over the feed it
+   takes the card surface so it reads as a control rather than a hole.
+   ================================================================== */
+
+.menu { position: fixed; z-index: 60; right: 14px; top: calc(12px + env(safe-area-inset-top)); }
+
+.menu-btn {
+  width: 44px; height: 44px;
+  display: grid; place-items: center; cursor: pointer;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  transition: background .16s var(--ease), transform .16s var(--ease);
+}
+.menu-btn svg { width: 21px; height: 21px; }
+.menu-btn:hover { background: var(--flat-bg); }
+.menu-btn:active { transform: scale(.94); }
+/* On the splash the ground is already a strong colour, so the button
+   is an outline on it rather than another filled box. */
+body.view-home .menu-btn {
+  color: var(--on-sun);
+  background: transparent;
+  border-color: color-mix(in srgb, var(--on-sun) 24%, transparent);
+}
+body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--on-sun) 9%, transparent); }
+
+.menu-panel {
+  position: absolute; right: 0; top: calc(100% + 8px);
+  min-width: 210px;
+  display: flex; flex-direction: column;
+  padding: 6px;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow-l);
+  animation: rise .2s var(--ease) backwards;
+}
+.menu-panel[hidden] { display: none; }
+.menu-item {
+  font: inherit; font-size: 15px; font-weight: 500; text-align: left;
+  cursor: pointer; text-decoration: none;
+  color: var(--ink); background: transparent; border: 0;
+  padding: 12px 13px; border-radius: 11px; min-height: 46px;
+  display: flex; align-items: center;
+  transition: background .13s var(--ease);
+}
+.menu-item:hover { background: var(--flat-bg); }
+
+/* Room for the button so a long search box never slides under it. */
+.topbar { padding-right: 68px; }
+@media (min-width: 620px) {
+  .topbar { padding-right: max(68px, calc((100% - 588px) / 2)); }
+}
+
+/* ==================================================================
+   REPORT DIALOG
+   ================================================================== */
+
+.dlg {
+  width: min(460px, calc(100vw - 28px));
+  padding: 0; border: 0;
+  border-radius: var(--r-card);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-l);
+}
+.dlg::backdrop { background: rgba(20,21,15,.5); backdrop-filter: blur(3px); }
+.dlg[open] { animation: rise .28s var(--ease) backwards; }
+
+.dlg-in { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+.dlg-title { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -.03em; }
+.dlg-sub { margin: -9px 0 0; font-size: 14.5px; color: var(--muted); }
+.dlg-sub:empty { display: none; }
+
+.kinds { margin: 0; padding: 0; border: 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.kinds legend {
+  padding: 0 0 9px;
+  font-size: 12.5px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.kinds label {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 14px; border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 14.5px; font-weight: 500; cursor: pointer;
+  transition: background .14s var(--ease), border-color .14s var(--ease);
+}
+.kinds input { position: absolute; opacity: 0; pointer-events: none; }
+.kinds label:hover { background: var(--flat-bg); }
+/* Selected state carries a fill and a heavier weight, not colour alone. */
+.kinds label:has(input:checked) {
+  background: var(--sun); border-color: var(--sun);
+  color: var(--on-sun); font-weight: 600;
+}
+.kinds label:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+.fld { display: flex; flex-direction: column; gap: 7px; }
+.fld-label { font-size: 14.5px; font-weight: 500; color: var(--muted); }
+.dlg textarea {
+  font: inherit; font-size: 15.5px;
+  color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line); border-radius: 13px;
+  padding: 12px 13px; resize: vertical; min-height: 96px;
+  caret-color: var(--ink);
+}
+.dlg textarea:focus { outline: none; border-color: color-mix(in srgb, var(--ink) 45%, transparent); }
+
+/* Off-screen rather than display:none, so a bot that reads the DOM
+   still finds it and fills it in. */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.dlg-status { margin: 0; min-height: 20px; font-size: 14px; font-weight: 500; color: var(--muted); }
+.dlg-status.ok  { color: var(--good); }
+.dlg-status.err { color: var(--bad); }
+
+.dlg-actions { display: flex; gap: 9px; }
+.dlg-actions .btn-solid { margin-left: auto; }
+
+/* ==================================================================
+   PROSE  (the about page)
+   ================================================================== */
+
+body.view-page { background: var(--paper); }
+
+.topbar-mark {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 15.5px; font-weight: 600; letter-spacing: -.02em;
+  color: var(--ink); text-decoration: none;
+}
+.topbar-mark svg { width: 21px; height: 21px; fill: var(--ink); }
+
+.prose {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 26px 18px 40px;
+}
+/* Measure sits inside the comfortable range for reading rather than
+   running the full width of the container. */
+.prose p, .prose ul { max-width: 62ch; }
+
+.prose h1 {
+  margin: 6px 0 0;
+  font-size: clamp(31px, 8vw, 44px);
+  font-weight: 700; line-height: 1.05; letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.prose h2 {
+  margin: 38px 0 0;
+  font-size: clamp(20px, 5vw, 24px);
+  font-weight: 700; letter-spacing: -.03em;
+}
+.prose p { margin: 14px 0 0; font-size: 16.5px; line-height: 1.6; }
+.prose .lede { font-size: 18.5px; line-height: 1.5; color: var(--muted); margin-top: 16px; }
+.prose strong { font-weight: 600; }
+.prose em { font-style: italic; }
+.prose a { color: var(--ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.prose a:hover { text-decoration-thickness: 2px; }
+.prose .btn { text-decoration: none; margin-top: 4px; }
+
+.ticks { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.ticks li {
+  position: relative; padding-left: 26px;
+  font-size: 16.5px; line-height: 1.5;
+}
+/* Drawn, not a bullet glyph: a question mark reads as "ask this". */
+.ticks li::before {
+  content: "?";
+  position: absolute; left: 0; top: 1px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--sun); color: var(--on-sun);
+  font-size: 12px; font-weight: 700;
+  display: grid; place-items: center;
+}
+
+.prose-foot { padding: 0 18px calc(34px + env(safe-area-inset-bottom)); }

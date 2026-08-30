@@ -27,6 +27,25 @@
 <body class="view-home">
 
 <!-- ============================================================
+     MENU. Fixed to the corner so it is in the same place on the
+     splash and on an animal, rather than moving between views.
+     ============================================================ -->
+<nav class="menu" id="menu">
+  <button class="menu-btn" id="menuBtn" type="button"
+          aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </svg>
+  </button>
+  <div class="menu-panel" id="menuPanel" hidden>
+    <a class="menu-item" href="about.html">About the game</a>
+    <button class="menu-item" type="button" data-report>Report a problem</button>
+    <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
+       target="_blank" rel="noopener">Source on GitHub</a>
+  </div>
+</nav>
+
+<!-- ============================================================
      HOME. One flat field of colour, the mark, and the search box.
      Nothing else competes with the one thing you came here to do.
      ============================================================ -->
@@ -138,6 +157,8 @@
     <div class="actions">
       <a class="btn" id="wiki" href="#" target="_blank" rel="noopener">Read on Wikipedia</a>
       <button class="btn" id="copy" type="button">Copy link</button>
+      <!-- Contextual: a wrong photo is noticed here, not in a menu. -->
+      <button class="btn" type="button" data-report>Report a problem</button>
       <button class="btn btn-solid" id="another" type="button">Another animal</button>
     </div>
     <p class="copied" id="copied" aria-live="polite"></p>
@@ -148,10 +169,51 @@
     <footer class="foot">
       <p>Built for a guessing game that got out of hand. Photos and summaries from
         <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>.</p>
+      <p><a href="about.html">About the game</a></p>
     </footer>
 
   </main>
 </div>
+
+<!-- ============================================================
+     REPORT. Native dialog so focus trapping, Escape and the
+     backdrop all come from the browser rather than being rebuilt.
+     ============================================================ -->
+<dialog class="dlg" id="reportDlg" aria-labelledby="reportTitle">
+  <form class="dlg-in" id="reportForm" novalidate>
+    <h2 class="dlg-title" id="reportTitle">Report a problem</h2>
+    <p class="dlg-sub" id="reportCtx"></p>
+
+    <fieldset class="kinds">
+      <legend>What is wrong?</legend>
+      <label><input type="radio" name="kind" value="photo" checked><span>The photo</span></label>
+      <label><input type="radio" name="kind" value="facts"><span>A fact or an answer</span></label>
+      <label><input type="radio" name="kind" value="missing"><span>An animal is missing</span></label>
+      <label><input type="radio" name="kind" value="other"><span>Something else</span></label>
+    </fieldset>
+
+    <label class="fld">
+      <span class="fld-label">What did you see?</span>
+      <textarea id="reportMsg" rows="4" maxlength="1000" required
+                placeholder="The photo shows a different animal…"></textarea>
+    </label>
+
+    <!-- Hidden from people and from screen readers. Anything typed in
+         here came from a bot, and the server drops the submission. -->
+    <div class="hp" aria-hidden="true">
+      <label>Leave this empty
+        <input type="text" id="reportHp" tabindex="-1" autocomplete="off">
+      </label>
+    </div>
+
+    <p class="dlg-status" id="reportStatus" role="status" aria-live="polite"></p>
+
+    <div class="dlg-actions">
+      <button class="btn" type="button" id="reportCancel">Cancel</button>
+      <button class="btn btn-solid" type="submit" id="reportSend">Send report</button>
+    </div>
+  </form>
+</dialog>
 
 <script src="animals.js"></script>
 <script src="app.js"></script>
