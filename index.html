@@ -26,7 +26,10 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css">
+<!-- ?v= bumped by hand whenever style.css/app.js change, so a redeploy
+     invalidates every visitor's cached copy immediately instead of
+     waiting out Cache-Control's 4-hour max-age. -->
+<link rel="stylesheet" href="style.css?v=20260831-1">
 </head>
 <body class="view-home">
 
@@ -257,6 +260,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </dialog>
 
 <script src="animals.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=20260831-1"></script>
 </body>
 </html>
