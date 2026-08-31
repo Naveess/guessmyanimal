@@ -26,7 +26,11 @@ const KIND_LABEL = { photo: 'The photo', facts: 'A fact or an answer', missing: 
 const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 // Best-effort: a notification failing must never fail the report itself,
-// since the report is already safely in D1 by the time these run.
+// since the report is already safely in D1 by the time these run. Awaited
+// directly rather than handed to waitUntil - a destructured waitUntil loses
+// the ExecutionContext receiver it needs, and the fetch it should have kept
+// alive gets silently dropped when the isolate tears down. Two extra network
+// calls add a few hundred ms to a report submission, which is fine here.
 async function notifyDiscord(env, { animal, kind, message }) {
   if (!env.DISCORD_WEBHOOK_URL) return;
   const lines = [
@@ -36,18 +40,21 @@ async function notifyDiscord(env, { animal, kind, message }) {
     `"${message}"`,
   ];
   try {
-    await fetch(env.DISCORD_WEBHOOK_URL, {
+    const res = await fetch(env.DISCORD_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ content: lines.join('\n') }),
     });
-  } catch {}
+    if (!res.ok) console.error('discord notify failed', res.status, await res.text());
+  } catch (err) {
+    console.error('discord notify threw', String(err));
+  }
 }
 
 async function notifyEmail(env, { animal, kind, message }) {
   if (!env.RESEND_API_KEY) return;
   try {
-    await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -62,7 +69,10 @@ async function notifyEmail(env, { animal, kind, message }) {
 <p><strong>Message:</strong> ${escapeHtml(message)}</p>`,
       }),
     });
-  } catch {}
+    if (!res.ok) console.error('email notify failed', res.status, await res.text());
+  } catch (err) {
+    console.error('email notify threw', String(err));
+  }
 }
 
 export async function onRequestPost({ request, env, waitUntil }) {
