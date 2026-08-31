@@ -193,9 +193,7 @@ body.view-home :focus-visible { outline-color: var(--home-ink); }
   /* Reduced, not removed: the fade still says something arrived. */
   @keyframes rise { from { opacity: 0; } to { opacity: 1; } }
   @keyframes deal { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes diceRoll { from { opacity: .6; } to { opacity: 1; } }
   .anim-rise, .anim-deal, .stagger > * { animation-duration: .2s; animation-delay: 0s !important; }
-  .dice.rolling { animation-duration: .15s; }
   .pcard.is-loading .pcard-fallback { animation: none; opacity: .6; }
   * { transition-duration: .05s !important; }
 }
@@ -337,13 +335,28 @@ body.view-home #q { font-size: 17px; }
    of the arc, like the die leaving the hand before it lands back flat.
    This is the site's most-repeated interaction, so it stays quick and
    quiet rather than competing with the photo card's own arrival - the
-   one moment this system spends its full authored attention on. */
+   one moment this system spends its full authored attention on.
+   Two different curves, not one repeated: --ease is a front-loaded
+   "confident settle" tuned for something arriving and stopping (rise,
+   deal), so using it for BOTH halves of a rotation crams nearly all the
+   visible spin into the first sliver of the duration and reads as a
+   flick, not a roll. The first half accelerates away like a toss
+   leaving the hand; only the second half gets the settle. */
+/* Hardcoded, not var(--ease): a custom property referenced inside a
+   keyframe's own animation-timing-function does not reliably resolve -
+   @keyframes rules sit outside the normal cascade/inheritance chain, so
+   it silently fell back to the shorthand's default instead of erroring.
+   Same curve as --ease, just spelled out literally. */
 @keyframes diceRoll {
-  0%   { transform: rotate(0deg) scale(1); }
-  55%  { transform: rotate(300deg) scale(1.08); }
+  0%   { transform: rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.55, 0, 1, .45); }
+  55%  { transform: rotate(300deg) scale(1.08); animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
   100% { transform: rotate(360deg) scale(1); }
 }
-.dice.rolling { animation: diceRoll .48s var(--ease); }
+.dice.rolling { animation: diceRoll .48s linear; }
+@media (prefers-reduced-motion: reduce) {
+  @keyframes diceRoll { from { opacity: .6; } to { opacity: 1; } }
+  .dice.rolling { animation-duration: .15s; }
+}
 
 .suggest {
   position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40;
