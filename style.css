@@ -741,6 +741,28 @@ body.view-home .menu-btn {
 }
 body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
 
+/* The corner menu's mirror image on the opposite side - same fixed
+   position and outline treatment, but carrying words instead of an
+   icon, since what it links to (the game itself) is worth naming
+   rather than tucking behind a symbol. Splash-only: hidden by default,
+   shown only when body.view-home is present. */
+.play-link {
+  display: none;
+  position: fixed; z-index: 60; left: 14px; top: calc(12px + env(safe-area-inset-top));
+  align-items: center;
+  height: 44px; padding: 0 16px;
+  font: inherit; font-size: 14.5px; font-weight: 600;
+  color: var(--home-ink);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--home-ink) 24%, transparent);
+  border-radius: 13px;
+  transition: background .16s var(--ease), transform .16s var(--ease);
+}
+.play-link:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
+.play-link:active { transform: scale(.97); }
+body.view-home .play-link { display: inline-flex; }
+
 .menu-panel {
   position: absolute; right: 0; top: calc(100% + 8px);
   min-width: 210px;
