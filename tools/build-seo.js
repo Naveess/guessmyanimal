@@ -51,7 +51,13 @@ for (const a of ANIMALS) {
   }
   longest = Math.max(longest, description.length);
 
-  meta[slug] = { title, description };
+  // Same fallback app.js's wikiTitle() uses: an explicit override, or the
+  // name with spaces turned to underscores. Kept here too so the Function
+  // can ask Wikipedia for a share-preview photo without needing to load
+  // the whole animals.js dataset itself.
+  const wikiTitle = a.w || a.n.replace(/ /g, '_');
+
+  meta[slug] = { title, description, wikiTitle };
   urls.push(`${SITE}/?a=${slug}`);
 }
 
