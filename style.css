@@ -583,7 +583,13 @@ body.view-home #q { font-size: 17px; }
 
 /* -- Actions -------------------------------------------------------- */
 
-.actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
+/* A grid, not flex-wrap: four buttons of uneven label length wrapped
+   raggedly with the solid CTA's margin-left:auto stranding it alone on
+   its own line. A fixed 2x2 grid gives every button the same width and
+   keeps the two rows aligned regardless of label length. */
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 30px; }
+.share { display: flex; }
+.share > .btn { width: 100%; }
 .btn {
   font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center;
@@ -598,7 +604,6 @@ body.view-home #q { font-size: 17px; }
 .btn:active { transform: scale(.97); }
 .btn-solid {
   background: var(--sun); color: var(--on-sun); border-color: var(--sun);
-  margin-left: auto;
 }
 .btn-solid:hover { background: var(--sun-deep); border-color: var(--sun-deep); }
 
@@ -649,6 +654,17 @@ body.view-home #q { font-size: 17px; }
      Right padding is set below, alongside the menu-clearance rule it
      has to stay in step with. */
   .topbar { padding-left: max(14px, calc((100% - 588px) / 2)); }
+  /* The search box itself (.dock-top) sits in a flex row between the
+     back button (aligned to the feed's left edge) and the padding
+     reserved for the fixed-position menu icon (aligned to the true
+     viewport edge) - two different anchors, so the row between them
+     widens on a desktop window. Capping and centering it here keeps
+     the search bar a sane width instead of stretching edge to edge
+     with the dice button stranded far off to the side. */
+  .dock-top { max-width: 460px; margin: 0 auto; }
+  /* Four buttons fit one tidy row once there's room, rather than
+     staying stacked in the mobile 2x2 grid. */
+  .actions { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* Past the point where the content column stops filling the window,
