@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "og": "node tools/make-og.js",
+    "seo": "node tools/build-seo.js",
     "deploy": "npx wrangler pages deploy . --project-name=guessmyanimal --branch=main"
   }
 }

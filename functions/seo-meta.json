@@ -1,0 +1,1742 @@
+{
+ "lion": {
+  "title": "Lion — is it dangerous? | Guess My Animal",
+  "description": "The only truly social cat — everything else hunts alone. Is a lion dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "tiger": {
+  "title": "Tiger — is it dangerous? | Guess My Animal",
+  "description": "Their skin is striped too, not just the fur. Is a tiger dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "leopard": {
+  "title": "Leopard — is it dangerous? | Guess My Animal",
+  "description": "Hauls kills heavier than itself up into trees. Is a leopard dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "cheetah": {
+  "title": "Cheetah — is it dangerous? | Guess My Animal",
+  "description": "The only big cat that cannot roar — it chirps. Is a cheetah dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "jaguar": {
+  "title": "Jaguar — is it dangerous? | Guess My Animal",
+  "description": "Bites straight through the skull rather than the throat. Is a jaguar dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "cougar": {
+  "title": "Cougar — is it dangerous? | Guess My Animal",
+  "description": "Holds the record for most names of any animal in English. Is a cougar dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "domestic-cat": {
+  "title": "Domestic cat — is it dangerous? | Guess My Animal",
+  "description": "Purring sits in a frequency range linked to healing bone. Is a domestic cat dangerous? Get the answer on Guess My Animal."
+ },
+ "dog": {
+  "title": "Dog — is it dangerous? | Guess My Animal",
+  "description": "The first animal we domesticated, well before farming. Is a dog dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "wolf": {
+  "title": "Wolf — is it dangerous? | Guess My Animal",
+  "description": "Every dog alive is descended from them. Is a wolf dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "red-fox": {
+  "title": "Red fox — is it dangerous? | Guess My Animal",
+  "description": "Hunts using the Earth's magnetic field to aim its pounce. Is a red fox dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "brown-bear": {
+  "title": "Brown bear — is it dangerous? | Guess My Animal",
+  "description": "Does not truly hibernate — it dozes and can wake up. Is a brown bear dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "polar-bear": {
+  "title": "Polar bear — is it dangerous? | Guess My Animal",
+  "description": "Its fur is see-through and its skin underneath is black. Is a polar bear dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "panda": {
+  "title": "Panda — is it dangerous? | Guess My Animal",
+  "description": "A carnivore's gut that eats bamboo for 14 hours a day. Is a panda dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "elephant": {
+  "title": "Elephant — is it dangerous? | Guess My Animal",
+  "description": "Can hear one another through the ground, kilometres away. Is a elephant dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "giraffe": {
+  "title": "Giraffe — is it dangerous? | Guess My Animal",
+  "description": "Same number of neck bones as you — seven. Is a giraffe dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "zebra": {
+  "title": "Zebra — is it dangerous? | Guess My Animal",
+  "description": "Never properly domesticated — they panic and they bite. Is a zebra dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "hippopotamus": {
+  "title": "Hippopotamus — is it dangerous? | Guess My Animal",
+  "description": "Kills more people a year than lions, leopards and crocodiles. Is a hippopotamus dangerous? Get the answer on Guess My Animal."
+ },
+ "rhinoceros": {
+  "title": "Rhinoceros — is it dangerous? | Guess My Animal",
+  "description": "The horn is keratin — the same stuff as your fingernails. Is a rhinoceros dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "gorilla": {
+  "title": "Gorilla — is it dangerous? | Guess My Animal",
+  "description": "Builds a fresh nest to sleep in every single night. Is a gorilla dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "chimpanzee": {
+  "title": "Chimpanzee — is it dangerous? | Guess My Animal",
+  "description": "Makes and carries its own tools, and teaches them to others. Is a chimpanzee dangerous? Get the answer on Guess My Animal."
+ },
+ "orangutan": {
+  "title": "Orangutan — is it dangerous? | Guess My Animal",
+  "description": "The name means 'person of the forest' in Malay. Is a orangutan dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "monkey": {
+  "title": "Monkey — is it dangerous? | Guess My Animal",
+  "description": "If it has a tail it is a monkey; apes do not have one. Is a monkey dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "sloth": {
+  "title": "Sloth — is it dangerous? | Guess My Animal",
+  "description": "Algae grows in its fur, which is why it looks faintly green. Is a sloth dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "koala": {
+  "title": "Koala — is it dangerous? | Guess My Animal",
+  "description": "Sleeps 20 hours a day because eucalyptus is barely food. Is a koala dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "kangaroo": {
+  "title": "Kangaroo — is it dangerous? | Guess My Animal",
+  "description": "Physically cannot walk backwards. Is a kangaroo dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "platypus": {
+  "title": "Platypus — is it dangerous? | Guess My Animal",
+  "description": "A mammal that lays eggs, and the males have venomous spurs. Is a platypus dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "wombat": {
+  "title": "Wombat — is it dangerous? | Guess My Animal",
+  "description": "Produces cube-shaped droppings. Genuinely. Is a wombat dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "hedgehog": {
+  "title": "Hedgehog — is it dangerous? | Guess My Animal",
+  "description": "Immune to quite a lot of snake venom. Is a hedgehog dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "squirrel": {
+  "title": "Squirrel — is it dangerous? | Guess My Animal",
+  "description": "Forgets where it buried things, and accidentally plants forests. Is a squirrel dangerous? Get the answer on Guess My Animal."
+ },
+ "rabbit": {
+  "title": "Rabbit — is it dangerous? | Guess My Animal",
+  "description": "Its teeth never stop growing, all its life. Is a rabbit dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "hare": {
+  "title": "Hare — is it dangerous? | Guess My Animal",
+  "description": "Born with fur and open eyes; rabbits are born blind and bald. Is a hare dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "mouse": {
+  "title": "Mouse — is it dangerous? | Guess My Animal",
+  "description": "Sings ultrasonic songs to attract mates, far above our hearing. Is a mouse dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "rat": {
+  "title": "Rat — is it dangerous? | Guess My Animal",
+  "description": "Ticklish, and laughs ultrasonically when you tickle them. Is a rat dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "hamster": {
+  "title": "Hamster — is it dangerous? | Guess My Animal",
+  "description": "Nearly every pet golden hamster descends from one 1930 litter. Is a hamster dangerous? Get the answer on Guess My Animal."
+ },
+ "guinea-pig": {
+  "title": "Guinea pig — is it dangerous? | Guess My Animal",
+  "description": "Not a pig, and nothing to do with Guinea. Is a guinea pig dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "ferret": {
+  "title": "Ferret — is it dangerous? | Guess My Animal",
+  "description": "Domesticated over 2,000 years ago to flush rabbits from burrows. Is a ferret dangerous? Get the answer on Guess My Animal."
+ },
+ "otter": {
+  "title": "Otter — is it dangerous? | Guess My Animal",
+  "description": "Holds hands while sleeping so the group does not drift apart. Is a otter dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "badger": {
+  "title": "Badger — is it dangerous? | Guess My Animal",
+  "description": "Setts get passed down and extended for a century or more. Is a badger dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "raccoon": {
+  "title": "Raccoon — is it dangerous? | Guess My Animal",
+  "description": "Most of what it 'sees' with its hands comes through touch. Is a raccoon dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "skunk": {
+  "title": "Skunk — is it dangerous? | Guess My Animal",
+  "description": "Only about six sprays in the tank, and weeks to reload. Is a skunk dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "deer": {
+  "title": "Deer — is it dangerous? | Guess My Animal",
+  "description": "Antlers are bone, grown and shed every year — horns never are. Is a deer dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "moose": {
+  "title": "Moose — is it dangerous? | Guess My Animal",
+  "description": "Dives several metres underwater to reach pondweed. Is a moose dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "horse": {
+  "title": "Horse — is it dangerous? | Guess My Animal",
+  "description": "Sleeps standing up by locking its knees. Is a horse dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "cow": {
+  "title": "Cow — is it dangerous? | Guess My Animal",
+  "description": "Has best friends, and gets stressed when separated from them. Is a cow dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "pig": {
+  "title": "Pig — is it dangerous? | Guess My Animal",
+  "description": "Cannot sweat, which is exactly why they use mud. Is a pig dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "sheep": {
+  "title": "Sheep — is it dangerous? | Guess My Animal",
+  "description": "Recognises and remembers about 50 individual faces for years. Is a sheep dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "goat": {
+  "title": "Goat — is it dangerous? | Guess My Animal",
+  "description": "Rectangular pupils, giving it almost 320° of vision. Is a goat dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "camel": {
+  "title": "Camel — is it dangerous? | Guess My Animal",
+  "description": "The humps are fat, not water. Is a camel dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "llama": {
+  "title": "Llama — is it dangerous? | Guess My Animal",
+  "description": "Spits mostly at each other, rarely at you, and only when cross. Is a llama dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "alpaca": {
+  "title": "Alpaca — is it dangerous? | Guess My Animal",
+  "description": "Hums to itself constantly, and to its young. Is a alpaca dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "bat": {
+  "title": "Bat — is it dangerous? | Guess My Animal",
+  "description": "The only mammal that genuinely flies rather than glides. Is a bat dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "whale": {
+  "title": "Whale — is it dangerous? | Guess My Animal",
+  "description": "A blue whale's heart is roughly the size of a small car. Is a whale dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "dolphin": {
+  "title": "Dolphin — is it dangerous? | Guess My Animal",
+  "description": "Sleeps one half of the brain at a time, so it keeps breathing. Is a dolphin dangerous? Get the answer on Guess My Animal."
+ },
+ "orca": {
+  "title": "Orca — is it dangerous? | Guess My Animal",
+  "description": "Actually the largest dolphin, and pods have their own dialects. Is a orca dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "seal": {
+  "title": "Seal — is it dangerous? | Guess My Animal",
+  "description": "Can sleep underwater, surfacing to breathe without waking. Is a seal dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "walrus": {
+  "title": "Walrus — is it dangerous? | Guess My Animal",
+  "description": "Uses its tusks like ice picks to haul itself out of the water. Is a walrus dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "hyena": {
+  "title": "Hyena — is it dangerous? | Guess My Animal",
+  "description": "Clans are led by females, and the lowest female outranks every male. Is a hyena dangerous? Get the answer on Guess My Animal."
+ },
+ "meerkat": {
+  "title": "Meerkat — is it dangerous? | Guess My Animal",
+  "description": "Takes turns on sentry duty while the rest of the mob eats. Is a meerkat dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "bison": {
+  "title": "Bison — is it dangerous? | Guess My Animal",
+  "description": "Two tonnes that can still clear a six-foot fence. Is a bison dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "anteater": {
+  "title": "Anteater — is it dangerous? | Guess My Animal",
+  "description": "No teeth at all, and a tongue that flicks 150 times a minute. Is a anteater dangerous? Get the answer on Guess My Animal."
+ },
+ "armadillo": {
+  "title": "Armadillo — is it dangerous? | Guess My Animal",
+  "description": "Nine-banded armadillos always give birth to identical quadruplets. Is a armadillo dangerous? Get the answer on Guess My Animal."
+ },
+ "pangolin": {
+  "title": "Pangolin — is it dangerous? | Guess My Animal",
+  "description": "The only mammal covered in scales, and the most trafficked. Is a pangolin dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "porcupine": {
+  "title": "Porcupine — is it dangerous? | Guess My Animal",
+  "description": "Cannot shoot its quills — that part is a myth. Is a porcupine dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "beaver": {
+  "title": "Beaver — is it dangerous? | Guess My Animal",
+  "description": "Its teeth are orange because they are reinforced with iron. Is a beaver dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "mole": {
+  "title": "Mole — is it dangerous? | Guess My Animal",
+  "description": "Stores live earthworms, paralysed, in an underground larder. Is a mole dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "chicken": {
+  "title": "Chicken — is it dangerous? | Guess My Animal",
+  "description": "There are more of them alive than any other bird, by miles. Is a chicken dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "duck": {
+  "title": "Duck — is it dangerous? | Guess My Animal",
+  "description": "Ducklings imprint on the first moving thing they see. Is a duck dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "goose": {
+  "title": "Goose — is it dangerous? | Guess My Animal",
+  "description": "Genuinely will chase you, and remembers faces. Is a goose dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "swan": {
+  "title": "Swan — is it dangerous? | Guess My Animal",
+  "description": "Mates for life, and in the UK the Crown owns the wild ones. Is a swan dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "penguin": {
+  "title": "Penguin — is it dangerous? | Guess My Animal",
+  "description": "Some species propose with a carefully chosen pebble. Is a penguin dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "owl": {
+  "title": "Owl — is it dangerous? | Guess My Animal",
+  "description": "Cannot move its eyes, so it turns its head 270° instead. Is a owl dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "eagle": {
+  "title": "Eagle — is it dangerous? | Guess My Animal",
+  "description": "Spots a rabbit from about two miles up. Is a eagle dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "parrot": {
+  "title": "Parrot — is it dangerous? | Guess My Animal",
+  "description": "Some outlive their owners, and get written into wills. Is a parrot dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "peacock": {
+  "title": "Peacock — is it dangerous? | Guess My Animal",
+  "description": "The colour is structural — the feathers contain no blue pigment. Is a peacock dangerous? Get the answer on Guess My Animal."
+ },
+ "flamingo": {
+  "title": "Flamingo — is it dangerous? | Guess My Animal",
+  "description": "Born grey. The pink comes entirely from what they eat. Is a flamingo dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "ostrich": {
+  "title": "Ostrich — is it dangerous? | Guess My Animal",
+  "description": "Its eye is bigger than its brain. Is a ostrich dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "pigeon": {
+  "title": "Pigeon — is it dangerous? | Guess My Animal",
+  "description": "Passes the mirror test — one of very few non-mammals that do. Is a pigeon dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "crow": {
+  "title": "Crow — is it dangerous? | Guess My Animal",
+  "description": "Remembers a face that wronged it, and tells the other crows. Is a crow dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "robin": {
+  "title": "Robin — is it dangerous? | Guess My Animal",
+  "description": "Fiercely territorial — that friendly garden bird will fight to the death. Is a robin dangerous? Get the answer on Guess My Animal."
+ },
+ "hummingbird": {
+  "title": "Hummingbird — is it dangerous? | Guess My Animal",
+  "description": "The only bird that can fly backwards. Is a hummingbird dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "woodpecker": {
+  "title": "Woodpecker — is it dangerous? | Guess My Animal",
+  "description": "Its tongue wraps around the back of its skull as a shock absorber. Is a woodpecker dangerous? Get the answer on Guess My Animal."
+ },
+ "seagull": {
+  "title": "Seagull — is it dangerous? | Guess My Animal",
+  "description": "Drums its feet on grass to imitate rain and fool the worms up. Is a seagull dangerous? Get the answer on Guess My Animal."
+ },
+ "turkey": {
+  "title": "Turkey — is it dangerous? | Guess My Animal",
+  "description": "Wild ones fly perfectly well, at up to 55 mph. Is a turkey dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "crocodile": {
+  "title": "Crocodile — is it dangerous? | Guess My Animal",
+  "description": "Strongest bite ever measured on a living animal. Is a crocodile dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "alligator": {
+  "title": "Alligator — is it dangerous? | Guess My Animal",
+  "description": "Wide rounded snout; a crocodile's is narrow and shows teeth. Is a alligator dangerous? Get the answer on Guess My Animal."
+ },
+ "snake": {
+  "title": "Snake — is it dangerous? | Guess My Animal",
+  "description": "Smells with its tongue, delivering scent to the roof of its mouth. Is a snake dangerous? Get the answer on Guess My Animal."
+ },
+ "lizard": {
+  "title": "Lizard — is it dangerous? | Guess My Animal",
+  "description": "Many can drop their tail and grow a new one. Is a lizard dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "chameleon": {
+  "title": "Chameleon — is it dangerous? | Guess My Animal",
+  "description": "Changes colour for mood and temperature, not to match wallpaper. Is a chameleon dangerous? Get the answer on Guess My Animal."
+ },
+ "komodo-dragon": {
+  "title": "Komodo dragon — is it dangerous? | Guess My Animal",
+  "description": "The largest lizard alive, and it is genuinely venomous. Is a komodo dragon dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "tortoise": {
+  "title": "Tortoise — is it dangerous? | Guess My Animal",
+  "description": "Routinely outlives the person who bought it. Is a tortoise dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "turtle": {
+  "title": "Turtle — is it dangerous? | Guess My Animal",
+  "description": "Females return to the exact beach where they hatched. Is a turtle dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "iguana": {
+  "title": "Iguana — is it dangerous? | Guess My Animal",
+  "description": "Has a light-sensing 'third eye' on top of its head. Is a iguana dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "gecko": {
+  "title": "Gecko — is it dangerous? | Guess My Animal",
+  "description": "Sticks to glass using molecular forces, not suction or glue. Is a gecko dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "frog": {
+  "title": "Frog — is it dangerous? | Guess My Animal",
+  "description": "Drinks through its skin — it never takes a sip. Is a frog dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "toad": {
+  "title": "Toad — is it dangerous? | Guess My Animal",
+  "description": "Dry warty skin and it walks; frogs are wet and they jump. Is a toad dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "axolotl": {
+  "title": "Axolotl — is it dangerous? | Guess My Animal",
+  "description": "Regrows legs, tail, and parts of its own brain. Is a axolotl dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "salamander": {
+  "title": "Salamander — is it dangerous? | Guess My Animal",
+  "description": "Some breathe entirely through their skin, having no lungs at all. Is a salamander dangerous? Get the answer on Guess My Animal."
+ },
+ "newt": {
+  "title": "Newt — is it dangerous? | Guess My Animal",
+  "description": "Protected by law in the UK, to the eternal grief of builders. Is a newt dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "shark": {
+  "title": "Shark — is it dangerous? | Guess My Animal",
+  "description": "Older than trees. They predate Saturn's rings, too. Is a shark dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "goldfish": {
+  "title": "Goldfish — is it dangerous? | Guess My Animal",
+  "description": "The three-second memory is a myth — it is more like months. Is a goldfish dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "clownfish": {
+  "title": "Clownfish — is it dangerous? | Guess My Animal",
+  "description": "All are born male, and the dominant one becomes female. Is a clownfish dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "salmon": {
+  "title": "Salmon — is it dangerous? | Guess My Animal",
+  "description": "Navigates back to its home river by smell alone. Is a salmon dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "pufferfish": {
+  "title": "Pufferfish — is it dangerous? | Guess My Animal",
+  "description": "Contains a poison over a thousand times deadlier than cyanide. Is a pufferfish dangerous? Get the answer on Guess My Animal."
+ },
+ "seahorse": {
+  "title": "Seahorse — is it dangerous? | Guess My Animal",
+  "description": "The male gets pregnant and gives birth. Is a seahorse dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "eel": {
+  "title": "Eel — is it dangerous? | Guess My Animal",
+  "description": "Nobody has ever seen European eels breed. Still a mystery. Is a eel dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "octopus": {
+  "title": "Octopus — is it dangerous? | Guess My Animal",
+  "description": "Three hearts, blue blood, and two thirds of its neurons in its arms. Is a octopus dangerous? Get the answer on Guess My Animal."
+ },
+ "squid": {
+  "title": "Squid — is it dangerous? | Guess My Animal",
+  "description": "The giant squid has the largest eye of any animal — dinner-plate sized. Is a squid dangerous? Get the answer on Guess My Animal."
+ },
+ "snail": {
+  "title": "Snail — is it dangerous? | Guess My Animal",
+  "description": "Has thousands of microscopic teeth on a ribbon-like tongue. Is a snail dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "jellyfish": {
+  "title": "Jellyfish — is it dangerous? | Guess My Animal",
+  "description": "No brain, no heart, no blood, and older than the dinosaurs. Is a jellyfish dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "crab": {
+  "title": "Crab — is it dangerous? | Guess My Animal",
+  "description": "Evolution keeps independently reinventing the crab shape. Is a crab dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "lobster": {
+  "title": "Lobster — is it dangerous? | Guess My Animal",
+  "description": "Does not really weaken with age — it just keeps growing. Is a lobster dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "shrimp": {
+  "title": "Shrimp — is it dangerous? | Guess My Animal",
+  "description": "The pistol shrimp's claw snaps loud enough to stun a fish. Is a shrimp dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "spider": {
+  "title": "Spider — is it dangerous? | Guess My Animal",
+  "description": "Silk is, weight for weight, stronger than steel. Is a spider dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "scorpion": {
+  "title": "Scorpion — is it dangerous? | Guess My Animal",
+  "description": "Glows bright blue-green under ultraviolet light. Is a scorpion dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "bee": {
+  "title": "Bee — is it dangerous? | Guess My Animal",
+  "description": "Tells the hive where flowers are by dancing the direction. Is a bee dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "wasp": {
+  "title": "Wasp — is it dangerous? | Guess My Animal",
+  "description": "Invented paper long before we did, by chewing wood. Is a wasp dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "ant": {
+  "title": "Ant — is it dangerous? | Guess My Animal",
+  "description": "All the ants on Earth weigh roughly as much as all the people. Is a ant dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "butterfly": {
+  "title": "Butterfly — is it dangerous? | Guess My Animal",
+  "description": "Tastes with its feet. Is a butterfly dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "moth": {
+  "title": "Moth — is it dangerous? | Guess My Animal",
+  "description": "Not attracted to light so much as confused by it. Is a moth dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "ladybird": {
+  "title": "Ladybird — is it dangerous? | Guess My Animal",
+  "description": "Eats about 5,000 aphids in a lifetime, which is why gardeners love it. Is a ladybird dangerous? Get the answer on Guess My Animal."
+ },
+ "dragonfly": {
+  "title": "Dragonfly — is it dangerous? | Guess My Animal",
+  "description": "Catches about 95% of what it chases — the best hunter going. Is a dragonfly dangerous? Get the answer on Guess My Animal."
+ },
+ "grasshopper": {
+  "title": "Grasshopper — is it dangerous? | Guess My Animal",
+  "description": "Its ears are on its abdomen, not its head. Is a grasshopper dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "beetle": {
+  "title": "Beetle — is it dangerous? | Guess My Animal",
+  "description": "One in every four known animal species is a beetle. Is a beetle dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "fly": {
+  "title": "Fly — is it dangerous? | Guess My Animal",
+  "description": "Sees time more slowly than you, which is why you keep missing. Is a fly dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "mosquito": {
+  "title": "Mosquito — is it dangerous? | Guess My Animal",
+  "description": "Kills more people every year than every other animal combined. Is a mosquito dangerous? Get the answer on Guess My Animal."
+ },
+ "praying-mantis": {
+  "title": "Praying mantis — is it dangerous? | Guess My Animal",
+  "description": "The only insect that can turn its head to look behind it. Is a praying mantis dangerous? Get the answer on Guess My Animal."
+ },
+ "worm": {
+  "title": "Worm — is it dangerous? | Guess My Animal",
+  "description": "Five hearts, no eyes, and it breathes through its skin. Is a worm dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "baboon": {
+  "title": "Baboon — is it dangerous? | Guess My Animal",
+  "description": "Troops can be 200 strong, and they raid houses and cars for food. Is a baboon dangerous? Get the answer on Guess My Animal."
+ },
+ "mandrill": {
+  "title": "Mandrill — is it dangerous? | Guess My Animal",
+  "description": "The largest monkey in the world, and the most colourful mammal. Is a mandrill dangerous? Get the answer on Guess My Animal."
+ },
+ "macaque": {
+  "title": "Macaque — is it dangerous? | Guess My Animal",
+  "description": "Japanese macaques sit out the winter in volcanic hot springs. Is a macaque dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "capuchin-monkey": {
+  "title": "Capuchin monkey — is it dangerous? | Guess My Animal",
+  "description": "Cracks nuts with stone hammers and teaches the trick to its young. Is a capuchin monkey dangerous? Get the answer on Guess My Animal."
+ },
+ "howler-monkey": {
+  "title": "Howler monkey — is it dangerous? | Guess My Animal",
+  "description": "One of the loudest land animals, audible three miles through forest. Is a howler monkey dangerous? Get the answer on Guess My Animal."
+ },
+ "spider-monkey": {
+  "title": "Spider monkey — is it dangerous? | Guess My Animal",
+  "description": "Its tail works as a fifth limb and can pick things up on its own. Is a spider monkey dangerous? Get the answer on Guess My Animal."
+ },
+ "squirrel-monkey": {
+  "title": "Squirrel monkey — is it dangerous? | Guess My Animal",
+  "description": "Has the largest brain for its body size of any primate. Is a squirrel monkey dangerous? Get the answer on Guess My Animal."
+ },
+ "proboscis-monkey": {
+  "title": "Proboscis monkey — is it dangerous? | Guess My Animal",
+  "description": "The males have enormous drooping noses, and they swim with webbed feet. Is a proboscis monkey dangerous? Get the answer on Guess My Animal."
+ },
+ "vervet-monkey": {
+  "title": "Vervet monkey — is it dangerous? | Guess My Animal",
+  "description": "Has separate alarm calls for leopards, eagles and snakes. Is a vervet monkey dangerous? Get the answer on Guess My Animal."
+ },
+ "marmoset": {
+  "title": "Marmoset — is it dangerous? | Guess My Animal",
+  "description": "Gnaws holes in bark and comes back later to drink the sap. Is a marmoset dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "tamarin": {
+  "title": "Tamarin — is it dangerous? | Guess My Animal",
+  "description": "The emperor tamarin has a long white moustache, said to be named after a kaiser. Is a tamarin dangerous? Get the answer on Guess My Animal."
+ },
+ "lemur": {
+  "title": "Lemur — is it dangerous? | Guess My Animal",
+  "description": "Wild only on Madagascar, and the males settle disputes with stink fights. Is a lemur dangerous? Get the answer on Guess My Animal."
+ },
+ "aye-aye": {
+  "title": "Aye-aye — is it dangerous? | Guess My Animal",
+  "description": "Taps trees with a long skeletal middle finger and listens for grubs inside. Is a aye-aye dangerous? Get the answer on Guess My Animal."
+ },
+ "tarsier": {
+  "title": "Tarsier — is it dangerous? | Guess My Animal",
+  "description": "Each eyeball is as big as its brain and cannot move in its socket. Is a tarsier dangerous? Get the answer on Guess My Animal."
+ },
+ "bushbaby": {
+  "title": "Bushbaby — is it dangerous? | Guess My Animal",
+  "description": "Named for a cry that sounds unnervingly like a human baby. Is a bushbaby dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "slow-loris": {
+  "title": "Slow loris — is it dangerous? | Guess My Animal",
+  "description": "One of the only venomous mammals, mixing its toxin from a gland on its arm. Is a slow loris dangerous? Get the answer on Guess My Animal."
+ },
+ "gibbon": {
+  "title": "Gibbon — is it dangerous? | Guess My Animal",
+  "description": "Swings hand over hand at 35 mph, and mated pairs sing duets. Is a gibbon dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "bonobo": {
+  "title": "Bonobo — is it dangerous? | Guess My Animal",
+  "description": "Shares almost 99 percent of our DNA and settles arguments with affection. Is a bonobo dangerous? Get the answer on Guess My Animal."
+ },
+ "lynx": {
+  "title": "Lynx — is it dangerous? | Guess My Animal",
+  "description": "The black ear tufts work like antennae, and it hears worse without them. Is a lynx dangerous? Get the answer on Guess My Animal."
+ },
+ "bobcat": {
+  "title": "Bobcat — is it dangerous? | Guess My Animal",
+  "description": "Twice the size of a house cat, and can still take down a deer. Is a bobcat dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "ocelot": {
+  "title": "Ocelot — is it dangerous? | Guess My Animal",
+  "description": "Salvador Dali kept one as a pet and took it with him to restaurants. Is a ocelot dangerous? Get the answer on Guess My Animal."
+ },
+ "caracal": {
+  "title": "Caracal — is it dangerous? | Guess My Animal",
+  "description": "Leaps three metres straight up to swat birds out of the air. Is a caracal dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "serval": {
+  "title": "Serval — is it dangerous? | Guess My Animal",
+  "description": "The longest legs of any cat for its size, and it hunts by ear in tall grass. Is a serval dangerous? Get the answer on Guess My Animal."
+ },
+ "snow-leopard": {
+  "title": "Snow leopard — is it dangerous? | Guess My Animal",
+  "description": "Cannot roar, and wraps its metre-long tail around itself like a scarf. Is a snow leopard dangerous? Get the answer on Guess My Animal."
+ },
+ "clouded-leopard": {
+  "title": "Clouded leopard — is it dangerous? | Guess My Animal",
+  "description": "The longest canine teeth for its skull size of any living cat. Is a clouded leopard dangerous? Get the answer on Guess My Animal."
+ },
+ "black-panther": {
+  "title": "Black panther — is it dangerous? | Guess My Animal",
+  "description": "Not a species: it is a leopard or jaguar with black fur, spots still faintly there. Is a black panther dangerous? Get the answer on Guess My Animal."
+ },
+ "wildcat": {
+  "title": "Wildcat — is it dangerous? | Guess My Animal",
+  "description": "Looks like a stocky tabby, but has resisted taming for thousands of years. Is a wildcat dangerous? Get the answer on Guess My Animal."
+ },
+ "sand-cat": {
+  "title": "Sand cat — is it dangerous? | Guess My Animal",
+  "description": "Lives in deserts and can go weeks without drinking, taking water from its prey. Is a sand cat dangerous? Get the answer on Guess My Animal."
+ },
+ "coyote": {
+  "title": "Coyote — is it dangerous? | Guess My Animal",
+  "description": "Has spread into every major North American city, Manhattan included. Is a coyote dangerous? Get the answer on Guess My Animal."
+ },
+ "jackal": {
+  "title": "Jackal — is it dangerous? | Guess My Animal",
+  "description": "Mates for life, and pairs hunt far more successfully than singles. Is a jackal dangerous? Get the answer on Guess My Animal."
+ },
+ "dingo": {
+  "title": "Dingo — is it dangerous? | Guess My Animal",
+  "description": "Can rotate its wrists like a human, so it climbs trees and fences. Is a dingo dangerous? Get the answer on Guess My Animal."
+ },
+ "arctic-fox": {
+  "title": "Arctic fox — is it dangerous? | Guess My Animal",
+  "description": "Turns brown to white for winter and survives minus 50 without shivering. Is a arctic fox dangerous? Get the answer on Guess My Animal."
+ },
+ "fennec-fox": {
+  "title": "Fennec fox — is it dangerous? | Guess My Animal",
+  "description": "The smallest fox alive, with ears a third of its body length to dump heat. Is a fennec fox dangerous? Get the answer on Guess My Animal."
+ },
+ "african-wild-dog": {
+  "title": "African wild dog — is it dangerous? | Guess My Animal",
+  "description": "Wins around 80 percent of its hunts, the best strike rate of any large predator. Is a african wild dog dangerous? Get the answer on Guess My Animal."
+ },
+ "dhole": {
+  "title": "Dhole — is it dangerous? | Guess My Animal",
+  "description": "Whistles to keep the pack together, which is why it is called the whistling dog. Is a dhole dangerous? Get the answer on Guess My Animal."
+ },
+ "maned-wolf": {
+  "title": "Maned wolf — is it dangerous? | Guess My Animal",
+  "description": "Neither wolf nor fox, and its scent marking smells so strongly of cannabis that zoos get reported."
+ },
+ "raccoon-dog": {
+  "title": "Raccoon dog — is it dangerous? | Guess My Animal",
+  "description": "The only dog that truly hibernates, and a shapeshifter in Japanese folklore. Is a raccoon dog dangerous? Get the answer on Guess My Animal."
+ },
+ "black-bear": {
+  "title": "Black bear — is it dangerous? | Guess My Animal",
+  "description": "Climbs trees better than any other bear, and cubs are sent up at the first sign of trouble. Is a black bear dangerous? Get the answer on Guess My Animal."
+ },
+ "grizzly-bear": {
+  "title": "Grizzly bear — is it dangerous? | Guess My Animal",
+  "description": "Loses a third of its body weight over winter without eating or drinking. Is a grizzly bear dangerous? Get the answer on Guess My Animal."
+ },
+ "sun-bear": {
+  "title": "Sun bear — is it dangerous? | Guess My Animal",
+  "description": "The smallest bear, with a tongue up to 25 cm long for raiding honeycomb. Is a sun bear dangerous? Get the answer on Guess My Animal."
+ },
+ "sloth-bear": {
+  "title": "Sloth bear — is it dangerous? | Guess My Animal",
+  "description": "Vacuums termites out of mounds so loudly it can be heard 100 metres away. Is a sloth bear dangerous? Get the answer on Guess My Animal."
+ },
+ "spectacled-bear": {
+  "title": "Spectacled bear — is it dangerous? | Guess My Animal",
+  "description": "South America's only bear, and the model for Paddington. Is a spectacled bear dangerous? Get the answer on Guess My Animal."
+ },
+ "red-panda": {
+  "title": "Red panda — is it dangerous? | Guess My Animal",
+  "description": "Not related to the giant panda, and it has a false thumb for gripping bamboo. Is a red panda dangerous? Get the answer on Guess My Animal."
+ },
+ "wolverine": {
+  "title": "Wolverine — is it dangerous? | Guess My Animal",
+  "description": "The size of a dog, but will drive a bear off a carcass. Is a wolverine dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "weasel": {
+  "title": "Weasel — is it dangerous? | Guess My Animal",
+  "description": "Light enough to hunt inside mouse tunnels, and eats a third of its weight a day. Is a weasel dangerous? Get the answer on Guess My Animal."
+ },
+ "stoat": {
+  "title": "Stoat — is it dangerous? | Guess My Animal",
+  "description": "Turns white in winter, and that coat is the ermine used on royal robes. Is a stoat dangerous? Get the answer on Guess My Animal."
+ },
+ "mink": {
+  "title": "Mink — is it dangerous? | Guess My Animal",
+  "description": "Dives up to five metres and hunts as happily in water as on land. Is a mink dangerous? Get the answer on Guess My Animal."
+ },
+ "pine-marten": {
+  "title": "Pine marten — is it dangerous? | Guess My Animal",
+  "description": "One of the few predators fast enough in the trees to catch a squirrel. Is a pine marten dangerous? Get the answer on Guess My Animal."
+ },
+ "mongoose": {
+  "title": "Mongoose — is it dangerous? | Guess My Animal",
+  "description": "Resistant to cobra venom, and fast enough to fight one and win. Is a mongoose dangerous? Get the answer on Guess My Animal."
+ },
+ "civet": {
+  "title": "Civet — is it dangerous? | Guess My Animal",
+  "description": "The world's most expensive coffee is made from beans it has eaten and passed. Is a civet dangerous? Get the answer on Guess My Animal."
+ },
+ "binturong": {
+  "title": "Binturong — is it dangerous? | Guess My Animal",
+  "description": "Smells distinctly of hot buttered popcorn, from a compound in its scent marking. Is a binturong dangerous? Get the answer on Guess My Animal."
+ },
+ "aardvark": {
+  "title": "Aardvark — is it dangerous? | Guess My Animal",
+  "description": "Eats up to 50,000 ants and termites in a night, and can dig faster than a team with shovels. Is a aardvark dangerous? Get the answer on Guess My Animal."
+ },
+ "warthog": {
+  "title": "Warthog — is it dangerous? | Guess My Animal",
+  "description": "Reverses into its burrow so it can come out tusks first. Is a warthog dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "wild-boar": {
+  "title": "Wild boar — is it dangerous? | Guess My Animal",
+  "description": "Every domestic pig alive descends from this animal. Is a wild boar dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "tapir": {
+  "title": "Tapir — is it dangerous? | Guess My Animal",
+  "description": "Its short trunk is a nose and an upper lip fused together, and it walks along riverbeds underwater. Is a tapir dangerous? Get the answer on Guess My Animal."
+ },
+ "okapi": {
+  "title": "Okapi — is it dangerous? | Guess My Animal",
+  "description": "The giraffe's only living relative, and unknown to science until 1901. Is a okapi dangerous? Get the answer on Guess My Animal."
+ },
+ "antelope": {
+  "title": "Antelope — is it dangerous? | Guess My Animal",
+  "description": "Not one animal but around 90 species, and none of them are deer. Is a antelope dangerous? Get the answer on Guess My Animal."
+ },
+ "gazelle": {
+  "title": "Gazelle — is it dangerous? | Guess My Animal",
+  "description": "Pronks straight up on stiff legs to tell predators it has seen them and is not worth chasing. Is a gazelle dangerous? Get the answer on Guess My Animal."
+ },
+ "impala": {
+  "title": "Impala — is it dangerous? | Guess My Animal",
+  "description": "Leaps ten metres forward and three metres up, often for no obvious reason. Is a impala dangerous? Get the answer on Guess My Animal."
+ },
+ "wildebeest": {
+  "title": "Wildebeest — is it dangerous? | Guess My Animal",
+  "description": "Over a million of them make the same circular migration every year. Is a wildebeest dangerous? Get the answer on Guess My Animal."
+ },
+ "oryx": {
+  "title": "Oryx — is it dangerous? | Guess My Animal",
+  "description": "Lets its body temperature climb past 45C rather than waste water sweating. Is a oryx dangerous? Get the answer on Guess My Animal."
+ },
+ "buffalo": {
+  "title": "Buffalo — is it dangerous? | Guess My Animal",
+  "description": "Nicknamed the widowmaker, and it ambushes hunters that have wounded it. Is a buffalo dangerous? Get the answer on Guess My Animal."
+ },
+ "yak": {
+  "title": "Yak — is it dangerous? | Guess My Animal",
+  "description": "Works at 5,000 metres where a cow would suffocate, and its blood carries far more oxygen. Is a yak dangerous? Get the answer on Guess My Animal."
+ },
+ "bull": {
+  "title": "Bull — is it dangerous? | Guess My Animal",
+  "description": "Colourblind to red: in bullfighting it is the movement of the cape that provokes it. Is a bull dangerous? Get the answer on Guess My Animal."
+ },
+ "elk": {
+  "title": "Elk — is it dangerous? | Guess My Animal",
+  "description": "The bugle of a rutting bull carries for miles and starts as a bellow and ends as a whistle. Is a elk dangerous? Get the answer on Guess My Animal."
+ },
+ "reindeer": {
+  "title": "Reindeer — is it dangerous? | Guess My Animal",
+  "description": "The only deer where females grow antlers too, and its eyes turn blue in winter. Is a reindeer dangerous? Get the answer on Guess My Animal."
+ },
+ "ibex": {
+  "title": "Ibex — is it dangerous? | Guess My Animal",
+  "description": "Climbs near-vertical dam walls to lick the salt off the stone. Is a ibex dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "bighorn-sheep": {
+  "title": "Bighorn sheep — is it dangerous? | Guess My Animal",
+  "description": "Rams charge each other at 30 mph, and the horns alone can weigh as much as the rest of the skeleton."
+ },
+ "mountain-goat": {
+  "title": "Mountain goat — is it dangerous? | Guess My Animal",
+  "description": "Its hooves have rubbery centres and hard rims, so they grip rock like climbing shoes. Is a mountain goat dangerous? Get the answer on Guess My Animal."
+ },
+ "donkey": {
+  "title": "Donkey — is it dangerous? | Guess My Animal",
+  "description": "Remembers places and other donkeys it met 25 years earlier. Is a donkey dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "mule": {
+  "title": "Mule — is it dangerous? | Guess My Animal",
+  "description": "A horse crossed with a donkey, and almost always sterile. Is a mule dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "pony": {
+  "title": "Pony — is it dangerous? | Guess My Animal",
+  "description": "Not a baby horse: a pony is fully grown and stays under 14.2 hands. Is a pony dangerous? Get the answer on Guess My Animal."
+ },
+ "vicuna": {
+  "title": "Vicuna — is it dangerous? | Guess My Animal",
+  "description": "Grows the finest wool of any animal, and can only be shorn every two years. Is a vicuna dangerous? Get the answer on Guess My Animal."
+ },
+ "guanaco": {
+  "title": "Guanaco — is it dangerous? | Guess My Animal",
+  "description": "The wild ancestor of the llama, and it spits with real accuracy. Is a guanaco dangerous? Get the answer on Guess My Animal."
+ },
+ "capybara": {
+  "title": "Capybara — is it dangerous? | Guess My Animal",
+  "description": "The largest rodent alive, and famously relaxed about other animals sitting on it. Is a capybara dangerous? Get the answer on Guess My Animal."
+ },
+ "chinchilla": {
+  "title": "Chinchilla — is it dangerous? | Guess My Animal",
+  "description": "The densest fur of any land mammal, and it bathes in volcanic dust rather than water. Is a chinchilla dangerous? Get the answer on Guess My Animal."
+ },
+ "gerbil": {
+  "title": "Gerbil — is it dangerous? | Guess My Animal",
+  "description": "Thumps its back legs on the ground to warn the burrow. Is a gerbil dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "chipmunk": {
+  "title": "Chipmunk — is it dangerous? | Guess My Animal",
+  "description": "Its cheek pouches stretch to three times the size of its head. Is a chipmunk dangerous? Get the answer on Guess My Animal."
+ },
+ "marmot": {
+  "title": "Marmot — is it dangerous? | Guess My Animal",
+  "description": "Hibernates for up to eight months with its heart down to five beats a minute. Is a marmot dangerous? Get the answer on Guess My Animal."
+ },
+ "groundhog": {
+  "title": "Groundhog — is it dangerous? | Guess My Animal",
+  "description": "Digs burrows with separate chambers for sleeping and for the toilet. Is a groundhog dangerous? Get the answer on Guess My Animal."
+ },
+ "prairie-dog": {
+  "title": "Prairie dog — is it dangerous? | Guess My Animal",
+  "description": "Its calls describe a predator's size, colour and speed, and it greets family with a kiss. Is a prairie dog dangerous? Get the answer on Guess My Animal."
+ },
+ "lemming": {
+  "title": "Lemming — is it dangerous? | Guess My Animal",
+  "description": "They do not throw themselves off cliffs. A 1958 Disney film staged that. Is a lemming dangerous? Get the answer on Guess My Animal."
+ },
+ "vole": {
+  "title": "Vole — is it dangerous? | Guess My Animal",
+  "description": "Blunter face and shorter tail than a mouse, and it can have a litter every three weeks. Is a vole dangerous? Get the answer on Guess My Animal."
+ },
+ "shrew": {
+  "title": "Shrew — is it dangerous? | Guess My Animal",
+  "description": "Must eat every couple of hours or starve, and some species are venomous. Is a shrew dangerous? Get the answer on Guess My Animal."
+ },
+ "dormouse": {
+  "title": "Dormouse — is it dangerous? | Guess My Animal",
+  "description": "Spends over half its life asleep, hibernating for up to seven months. Is a dormouse dangerous? Get the answer on Guess My Animal."
+ },
+ "flying-squirrel": {
+  "title": "Flying squirrel — is it dangerous? | Guess My Animal",
+  "description": "Does not fly but glides up to 90 metres, and it glows pink under UV light. Is a flying squirrel dangerous? Get the answer on Guess My Animal."
+ },
+ "naked-mole-rat": {
+  "title": "Naked mole-rat — is it dangerous? | Guess My Animal",
+  "description": "Barely ages, almost never gets cancer, and survives 18 minutes with no oxygen at all. Is a naked mole-rat dangerous? Get the answer on Guess My Animal."
+ },
+ "opossum": {
+  "title": "Opossum — is it dangerous? | Guess My Animal",
+  "description": "Playing dead is involuntary: it faints, and cannot snap out of it for hours. Is a opossum dangerous? Get the answer on Guess My Animal."
+ },
+ "wallaby": {
+  "title": "Wallaby — is it dangerous? | Guess My Animal",
+  "description": "A smaller cousin of the kangaroo, and it can pause a pregnancy until conditions improve. Is a wallaby dangerous? Get the answer on Guess My Animal."
+ },
+ "tasmanian-devil": {
+  "title": "Tasmanian devil — is it dangerous? | Guess My Animal",
+  "description": "The strongest bite for its size of any mammal, and it eats the bones too. Is a tasmanian devil dangerous? Get the answer on Guess My Animal."
+ },
+ "quokka": {
+  "title": "Quokka — is it dangerous? | Guess My Animal",
+  "description": "Its resting face looks like a grin, which made it the most photographed animal in Australia. Is a quokka dangerous? Get the answer on Guess My Animal."
+ },
+ "echidna": {
+  "title": "Echidna — is it dangerous? | Guess My Animal",
+  "description": "One of only two mammals that lay eggs, the platypus being the other. Is a echidna dangerous? Get the answer on Guess My Animal."
+ },
+ "bilby": {
+  "title": "Bilby — is it dangerous? | Guess My Animal",
+  "description": "Australia sells chocolate bilbies at Easter instead of rabbits. Is a bilby dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "sugar-glider": {
+  "title": "Sugar glider — is it dangerous? | Guess My Animal",
+  "description": "Glides 50 metres between trees using a membrane from wrist to ankle. Is a sugar glider dangerous? Get the answer on Guess My Animal."
+ },
+ "manatee": {
+  "title": "Manatee — is it dangerous? | Guess My Animal",
+  "description": "Probably the source of every mermaid sighting sailors ever reported. Is a manatee dangerous? Get the answer on Guess My Animal."
+ },
+ "dugong": {
+  "title": "Dugong — is it dangerous? | Guess My Animal",
+  "description": "Grazes seagrass meadows, leaving visible trails along the seabed. Is a dugong dangerous? Get the answer on Guess My Animal."
+ },
+ "narwhal": {
+  "title": "Narwhal — is it dangerous? | Guess My Animal",
+  "description": "The tusk is an overgrown left tooth, packed with ten million nerve endings. Is a narwhal dangerous? Get the answer on Guess My Animal."
+ },
+ "beluga": {
+  "title": "Beluga — is it dangerous? | Guess My Animal",
+  "description": "Called the sea canary for its chirping, and it can change the shape of its forehead. Is a beluga dangerous? Get the answer on Guess My Animal."
+ },
+ "sea-lion": {
+  "title": "Sea lion — is it dangerous? | Guess My Animal",
+  "description": "Unlike seals it has visible ear flaps and can walk on all fours. Is a sea lion dangerous? Get the answer on Guess My Animal."
+ },
+ "porpoise": {
+  "title": "Porpoise — is it dangerous? | Guess My Animal",
+  "description": "Shorter and blunter than a dolphin, with spade-shaped teeth instead of cones. Is a porpoise dangerous? Get the answer on Guess My Animal."
+ },
+ "humpback-whale": {
+  "title": "Humpback whale — is it dangerous? | Guess My Animal",
+  "description": "Blows nets out of bubbles to herd fish, and its song changes across a season. Is a humpback whale dangerous? Get the answer on Guess My Animal."
+ },
+ "blue-whale": {
+  "title": "Blue whale — is it dangerous? | Guess My Animal",
+  "description": "The largest animal that has ever lived. Its heart alone weighs as much as a car. Is a blue whale dangerous? Get the answer on Guess My Animal."
+ },
+ "sperm-whale": {
+  "title": "Sperm whale — is it dangerous? | Guess My Animal",
+  "description": "The largest brain on Earth, and it dives two kilometres down to hunt giant squid. Is a sperm whale dangerous? Get the answer on Guess My Animal."
+ },
+ "bat-eared-fox": {
+  "title": "Bat-eared fox — is it dangerous? | Guess My Animal",
+  "description": "Listens for termites chewing underground with ears half the length of its head. Is a bat-eared fox dangerous? Get the answer on Guess My Animal."
+ },
+ "fruit-bat": {
+  "title": "Fruit bat — is it dangerous? | Guess My Animal",
+  "description": "Wingspans reach 1.7 metres, and it navigates by sight rather than echolocation. Is a fruit bat dangerous? Get the answer on Guess My Animal."
+ },
+ "vampire-bat": {
+  "title": "Vampire bat — is it dangerous? | Guess My Animal",
+  "description": "Shares blood with colony members that failed to feed, and remembers who returned the favour. Is a vampire bat dangerous? Get the answer on Guess My Animal."
+ },
+ "star-nosed-mole": {
+  "title": "Star-nosed mole — is it dangerous? | Guess My Animal",
+  "description": "Identifies and eats prey in a quarter of a second, the fastest forager known. Is a star-nosed mole dangerous? Get the answer on Guess My Animal."
+ },
+ "numbat": {
+  "title": "Numbat — is it dangerous? | Guess My Animal",
+  "description": "Eats up to 20,000 termites a day and nothing else. Is a numbat dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "falcon": {
+  "title": "Falcon — is it dangerous? | Guess My Animal",
+  "description": "The fastest animal on Earth, diving at over 200 mph. Is a falcon dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "hawk": {
+  "title": "Hawk — is it dangerous? | Guess My Animal",
+  "description": "Sees roughly eight times more sharply than we do. Is a hawk dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "vulture": {
+  "title": "Vulture — is it dangerous? | Guess My Animal",
+  "description": "Stomach acid strong enough to digest anthrax and botulism without harm. Is a vulture dangerous? Get the answer on Guess My Animal."
+ },
+ "condor": {
+  "title": "Condor — is it dangerous? | Guess My Animal",
+  "description": "A three-metre wingspan, and it can soar for hours without flapping once. Is a condor dangerous? Get the answer on Guess My Animal."
+ },
+ "kestrel": {
+  "title": "Kestrel — is it dangerous? | Guess My Animal",
+  "description": "Hovers on the spot and sees the ultraviolet urine trails voles leave behind. Is a kestrel dangerous? Get the answer on Guess My Animal."
+ },
+ "buzzard": {
+  "title": "Buzzard — is it dangerous? | Guess My Animal",
+  "description": "The most common bird of prey in Britain, and its call is the one films give to eagles. Is a buzzard dangerous? Get the answer on Guess My Animal."
+ },
+ "kingfisher": {
+  "title": "Kingfisher — is it dangerous? | Guess My Animal",
+  "description": "Its beak shape was copied for the nose of the Japanese bullet train. Is a kingfisher dangerous? Get the answer on Guess My Animal."
+ },
+ "heron": {
+  "title": "Heron — is it dangerous? | Guess My Animal",
+  "description": "Some herons drop bait on the water and wait for fish to come to it. Is a heron dangerous? Get the answer on Guess My Animal."
+ },
+ "stork": {
+  "title": "Stork — is it dangerous? | Guess My Animal",
+  "description": "Has no voice box, so it clatters its bill to communicate. Is a stork dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "pelican": {
+  "title": "Pelican — is it dangerous? | Guess My Animal",
+  "description": "Its throat pouch holds around 11 litres, three times what its stomach can take. Is a pelican dangerous? Get the answer on Guess My Animal."
+ },
+ "albatross": {
+  "title": "Albatross — is it dangerous? | Guess My Animal",
+  "description": "The longest wingspan of any bird, and it can stay at sea for years without landing. Is a albatross dangerous? Get the answer on Guess My Animal."
+ },
+ "puffin": {
+  "title": "Puffin — is it dangerous? | Guess My Animal",
+  "description": "Carries a dozen fish crossways in its beak at once, and the colours fade after breeding. Is a puffin dangerous? Get the answer on Guess My Animal."
+ },
+ "toucan": {
+  "title": "Toucan — is it dangerous? | Guess My Animal",
+  "description": "The huge beak is mostly hollow, and it works as a radiator to dump body heat. Is a toucan dangerous? Get the answer on Guess My Animal."
+ },
+ "pheasant": {
+  "title": "Pheasant — is it dangerous? | Guess My Animal",
+  "description": "Explodes almost vertically off the ground, but tires after a few hundred metres. Is a pheasant dangerous? Get the answer on Guess My Animal."
+ },
+ "quail": {
+  "title": "Quail — is it dangerous? | Guess My Animal",
+  "description": "Was the first bird sent into orbit to breed in space. Is a quail dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "partridge": {
+  "title": "Partridge — is it dangerous? | Guess My Animal",
+  "description": "Almost never sits in a pear tree. Partridges nest on the ground. Is a partridge dangerous? Get the answer on Guess My Animal."
+ },
+ "magpie": {
+  "title": "Magpie — is it dangerous? | Guess My Animal",
+  "description": "One of the few animals that recognises itself in a mirror. It is also not a thief. Is a magpie dangerous? Get the answer on Guess My Animal."
+ },
+ "raven": {
+  "title": "Raven — is it dangerous? | Guess My Animal",
+  "description": "Plans for the future, holds grudges, and can mimic human speech better than a parrot. Is a raven dangerous? Get the answer on Guess My Animal."
+ },
+ "jackdaw": {
+  "title": "Jackdaw — is it dangerous? | Guess My Animal",
+  "description": "Pale eyes it uses to signal to other jackdaws which nest site is taken. Is a jackdaw dangerous? Get the answer on Guess My Animal."
+ },
+ "starling": {
+  "title": "Starling — is it dangerous? | Guess My Animal",
+  "description": "Murmurations of a million birds turn together with no leader at all. Is a starling dangerous? Get the answer on Guess My Animal."
+ },
+ "sparrow": {
+  "title": "Sparrow — is it dangerous? | Guess My Animal",
+  "description": "Followed humans everywhere and now lives on every continent except Antarctica. Is a sparrow dangerous? Get the answer on Guess My Animal."
+ },
+ "finch": {
+  "title": "Finch — is it dangerous? | Guess My Animal",
+  "description": "Darwin's finches on the Galapagos gave him the idea of natural selection. Is a finch dangerous? Get the answer on Guess My Animal."
+ },
+ "blackbird": {
+  "title": "Blackbird — is it dangerous? | Guess My Animal",
+  "description": "Only the male is black. The female is brown, and both sing. Is a blackbird dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "nightingale": {
+  "title": "Nightingale — is it dangerous? | Guess My Animal",
+  "description": "A plain brown bird with a repertoire of over 200 different songs. Is a nightingale dangerous? Get the answer on Guess My Animal."
+ },
+ "cuckoo": {
+  "title": "Cuckoo — is it dangerous? | Guess My Animal",
+  "description": "Lays its egg in another bird's nest, and the chick pushes the others out. Is a cuckoo dangerous? Get the answer on Guess My Animal."
+ },
+ "swift": {
+  "title": "Swift — is it dangerous? | Guess My Animal",
+  "description": "Stays airborne for ten months without landing, and sleeps on the wing. Is a swift dangerous? Get the answer on Guess My Animal."
+ },
+ "swallow": {
+  "title": "Swallow — is it dangerous? | Guess My Animal",
+  "description": "Flies from Britain to South Africa and back every year, twice. Is a swallow dangerous? Get the answer on Guess My Animal."
+ },
+ "wren": {
+  "title": "Wren — is it dangerous? | Guess My Animal",
+  "description": "Tiny, but one of the loudest birds by weight in the world. Is a wren dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "kiwi": {
+  "title": "Kiwi — is it dangerous? | Guess My Animal",
+  "description": "Lays an egg up to a quarter of its own body weight, and its nostrils are at the beak tip. Is a kiwi dangerous? Get the answer on Guess My Animal."
+ },
+ "emu": {
+  "title": "Emu — is it dangerous? | Guess My Animal",
+  "description": "Australia declared war on them in 1932 and the emus won. Is a emu dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "cassowary": {
+  "title": "Cassowary — is it dangerous? | Guess My Animal",
+  "description": "Widely called the most dangerous bird alive, with a dagger claw on each inner toe. Is a cassowary dangerous? Get the answer on Guess My Animal."
+ },
+ "rhea": {
+  "title": "Rhea — is it dangerous? | Guess My Animal",
+  "description": "The male incubates the eggs of several females and raises all the chicks himself. Is a rhea dangerous? Get the answer on Guess My Animal."
+ },
+ "pelican-eel": {
+  "title": "Pelican eel — is it dangerous? | Guess My Animal",
+  "description": "Its mouth unhinges wider than its whole body to swallow prey larger than itself. Is a pelican eel dangerous? Get the answer on Guess My Animal."
+ },
+ "crane": {
+  "title": "Crane — is it dangerous? | Guess My Animal",
+  "description": "Pairs dance together, and some species fly over the Himalayas on migration. Is a crane dangerous? Get the answer on Guess My Animal."
+ },
+ "ibis": {
+  "title": "Ibis — is it dangerous? | Guess My Animal",
+  "description": "Sacred in ancient Egypt, and known in Australia today as the bin chicken. Is a ibis dangerous? Get the answer on Guess My Animal."
+ },
+ "cormorant": {
+  "title": "Cormorant — is it dangerous? | Guess My Animal",
+  "description": "Its feathers are not waterproof, which is why it stands with wings spread to dry. Is a cormorant dangerous? Get the answer on Guess My Animal."
+ },
+ "nuthatch": {
+  "title": "Nuthatch — is it dangerous? | Guess My Animal",
+  "description": "The only British bird that regularly walks head first down a tree trunk. Is a nuthatch dangerous? Get the answer on Guess My Animal."
+ },
+ "kookaburra": {
+  "title": "Kookaburra — is it dangerous? | Guess My Animal",
+  "description": "Its cackle is used in films for jungle sound, though it is a giant kingfisher from Australia. Is a kookaburra dangerous? Get the answer on Guess My Animal."
+ },
+ "cockatoo": {
+  "title": "Cockatoo — is it dangerous? | Guess My Animal",
+  "description": "Can outlive its owner, and wild ones have learned to open household wheelie bins. Is a cockatoo dangerous? Get the answer on Guess My Animal."
+ },
+ "budgerigar": {
+  "title": "Budgerigar — is it dangerous? | Guess My Animal",
+  "description": "The third most popular pet in the world after dogs and cats. Is a budgerigar dangerous? Get the answer on Guess My Animal."
+ },
+ "canary": {
+  "title": "Canary — is it dangerous? | Guess My Animal",
+  "description": "Taken down coal mines until 1986 because it collapsed from gas before miners did. Is a canary dangerous? Get the answer on Guess My Animal."
+ },
+ "macaw": {
+  "title": "Macaw — is it dangerous? | Guess My Animal",
+  "description": "Gathers at riverbank clay licks to eat soil that neutralises the toxins in unripe seeds. Is a macaw dangerous? Get the answer on Guess My Animal."
+ },
+ "bird-of-paradise": {
+  "title": "Bird of paradise — is it dangerous? | Guess My Animal",
+  "description": "The males clear a stage on the forest floor and dance on it for hours. Is a bird of paradise dangerous? Get the answer on Guess My Animal."
+ },
+ "lyrebird": {
+  "title": "Lyrebird — is it dangerous? | Guess My Animal",
+  "description": "Mimics chainsaws, car alarms and camera shutters well enough to fool people. Is a lyrebird dangerous? Get the answer on Guess My Animal."
+ },
+ "roadrunner": {
+  "title": "Roadrunner — is it dangerous? | Guess My Animal",
+  "description": "Runs at 20 mph and kills rattlesnakes, though a coyote would easily catch one. Is a roadrunner dangerous? Get the answer on Guess My Animal."
+ },
+ "dodo": {
+  "title": "Dodo — is it dangerous? | Guess My Animal",
+  "description": "Extinct within a century of humans reaching Mauritius, and it was a giant pigeon. Is a dodo dangerous? Get the answer on Guess My Animal."
+ },
+ "cobra": {
+  "title": "Cobra — is it dangerous? | Guess My Animal",
+  "description": "The king cobra is the only snake that builds a nest for its eggs. Is a cobra dangerous? Get the answer on Guess My Animal."
+ },
+ "python": {
+  "title": "Python — is it dangerous? | Guess My Animal",
+  "description": "Can go a year between meals, and shrinks its own organs while it waits. Is a python dangerous? Get the answer on Guess My Animal."
+ },
+ "boa-constrictor": {
+  "title": "Boa constrictor — is it dangerous? | Guess My Animal",
+  "description": "Does not crush its prey. It tightens until blood cannot circulate. Is a boa constrictor dangerous? Get the answer on Guess My Animal."
+ },
+ "anaconda": {
+  "title": "Anaconda — is it dangerous? | Guess My Animal",
+  "description": "The heaviest snake in the world, and it gives birth to live young. Is a anaconda dangerous? Get the answer on Guess My Animal."
+ },
+ "rattlesnake": {
+  "title": "Rattlesnake — is it dangerous? | Guess My Animal",
+  "description": "Gains a rattle segment at each moult, so the rattle does not give its age in years. Is a rattlesnake dangerous? Get the answer on Guess My Animal."
+ },
+ "viper": {
+  "title": "Viper — is it dangerous? | Guess My Animal",
+  "description": "The adder is Britain's only venomous snake, and it senses prey by body heat. Is a viper dangerous? Get the answer on Guess My Animal."
+ },
+ "mamba": {
+  "title": "Mamba — is it dangerous? | Guess My Animal",
+  "description": "Named for the black inside of its mouth, not its skin, and it moves at 12 mph. Is a mamba dangerous? Get the answer on Guess My Animal."
+ },
+ "grass-snake": {
+  "title": "Grass snake — is it dangerous? | Guess My Animal",
+  "description": "Plays dead convincingly, going limp with its tongue hanging out. Is a grass snake dangerous? Get the answer on Guess My Animal."
+ },
+ "monitor-lizard": {
+  "title": "Monitor lizard — is it dangerous? | Guess My Animal",
+  "description": "Can count, and unlike most reptiles it has the stamina to run down prey. Is a monitor lizard dangerous? Get the answer on Guess My Animal."
+ },
+ "skink": {
+  "title": "Skink — is it dangerous? | Guess My Animal",
+  "description": "Some species have bright blue tongues they flash to startle predators. Is a skink dangerous? Get the answer on Guess My Animal."
+ },
+ "terrapin": {
+  "title": "Terrapin — is it dangerous? | Guess My Animal",
+  "description": "A freshwater turtle, so it sits between the sea turtle and the land tortoise. Is a terrapin dangerous? Get the answer on Guess My Animal."
+ },
+ "sea-turtle": {
+  "title": "Sea turtle — is it dangerous? | Guess My Animal",
+  "description": "Returns to the beach where it hatched to lay, sometimes 30 years later. Is a sea turtle dangerous? Get the answer on Guess My Animal."
+ },
+ "caiman": {
+  "title": "Caiman — is it dangerous? | Guess My Animal",
+  "description": "A smaller relative of the alligator, and there are more of them in the Amazon than people in London. Is a caiman dangerous? Get the answer on Guess My Animal."
+ },
+ "gharial": {
+  "title": "Gharial — is it dangerous? | Guess My Animal",
+  "description": "Its snout is too narrow for large prey, so despite the size it only eats fish. Is a gharial dangerous? Get the answer on Guess My Animal."
+ },
+ "slow-worm": {
+  "title": "Slow worm — is it dangerous? | Guess My Animal",
+  "description": "Not a worm or a snake but a legless lizard, and it can blink. Is a slow worm dangerous? Get the answer on Guess My Animal."
+ },
+ "basilisk-lizard": {
+  "title": "Basilisk lizard — is it dangerous? | Guess My Animal",
+  "description": "Runs across the surface of water on its back legs for up to 20 metres. Is a basilisk lizard dangerous? Get the answer on Guess My Animal."
+ },
+ "bearded-dragon": {
+  "title": "Bearded dragon — is it dangerous? | Guess My Animal",
+  "description": "Waves one arm slowly at other dragons to signal that it is not a threat. Is a bearded dragon dangerous? Get the answer on Guess My Animal."
+ },
+ "tuatara": {
+  "title": "Tuatara — is it dangerous? | Guess My Animal",
+  "description": "The last survivor of an order older than snakes, with a light-sensing third eye. Is a tuatara dangerous? Get the answer on Guess My Animal."
+ },
+ "tree-frog": {
+  "title": "Tree frog — is it dangerous? | Guess My Animal",
+  "description": "Sticky toe pads let it hang from a single leaf, and some can glide between trees. Is a tree frog dangerous? Get the answer on Guess My Animal."
+ },
+ "poison-dart-frog": {
+  "title": "Poison dart frog — is it dangerous? | Guess My Animal",
+  "description": "One golden frog carries enough toxin to kill ten people, but only in the wild: its poison comes from its diet."
+ },
+ "bullfrog": {
+  "title": "Bullfrog — is it dangerous? | Guess My Animal",
+  "description": "Eats anything it can fit in its mouth, including birds and other frogs. Is a bullfrog dangerous? Get the answer on Guess My Animal."
+ },
+ "caecilian": {
+  "title": "Caecilian — is it dangerous? | Guess My Animal",
+  "description": "A limbless burrowing amphibian, and some species let their young eat their skin. Is a caecilian dangerous? Get the answer on Guess My Animal."
+ },
+ "tuna": {
+  "title": "Tuna — is it dangerous? | Guess My Animal",
+  "description": "Warm-blooded, unlike almost every other fish, and it never stops swimming. Is a tuna dangerous? Get the answer on Guess My Animal."
+ },
+ "cod": {
+  "title": "Cod — is it dangerous? | Guess My Animal",
+  "description": "A single female can release five million eggs in one spawning. Is a cod dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "herring": {
+  "title": "Herring — is it dangerous? | Guess My Animal",
+  "description": "Shoals can hold billions of fish and stretch for miles. Is a herring dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "trout": {
+  "title": "Trout — is it dangerous? | Guess My Animal",
+  "description": "Holds station facing upstream, letting the current bring food to it. Is a trout dangerous? Get the answer on Guess My Animal."
+ },
+ "carp": {
+  "title": "Carp — is it dangerous? | Guess My Animal",
+  "description": "Koi are ornamental carp, and one reportedly lived to over 200. Is a carp dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "catfish": {
+  "title": "Catfish — is it dangerous? | Guess My Animal",
+  "description": "Its whole body is covered in taste buds, over 100,000 of them. Is a catfish dangerous? Get the answer on Guess My Animal."
+ },
+ "piranha": {
+  "title": "Piranha — is it dangerous? | Guess My Animal",
+  "description": "Mostly eats insects and other fish. The feeding-frenzy reputation came from a Roosevelt stunt. Is a piranha dangerous? Get the answer on Guess My Animal."
+ },
+ "swordfish": {
+  "title": "Swordfish — is it dangerous? | Guess My Animal",
+  "description": "Heats its own eyes and brain so it can see clearly hunting in cold deep water. Is a swordfish dangerous? Get the answer on Guess My Animal."
+ },
+ "marlin": {
+  "title": "Marlin — is it dangerous? | Guess My Animal",
+  "description": "One of the fastest fish in the sea, clocked at over 50 mph. Is a marlin dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "stingray": {
+  "title": "Stingray — is it dangerous? | Guess My Animal",
+  "description": "The barb is purely defensive, and it is serrated so it tears coming out. Is a stingray dangerous? Get the answer on Guess My Animal."
+ },
+ "manta-ray": {
+  "title": "Manta ray — is it dangerous? | Guess My Animal",
+  "description": "Seven metres across, with the largest brain of any fish, and it recognises itself in mirrors. Is a manta ray dangerous? Get the answer on Guess My Animal."
+ },
+ "anglerfish": {
+  "title": "Anglerfish — is it dangerous? | Guess My Animal",
+  "description": "The male fuses onto the female permanently and becomes a set of spare organs. Is a anglerfish dangerous? Get the answer on Guess My Animal."
+ },
+ "barracuda": {
+  "title": "Barracuda — is it dangerous? | Guess My Animal",
+  "description": "Strikes at 27 mph and is drawn to anything shiny, including jewellery. Is a barracuda dangerous? Get the answer on Guess My Animal."
+ },
+ "moray-eel": {
+  "title": "Moray eel — is it dangerous? | Guess My Animal",
+  "description": "Has a second set of jaws in its throat that shoot forward to drag prey down. Is a moray eel dangerous? Get the answer on Guess My Animal."
+ },
+ "electric-eel": {
+  "title": "Electric eel — is it dangerous? | Guess My Animal",
+  "description": "Delivers 860 volts, and it is not an eel but a kind of knifefish. Is a electric eel dangerous? Get the answer on Guess My Animal."
+ },
+ "seadragon": {
+  "title": "Seadragon — is it dangerous? | Guess My Animal",
+  "description": "The leaf-shaped fins are pure camouflage and do almost nothing to move it. Is a seadragon dangerous? Get the answer on Guess My Animal."
+ },
+ "starfish": {
+  "title": "Starfish — is it dangerous? | Guess My Animal",
+  "description": "No brain and no blood, and it pushes its stomach out of its body to eat. Is a starfish dangerous? Get the answer on Guess My Animal."
+ },
+ "sea-urchin": {
+  "title": "Sea urchin — is it dangerous? | Guess My Animal",
+  "description": "Its mouth has five teeth and is called Aristotle's lantern. Is a sea urchin dangerous? Get the answer on Guess My Animal."
+ },
+ "sea-cucumber": {
+  "title": "Sea cucumber — is it dangerous? | Guess My Animal",
+  "description": "Ejects its own internal organs at attackers and grows a new set. Is a sea cucumber dangerous? Get the answer on Guess My Animal."
+ },
+ "coral": {
+  "title": "Coral — is it dangerous? | Guess My Animal",
+  "description": "An animal, not a plant, and the Great Barrier Reef is visible from space. Is a coral dangerous? Get the answer on Guess My Animal."
+ },
+ "sea-anemone": {
+  "title": "Sea anemone — is it dangerous? | Guess My Animal",
+  "description": "Stings everything except the clownfish, which wears a coat of its mucus as a disguise. Is a sea anemone dangerous? Get the answer on Guess My Animal."
+ },
+ "nautilus": {
+  "title": "Nautilus — is it dangerous? | Guess My Animal",
+  "description": "Barely changed in 500 million years, and it has around 90 tentacles with no suckers. Is a nautilus dangerous? Get the answer on Guess My Animal."
+ },
+ "cuttlefish": {
+  "title": "Cuttlefish — is it dangerous? | Guess My Animal",
+  "description": "Colourblind, yet it produces the most sophisticated camouflage in the animal kingdom. Is a cuttlefish dangerous? Get the answer on Guess My Animal."
+ },
+ "slug": {
+  "title": "Slug — is it dangerous? | Guess My Animal",
+  "description": "Essentially a snail that gave up its shell, and it has thousands of teeth. Is a slug dangerous? Get the answer on Guess My Animal."
+ },
+ "mussel": {
+  "title": "Mussel — is it dangerous? | Guess My Animal",
+  "description": "Anchors itself with threads so strong they are being copied for surgical glue. Is a mussel dangerous? Get the answer on Guess My Animal."
+ },
+ "oyster": {
+  "title": "Oyster — is it dangerous? | Guess My Animal",
+  "description": "Filters up to 200 litres of water a day, and can change sex more than once. Is a oyster dangerous? Get the answer on Guess My Animal."
+ },
+ "krill": {
+  "title": "Krill — is it dangerous? | Guess My Animal",
+  "description": "Antarctic krill together outweigh all the humans on Earth. Is a krill dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "barnacle": {
+  "title": "Barnacle — is it dangerous? | Guess My Animal",
+  "description": "Glues its own head to the rock and spends its life kicking food into its mouth. Is a barnacle dangerous? Get the answer on Guess My Animal."
+ },
+ "woodlouse": {
+  "title": "Woodlouse — is it dangerous? | Guess My Animal",
+  "description": "A crustacean living on land, more closely related to a crab than to any insect. Is a woodlouse dangerous? Get the answer on Guess My Animal."
+ },
+ "cockroach": {
+  "title": "Cockroach — is it dangerous? | Guess My Animal",
+  "description": "Survives a week without its head, and only dies then because it cannot drink. Is a cockroach dangerous? Get the answer on Guess My Animal."
+ },
+ "termite": {
+  "title": "Termite — is it dangerous? | Guess My Animal",
+  "description": "Builds air-conditioned mounds taller than a giraffe, and the queen can live 50 years. Is a termite dangerous? Get the answer on Guess My Animal."
+ },
+ "cricket": {
+  "title": "Cricket — is it dangerous? | Guess My Animal",
+  "description": "Chirps faster in warm weather, so you can estimate the temperature by counting. Is a cricket dangerous? Get the answer on Guess My Animal."
+ },
+ "locust": {
+  "title": "Locust — is it dangerous? | Guess My Animal",
+  "description": "A harmless grasshopper until crowding changes its body and behaviour into a swarming form. Is a locust dangerous? Get the answer on Guess My Animal."
+ },
+ "stick-insect": {
+  "title": "Stick insect — is it dangerous? | Guess My Animal",
+  "description": "Some species have no males at all and reproduce entirely without them. Is a stick insect dangerous? Get the answer on Guess My Animal."
+ },
+ "firefly": {
+  "title": "Firefly — is it dangerous? | Guess My Animal",
+  "description": "Its light is almost 100 percent efficient. A bulb wastes most of its energy as heat. Is a firefly dangerous? Get the answer on Guess My Animal."
+ },
+ "caterpillar": {
+  "title": "Caterpillar — is it dangerous? | Guess My Animal",
+  "description": "Inside the chrysalis it dissolves almost completely, yet the butterfly still remembers what it learned."
+ },
+ "earwig": {
+  "title": "Earwig — is it dangerous? | Guess My Animal",
+  "description": "It does not crawl into ears. It does, unusually for an insect, mother its young. Is a earwig dangerous? Get the answer on Guess My Animal."
+ },
+ "flea": {
+  "title": "Flea — is it dangerous? | Guess My Animal",
+  "description": "Jumps 100 times its own height, accelerating faster than a space shuttle. Is a flea dangerous? Get the answer on Guess My Animal."
+ },
+ "tick": {
+  "title": "Tick — is it dangerous? | Guess My Animal",
+  "description": "Can wait over a year for a host, and it spreads Lyme disease. Is a tick dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "tarantula": {
+  "title": "Tarantula — is it dangerous? | Guess My Animal",
+  "description": "Flicks barbed hairs off its abdomen at attackers, and females can live 30 years. Is a tarantula dangerous? Get the answer on Guess My Animal."
+ },
+ "black-widow": {
+  "title": "Black widow — is it dangerous? | Guess My Animal",
+  "description": "Venom is 15 times stronger than a rattlesnake's, but the dose is far too small to match it. Is a black widow dangerous? Get the answer on Guess My Animal."
+ },
+ "mite": {
+  "title": "Mite — is it dangerous? | Guess My Animal",
+  "description": "Microscopic mites live in the pores of your face right now, and that is normal. Is a mite dangerous? Get the answer on Guess My Animal."
+ },
+ "centipede": {
+  "title": "Centipede — is it dangerous? | Guess My Animal",
+  "description": "Never actually has 100 legs: the count is always an odd number of pairs. Is a centipede dangerous? Get the answer on Guess My Animal."
+ },
+ "millipede": {
+  "title": "Millipede — is it dangerous? | Guess My Animal",
+  "description": "The first animal known to move onto land, over 400 million years ago. Is a millipede dangerous? Get the answer on Guess My Animal."
+ },
+ "leech": {
+  "title": "Leech — is it dangerous? | Guess My Animal",
+  "description": "Still used in modern surgery, because its saliva stops blood clotting better than any drug. Is a leech dangerous? Get the answer on Guess My Animal."
+ },
+ "sea-sponge": {
+  "title": "Sea sponge — is it dangerous? | Guess My Animal",
+  "description": "An animal with no brain, heart, muscles or nerves, and some live over 2,000 years. Is a sea sponge dangerous? Get the answer on Guess My Animal."
+ },
+ "tardigrade": {
+  "title": "Tardigrade — is it dangerous? | Guess My Animal",
+  "description": "Survives boiling, freezing, radiation and the vacuum of space. Is a tardigrade dangerous? Get the answer on Guess My Animal."
+ },
+ "bumblebee": {
+  "title": "Bumblebee — is it dangerous? | Guess My Animal",
+  "description": "Buzz-pollinates by vibrating at the right frequency to shake pollen loose. Is a bumblebee dangerous? Get the answer on Guess My Animal."
+ },
+ "hornet": {
+  "title": "Hornet — is it dangerous? | Guess My Animal",
+  "description": "Thirty Asian giant hornets can destroy a colony of 30,000 honeybees in hours. Is a hornet dangerous? Get the answer on Guess My Animal."
+ },
+ "horsefly": {
+  "title": "Horsefly — is it dangerous? | Guess My Animal",
+  "description": "Cuts the skin open with blade-like mouthparts rather than piercing it, which is why it hurts. Is a horsefly dangerous? Get the answer on Guess My Animal."
+ },
+ "silkworm": {
+  "title": "Silkworm — is it dangerous? | Guess My Animal",
+  "description": "Fully domesticated for 5,000 years, and it can no longer survive in the wild. Is a silkworm dangerous? Get the answer on Guess My Animal."
+ },
+ "peacock-spider": {
+  "title": "Peacock spider — is it dangerous? | Guess My Animal",
+  "description": "Smaller than a grain of rice, and the male dances with a raised technicolour flap. Is a peacock spider dangerous? Get the answer on Guess My Animal."
+ },
+ "ghost-crab": {
+  "title": "Ghost crab — is it dangerous? | Guess My Animal",
+  "description": "Growls at rivals using teeth inside its own stomach. Is a ghost crab dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "hermit-crab": {
+  "title": "Hermit crab — is it dangerous? | Guess My Animal",
+  "description": "Queues up by size to swap shells in order, each taking the one the last left behind. Is a hermit crab dangerous? Get the answer on Guess My Animal."
+ },
+ "mantis-shrimp": {
+  "title": "Mantis shrimp — is it dangerous? | Guess My Animal",
+  "description": "Punches fast enough to boil the water around its claw, and has 16 colour receptors to our three."
+ },
+ "horseshoe-crab": {
+  "title": "Horseshoe crab — is it dangerous? | Guess My Animal",
+  "description": "Its blue blood is used to test every vaccine on Earth for contamination. Is a horseshoe crab dangerous? Get the answer on Guess My Animal."
+ },
+ "eland": {
+  "title": "Eland — is it dangerous? | Guess My Animal",
+  "description": "The largest antelope on Earth, and it still clears a two-metre fence from standing. Is a eland dangerous? Get the answer on Guess My Animal."
+ },
+ "kudu": {
+  "title": "Kudu — is it dangerous? | Guess My Animal",
+  "description": "The male's spiral horns would measure over a metre if you unwound them. Is a kudu dangerous? Get the answer on Guess My Animal."
+ },
+ "nyala": {
+  "title": "Nyala — is it dangerous? | Guess My Animal",
+  "description": "Males and females look so different they were once thought to be separate species. Is a nyala dangerous? Get the answer on Guess My Animal."
+ },
+ "hartebeest": {
+  "title": "Hartebeest — is it dangerous? | Guess My Animal",
+  "description": "One of the fastest antelopes, and it posts a lookout on a termite mound. Is a hartebeest dangerous? Get the answer on Guess My Animal."
+ },
+ "springbok": {
+  "title": "Springbok — is it dangerous? | Guess My Animal",
+  "description": "Pronks two metres into the air with its back arched, which is where the name comes from. Is a springbok dangerous? Get the answer on Guess My Animal."
+ },
+ "pronghorn": {
+  "title": "Pronghorn — is it dangerous? | Guess My Animal",
+  "description": "The fastest land animal in the Americas, built to outrun a cheetah that went extinct. Is a pronghorn dangerous? Get the answer on Guess My Animal."
+ },
+ "muskox": {
+  "title": "Muskox — is it dangerous? | Guess My Animal",
+  "description": "Forms a defensive ring around its calves, and its underwool is warmer than sheep's wool. Is a muskox dangerous? Get the answer on Guess My Animal."
+ },
+ "dik-dik": {
+  "title": "Dik-dik — is it dangerous? | Guess My Animal",
+  "description": "A tiny antelope named after the alarm call the female makes. Is a dik-dik dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "chamois": {
+  "title": "Chamois — is it dangerous? | Guess My Animal",
+  "description": "Its hide was the original chamois leather used for polishing cars. Is a chamois dangerous? Get the answer on Guess My Animal."
+ },
+ "markhor": {
+  "title": "Markhor — is it dangerous? | Guess My Animal",
+  "description": "A wild goat with corkscrew horns, and the national animal of Pakistan. Is a markhor dangerous? Get the answer on Guess My Animal."
+ },
+ "muntjac": {
+  "title": "Muntjac — is it dangerous? | Guess My Animal",
+  "description": "Barks like a dog for up to an hour, and the males have small tusks. Is a muntjac dangerous? Get the answer on Guess My Animal."
+ },
+ "coati": {
+  "title": "Coati — is it dangerous? | Guess My Animal",
+  "description": "A raccoon relative that walks with its long tail held straight up like a flag. Is a coati dangerous? Get the answer on Guess My Animal."
+ },
+ "kinkajou": {
+  "title": "Kinkajou — is it dangerous? | Guess My Animal",
+  "description": "Has a 13 cm tongue for raiding flowers, and a tail it can hang from. Is a kinkajou dangerous? Get the answer on Guess My Animal."
+ },
+ "fossa": {
+  "title": "Fossa — is it dangerous? | Guess My Animal",
+  "description": "Madagascar's top predator, related to the mongoose but built like a cat. Is a fossa dangerous? Get the answer on Guess My Animal."
+ },
+ "genet": {
+  "title": "Genet — is it dangerous? | Guess My Animal",
+  "description": "Can squeeze through any gap its head fits through, which is barely wider than a mug. Is a genet dangerous? Get the answer on Guess My Animal."
+ },
+ "polecat": {
+  "title": "Polecat — is it dangerous? | Guess My Animal",
+  "description": "The wild ancestor of the ferret, and it really does stink when alarmed. Is a polecat dangerous? Get the answer on Guess My Animal."
+ },
+ "pika": {
+  "title": "Pika — is it dangerous? | Guess My Animal",
+  "description": "Cuts and dries little haystacks all summer to eat through the winter. Is a pika dangerous? Get the answer on Guess My Animal."
+ },
+ "jerboa": {
+  "title": "Jerboa — is it dangerous? | Guess My Animal",
+  "description": "Hops like a tiny kangaroo at 15 mph and may never drink water in its life. Is a jerboa dangerous? Get the answer on Guess My Animal."
+ },
+ "gopher": {
+  "title": "Gopher — is it dangerous? | Guess My Animal",
+  "description": "Its lips close behind its front teeth so it can dig with them without eating soil. Is a gopher dangerous? Get the answer on Guess My Animal."
+ },
+ "muskrat": {
+  "title": "Muskrat — is it dangerous? | Guess My Animal",
+  "description": "Stays underwater for 17 minutes and can chew with its mouth open below the surface. Is a muskrat dangerous? Get the answer on Guess My Animal."
+ },
+ "bandicoot": {
+  "title": "Bandicoot — is it dangerous? | Guess My Animal",
+  "description": "Has the shortest pregnancy of any mammal, around 12 days. Is a bandicoot dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "quoll": {
+  "title": "Quoll — is it dangerous? | Guess My Animal",
+  "description": "Being taught not to eat poisonous cane toads by being fed ones that make it mildly ill. Is a quoll dangerous? Get the answer on Guess My Animal."
+ },
+ "indri": {
+  "title": "Indri — is it dangerous? | Guess My Animal",
+  "description": "The largest lemur, and families sing wailing duets that carry for two miles. Is a indri dangerous? Get the answer on Guess My Animal."
+ },
+ "tenrec": {
+  "title": "Tenrec — is it dangerous? | Guess My Animal",
+  "description": "Looks like a hedgehog but is more closely related to an elephant. Is a tenrec dangerous? Get the answer on Guess My Animal."
+ },
+ "agouti": {
+  "title": "Agouti — is it dangerous? | Guess My Animal",
+  "description": "The only animal whose teeth can open a Brazil nut pod, so it plants the forest. Is a agouti dangerous? Get the answer on Guess My Animal."
+ },
+ "ape": {
+  "title": "Ape — is it dangerous? | Guess My Animal",
+  "description": "Apes have no tail, which is the quickest way to tell one from a monkey. Is a ape dangerous? Get the answer on Guess My Animal."
+ },
+ "human": {
+  "title": "Human — is it dangerous? | Guess My Animal",
+  "description": "Yes, you count. And you are one of the best endurance runners in the animal kingdom. Is a human dangerous? Get the answer on Guess My Animal."
+ },
+ "liger": {
+  "title": "Liger — is it dangerous? | Guess My Animal",
+  "description": "A lion crossed with a tigress, and it grows larger than either parent. Is a liger dangerous? Get the answer on Guess My Animal."
+ },
+ "zonkey": {
+  "title": "Zonkey — is it dangerous? | Guess My Animal",
+  "description": "A zebra crossed with a donkey, striped only on the legs. Is a zonkey dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "mallard": {
+  "title": "Mallard — is it dangerous? | Guess My Animal",
+  "description": "The ancestor of nearly every domestic duck breed. Is a mallard dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "egret": {
+  "title": "Egret — is it dangerous? | Guess My Animal",
+  "description": "Hunted almost to extinction for hat feathers, which is what started the conservation movement. Is a egret dangerous? Get the answer on Guess My Animal."
+ },
+ "grouse": {
+  "title": "Grouse — is it dangerous? | Guess My Animal",
+  "description": "Burrows into snow to roost, and males inflate coloured air sacs to boom at rivals. Is a grouse dangerous? Get the answer on Guess My Animal."
+ },
+ "osprey": {
+  "title": "Osprey — is it dangerous? | Guess My Animal",
+  "description": "Its outer toe reverses so it can carry a fish head-first for less drag. Is a osprey dangerous? Get the answer on Guess My Animal."
+ },
+ "hornbill": {
+  "title": "Hornbill — is it dangerous? | Guess My Animal",
+  "description": "The female seals herself inside a tree hole and the male feeds her through a slit. Is a hornbill dangerous? Get the answer on Guess My Animal."
+ },
+ "cockatiel": {
+  "title": "Cockatiel — is it dangerous? | Guess My Animal",
+  "description": "Its crest is a mood indicator: straight up means startled, flat means angry. Is a cockatiel dangerous? Get the answer on Guess My Animal."
+ },
+ "mockingbird": {
+  "title": "Mockingbird — is it dangerous? | Guess My Animal",
+  "description": "Learns around 200 songs and will copy car alarms and squeaky gates. Is a mockingbird dangerous? Get the answer on Guess My Animal."
+ },
+ "kakapo": {
+  "title": "Kakapo — is it dangerous? | Guess My Animal",
+  "description": "The world's only flightless parrot, and there are only a couple of hundred alive. Is a kakapo dangerous? Get the answer on Guess My Animal."
+ },
+ "kea": {
+  "title": "Kea — is it dangerous? | Guess My Animal",
+  "description": "An alpine parrot that solves puzzles, works in teams, and strips rubber off cars for fun. Is a kea dangerous? Get the answer on Guess My Animal."
+ },
+ "bass": {
+  "title": "Bass — is it dangerous? | Guess My Animal",
+  "description": "The most fished-for freshwater species in America, worth billions a year. Is a bass dangerous? Get the answer on Guess My Animal."
+ },
+ "halibut": {
+  "title": "Halibut — is it dangerous? | Guess My Animal",
+  "description": "Born upright, then one eye migrates across its skull so it can lie flat on the seabed. Is a halibut dangerous? Get the answer on Guess My Animal."
+ },
+ "anchovy": {
+  "title": "Anchovy — is it dangerous? | Guess My Animal",
+  "description": "Worcestershire sauce and Caesar dressing both get their savoury kick from it. Is a anchovy dangerous? Get the answer on Guess My Animal."
+ },
+ "sturgeon": {
+  "title": "Sturgeon — is it dangerous? | Guess My Animal",
+  "description": "Older than the dinosaurs, and its roe is sold as caviar. Is a sturgeon dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "guppy": {
+  "title": "Guppy — is it dangerous? | Guess My Animal",
+  "description": "Gives birth to live young, and released guppies now control mosquitoes worldwide. Is a guppy dangerous? Get the answer on Guess My Animal."
+ },
+ "angelfish": {
+  "title": "Angelfish — is it dangerous? | Guess My Animal",
+  "description": "Pairs bond for life and take turns guarding the eggs. Is a angelfish dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "lionfish": {
+  "title": "Lionfish — is it dangerous? | Guess My Animal",
+  "description": "Venomous spines and no natural predators in the Atlantic, where it is now a plague. Is a lionfish dangerous? Get the answer on Guess My Animal."
+ },
+ "stonefish": {
+  "title": "Stonefish — is it dangerous? | Guess My Animal",
+  "description": "The most venomous fish alive, and it looks exactly like an encrusted rock. Is a stonefish dangerous? Get the answer on Guess My Animal."
+ },
+ "sailfish": {
+  "title": "Sailfish — is it dangerous? | Guess My Animal",
+  "description": "Often called the fastest fish in the sea, and it lights up in stripes when hunting. Is a sailfish dangerous? Get the answer on Guess My Animal."
+ },
+ "sawfish": {
+  "title": "Sawfish — is it dangerous? | Guess My Animal",
+  "description": "The saw is covered in sensors that detect the electricity of a heartbeat. Is a sawfish dangerous? Get the answer on Guess My Animal."
+ },
+ "parrotfish": {
+  "title": "Parrotfish — is it dangerous? | Guess My Animal",
+  "description": "Most white sand on a tropical beach is coral it has eaten and excreted. Is a parrotfish dangerous? Get the answer on Guess My Animal."
+ },
+ "mudskipper": {
+  "title": "Mudskipper — is it dangerous? | Guess My Animal",
+  "description": "A fish that walks on land, climbs trees and breathes through its skin. Is a mudskipper dangerous? Get the answer on Guess My Animal."
+ },
+ "lungfish": {
+  "title": "Lungfish — is it dangerous? | Guess My Animal",
+  "description": "Survives drought by sealing itself in dried mud and breathing air for years. Is a lungfish dangerous? Get the answer on Guess My Animal."
+ },
+ "coelacanth": {
+  "title": "Coelacanth — is it dangerous? | Guess My Animal",
+  "description": "Thought extinct for 65 million years until one turned up in a fish market in 1938. Is a coelacanth dangerous? Get the answer on Guess My Animal."
+ },
+ "hagfish": {
+  "title": "Hagfish — is it dangerous? | Guess My Animal",
+  "description": "Turns a bucket of seawater into slime in seconds, and it ties itself in a knot to escape. Is a hagfish dangerous? Get the answer on Guess My Animal."
+ },
+ "blobfish": {
+  "title": "Blobfish — is it dangerous? | Guess My Animal",
+  "description": "Only looks melted out of water. At depth the pressure holds it in a normal fish shape. Is a blobfish dangerous? Get the answer on Guess My Animal."
+ },
+ "oarfish": {
+  "title": "Oarfish — is it dangerous? | Guess My Animal",
+  "description": "The longest bony fish at 11 metres, and the likely source of sea serpent stories. Is a oarfish dangerous? Get the answer on Guess My Animal."
+ },
+ "crayfish": {
+  "title": "Crayfish — is it dangerous? | Guess My Animal",
+  "description": "A freshwater lobster, and it can regrow a lost claw. Is a crayfish dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal."
+ },
+ "copperhead": {
+  "title": "Copperhead — is it dangerous? | Guess My Animal",
+  "description": "Bites more people in the US than any other venomous snake, and kills almost none. Is a copperhead dangerous? Get the answer on Guess My Animal."
+ },
+ "taipan": {
+  "title": "Taipan — is it dangerous? | Guess My Animal",
+  "description": "The inland taipan has the most toxic venom of any snake, and is famously shy. Is a taipan dangerous? Get the answer on Guess My Animal."
+ },
+ "boomslang": {
+  "title": "Boomslang — is it dangerous? | Guess My Animal",
+  "description": "Fangs sit at the back of its mouth, and its venom stops blood clotting entirely. Is a boomslang dangerous? Get the answer on Guess My Animal."
+ },
+ "sidewinder": {
+  "title": "Sidewinder — is it dangerous? | Guess My Animal",
+  "description": "Moves sideways so only two points touch the burning sand at any moment. Is a sidewinder dangerous? Get the answer on Guess My Animal."
+ },
+ "hellbender": {
+  "title": "Hellbender — is it dangerous? | Guess My Animal",
+  "description": "North America's largest salamander at 70 cm, and it breathes through skin folds. Is a hellbender dangerous? Get the answer on Guess My Animal."
+ },
+ "olm": {
+  "title": "Olm — is it dangerous? | Guess My Animal",
+  "description": "Blind, cave-dwelling, and it can survive ten years without eating. Is a olm dangerous? Get the answer on Guess My Animal."
+ },
+ "cicada": {
+  "title": "Cicada — is it dangerous? | Guess My Animal",
+  "description": "Some broods spend 17 years underground, then all emerge in the same few days. Is a cicada dangerous? Get the answer on Guess My Animal."
+ },
+ "mayfly": {
+  "title": "Mayfly — is it dangerous? | Guess My Animal",
+  "description": "Lives a year as a nymph and often less than a day as an adult, with no mouth to feed. Is a mayfly dangerous? Get the answer on Guess My Animal."
+ },
+ "katydid": {
+  "title": "Katydid — is it dangerous? | Guess My Animal",
+  "description": "Camouflaged as a leaf right down to fake blemishes and bite marks. Is a katydid dangerous? Get the answer on Guess My Animal."
+ },
+ "nudibranch": {
+  "title": "Nudibranch — is it dangerous? | Guess My Animal",
+  "description": "Eats stinging anemones and stores the unfired stingers in its own skin. Is a nudibranch dangerous? Get the answer on Guess My Animal."
+ },
+ "limpet": {
+  "title": "Limpet — is it dangerous? | Guess My Animal",
+  "description": "Its teeth are the strongest natural material known, stronger than spider silk. Is a limpet dangerous? Get the answer on Guess My Animal."
+ },
+ "scallop": {
+  "title": "Scallop — is it dangerous? | Guess My Animal",
+  "description": "Has up to 200 blue eyes around the rim of its shell, and it swims by clapping. Is a scallop dangerous? Get the answer on Guess My Animal."
+ },
+ "zebrafish": {
+  "title": "Zebrafish — is it dangerous? | Guess My Animal",
+  "description": "Regrows its own heart, which is why laboratories keep millions of them. Is a zebrafish dangerous? Get the answer on Guess My Animal."
+ },
+ "wrasse": {
+  "title": "Wrasse — is it dangerous? | Guess My Animal",
+  "description": "Cleaner wrasse run stations where big fish queue up to have parasites picked off. Is a wrasse dangerous? Get the answer on Guess My Animal."
+ },
+ "vaquita": {
+  "title": "Vaquita — is it dangerous? | Guess My Animal",
+  "description": "The rarest marine mammal on Earth, with around ten individuals left. Is a vaquita dangerous? Get the answer on Guess My Animal."
+ },
+ "saiga": {
+  "title": "Saiga — is it dangerous? | Guess My Animal",
+  "description": "Its bulbous nose filters dust in summer and warms freezing air in winter. Is a saiga dangerous? Get the answer on Guess My Animal."
+ },
+ "takin": {
+  "title": "Takin — is it dangerous? | Guess My Animal",
+  "description": "The national animal of Bhutan, and its oily coat works as a natural raincoat. Is a takin dangerous? Get the answer on Guess My Animal."
+ },
+ "zebu": {
+  "title": "Zebu — is it dangerous? | Guess My Animal",
+  "description": "The humped cattle of India, far more heat and tick resistant than European breeds. Is a zebu dangerous? Get the answer on Guess My Animal."
+ },
+ "bongo": {
+  "title": "Bongo — is it dangerous? | Guess My Animal",
+  "description": "The largest forest antelope, and it tips its head back so its horns do not snag. Is a bongo dangerous? Get the answer on Guess My Animal."
+ },
+ "sea-otter": {
+  "title": "Sea otter — is it dangerous? | Guess My Animal",
+  "description": "Holds hands while sleeping so it does not drift apart, and keeps a favourite rock in a pocket of skin."
+ }
+}
