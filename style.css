@@ -193,7 +193,9 @@ body.view-home :focus-visible { outline-color: var(--home-ink); }
   /* Reduced, not removed: the fade still says something arrived. */
   @keyframes rise { from { opacity: 0; } to { opacity: 1; } }
   @keyframes deal { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes diceRoll { from { opacity: .6; } to { opacity: 1; } }
   .anim-rise, .anim-deal, .stagger > * { animation-duration: .2s; animation-delay: 0s !important; }
+  .dice.rolling { animation-duration: .15s; }
   .pcard.is-loading .pcard-fallback { animation: none; opacity: .6; }
   * { transition-duration: .05s !important; }
 }
@@ -325,13 +327,23 @@ body.view-home #q { font-size: 17px; }
   color: var(--on-sun);
   background: var(--sun);
   border: 0; border-radius: 12px;
-  transition: background .16s var(--ease), transform .4s var(--ease);
+  transition: background .16s var(--ease), transform .16s var(--ease);
 }
 .dice svg { width: 21px; height: 21px; }
 .dice:hover { background: var(--sun-deep); }
 .dice:active { transform: scale(.94); }
-/* Rolled, not just pressed. */
-.dice.rolling { transform: rotate(180deg); }
+
+/* Tossed, not just pressed: a full turn that swells slightly at the peak
+   of the arc, like the die leaving the hand before it lands back flat.
+   This is the site's most-repeated interaction, so it stays quick and
+   quiet rather than competing with the photo card's own arrival - the
+   one moment this system spends its full authored attention on. */
+@keyframes diceRoll {
+  0%   { transform: rotate(0deg) scale(1); }
+  55%  { transform: rotate(300deg) scale(1.08); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.dice.rolling { animation: diceRoll .48s var(--ease); }
 
 .suggest {
   position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40;

@@ -653,10 +653,16 @@
     pick(next);
   }
 
-  el('random').addEventListener('click', (e) => {
-    const b = e.currentTarget;
-    b.classList.add('rolling');
-    setTimeout(() => b.classList.remove('rolling'), 400);
+  // animationend cleans up the class itself rather than a setTimeout tied
+  // to the CSS duration, so the two can never drift out of sync. The
+  // reflow-forcing remove/re-add lets a mashed dice button restart the
+  // roll every time instead of only animating on the first of a burst.
+  const diceBtn = el('random');
+  diceBtn.addEventListener('animationend', () => diceBtn.classList.remove('rolling'));
+  diceBtn.addEventListener('click', () => {
+    diceBtn.classList.remove('rolling');
+    void diceBtn.offsetWidth;
+    diceBtn.classList.add('rolling');
     rollDice();
   });
   el('another').addEventListener('click', rollDice);
