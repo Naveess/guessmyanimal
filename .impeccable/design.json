@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-31T00:00:00.000Z",
+  "title": "Design System: Guess My Animal",
+  "extensions": {
+    "colorMeta": {
+      "sun": { "role": "primary", "displayName": "Sun", "canonical": "#ffce1f", "tonalRamp": ["#3d2f00", "#5c4600", "#7d5f00", "#a17b00", "#c99900", "#ffce1f", "#ffdd5c", "#ffedb0"] },
+      "sun-deep": { "role": "primary", "displayName": "Sun Deep", "canonical": "#e8b400" },
+      "on-sun": { "role": "primary", "displayName": "On Sun", "canonical": "#1d1e19" },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#e9eae2", "tonalRamp": ["#14150f", "#20221a", "#2c2f25", "#4a4d40", "#767a68", "#a8ac98", "#c9ccbc", "#e9eae2"] },
+      "card": { "role": "neutral", "displayName": "Card", "canonical": "#f8f9f3" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#1d1e19", "tonalRamp": ["#1d1e19", "#3a3c30", "#5f6255", "#84876f", "#a8ab92", "#c6c9b3", "#e3e5d4", "#eef0e4"] },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#5f6255" },
+      "line": { "role": "neutral", "displayName": "Line", "canonical": "#d7d9cc" },
+      "flat-bg": { "role": "neutral", "displayName": "Flat", "canonical": "#e4e6da" },
+      "good": { "role": "semantic", "displayName": "Good", "canonical": "#0a6b3d", "tonalRamp": ["#062a18", "#0a6b3d", "#12934f", "#2cb56c", "#58cf9b", "#8fe0bc", "#c1efdb", "#dbe9dd"] },
+      "warn": { "role": "semantic", "displayName": "Warn", "canonical": "#8a5600", "tonalRamp": ["#2e1c00", "#8a5600", "#b3730a", "#d6911f", "#efbc63", "#f4d09a", "#f8e2c1", "#f4e6c9"] },
+      "bad": { "role": "semantic", "displayName": "Bad", "canonical": "#b8321a", "tonalRamp": ["#3f1109", "#8f2313", "#b8321a", "#df4a2a", "#ff7f63", "#ffa793", "#ffcabf", "#f2ddd6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Home wordmark only." },
+      "headline": { "displayName": "Headline", "purpose": "Animal name on the photo card; About page H1 uses its own taller clamp." },
+      "subhead": { "displayName": "Subhead", "purpose": "About page H2 section headings." },
+      "title": { "displayName": "Title", "purpose": "Dialog titles." },
+      "lede": { "displayName": "Lede", "purpose": "About page opening paragraph." },
+      "body": { "displayName": "Body", "purpose": "Blurb and prose paragraphs." },
+      "control-label": { "displayName": "Control Label", "purpose": "Button, chip, and menu-item text." },
+      "meta": { "displayName": "Meta", "purpose": "Dialog subtitles, field labels, glance-chip values." },
+      "caption": { "displayName": "Caption", "purpose": "Footers, figure captions, inactive theme-toggle labels." },
+      "label": { "displayName": "Section Label", "purpose": "Uppercase category markers: Quick answers, At a glance." },
+      "micro": { "displayName": "Micro", "purpose": "Smallest label in the system: the theme-toggle heading." }
+    },
+    "shadows": [
+      { "name": "shadow", "value": "0 1px 2px rgba(29,30,25,.05), 0 6px 18px -10px rgba(29,30,25,.24)", "purpose": "Resting elevation for in-feed extra photos." },
+      { "name": "shadow-l", "value": "0 2px 6px rgba(29,30,25,.07), 0 22px 44px -22px rgba(29,30,25,.45)", "purpose": "Lifted elevation for the photo card, dialogs, menus, share panel." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Confident arrival, no bounce — used for every transition and keyframe in the system." },
+      { "name": "rise", "value": "opacity 0->1, translateY(14px)->0, .55s var(--ease) backwards", "purpose": "Quiet entrance for menus, panels, list items, staggered rows." },
+      { "name": "deal", "value": "opacity 0->1, translateY(30px) scale(.955)->none, clip-path inset(14% 7% 0 7%)->inset(0), .72s var(--ease) backwards", "purpose": "The one authored moment: the photo card arriving, lifting and uncovering itself top-down." },
+      { "name": "pulse", "value": "opacity .35<->.85, 1.3s ease-in-out infinite", "purpose": "Quiet loading indicator on the photo fallback emoji while the Wikipedia fetch is in flight; stops on a real photo landing or on both requests settling with nothing found." }
+    ],
+    "breakpoints": [
+      { "name": "wide", "value": "620px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid Sun CTA, reserved for the one dominant action per screen.",
+      "html": "<a class=\"ds-btn ds-btn-solid\" href=\"#\">Report a problem</a>",
+      "css": ".ds-btn { font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; padding: 12px 17px; min-height: 48px; border-radius: 14px; border: 1px solid #d7d9cc; background: #f8f9f3; color: #1d1e19; transition: background .16s cubic-bezier(.16,1,.3,1), transform .16s cubic-bezier(.16,1,.3,1); } .ds-btn:hover { background: #e4e6da; } .ds-btn:active { transform: scale(.97); } .ds-btn-solid { background: #ffce1f; color: #1d1e19; border-color: #ffce1f; } .ds-btn-solid:hover { background: #e8b400; border-color: #e8b400; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Default button style — card surface, ink text, line border.",
+      "html": "<button class=\"ds-btn-secondary\">Share</button>",
+      "css": ".ds-btn-secondary { font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; padding: 12px 17px; min-height: 48px; border-radius: 14px; border: 1px solid #d7d9cc; background: #f8f9f3; color: #1d1e19; cursor: pointer; transition: background .16s cubic-bezier(.16,1,.3,1), transform .16s cubic-bezier(.16,1,.3,1); } .ds-btn-secondary:hover { background: #e4e6da; } .ds-btn-secondary:active { transform: scale(.97); }"
+    },
+    {
+      "name": "Answer Pill",
+      "kind": "chip",
+      "refersTo": "pill-good",
+      "description": "States a yes/no/depends answer in words first, colour second. Neutral, good, warn, and bad variants.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-k\">Dangerous to humans?</span><span class=\"ds-pill ds-pill-bad\">Yes</span></div>",
+      "css": ".ds-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; } .ds-k { font-size: 15.5px; font-weight: 400; color: #5f6255; } .ds-pill { flex: none; font-size: 15px; font-weight: 600; letter-spacing: -.015em; padding: 6px 13px; border-radius: 999px; text-align: center; background: #e4e6da; color: #1d1e19; } .ds-pill-good { background: #dbe9dd; color: #0a6b3d; } .ds-pill-warn { background: #f4e6c9; color: #8a5600; } .ds-pill-bad { background: #f2ddd6; color: #b8321a; }"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "The one input in the system. Lives centered on the splash, relocates into the sticky top bar once an animal is showing.",
+      "html": "<div class=\"ds-searchrow\"><svg class=\"ds-mag\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\"><circle cx=\"11\" cy=\"11\" r=\"7.2\"/><path d=\"m20.5 20.5-4.6-4.6\"/></svg><input class=\"ds-q\" placeholder=\"Search an animal...\"/></div>",
+      "css": ".ds-searchrow { display: flex; align-items: center; gap: 8px; background: #f8f9f3; border: 1px solid #d7d9cc; border-radius: 15px; padding: 4px 4px 4px 13px; min-height: 52px; transition: border-color .16s cubic-bezier(.16,1,.3,1); } .ds-searchrow:focus-within { border-color: rgba(29,30,25,.4); } .ds-mag { flex: none; width: 20px; height: 20px; color: #5f6255; } .ds-q { flex: 1; min-width: 0; font-size: 16px; font-weight: 500; color: #1d1e19; background: transparent; border: 0; outline: none; padding: 10px 0; }"
+    },
+    {
+      "name": "Card Surface",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Flush-in-flow container: card background, line border, no shadow. Used for the answer list and the At-a-glance chip row's parent.",
+      "html": "<div class=\"ds-card\">Card content</div>",
+      "css": ".ds-card { background: #f8f9f3; border: 1px solid #d7d9cc; border-radius: 20px; padding: 2px 16px; }"
+    },
+    {
+      "name": "Menu Panel",
+      "kind": "nav",
+      "refersTo": "menu-panel",
+      "description": "Floating dropdown from the corner menu button. Card surface, lifted shadow, rise-in entrance.",
+      "html": "<div class=\"ds-menu-panel\"><a class=\"ds-menu-item\" href=\"#\">About the game</a><a class=\"ds-menu-item\" href=\"#\">Report a problem</a></div>",
+      "css": ".ds-menu-panel { min-width: 210px; display: flex; flex-direction: column; padding: 6px; background: #f8f9f3; border-radius: 16px; box-shadow: 0 2px 6px rgba(29,30,25,.07), 0 22px 44px -22px rgba(29,30,25,.45); } .ds-menu-item { font-size: 15px; font-weight: 500; text-align: left; text-decoration: none; color: #1d1e19; background: transparent; border: 0; padding: 12px 13px; border-radius: 11px; min-height: 46px; display: flex; align-items: center; transition: background .13s cubic-bezier(.16,1,.3,1); } .ds-menu-item:hover { background: #e4e6da; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Field Guide, Not the Encyclopedia",
+    "overview": "This is a pocket reference built for one specific moment: someone mid-game, phone in hand, needing an answer in seconds. The visual language borrows Fiasco's warm-bone-and-electric-yellow world and a Bumble-shaped structure (a full-bleed brand-colour splash, then a photo card you scroll past into facts) but exists to serve speed and confidence, not spectacle. Every surface reads as considered rather than decorated: one accent colour used sparingly, one authored motion moment, plain honest type.\n\nGround and ink come from the warm end deliberately — a bone paper (#e9eae2) and an olive near-black (#1d1e19) rather than white-on-grey, so the sun yellow reads as a decision instead of the only colour in the room. That leaves green, amber, and red free to mean something specific on the answer pills, instead of competing with a loud background.\n\nThe system rejects two things by construction: a cold neutral-grey palette (every 'grey' here is tinted from the ink, never a flat #888), and motion as decoration. There is exactly one authored animation — the photo card arriving, lifting and uncovering itself top-down — and everything else is quiet, functional feedback (a rise-in, a scale-down on press).",
+    "keyCharacteristics": [
+      "Warm bone ground and olive-black ink, never cold neutral grey",
+      "One electric-yellow accent (--sun), spent deliberately and rarely",
+      "One authored motion moment (the card \"deal\"); everything else is quiet feedback",
+      "Pills state the answer in words first; colour is a second signal, never the only one",
+      "Three-state theming (System / Light / Dark), with the splash intentionally not yellow in dark mode"
+    ],
+    "rules": [
+      { "name": "The Fixed-Sun Rule", "body": "--sun and --on-sun never change value between themes. Everything else in the palette flips; these two don't, because Sun is the brand identity and On-Sun is the guarantee that text on it stays readable regardless of theme.", "section": "colors" },
+      { "name": "The Tinted-Neutral Rule", "body": "No neutral in this system is a flat, hue-less grey. Every 'grey' token (Muted, Line, Flat) is mixed from Ink, so the whole neutral scale carries the same warm bias as the ground.", "section": "colors" },
+      { "name": "The One-Yellow Rule", "body": "Outside the splash, at most one solid-fill Sun element appears per screen. Its rarity is what makes it read as an accent rather than a theme colour.", "section": "colors" },
+      { "name": "The One-Family Rule", "body": "Every piece of type on the site is Onest. Hierarchy comes from size, weight, and tracking, never from switching typefaces.", "section": "typography" },
+      { "name": "The Border-Or-Shadow Rule", "body": "A surface gets a 1px line border when it sits flush in the flow, or a lifted shadow when it floats above other content. Never both.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep --sun and --on-sun identical in both themes — they are the one deliberately fixed pair.",
+      "Do mix new neutrals from --ink, never introduce a flat hue-less grey.",
+      "Do state every pill's answer in words before adding colour.",
+      "Do give floating surfaces --shadow-l and flush surfaces a --line border — not both.",
+      "Do respect env(safe-area-inset-*) on any new fixed or bottom-anchored surface.",
+      "Do define new dark-mode tokens in both the prefers-color-scheme block and the [data-theme=\"dark\"] block — they must move together or the toggle and system-default drift apart."
+    ],
+    "donts": [
+      "Don't add a second typeface. Hierarchy comes from Onest's weight/size/tracking range, not a display face.",
+      "Don't let more than one solid-Sun element appear on a single non-splash screen.",
+      "Don't add a second authored animation moment to the core flow. The card deal is the one beat; everything else stays quiet.",
+      "Don't use emoji as the primary hero image — it's a fallback for a missing or unloaded photo only.",
+      "Don't reach for a glow, gradient text, or a bounce easing — arrivals use --ease, a confident settle with no overshoot."
+    ]
+  }
+}

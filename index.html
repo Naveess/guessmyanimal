@@ -77,7 +77,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <div class="dock" id="dockHome"></div>
 
     <div class="starters">
-      <p class="starters-label">or try one of these</p>
+      <p class="starters-label" id="startersLabel">or try one of these</p>
       <div class="chips" id="starterChips"></div>
     </div>
 
@@ -142,7 +142,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
       <img class="pcard-img" id="photo" alt="" width="800" height="1000"
            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <div class="pcard-fallback" id="photoFallback" aria-hidden="true"></div>
+      <div class="pcard-fallback" id="photoFallback" aria-hidden="true">
+        <span class="pcard-fallback-emoji" id="photoFallbackEmoji"></span>
+        <p class="pcard-fallback-note" id="photoFallbackNote"></p>
+      </div>
       <div class="pcard-scrim" aria-hidden="true"></div>
       <div class="pcard-meta">
         <h2 class="pcard-name"><span id="name"></span> <span class="pcard-emoji" id="emoji" aria-hidden="true"></span></h2>
@@ -215,6 +218,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <form class="dlg-in" id="reportForm" novalidate>
     <h2 class="dlg-title" id="reportTitle">Report a problem</h2>
     <p class="dlg-sub" id="reportCtx"></p>
+    <p class="dlg-note">We're probably wrong about something in here — tell us and we'll take a look.</p>
 
     <fieldset class="kinds">
       <legend>What is wrong?</legend>

@@ -114,19 +114,23 @@
       a.d === 'Insectivore' ? ['Insects only', WARN] :
                               ['No, herbivore', FLAT];
 
+    // Split in two: what it is and whether it's a risk, then what living
+    // with or near one is actually like. The dividing row in renderAnswers
+    // assumes exactly four rows land in the first half - keep it that way
+    // if this list ever changes.
     return [
       ['What is it?', a.c, FLAT],
       ['Carnivore?', diet[0], diet[1]],
       ['Dangerous?',
         a.dg === 'yes' ? 'Yes' : a.dg === 'some' ? 'Can be' : 'No',
         a.dg === 'yes' ? BAD : a.dg === 'some' ? WARN : FLAT],
+      ['Domesticated?'].concat(yn(a.dm)),
       ['Awake when?',
         a.ac === 'night' ? 'Night' : a.ac === 'day' ? 'Daytime' : 'Day & night', FLAT],
       ['Hibernates?'].concat(yn(a.h)),
       ['Kept as a pet?',
         a.p === 'common' ? 'Commonly' : a.p === 'some' ? 'Sometimes' : 'No',
         a.p === 'common' ? GOOD : a.p === 'some' ? WARN : FLAT],
-      ['Domesticated?'].concat(yn(a.dm)),
       ['Do people eat it?',
         a.et === 'yes' ? 'Yes' : a.et === 'some' ? 'In places' : 'No',
         a.et === 'yes' ? GOOD : a.et === 'some' ? WARN : FLAT],
@@ -136,7 +140,17 @@
   function renderAnswers(a) {
     const box = el('answers');
     box.innerHTML = '';
-    answers(a).forEach(([k, v, state], i) => {
+    const rows = answers(a);
+    rows.forEach(([k, v, state], i) => {
+      // A breathing gap after the identity/risk cluster, before the
+      // behaviour cluster - eight identical rows read as one wall of
+      // text otherwise, and the first four are the ones worth reaching
+      // for fastest.
+      if (i === 4) {
+        const gap = document.createElement('div');
+        gap.className = 'ans-gap';
+        box.appendChild(gap);
+      }
       const row = document.createElement('div');
       row.className = 'row';
       row.style.setProperty('--i', i);
@@ -191,21 +205,29 @@
     const box = el('glance');
     box.innerHTML = '';
 
-    const items = [
+    // What it looks like and where you'd find it, then what it actually
+    // does - a well-attributed animal can run to ten chips, and one flat
+    // wrapped block of them reads as a second answer list. Splitting by
+    // what the fact IS, the way Quick Answers splits identity from
+    // behaviour, keeps it reading as a glance instead of a second read.
+    const appearance = [
       ['globe', 'Found in', a.r.join(', ')],
       ['drop',  'Colours', a.co.map(cap).join(', ')],
       ['ruler', 'Size', cap(a.sz)],
+      ['leg',   'Legs', a.lg === 0 ? 'None' : String(a.lg)],
+    ];
+    if (a.cv && a.cv !== 'None') appearance.push(['coat', 'Covered in', a.cv]);
+
+    const behaviour = [
       // "Lives in Solitary" is not a sentence, so that one gets its own.
       a.so === 'Solitary' ? ['group', null, 'Lives alone'] : ['group', 'Lives in', a.so.toLowerCase()],
       ['clock', 'Lives for', a.lf],
-      ['leg',   'Legs', a.lg === 0 ? 'None' : String(a.lg)],
     ];
-    if (a.cv && a.cv !== 'None') items.push(['coat', 'Covered in', a.cv]);
-    if (a.fl) items.push(['wing', null, 'Can fly']);
-    if (a.sw) items.push(['wave', null, 'Can swim']);
-    if (a.eg) items.push(['egg',  null, 'Lays eggs']);
+    if (a.fl) behaviour.push(['wing', null, 'Can fly']);
+    if (a.sw) behaviour.push(['wave', null, 'Can swim']);
+    if (a.eg) behaviour.push(['egg',  null, 'Lays eggs']);
 
-    items.forEach(([ic, key, value], i) => {
+    function renderChip(ic, key, value, i) {
       const c = document.createElement('div');
       c.className = 'gchip';
       c.style.setProperty('--i', i);
@@ -220,7 +242,14 @@
       v.textContent = value;
       c.appendChild(v);
       box.appendChild(c);
-    });
+    }
+
+    let i = 0;
+    appearance.forEach(([ic, key, value]) => renderChip(ic, key, value, i++));
+    const gap = document.createElement('div');
+    gap.className = 'glance-gap';
+    box.appendChild(gap);
+    behaviour.forEach(([ic, key, value]) => renderChip(ic, key, value, i++));
   }
 
   /* -- Wikipedia -----------------------------------------------------
@@ -251,7 +280,7 @@
   // fossils are all in these articles and none of them are a picture of
   // the animal, which is the only thing anyone came here to look at.
   const JUNK_FILE = /(status[_ ]iucn|distribution|range[_ ]map|[_ ]range[_.]|locator|skeleton|skull|fossil|cladogram|phylogen|diagram|schematic|life[-_ ]?cycle|anatomy|_sem[_.]|micrograph|stamp|coat[_ ]of[_ ]arms|logo|icon|\.svg)/i;
-  const JUNK_CAPTION = /^(a )?(diagram|map|distribution|range|skeleton|phylogen|cladogram|illustration|drawing|chart)/i;
+  const JUNK_CAPTION = /^(a )?(artist'?s |life )?(diagram|map|distribution|range|skeleton|phylogen|cladogram|illustration|drawing|chart|restoration|reconstruction)/i;
 
   function fileOf(url) {
     const m = String(url || '').match(/\/([^/?]+?)(\?|$)/);
@@ -388,6 +417,7 @@
     results = [];
     renderSuggest();
     el('noresult').hidden = true;
+    renderQuickPicks();
     document.title = 'Guess My Animal — the animal cheat sheet';
     if (!opts || !opts.noPush) push(location.pathname);
     syncThemeColour();
@@ -402,6 +432,7 @@
   function show(entry, opts) {
     const a = entry.a;
     current = entry;
+    recordRecent(entry);
 
     document.body.className = 'view-animal';
     el('home').hidden = true;
@@ -423,7 +454,9 @@
     // photo sits there looking like this animal until the new one lands.
     const hero = el('hero');
     hero.classList.remove('has-photo');
-    el('photoFallback').textContent = a.e || '🐾';
+    hero.classList.add('is-loading');
+    el('photoFallbackEmoji').textContent = a.e || '🐾';
+    el('photoFallbackNote').textContent = '';
     el('photo').alt = '';
     el('photo').src = BLANK;
     el('photoBg').src = BLANK;
@@ -444,20 +477,33 @@
       img.src = src;
       el('photoBg').src = src;
       hero.classList.add('has-photo');
+      hero.classList.remove('is-loading');
     }
 
-    loadSummary(a).then((data) => {
+    const summaryReq = loadSummary(a).then((data) => {
       if (current !== entry) return;          // they typed something else
       if (data && data.thumbnail && data.thumbnail.source) setHero(data.thumbnail.source);
       if (data && data.extract) el('blurb').textContent = firstSentence(data.extract);
     });
 
-    loadMedia(a).then((media) => {
+    const mediaReq = loadMedia(a).then((media) => {
       if (current !== entry) return;
       if (media.lead) setHero(media.lead);
       const usable = media.shots.filter((s) => s.file && s.file !== heroFile);
       renderShot(el('shot2'), usable[0], a.n);
       renderShot(el('shot3'), usable[1], a.n);
+    });
+
+    // Neither request found a photo: stop pulsing and let the emoji settle
+    // as the true resting state, not a still-loading one - and say so, for
+    // anyone who can't tell "resting" from "loading" by the animation
+    // alone (a glance, or prefers-reduced-motion).
+    Promise.allSettled([summaryReq, mediaReq]).then(() => {
+      if (current !== entry) return;
+      hero.classList.remove('is-loading');
+      if (!hero.classList.contains('has-photo')) {
+        el('photoFallbackNote').textContent = 'No photo on file';
+      }
     });
 
     if (!opts || !opts.noPush) push('?a=' + entry.slug);
@@ -513,13 +559,18 @@
   }
 
   function pick(entry) {
-    el('q').value = '';
+    // Left in, not cleared: it's the confirmation of what got picked, and
+    // selecting on next focus (below) means the next lookup still starts
+    // with a single keystroke rather than a delete-then-type.
+    el('q').value = entry.a.n;
     el('q').blur();
     results = [];
     cursor = -1;
     renderSuggest();
     show(entry);
   }
+
+  el('q').addEventListener('focus', () => el('q').select());
 
   el('q').addEventListener('input', () => {
     results = search(el('q').value, 8);
@@ -552,13 +603,39 @@
 
   /* -- Starters, dice, back, copy ------------------------------------ */
 
-  const STARTERS = ['Octopus', 'Sloth', 'Platypus', 'Axolotl', 'Hyena', 'Pangolin'];
+  const STARTERS = ['Octopus', 'Platypus', 'Axolotl', 'Pangolin'];
 
-  function renderStarters() {
+  // Whoever picked the animal knows it; it's everyone else who reaches for
+  // this. During one game the same handful of animals come back up as the
+  // questions narrow down, so the second time is a tap, not a re-type.
+  const RECENT_KEY = 'gma-recent';
+  const MAX_RECENT = 4;
+
+  function readRecent() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+      return raw
+        .map((name) => INDEX.find((x) => x.a.n === name))
+        .filter(Boolean)
+        .slice(0, MAX_RECENT);
+    } catch (err) { return []; }
+  }
+
+  function recordRecent(entry) {
+    try {
+      const names = readRecent().map((x) => x.a.n).filter((n) => n !== entry.a.n);
+      names.unshift(entry.a.n);
+      localStorage.setItem(RECENT_KEY, JSON.stringify(names.slice(0, MAX_RECENT)));
+    } catch (err) { /* private mode or storage full - the chips just don't persist */ }
+  }
+
+  function renderQuickPicks() {
     const box = el('starterChips');
-    for (const name of STARTERS) {
-      const entry = INDEX.find((x) => x.a.n === name);
-      if (!entry) continue;
+    box.innerHTML = '';
+    const recent = readRecent();
+    const list = recent.length ? recent : STARTERS.map((name) => INDEX.find((x) => x.a.n === name)).filter(Boolean);
+    el('startersLabel').textContent = recent.length ? 'jump back in' : 'or try one of these';
+    for (const entry of list) {
       const b = document.createElement('button');
       b.className = 'chip';
       b.type = 'button';
@@ -775,11 +852,11 @@
         }),
       });
       if (!res.ok) throw new Error(String(res.status));
-      status.textContent = 'Thank you, that is logged.';
+      status.textContent = 'Thanks — we\'ll take a look.';
       status.className = 'dlg-status ok';
       setTimeout(() => { if (dlg.open) dlg.close(); }, 1100);
     } catch (err) {
-      status.textContent = 'That did not send. Please try again in a moment.';
+      status.textContent = "That did not send — what you wrote is still here, try again in a moment.";
       status.className = 'dlg-status err';
       el('reportSend').disabled = false;
     }
@@ -807,7 +884,7 @@
 
   applyTheme(readTheme());
   el('count').textContent = ANIMALS.length + ' animals and counting';
-  renderStarters();
+  renderQuickPicks();
   routeFromURL();
 
   // The about page links here with ?report=1. Drop the parameter once the

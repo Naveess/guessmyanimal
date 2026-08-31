@@ -58,6 +58,11 @@
 
   /* Confident arrival, no bounce. */
   --ease: cubic-bezier(.16, 1, .3, 1);
+
+  /* Wide screens have real empty margin around the phone-width column;
+     a faint scatter of the site's own paw mark says that's a choice,
+     not an unstyled gap. Ink-coloured, so it flips with the theme. */
+  --paw-field: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg transform='translate(80.8,82) scale(.6)' fill='%231d1e19' fill-opacity='.05'%3E%3Cellipse cx='32' cy='41' rx='14.5' ry='12'/%3E%3Cellipse cx='14.5' cy='27' rx='6.4' ry='8'/%3E%3Cellipse cx='26' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='38' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='49.5' cy='27' rx='6.4' ry='8'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* The dark palette is applied through two selectors: the media query for
@@ -84,6 +89,8 @@
 
     --shadow:   0 6px 18px -10px rgba(0,0,0,.8);
     --shadow-l: 0 22px 44px -22px rgba(0,0,0,.9);
+
+    --paw-field: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg transform='translate(80.8,82) scale(.6)' fill='%23eef0e4' fill-opacity='.05'%3E%3Cellipse cx='32' cy='41' rx='14.5' ry='12'/%3E%3Cellipse cx='14.5' cy='27' rx='6.4' ry='8'/%3E%3Cellipse cx='26' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='38' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='49.5' cy='27' rx='6.4' ry='8'/%3E%3C/g%3E%3C/svg%3E");
   }
 }
 :root[data-theme="dark"] {
@@ -104,6 +111,8 @@
 
     --shadow:   0 6px 18px -10px rgba(0,0,0,.8);
     --shadow-l: 0 22px 44px -22px rgba(0,0,0,.9);
+
+    --paw-field: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg transform='translate(80.8,82) scale(.6)' fill='%23eef0e4' fill-opacity='.05'%3E%3Cellipse cx='32' cy='41' rx='14.5' ry='12'/%3E%3Cellipse cx='14.5' cy='27' rx='6.4' ry='8'/%3E%3Cellipse cx='26' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='38' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='49.5' cy='27' rx='6.4' ry='8'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 * { box-sizing: border-box; }
@@ -119,7 +128,10 @@ body {
   letter-spacing: -.011em;
   -webkit-font-smoothing: antialiased;
 }
-body.view-home { background: var(--home-bg); }
+/* Colour only, not the shorthand: `background:` resets every sub-property
+   it doesn't mention, including background-image, which would silently
+   erase the wide-screen paw field below every time the splash is shown. */
+body.view-home { background-color: var(--home-bg); }
 
 /* -- Surfaces the browser would otherwise style for us ------------- */
 
@@ -182,6 +194,7 @@ body.view-home :focus-visible { outline-color: var(--home-ink); }
   @keyframes rise { from { opacity: 0; } to { opacity: 1; } }
   @keyframes deal { from { opacity: 0; } to { opacity: 1; } }
   .anim-rise, .anim-deal, .stagger > * { animation-duration: .2s; animation-delay: 0s !important; }
+  .pcard.is-loading .pcard-fallback { animation: none; opacity: .6; }
   * { transition-duration: .05s !important; }
 }
 
@@ -294,7 +307,17 @@ body.view-home #q { font-size: 17px; }
   min-height: 44px;
 }
 #q::placeholder { color: var(--muted); font-weight: 400; }
-#q::-webkit-search-cancel-button { cursor: pointer; }
+/* The native clear button is un-themed OS blue by default - restyled as a
+   mask so it recolours with --muted/--ink like every other drawn icon,
+   rather than being the one cold, un-authored colour on the page. */
+#q::-webkit-search-cancel-button {
+  cursor: pointer; -webkit-appearance: none; appearance: none;
+  width: 16px; height: 16px; margin-left: 2px;
+  background-color: var(--muted);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center / 70% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center / 70% no-repeat;
+}
+#q::-webkit-search-cancel-button:hover { background-color: var(--ink); }
 
 .dice {
   flex: none; width: 44px; height: 44px;
@@ -413,10 +436,21 @@ body.view-home #q { font-size: 17px; }
    to show, so a missing image is a big emoji rather than a hole. */
 .pcard-fallback {
   position: absolute; inset: 0;
-  display: grid; place-items: center;
-  font-size: 96px; line-height: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
 }
+.pcard-fallback-emoji { font-size: 96px; line-height: 1; }
+/* Empty until both photo requests have genuinely settled with nothing
+   found - see Promise.allSettled in show(). Blank while loading (the
+   pulse alone carries that), so this never claims "no photo" before
+   it's actually true. */
+.pcard-fallback-note { margin: 0; font-size: 13.5px; font-weight: 500; color: var(--muted); }
 .pcard.has-photo .pcard-fallback { display: none; }
+/* Quiet, not another authored moment - just enough motion that a fetch
+   in flight doesn't read as "no photo exists" for the second or so it
+   takes to resolve. Stops the instant a real photo lands, or the instant
+   both requests come back with nothing to show. */
+@keyframes pulse { 0%, 100% { opacity: .35; } 50% { opacity: .85; } }
+.pcard.is-loading .pcard-fallback { animation: pulse 1.3s ease-in-out infinite; }
 
 .pcard-scrim {
   position: absolute; left: 0; right: 0; bottom: 0; height: 62%;
@@ -476,6 +510,10 @@ body.view-home #q { font-size: 17px; }
 }
 .row:last-child { border-bottom: 0; }
 .row .k { font-size: 15.5px; font-weight: 400; color: var(--muted); }
+/* Splits the identity/risk cluster from the behaviour cluster - eight
+   identical rows read as one wall of text otherwise. Spans both columns
+   in the two-up grid so it reads as one shared gap, not a stray cell. */
+.ans-gap { height: 14px; grid-column: 1 / -1; }
 
 .pill {
   flex: none;
@@ -488,25 +526,39 @@ body.view-home #q { font-size: 17px; }
 .pill.warn { background: var(--warn-bg); color: var(--warn); }
 .pill.bad  { background: var(--bad-bg);  color: var(--bad); }
 
-/* -- At a glance ---------------------------------------------------- */
+/* -- At a glance -----------------------------------------------------
+   A trivia strip, not a second answer list. It can run to ten chips for
+   a well-attributed animal, so it stays visibly lighter than Quick
+   Answers - the Caption size (13.5px), not the Meta size - or it reads
+   as equally important and doubles the wall of text this page is trying
+   not to be. */
 
-.glance { display: flex; flex-wrap: wrap; gap: 8px; }
+.glance { display: flex; flex-wrap: wrap; gap: 7px; }
+/* Forces a line break in the flex-wrap, splitting appearance chips from
+   behaviour chips the way .ans-gap splits Quick Answers - a beat, not a
+   rule, so it still reads as one glance, just no longer one flat block. */
+.glance-gap { flex-basis: 100%; height: 4px; }
 .gchip {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 6px;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 9px 15px;
-  font-size: 14.5px; font-weight: 600;
+  padding: 7px 12px;
+  font-size: 13.5px; font-weight: 600;
 }
-.gchip svg { width: 17px; height: 17px; flex: none; color: var(--muted); }
+.gchip svg { width: 14px; height: 14px; flex: none; color: var(--muted); }
 .gchip .gk { color: var(--muted); font-weight: 400; }
 
 /* -- Fact ----------------------------------------------------------- */
 
+/* Read-only content, not an action - a solid Sun fill here competed with
+   the dice button and the primary CTA for the same "this is the one
+   yellow thing on screen" attention. A tint keeps it feeling like a
+   highlight rather than a second (or third) press-me surface. */
 .factcard {
-  background: var(--sun);
-  color: var(--on-sun);
+  background: color-mix(in srgb, var(--sun) 16%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--sun) 40%, var(--line));
+  color: var(--ink);
   border-radius: var(--r-card);
   padding: 17px 19px;
 }
@@ -557,8 +609,9 @@ body.view-home #q { font-size: 17px; }
 .copied:not(:empty) { animation: rise .3s var(--ease) backwards; }
 
 /* -- Ad slot --------------------------------------------------------
-   Reserved from day one. An advert dropped into a page that never left
-   room for it is what makes everything jump on load. */
+   The frame is reserved so an advert dropped in later cannot shove the
+   page around, but an empty frame reads as a broken component to a real
+   visitor today - so it collapses to nothing until something fills it. */
 
 .adslot {
   min-height: 100px; margin-top: 26px;
@@ -566,6 +619,7 @@ body.view-home #q { font-size: 17px; }
   border: 1px dashed var(--line); border-radius: var(--r-card);
   color: var(--muted); font-size: 13px; font-weight: 400;
 }
+.adslot:empty { display: none; margin-top: 0; }
 
 .foot {
   margin-top: 26px; text-align: center;
@@ -584,15 +638,29 @@ body.view-home #q { font-size: 17px; }
   .pcard { aspect-ratio: 3 / 2; }
   .pcard-name { font-size: 46px; }
   .rows { display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; }
-  /* In two columns the last row is the final pair, so the odd one of
-     that pair needs its divider removed too or it trails a line under
-     nothing. */
-  .rows > .row:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
-  /* Keep the bar lined up with the feed instead of letting the search
-     box run the whole width of a desktop window. */
-  .topbar {
-    padding-left:  max(14px, calc((100% - 588px) / 2));
-    padding-right: max(14px, calc((100% - 588px) / 2));
+  /* In two columns the last row is the final pair, so the second-to-last
+     row needs its divider removed too or it trails a line under nothing.
+     Position, not parity: the .ans-gap spacer between the two answer
+     clusters is a grid sibling too, so it shifts every row after it by
+     one slot and an odd/even check would silently stop matching. */
+  .rows > .row:nth-last-child(2) { border-bottom: 0; }
+  /* Keep the back button lined up with the feed's left edge instead of
+     letting the search box run the whole width of a desktop window.
+     Right padding is set below, alongside the menu-clearance rule it
+     has to stay in step with. */
+  .topbar { padding-left: max(14px, calc((100% - 588px) / 2)); }
+}
+
+/* Past the point where the content column stops filling the window,
+   real empty margin opens up either side of it. A faint scatter of the
+   site's own paw mark says that space was left on purpose. Applied to
+   .home too, not just body: .home paints its own opaque background on
+   top of body's, so body's layer alone never reaches the splash. */
+@media (min-width: 900px) {
+  body, .home {
+    background-image: var(--paw-field);
+    background-repeat: repeat;
+    background-size: 140px 140px;
   }
 }
 
@@ -638,6 +706,22 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
   animation: rise .2s var(--ease) backwards;
 }
 .menu-panel[hidden] { display: none; }
+
+/* Both floating panels are plain elements, not native <dialog>, so nothing
+   dims what's behind them the way the report dialog's ::backdrop does.
+   On the splash the panel can overlap the wordmark - its position is
+   viewport-height dependent, so nudging one element's margin only fixes
+   one screen size. Dimming the page instead makes the overlap read as an
+   intentional layer at every height, the way the dialog's backdrop already
+   does for the report form. */
+body:has(#menuPanel:not([hidden]))::before,
+body:has(#sharePanel:not([hidden]))::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 45;
+  background: rgba(20,21,15,.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
 .menu-item {
   font: inherit; font-size: 15px; font-weight: 500; text-align: left;
   cursor: pointer; text-decoration: none;
@@ -648,11 +732,12 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
 }
 .menu-item:hover { background: var(--flat-bg); }
 
-/* Room for the button so a long search box never slides under it. */
+/* Room for the button so a long search box never slides under it. A flat
+   68px at every width, not a centering formula: growing it with the
+   viewport was leaving an ever-widening dead zone between the search
+   unit and the menu on wide desktop windows, while the left edge stays
+   aligned with the feed regardless. */
 .topbar { padding-right: 68px; }
-@media (min-width: 620px) {
-  .topbar { padding-right: max(68px, calc((100% - 588px) / 2)); }
-}
 
 /* ==================================================================
    REPORT DIALOG
@@ -673,6 +758,7 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
 .dlg-title { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -.03em; }
 .dlg-sub { margin: -9px 0 0; font-size: 14.5px; color: var(--muted); }
 .dlg-sub:empty { display: none; }
+.dlg-note { margin: -9px 0 0; font-size: 14.5px; color: var(--muted); }
 
 .kinds { margin: 0; padding: 0; border: 0; display: flex; flex-wrap: wrap; gap: 7px; }
 .kinds legend {
@@ -689,10 +775,13 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
 }
 .kinds input { position: absolute; opacity: 0; pointer-events: none; }
 .kinds label:hover { background: var(--flat-bg); }
-/* Selected state carries a fill and a heavier weight, not colour alone. */
+/* Selected state carries a fill and a heavier weight, not colour alone -
+   ink-toned rather than Sun, so the dialog still has exactly one solid
+   Sun element: "Send report", the thing that's actually an action. */
 .kinds label:has(input:checked) {
-  background: var(--sun); border-color: var(--sun);
-  color: var(--on-sun); font-weight: 600;
+  background: color-mix(in srgb, var(--ink) 8%, var(--card));
+  border-color: var(--ink);
+  color: var(--ink); font-weight: 600;
 }
 .kinds label:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
 
@@ -758,6 +847,10 @@ body.view-page { background: var(--paper); }
 .prose a { color: var(--ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .prose a:hover { text-decoration-thickness: 2px; }
 .prose .btn { text-decoration: none; margin-top: 4px; }
+/* .prose a's ink colour would otherwise outrank .btn-solid's on-sun text
+   by specificity, leaving the button unreadable once dark mode splits
+   ink and on-sun apart. */
+.prose a.btn-solid { color: var(--on-sun); }
 
 .ticks { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .ticks li {

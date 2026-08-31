@@ -1,0 +1,129 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [
+      "tools/make-og.js"
+    ],
+    "ignoreValues": [
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "about.html",
+          "index.html"
+        ],
+        "createdAt": "2026-08-31T07:53:22.336Z",
+        "reason": "Agent: verified live-rendered — real hierarchy runs 13.5-18.5px body copy against clamp(20px,5vw,24px) h2 and clamp(31px,8vw,44px) h1; static scanner can't resolve clamp() so only sees the flat body sizes"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "17px",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:47.105Z",
+        "reason": "Agent: deliberate one-off bump on the splash search input, documented in DESIGN.md Typography Hierarchy (Body row)."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "21px",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:47.182Z",
+        "reason": "Agent: emoji glyph size (search-row leading icon), not typography — documented in DESIGN.md as a decorative glyph size outside the type ramp."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "96px",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:47.262Z",
+        "reason": "Agent: emoji glyph size (photo-fallback placeholder), not typography — documented in DESIGN.md as a decorative glyph size outside the type ramp."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "46px",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:47.337Z",
+        "reason": "Agent: Headline's fixed size at the 620px breakpoint, documented in DESIGN.md Typography Hierarchy (Headline row)."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "44px",
+        "files": [
+          "about.html"
+        ],
+        "createdAt": "2026-08-31T08:12:47.418Z",
+        "reason": "Agent: About page H1's own clamp ceiling, documented in DESIGN.md Typography Hierarchy (Headline row) as a deliberately taller variant of the shared Headline role."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(10,11,7,.3)",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:56.847Z",
+        "reason": "Agent: pcard photo-scrim gradient stop — a compositing/overlay effect over an arbitrary photo, not a surface or text palette colour."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(10,11,7,.9)",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:56.923Z",
+        "reason": "Agent: pcard photo-scrim gradient stop — a compositing/overlay effect over an arbitrary photo, not a surface or text palette colour."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:57.004Z",
+        "reason": "Agent: pcard-meta text colour, set to literal white because it sits on an arbitrary photo (not a themed surface) and must stay legible regardless of theme, same rationale as the fixed Sun/On-Sun pair."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0,0,0,.4)",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:57.078Z",
+        "reason": "Agent: text-shadow on photo-overlay text (pcard-name), a legibility effect over an arbitrary photo, not a palette colour."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0,0,0,.5)",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:12:57.157Z",
+        "reason": "Agent: text-shadow on photo-overlay text (pcard-sub) / dialog backdrop dim, a legibility/scrim effect, not a palette colour."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "44px",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:13:08.871Z",
+        "reason": "Agent: About page H1's own clamp ceiling (.prose h1), documented in DESIGN.md Typography Hierarchy (Headline row) as a deliberately taller variant of the shared Headline role."
+      },
+      {
+        "rule": "low-contrast",
+        "value": "#ffce1f on #e4e6da",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-08-31T08:51:30.768Z",
+        "reason": "Agent: critique-verified false positive — .pcard-sub sits over the photo + .pcard-scrim gradient with a legibility text-shadow, not over the flat #e4e6da placeholder background the detector measured against. Confirmed legible in rendered screenshots (light and dark)."
+      }
+    ]
+  }
+}
