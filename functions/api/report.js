@@ -21,7 +21,51 @@ function done(status) {
   return new Response(null, { status, headers: { 'cache-control': 'no-store' } });
 }
 
-export async function onRequestPost({ request, env }) {
+const KIND_LABEL = { photo: 'The photo', facts: 'A fact or an answer', missing: 'An animal is missing', other: 'Something else' };
+
+const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+// Best-effort: a notification failing must never fail the report itself,
+// since the report is already safely in D1 by the time these run.
+async function notifyDiscord(env, { animal, kind, message }) {
+  if (!env.DISCORD_WEBHOOK_URL) return;
+  const lines = [
+    `**GuessMyAnimal bug report**`,
+    animal ? `Animal: ${animal}` : 'Animal: (not given)',
+    `Type: ${KIND_LABEL[kind] || kind}`,
+    `"${message}"`,
+  ];
+  try {
+    await fetch(env.DISCORD_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ content: lines.join('\n') }),
+    });
+  } catch {}
+}
+
+async function notifyEmail(env, { animal, kind, message }) {
+  if (!env.RESEND_API_KEY) return;
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: 'GuessMyAnimal <onboarding@resend.dev>',
+        to: ['aliasliam92@gmail.com'],
+        subject: `GUESSMYANIMAL BUG REPORT — ${animal || 'no animal given'}`,
+        html: `<p><strong>Animal:</strong> ${escapeHtml(animal || '(not given)')}</p>
+<p><strong>Type:</strong> ${escapeHtml(KIND_LABEL[kind] || kind)}</p>
+<p><strong>Message:</strong> ${escapeHtml(message)}</p>`,
+      }),
+    });
+  } catch {}
+}
+
+export async function onRequestPost({ request, env, waitUntil }) {
   if (!env.DB) return done(503);
 
   const type = request.headers.get('content-type') || '';
@@ -56,6 +100,10 @@ export async function onRequestPost({ request, env }) {
   } catch {
     return done(500);
   }
+
+  const report = { animal, kind, message };
+  waitUntil(notifyDiscord(env, report));
+  waitUntil(notifyEmail(env, report));
 
   return done(204);
 }
