@@ -658,10 +658,15 @@ body.view-home #q { font-size: 17px; }
      back button (aligned to the feed's left edge) and the padding
      reserved for the fixed-position menu icon (aligned to the true
      viewport edge) - two different anchors, so the row between them
-     widens on a desktop window. Capping and centering it here keeps
-     the search bar a sane width instead of stretching edge to edge
-     with the dice button stranded far off to the side. */
-  .dock-top { max-width: 460px; margin: 0 auto; }
+     widens on a desktop window. Capping it keeps the search bar a sane
+     width; margin:0 auto centering it within that leftover space was
+     wrong too - on an ultra-wide window padding-left grows far more
+     than padding-right stays flat, so the "leftover space" itself sits
+     well right of true centre and drags the whole search+dice cluster
+     away from the back button with it. Left-aligned (flex default)
+     keeps it planted right next to the back button instead, matching
+     the feed column below rather than floating in the middle distance. */
+  .dock-top { max-width: 460px; }
   /* Four buttons fit one tidy row once there's room, rather than
      staying stacked in the mobile 2x2 grid. */
   .actions { grid-template-columns: repeat(4, 1fr); }
