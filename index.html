@@ -17,6 +17,8 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
 <link rel="preconnect" href="https://en.wikipedia.org" crossorigin>
 <!-- Self-hosted variable face: one 33 KB file for the whole weight
@@ -26,9 +28,12 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<!-- ?v= bumped by hand whenever style.css/app.js change, so a redeploy
-     invalidates every visitor's cached copy immediately instead of
-     waiting out Cache-Control's 4-hour max-age. -->
+<!-- ?v= bumped by hand whenever a shell file changes (style.css,
+     app.js, animals.js, render-data.js), so a redeploy invalidates
+     every visitor's cached copy immediately instead of waiting out
+     Cache-Control's 4-hour max-age - and, since sw.js started
+     precaching these, keeps the service worker's own cached shell in
+     step too. Bump sw.js's VERSION and SHELL list to match. -->
 <link rel="stylesheet" href="style.css?v=20260831-1">
 </head>
 <body class="view-home">
@@ -259,8 +264,17 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </form>
 </dialog>
 
-<script src="animals.js"></script>
-<script src="render-data.js?v=20260831-2"></script>
-<script src="app.js?v=20260831-2"></script>
+<script src="animals.js?v=20260901-1"></script>
+<script src="render-data.js?v=20260901-1"></script>
+<script src="app.js?v=20260901-1"></script>
+<script>
+// Registered from here only - one scope (/), one registration point.
+// Failing quietly (a browser with no SW support, a file:// preview) is
+// correct: the site works exactly the same without it, just without
+// the offline/installable extras.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
+}
+</script>
 </body>
 </html>

@@ -1,0 +1,15 @@
+{
+  "name": "Guess My Animal",
+  "short_name": "Guess Animal",
+  "description": "The cheat sheet for the animal guessing game - type an animal, get the answers.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#e9eae2",
+  "theme_color": "#ffce1f",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

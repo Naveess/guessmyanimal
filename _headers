@@ -1,0 +1,6 @@
+# The service worker script itself must never be cached, or an update
+# to it (a new VERSION, a new SHELL list) can't reach a returning
+# visitor - browsers already special-case sw.js caching somewhat, but
+# an explicit no-cache here removes any doubt.
+/sw.js
+  Cache-Control: no-cache
