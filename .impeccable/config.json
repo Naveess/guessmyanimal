@@ -123,6 +123,15 @@
         ],
         "createdAt": "2026-08-31T08:51:30.768Z",
         "reason": "Agent: critique-verified false positive — .pcard-sub sits over the photo + .pcard-scrim gradient with a legibility text-shadow, not over the flat #e4e6da placeholder background the detector measured against. Confirmed legible in rendered screenshots (light and dark)."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "sf mono",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-09-01T21:42:59.134Z",
+        "reason": "URL/code field (#streamUrl in the Stream Mode dialog) intentionally uses a monospace stack - a real technical-string display, the case DESIGN.md's own monospace rule carves out, not a costume."
       }
     ]
   }

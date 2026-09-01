@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stream Mode — Guess My Animal</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){try{var t=localStorage.getItem('gma-theme');
+if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="style.css?v=20260901-2">
+<style>
+  /* OBS Browser Source composites over gameplay - the page ground has
+     to be genuinely transparent, not the site's own paper/dark
+     background, or "transparent" just means "an opaque rectangle". */
+  html, body { background: transparent; }
+  body { padding: 0; min-height: 0; }
+  .stream-wrap {
+    width: min(360px, 100vw);
+    margin: 14px;
+  }
+  /* Same photo card and answer rows the real site uses (same classes,
+     same CSS) - Stream Mode is a smaller frame around identical
+     content, not a second design. */
+  .stream-wrap .pcard { margin-bottom: 14px; }
+  .stream-wrap .card { margin-bottom: 0; }
+  .stream-empty {
+    display: grid; place-items: center; text-align: center;
+    aspect-ratio: 4/5; border-radius: var(--r-photo);
+    background: color-mix(in srgb, var(--card) 88%, transparent);
+    border: 1px dashed var(--line);
+    color: var(--muted); font-size: 14px; font-weight: 500;
+    padding: 24px;
+  }
+  /* [hidden] alone loses to the rule above - equal specificity, and
+     this stylesheet loads after the browser's own UA sheet, so the
+     later `display: grid` silently wins the moment JS sets the
+     attribute. Needs its own explicit override. */
+  .stream-empty[hidden] { display: none; }
+</style>
+</head>
+<body class="view-animal">
+
+<div class="stream-wrap">
+  <div class="stream-empty" id="empty">Waiting for the first animal…</div>
+
+  <article class="pcard" id="hero" hidden>
+    <img class="pcard-bg" id="photoBg" alt="" aria-hidden="true"
+         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+    <img class="pcard-img" id="photo" alt="" width="800" height="1000"
+         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+    <div class="pcard-fallback" id="photoFallback" aria-hidden="true">
+      <span class="pcard-fallback-emoji" id="photoFallbackEmoji"></span>
+      <p class="pcard-fallback-note" id="photoFallbackNote"></p>
+    </div>
+    <div class="pcard-scrim" aria-hidden="true"></div>
+    <div class="pcard-meta">
+      <h2 class="pcard-name"><span id="name"></span> <span class="pcard-emoji" id="emoji" aria-hidden="true"></span></h2>
+      <p class="pcard-sub" id="kicker"></p>
+    </div>
+  </article>
+
+  <div class="card" id="answersCard" hidden><div class="rows" id="answers"></div></div>
+</div>
+
+<script src="animals.js?v=20260901-1"></script>
+<script src="render-data.js?v=20260901-1"></script>
+<script src="stream.js?v=20260901-1"></script>
+</body>
+</html>

@@ -876,6 +876,76 @@ body:has(#sharePanel:not([hidden]))::before {
 .dlg-actions .btn-solid { margin-left: auto; }
 
 /* ==================================================================
+   STREAM MODE DIALOG
+   ================================================================== */
+
+/* .show() (see app.js - deliberately not .showModal(), so the page
+   behind it stays usable) skips the centring a modal dialog gets for
+   free: without this it renders in normal document flow instead of
+   fixed over the viewport, which put it hundreds of pixels down the
+   page, invisible, the first time this shipped. Fixed + centred by
+   hand; no ::backdrop either, since that pseudo-element only exists
+   for a modal dialog and its absence here is the point. */
+.dlg-stream[open] {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  max-height: calc(100vh - 28px);
+  overflow-y: auto;
+}
+
+.stream-url-row { display: flex; gap: 8px; }
+#streamUrl {
+  flex: 1; min-width: 0;
+  font: inherit; font-size: 13.5px; font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line); border-radius: 13px;
+  padding: 0 13px; min-height: 44px;
+}
+#streamUrl:focus { outline: none; border-color: color-mix(in srgb, var(--ink) 45%, transparent); }
+.stream-url-row .btn { flex: none; }
+
+.stream-toggle-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 3px 0;
+}
+.stream-toggle-label { font-size: 14.5px; font-weight: 500; }
+/* A standalone pill, not the theme switch's .theme-btn - that class
+   carries flex:1, sized for three equal segments inside .theme's own
+   flat-bg track, and stretched to fill the whole row the moment it
+   was reused here outside that context. */
+.stream-toggle {
+  flex: none; min-width: 56px; padding: 8px 16px;
+  border-radius: 999px; border: 1px solid var(--line);
+  background: var(--flat-bg); color: var(--ink);
+  font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
+  transition: background .16s var(--ease), color .16s var(--ease);
+}
+.stream-toggle[aria-pressed="true"] { background: var(--sun); color: var(--on-sun); border-color: var(--sun); }
+
+.stream-preview-label {
+  margin: 0; font-size: 12.5px; font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--muted);
+}
+.stream-preview-hint { margin: 3px 0 8px; font-size: 13px; color: var(--muted); }
+.stream-preview-frame {
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(155deg, #2a2c22 0%, #1c1e17 55%, #14150f 100%);
+  height: 260px;
+}
+.stream-preview-frame iframe {
+  width: 100%; height: 100%; border: 0; display: block;
+  /* The iframe's own page is transparent by design (that's the whole
+     point, for OBS) - this dark gradient behind it stands in for the
+     gameplay it would normally composite over, so the preview shows
+     what an overlay actually looks like rather than a blank white box. */
+  color-scheme: light;
+}
+
+/* ==================================================================
    PROSE  (the about page)
    ================================================================== */
 

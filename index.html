@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260831-1">
+<link rel="stylesheet" href="style.css?v=20260901-2">
 </head>
 <body class="view-home">
 
@@ -51,6 +51,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </button>
   <div class="menu-panel" id="menuPanel" hidden>
     <a class="menu-item" href="about.html">About the game</a>
+    <button class="menu-item" type="button" id="streamOpen">Stream Mode</button>
     <button class="menu-item" type="button" data-report>Report a problem</button>
     <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
        target="_blank" rel="noopener">Source on GitHub</a>
@@ -264,9 +265,47 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </form>
 </dialog>
 
+<!-- ============================================================
+     STREAM MODE. A key generated once and kept in localStorage, an
+     overlay URL built from it, and a live preview of that exact URL
+     right here - so it's provably working before OBS ever opens it.
+     ============================================================ -->
+<dialog class="dlg dlg-stream" id="streamDlg" aria-labelledby="streamTitle">
+  <div class="dlg-in">
+    <h2 class="dlg-title" id="streamTitle">Stream Mode</h2>
+    <p class="dlg-note">Paste the link below into OBS as a Browser Source. Then just use the site as normal - whatever you look up shows up there too, a beat later.</p>
+
+    <label class="fld">
+      <span class="fld-label">Overlay link</span>
+      <div class="stream-url-row">
+        <input type="text" id="streamUrl" readonly aria-label="Overlay link">
+        <button class="btn" type="button" id="streamCopy">Copy</button>
+      </div>
+    </label>
+    <p class="copied" id="streamCopyStatus" aria-live="polite"></p>
+
+    <div class="stream-toggle-row">
+      <span class="stream-toggle-label">Broadcasting your lookups</span>
+      <button type="button" class="stream-toggle" id="streamToggle" aria-pressed="true">On</button>
+    </div>
+
+    <div class="stream-preview">
+      <p class="stream-preview-label">Live preview</p>
+      <p class="stream-preview-hint">Try looking an animal up — it appears here too.</p>
+      <div class="stream-preview-frame">
+        <iframe id="streamPreview" title="Stream Mode overlay preview" src="about:blank"></iframe>
+      </div>
+    </div>
+
+    <div class="dlg-actions">
+      <button class="btn btn-solid" type="button" id="streamClose">Done</button>
+    </div>
+  </div>
+</dialog>
+
 <script src="animals.js?v=20260901-1"></script>
 <script src="render-data.js?v=20260901-1"></script>
-<script src="app.js?v=20260901-1"></script>
+<script src="app.js?v=20260901-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is
