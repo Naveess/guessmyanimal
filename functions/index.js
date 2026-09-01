@@ -34,6 +34,16 @@ class AddCanonical {
   element(el) { el.append(`<link rel="canonical" href="${this.href}">`, { html: true }); }
 }
 
+class SetHtml {
+  constructor(value) { this.value = value; }
+  element(el) { el.setInnerContent(this.value, { html: true }); }
+}
+
+class RemoveAttr {
+  constructor(attr) { this.attr = attr; }
+  element(el) { el.removeAttribute(this.attr); }
+}
+
 // The og:image swap needs a live Wikipedia fetch, which is real added
 // latency on the response - fine for a share-preview bot fetching the page
 // once to build a card, wasted on every real visitor who never looks at a
@@ -82,7 +92,24 @@ export async function onRequestGet(context) {
     .on('meta[name="description"]', new SetAttr('content', entry.description))
     .on('meta[property="og:title"]', new SetAttr('content', entry.title))
     .on('meta[property="og:description"]', new SetAttr('content', entry.description))
-    .on('head', new AddCanonical(canonical));
+    .on('head', new AddCanonical(canonical))
+    // Everything below is pure local templating (no network call), so it
+    // runs for every visitor, not just bots - a crawler, a slow
+    // connection, or JS-disabled browser all see the real page instead
+    // of an empty shell. app.js's routeFromURL() re-renders this exact
+    // same content on top once it loads (same render-data.js source), so
+    // there's nothing to reconcile - it's an identical rebuild, not a
+    // correction.
+    .on('body', new SetAttr('class', 'view-animal'))
+    .on('#home', new SetAttr('hidden', ''))
+    .on('#animalview', new RemoveAttr('hidden'))
+    .on('#name', new SetText(entry.name))
+    .on('#emoji', new SetText(entry.emoji))
+    .on('#kicker', new SetText(entry.kicker))
+    .on('#fact', new SetText(entry.fact))
+    .on('#wiki', new SetAttr('href', entry.wikiHref))
+    .on('#answers', new SetHtml(entry.answersHtml))
+    .on('#glance', new SetHtml(entry.glanceHtml));
 
   if (!isBot) return rewriter.transform(res);
 

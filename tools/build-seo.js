@@ -13,12 +13,51 @@
 const fs = require('fs');
 const path = require('path');
 const { ANIMALS } = require('../animals.js');
+const { answers, glanceGroups, ICONS } = require('../render-data.js');
 
 const SITE = 'https://guessmyanimal.com';
 const MAX_DESC = 158;
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
+
+const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+// Mirrors app.js's icon(): same wrapper attributes, same path data from
+// render-data.js, just built as a string instead of a DOM node.
+function iconSvg(name) {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
+}
+
+// Mirrors renderAnswers()'s DOM exactly: a row per answer, the .ans-gap
+// spacer inserted before index 4, same class names, same --i custom
+// property the CSS stagger reads. If this drifts from app.js's actual
+// output, a real visitor sees the baked version flash into the
+// client-rendered one on load - keep the two in step.
+function answersHtml(a) {
+  const rows = answers(a);
+  let html = '';
+  rows.forEach(([k, v, state], i) => {
+    if (i === 4) html += '<div class="ans-gap"></div>';
+    const cls = 'pill' + (state ? ' ' + state : '');
+    html += `<div class="row" style="--i:${i}"><span class="k">${escapeHtml(k)}</span><span class="${cls}">${escapeHtml(v)}</span></div>`;
+  });
+  return html;
+}
+
+// Mirrors renderGlance()'s DOM exactly: same chip shape, same
+// appearance/behaviour split with the .glance-gap spacer between them.
+function glanceHtml(a) {
+  const { appearance, behaviour } = glanceGroups(a);
+  let i = 0;
+  const chip = ([ic, key, value]) => {
+    const keyHtml = key ? `<span class="gk">${escapeHtml(key)}</span>` : '';
+    const html = `<div class="gchip" style="--i:${i}">${iconSvg(ic)}${keyHtml}<b>${escapeHtml(value)}</b></div>`;
+    i++;
+    return html;
+  };
+  return appearance.map(chip).join('') + '<div class="glance-gap"></div>' + behaviour.map(chip).join('');
+}
 
 const meta = {};
 const urls = [];
@@ -57,7 +96,18 @@ for (const a of ANIMALS) {
   // the whole animals.js dataset itself.
   const wikiTitle = a.w || a.n.replace(/ /g, '_');
 
-  meta[slug] = { title, description, wikiTitle };
+  meta[slug] = {
+    title,
+    description,
+    wikiTitle,
+    name: a.n,
+    emoji: a.e || '',
+    kicker: `${a.c} · ${a.r[0]}`,
+    fact: a.f,
+    wikiHref: 'https://en.wikipedia.org/wiki/' + encodeURIComponent(wikiTitle),
+    answersHtml: answersHtml(a),
+    glanceHtml: glanceHtml(a),
+  };
   urls.push(`${SITE}/?a=${slug}`);
 }
 
