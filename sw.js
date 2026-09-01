@@ -16,6 +16,7 @@ const SHELL = [
   '/style.css?v=20260901-2',
   '/animals.js?v=20260901-1',
   '/render-data.js?v=20260901-1',
+  '/mystery.js?v=20260901-2',
   '/app.js?v=20260901-2',
   '/fonts/onest-latin.woff2',
   '/favicon.svg',

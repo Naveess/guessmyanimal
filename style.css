@@ -763,6 +763,23 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
 .play-link:active { transform: scale(.97); }
 body.view-home .play-link { display: inline-flex; }
 
+/* A second thing to do on the splash, for the visitor who came to play
+   rather than settle an argument mid-game - same outline-on-strong-
+   colour treatment as the corner controls, sized like a real button
+   rather than a chip since it starts a whole other mode. */
+.mystery-play {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; margin-top: 22px; padding: 13px 20px; min-height: 48px;
+  font: inherit; font-size: 15px; font-weight: 600;
+  color: var(--home-ink); cursor: pointer;
+  background: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--home-ink) 30%, transparent);
+  border-radius: 14px;
+  transition: background .16s var(--ease), transform .16s var(--ease);
+}
+.mystery-play:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
+.mystery-play:active { transform: scale(.98); }
+
 .menu-panel {
   position: absolute; right: 0; top: calc(100% + 8px);
   min-width: 210px;
@@ -944,6 +961,85 @@ body:has(#sharePanel:not([hidden]))::before {
      what an overlay actually looks like rather than a blank white box. */
   color-scheme: light;
 }
+
+/* ==================================================================
+   MYSTERY ANIMAL
+   ================================================================== */
+
+.mystery-title {
+  margin: 0; flex: 1; text-align: center;
+  font-size: 15px; font-weight: 700; letter-spacing: -.01em;
+  /* Balances the fixed-width back button on the other side, so the
+     title reads centred against the whole bar, not the leftover gap
+     after it - the same trick the .topbar-mark title on the about page
+     already leans on. */
+  margin-right: 44px;
+}
+
+.mystery-stats {
+  display: flex; gap: 9px; margin-bottom: 22px;
+}
+.mystery-stat {
+  flex: 1; text-align: center;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card);
+  padding: 13px 8px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.mystery-stat b {
+  font-size: 24px; font-weight: 800; letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+.mystery-stat span {
+  font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mystery-hintcard { padding: 4px 19px; }
+.mystery-hints { display: flex; flex-direction: column; }
+.mystery-hint {
+  margin: 0; padding: 13px 0; font-size: 16px; line-height: 1.4;
+}
+.mystery-hint + .mystery-hint { border-top: 1px solid var(--line); }
+
+.mystery-form { display: flex; gap: 9px; margin-top: 20px; }
+/* Same [hidden]-loses-to-display bug as .stream-empty, twice more here:
+   this file's own `display: flex` (and .btn's `display: inline-flex`,
+   inherited by #mysteryGiveUp/.mystery-result below) sit at equal
+   specificity to the browser's default [hidden]{display:none} and load
+   later, so JS toggling .hidden silently did nothing until these three
+   explicit overrides were added. */
+.mystery-form[hidden] { display: none; }
+#mysteryGuess {
+  flex: 1; min-width: 0;
+  font: inherit; font-size: 16px; font-weight: 500;
+  color: var(--ink); background: var(--card);
+  border: 1px solid var(--line); border-radius: 15px;
+  padding: 0 16px; min-height: 52px;
+  transition: border-color .16s var(--ease);
+}
+#mysteryGuess:focus { outline: none; border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
+.mystery-form .btn-solid { flex: none; }
+
+.mystery-feedback {
+  margin: 10px 4px 0; min-height: 20px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+}
+.mystery-feedback.good { color: var(--good); }
+
+.mystery-giveup { width: 100%; margin-top: 14px; }
+.mystery-giveup[hidden] { display: none; }
+
+.mystery-result { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.mystery-result[hidden] { display: none; }
+.mystery-result-card {
+  display: flex; align-items: center; gap: 13px;
+  background: color-mix(in srgb, var(--sun) 16%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--sun) 40%, var(--line));
+  border-radius: var(--r-card);
+  padding: 17px 19px;
+}
+.mystery-result-emoji { font-size: 34px; line-height: 1; }
+.mystery-result-name { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
 
 /* ==================================================================
    PROSE  (the about page)

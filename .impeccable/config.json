@@ -132,6 +132,15 @@
         ],
         "createdAt": "2026-09-01T21:42:59.134Z",
         "reason": "URL/code field (#streamUrl in the Stream Mode dialog) intentionally uses a monospace stack - a real technical-string display, the case DESIGN.md's own monospace rule carves out, not a costume."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "34px",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-09-01T22:09:53.058Z",
+        "reason": "Mystery Animal's revealed-answer emoji (.mystery-result-emoji) - a decorative glyph size, same documented category as the existing 21px/96px emoji sizes in DESIGN.md, not a typography step."
       }
     ]
   }

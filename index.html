@@ -51,6 +51,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </button>
   <div class="menu-panel" id="menuPanel" hidden>
     <a class="menu-item" href="about.html">About the game</a>
+    <button class="menu-item" type="button" data-mystery>Mystery Animal</button>
     <button class="menu-item" type="button" id="streamOpen">Stream Mode</button>
     <button class="menu-item" type="button" data-report>Report a problem</button>
     <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
@@ -94,6 +95,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <p class="starters-label" id="startersLabel">or try one of these</p>
       <div class="chips" id="starterChips"></div>
     </div>
+
+    <button class="mystery-play" type="button" data-mystery>
+      <span aria-hidden="true">🎯</span> Play Mystery Animal
+    </button>
 
   </div>
   <p class="home-foot" id="count"></p>
@@ -225,6 +230,55 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </div>
 
 <!-- ============================================================
+     MYSTERY ANIMAL. A third view: the site picks an animal, hints
+     reveal on each wrong guess, streak and score kept locally.
+     ============================================================ -->
+<div class="mysteryview" id="mysteryview" hidden>
+
+  <header class="topbar">
+    <button class="back" id="mysteryBack" type="button" aria-label="Back to search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 5 8 12l7 7"/>
+      </svg>
+    </button>
+    <p class="mystery-title">Mystery Animal</p>
+  </header>
+
+  <main class="feed">
+
+    <div class="mystery-stats">
+      <div class="mystery-stat"><b id="mysteryStreak">0</b><span>Streak</span></div>
+      <div class="mystery-stat"><b id="mysteryBest">0</b><span>Best</span></div>
+      <div class="mystery-stat"><b id="mysteryScore">0</b><span>Score</span></div>
+    </div>
+
+    <h3 class="label">Guess the animal</h3>
+    <div class="card mystery-hintcard">
+      <div class="mystery-hints" id="mysteryHints"></div>
+    </div>
+
+    <form class="mystery-form" id="mysteryForm">
+      <input id="mysteryGuess" type="text" autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false" placeholder="Type your guess…"
+             aria-label="Your guess">
+      <button class="btn btn-solid" type="submit">Guess</button>
+    </form>
+    <p class="mystery-feedback" id="mysteryFeedback" role="status" aria-live="polite"></p>
+
+    <button class="btn mystery-giveup" type="button" id="mysteryGiveUp">Give up, show the answer</button>
+
+    <div class="mystery-result" id="mysteryResult" hidden>
+      <div class="mystery-result-card">
+        <span class="mystery-result-emoji" id="mysteryAnswerEmoji" aria-hidden="true"></span>
+        <span class="mystery-result-name" id="mysteryAnswerName"></span>
+      </div>
+      <button class="btn btn-solid" type="button" id="mysteryNext">Next animal</button>
+    </div>
+
+  </main>
+</div>
+
+<!-- ============================================================
      REPORT. Native dialog so focus trapping, Escape and the
      backdrop all come from the browser rather than being rebuilt.
      ============================================================ -->
@@ -305,6 +359,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <script src="animals.js?v=20260901-1"></script>
 <script src="render-data.js?v=20260901-1"></script>
+<!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
+     boot sequence and checks window.openMystery on that very first
+     call, for a direct/refreshed link to ?mystery=1 to work. -->
+<script src="mystery.js?v=20260901-2"></script>
 <script src="app.js?v=20260901-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.

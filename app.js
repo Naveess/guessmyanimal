@@ -344,6 +344,7 @@
     current = null;
     document.body.className = 'view-home';
     el('animalview').hidden = true;
+    el('mysteryview').hidden = true;
     el('home').hidden = false;
     dock('home');
     el('q').value = '';
@@ -370,6 +371,7 @@
 
     document.body.className = 'view-animal';
     el('home').hidden = true;
+    el('mysteryview').hidden = true;
     el('animalview').hidden = false;
     dock('top');
     el('copied').textContent = '';
@@ -915,9 +917,17 @@
      the site from the middle of a game. */
 
   function routeFromURL() {
-    let wanted = null;
-    try { wanted = new URL(location.href).searchParams.get('a'); }
-    catch (err) { /* no URL API worth worrying about */ }
+    let url;
+    try { url = new URL(location.href); }
+    catch (err) { goHome({ noPush: true }); return; }
+
+    if (url.searchParams.get('mystery')) {
+      if (typeof window.openMystery === 'function') { window.openMystery({ noPush: true }); return; }
+      // mystery.js loads before app.js, so this only fires if it failed
+      // to load at all - fall through to home rather than show nothing.
+    }
+
+    const wanted = url.searchParams.get('a');
     if (wanted) {
       const entry = INDEX.find((x) => x.slug === slugify(wanted));
       if (entry) { show(entry, { noPush: true }); return; }
@@ -926,6 +936,11 @@
   }
 
   window.addEventListener('popstate', routeFromURL);
+
+  // Deliberately small: the things mystery.js (a separate view that
+  // still needs to feel like part of the same app) needs back from the
+  // routing/view state this file owns.
+  window.GMA = { goHome, push, setMenu };
 
   /* -- Boot ---------------------------------------------------------- */
 
