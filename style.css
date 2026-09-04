@@ -180,8 +180,19 @@ body.view-home :focus-visible { outline-color: var(--home-ink); }
   }
 }
 
+/* A small physical acknowledgment for a value that just changed under
+   you - same family as .btn:active's press-scale, not a second authored
+   moment. Used on the streak number (it earned the number going up) and
+   the give-up button (its label just took on a real cost). */
+@keyframes pulse-value {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
 .anim-rise { animation: rise .55s var(--ease) backwards; }
 .anim-deal { animation: deal .72s var(--ease) backwards; }
+.anim-pulse { animation: pulse-value .4s var(--ease); }
 /* Stagger is capped: this is a list arriving as a list, not every
    section on the page reinterpreted as one. */
 .stagger > * {
@@ -194,6 +205,10 @@ body.view-home :focus-visible { outline-color: var(--home-ink); }
   @keyframes rise { from { opacity: 0; } to { opacity: 1; } }
   @keyframes deal { from { opacity: 0; } to { opacity: 1; } }
   .anim-rise, .anim-deal, .stagger > * { animation-duration: .2s; animation-delay: 0s !important; }
+  /* Purely spatial (a scale, no opacity/colour) - reduced motion drops
+     it outright rather than just speeding it up, per the "reduce or
+     remove spatial movement" rule below. */
+  .anim-pulse { animation: none; }
   .pcard.is-loading .pcard-fallback { animation: none; opacity: .6; }
   * { transition-duration: .05s !important; }
 }
@@ -1000,6 +1015,19 @@ body:has(#sharePanel:not([hidden]))::before {
   font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
   color: var(--muted);
 }
+/* The streak is the one number this whole mode is built around - the
+   Daily hook is literally "don't break the chain" - so it gets the
+   Sun-tint treatment the fact card and result card already use for "the
+   thing this screen is about," and a number sized to say so, reaching
+   toward the Headline register rather than sitting at the same weight
+   as Best/Score. flex:1.15 gives the bigger number room without the row
+   losing its shared baseline. */
+.mystery-stat-streak {
+  flex: 1.15;
+  background: color-mix(in srgb, var(--sun) 16%, var(--card));
+  border-color: color-mix(in srgb, var(--sun) 40%, var(--line));
+}
+.mystery-stat-streak b { font-size: 36px; }
 
 .mystery-hintcard { padding: 4px 19px; }
 .mystery-hints { display: flex; flex-direction: column; }
@@ -1100,10 +1128,15 @@ body:has(#sharePanel:not([hidden]))::before {
    to nothing when empty instead of reserving permanent blank space,
    since it's the rare case, not the resting state. */
 .mystery-milestone {
-  margin: 0 4px 14px;
-  font-size: 14px; font-weight: 700; color: var(--good);
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border-radius: var(--r-card);
+  background: color-mix(in srgb, var(--sun) 16%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--sun) 40%, var(--line));
+  text-align: center;
+  font-size: 18px; font-weight: 800; letter-spacing: -.01em; color: var(--ink);
 }
-.mystery-milestone:empty { display: none; margin: 0; }
+.mystery-milestone:empty { display: none; margin: 0; padding: 0; border: 0; background: none; }
 
 /* Category chips, Endless only - bucketed groups, not raw categories
    (see CATEGORY_BUCKETS in mystery.js). Selected state reuses the report

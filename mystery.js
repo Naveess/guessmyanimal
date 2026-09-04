@@ -236,6 +236,18 @@
     hero.classList.add('anim-deal');
   }
 
+  // Same restart trick, generalised: a small physical acknowledgment
+  // (see .anim-pulse in style.css) for a value that just changed under
+  // you - the streak number going up, or a button that just took on a
+  // real cost - rather than a silent textContent swap.
+  function pulse(elOrId) {
+    const node = typeof elOrId === 'string' ? el(elOrId) : elOrId;
+    if (!node) return;
+    node.classList.remove('anim-pulse');
+    void node.offsetWidth;
+    node.classList.add('anim-pulse');
+  }
+
   // Best-effort: no thumbnail (offline, rate-limited, or the article has
   // none) just leaves the fallback's paw mark showing and the hints carry
   // the round on their own - the fallback is always the site's own mark,
@@ -502,6 +514,7 @@
     }
 
     updateStats();
+    if (won) pulse('mysteryStreak');
     showResultCard(won);
   }
 
@@ -641,6 +654,7 @@
     if (roundMode === 'daily' && !giveUpArmed) {
       giveUpArmed = true;
       el('mysteryGiveUp').textContent = GIVEUP_CONFIRM_LABEL;
+      pulse('mysteryGiveUp');
       el('mysteryFeedback').textContent = "Tap again to confirm — you won't get another animal today.";
       el('mysteryFeedback').className = 'mystery-feedback';
       giveUpArmTimer = setTimeout(resetGiveUpArm, 4000);

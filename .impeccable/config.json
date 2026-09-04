@@ -141,6 +141,12 @@
         ],
         "createdAt": "2026-09-01T22:09:53.058Z",
         "reason": "Mystery Animal's revealed-answer emoji (.mystery-result-emoji) - a decorative glyph size, same documented category as the existing 21px/96px emoji sizes in DESIGN.md, not a typography step."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "36px",
+        "createdAt": "2026-09-04T11:05:47.264Z",
+        "reason": "Agent: deliberate /impeccable bolder pass - the streak stat is the one number the Daily mode's whole hook is built around, sized as a considered step toward the Headline register rather than sharing Best/Score's utility weight"
       }
     ]
   },
