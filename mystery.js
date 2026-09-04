@@ -322,13 +322,21 @@
   const MILESTONES = [5, 10, 25, 50, 100];
   let toastTimer = null;
   function toast(text) {
-    const t = el('mysteryMilestone');
+    const outer = el('mysteryMilestone');
+    const inner = el('mysteryMilestoneText');
     clearTimeout(toastTimer);
-    t.classList.remove('anim-rise');
-    t.textContent = text;
-    void t.offsetWidth;
-    t.classList.add('anim-rise');
-    toastTimer = setTimeout(() => { t.textContent = ''; }, 2500);
+    inner.textContent = text;
+    outer.classList.add('is-visible');
+    inner.classList.remove('anim-rise');
+    void inner.offsetWidth;
+    inner.classList.add('anim-rise');
+    toastTimer = setTimeout(() => { outer.classList.remove('is-visible'); }, 2500);
+  }
+  // Round transitions shouldn't leave a stale toast floating over new
+  // content if one was still showing when the player moved on.
+  function hideToast() {
+    clearTimeout(toastTimer);
+    el('mysteryMilestone').classList.remove('is-visible');
   }
   function maybeToast(v) {
     if (MILESTONES.indexOf(v) !== -1) toast('🔥 ' + v + ' in a row!');
@@ -405,7 +413,11 @@
      this file needs back from that side. */
 
   const GIVEUP_LABEL = 'Give up, show the answer';
-  const GIVEUP_CONFIRM_LABEL = "Tap again to give up — you won't get another today";
+  // Short enough to stay on one line at the button's own width - the
+  // longer "you won't get another today" clause already lives in the
+  // aria-live feedback line below, so the button doesn't need to repeat
+  // it and grow by two lines' worth of height every time it arms.
+  const GIVEUP_CONFIRM_LABEL = 'Tap again to give up';
   let giveUpArmed = false;
   let giveUpArmTimer = null;
   function resetGiveUpArm() {
@@ -443,6 +455,7 @@
     el('mysteryCountdown').hidden = true;
     el('mysteryShare').hidden = true;
     resetGiveUpArm();
+    hideToast();
     clearCountdown();
     renderHints();
     resetHero();

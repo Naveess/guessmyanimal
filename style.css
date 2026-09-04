@@ -1003,7 +1003,7 @@ body:has(#sharePanel:not([hidden]))::before {
    once ever (see updateStats() in mystery.js), so it never competes
    with the stats it's explaining. */
 .mystery-daily-intro {
-  margin: 0 0 14px;
+  margin: 0 0 13px;
   padding: 11px 14px;
   border-radius: var(--r-card);
   background: var(--flat-bg);
@@ -1011,7 +1011,7 @@ body:has(#sharePanel:not([hidden]))::before {
 }
 
 .mystery-stats {
-  display: flex; gap: 9px; margin-bottom: 22px;
+  display: flex; gap: 9px; margin-bottom: 20px;
 }
 .mystery-stat {
   flex: 1; text-align: center;
@@ -1072,14 +1072,31 @@ body:has(#sharePanel:not([hidden]))::before {
 .mystery-form .btn-solid { flex: none; }
 
 .mystery-feedback {
-  margin: 10px 4px 0; min-height: 20px;
+  margin: 8px 4px 0; min-height: 20px;
   font-size: 14px; font-weight: 600; color: var(--muted);
 }
 .mystery-feedback.good { color: var(--good); }
 
-.mystery-giveup { width: 100%; margin-top: 14px; }
+/* 8px above (feedback belongs with the form it's reporting on) vs 20px
+   below (a real break before the exit-adjacent actions) - two tiers of
+   gap doing the grouping work proximity should, instead of four
+   same-weight items in a row with no boundary between "answering" and
+   "abandoning". */
+.mystery-giveup { width: 100%; margin-top: 20px; }
 .mystery-giveup[hidden] { display: none; }
-.mystery-report { width: 100%; margin-top: 8px; }
+/* Demoted from the plain .btn surface it used to share with Give-up:
+   opposite stakes (this is a low-friction report, Give-up can cost a
+   whole day's puzzle) deserve different weight, not just different
+   copy. Touch target keeps .btn's full min-height - only the visible
+   mark shrinks, tucked close underneath as a footnote to it rather
+   than a second peer action. */
+.mystery-report {
+  width: 100%; margin-top: 4px;
+  background: transparent; border-color: transparent;
+  color: var(--muted); font-size: 13.5px; font-weight: 500;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.mystery-report:hover { background: var(--flat-bg); color: var(--ink); }
 
 .mystery-result { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
 .mystery-result[hidden] { display: none; }
@@ -1115,7 +1132,7 @@ body:has(#sharePanel:not([hidden]))::before {
    sized for a primary control rather than a settings row. */
 .mystery-tabs {
   display: flex; gap: 3px;
-  margin-bottom: 18px;
+  margin-bottom: 13px;
   padding: 3px;
   background: var(--flat-bg);
   border-radius: 12px;
@@ -1136,31 +1153,66 @@ body:has(#sharePanel:not([hidden]))::before {
 }
 
 /* A streak milestone toast - reuses the .copied element's own trick
-   (set text, retrigger `rise`) rather than a new animation. Collapses
-   to nothing when empty instead of reserving permanent blank space,
-   since it's the rare case, not the resting state. */
+   (set text, retrigger `rise`) rather than a new animation. Rests at a
+   collapsed grid row and expands on .is-visible (toggled in
+   mystery.js's toast()) rather than snapping straight to full size,
+   which was an unmitigated ~70px reflow of the photo card and
+   everything under it. grid-template-rows animates cleanly to
+   "auto" height without the layout-thrash a padding/max-height
+   transition would cost - which is also why the padded, tinted surface
+   lives on the .mystery-milestone-in child rather than this element:
+   padding on the row-track element itself wouldn't collapse with it. */
 .mystery-milestone {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin: 0;
+  /* margin is intentionally not in this list - it's a constant 14px,
+     not a variable content height, so it snaps instantly alongside the
+     smooth grid/opacity animation rather than costing a third animated
+     layout property for a barely-perceptible difference. */
+  transition: grid-template-rows .3s var(--ease), opacity .25s var(--ease);
+}
+.mystery-milestone.is-visible {
+  grid-template-rows: 1fr;
+  opacity: 1;
   margin: 0 0 14px;
-  padding: 14px 16px;
+}
+.mystery-milestone-in {
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  padding: 0 16px;
   border-radius: var(--r-card);
-  background: color-mix(in srgb, var(--sun) 16%, var(--card));
-  border: 1px solid color-mix(in srgb, var(--sun) 40%, var(--line));
   text-align: center;
   font-size: 18px; font-weight: 800; letter-spacing: -.01em; color: var(--ink);
 }
-.mystery-milestone:empty { display: none; margin: 0; padding: 0; border: 0; background: none; }
+.mystery-milestone.is-visible .mystery-milestone-in {
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--sun) 16%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--sun) 40%, var(--line));
+}
 
 /* Category chips, Endless only - bucketed groups, not raw categories
    (see CATEGORY_BUCKETS in mystery.js). Selected state reuses the report
    dialog's own kind-chip recipe (ink-tinted, not a solid fill) rather
    than inventing a second loud element next to the one solid-Sun Guess
    button - see the One-Yellow Rule in DESIGN.md. */
+/* A single scrollable row, not a wrap: at phone width the 6 chips used
+   to wrap 3 rows deep (~137px), which was the single biggest reason the
+   hero photo card - the actual point of the screen - landed below the
+   fold in Endless mode. Edge-bleeds slightly past .feed's own padding so
+   a chip can sit flush with the screen edge rather than stopping short
+   of it with an oddly narrow reveal of the next one. */
 .mystery-filters {
-  display: flex; flex-wrap: wrap; gap: 7px;
-  margin-bottom: 18px;
+  display: flex; flex-wrap: nowrap; gap: 7px;
+  margin: 0 -14px 18px; padding: 0 14px 2px;
+  overflow-x: auto; scrollbar-width: none;
 }
+.mystery-filters::-webkit-scrollbar { display: none; }
 .mystery-filters[hidden] { display: none; }
 .mystery-chip {
+  flex: none; white-space: nowrap;
   font: inherit; font-size: 14.5px; font-weight: 500;
   color: var(--ink); cursor: pointer;
   background: var(--card); border: 1px solid var(--line);
