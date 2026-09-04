@@ -677,8 +677,13 @@ body.view-home #q { font-size: 17px; }
   /* Keep the back button lined up with the feed's left edge instead of
      letting the search box run the whole width of a desktop window.
      Right padding is set below, alongside the menu-clearance rule it
-     has to stay in step with. */
-  .topbar { padding-left: max(14px, calc((100% - 588px) / 2)); }
+     has to stay in step with. Scoped to the animal view only - the
+     mystery view's topbar has no search dock, just a back button and a
+     centred title, and that title's own balancing trick (see
+     .mystery-title below) already keeps it centred at any width on
+     its own, as long as the bar's padding stays symmetric; inheriting
+     this asymmetric animal-view padding was dragging it off-centre. */
+  .animalview .topbar { padding-left: max(14px, calc((100% - 588px) / 2)); }
   /* The search box itself (.dock-top) sits in a flex row between the
      back button (aligned to the feed's left edge) and the padding
      reserved for the fixed-position menu icon (aligned to the true
@@ -821,8 +826,10 @@ body:has(#sharePanel:not([hidden]))::before {
    68px at every width, not a centering formula: growing it with the
    viewport was leaving an ever-widening dead zone between the search
    unit and the menu on wide desktop windows, while the left edge stays
-   aligned with the feed regardless. */
-.topbar { padding-right: 68px; }
+   aligned with the feed regardless. Animal view only, same reasoning as
+   the left-padding rule above - the mystery view's centred title needs
+   a symmetric bar, not this search-box clearance. */
+.animalview .topbar { padding-right: 68px; }
 
 /* ==================================================================
    REPORT DIALOG
@@ -1032,6 +1039,7 @@ body:has(#sharePanel:not([hidden]))::before {
 
 .mystery-giveup { width: 100%; margin-top: 14px; }
 .mystery-giveup[hidden] { display: none; }
+.mystery-report { width: 100%; margin-top: 8px; }
 
 .mystery-result { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
 .mystery-result[hidden] { display: none; }

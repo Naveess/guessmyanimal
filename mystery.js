@@ -651,6 +651,22 @@
   });
   el('mysteryNext').addEventListener('click', () => newRound(roundMode));
 
+  // The real animal name always travels with the report (useful for
+  // triage), but the on-screen label only names it once the round is
+  // actually resolved - showing it earlier would spoil the round the
+  // report button sits right in the middle of.
+  el('mysteryReport').addEventListener('click', () => {
+    if (!window.GMA || typeof GMA.openReport !== 'function' || !target) return;
+    const known = resolved;
+    GMA.openReport({
+      animal: target.n,
+      label: known
+        ? 'About ' + target.n + ' (Mystery Animal).'
+        : "From Mystery Animal - not shown here since the round isn't over, but the animal is attached.",
+      wantKind: 'facts',
+    });
+  });
+
   el('mysteryTabDaily').addEventListener('click', () => switchMode('daily'));
   el('mysteryTabEndless').addEventListener('click', () => switchMode('endless'));
 

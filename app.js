@@ -742,8 +742,13 @@
 
   const dlg = el('reportDlg');
   let openedAt = 0;
+  let reportAnimal = '';
 
-  function openReport() {
+  // opts lets a caller outside this view (mystery.js, for its own report
+  // trigger) override what gets attached and shown, since `current` only
+  // ever tracks the animal-page's own state. Plain [data-report] buttons
+  // call this with no args and keep the original current-based behaviour.
+  function openReport(opts) {
     setMenu(false);
     const status = el('reportStatus');
     status.textContent = '';
@@ -751,10 +756,13 @@
     el('reportMsg').value = '';
     el('reportHp').value = '';
     el('reportSend').disabled = false;
-    el('reportCtx').textContent = current ? 'About ' + current.a.n + '.' : '';
+    reportAnimal = opts && opts.animal !== undefined ? opts.animal : (current ? current.a.n : '');
+    el('reportCtx').textContent = opts && opts.label !== undefined
+      ? opts.label
+      : (current ? 'About ' + current.a.n + '.' : '');
     // Guess the likely complaint from where they were: on an animal it is
     // usually the picture, from the splash it is usually a missing animal.
-    const want = current ? 'photo' : 'missing';
+    const want = (opts && opts.wantKind) || (current ? 'photo' : 'missing');
     const radio = dlg.querySelector('input[name="kind"][value="' + want + '"]');
     if (radio) radio.checked = true;
     openedAt = Date.now();
@@ -789,7 +797,7 @@
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
-          animal: current ? current.a.n : '',
+          animal: reportAnimal,
           kind: picked ? picked.value : 'other',
           message: message,
           dwell: Date.now() - openedAt,
@@ -940,7 +948,7 @@
   // Deliberately small: the things mystery.js (a separate view that
   // still needs to feel like part of the same app) needs back from the
   // routing/view state this file owns.
-  window.GMA = { goHome, push, setMenu, loadSummary, dock };
+  window.GMA = { goHome, push, setMenu, loadSummary, dock, openReport };
 
   /* -- Boot ---------------------------------------------------------- */
 

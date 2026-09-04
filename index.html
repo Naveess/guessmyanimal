@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260904-3">
+<link rel="stylesheet" href="style.css?v=20260904-4">
 </head>
 <body class="view-home">
 
@@ -302,6 +302,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <p class="mystery-feedback" id="mysteryFeedback" role="status" aria-live="polite"></p>
 
     <button class="btn mystery-giveup" type="button" id="mysteryGiveUp">Give up, show the answer</button>
+    <!-- Reuses the same report dialog the animal page uses (#reportDlg in
+         this file, wired in app.js) - a wrong hint or a bad hint photo is
+         exactly the same kind of report, so nothing new was built here,
+         just a second trigger with mystery-aware context. -->
+    <button class="btn mystery-report" type="button" id="mysteryReport">Report a problem</button>
 
     <div class="mystery-result" id="mysteryResult" hidden>
       <div class="mystery-result-card">
@@ -425,8 +430,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260904-3"></script>
-<script src="app.js?v=20260904-2"></script>
+<script src="mystery.js?v=20260904-4"></script>
+<script src="app.js?v=20260904-3"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is
