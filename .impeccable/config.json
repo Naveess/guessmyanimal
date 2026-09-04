@@ -143,5 +143,12 @@
         "reason": "Mystery Animal's revealed-answer emoji (.mystery-result-emoji) - a decorative glyph size, same documented category as the existing 21px/96px emoji sizes in DESIGN.md, not a typography step."
       }
     ]
+  },
+  "hook": {
+    "enabled": true,
+    "limits": {
+      "maxFindings": 5,
+      "maxChars": 8000
+    }
   }
 }

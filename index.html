@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260901-2">
+<link rel="stylesheet" href="style.css?v=20260904-3">
 </head>
 <body class="view-home">
 
@@ -246,11 +246,47 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   <main class="feed">
 
+    <div class="mystery-tabs" role="group" aria-label="Game mode">
+      <button class="mystery-tab" type="button" id="mysteryTabDaily" aria-pressed="true">Daily</button>
+      <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="false">Endless</button>
+    </div>
+
     <div class="mystery-stats">
-      <div class="mystery-stat"><b id="mysteryStreak">0</b><span>Streak</span></div>
+      <div class="mystery-stat"><b id="mysteryStreak">0</b><span id="mysteryStreakLabel">Day streak</span></div>
       <div class="mystery-stat"><b id="mysteryBest">0</b><span>Best</span></div>
       <div class="mystery-stat"><b id="mysteryScore">0</b><span>Score</span></div>
     </div>
+
+    <p class="mystery-milestone" id="mysteryMilestone" aria-live="polite"></p>
+
+    <div class="mystery-filters" id="mysteryFilters" hidden></div>
+
+    <!-- Reuses the animal page's own Photo Card component (.pcard and
+         its children, see style.css's "The photo card" section) rather
+         than a bespoke tile, so this screen's one hero image gets the
+         same blurred-backdrop fill, loading pulse, and arrival motion
+         the rest of the site already spent on getting right. The name/
+         category overlay stays hidden (via #mysteryHero.revealed) until
+         a round resolves, since showing it early would give the game
+         away; the fallback glyph is always the site's own paw mark,
+         never the animal's own emoji, for the same reason. -->
+    <article class="pcard mystery-hero" id="mysteryHero">
+      <!-- Transparent 1x1 until a real photo lands, same placeholder as
+           the animal page's own #photoBg/#photo, so this is never a
+           broken-image box while Wikipedia is still being asked. -->
+      <img class="pcard-bg" id="mysteryPhotoBg" alt="" aria-hidden="true"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <img class="pcard-img" id="mysteryPhotoImg" alt="" loading="lazy"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <div class="pcard-fallback" aria-hidden="true">
+        <span class="pcard-fallback-emoji">🐾</span>
+      </div>
+      <div class="pcard-scrim" aria-hidden="true"></div>
+      <div class="pcard-meta" id="mysteryPhotoMeta">
+        <h2 class="pcard-name"><span id="mysteryPhotoName"></span> <span class="pcard-emoji" id="mysteryPhotoEmoji" aria-hidden="true"></span></h2>
+        <p class="pcard-sub" id="mysteryPhotoSub"></p>
+      </div>
+    </article>
 
     <h3 class="label">Guess the animal</h3>
     <div class="card mystery-hintcard">
@@ -272,6 +308,33 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <span class="mystery-result-emoji" id="mysteryAnswerEmoji" aria-hidden="true"></span>
         <span class="mystery-result-name" id="mysteryAnswerName"></span>
       </div>
+      <p class="mystery-result-note" id="mysteryResultNote" hidden></p>
+      <p class="mystery-countdown" id="mysteryCountdown" hidden></p>
+
+      <div class="share" id="mysteryShare" hidden>
+        <button class="btn" id="mysteryShareBtn" type="button"
+                aria-expanded="false" aria-controls="mysterySharePanel">Share result</button>
+        <div class="share-panel" id="mysterySharePanel" hidden>
+          <a class="share-item" id="mysteryShareWa" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/></svg>
+            WhatsApp
+          </a>
+          <a class="share-item" id="mysteryShareX" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>
+            X
+          </a>
+          <a class="share-item" id="mysteryShareFb" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+            Facebook
+          </a>
+          <button class="share-item" id="mysteryShareCopy" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10 13.5a3.5 3.5 0 0 0 5 0l3-3a3.54 3.54 0 0 0-5-5l-1 1"/><path d="M14 10.5a3.5 3.5 0 0 0-5 0l-3 3a3.54 3.54 0 0 0 5 5l1-1"/></svg>
+            Copy link
+          </button>
+        </div>
+      </div>
+      <p class="copied" id="mysteryCopied" aria-live="polite"></p>
+
       <button class="btn btn-solid" type="button" id="mysteryNext">Next animal</button>
     </div>
 
@@ -362,8 +425,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260901-2"></script>
-<script src="app.js?v=20260901-2"></script>
+<script src="mystery.js?v=20260904-3"></script>
+<script src="app.js?v=20260904-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

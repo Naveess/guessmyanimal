@@ -940,7 +940,7 @@
   // Deliberately small: the things mystery.js (a separate view that
   // still needs to feel like part of the same app) needs back from the
   // routing/view state this file owns.
-  window.GMA = { goHome, push, setMenu };
+  window.GMA = { goHome, push, setMenu, loadSummary, dock };
 
   /* -- Boot ---------------------------------------------------------- */
 

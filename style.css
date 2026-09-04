@@ -1017,7 +1017,11 @@ body:has(#sharePanel:not([hidden]))::before {
   padding: 0 16px; min-height: 52px;
   transition: border-color .16s var(--ease);
 }
-#mysteryGuess:focus { outline: none; border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
+/* Border-strength change only, same as .searchrow:focus-within - the
+   site-wide :focus-visible outline (style.css above) is left alone so a
+   keyboard/switch-access player still sees where focus landed on the one
+   control this whole screen is built around. */
+#mysteryGuess:focus { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
 .mystery-form .btn-solid { flex: none; }
 
 .mystery-feedback {
@@ -1040,6 +1044,100 @@ body:has(#sharePanel:not([hidden]))::before {
 }
 .mystery-result-emoji { font-size: 34px; line-height: 1; }
 .mystery-result-name { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+.mystery-result-note { margin: 0; font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.mystery-countdown { margin: 0; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+/* #mysteryNext is a bare .btn, toggled on its own now (Daily hides it,
+   Endless doesn't) rather than only ever appearing as part of the whole
+   .mystery-result panel - same [hidden]-loses-to-display bug as above,
+   since .btn's own `display: inline-flex` has nothing more specific to
+   lose to otherwise. */
+#mysteryNext[hidden] { display: none; }
+/* This share button sits near the bottom of a short result stack, not
+   mid-page like the animal page's own #share - opening its panel upward
+   (the shared .share-panel default, right for that mid-page case) covers
+   the streak/countdown text directly above it here instead. Opens
+   downward instead, where there's nothing left to cover. */
+#mysteryShare .share-panel {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+
+/* Daily / Endless switcher - same segmented-control look as the
+   appearance toggle in the corner menu (.theme/.theme-btn), just
+   sized for a primary control rather than a settings row. */
+.mystery-tabs {
+  display: flex; gap: 3px;
+  margin-bottom: 18px;
+  padding: 3px;
+  background: var(--flat-bg);
+  border-radius: 12px;
+}
+.mystery-tabs[hidden] { display: none; }
+.mystery-tab {
+  flex: 1;
+  font: inherit; font-size: 14px; font-weight: 600;
+  cursor: pointer; color: var(--muted);
+  background: transparent; border: 0; border-radius: 9px;
+  padding: 10px 4px; min-height: 42px;
+  transition: background .14s var(--ease), color .14s var(--ease);
+}
+.mystery-tab:hover { color: var(--ink); }
+.mystery-tab[aria-pressed="true"] {
+  background: var(--card); color: var(--ink); font-weight: 700;
+  box-shadow: 0 1px 2px rgba(29,30,25,.14);
+}
+
+/* A streak milestone toast - reuses the .copied element's own trick
+   (set text, retrigger `rise`) rather than a new animation. Collapses
+   to nothing when empty instead of reserving permanent blank space,
+   since it's the rare case, not the resting state. */
+.mystery-milestone {
+  margin: 0 4px 14px;
+  font-size: 14px; font-weight: 700; color: var(--good);
+}
+.mystery-milestone:empty { display: none; margin: 0; }
+
+/* Category chips, Endless only - bucketed groups, not raw categories
+   (see CATEGORY_BUCKETS in mystery.js). Selected state reuses the report
+   dialog's own kind-chip recipe (ink-tinted, not a solid fill) rather
+   than inventing a second loud element next to the one solid-Sun Guess
+   button - see the One-Yellow Rule in DESIGN.md. */
+.mystery-filters {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  margin-bottom: 18px;
+}
+.mystery-filters[hidden] { display: none; }
+.mystery-chip {
+  font: inherit; font-size: 14.5px; font-weight: 500;
+  color: var(--ink); cursor: pointer;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 999px; padding: 9px 14px; min-height: 38px;
+  transition: background .14s var(--ease), border-color .14s var(--ease);
+}
+.mystery-chip:hover { background: var(--flat-bg); }
+.mystery-chip[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--ink) 8%, var(--card));
+  border-color: var(--ink);
+  color: var(--ink); font-weight: 600;
+}
+
+/* The hint photo reuses the animal page's own Photo Card (.pcard and
+   children, see "The photo card" section below) rather than a bespoke
+   tile - these three rules are the only mystery-specific additions it
+   needs: blur transitions on the foreground image (blur level itself is
+   set inline, five discrete steps as hints reveal), and the name/
+   category overlay staying hidden until a round resolves, since .pcard
+   normally shows it immediately and here that would give the game away. */
+#mysteryHero { margin-bottom: 18px; }
+#mysteryHero .pcard-img { transition: filter .5s var(--ease); }
+#mysteryHero .pcard-meta {
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s var(--ease), visibility 0s .3s;
+}
+#mysteryHero.revealed .pcard-meta {
+  opacity: 1; visibility: visible;
+  transition: opacity .3s var(--ease);
+}
 
 /* ==================================================================
    PROSE  (the about page)
@@ -1112,6 +1210,13 @@ body.view-page { background: var(--paper); }
    ================================================================== */
 
 .share { position: relative; display: inline-flex; }
+/* Same [hidden]-loses-to-display bug documented above for .mystery-form:
+   .share's own `display: inline-flex` sits at equal specificity to the
+   browser's default [hidden]{display:none} and loads later, so toggling
+   #mysteryShare's hidden attribute directly (the animal page's #share
+   never needs this - only its child panel toggles) silently did nothing
+   without this override. */
+.share[hidden] { display: none; }
 
 .share-panel {
   position: absolute; left: 0; bottom: calc(100% + 8px); z-index: 50;
