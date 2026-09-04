@@ -99,6 +99,7 @@
   const DAILY_BEST_KEY = 'gma-mystery-daily-best';
   const DAILY_DATE_KEY = 'gma-mystery-daily-date';       // last date a daily was resolved (win or loss)
   const DAILY_RESULT_KEY = 'gma-mystery-daily-result';   // today's result, once resolved
+  const DAILY_INTRO_KEY = 'gma-mystery-daily-intro-seen'; // shown once, before a first Daily round ever finishes
 
   function getNum(key) { try { return Number(localStorage.getItem(key)) || 0; } catch (e) { return 0; } }
   function setNum(key, v) { try { localStorage.setItem(key, String(v)); } catch (e) {} }
@@ -119,6 +120,8 @@
   const setModeStore = (v) => setStr(MODE_KEY, v);
   const getFilterStore = () => getStr(FILTER_KEY, 'all');
   const setFilterStore = (v) => setStr(FILTER_KEY, v);
+  const dailyIntroSeen = () => !!getStr(DAILY_INTRO_KEY, '');
+  const setDailyIntroSeen = () => setStr(DAILY_INTRO_KEY, '1');
 
   function getDailyResult() {
     try { return JSON.parse(localStorage.getItem(DAILY_RESULT_KEY) || 'null'); }
@@ -306,6 +309,11 @@
       el('mysteryBest').textContent = String(getBest());
     }
     el('mysteryScore').textContent = String(lifetimeScore);
+    // Orient before adding personality: a first-timer otherwise lands on
+    // three unexplained "0" tiles with no idea Daily is one shared puzzle.
+    // Shown once, ever, and only pre-round - once a round's resolved they
+    // already know, and the result view has its own things to say.
+    el('mysteryDailyIntro').hidden = !(mode === 'daily' && !resolved && !dailyIntroSeen());
   }
 
   /* -- Milestones: a quiet toast, not a new component ----------------
@@ -444,7 +452,7 @@
     el('mysteryGuess').focus();
   }
 
-  function showResultCard(won) {
+  function showResultCard(won, lostDailyStreak) {
     resolved = true;
     applyBlur();
     revealHero();
@@ -461,7 +469,7 @@
       note.hidden = false;
       note.textContent = won
         ? 'Solved in ' + shown + (shown === 1 ? ' hint.' : ' hints.')
-        : 'Streak reset — see you tomorrow.';
+        : (lostDailyStreak >= 3 ? 'Streak of ' + lostDailyStreak + ' gone — see you tomorrow.' : 'Streak reset — see you tomorrow.');
       el('mysteryCountdown').hidden = false;
       startCountdown();
       renderDailyShare();
@@ -473,12 +481,30 @@
     }
   }
 
+  // The two extremes of a win are the ones worth naming - solved cold on
+  // the first hint, or dragged out to the very last one. Everything in
+  // between stays the plain, steady line: not every win needs a line
+  // written for it, or the ones that do stop landing.
+  function winFeedback(pts) {
+    if (shown === 1) return 'First hint. Nailed it. +' + pts + ' points.';
+    if (shown === hints.length) return 'Right at the wire — +' + pts + ' points.';
+    return 'Got it — +' + pts + ' points.';
+  }
+
+  // Only a streak that was actually something says so by name on the way
+  // out - a streak of 0 or 1 has nothing to mourn, so the plain line
+  // covers it.
+  function lossFeedback(lostStreak) {
+    return lostStreak >= 3 ? "That's the one. Streak of " + lostStreak + ' gone.' : "That's the one — streak reset.";
+  }
+
   function endRound(won) {
     resolved = true;
     el('mysteryForm').hidden = true;
     el('mysteryGiveUp').hidden = true;
 
     const pts = won ? pointsForHints(shown) + timeBonus(Date.now() - roundStart) : 0;
+    let lostDailyStreak = null;
 
     if (roundMode === 'endless') {
       if (won) {
@@ -487,21 +513,23 @@
         setScore(lifetimeScore);
         if (streak > getBest()) setBest(streak);
         maybeToast(streak);
-        el('mysteryFeedback').textContent = 'Got it — +' + pts + ' points.';
+        el('mysteryFeedback').textContent = winFeedback(pts);
         el('mysteryFeedback').className = 'mystery-feedback good';
       } else {
+        const lost = streak;
         streak = 0;
-        el('mysteryFeedback').textContent = "That's the one — streak reset.";
+        el('mysteryFeedback').textContent = lossFeedback(lost);
         el('mysteryFeedback').className = 'mystery-feedback';
       }
     } else {
       const today = todayStr();
+      lostDailyStreak = won ? null : getDailyStreak();
       let dstreak = won ? (getDailyDate() === addDays(today, -1) ? getDailyStreak() + 1 : 1) : 0;
       if (won) {
         lifetimeScore += pts;
         setScore(lifetimeScore);
         maybeToast(dstreak);
-        el('mysteryFeedback').textContent = 'Got it — +' + pts + ' points.';
+        el('mysteryFeedback').textContent = winFeedback(pts);
         el('mysteryFeedback').className = 'mystery-feedback good';
       } else {
         el('mysteryFeedback').textContent = "That's the one.";
@@ -511,11 +539,12 @@
       if (dstreak > getDailyBest()) setDailyBest(dstreak);
       setDailyDate(today);
       setDailyResult({ date: today, won, hintsShown: shown, hintsTotal: hints.length, animalName: target.n });
+      setDailyIntroSeen();
     }
 
     updateStats();
     if (won) pulse('mysteryStreak');
-    showResultCard(won);
+    showResultCard(won, lostDailyStreak);
   }
 
   // Reconstructs today's already-played Daily round from storage - the
@@ -525,6 +554,7 @@
     roundMode = 'daily';
     target = ANIMALS.find((a) => a.n === r.animalName) || null;
     resolved = true;
+    setDailyIntroSeen();
     el('mysteryForm').hidden = true;
     el('mysteryGiveUp').hidden = true;
     el('mysteryFeedback').textContent = '';

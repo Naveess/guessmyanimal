@@ -998,6 +998,18 @@ body:has(#sharePanel:not([hidden]))::before {
   margin-right: 44px;
 }
 
+/* Quiet on purpose - flat-bg, not the Sun-tint the streak tile/result
+   card/milestone use, since this orients rather than celebrates. Shown
+   once ever (see updateStats() in mystery.js), so it never competes
+   with the stats it's explaining. */
+.mystery-daily-intro {
+  margin: 0 0 14px;
+  padding: 11px 14px;
+  border-radius: var(--r-card);
+  background: var(--flat-bg);
+  font-size: 14px; font-weight: 500; line-height: 1.4; color: var(--muted);
+}
+
 .mystery-stats {
   display: flex; gap: 9px; margin-bottom: 22px;
 }

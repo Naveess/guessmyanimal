@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260904-5">
+<link rel="stylesheet" href="style.css?v=20260904-6">
 </head>
 <body class="view-home">
 
@@ -251,6 +251,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="false">Endless</button>
     </div>
 
+    <!-- Orientation before personality: shown once, ever, before a
+         first-time player's first Daily round finishes - otherwise the
+         three stat tiles below mean nothing yet. Toggled in
+         updateStats() in mystery.js. -->
+    <p class="mystery-daily-intro" id="mysteryDailyIntro" hidden>One animal, once a day, the same one for everyone — miss a day and the streak resets.</p>
+
     <div class="mystery-stats">
       <div class="mystery-stat mystery-stat-streak"><b id="mysteryStreak">0</b><span id="mysteryStreakLabel">Day streak</span></div>
       <div class="mystery-stat"><b id="mysteryBest">0</b><span>Best</span></div>
@@ -430,7 +436,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260904-5"></script>
+<script src="mystery.js?v=20260904-6"></script>
 <script src="app.js?v=20260904-3"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
