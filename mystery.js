@@ -260,15 +260,45 @@
   }
 
   // Same restart trick, generalised: a small physical acknowledgment
-  // (see .anim-pulse in style.css) for a value that just changed under
-  // you - the streak number going up, or a button that just took on a
-  // real cost - rather than a silent textContent swap.
+  // (see .anim-pulse in style.css) for a button that just took on a real
+  // cost - rather than a silent state change. Score/streak use the more
+  // specific wobble+arrow treatment below instead (animateStatChange).
   function pulse(elOrId) {
     const node = typeof elOrId === 'string' ? el(elOrId) : elOrId;
     if (!node) return;
     node.classList.remove('anim-pulse');
     void node.offsetWidth;
     node.classList.add('anim-pulse');
+  }
+
+  // Same trick again, for a value that just changed rather than a button
+  // that was just pressed: the digits themselves wobble (see .anim-tilt
+  // in style.css), and a small drawn chevron - not a text glyph, this
+  // project has no icon font - rises and fades in the tile's corner,
+  // coloured Good/Bad the same way the answer pills already are. Direction
+  // only ever needs "up" (a win) or "down" (a streak resetting on a loss) -
+  // score itself never decreases, but both numbers share this one path.
+  const STAT_ARROW_SVG = {
+    up: '<svg viewBox="0 0 14 14" width="14" height="14"><path d="M2 9 L7 3 L12 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    down: '<svg viewBox="0 0 14 14" width="14" height="14"><path d="M2 5 L7 11 L12 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+  function animateStatChange(id, direction) {
+    const node = el(id);
+    wobble(node);
+    const stat = node.closest('.mystery-stat');
+    const arrow = stat && stat.querySelector('.mystery-stat-arrow');
+    if (!arrow) return;
+    arrow.className = 'mystery-stat-arrow ' + direction;
+    arrow.innerHTML = STAT_ARROW_SVG[direction];
+    void arrow.offsetWidth;
+    arrow.classList.add('is-visible');
+  }
+  function wobble(elOrId) {
+    const node = typeof elOrId === 'string' ? el(elOrId) : elOrId;
+    if (!node) return;
+    node.classList.remove('anim-tilt');
+    void node.offsetWidth;
+    node.classList.add('anim-tilt');
   }
 
   // Best-effort: no thumbnail (offline, rate-limited, or the article has
@@ -474,6 +504,8 @@
     el('mysteryResultNote').hidden = true;
     el('mysteryCountdown').hidden = true;
     el('mysteryShare').hidden = true;
+    el('mysteryCelebrate').innerHTML = '';
+    for (const a of document.querySelectorAll('.mystery-stat-arrow')) { a.className = 'mystery-stat-arrow'; a.innerHTML = ''; }
     resetGiveUpArm();
     hideToast();
     clearCountdown();
@@ -485,12 +517,44 @@
     el('mysteryGuess').focus();
   }
 
-  function showResultCard(won, lostDailyStreak) {
+  // Only ever populated on a genuine, just-happened win (see the
+  // `celebrateWin` param on showResultCard below) - a give-up or a
+  // Daily-history replay shows the exact same result card otherwise, so
+  // this is the one thing that tells "I solved it" apart from "I didn't."
+  // Uses the animal's own emoji plus the site's paw mark rather than
+  // generic confetti shapes, so it reads as specific to what just
+  // happened rather than a stock celebration effect.
+  const CELEBRATE_PARTICLES = [
+    { x: '8%', ty: '-64px', r: '-24deg', d: '0s' },
+    { x: '28%', ty: '-82px', r: '18deg', d: '.12s' },
+    { x: '50%', ty: '-56px', r: '-10deg', d: '.24s' },
+    { x: '72%', ty: '-80px', r: '22deg', d: '.12s' },
+    { x: '92%', ty: '-62px', r: '-18deg', d: '0s' },
+  ];
+  function celebrate() {
+    const box = el('mysteryCelebrate');
+    box.innerHTML = '';
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const glyphs = [target.e || '🐾', '🐾', target.e || '🐾', '✨', target.e || '🐾'];
+    for (let i = 0; i < CELEBRATE_PARTICLES.length; i++) {
+      const p = CELEBRATE_PARTICLES[i];
+      const s = document.createElement('span');
+      s.textContent = glyphs[i];
+      s.style.setProperty('--x', p.x);
+      s.style.setProperty('--ty', p.ty);
+      s.style.setProperty('--r', p.r);
+      s.style.setProperty('--d', p.d);
+      box.appendChild(s);
+    }
+  }
+
+  function showResultCard(won, lostDailyStreak, celebrateWin) {
     resolved = true;
     applyBlur();
     revealHero();
     el('mysteryAnswerEmoji').textContent = target.e || '🐾';
     el('mysteryAnswerName').textContent = target.n;
+    if (celebrateWin) celebrate(); else el('mysteryCelebrate').innerHTML = '';
     el('mysteryResult').hidden = false;
     el('mysteryResult').classList.remove('anim-rise');
     void el('mysteryResult').offsetWidth;
@@ -538,6 +602,7 @@
 
     const pts = won ? pointsForHints(shown) + timeBonus(Date.now() - roundStart) : 0;
     let lostDailyStreak = null;
+    let lostStreakAmount = 0; // > 0 means a real streak just reset to 0 - worth a down-arrow
 
     if (roundMode === 'endless') {
       if (won) {
@@ -549,9 +614,9 @@
         el('mysteryFeedback').textContent = winFeedback(pts);
         el('mysteryFeedback').className = 'mystery-feedback good';
       } else {
-        const lost = streak;
+        lostStreakAmount = streak;
         streak = 0;
-        el('mysteryFeedback').textContent = lossFeedback(lost);
+        el('mysteryFeedback').textContent = lossFeedback(lostStreakAmount);
         el('mysteryFeedback').className = 'mystery-feedback';
       }
     } else {
@@ -565,6 +630,7 @@
         el('mysteryFeedback').textContent = winFeedback(pts);
         el('mysteryFeedback').className = 'mystery-feedback good';
       } else {
+        lostStreakAmount = lostDailyStreak || 0;
         el('mysteryFeedback').textContent = "That's the one.";
         el('mysteryFeedback').className = 'mystery-feedback';
       }
@@ -576,8 +642,13 @@
     }
 
     updateStats();
-    if (won) pulse('mysteryStreak');
-    showResultCard(won, lostDailyStreak);
+    if (won) {
+      animateStatChange('mysteryStreak', 'up');
+      animateStatChange('mysteryScore', 'up');
+    } else if (lostStreakAmount > 0) {
+      animateStatChange('mysteryStreak', 'down');
+    }
+    showResultCard(won, lostDailyStreak, won);
   }
 
   // Reconstructs today's already-played Daily round from storage - the
@@ -604,7 +675,10 @@
       el('mysteryHints').innerHTML = '';
     }
     updateStats();
-    showResultCard(r.won);
+    // Never celebrates here even if r.won - this is reopening an already-
+    // settled day, not the moment of winning it, and replaying the burst
+    // every time someone revisits today's result would cheapen it.
+    showResultCard(r.won, null, false);
   }
 
   function enterDaily() {
