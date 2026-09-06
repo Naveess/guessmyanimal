@@ -43,10 +43,23 @@
   // already told the player the category - a single-category chip
   // makes that hint a pure freebie, so the round runs one hint short
   // instead of shipping it.
+  // r[0] values are Title Case for display elsewhere (chips, filters),
+  // but a few read as proper nouns they aren't once dropped into "Found
+  // in ___." - "Found in Worldwide." and "Found in Oceans." are backwards
+  // grammar, not just odd capitalisation, so those two get their own
+  // phrasing rather than a lowercase patch that'd still read wrong.
+  const REGION_HINT = {
+    Worldwide: "It's found worldwide.",
+    Oceans: 'Found in the oceans.',
+  };
+  function regionHint(r) {
+    return REGION_HINT[r] || ('Found in ' + r + '.');
+  }
+
   function hintsFor(a, skipCategory) {
     const list = [
       "It's a " + a.c.toLowerCase() + '.',
-      'Found in ' + a.r[0] + '.',
+      regionHint(a.r[0]),
       DIET_HINT[a.d] || '',
       cap(a.sz) + ' in size.',
       a.f,
@@ -182,17 +195,24 @@
   let target = null;       // the current animal object (from ANIMALS)
   let hints = [];
   let shown = 0;            // hints currently visible, at least 1
-  let lastName = null;      // avoid picking the same animal twice running (Endless)
   let resolved = false;     // round already won/given up
   let roundMode = mode;     // which mode the *current* round/state belongs to
   let roundStart = 0;
 
+  // Endless: avoid repeating anything from recent memory, not just the
+  // single last pick - a filtered pool (say, 25 Australian animals) can
+  // hand back the same animal within a handful of rounds otherwise, which
+  // reads as broken rather than random. The window shrinks to fit small
+  // pools so it can never lock up waiting for a name that isn't there.
+  let recentNames = [];
   function pickEndless() {
     const pool = poolFor(filter);
+    const windowSize = Math.min(12, pool.length - 1);
     let a;
     do { a = pool[Math.floor(Math.random() * pool.length)]; }
-    while (pool.length > 1 && a.n === lastName);
-    lastName = a.n;
+    while (windowSize > 0 && recentNames.includes(a.n));
+    recentNames.push(a.n);
+    if (recentNames.length > windowSize) recentNames.shift();
     return a;
   }
 
@@ -729,6 +749,17 @@
 
   for (const b of document.querySelectorAll('[data-mystery]')) {
     b.addEventListener('click', () => openMystery());
+  }
+
+  // The home button's attention-nudge (see .mystery-play's `mystery-nudge`
+  // keyframe in style.css) is only for the eye that hasn't found it yet -
+  // the moment a real cursor or keyboard focus actually reaches it, it's
+  // done its job and shaking on regardless would read as broken.
+  const mysteryPlayBtn = document.querySelector('.mystery-play');
+  if (mysteryPlayBtn) {
+    const settleMysteryPlay = () => mysteryPlayBtn.classList.add('settled');
+    mysteryPlayBtn.addEventListener('pointerenter', settleMysteryPlay, { once: true });
+    mysteryPlayBtn.addEventListener('focus', settleMysteryPlay, { once: true });
   }
   el('mysteryBack').addEventListener('click', () => {
     clearCountdown();

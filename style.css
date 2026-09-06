@@ -784,21 +784,67 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
 body.view-home .play-link { display: inline-flex; }
 
 /* A second thing to do on the splash, for the visitor who came to play
-   rather than settle an argument mid-game - same outline-on-strong-
-   colour treatment as the corner controls, sized like a real button
-   rather than a chip since it starts a whole other mode. */
+   rather than settle an argument mid-game. This is the splash's one
+   primary action, so it earns the splash's own boldest pairing rather
+   than the corner controls' quiet outline treatment: solid Home-Ink
+   fill, Home-Bg text - the exact contrast pair ::selection already uses
+   on this screen (see body.view-home ::selection above), just spent on
+   a button instead of a text highlight. Sun itself can't do this job
+   here (the splash ground already *is* Sun in light mode - a solid-Sun
+   button would vanish into its own background), so Home-Ink stands in
+   as this screen's one deliberate fill, same spirit as the One-Yellow
+   Rule elsewhere: exactly one solid, decisive element per screen. */
 .mystery-play {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   width: 100%; margin-top: 22px; padding: 13px 20px; min-height: 48px;
-  font: inherit; font-size: 15px; font-weight: 600;
-  color: var(--home-ink); cursor: pointer;
-  background: transparent;
-  border: 1.5px solid color-mix(in srgb, var(--home-ink) 30%, transparent);
+  font: inherit; font-size: 15px; font-weight: 700;
+  color: var(--home-bg); cursor: pointer;
+  background: var(--home-ink);
+  border: none;
   border-radius: 14px;
   transition: background .16s var(--ease), transform .16s var(--ease);
 }
-.mystery-play:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
+.mystery-play:hover { background: color-mix(in srgb, var(--home-ink) 88%, var(--home-bg)); }
 .mystery-play:active { transform: scale(.98); }
+/* Nothing else on the splash moves, so this is the one thing that does:
+   it settles in a beat after the rest of the hero is already on screen,
+   which is exactly what makes it the thing the eye catches. Reuses the
+   site's own `rise` keyframe (see .anim-rise) rather than a new motion
+   primitive - only the delay is added here - so it inherits that class's
+   existing prefers-reduced-motion override for free. */
+.mystery-play.anim-rise { animation-delay: .4s; }
+
+/* A few small, spaced-out nudges for whoever's eye hasn't landed on this
+   button yet - a real problem a real player ran into. Rest holds for most
+   of each cycle, then a quick head-shake; three cycles (~11s of runway
+   after the entrance settles) is enough chances to get noticed without
+   turning into a permanent tic for anyone who leaves the tab open, and it
+   stops for good the instant someone actually reaches the button (see
+   .settled below, toggled from mystery.js on first hover/focus/touch) -
+   continuing to shake under a hovering cursor would read as broken, not
+   attention-getting. Reduced-motion strips it entirely below; a fade-in
+   already did the job of announcing the button without spatial movement. */
+@keyframes mystery-nudge {
+  0%, 78%, 100% { transform: translateX(0) rotate(0); }
+  82% { transform: translateX(-3px) rotate(-1.4deg); }
+  86% { transform: translateX(3px) rotate(1.4deg); }
+  90% { transform: translateX(-2px) rotate(-1deg); }
+  94% { transform: translateX(2px) rotate(1deg); }
+}
+.mystery-play.anim-rise {
+  animation: rise .55s var(--ease) .4s backwards,
+             mystery-nudge 3.4s var(--ease) 1.3s 3;
+}
+.mystery-play.settled { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  /* The nudge is pure spatial shake with nothing else to reduce it to -
+     drop it outright and keep only the (already-shortened, see the
+     shared reduced-motion block above) fade-in. This has to live here,
+     after the rule it overrides, rather than in that shared block: same
+     selector specificity means source order decides, and that block
+     comes earlier in the file than .mystery-play's own rules do. */
+  .mystery-play.anim-rise { animation-name: rise; }
+}
 
 .menu-panel {
   position: absolute; right: 0; top: calc(100% + 8px);

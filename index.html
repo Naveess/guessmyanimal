@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260904-7">
+<link rel="stylesheet" href="style.css?v=20260904-8">
 </head>
 <body class="view-home">
 
@@ -68,8 +68,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <!-- Mirrors the corner menu on the opposite side, but only on the
      splash - the animal view's top bar has no room for it, and "About
-     the game" already covers this once someone's looked something up. -->
-<a class="play-link" id="playLink" href="about.html">Try the guessing game</a>
+     the game" already covers this once someone's looked something up.
+     Named "How it works" rather than anything with "game" or "play" in
+     it - this links to a static explainer, not an interactive round, and
+     sitting a few inches from the real Play Mystery Animal button (which
+     *does* start something), a same-flavoured label here reads as a
+     second play button and sends people to the wrong place. -->
+<a class="play-link" id="playLink" href="about.html">How it works</a>
 
 <!-- ============================================================
      HOME. One flat field of colour, the mark, and the search box.
@@ -96,7 +101,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <div class="chips" id="starterChips"></div>
     </div>
 
-    <button class="mystery-play" type="button" data-mystery>
+    <button class="mystery-play anim-rise" type="button" data-mystery>
       <span aria-hidden="true">🎯</span> Play Mystery Animal
     </button>
 
@@ -440,7 +445,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260904-7"></script>
+<script src="mystery.js?v=20260904-8"></script>
 <script src="app.js?v=20260904-3"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
