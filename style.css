@@ -753,13 +753,35 @@ body.view-home #q { font-size: 17px; }
    and mobile never sees any of this - the wrappers are plain, unstyled
    divs below this breakpoint. */
 @media (min-width: 860px) {
+  /* The round itself is short enough that, on a tall monitor, top-
+     anchoring it under the topbar left a large dead void below - flex
+     + margin:auto on .feed centres it vertically in whatever space is
+     actually left, and simply falls back to normal top-anchored
+     scrolling the moment real content (a longer Endless session, the
+     result view) is taller than the viewport, since auto margins can't
+     go negative. .mysteryview[hidden] has to be spelled out again here:
+     the same [hidden]-loses-to-a-same-specificity-display bug this file
+     keeps hitting (.mystery-form, .share, #mysteryGiveUp above) - this
+     display:flex would otherwise beat the browser's own default the
+     instant this class and [hidden] tie on specificity. */
+  .mysteryview { min-height: 100vh; display: flex; flex-direction: column; }
+  .mysteryview[hidden] { display: none; }
   .mysteryview .feed {
-    max-width: 820px;
+    /* A fixed 820px cap looked fine on a laptop-sized window but reads
+       as a small island stranded in a huge dark field on a big monitor -
+       clamp() lets the whole block grow with the viewport instead of
+       hitting one fixed ceiling, while 92vw keeps real margin either
+       side on anything narrower. Same for the photo column and the
+       gap between it and the text below - scaling all three together
+       keeps their proportions matched instead of just the text column
+       stretching wide on its own. */
+    max-width: clamp(820px, 78vw, 1100px);
+    margin: auto;
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: clamp(320px, 26vw, 400px) 1fr;
     grid-template-areas: "hero top" "hero bottom";
     grid-template-rows: auto 1fr;
-    column-gap: 28px;
+    column-gap: clamp(28px, 3vw, 44px);
     align-items: start;
   }
   /* min-width:0 overrides a grid item's default auto-minimum (its
