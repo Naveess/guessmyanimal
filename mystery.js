@@ -221,27 +221,72 @@
   // or half-loaded image never flashes between rounds.
   const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
-  const BLUR_STEPS = [20, 14, 9, 5, 0];
-  function applyBlur() {
+  // A CSS `filter: blur()` never actually hides anything - the browser
+  // still downloads the full, sharp image, so anyone who opens devtools
+  // (Elements, to read the real <img src>, or Network, to see the
+  // response) gets the answer regardless of what's painted on screen.
+  // The only real fix is to never let the round-in-progress request the
+  // full image at all: each step below is a genuinely tiny Wikimedia
+  // thumbnail, fetched straight from Wikimedia's own thumbnailing
+  // service. Direct (hotlinked) requests like this one are only served
+  // for a fixed list of "standard" widths - anything else 400s, per
+  // https://w.wiki/GHai ("Current standard sizes in Wikimedia
+  // production: 20, 40, 60, 120, 250, 330, 500, 960, 1280, 1920, 3840").
+  // Stretched back up to card size with `image-rendering: pixelated` in
+  // style.css, so the actual bytes on the wire are as blocky as what's
+  // on screen. 0 is a sentinel for "use the real, full-size source" -
+  // only reachable once resolved, or on the last hint of a full round,
+  // matching the old blur curve's final step landing on fully sharp.
+  const PIXEL_WIDTH_STEPS = [20, 40, 60, 120, 0];
+
+  // The summary API's thumbnail URL always ends .../<width>px-<file>;
+  // swapping that number for another size on the standard list above is
+  // the supported way to ask Wikimedia's own thumbnailer for a different
+  // rendition of the same file. Returns null if the URL doesn't look
+  // like that shape, so a caller can fall back to showing no photo
+  // rather than risk serving the real one.
+  function thumbAtWidth(src, width) {
+    const m = /^(.*\/)(\d+)px-([^/]+)$/.exec(src);
+    return m ? m[1] + width + 'px-' + m[3] : null;
+  }
+
+  let photoFullSrc = null; // the real thumbnail URL, once fetched
+
+  function setPhotoSrc(src) {
     const img = el('mysteryPhotoImg');
-    if (!img) return;
-    const idx = Math.min(Math.max(shown - 1, 0), BLUR_STEPS.length - 1);
-    img.style.filter = 'blur(' + (resolved ? 0 : BLUR_STEPS[idx]) + 'px)';
+    const hero = el('mysteryHero');
+    img.onerror = () => hero.classList.remove('has-photo');
+    img.onload = () => { hero.classList.add('has-photo'); pulse(img); };
+    img.src = src;
+    el('mysteryPhotoBg').src = src;
+  }
+
+  function applyPixelation() {
+    if (!photoFullSrc) return;
+    if (resolved) { setPhotoSrc(photoFullSrc); return; }
+    const idx = Math.min(Math.max(shown - 1, 0), PIXEL_WIDTH_STEPS.length - 1);
+    const step = PIXEL_WIDTH_STEPS[idx];
+    const tiny = step === 0 ? photoFullSrc : thumbAtWidth(photoFullSrc, step);
+    // No match for the expected Wikimedia URL shape: skip the photo
+    // entirely rather than gamble on it secretly being the full image.
+    if (!tiny) { el('mysteryHero').classList.remove('has-photo'); return; }
+    setPhotoSrc(tiny);
   }
 
   // Mirrors app.js's own hero reset in show(): wipe back to the loading
   // state before the new round's fetch goes out, or the previous
-  // animal's photo (and blur level) would sit there briefly looking like
-  // this round's answer.
+  // animal's photo (and pixelation level) would sit there briefly looking
+  // like this round's answer.
   function resetHero() {
     const hero = el('mysteryHero');
     hero.classList.remove('has-photo', 'revealed');
     hero.classList.add('is-loading');
+    photoFullSrc = null;
     const img = el('mysteryPhotoImg');
     img.onerror = null;
+    img.onload = null;
     img.alt = '';
     img.src = BLANK;
-    img.style.filter = '';
     el('mysteryPhotoBg').src = BLANK;
     el('mysteryPhotoName').textContent = '';
     el('mysteryPhotoEmoji').textContent = '';
@@ -316,12 +361,8 @@
       el('mysteryHero').classList.remove('is-loading');
       const src = data && data.thumbnail && data.thumbnail.source;
       if (!src) return;
-      const img = el('mysteryPhotoImg');
-      img.onerror = () => { img.onerror = null; el('mysteryHero').classList.remove('has-photo'); };
-      img.src = src;
-      el('mysteryPhotoBg').src = src;
-      el('mysteryHero').classList.add('has-photo');
-      applyBlur();
+      photoFullSrc = src;
+      applyPixelation();
     });
   }
 
@@ -345,7 +386,7 @@
       p.textContent = (i + 1) + '. ' + hints[i];
       box.appendChild(p);
     }
-    applyBlur();
+    applyPixelation();
   }
 
   function updateStats() {
@@ -550,7 +591,7 @@
 
   function showResultCard(won, lostDailyStreak, celebrateWin) {
     resolved = true;
-    applyBlur();
+    applyPixelation();
     revealHero();
     el('mysteryAnswerEmoji').textContent = target.e || '🐾';
     el('mysteryAnswerName').textContent = target.n;

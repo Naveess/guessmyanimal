@@ -1424,13 +1424,19 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
 
 /* The hint photo reuses the animal page's own Photo Card (.pcard and
    children, see "The photo card" section below) rather than a bespoke
-   tile - these three rules are the only mystery-specific additions it
-   needs: blur transitions on the foreground image (blur level itself is
-   set inline, five discrete steps as hints reveal), and the name/
-   category overlay staying hidden until a round resolves, since .pcard
-   normally shows it immediately and here that would give the game away. */
+   tile - these are the only mystery-specific additions it needs. The
+   "blur" itself is never a CSS filter (that would still ship the real,
+   sharp image to the browser - readable straight out of devtools) - it's
+   a genuinely tiny Wikimedia thumbnail (see PIXEL_WIDTH_STEPS in
+   mystery.js), stretched back up to card size and kept blocky rather
+   than smoothed. The name/category overlay stays hidden until a round
+   resolves, since .pcard normally shows it immediately and here that
+   would give the game away. */
 #mysteryHero { margin-bottom: 18px; }
-#mysteryHero .pcard-img { transition: filter .5s var(--ease); }
+#mysteryHero:not(.revealed) .pcard-img,
+#mysteryHero:not(.revealed) .pcard-bg {
+  image-rendering: pixelated;
+}
 #mysteryHero .pcard-meta {
   opacity: 0; visibility: hidden;
   transition: opacity .3s var(--ease), visibility 0s .3s;
