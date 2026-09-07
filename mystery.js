@@ -149,6 +149,15 @@
   let filter = getFilterStore();
   let mode = getModeStore();
 
+  // The sound engine and the preference behind it live in app.js, which
+  // owns everything site-wide; this view only ever asks for a named
+  // sound. Guarded the same way loadSummary is below - app.js loads
+  // after this file, so the reference is resolved at call time, never at
+  // parse time.
+  function sfx(name) {
+    if (window.GMA && typeof GMA.sfx === 'function') GMA.sfx(name);
+  }
+
   function pointsForHints(hintsShown) {
     return Math.max(100 - (hintsShown - 1) * 20, 10);
   }
@@ -387,6 +396,7 @@
       box.appendChild(p);
     }
     applyPixelation();
+    updateHintBtn();
   }
 
   function updateStats() {
@@ -592,6 +602,7 @@
   function showResultCard(won, lostDailyStreak, celebrateWin) {
     resolved = true;
     applyPixelation();
+    updateHintBtn();
     revealHero();
     el('mysteryAnswerEmoji').textContent = target.e || '🐾';
     el('mysteryAnswerName').textContent = target.n;
@@ -640,6 +651,7 @@
     resolved = true;
     el('mysteryForm').hidden = true;
     el('mysteryGiveUp').hidden = true;
+    sfx(won ? 'win' : 'lose');
 
     const pts = won ? pointsForHints(shown) + timeBonus(Date.now() - roundStart) : 0;
     let lostDailyStreak = null;
@@ -773,6 +785,29 @@
     }
   }
 
+  // Shared by a wrong guess and the Next hint button, because the cost
+  // is identical either way - one hint, so 20 points off the win. The
+  // two callers differ only in what they say about it afterwards.
+  function revealHint() {
+    if (resolved || shown >= hints.length) return false;
+    shown += 1;
+    renderHints();
+    return true;
+  }
+
+  // Hidden, not disabled, once the last hint is out - a dead control
+  // left on screen only invites another click. The count is on the
+  // label because "how much have I got left" is the entire question
+  // being asked when someone reaches for this.
+  function updateHintBtn() {
+    const btn = el('mysteryHint');
+    if (!btn) return;
+    const left = hints.length - shown;
+    btn.hidden = resolved || left <= 0;
+    if (left <= 0) return; // about to be hidden - don't leave "(0 left)" behind it
+    btn.textContent = left === 1 ? 'Last hint' : 'Next hint (' + left + ' left)';
+  }
+
   function submitGuess(e) {
     e.preventDefault();
     if (resolved) return;
@@ -790,8 +825,8 @@
       return;
     }
 
-    shown += 1;
-    renderHints();
+    sfx('wrong');
+    revealHint();
     el('mysteryFeedback').textContent = 'Not quite — another hint.';
     el('mysteryFeedback').className = 'mystery-feedback';
     el('mysteryGuess').value = '';
@@ -820,6 +855,18 @@
   window.openMystery = openMystery;
 
   el('mysteryForm').addEventListener('submit', submitGuess);
+
+  // Focus goes straight back to the input: the hint is something you
+  // read on the way to typing, not a place to be left standing.
+  el('mysteryHint').addEventListener('click', () => {
+    if (!revealHint()) return;
+    sfx('hint');
+    resetGiveUpArm();
+    el('mysteryFeedback').textContent = '';
+    el('mysteryFeedback').className = 'mystery-feedback';
+    el('mysteryGuess').focus();
+  });
+
   // A wrong guess only costs a hint - giving up on Daily forfeits the
   // entire day's puzzle, so it gets a second-tap confirm (no modal, just
   // a relabelled button) rather than the one-tap Endless already had. The
@@ -831,6 +878,7 @@
     if (resolved) return;
     if (roundMode === 'daily' && !giveUpArmed) {
       giveUpArmed = true;
+      sfx('tap');
       el('mysteryGiveUp').textContent = GIVEUP_CONFIRM_LABEL;
       pulse('mysteryGiveUp');
       el('mysteryFeedback').textContent = "Tap again to confirm — you won't get another animal today.";
@@ -882,7 +930,8 @@
   });
 
   el('mysteryShareBtn').addEventListener('click', async (e) => {
-    e.stopPropagation();
+    e.stopPropagation();   // out of the delegated listener's reach, so it sounds itself
+    sfx('tap');
     const r = getDailyResult();
     if (!r) return;
     if (canShareNatively()) {

@@ -775,10 +775,20 @@ body.view-home #q { font-size: 17px; }
        gap between it and the text below - scaling all three together
        keeps their proportions matched instead of just the text column
        stretching wide on its own. */
-    max-width: clamp(820px, 78vw, 1100px);
+    max-width: clamp(820px, 80vw, 1320px);
+    /* width:100% is load-bearing, not belt-and-braces. An auto margin on
+       a flex item's cross axis cancels the stretch it would otherwise
+       get, so this shrink-wrapped its own content instead of filling
+       max-width - which meant the column widths were set by whatever
+       happened to be in the panel at the time. Winning hides the guess
+       form and shows the (narrower) result card, so the whole block
+       visibly snapped ~120px narrower at the exact moment of solving it.
+       Filling the track first, then centring what's left over, keeps the
+       two columns identical in every state of the round. */
+    width: 100%;
     margin: auto;
     display: grid;
-    grid-template-columns: clamp(320px, 26vw, 400px) 1fr;
+    grid-template-columns: clamp(320px, 27vw, 480px) 1fr;
     grid-template-areas: "hero top" "hero bottom";
     grid-template-rows: auto 1fr;
     column-gap: clamp(28px, 3vw, 44px);
@@ -800,6 +810,34 @@ body.view-home #q { font-size: 17px; }
        this same component already uses reads far better. */
     aspect-ratio: 4 / 5;
   }
+
+  /* -- Readable at a distance, and through a stream -----------------
+     This mode gets played to an audience: someone runs it on a desktop
+     while other people watch a compressed video of that screen, often
+     on a phone. Type that is comfortable at arm's length on a 27" panel
+     is mush by the time it has been through 1080p encoding and shrunk
+     into someone's hand, and the hints are the entire game - if they
+     can't be read, there is nothing to play along with.
+
+     So the game scales with the viewport instead of holding one fixed
+     size and stranding itself in the middle of a big monitor. Only this
+     mode does. The animal page is a reference lookup that someone reads
+     from their own keyboard, and it stays where it is.
+
+     The vw coefficients are steep enough to reach their ceilings around
+     1600px rather than only at 2560 - a maximised window on a 1080p
+     panel is the single most common thing this is played on, and a
+     scale that only pays out on a 4K monitor would miss it entirely. */
+  .mysteryview .mystery-hint { font-size: clamp(16px, 1.35vw, 21px); }
+  .mysteryview #mysteryGuess {
+    font-size: clamp(16px, 1.2vw, 19px);
+    min-height: clamp(52px, 3.9vw, 62px);
+  }
+  .mysteryview .mystery-form .btn { font-size: clamp(15px, 1.1vw, 18px); }
+  .mysteryview .mystery-stat b { font-size: clamp(24px, 1.95vw, 32px); }
+  .mysteryview .mystery-stat-streak b { font-size: clamp(36px, 2.9vw, 48px); }
+  .mysteryview .mystery-stat span { font-size: clamp(11.5px, .85vw, 13.5px); }
+  .mysteryview .mystery-result-name { font-size: clamp(20px, 1.7vw, 28px); }
 }
 
 /* ==================================================================
@@ -1247,6 +1285,12 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
    gap doing the grouping work proximity should, instead of four
    same-weight items in a row with no boundary between "answering" and
    "abandoning". */
+/* Sits directly under the guess row because it's part of guessing, not
+   part of quitting - Give-up keeps its own gap below to stay a separate
+   decision rather than the next item in a list of buttons. */
+.mystery-hintbtn { width: 100%; margin-top: 10px; }
+.mystery-hintbtn[hidden] { display: none; }
+
 .mystery-giveup { width: 100%; margin-top: 20px; }
 .mystery-giveup[hidden] { display: none; }
 /* Demoted from the plain .btn surface it used to share with Give-up:

@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260907-1">
+<link rel="stylesheet" href="style.css?v=20260907-3">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
      stream.html: that page is a transparent OBS overlay with no content
      of its own, never opened as a real page. -->
@@ -58,6 +58,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="about.html">About the game</a>
     <button class="menu-item" type="button" data-mystery>Mystery Animal</button>
     <button class="menu-item" type="button" id="streamOpen">Stream Mode</button>
+    <!-- Wired in app.js, which owns the sound engine and this preference
+         for the whole site. The label carries the state rather than a
+         separate switch, same as the rest of this menu is plain items.
+         data-sfx="off" because turning sound *off* has to be silent, so
+         it plays its own click instead of taking the delegated one. -->
+    <button class="menu-item" type="button" id="soundToggle" aria-pressed="true" data-sfx="off">Sound on</button>
     <button class="menu-item" type="button" data-report>Report a problem</button>
     <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
        target="_blank" rel="noopener">Source on GitHub</a>
@@ -328,7 +334,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <div class="mystery-hints" id="mysteryHints"></div>
     </div>
 
-    <form class="mystery-form" id="mysteryForm">
+    <form class="mystery-form" id="mysteryForm" data-sfx="off">
       <input id="mysteryGuess" type="text" autocomplete="off" autocorrect="off"
              autocapitalize="off" spellcheck="false" placeholder="Type your guess…"
              aria-label="Your guess">
@@ -336,7 +342,14 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     </form>
     <p class="mystery-feedback" id="mysteryFeedback" role="status" aria-live="polite"></p>
 
-    <button class="btn mystery-giveup" type="button" id="mysteryGiveUp">Give up, show the answer</button>
+    <!-- Until this existed the only way to advance a hint was to submit a
+         deliberately wrong guess, which is fine alone and daft out loud -
+         someone playing to an audience had to type junk to say "go on,
+         give us another one". Costs exactly what a wrong guess costs
+         (a hint, so 20 points off the win), just without the theatre. -->
+    <button class="btn mystery-hintbtn" type="button" id="mysteryHint" data-sfx="off">Next hint</button>
+
+    <button class="btn mystery-giveup" type="button" id="mysteryGiveUp" data-sfx="off">Give up, show the answer</button>
     <!-- Reuses the same report dialog the animal page uses (#reportDlg in
          this file, wired in app.js) - a wrong hint or a bad hint photo is
          exactly the same kind of report, so nothing new was built here,
@@ -471,8 +484,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260907-1"></script>
-<script src="app.js?v=20260904-3"></script>
+<script src="mystery.js?v=20260907-3"></script>
+<script src="app.js?v=20260907-1"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is
