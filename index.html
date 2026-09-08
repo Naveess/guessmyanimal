@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260908-4">
+<link rel="stylesheet" href="style.css?v=20260908-5">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
      stream.html: that page is a transparent OBS overlay with no content
      of its own, never opened as a real page. -->
@@ -318,8 +318,22 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          mobile DOM order or visual result. -->
     <div class="mystery-panel-top">
     <div class="mystery-tabs" role="group" aria-label="Game mode">
-      <button class="mystery-tab" type="button" id="mysteryTabDaily" aria-pressed="true">Daily</button>
-      <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="false">Endless</button>
+      <button class="mystery-tab" type="button" id="mysteryTabDaily" aria-pressed="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3.5" y="5" width="17" height="15" rx="2.5"/>
+          <path d="M3.5 9.5h17M8 3v4M16 3v4"/>
+        </svg>
+        Daily
+      </button>
+      <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17 2.5 21 6l-4 3.5"/>
+          <path d="M3 12.5v-2a4 4 0 0 1 4-4h14"/>
+          <path d="M7 21.5 3 18l4-3.5"/>
+          <path d="M21 11.5v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+        Endless
+      </button>
     </div>
 
     <!-- Orientation before personality: shown once, ever, before a

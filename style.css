@@ -1562,12 +1562,20 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
 .mystery-tab {
   position: relative; z-index: 1;
   flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
   font: inherit; font-size: 14px; font-weight: 500;
   cursor: pointer; color: var(--muted);
   background: transparent; border: 0; border-radius: 9px;
   padding: 10px 4px; min-height: 42px;
   transition: color .14s var(--ease);
 }
+/* A calendar for the fixed, once-a-day puzzle; a repeat/loop glyph for
+   the mode that never runs out - non-verbal differentiation on top of
+   the colour/weight change, so which mode is which reads at a glance
+   (or in a screenshot) rather than depending on reading two words. Icon
+   colour rides along with the label's own colour transition for free -
+   currentColor, no separate rule needed. */
+.mystery-tab svg { width: 16px; height: 16px; flex: none; }
 .mystery-tab:hover { color: var(--ink); }
 .mystery-tab[aria-pressed="true"] { color: var(--ink); font-weight: 700; }
 /* .anim-pulse (defined with the rest of MOTION, above) is retriggered
