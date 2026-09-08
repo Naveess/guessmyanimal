@@ -23,7 +23,7 @@ const MAX_DESC = 158;
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20260907-3';
+const STYLE_VERSION = '20260908-1';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');

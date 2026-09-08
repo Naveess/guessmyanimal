@@ -1187,6 +1187,12 @@ body:has(#sharePanel:not([hidden]))::before {
   font-size: 14px; font-weight: 500; line-height: 1.4; color: var(--muted);
 }
 
+.mystery-archive-open { width: 100%; margin-bottom: 13px; }
+/* Same [hidden]-loses-to-.btn's-own-display bug documented at #mysteryNext
+   below - a bare .btn toggled via the hidden attribute needs its own
+   override, every time, or JS setting .hidden silently does nothing. */
+.mystery-archive-open[hidden] { display: none; }
+
 .mystery-stats {
   display: flex; gap: 9px; margin-bottom: 20px;
 }
@@ -1378,6 +1384,9 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
    since .btn's own `display: inline-flex` has nothing more specific to
    lose to otherwise. */
 #mysteryNext[hidden] { display: none; }
+/* Same reason, same fix, for the button that stands in for it when the
+   round just resolved was an archived day rather than today's. */
+#mysteryArchiveResultBack[hidden] { display: none; }
 /* This share button sits near the bottom of a short result stack, not
    mid-page like the animal page's own #share - opening its panel upward
    (the shared .share-panel default, right for that mid-page case) covers
@@ -1387,6 +1396,46 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
   bottom: auto;
   top: calc(100% + 8px);
 }
+
+/* -- Past days (Daily archive) ----------------------------------------
+   A plain scrolling list, not cards - 438 days at a year out is a lot of
+   rows, and giving each one a border/shadow would turn scanning it into
+   work. One hairline between rows (borrowed from .mystery-hint) is
+   enough separation; the row itself carries no surface of its own. */
+.mystery-archive { display: flex; flex-direction: column; }
+/* Same [hidden]-loses-to-display bug as everywhere else on this page -
+   `display: flex` just above sits at equal specificity to the browser's
+   own [hidden]{display:none} and loads later, so it wins by default. */
+.mystery-archive[hidden] { display: none; }
+.mystery-archive-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+}
+/* .label normally carries its own top margin for the gap above it in
+   the reading flow it's usually part of - here it's the first thing in
+   its own panel, so that margin would just be dead space at the top. */
+.mystery-archive-head .label { margin-top: 0; }
+.mystery-archive-list {
+  max-height: min(60vh, 520px);
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+}
+.mystery-archive-row {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding: 13px 4px;
+  font: inherit; text-align: left; cursor: pointer;
+  background: transparent; border: 0; border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+.mystery-archive-day { font-size: 15px; font-weight: 600; }
+.mystery-archive-status {
+  font-size: 13.5px; font-weight: 600; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.mystery-archive-status.won { color: var(--good); }
+.mystery-archive-status.lost { color: var(--bad); }
 
 /* Daily / Endless switcher - same segmented-control look as the
    appearance toggle in the corner menu (.theme/.theme-btn), just
@@ -1498,6 +1547,12 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
    resolves, since .pcard normally shows it immediately and here that
    would give the game away. */
 #mysteryHero { margin-bottom: 18px; }
+/* Hidden while browsing Past days (see openArchive in mystery.js) - no
+   conflicting `display` is declared on this element today, so the
+   native [hidden]{display:none} would win on its own, but every other
+   hidden-toggled element on this page has needed this exact override at
+   some point, so it's added up front rather than waited for. */
+#mysteryHero[hidden] { display: none; }
 #mysteryHero:not(.revealed) .pcard-img,
 #mysteryHero:not(.revealed) .pcard-bg {
   image-rendering: pixelated;

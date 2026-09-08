@@ -144,6 +144,25 @@
     try { localStorage.setItem(DAILY_RESULT_KEY, JSON.stringify(v)); } catch (e) {}
   }
 
+  // Every day ever replayed through the archive, keyed by date - separate
+  // from DAILY_RESULT_KEY (today's puzzle only) on purpose. Winning an
+  // archived day still earns real score, but never touches the day
+  // streak: that's specifically about consecutive *today*s, and
+  // retroactively patching it from the archive would undermine the one
+  // thing that makes it worth keeping unbroken.
+  const DAILY_ARCHIVE_KEY = 'gma-mystery-daily-archive';
+  function getArchive() {
+    try { return JSON.parse(localStorage.getItem(DAILY_ARCHIVE_KEY) || '{}'); }
+    catch (e) { return {}; }
+  }
+  function setArchiveEntry(date, result) {
+    try {
+      const all = getArchive();
+      all[date] = result;
+      localStorage.setItem(DAILY_ARCHIVE_KEY, JSON.stringify(all));
+    } catch (e) {}
+  }
+
   let streak = 0;                 // endless, session-only
   let lifetimeScore = getScore(); // shared across both modes
   let filter = getFilterStore();
@@ -201,8 +220,14 @@
     const days = Math.round((Date.UTC(y2, m2 - 1, d2) - Date.UTC(y1, m1 - 1, d1)) / 86400000);
     return days + 1;
   }
+  // Generalised so a past day's puzzle can be recomputed on demand for
+  // the archive below - it's the same pure function of the date either
+  // way, just not always today's date.
+  function pickDailyFor(ds) {
+    return ANIMALS[hashStr(ds) % ANIMALS.length];
+  }
   function pickDaily() {
-    return ANIMALS[hashStr(todayStr()) % ANIMALS.length];
+    return pickDailyFor(todayStr());
   }
 
   /* -- Round state --------------------------------------------------- */
@@ -212,6 +237,7 @@
   let shown = 0;            // hints currently visible, at least 1
   let resolved = false;     // round already won/given up
   let roundMode = mode;     // which mode the *current* round/state belongs to
+  let archiveDate = null;  // set while roundMode is 'daily' but the round is a past day, not today
   let roundStart = 0;
 
   // Endless: avoid repeating anything from recent memory, not just the
@@ -568,12 +594,17 @@
     }
   }
 
-  function newRound(forMode) {
+  // forArchiveDate, when given, starts a Daily round for that past date
+  // instead of today - the one other caller of this (the archive list's
+  // row click) always passes 'daily' alongside it, but the check stays
+  // explicit rather than assumed.
+  function newRound(forMode, forArchiveDate) {
     roundMode = forMode;
+    archiveDate = forMode === 'daily' ? (forArchiveDate || null) : null;
     resolved = false;
     const bucket = forMode === 'endless' ? bucketOf(filter) : null;
     const skipCategory = !!(bucket && bucket.cats && bucket.cats.length === 1);
-    target = forMode === 'daily' ? pickDaily() : pickEndless();
+    target = forMode === 'endless' ? pickEndless() : pickDailyFor(archiveDate || todayStr());
     hints = hintsFor(target, skipCategory);
     shown = 1;
     roundStart = Date.now();
@@ -584,6 +615,7 @@
     el('mysteryFeedback').className = 'mystery-feedback';
     el('mysteryResult').hidden = true;
     el('mysteryNext').hidden = false;
+    el('mysteryArchiveResultBack').hidden = true;
     el('mysteryResultNote').hidden = true;
     el('mysteryCountdown').hidden = true;
     el('mysteryShare').hidden = true;
@@ -592,6 +624,7 @@
     resetGiveUpArm();
     hideToast();
     clearCountdown();
+    closeArchive();
     renderHints();
     resetHero();
     dealHero();
@@ -644,8 +677,22 @@
     void el('mysteryResult').offsetWidth;
     el('mysteryResult').classList.add('anim-rise');
 
-    if (roundMode === 'daily') {
+    if (roundMode === 'daily' && archiveDate) {
+      // A past day, not today - no countdown (there's nothing to wait
+      // for), no share (the grid's day number would read as today's),
+      // and "Next animal" makes no sense for one fixed puzzle, so this
+      // is the one state where its stand-in takes over instead.
       el('mysteryNext').hidden = true;
+      el('mysteryArchiveResultBack').hidden = false;
+      const note = el('mysteryResultNote');
+      note.hidden = false;
+      note.textContent = 'Day ' + dailyNumber(archiveDate) + ' — ' +
+        (won ? 'solved in ' + shown + (shown === 1 ? ' hint.' : ' hints.') : 'missed it.');
+      el('mysteryCountdown').hidden = true;
+      el('mysteryShare').hidden = true;
+    } else if (roundMode === 'daily') {
+      el('mysteryNext').hidden = true;
+      el('mysteryArchiveResultBack').hidden = true;
       const note = el('mysteryResultNote');
       note.hidden = false;
       note.textContent = won
@@ -704,6 +751,20 @@
         el('mysteryFeedback').textContent = lossFeedback(lostStreakAmount);
         el('mysteryFeedback').className = 'mystery-feedback';
       }
+    } else if (archiveDate) {
+      // An archived day: real score either way, but the day streak is
+      // specifically about consecutive *today*s, so it - and today's
+      // own DAILY_RESULT_KEY/date - are never touched here.
+      if (won) {
+        lifetimeScore += pts;
+        setScore(lifetimeScore);
+        el('mysteryFeedback').textContent = winFeedback(pts);
+        el('mysteryFeedback').className = 'mystery-feedback good';
+      } else {
+        el('mysteryFeedback').textContent = "That's the one.";
+        el('mysteryFeedback').className = 'mystery-feedback';
+      }
+      setArchiveEntry(archiveDate, { won, hintsShown: shown, hintsTotal: hints.length, animalName: target.n });
     } else {
       const today = todayStr();
       lostDailyStreak = won ? null : getDailyStreak();
@@ -728,7 +789,7 @@
 
     updateStats();
     if (won) {
-      animateStatChange('mysteryStreak', 'up');
+      if (!archiveDate) animateStatChange('mysteryStreak', 'up');
       animateStatChange('mysteryScore', 'up');
     } else if (lostStreakAmount > 0) {
       animateStatChange('mysteryStreak', 'down');
@@ -741,12 +802,15 @@
   // shown in full since none of it is secret once the day is settled.
   function renderDailyLocked(r) {
     roundMode = 'daily';
+    archiveDate = null; // this is always today's own result, never an archived day's
     target = ANIMALS.find((a) => a.n === r.animalName) || null;
     resolved = true;
     setDailyIntroSeen();
     el('mysteryForm').hidden = true;
     el('mysteryGiveUp').hidden = true;
     el('mysteryFeedback').textContent = '';
+    el('mysteryArchiveResultBack').hidden = true;
+    closeArchive();
     resetHero();
     dealHero();
     if (target) {
@@ -766,8 +830,53 @@
     showResultCard(r.won, null, false);
   }
 
+  /* -- Daily archive ---------------------------------------------------
+     Newest first - the day someone just missed is the one they're most
+     likely looking for, not the very first puzzle from months back. */
+  function renderArchiveList() {
+    const box = el('mysteryArchiveList');
+    box.innerHTML = '';
+    const archive = getArchive();
+    const todayNum = dailyNumber(todayStr());
+    for (let n = todayNum - 1; n >= 1; n--) {
+      const ds = addDays(DAILY_EPOCH, n - 1);
+      const entry = archive[ds];
+      const row = document.createElement('button');
+      row.type = 'button';
+      row.className = 'mystery-archive-row';
+      const day = document.createElement('span');
+      day.className = 'mystery-archive-day';
+      day.textContent = 'Day ' + n;
+      const status = document.createElement('span');
+      status.className = 'mystery-archive-status' + (entry ? (entry.won ? ' won' : ' lost') : '');
+      status.textContent = entry ? (entry.won ? '✓ Solved in ' + entry.hintsShown : '✕ Missed') : 'Play';
+      row.append(day, status);
+      row.addEventListener('click', () => newRound('daily', ds));
+      box.appendChild(row);
+    }
+  }
+
+  function openArchive() {
+    renderArchiveList();
+    clearCountdown();
+    el('mysteryRound').hidden = true;
+    // The hero photo sits outside #mysteryRound (a DOM sibling, not a
+    // child - it's shared with the desktop two-column layout's own
+    // grid-area), so toggling that alone leaves today's half-pixelated
+    // photo sitting oddly above a list of other days. Hidden along with
+    // the round it belongs to instead.
+    el('mysteryHero').hidden = true;
+    el('mysteryArchive').hidden = false;
+  }
+  function closeArchive() {
+    el('mysteryArchive').hidden = true;
+    el('mysteryRound').hidden = false;
+    el('mysteryHero').hidden = false;
+  }
+
   function enterDaily() {
     clearCountdown();
+    closeArchive();
     const today = todayStr();
     if (getDailyDate() === today) {
       const r = getDailyResult();
@@ -787,6 +896,9 @@
     el('mysteryTabDaily').setAttribute('aria-pressed', String(mode === 'daily'));
     el('mysteryTabEndless').setAttribute('aria-pressed', String(mode === 'endless'));
     el('mysteryFilters').hidden = mode !== 'endless';
+    // Only once a second day genuinely exists to look back on - on Day 1
+    // itself the archive would just be an empty list.
+    el('mysteryArchiveOpen').hidden = mode !== 'daily' || dailyNumber(todayStr()) <= 1;
   }
 
   function switchMode(next) {
@@ -941,6 +1053,19 @@
 
   el('mysteryTabDaily').addEventListener('click', () => switchMode('daily'));
   el('mysteryTabEndless').addEventListener('click', () => switchMode('endless'));
+
+  el('mysteryArchiveOpen').addEventListener('click', openArchive);
+  // enterDaily(), not the bare closeArchive() - closeArchive() only
+  // toggles visibility, and whatever's sitting in #mysteryRound by this
+  // point could be an archived day's result, not today's. enterDaily()
+  // re-derives the real current state (today's lock, an in-progress
+  // round to resume, or a fresh one) the same way arriving at the Daily
+  // tab any other way already does.
+  el('mysteryArchiveClose').addEventListener('click', enterDaily);
+  // Reopens the list rather than resuming today's round underneath it -
+  // someone who just replayed one past day is far more likely reaching
+  // for another than heading back to today.
+  el('mysteryArchiveResultBack').addEventListener('click', openArchive);
 
   for (const b of document.querySelectorAll('[data-mystery]')) {
     b.addEventListener('click', () => openMystery());
