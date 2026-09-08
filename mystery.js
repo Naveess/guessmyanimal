@@ -45,12 +45,21 @@
   // instead of shipping it.
   // r[0] values are Title Case for display elsewhere (chips, filters),
   // but a few read as proper nouns they aren't once dropped into "Found
-  // in ___." - "Found in Worldwide." and "Found in Oceans." are backwards
-  // grammar, not just odd capitalisation, so those two get their own
-  // phrasing rather than a lowercase patch that'd still read wrong.
+  // in ___." - "Found in Worldwide.", "Found in Oceans.", "Found in
+  // Arctic." are backwards grammar, not just odd capitalisation, so each
+  // gets its own phrasing rather than a lowercase patch that'd still read
+  // wrong. Checked against every r[0] value in animals.js: continents,
+  // countries and named landmasses (Africa, Asia, Australia, Europe,
+  // North/South/Central America, Madagascar, New Zealand) take no
+  // article and read fine through the generic fallback below - only
+  // these five are genuine exceptions.
   const REGION_HINT = {
     Worldwide: "It's found worldwide.",
     Oceans: 'Found in the oceans.',
+    Rivers: 'Found in rivers.',
+    Americas: 'Found in the Americas.',
+    Arctic: 'Found in the Arctic.',
+    Antarctic: 'Found in the Antarctic.',
   };
   function regionHint(r) {
     return REGION_HINT[r] || ('Found in ' + r + '.');
@@ -1058,6 +1067,10 @@
       wantKind: 'facts',
     });
   });
+  // The desktop footer's own Report link (see index.html, .desktop-foot)
+  // reuses this exact handler rather than duplicating the mystery-aware
+  // context above - simplest to just trigger the real button.
+  el('mysteryDesktopReport').addEventListener('click', () => el('mysteryReport').click());
 
   el('mysteryTabDaily').addEventListener('click', () => switchMode('daily'));
   el('mysteryTabEndless').addEventListener('click', () => switchMode('endless'));
@@ -1069,7 +1082,15 @@
   // re-derives the real current state (today's lock, an in-progress
   // round to resume, or a fresh one) the same way arriving at the Daily
   // tab any other way already does.
-  el('mysteryArchiveClose').addEventListener('click', enterDaily);
+  // Hiding #mysteryArchive drops the just-focused Back-to-today button
+  // out of the document, so a keyboard user's focus otherwise falls back
+  // to <body> - restoring it to #mysteryRound (see its tabindex="-1" in
+  // index.html) keeps tabbing picking up where the player actually is,
+  // instead of a full restart from the top of the page.
+  el('mysteryArchiveClose').addEventListener('click', () => {
+    enterDaily();
+    el('mysteryRound').focus();
+  });
   // Reopens the list rather than resuming today's round underneath it -
   // someone who just replayed one past day is far more likely reaching
   // for another than heading back to today.

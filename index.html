@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260908-2">
+<link rel="stylesheet" href="style.css?v=20260908-10">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
      stream.html: that page is a transparent OBS overlay with no content
      of its own, never opened as a real page. -->
@@ -90,13 +90,18 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          data-sfx="off" because turning sound *off* has to be silent, so
          it plays its own click instead of taking the delegated one. -->
     <button class="menu-item" type="button" id="soundToggle" aria-pressed="true" data-sfx="off">Sound on</button>
-    <button class="menu-item" type="button" data-report>Report a problem</button>
-    <a class="menu-item" href="privacy.html">Privacy</a>
-    <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
+    <!-- menu-desktop-hide: these three plus Appearance move to a footer
+         row / the sliding theme toggle by the corner menu once there's
+         room for them to just be visible instead of tucked in a
+         dropdown - see .desktop-foot and .theme-toggle in style.css.
+         Mobile is untouched; the class only does anything from 860px up. -->
+    <button class="menu-item menu-desktop-hide" type="button" data-report>Report a problem</button>
+    <a class="menu-item menu-desktop-hide" href="privacy.html">Privacy</a>
+    <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal"
        target="_blank" rel="noopener">Source on GitHub</a>
-    <hr class="menu-sep">
-    <p class="theme-label" id="themeLabel">Appearance</p>
-    <div class="theme" role="group" aria-labelledby="themeLabel">
+    <hr class="menu-sep menu-desktop-hide">
+    <p class="theme-label menu-desktop-hide" id="themeLabel">Appearance</p>
+    <div class="theme menu-desktop-hide" role="group" aria-labelledby="themeLabel">
       <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
       <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
       <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
@@ -113,6 +118,32 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      *does* start something), a same-flavoured label here reads as a
      second play button and sends people to the wrong place. -->
 <a class="play-link" id="playLink" href="about.html">How it works</a>
+
+<!-- Desktop-only sliding theme switch, next to the corner menu button -
+     one shared instance (not one per view) since it's fixed-position
+     and persists across the home/animal/mystery views the same way the
+     menu itself does. Reuses [data-theme-set] - app.js's own
+     applyTheme() syncs aria-pressed across every matching element on
+     the page already, this group included. -->
+<div class="theme-toggle" role="group" aria-label="Appearance">
+  <button type="button" class="theme-toggle-opt" data-theme-set="light" aria-pressed="false" aria-label="Light">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.5"/>
+      <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+    </svg>
+  </button>
+  <button type="button" class="theme-toggle-opt" data-theme-set="dark" aria-pressed="false" aria-label="Dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>
+    </svg>
+  </button>
+  <button type="button" class="theme-toggle-opt" data-theme-set="system" aria-pressed="true" aria-label="System">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="13" rx="2"/>
+      <path d="M8 21h8M12 17v4"/>
+    </svg>
+  </button>
+</div>
 
 <!-- ============================================================
      HOME. One flat field of colour, the mark, and the search box.
@@ -145,6 +176,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   </div>
   <p class="home-foot" id="count"></p>
+  <!-- Desktop-only: moved out of the corner menu, see style.css. -->
+  <div class="desktop-foot">
+    <button type="button" data-report>Report a problem</button>
+    <a href="privacy.html">Privacy</a>
+    <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
+  </div>
 </section>
 
 <!-- ============================================================
@@ -215,6 +252,15 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </div>
     </article>
 
+    <!-- Everything but the photo, grouped purely for the desktop
+         two-column layout below (see style.css's 860px ANIMAL PAGE
+         block) - the photo becomes a sticky sidebar and this wrapper
+         becomes the scrolling column beside it, the same split
+         .mystery-panel-top/-bottom already does for the Mystery page.
+         Mobile ignores this entirely (a plain, unstyled div below that
+         breakpoint), so nothing here changes the mobile DOM order or
+         visual result. -->
+    <div class="feed-content">
     <p class="blurb" id="blurb"></p>
 
     <h3 class="label">Quick answers</h3>
@@ -277,6 +323,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>.</p>
       <p><a href="about.html">About the game</a></p>
     </footer>
+    <!-- Desktop-only: moved out of the corner menu, see style.css. -->
+    <div class="desktop-foot">
+      <button type="button" data-report>Report a problem</button>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
+    </div>
+    </div>
 
   </main>
 </div>
@@ -308,8 +361,22 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          mobile DOM order or visual result. -->
     <div class="mystery-panel-top">
     <div class="mystery-tabs" role="group" aria-label="Game mode">
-      <button class="mystery-tab" type="button" id="mysteryTabDaily" aria-pressed="true">Daily</button>
-      <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="false">Endless</button>
+      <button class="mystery-tab" type="button" id="mysteryTabDaily" aria-pressed="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3.5" y="5" width="17" height="15" rx="2.5"/>
+          <path d="M3.5 9.5h17M8 3v4M16 3v4"/>
+        </svg>
+        Daily
+      </button>
+      <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17 2.5 21 6l-4 3.5"/>
+          <path d="M3 12.5v-2a4 4 0 0 1 4-4h14"/>
+          <path d="M7 21.5 3 18l4-3.5"/>
+          <path d="M21 11.5v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+        Endless
+      </button>
     </div>
 
     <!-- Orientation before personality: shown once, ever, before a
@@ -378,10 +445,21 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          hiding pieces of it individually, since a round in progress and
          a list of other rounds to start have nothing to say to each
          other on screen at once. -->
-    <div id="mysteryRound">
+    <!-- tabindex="-1": a programmatic focus target for keyboard users
+         returning from the archive list (see the archive-close handler
+         in mystery.js) - which of Daily's locked/resume/fresh sub-states
+         ends up visible varies, so this focuses the container itself
+         rather than guessing which specific control is on screen. -->
+    <div id="mysteryRound" tabindex="-1">
     <h3 class="label">Guess the animal</h3>
     <div class="card mystery-hintcard">
-      <div class="mystery-hints" id="mysteryHints"></div>
+      <!-- Rebuilt wholesale on every reveal (renderHints() in mystery.js
+           clears and re-appends), so aria-live re-reads from hint 1 each
+           time rather than announcing only the newest one - a real but
+           minor tradeoff against the alternative this was fixing:
+           complete silence on every hint reveal for a screen-reader
+           player. -->
+      <div class="mystery-hints" id="mysteryHints" aria-live="polite"></div>
     </div>
 
     <form class="mystery-form" id="mysteryForm" data-sfx="off">
@@ -463,6 +541,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </div>
       <div class="mystery-archive-list" id="mysteryArchiveList"></div>
     </div>
+    </div>
+
+    <!-- Desktop-only: moved out of the corner menu, see style.css. -->
+    <div class="desktop-foot">
+      <button type="button" id="mysteryDesktopReport">Report a problem</button>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
     </div>
 
   </main>
@@ -553,7 +638,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260908-3"></script>
+<script src="mystery.js?v=20260908-8"></script>
 <script src="app.js?v=20260908-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
