@@ -11,7 +11,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260908-12">
+<link rel="stylesheet" href="style.css?v=20260908-13">
 <style>
   /* Same reasoning as stream.html: an OBS Browser Source composites
      over gameplay, so the page ground has to be genuinely transparent
@@ -68,6 +68,21 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   .po-empty { margin: 0; font-size: 16px; color: var(--muted); }
   .po-empty[hidden] { display: none; }
+
+  /* .party-hint/.party-score/.party-result (style.css) are shared with
+     the host dialog and the player view, where they sit inside the
+     site's full type system alongside dialog titles, field labels and
+     body copy - plenty of surrounding hierarchy to read against. Here,
+     with almost nothing else on the page, their original sizes (16px,
+     15.5px, 13px, 12px) turned into five near-duplicate steps clustered
+     between 12 and 16px. Snapped onto this page's own two content
+     steps instead, without touching the shared rules those other
+     surfaces still rely on. */
+  .po-wrap .party-hint,
+  .po-wrap .party-result,
+  .po-wrap .party-score { font-size: 16px; }
+  .po-wrap .party-hint-n,
+  .po-wrap .party-score-rank { font-size: 12.5px; }
 </style>
 </head>
 <body class="view-mystery">
