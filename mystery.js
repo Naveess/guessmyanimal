@@ -45,12 +45,21 @@
   // instead of shipping it.
   // r[0] values are Title Case for display elsewhere (chips, filters),
   // but a few read as proper nouns they aren't once dropped into "Found
-  // in ___." - "Found in Worldwide." and "Found in Oceans." are backwards
-  // grammar, not just odd capitalisation, so those two get their own
-  // phrasing rather than a lowercase patch that'd still read wrong.
+  // in ___." - "Found in Worldwide.", "Found in Oceans.", "Found in
+  // Arctic." are backwards grammar, not just odd capitalisation, so each
+  // gets its own phrasing rather than a lowercase patch that'd still read
+  // wrong. Checked against every r[0] value in animals.js: continents,
+  // countries and named landmasses (Africa, Asia, Australia, Europe,
+  // North/South/Central America, Madagascar, New Zealand) take no
+  // article and read fine through the generic fallback below - only
+  // these five are genuine exceptions.
   const REGION_HINT = {
     Worldwide: "It's found worldwide.",
     Oceans: 'Found in the oceans.',
+    Rivers: 'Found in rivers.',
+    Americas: 'Found in the Americas.',
+    Arctic: 'Found in the Arctic.',
+    Antarctic: 'Found in the Antarctic.',
   };
   function regionHint(r) {
     return REGION_HINT[r] || ('Found in ' + r + '.');

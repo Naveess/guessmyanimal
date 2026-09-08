@@ -927,6 +927,14 @@ body.view-home #q { font-size: 17px; }
   .animalview .topbar {
     padding-left: max(14px, calc((100% - clamp(860px, 80vw, 1280px)) / 2));
   }
+  /* The 620px rule caps the search dock at 460px but never centres it -
+     once the topbar is wider than back-button-plus-460px, the leftover
+     flex space in the row was all landing after the dock (before the
+     menu-button clearance) instead of splitting either side of it, so
+     the search box read as stuck to the left near the back arrow rather
+     than centred over the page - a real gap a live test caught. Auto
+     margins on a flex item consume exactly that leftover space evenly. */
+  .animalview .dock-top { margin-left: auto; margin-right: auto; }
 }
 
 /* ==================================================================
@@ -1525,7 +1533,17 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
    scales its own type/controls with viewport - see DESIGN.md's Mystery
    Animal presentation scale). Tinted with a whisper of Sun rather than
    filled solid - a state indicator, not a pressable action, same tint
-   idiom as the fact card (see DESIGN.md's One-Yellow Rule). */
+   idiom as the fact card (see DESIGN.md's One-Yellow Rule).
+
+   The fill alone reads fine in light mode but nearly vanishes in dark
+   mode - mixing 20% of a bright colour into --card's near-black dark
+   value barely lifts it above the track, a real gap a live test caught
+   (looked like nothing was there to toggle between). Same problem the
+   streak stat tile next to this control already solved: a tinted
+   *border*, not just a tinted fill, since a solid stroke stays legible
+   against a dark base in a way a translucent wash doesn't - so this
+   reuses that tile's exact formula (mystery-stat-streak, above) rather
+   than inventing a second one. */
 .mystery-tabs::before {
   content: '';
   position: absolute;
@@ -1534,6 +1552,7 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
   height: calc(100% - 6px);
   border-radius: 9px;
   background: color-mix(in srgb, var(--sun) 20%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--sun) 45%, var(--line));
   box-shadow: 0 2px 5px rgba(29,30,25,.16);
   transition: transform .32s var(--ease);
 }
