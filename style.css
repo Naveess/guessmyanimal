@@ -2213,7 +2213,7 @@ body.view-page { background: var(--paper); }
 .party-codeval {
   margin: 3px 0 8px;
   font-family: ui-monospace, 'SF Mono', Consolas, monospace;
-  font-size: clamp(26px, 6vw, 34px); font-weight: 700; letter-spacing: .1em;
+  font-size: clamp(31px, 8.6vw, 42px); font-weight: 700; letter-spacing: .1em;
 }
 
 #partyJoinUrl {
