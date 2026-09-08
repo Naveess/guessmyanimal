@@ -20,7 +20,7 @@ export async function onRequestGet({ request, env }) {
   if (!CODE_RE.test(code)) return json({ error: 'bad code' }, 400);
 
   const session = await env.DB
-    .prepare('SELECT twitch_channel, category, target_slug, shown, resolved, round_no, updated_at FROM party_sessions WHERE code = ?1')
+    .prepare('SELECT twitch_channel, category, target_slug, shown, resolved, last_winner, round_no, updated_at FROM party_sessions WHERE code = ?1')
     .bind(code)
     .first();
   if (!session) return json({ error: 'not found' }, 404);
@@ -36,6 +36,7 @@ export async function onRequestGet({ request, env }) {
     targetSlug: session.target_slug,
     shown: session.shown,
     resolved: !!session.resolved,
+    lastWinner: session.last_winner,
     roundNo: session.round_no,
     updatedAt: session.updated_at,
     scores: results.map((r) => ({

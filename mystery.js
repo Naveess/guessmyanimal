@@ -1007,6 +1007,7 @@
     document.body.className = 'view-mystery';
     el('home').hidden = true;
     el('animalview').hidden = true;
+    el('partyview').hidden = true;
     el('mysteryview').hidden = false;
     window.scrollTo(0, 0);
     if (!(opts && opts.noPush) && window.GMA) window.GMA.push('?mystery=1');

@@ -465,6 +465,7 @@
     document.body.className = 'view-home';
     el('animalview').hidden = true;
     el('mysteryview').hidden = true;
+    el('partyview').hidden = true;
     el('home').hidden = false;
     dock('home');
     el('q').value = '';
@@ -492,6 +493,7 @@
     document.body.className = 'view-animal';
     el('home').hidden = true;
     el('mysteryview').hidden = true;
+    el('partyview').hidden = true;
     el('animalview').hidden = false;
     dock('top');
     el('copied').textContent = '';
@@ -1063,6 +1065,20 @@
       if (typeof window.openMystery === 'function') { window.openMystery({ noPush: true }); return; }
       // mystery.js loads before app.js, so this only fires if it failed
       // to load at all - fall through to home rather than show nothing.
+    }
+
+    // ?party=CODE is what a party's QR code and join link point at, so a
+    // real room code opens the player view directly - whoever followed
+    // it is joining a party someone else is already running. Anything
+    // else (?party=1, the static pages' menu entry) opens the host
+    // controls instead, the same way ?stream=1 opens Stream Mode's.
+    const partyCode = url.searchParams.get('party');
+    if (partyCode) {
+      if (/^[A-Za-z0-9]{4,6}$/.test(partyCode) && typeof window.openPartyPlayer === 'function') {
+        window.openPartyPlayer(partyCode, { noPush: true });
+        return;
+      }
+      if (typeof window.openParty === 'function') { window.openParty(); return; }
     }
 
     // ?stream=1 and ?report=1 are the corner menu's own entry points from

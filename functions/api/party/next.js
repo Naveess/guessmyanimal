@@ -35,7 +35,7 @@ export async function onRequestPost({ request, env }) {
   const now = Date.now();
 
   await env.DB
-    .prepare('UPDATE party_sessions SET target_slug = ?1, shown_slugs = ?2, shown = 1, resolved = 0, round_no = ?3, updated_at = ?4 WHERE code = ?5')
+    .prepare('UPDATE party_sessions SET target_slug = ?1, shown_slugs = ?2, shown = 1, resolved = 0, last_winner = NULL, round_no = ?3, updated_at = ?4 WHERE code = ?5')
     .bind(targetSlug, JSON.stringify(shownSlugs.concat(targetSlug)), roundNo, now, code)
     .run();
 

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Party Mode overlay — Guess My Animal</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){try{var t=localStorage.getItem('gma-theme');
+if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="style.css?v=20260908-11">
+<style>
+  /* Same reasoning as stream.html: an OBS Browser Source composites
+     over gameplay, so the page ground has to be genuinely transparent
+     rather than the site's own paper/dark background. */
+  html, body { background: transparent; }
+  body { padding: 0; min-height: 0; }
+
+  .po-wrap { width: min(380px, 100vw); margin: 14px; }
+
+  /* Every panel here is opaque enough to stay readable over whatever
+     is behind it on stream, which the site's own --card can't promise
+     on its own once a bright game is underneath. */
+  .po-card {
+    background: color-mix(in srgb, var(--card) 94%, transparent);
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    padding: 15px 16px;
+    box-shadow: var(--shadow-l);
+  }
+  .po-card + .po-card { margin-top: 12px; }
+
+  .po-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 10px; margin-bottom: 10px;
+  }
+  .po-title { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
+  .po-round { font-size: 13px; color: var(--muted); font-weight: 600; }
+
+  .po-join {
+    margin: 0; font-size: 13px; color: var(--muted); line-height: 1.4;
+  }
+  /* .party-join-code (style.css) already carries the site's monospace
+     stack for exactly this - a room code read off a screen and typed
+     into a phone. */
+  .po-join b { color: var(--ink); font-size: 15px; }
+
+  /* Chat connection state is deliberately visible: a streamer needs to
+     know the overlay is actually listening before they start a round,
+     not find out from a chat full of unscored correct answers. */
+  .po-chat { margin: 9px 0 0; font-size: 12.5px; color: var(--muted); }
+  .po-chat.is-live::before { content: "● "; color: var(--good); }
+  .po-chat.is-down::before { content: "● "; color: var(--bad); }
+
+  .po-empty { margin: 0; font-size: 14px; color: var(--muted); }
+  .po-empty[hidden] { display: none; }
+</style>
+</head>
+<body class="view-mystery">
+
+<div class="po-wrap">
+
+  <div class="po-card">
+    <div class="po-head">
+      <h1 class="po-title">Guess the animal</h1>
+      <span class="po-round" id="poRound"></span>
+    </div>
+    <p class="po-empty" id="poEmpty">Waiting for the party to start…</p>
+    <div class="party-hints" id="poHints"></div>
+    <p class="party-result" id="poResult" hidden></p>
+    <p class="po-join" id="poJoin" hidden>Play along: <b class="party-join-code" id="poCode"></b> at guessmyanimal.com</p>
+    <p class="po-chat" id="poChat" hidden></p>
+  </div>
+
+  <div class="po-card" id="poScoreCard" hidden>
+    <div class="po-head">
+      <h2 class="po-title">Scoreboard</h2>
+    </div>
+    <div class="party-scores" id="poScores"></div>
+  </div>
+
+</div>
+
+<script src="animals.js?v=20260907-1"></script>
+<script src="game-core.js?v=20260908-1"></script>
+<script src="party-overlay.js?v=20260908-1"></script>
+</body>
+</html>

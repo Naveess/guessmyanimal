@@ -40,8 +40,8 @@ export async function onRequestPost({ request, env }) {
 
   const now = Date.now();
   const update = await env.DB
-    .prepare('UPDATE party_sessions SET resolved = 1, updated_at = ?1 WHERE code = ?2 AND round_no = ?3 AND resolved = 0')
-    .bind(now, code, roundNo)
+    .prepare('UPDATE party_sessions SET resolved = 1, last_winner = ?1, updated_at = ?2 WHERE code = ?3 AND round_no = ?4 AND resolved = 0')
+    .bind(playerName, now, code, roundNo)
     .run();
 
   if (!update.meta.changes) {

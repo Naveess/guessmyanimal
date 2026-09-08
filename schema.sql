@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS party_sessions (
   shown_slugs    TEXT NOT NULL DEFAULT '[]', -- JSON array, every target shown this session so next() can avoid repeats
   shown          INTEGER NOT NULL DEFAULT 1,
   resolved       INTEGER NOT NULL DEFAULT 0,
+  last_winner    TEXT,               -- who took the current round, for the "X got it!" line on the host tab and overlay
   round_no       INTEGER NOT NULL DEFAULT 1,
   created_at     INTEGER NOT NULL,
   updated_at     INTEGER NOT NULL
