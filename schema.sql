@@ -21,3 +21,33 @@ CREATE TABLE IF NOT EXISTS stream_state (
   slug       TEXT NOT NULL,
   updated_at INTEGER NOT NULL
 );
+
+-- Party mode: one shared round (a target animal, hints revealed by a
+-- host) that guesses can reach either through Twitch chat (read via an
+-- anonymous overlay-side IRC connection, see functions/api/party/*.js)
+-- or a player's own phone via a QR-code join link - see TODO.md for the
+-- full design. Both paths call the same guess endpoint, which is why
+-- there's no separate "how did they guess" table: player_name and
+-- source are enough to tell the two apart on the scoreboard.
+CREATE TABLE IF NOT EXISTS party_sessions (
+  code           TEXT PRIMARY KEY,
+  host_key       TEXT NOT NULL,
+  twitch_channel TEXT,
+  category       TEXT,
+  target_slug    TEXT NOT NULL,
+  shown_slugs    TEXT NOT NULL DEFAULT '[]', -- JSON array, every target shown this session so next() can avoid repeats
+  shown          INTEGER NOT NULL DEFAULT 1,
+  resolved       INTEGER NOT NULL DEFAULT 0,
+  round_no       INTEGER NOT NULL DEFAULT 1,
+  created_at     INTEGER NOT NULL,
+  updated_at     INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS party_scores (
+  session_code   TEXT NOT NULL REFERENCES party_sessions(code),
+  player_name    TEXT NOT NULL,
+  source         TEXT NOT NULL DEFAULT 'local',
+  score          INTEGER NOT NULL DEFAULT 0,
+  rounds_won     INTEGER NOT NULL DEFAULT 0,
+  updated_at     INTEGER NOT NULL,
+  PRIMARY KEY (session_code, player_name)
+);
