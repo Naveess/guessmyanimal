@@ -81,6 +81,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </button>
   <div class="menu-panel" id="menuPanel" hidden>
     <a class="menu-item" href="about.html">About the game</a>
+    <a class="menu-item" href="browse.html">Browse all animals</a>
     <button class="menu-item" type="button" data-mystery>Mystery Animal</button>
     <button class="menu-item" type="button" id="streamOpen">Stream Mode</button>
     <!-- Wired in app.js, which owns the sound engine and this preference
@@ -520,7 +521,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260907-3"></script>
+<script src="mystery.js?v=20260908-1"></script>
 <script src="app.js?v=20260908-1"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.

@@ -161,9 +161,15 @@
   function pointsForHints(hintsShown) {
     return Math.max(100 - (hintsShown - 1) * 20, 10);
   }
+  // Widened from the original 8s/20s: those windows rewarded reflexes,
+  // not knowledge, and made the bonus mathematically unreachable the
+  // moment this became something worth playing with an audience - chat
+  // needs time to read a hint and argue about it before anyone answers.
+  // 20s/45s still separates "knew it cold" from "worked it out," but no
+  // longer requires a twitch-fast solo player to collect either tier.
   function timeBonus(elapsedMs) {
-    if (elapsedMs < 8000) return 15;
-    if (elapsedMs < 20000) return 5;
+    if (elapsedMs < 20000) return 15;
+    if (elapsedMs < 45000) return 5;
     return 0;
   }
 
@@ -462,20 +468,38 @@
     countdownTimer = setInterval(tick, 30000);
   }
 
-  /* -- Sharing (Daily result only) ------------------------------------
+  /* -- Sharing ---------------------------------------------------------
      Same panel pattern app.js already uses for the animal page itself
      (native share sheet on a coarse pointer, an explicit WhatsApp/X/
      Facebook/copy panel otherwise) - duplicated here with its own ids
      since this file already owns its view independently, the same call
-     this file made for typo tolerance above. */
+     this file made for typo tolerance above.
+
+     Daily shares a solved day's result grid; Endless has no single
+     "result" to grid out - it's an open run - so it shares whatever
+     streak was live when Share was offered instead (see
+     renderEndlessShare and endlessShareStreak below). */
 
   function shareGrid(r) {
     let s = '';
     for (let i = 0; i < r.hintsTotal; i++) s += (r.won && i === r.hintsShown - 1) ? '🟩' : '⬜';
     return s;
   }
-  function shareText(r) {
-    return 'GuessMyAnimal #' + dailyNumber(r.date) + '\n' + shareGrid(r);
+
+  // Endless has no single "result" object the way a resolved Daily does -
+  // it's an open-ended run, so what's shareable is whatever the streak
+  // was at the moment Share was offered. Set once by renderEndlessShare,
+  // read back here rather than the live `streak` variable, which has
+  // usually already reset to 0 by the time someone taps Share after a
+  // loss - the number worth bragging about is the one that just ended.
+  let endlessShareStreak = 0;
+
+  function shareText() {
+    if (roundMode === 'daily') {
+      const r = getDailyResult();
+      return r ? 'GuessMyAnimal #' + dailyNumber(r.date) + '\n' + shareGrid(r) : '';
+    }
+    return 'GuessMyAnimal — ' + endlessShareStreak + ' in a row. Can you beat it?';
   }
   function shareUrl() { return location.origin + '/?mystery=1'; }
 
@@ -488,10 +512,9 @@
     panel.hidden = !open;
     el('mysteryShareBtn').setAttribute('aria-expanded', String(open));
     if (!open) return;
-    const r = getDailyResult();
-    if (!r) return;
+    const text = shareText();
+    if (!text) return;
     const url = shareUrl();
-    const text = shareText(r);
     el('mysteryShareWa').href = 'https://wa.me/?text=' + encodeURIComponent(text + '\n' + url);
     el('mysteryShareX').href = 'https://twitter.com/intent/tweet?text=' +
       encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
@@ -501,6 +524,15 @@
   function renderDailyShare() {
     const r = getDailyResult();
     el('mysteryShare').hidden = !r;
+    setSharePanel(false);
+  }
+
+  // A streak of 1 or 2 isn't a result yet, just a round - matches the
+  // same >= 3 threshold lossFeedback() already uses to decide a streak
+  // is worth naming out loud.
+  function renderEndlessShare(n) {
+    endlessShareStreak = n;
+    el('mysteryShare').hidden = !(n >= 3);
     setSharePanel(false);
   }
 
@@ -599,7 +631,7 @@
     }
   }
 
-  function showResultCard(won, lostDailyStreak, celebrateWin) {
+  function showResultCard(won, lostDailyStreak, celebrateWin, endlessStreakForShare) {
     resolved = true;
     applyPixelation();
     updateHintBtn();
@@ -626,7 +658,7 @@
       el('mysteryNext').hidden = false;
       el('mysteryResultNote').hidden = true;
       el('mysteryCountdown').hidden = true;
-      el('mysteryShare').hidden = true;
+      renderEndlessShare(endlessStreakForShare);
     }
   }
 
@@ -701,7 +733,7 @@
     } else if (lostStreakAmount > 0) {
       animateStatChange('mysteryStreak', 'down');
     }
-    showResultCard(won, lostDailyStreak, won);
+    showResultCard(won, lostDailyStreak, won, won ? streak : lostStreakAmount);
   }
 
   // Reconstructs today's already-played Daily round from storage - the
@@ -932,10 +964,10 @@
   el('mysteryShareBtn').addEventListener('click', async (e) => {
     e.stopPropagation();   // out of the delegated listener's reach, so it sounds itself
     sfx('tap');
-    const r = getDailyResult();
-    if (!r) return;
+    const text = shareText();
+    if (!text) return;
     if (canShareNatively()) {
-      try { await navigator.share({ title: 'Guess My Animal', text: shareText(r), url: shareUrl() }); }
+      try { await navigator.share({ title: 'Guess My Animal', text: text, url: shareUrl() }); }
       catch (err) { /* dismissed, which is not an error */ }
       return;
     }
@@ -943,8 +975,7 @@
   });
   el('mysteryShareCopy').addEventListener('click', async () => {
     setSharePanel(false);
-    const r = getDailyResult();
-    const text = r ? shareText(r) + '\n' + shareUrl() : shareUrl();
+    const text = shareText() ? shareText() + '\n' + shareUrl() : shareUrl();
     try {
       await navigator.clipboard.writeText(text);
       el('mysteryCopied').textContent = 'Copied.';

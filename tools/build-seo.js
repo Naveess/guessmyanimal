@@ -18,6 +18,12 @@ const { relatedFor } = require('../related.js');
 
 const SITE = 'https://guessmyanimal.com';
 const MAX_DESC = 158;
+// browse.html is generated whole by this script (see below), not hand-
+// edited, so its own style.css link needs this kept in step by hand -
+// same manual-lockstep convention index.html/about.html/privacy.html/
+// sw.js already use for every other shell asset. Bump this alongside
+// them, then re-run node tools/build-seo.js.
+const STYLE_VERSION = '20260907-3';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
@@ -143,7 +149,7 @@ fs.writeFileSync(
 // Cloudflare Pages' clean-URLs feature 308-redirects /about.html to
 // /about, so the sitemap should point straight at the URL that actually
 // serves, not the one that immediately bounces.
-const staticUrls = [SITE + '/', SITE + '/about', SITE + '/privacy'];
+const staticUrls = [SITE + '/', SITE + '/about', SITE + '/privacy', SITE + '/browse'];
 const lastmod = new Date().toISOString().slice(0, 10);
 const all = staticUrls.concat(urls);
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${all
@@ -152,5 +158,129 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.s
 
 fs.writeFileSync(path.join(__dirname, '..', 'sitemap.xml'), xml);
 
+// browse.html: the one page listing every animal. Everything else on the
+// site is reached by typing a guess into search - fine for a returning
+// visitor who already knows what they want, useless for a crawler (or a
+// new visitor) with nothing to type yet. Generated as a real static file,
+// not client-rendered, so the full list of 438 links exists with no JS
+// required - the same reasoning answersHtml/glanceHtml/relatedHtml are
+// baked server-side for a live animal page, just for a page that's
+// static end to end instead of rewritten per-request.
+function browseHtml() {
+  const groups = {};
+  for (const a of ANIMALS) {
+    const letter = a.n[0].toUpperCase();
+    (groups[letter] = groups[letter] || []).push(a);
+  }
+  const letters = Object.keys(groups).sort();
+  for (const l of letters) groups[l].sort((x, y) => x.n.localeCompare(y.n));
+
+  const jump = letters.map((l) => `<a href="#${l}">${l}</a>`).join('');
+  const sections = letters
+    .map((l) => {
+      const items = groups[l]
+        .map((a) => `<li><a href="/?a=${slugify(a.n)}">${escapeHtml(a.n)}</a></li>`)
+        .join('');
+      return `<section class="atoz-group"><h2 class="atoz-letter" id="${l}">${l}</h2><ul class="atoz-list">${items}</ul></section>`;
+    })
+    .join('\n  ');
+
+  return `<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Every animal, A to Z — Guess My Animal</title>
+<meta name="description" content="All ${ANIMALS.length} animals on Guess My Animal, listed A to Z. Pick one to see if it's dangerous, if you could keep it as a pet, and everything else people ask.">
+<meta name="theme-color" content="#ffce1f">
+
+<meta property="og:title" content="Every animal, A to Z — Guess My Animal">
+<meta property="og:description" content="All ${ANIMALS.length} animals on Guess My Animal, listed A to Z.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preload" href="fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){try{var t=localStorage.getItem('gma-theme');
+if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="style.css?v=${STYLE_VERSION}">
+<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
+     crossorigin="anonymous"></script>
+<!-- Funding Choices - see privacy.html for what this pair does. -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-2495070274777193?ers=1"></script>
+<script>
+(function() {
+  function signalGooglefcPresent() {
+    if (!window.frames['googlefcPresent']) {
+      if (document.body) {
+        var iframe = document.createElement('iframe');
+        iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
+        iframe.style.display = 'none';
+        iframe.name = 'googlefcPresent';
+        document.body.appendChild(iframe);
+      } else {
+        setTimeout(signalGooglefcPresent, 0);
+      }
+    }
+  }
+  signalGooglefcPresent();
+})();
+</script>
+</head>
+<body class="view-page">
+
+<header class="topbar">
+  <a class="back" href="./" aria-label="Back to search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 5 8 12l7 7"/>
+    </svg>
+  </a>
+  <a class="topbar-mark" href="./">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <ellipse cx="32" cy="41" rx="14.5" ry="12"/>
+      <ellipse cx="14.5" cy="27" rx="6.4" ry="8"/>
+      <ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/>
+      <ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/>
+      <ellipse cx="49.5" cy="27" rx="6.4" ry="8"/>
+    </svg>
+    Guess my animal
+  </a>
+</header>
+
+<main class="prose atoz">
+
+  <h1>Every animal, A to Z</h1>
+
+  <p class="lede">All ${ANIMALS.length}, in one list. Pick one to see if it's dangerous,
+    what it eats, and everything else people ask mid-game.</p>
+
+  <nav class="atoz-jump" aria-label="Jump to letter">${jump}</nav>
+
+  ${sections}
+
+</main>
+
+<footer class="foot prose-foot">
+  <p><a href="./">Look up an animal</a></p>
+  <p><a href="privacy.html">Privacy</a></p>
+</footer>
+
+</body>
+</html>
+`;
+}
+
+fs.writeFileSync(path.join(__dirname, '..', 'browse.html'), browseHtml());
+
 console.log(`wrote functions/seo-meta.json (${ANIMALS.length} animals)`);
 console.log(`wrote sitemap.xml (${all.length} urls)`);
+console.log(`wrote browse.html (${ANIMALS.length} animals)`);
