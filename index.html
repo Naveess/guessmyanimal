@@ -601,6 +601,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <h2 class="label">What should we call you?</h2>
       <input id="partyName" type="text" maxlength="24" autocomplete="off"
              placeholder="Your name" aria-label="Your name">
+      <div class="party-icon-picker" id="partyIconPicker" role="radiogroup" aria-label="Pick an icon"></div>
       <button class="btn btn-solid" type="submit">Join the party</button>
     </form>
 
@@ -622,52 +623,78 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         </div>
       </div>
 
-      <div class="party-roundhead">
-        <span class="party-round" id="partyRoundLabel">Round 1</span>
-        <span class="party-you" id="partyYouLabel" hidden>Playing as <b id="partyPlayerNameLabel"></b></span>
-      </div>
+      <div class="party-columns">
+        <div class="party-main">
+          <div class="party-roundhead">
+            <span class="party-round" id="partyRoundLabel">Round 1</span>
+            <span class="party-you" id="partyYouLabel" hidden>Playing as <b id="partyPlayerNameLabel"></b>
+              <button type="button" class="party-you-edit" id="partyEditName">change</button>
+            </span>
+          </div>
 
-      <!-- Same Photo Card component and the same real-tiny-thumbnail
-           pixelation Mystery Animal uses (see game-core.js's
-           pixelStepFor/thumbAtWidth) - a CSS blur would still ship the
-           sharp image to the browser, readable from devtools regardless
-           of what's painted on screen. -->
-      <article class="pcard party-hero" id="partyHero">
-        <img class="pcard-bg" id="partyPhotoBg" alt="" aria-hidden="true"
-             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <img class="pcard-img" id="partyPhotoImg" alt="" loading="lazy"
-             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <div class="pcard-fallback" aria-hidden="true">
-          <span class="pcard-fallback-emoji">🐾</span>
+          <!-- Same Photo Card component and the same real-tiny-thumbnail
+               pixelation Mystery Animal uses (see game-core.js's
+               pixelStepFor/thumbAtWidth) - a CSS blur would still ship the
+               sharp image to the browser, readable from devtools regardless
+               of what's painted on screen. -->
+          <article class="pcard party-hero" id="partyHero">
+            <img class="pcard-bg" id="partyPhotoBg" alt="" aria-hidden="true"
+                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            <img class="pcard-img" id="partyPhotoImg" alt="" loading="lazy"
+                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            <div class="pcard-fallback" aria-hidden="true">
+              <span class="pcard-fallback-emoji">🐾</span>
+            </div>
+            <div class="pcard-scrim" aria-hidden="true"></div>
+            <div class="pcard-meta" id="partyPhotoMeta">
+              <h2 class="pcard-name"><span id="partyPhotoName"></span> <span class="pcard-emoji" id="partyPhotoEmoji" aria-hidden="true"></span></h2>
+              <p class="pcard-sub" id="partyPhotoSub"></p>
+            </div>
+          </article>
+
+          <div class="card party-hintcard">
+            <div class="party-hints" id="partyHints" aria-live="polite"></div>
+          </div>
+
+          <!-- Shown two ways: automatically to a host who hasn't picked a
+               name yet (nothing stops them racing to guess too, once
+               they're in), or to either role on demand via "change" next
+               to the You label above. -->
+          <form class="party-name-form party-playtoo" id="partyPlayToo" hidden>
+            <p class="dlg-note dlg-note-tight" id="partyPlayTooLabel">Want to play too, not just host?</p>
+            <input id="partyPlayTooName" type="text" maxlength="24" autocomplete="off"
+                   placeholder="Your name" aria-label="Your name">
+            <div class="party-icon-picker" id="partyPlayTooIconPicker" role="radiogroup" aria-label="Pick an icon"></div>
+            <div class="party-playtoo-actions">
+              <button class="btn btn-solid" type="submit" id="partyPlayTooSubmit">Join in</button>
+              <button class="btn" type="button" id="partyPlayTooCancel" hidden>Cancel</button>
+            </div>
+          </form>
+
+          <!-- Shown once a name is set, host or player alike. -->
+          <form class="mystery-form party-guess-form" id="partyGuessForm" hidden data-sfx="off">
+            <input id="partyGuess" type="text" autocomplete="off" autocorrect="off"
+                   autocapitalize="off" spellcheck="false" placeholder="Type your guess…"
+                   aria-label="Your guess">
+            <button class="btn btn-solid" type="submit">Guess</button>
+          </form>
+          <p class="mystery-feedback" id="partyFeedback" role="status" aria-live="polite"></p>
+
+          <p class="party-result" id="partyResult" role="status" hidden></p>
+
+          <!-- Host only. -->
+          <button class="btn party-hintbtn" type="button" id="partyHint" hidden>Reveal next hint</button>
+          <button class="btn btn-solid" type="button" id="partyNext" hidden>Next round</button>
         </div>
-        <div class="pcard-scrim" aria-hidden="true"></div>
-        <div class="pcard-meta" id="partyPhotoMeta">
-          <h2 class="pcard-name"><span id="partyPhotoName"></span> <span class="pcard-emoji" id="partyPhotoEmoji" aria-hidden="true"></span></h2>
-          <p class="pcard-sub" id="partyPhotoSub"></p>
+
+        <div class="party-side">
+          <h3 class="label party-scores-label" id="partyScoresLabel">Leaderboard</h3>
+          <div class="party-scores" id="partyScores"></div>
+
+          <h3 class="label party-feed-label">Activity</h3>
+          <div class="party-feed" id="partyFeed" aria-live="polite"></div>
         </div>
-      </article>
-
-      <div class="card party-hintcard">
-        <div class="party-hints" id="partyHints" aria-live="polite"></div>
       </div>
-
-      <!-- Player only. -->
-      <form class="mystery-form party-guess-form" id="partyGuessForm" hidden data-sfx="off">
-        <input id="partyGuess" type="text" autocomplete="off" autocorrect="off"
-               autocapitalize="off" spellcheck="false" placeholder="Type your guess…"
-               aria-label="Your guess">
-        <button class="btn btn-solid" type="submit">Guess</button>
-      </form>
-      <p class="mystery-feedback" id="partyFeedback" role="status" aria-live="polite"></p>
-
-      <p class="party-result" id="partyResult" role="status" hidden></p>
-
-      <!-- Host only. -->
-      <button class="btn party-hintbtn" type="button" id="partyHint" hidden>Reveal next hint</button>
-      <button class="btn btn-solid" type="button" id="partyNext" hidden>Next round</button>
-
-      <h3 class="label party-scores-label">Scoreboard</h3>
-      <div class="party-scores" id="partyScores"></div>
 
       <!-- Host only. -->
       <button class="btn party-endbtn" type="button" id="partyEnd" hidden>End party</button>

@@ -9,9 +9,13 @@
  * screen, full stop. See TODO.md for the design history.
  *
  * Both roles poll /api/party/session on the same 1.2s loop stream.js
- * pioneered, and both check guesses client-side (GameCore's matches())
- * before ever POSTing - the API decides who won a round, not whether a
- * guess was right.
+ * pioneered. Local/QR guesses are no longer client-decided: every
+ * submission (right or wrong) goes to the server, which is now the
+ * one place that knows the target - see guess.js. That's also what
+ * makes the wrong-guess feed possible, since a client that already
+ * knew it was wrong would have no reason to tell the server about it.
+ * The Twitch chat path is untouched and still decides client-side
+ * (chatMatches() below) - out of scope for this pass, see TODO.md.
  */
 (function () {
   'use strict';
@@ -23,19 +27,38 @@
 
   const HOST_STORE = 'gma-party-host';  // {code, hostKey} - so a host refresh resumes rather than orphaning the party
   const NAME_STORE = 'gma-party-name';
+  const ICON_STORE = 'gma-party-icon';
+
+  const DEFAULT_ICON = '🐾';
+  // A small, animal-flavoured set rather than a full emoji keyboard -
+  // this is a "pick a look for the scoreboard" flourish, not a chat
+  // input, so a fixed grid that fits on one screen beats a search box.
+  const ICONS = ['🐾', '🦁', '🐯', '🐻', '🐼', '🦊', '🐺', '🐸', '🐙', '🦄', '🐢', '🐬', '🦉', '🐨', '🐧', '🦋', '🐳', '🦖', '🐝', '🦔'];
 
   const POLL_MS = 1200;
+  // No presence table, no beacon-on-close - a closed tab just stops
+  // calling join.js's heartbeat (see poll()), and updated_at ages out
+  // on its own. HEARTBEAT_MS controls how often that touch happens;
+  // ONLINE_WINDOW_MS is how stale updated_at can be before a row reads
+  // as "gone" rather than "here" - wide enough to survive a couple of
+  // missed heartbeats/polls without flickering someone offline and
+  // back on a slow connection.
+  const HEARTBEAT_MS = 12000;
+  const ONLINE_WINDOW_MS = 20000;
 
   let surface = null;      // 'host' | 'player' | null - which one is on screen, and so whether to poll
   let code = null;
   let hostKey = null;
   let playerName = null;
+  let selectedIcon = getStore(ICON_STORE) || DEFAULT_ICON;
+  let editingIdentity = false; // the "change name" form is open, on top of an existing identity
   let state = null;        // latest /api/party/session payload
   let pollTimer = null;
   let lastRound = 0;
   let lastResolved = false;
   let lastShown = 0;
-  let guessedThisRound = false;
+  let lastHeartbeat = 0;
+  let guessSending = false; // one local guess POST in flight at a time
   let photoFullSrc = null; // the real thumbnail URL for the current target, once fetched
   let photoForSlug = null; // which target the fetched photo belongs to, so a stale fetch can't paint it late
 
@@ -79,6 +102,16 @@
       if (data.error) return;
       applyState(data);
     } catch (err) { /* offline for a beat - the next poll picks it back up */ }
+
+    // Piggybacked on the same loop rather than a second timer: while a
+    // name is set, touch join.js's updated_at often enough that other
+    // devices' "online" dot on the leaderboard stays accurate. join.js
+    // only announces a *new* face to the feed, so this never spams it.
+    const now = Date.now();
+    if (playerName && now - lastHeartbeat > HEARTBEAT_MS) {
+      lastHeartbeat = now;
+      api('join', { code, playerName, icon: selectedIcon }).catch(() => {});
+    }
   }
 
   function startPolling() {
@@ -106,7 +139,6 @@
     state = data;
     if (roundChanged) {
       lastRound = data.roundNo;
-      guessedThisRound = false;
       photoFullSrc = null;
       photoForSlug = null;
       loadPhoto();
@@ -199,17 +231,32 @@
 
   /* -- Shared round rendering ------------------------------------------ */
 
+  // Rebuilding this list from scratch every 1.2s poll - even when
+  // nothing about it changed - replayed the .party-hint entrance
+  // animation on every hint, every poll, which read as the whole list
+  // "flickering"/refreshing constantly. Only touch the DOM when the
+  // shown count has actually moved, and only append the new row(s)
+  // rather than rebuilding the ones already on screen.
+  let renderedHints = { round: 0, count: 0 };
+
   function renderHintList() {
     const box = el('partyHints');
-    box.innerHTML = '';
     const a = targetAnimal();
     if (!a || !state) return;
     const all = hintsFor(a);
-    for (let i = 0; i < Math.min(state.shown, all.length); i++) {
+    const want = Math.min(state.shown, all.length);
+
+    if (state.roundNo !== renderedHints.round) {
+      box.innerHTML = '';
+      renderedHints = { round: state.roundNo, count: 0 };
+    }
+    if (want <= renderedHints.count) return;
+
+    for (let i = renderedHints.count; i < want; i++) {
       if (!all[i]) continue;
       const row = document.createElement('p');
       row.className = 'party-hint';
-      row.style.setProperty('--i', i);
+      row.style.setProperty('--i', i - renderedHints.count);
       const n = document.createElement('span');
       n.className = 'party-hint-n';
       n.textContent = String(i + 1);
@@ -218,25 +265,45 @@
       row.append(n, t);
       box.appendChild(row);
     }
+    renderedHints.count = want;
   }
 
+  // "Online" here means "a local/QR device with this name touched
+  // join.js within ONLINE_WINDOW_MS" - see the heartbeat in poll().
+  // Twitch names never heartbeat (there's no tab to poll from on their
+  // behalf), so they're never marked online here - the chat connection
+  // status dot already covers "is the overlay actually listening".
   function renderScores() {
     const box = el('partyScores');
     box.innerHTML = '';
+    const label = el('partyScoresLabel');
     if (!state || !state.scores.length) {
       const empty = document.createElement('p');
       empty.className = 'party-scores-empty';
       empty.textContent = 'No one on the board yet.';
       box.appendChild(empty);
+      if (label) label.textContent = 'Leaderboard';
       return;
     }
+    const now = Date.now();
+    let onlineCount = 0;
     state.scores.forEach((s, i) => {
+      const online = s.source !== 'twitch' && typeof s.updatedAt === 'number' && (now - s.updatedAt) < ONLINE_WINDOW_MS;
+      if (online) onlineCount++;
       const row = document.createElement('div');
-      row.className = 'party-score';
+      row.className = 'party-score' + (online ? ' is-online' : '');
       if (state.lastWinner && s.playerName === state.lastWinner && state.resolved) row.classList.add('is-winner');
       const rank = document.createElement('span');
       rank.className = 'party-score-rank';
       rank.textContent = String(i + 1);
+      const dot = document.createElement('span');
+      dot.className = 'party-score-dot';
+      dot.setAttribute('aria-hidden', 'true');
+      dot.title = online ? 'In the party now' : 'Not currently active';
+      const icon = document.createElement('span');
+      icon.className = 'party-score-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = s.icon || (s.source === 'twitch' ? '' : DEFAULT_ICON);
       const name = document.createElement('span');
       name.className = 'party-score-name';
       name.textContent = s.playerName;
@@ -244,9 +311,65 @@
       const pts = document.createElement('b');
       pts.className = 'party-score-pts';
       pts.textContent = String(s.score);
-      row.append(rank, name, pts);
+      row.append(rank, dot, icon, name, pts);
       box.appendChild(row);
     });
+    if (label) label.textContent = 'Leaderboard' + (onlineCount ? ' · ' + onlineCount + ' in the party' : '');
+  }
+
+  /* -- Activity feed: joins + guesses (right and wrong), local/QR play
+     only. A chat log, not a scoreboard - full re-render each poll since
+     the list is capped server-side (see EVENT_LIMIT in session.js), but
+     scroll position is only pinned to the bottom if the reader was
+     already there, same as any chat UI. --------------------------- */
+
+  function renderFeed() {
+    const box = el('partyFeed');
+    if (!box || !state) return;
+    const wasNearBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 48;
+    box.innerHTML = '';
+    const events = state.events || [];
+    if (!events.length) {
+      const empty = document.createElement('p');
+      empty.className = 'party-feed-empty';
+      empty.textContent = 'Nothing yet — invite a few people in.';
+      box.appendChild(empty);
+      return;
+    }
+    events.forEach((ev) => {
+      if (ev.kind === 'round') {
+        const div = document.createElement('div');
+        div.className = 'party-feed-divider';
+        div.textContent = 'Round ' + ev.roundNo;
+        box.appendChild(div);
+        return;
+      }
+      const row = document.createElement('p');
+      row.className = 'party-feed-row';
+      const icon = document.createElement('span');
+      icon.className = 'party-feed-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = ev.icon || DEFAULT_ICON;
+      const body = document.createElement('span');
+      body.className = 'party-feed-text';
+      const b = document.createElement('b');
+      b.textContent = ev.playerName;
+      body.appendChild(b);
+      if (ev.kind === 'join') {
+        body.appendChild(document.createTextNode(' joined the party'));
+      } else {
+        body.appendChild(document.createTextNode(' guessed “' + ev.text + '”'));
+        if (ev.correct) {
+          row.classList.add('is-correct');
+          body.appendChild(document.createTextNode(' — got it!'));
+        } else {
+          row.classList.add('is-wrong');
+        }
+      }
+      row.append(icon, body);
+      box.appendChild(row);
+    });
+    if (wasNearBottom) box.scrollTop = box.scrollHeight;
   }
 
   function renderRound(opts) {
@@ -260,6 +383,7 @@
     applyPixelation();
     renderHintList();
     renderScores();
+    renderFeed();
 
     el('partyRoundLabel').textContent = surface === 'host'
       ? 'Round ' + state.roundNo + ' · Hint ' + Math.min(state.shown, MAX_HINTS) + ' of ' + MAX_HINTS
@@ -274,29 +398,74 @@
       el('partyHint').disabled = done || state.shown >= MAX_HINTS;
       el('partyHint').hidden = done;
       el('partyNext').hidden = !done;
-    } else if (surface === 'player') {
-      el('partyGuessForm').hidden = done;
+      if (!editingIdentity) el('partyPlayToo').hidden = !!playerName;
     }
+    // Guess form is shown to whoever has a name set, host included -
+    // hosting a round doesn't stop you racing to guess it too. Left
+    // alone while the name-change form is open, or the next poll would
+    // just pop it back in front of the editor.
+    if (!editingIdentity) el('partyGuessForm').hidden = done || !playerName;
 
     el('partyResult').hidden = !done;
     if (done) {
-      if (surface === 'player') {
-        const mine = state.lastWinner && playerName && state.lastWinner === playerName;
-        el('partyResult').textContent = mine
-          ? 'You got it — ' + (a ? a.n : '') + '!'
-          : (state.lastWinner ? state.lastWinner + ' got it — ' + (a ? a.n : '') + '.' : 'Round over — ' + (a ? a.n : '') + '.');
-        el('partyResult').classList.toggle('is-mine', !!mine);
-      } else {
-        el('partyResult').textContent = state.lastWinner
-          ? state.lastWinner + ' got it — ' + (a ? a.n : '') + '.'
-          : 'Round over — ' + (a ? a.n : '') + '.';
-        el('partyResult').classList.remove('is-mine');
-      }
+      const mine = !!(state.lastWinner && playerName && state.lastWinner === playerName);
+      el('partyResult').textContent = mine
+        ? 'You got it — ' + (a ? a.n : '') + '!'
+        : (state.lastWinner ? state.lastWinner + ' got it — ' + (a ? a.n : '') + '.' : 'Round over — ' + (a ? a.n : '') + '.');
+      el('partyResult').classList.toggle('is-mine', mine);
     }
 
     if (opts && opts.justResolved) {
-      sfx(surface === 'player' && state.lastWinner === playerName ? 'win' : (surface === 'host' ? 'win' : 'hint'));
+      const mine = playerName && state.lastWinner === playerName;
+      sfx(mine ? 'win' : (surface === 'host' ? 'win' : 'hint'));
     }
+  }
+
+  /* -- Icon picker: a small fixed emoji grid shared by the player join
+     gate and the host's inline "play too" form - only one of the two is
+     ever visible on a given tab, so one selectedIcon variable and one
+     click handler cover both. -------------------------------------- */
+
+  function renderIconPicker(box) {
+    if (!box) return;
+    box.innerHTML = '';
+    ICONS.forEach((ic) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'icon-opt' + (ic === selectedIcon ? ' is-selected' : '');
+      btn.setAttribute('role', 'radio');
+      btn.setAttribute('aria-checked', String(ic === selectedIcon));
+      btn.setAttribute('aria-label', 'Icon ' + ic);
+      btn.textContent = ic;
+      btn.addEventListener('click', () => setSelectedIcon(ic));
+      box.appendChild(btn);
+    });
+  }
+
+  function setSelectedIcon(ic) {
+    selectedIcon = ic;
+    [el('partyIconPicker'), el('partyPlayTooIconPicker')].forEach((box) => {
+      if (!box) return;
+      box.querySelectorAll('.icon-opt').forEach((btn) => {
+        const on = btn.textContent === ic;
+        btn.classList.toggle('is-selected', on);
+        btn.setAttribute('aria-checked', String(on));
+      });
+    });
+  }
+
+  // A player's chosen name + icon, wherever it was entered - persists
+  // across the whole site, not just this one party code, same as
+  // NAME_STORE already did. previousName, when given, tells join.js
+  // this is a rename of an existing row rather than a fresh identity -
+  // see its own comment for why that matters.
+  function setIdentity(name, icon, previousName) {
+    playerName = name;
+    setStore(NAME_STORE, name);
+    setStore(ICON_STORE, icon);
+    const body = { code, playerName: name, icon };
+    if (previousName && previousName !== name) body.previousName = previousName;
+    api('join', body).catch(() => {});
   }
 
   /* -- Entry / navigation ------------------------------------------------ */
@@ -334,16 +503,19 @@
     el('partyInvite').hidden = !isHost;
     el('partyHint').hidden = !isHost;
     el('partyEnd').hidden = !isHost;
-    el('partyYouLabel').hidden = isHost || !playerName;
-    el('partyGuessForm').hidden = isHost;
+    editingIdentity = false;
+    el('partyPlayTooCancel').hidden = true;
+    el('partyPlayTooLabel').textContent = 'Want to play too, not just host?';
+    el('partyPlayToo').hidden = !isHost || !!playerName;
+    el('partyYouLabel').hidden = !playerName;
+    el('partyPlayerNameLabel').textContent = playerName || '';
+    el('partyGuessForm').hidden = !playerName;
 
     if (isHost) {
       const joinUrl = location.origin + '/?party=' + code;
       el('partyJoinUrl').value = joinUrl;
       el('partyCode').textContent = code;
       renderQr(joinUrl);
-    } else {
-      el('partyPlayerNameLabel').textContent = playerName || '';
     }
   }
 
@@ -368,13 +540,19 @@
     enterPage();
     if (!(opts && opts.noPush) && window.GMA && typeof GMA.push === 'function') GMA.push('?party=1');
 
+    // A name picked up from any earlier party (host or player) on this
+    // device carries over, same as the player join flow already does -
+    // it's "your name on this site", not "your name for this one code".
+    playerName = getStore(NAME_STORE) || null;
+
     const saved = getHostSession();
     if (saved && saved.code && saved.hostKey) {
       code = saved.code;
       hostKey = saved.hostKey;
-      lastRound = 0; lastResolved = false; lastShown = 0;
+      lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
       showActiveRound();
       startPolling();
+      if (playerName) api('join', { code, playerName, icon: selectedIcon }).catch(() => {});
     } else {
       showSetup();
     }
@@ -400,10 +578,11 @@
       }
       code = data.code;
       hostKey = data.hostKey;
-      lastRound = 0; lastResolved = false; lastShown = 0;
+      lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
       setStore(HOST_STORE, JSON.stringify({ code, hostKey }));
       showActiveRound();
       startPolling();
+      if (playerName) api('join', { code, playerName, icon: selectedIcon }).catch(() => {});
     } catch (err) {
       el('partySetupMsg').textContent = 'Could not reach the server. Check your connection and try again.';
     } finally {
@@ -436,7 +615,7 @@
     // over. This is only "forget it on this device".
     clearStore(HOST_STORE);
     code = null; hostKey = null; state = null;
-    lastRound = 0; lastResolved = false; lastShown = 0;
+    lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
     stopPolling();
     disconnectChat();
     showSetup();
@@ -598,8 +777,7 @@
     surface = 'player';
     code = String(joinCode || '').toUpperCase();
     state = null;
-    lastRound = 0; lastResolved = false; lastShown = 0;
-    guessedThisRound = false;
+    lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
 
     enterPage();
     if (!(opts && opts.noPush) && window.GMA && typeof GMA.push === 'function') GMA.push('?party=' + code);
@@ -614,6 +792,7 @@
       el('partyNameForm').hidden = true;
       showActiveRound();
       startPolling();
+      api('join', { code, playerName, icon: selectedIcon }).catch(() => {}); // refresh presence on a reopen/refresh too
     } else {
       el('partyNameForm').hidden = false;
     }
@@ -623,48 +802,81 @@
     e.preventDefault();
     const name = el('partyName').value.trim().slice(0, 24);
     if (!name) return;
-    playerName = name;
-    setStore(NAME_STORE, name);
+    setIdentity(name, selectedIcon);
     el('partyNameForm').hidden = true;
     showActiveRound();
     startPolling();
   });
 
+  // Shown inline within an already-active round, not a blocking gate -
+  // the host's first job is getting the code/QR on screen, not picking
+  // a name, so this can't hold that up. Two triggers, one form: a host
+  // with no name yet sees it automatically (see renderRound), and
+  // either role can reopen it later via "change" next to the You label.
+  el('partyPlayToo').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = el('partyPlayTooName').value.trim().slice(0, 24);
+    if (!name) return;
+    const previous = editingIdentity ? playerName : null;
+    setIdentity(name, selectedIcon, previous);
+    editingIdentity = false;
+    el('partyPlayToo').hidden = true;
+    el('partyYouLabel').hidden = false;
+    el('partyPlayerNameLabel').textContent = playerName;
+    renderRound({});
+  });
+
+  el('partyEditName').addEventListener('click', () => {
+    editingIdentity = true;
+    el('partyPlayTooLabel').textContent = 'Change your name';
+    el('partyPlayTooName').value = playerName || '';
+    el('partyPlayTooCancel').hidden = false;
+    el('partyYouLabel').hidden = true;
+    el('partyGuessForm').hidden = true;
+    el('partyPlayToo').hidden = false;
+    el('partyPlayTooName').focus();
+  });
+
+  el('partyPlayTooCancel').addEventListener('click', () => {
+    editingIdentity = false;
+    el('partyPlayTooLabel').textContent = 'Want to play too, not just host?';
+    el('partyPlayTooCancel').hidden = true;
+    el('partyPlayToo').hidden = true;
+    el('partyYouLabel').hidden = !playerName;
+    renderRound({});
+  });
+
+  // Shared by both roles - see the header comment on why this always
+  // hits the server now instead of pre-filtering with matches() first.
   el('partyGuessForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const raw = el('partyGuess').value.trim();
-    if (!raw || !state || state.resolved || guessedThisRound) return;
+    if (!raw || !state || state.resolved || !playerName || guessSending) return;
 
-    const a = targetAnimal();
-    if (!a) return;
-
-    if (!matches(raw, a)) {
-      el('partyFeedback').textContent = 'Not that one — keep going.';
-      el('partyGuess').select();
-      sfx('wrong');
-      return;
-    }
-
-    // Right as far as this device is concerned - the API still decides
-    // whether it got here first.
-    guessedThisRound = true;
+    guessSending = true;
     el('partyGuess').value = '';
-    el('partyFeedback').textContent = 'Correct! Checking who got there first…';
+    el('partyFeedback').textContent = 'Checking…';
 
     const data = await api('guess', {
       code,
       playerName,
-      hintsShown: state.shown,
+      text: raw,
       roundNo: state.roundNo,
       source: 'local',
+      icon: selectedIcon,
     }).catch(() => null);
+    guessSending = false;
 
-    if (data && data.won) {
+    if (!data || data.error) {
+      el('partyFeedback').textContent = "Couldn't reach the server — try again.";
+    } else if (data.won) {
       el('partyFeedback').textContent = 'You got it, +' + data.points + '.';
       sfx('win');
-    } else {
+    } else if (data.correct) {
       el('partyFeedback').textContent = 'Right answer — someone just beat you to it.';
-      guessedThisRound = false;
+    } else {
+      el('partyFeedback').textContent = 'Not that one — keep going.';
+      sfx('wrong');
     }
     poll();
   });
@@ -683,6 +895,9 @@
     opt.textContent = b.label;
     catSelect.appendChild(opt);
   });
+
+  renderIconPicker(el('partyIconPicker'));
+  renderIconPicker(el('partyPlayTooIconPicker'));
 
   window.openPartyHost = openPartyHost;
   window.openPartyPlayer = openPartyPlayer;

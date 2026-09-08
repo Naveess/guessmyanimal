@@ -49,6 +49,30 @@ CREATE TABLE IF NOT EXISTS party_scores (
   source         TEXT NOT NULL DEFAULT 'local',
   score          INTEGER NOT NULL DEFAULT 0,
   rounds_won     INTEGER NOT NULL DEFAULT 0,
+  icon           TEXT,               -- an optional emoji the player picked at join
   updated_at     INTEGER NOT NULL,
   PRIMARY KEY (session_code, player_name)
 );
+-- icon added 2026-09-08 via `ALTER TABLE party_scores ADD COLUMN icon TEXT`
+-- directly against the live D1 database - this CREATE is for a fresh
+-- install only, the running database was already migrated in place.
+
+-- The party page's chat-style activity feed: joins, guesses (right and
+-- wrong - showing the wrong ones is the whole point, so a room full of
+-- people playing together can see a guess has already been tried
+-- instead of repeating it) and round-start dividers, all one shared
+-- log so they render as a single cascading list in the order they
+-- happened. Local/QR play only - Twitch chat isn't logged here, see
+-- TODO.md and functions/api/party/guess.js for why.
+CREATE TABLE IF NOT EXISTS party_events (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_code TEXT NOT NULL,
+  round_no     INTEGER NOT NULL,
+  kind         TEXT NOT NULL,        -- 'join' | 'guess' | 'round'
+  player_name  TEXT,                 -- null for a 'round' divider
+  icon         TEXT,
+  text         TEXT,                 -- the raw guess text, null otherwise
+  correct      INTEGER,              -- 0/1, null for 'join'/'round'
+  created_at   INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS party_events_session ON party_events (session_code, id);

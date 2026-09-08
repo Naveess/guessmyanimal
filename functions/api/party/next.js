@@ -39,6 +39,14 @@ export async function onRequestPost({ request, env }) {
     .bind(targetSlug, JSON.stringify(shownSlugs.concat(targetSlug)), roundNo, now, code)
     .run();
 
+  // A divider in the activity feed so old guesses read as belonging to
+  // a finished round rather than sitting there looking like live,
+  // still-untried guesses for the new target.
+  await env.DB
+    .prepare("INSERT INTO party_events (session_code, round_no, kind, created_at) VALUES (?1, ?2, 'round', ?3)")
+    .bind(code, roundNo, now)
+    .run();
+
   return json({ targetSlug, shown: 1, resolved: false, roundNo });
 }
 

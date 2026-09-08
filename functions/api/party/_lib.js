@@ -16,9 +16,30 @@ export const CATEGORY_RE = /^(all|mammals|birds|reptiles|sea|bugs)$/;
 export const TWITCH_CHANNEL_RE = /^[a-z0-9_]{1,25}$/i;
 export const PLAYER_NAME_RE = /^.{1,24}$/;
 export const SOURCE_RE = /^(twitch|local)$/;
+export const GUESS_TEXT_MAX = 60;
 
 export const slugify = GameCore.slugify;
 export const pointsForHints = GameCore.pointsForHints;
+export const matches = GameCore.matches;
+
+const BY_SLUG = new Map(ANIMALS.map((a) => [slugify(a.n), a]));
+
+// Server-side lookup for the local/QR guess path, which - unlike the
+// Twitch chat path - trusts its own match check rather than the
+// client's, so the same round can't be scored two different ways by
+// two different surfaces. See guess.js.
+export function targetFor(slug) {
+  return BY_SLUG.get(slug) || null;
+}
+
+// A player-picked emoji, kept loose since real emoji can be several
+// UTF-16 code units (skin tones, ZWJ sequences) - just capped and
+// trimmed, not pattern-matched. Empty/missing collapses to null so it
+// reads the same as "no icon set" everywhere it's stored.
+export function cleanIcon(v) {
+  const s = String(v || '').trim().slice(0, 8);
+  return s || null;
+}
 
 // excludeSlugs: targets already shown this session, so a round doesn't
 // repeat an animal the players just saw. Falls back to the full pool if
