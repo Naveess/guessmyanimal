@@ -4,6 +4,19 @@
   const el = (id) => document.getElementById(id);
   const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 
+  // TEMPORARY - side-by-side comparison of two "less boxy" layout
+  // directions for this page, live-toggled via ?fluid=panel or
+  // ?fluid=bare so both can be judged rendered rather than picked blind
+  // from a mockup. No param = today's shipped (boxed) layout, untouched.
+  // Remove this block and the two [data-fluid] sections in style.css
+  // once one direction is chosen (or neither, and we keep the original).
+  (function () {
+    try {
+      const v = new URLSearchParams(location.search).get('fluid');
+      if (v === 'panel' || v === 'bare') el('mysteryview').setAttribute('data-fluid', v);
+    } catch (e) {}
+  })();
+
   // Same one-letter/one-swap tolerance the main search already gives -
   // "gorila" or "hipo" - a guess shouldn't fail on a typo when the site
   // itself would have found the animal fine.
