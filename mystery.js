@@ -1078,7 +1078,15 @@
   // re-derives the real current state (today's lock, an in-progress
   // round to resume, or a fresh one) the same way arriving at the Daily
   // tab any other way already does.
-  el('mysteryArchiveClose').addEventListener('click', enterDaily);
+  // Hiding #mysteryArchive drops the just-focused Back-to-today button
+  // out of the document, so a keyboard user's focus otherwise falls back
+  // to <body> - restoring it to #mysteryRound (see its tabindex="-1" in
+  // index.html) keeps tabbing picking up where the player actually is,
+  // instead of a full restart from the top of the page.
+  el('mysteryArchiveClose').addEventListener('click', () => {
+    enterDaily();
+    el('mysteryRound').focus();
+  });
   // Reopens the list rather than resuming today's round underneath it -
   // someone who just replayed one past day is far more likely reaching
   // for another than heading back to today.

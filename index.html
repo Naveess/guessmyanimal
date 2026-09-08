@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260908-7">
+<link rel="stylesheet" href="style.css?v=20260908-8">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
      stream.html: that page is a transparent OBS overlay with no content
      of its own, never opened as a real page. -->
@@ -402,10 +402,21 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          hiding pieces of it individually, since a round in progress and
          a list of other rounds to start have nothing to say to each
          other on screen at once. -->
-    <div id="mysteryRound">
+    <!-- tabindex="-1": a programmatic focus target for keyboard users
+         returning from the archive list (see the archive-close handler
+         in mystery.js) - which of Daily's locked/resume/fresh sub-states
+         ends up visible varies, so this focuses the container itself
+         rather than guessing which specific control is on screen. -->
+    <div id="mysteryRound" tabindex="-1">
     <h3 class="label">Guess the animal</h3>
     <div class="card mystery-hintcard">
-      <div class="mystery-hints" id="mysteryHints"></div>
+      <!-- Rebuilt wholesale on every reveal (renderHints() in mystery.js
+           clears and re-appends), so aria-live re-reads from hint 1 each
+           time rather than announcing only the newest one - a real but
+           minor tradeoff against the alternative this was fixing:
+           complete silence on every hint reveal for a screen-reader
+           player. -->
+      <div class="mystery-hints" id="mysteryHints" aria-live="polite"></div>
     </div>
 
     <form class="mystery-form" id="mysteryForm" data-sfx="off">
@@ -577,7 +588,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260908-6"></script>
+<script src="mystery.js?v=20260908-7"></script>
 <script src="app.js?v=20260908-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
