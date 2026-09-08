@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260908-13">
+<link rel="stylesheet" href="style.css?v=20260908-14">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
      stream.html: that page is a transparent OBS overlay with no content
      of its own, never opened as a real page. -->
@@ -555,11 +555,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </div>
 
 <!-- ============================================================
-     PARTY MODE - PLAYER. Where the host's QR code lands: a name,
-     the same hints everyone else can see, and a guess box. The host
-     controls and the Twitch-chat overlay are elsewhere (the dialog
-     below, and party-overlay.html) - this is only the phone in a
-     player's hand.
+     PARTY MODE. One page, both roles - hosting and playing look the
+     same (same blurred photo, same hints, same scoreboard), and only
+     the controls at the bottom differ. Hosting also reads Twitch chat
+     directly in this tab (see party.js) - no OBS overlay, no separate
+     page for that; whatever's on screen here is what's on screen.
      ============================================================ -->
 <div class="partyview" id="partyview" hidden>
 
@@ -569,57 +569,15 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <path d="M15 5 8 12l7 7"/>
       </svg>
     </button>
-    <p class="mystery-title">Party <span class="party-join-code" id="partyJoinCode"></span> <span class="beta-tag">beta</span></p>
+    <p class="mystery-title"><span id="partyTitleText">Party Mode</span> <span class="beta-tag">beta</span></p>
   </header>
 
   <main class="feed">
     <p class="party-msg" id="partyPlayerMsg" role="status" hidden></p>
 
-    <form class="party-name-form" id="partyNameForm" hidden>
-      <h2 class="label">What should we call you?</h2>
-      <input id="partyName" type="text" maxlength="24" autocomplete="off"
-             placeholder="Your name" aria-label="Your name">
-      <button class="btn btn-solid" type="submit">Join the party</button>
-    </form>
-
-    <div class="party-play" id="partyPlay" hidden>
-      <div class="party-playhead">
-        <span class="party-round" id="partyPlayerRound">Round 1</span>
-        <span class="party-you">Playing as <b id="partyPlayerName"></b></span>
-      </div>
-
-      <div class="card party-hintcard">
-        <div class="party-hints" id="partyPlayerHints" aria-live="polite"></div>
-      </div>
-
-      <form class="mystery-form party-guess-form" id="partyGuessForm" data-sfx="off">
-        <input id="partyGuess" type="text" autocomplete="off" autocorrect="off"
-               autocapitalize="off" spellcheck="false" placeholder="Type your guess…"
-               aria-label="Your guess">
-        <button class="btn btn-solid" type="submit">Guess</button>
-      </form>
-      <p class="mystery-feedback" id="partyFeedback" role="status" aria-live="polite"></p>
-      <p class="party-result" id="partyPlayerResult" role="status" hidden></p>
-
-      <h3 class="label party-scores-label">Scoreboard</h3>
-      <div class="party-scores" id="partyPlayerScores"></div>
-    </div>
-  </main>
-</div>
-
-<!-- ============================================================
-     PARTY MODE - HOST. Start a party, reveal hints, move rounds on.
-     Guesses arrive either from Twitch chat (via the overlay page,
-     which reads it directly) or from players' own phones through
-     the QR code below - both land on the same round, same
-     scoreboard. See TODO.md for the whole design.
-     ============================================================ -->
-<dialog class="dlg dlg-party" id="partyDlg" aria-labelledby="partyTitle">
-  <div class="dlg-in">
-    <h2 class="dlg-title" id="partyTitle">Party Mode <span class="beta-tag">beta</span></h2>
-
+    <!-- Host only: shown before a party exists. -->
     <div id="partySetup">
-      <p class="dlg-note">One animal, hints you reveal, and whoever names it first takes the round. People can play on their phones, in your Twitch chat, or both at once.</p>
+      <p class="dlg-note">One animal, hints you reveal, and whoever names it first takes the round. Play on phones, in your Twitch chat, or both at once.</p>
 
       <label class="fld">
         <span class="fld-label">Animals to use</span>
@@ -631,69 +589,91 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <input type="text" id="partyTwitch" autocomplete="off" autocapitalize="off"
                spellcheck="false" placeholder="your_channel_name">
       </label>
-      <p class="dlg-note dlg-note-tight">Leave this blank for phones-only play. Fill it in and the overlay also reads your Twitch chat, so viewers can just type their guess there.</p>
+      <p class="dlg-note dlg-note-tight">Leave this blank for phones-only play. Fill it in and this page reads your Twitch chat live, so viewers can just type their guess there.</p>
 
       <p class="party-msg" id="partySetupMsg" role="status"></p>
 
-      <div class="dlg-actions">
-        <button class="btn" type="button" id="partyClose">Cancel</button>
-        <button class="btn btn-solid" type="button" id="partyStart">Start a party</button>
-      </div>
+      <button class="btn btn-solid" type="button" id="partyStart">Start a party</button>
     </div>
 
+    <!-- Player only: the QR code's destination, once, before a name is saved. -->
+    <form class="party-name-form" id="partyNameForm" hidden>
+      <h2 class="label">What should we call you?</h2>
+      <input id="partyName" type="text" maxlength="24" autocomplete="off"
+             placeholder="Your name" aria-label="Your name">
+      <button class="btn btn-solid" type="submit">Join the party</button>
+    </form>
+
+    <!-- Shared: a round in progress, either role. -->
     <div id="partyActive" hidden>
-      <div class="party-codebox">
+
+      <!-- Host only: how everyone else gets in. -->
+      <div class="party-codebox" id="partyInvite" hidden>
         <div class="party-qr" id="partyQr" aria-hidden="true"></div>
         <div class="party-codemeta">
           <p class="party-codelabel">Join at guessmyanimal.com with code</p>
           <p class="party-codeval" id="partyCode"></p>
-          <p class="party-codehint">Scan the code, or open the link below.</p>
+          <div class="stream-url-row">
+            <input type="text" id="partyJoinUrl" readonly aria-label="Player join link">
+            <button class="btn" type="button" id="partyJoinCopy">Copy link</button>
+          </div>
+          <p class="copied" id="partyCopyStatus" aria-live="polite"></p>
+          <p class="party-chat" id="partyChatStatus" hidden></p>
         </div>
       </div>
-
-      <label class="fld">
-        <span class="fld-label">Player join link</span>
-        <div class="stream-url-row">
-          <input type="text" id="partyJoinUrl" readonly aria-label="Player join link">
-          <button class="btn" type="button" id="partyJoinCopy">Copy</button>
-        </div>
-      </label>
-
-      <label class="fld">
-        <span class="fld-label">OBS overlay link</span>
-        <div class="stream-url-row">
-          <input type="text" id="partyOverlayUrl" readonly aria-label="OBS overlay link">
-          <button class="btn" type="button" id="partyOverlayCopy">Copy</button>
-        </div>
-      </label>
-      <p class="copied" id="partyCopyStatus" aria-live="polite"></p>
-      <p class="dlg-note dlg-note-tight">Add the overlay link to OBS as a Browser Source. It shows the hints and scoreboard on stream, and it's the part that reads your Twitch chat.</p>
 
       <div class="party-roundhead">
-        <span class="party-round" id="partyRound">Round 1</span>
-        <span class="party-hintcount" id="partyHintCount">1 of 5</span>
+        <span class="party-round" id="partyRoundLabel">Round 1</span>
+        <span class="party-you" id="partyYouLabel" hidden>Playing as <b id="partyPlayerNameLabel"></b></span>
       </div>
+
+      <!-- Same Photo Card component and the same real-tiny-thumbnail
+           pixelation Mystery Animal uses (see game-core.js's
+           pixelStepFor/thumbAtWidth) - a CSS blur would still ship the
+           sharp image to the browser, readable from devtools regardless
+           of what's painted on screen. -->
+      <article class="pcard party-hero" id="partyHero">
+        <img class="pcard-bg" id="partyPhotoBg" alt="" aria-hidden="true"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img class="pcard-img" id="partyPhotoImg" alt="" loading="lazy"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <div class="pcard-fallback" aria-hidden="true">
+          <span class="pcard-fallback-emoji">🐾</span>
+        </div>
+        <div class="pcard-scrim" aria-hidden="true"></div>
+        <div class="pcard-meta" id="partyPhotoMeta">
+          <h2 class="pcard-name"><span id="partyPhotoName"></span> <span class="pcard-emoji" id="partyPhotoEmoji" aria-hidden="true"></span></h2>
+          <p class="pcard-sub" id="partyPhotoSub"></p>
+        </div>
+      </article>
 
       <div class="card party-hintcard">
-        <div class="party-hints" id="partyHostHints" aria-live="polite"></div>
+        <div class="party-hints" id="partyHints" aria-live="polite"></div>
       </div>
 
-      <p class="party-answer-row">Answer: <b class="party-answer" id="partyAnswer"></b></p>
+      <!-- Player only. -->
+      <form class="mystery-form party-guess-form" id="partyGuessForm" hidden data-sfx="off">
+        <input id="partyGuess" type="text" autocomplete="off" autocorrect="off"
+               autocapitalize="off" spellcheck="false" placeholder="Type your guess…"
+               aria-label="Your guess">
+        <button class="btn btn-solid" type="submit">Guess</button>
+      </form>
+      <p class="mystery-feedback" id="partyFeedback" role="status" aria-live="polite"></p>
+
       <p class="party-result" id="partyResult" role="status" hidden></p>
 
-      <button class="btn party-hintbtn" type="button" id="partyHint">Reveal next hint</button>
+      <!-- Host only. -->
+      <button class="btn party-hintbtn" type="button" id="partyHint" hidden>Reveal next hint</button>
       <button class="btn btn-solid" type="button" id="partyNext" hidden>Next round</button>
 
       <h3 class="label party-scores-label">Scoreboard</h3>
-      <div class="party-scores" id="partyHostScores"></div>
+      <div class="party-scores" id="partyScores"></div>
 
-      <div class="dlg-actions">
-        <button class="btn" type="button" id="partyEnd">End party</button>
-        <button class="btn btn-solid" type="button" id="partyDone">Done</button>
-      </div>
+      <!-- Host only. -->
+      <button class="btn party-endbtn" type="button" id="partyEnd" hidden>End party</button>
     </div>
-  </div>
-</dialog>
+  </main>
+</div>
 
 <!-- ============================================================
      REPORT. Native dialog so focus trapping, Escape and the
@@ -777,7 +757,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <script src="animals.js?v=20260907-1"></script>
 <script src="render-data.js?v=20260901-1"></script>
 <script src="related.js?v=20260908-1"></script>
-<script src="game-core.js?v=20260908-1"></script>
+<script src="game-core.js?v=20260908-2"></script>
 <!-- Third-party, vendored rather than loaded from a CDN: the site
      doesn't call out to services it doesn't need, and a QR code is not
      a reason to start. MIT licensed, no dependencies - see the header
@@ -787,7 +767,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      checks window.openPartyPlayer on its very first call, so a direct
      or refreshed ?party=CODE link (which is what every QR code and
      join link is) lands on the player view rather than the home page. -->
-<script src="party.js?v=20260908-1"></script>
+<script src="party.js?v=20260908-2"></script>
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->

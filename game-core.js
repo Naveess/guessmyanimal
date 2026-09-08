@@ -13,12 +13,12 @@
  * same dual-export shape animals.js and render-data.js already use.
  *
  * NOTE: mystery.js still carries its own copies of near/matches/
- * hintsFor/pointsForHints/CATEGORY_BUCKETS, written before this file
- * existed. They're intentionally identical. Folding mystery.js onto
- * this file is worth doing, but it's a change to a live, working game
- * for no behaviour gain, so it's deliberately not bundled into the
- * party mode build - if you change a rule here, change it there too
- * until that happens.
+ * hintsFor/pointsForHints/CATEGORY_BUCKETS/the pixelation helpers,
+ * written before this file existed. They're intentionally identical.
+ * Folding mystery.js onto this file is worth doing, but it's a change
+ * to a live, working game for no behaviour gain, so it's deliberately
+ * not bundled into the party mode build - if you change a rule here,
+ * change it there too until that happens.
  */
 (function (root) {
   'use strict';
@@ -108,10 +108,32 @@
     return pool.length ? pool : animals;
   }
 
+  // The "blurred photo" mechanic, straight out of mystery.js: never a
+  // CSS filter (that ships the real, sharp image to the browser -
+  // readable from devtools regardless of what's painted on screen), a
+  // genuinely tiny Wikimedia thumbnail instead, stretched back up and
+  // rendered pixelated. 0 is a sentinel for "the real, full-size
+  // source" - only reachable once a round resolves. See mystery.js's
+  // own copy of this comment for the standard-widths citation.
+  const PIXEL_WIDTH_STEPS = [20, 40, 60, 120, 0];
+
+  function thumbAtWidth(src, width) {
+    const m = /^(.*\/)(\d+)px-([^/]+)$/.exec(src);
+    return m ? m[1] + width + 'px-' + m[3] : null;
+  }
+
+  // hintsShown counts from 1 (the first hint is always visible), same
+  // as the round state every surface already tracks.
+  function pixelStepFor(hintsShown) {
+    const idx = Math.min(Math.max(hintsShown - 1, 0), PIXEL_WIDTH_STEPS.length - 1);
+    return PIXEL_WIDTH_STEPS[idx];
+  }
+
   const GameCore = {
     norm, slugify, near, matches,
     regionHint, hintsFor, MAX_HINTS,
     pointsForHints, CATEGORY_BUCKETS, poolFor,
+    PIXEL_WIDTH_STEPS, thumbAtWidth, pixelStepFor,
   };
 
   if (typeof module !== 'undefined' && module.exports) module.exports = GameCore;

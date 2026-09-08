@@ -1078,7 +1078,7 @@
         window.openPartyPlayer(partyCode, { noPush: true });
         return;
       }
-      if (typeof window.openParty === 'function') { window.openParty(); return; }
+      if (typeof window.openPartyHost === 'function') { window.openPartyHost(); return; }
     }
 
     // ?stream=1 and ?report=1 are the corner menu's own entry points from
