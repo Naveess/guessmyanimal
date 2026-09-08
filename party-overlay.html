@@ -21,15 +21,17 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   .po-wrap { width: min(380px, 100vw); margin: 14px; }
 
-  /* Every panel here is opaque enough to stay readable over whatever
-     is behind it on stream, which the site's own --card can't promise
-     on its own once a bright game is underneath. */
+  /* Opaque enough to stay readable over whatever is behind it on
+     stream, which the site's own --card can't promise on its own once a
+     bright game is underneath. A defined edge and no shadow, matching
+     .card and the Stream Mode overlay that already composites over
+     gameplay this way - elevation is for things that float above the
+     site, and nothing here is above anything the viewer can reach. */
   .po-card {
     background: color-mix(in srgb, var(--card) 94%, transparent);
     border: 1px solid var(--line);
     border-radius: var(--r-card);
     padding: 15px 16px;
-    box-shadow: var(--shadow-l);
   }
   .po-card + .po-card { margin-top: 12px; }
 
@@ -37,25 +39,34 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     display: flex; align-items: baseline; justify-content: space-between;
     gap: 10px; margin-bottom: 10px;
   }
-  .po-title { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
-  .po-round { font-size: 13px; color: var(--muted); font-weight: 600; }
-
-  .po-join {
-    margin: 0; font-size: 13px; color: var(--muted); line-height: 1.4;
+  /* Three steps, wide apart: Title for the panel, Body for the hints
+     (inherited from .party-hint), and the Section-label micro treatment
+     for everything that's only status. On a stream this gets watched at
+     a fraction of its real size on someone's phone, so the gaps between
+     levels have to survive being scaled down. */
+  .po-title { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -.03em; }
+  .po-round, .po-chat {
+    font-size: 12.5px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted);
   }
+
+  /* Not status - this is the instruction the audience acts on, so it
+     sits at body size with the rest of the readable content. */
+  .po-join { margin: 0; font-size: 16px; color: var(--muted); line-height: 1.4; }
   /* .party-join-code (style.css) already carries the site's monospace
      stack for exactly this - a room code read off a screen and typed
      into a phone. */
-  .po-join b { color: var(--ink); font-size: 15px; }
+  .po-join b { color: var(--ink); font-size: 22px; }
 
   /* Chat connection state is deliberately visible: a streamer needs to
      know the overlay is actually listening before they start a round,
      not find out from a chat full of unscored correct answers. */
-  .po-chat { margin: 9px 0 0; font-size: 12.5px; color: var(--muted); }
-  .po-chat.is-live::before { content: "● "; color: var(--good); }
-  .po-chat.is-down::before { content: "● "; color: var(--bad); }
+  .po-chat { display: block; margin: 9px 0 0; }
+  .po-chat.is-live::before { content: "● "; color: var(--good); letter-spacing: 0; }
+  .po-chat.is-down::before { content: "● "; color: var(--bad); letter-spacing: 0; }
 
-  .po-empty { margin: 0; font-size: 14px; color: var(--muted); }
+  .po-empty { margin: 0; font-size: 16px; color: var(--muted); }
   .po-empty[hidden] { display: none; }
 </style>
 </head>

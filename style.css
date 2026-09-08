@@ -2175,10 +2175,14 @@ body.view-page { background: var(--paper); }
 .party-qr:empty { display: none; }
 .party-codemeta { min-width: 0; }
 .party-codelabel { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.35; }
+/* The Headline step, because across a room this is what people are
+   actually reading. Tracking runs positive rather than Headline's own
+   -.04em: this is a code being copied character by character onto a
+   phone, the one case where letters want air between them. */
 .party-codeval {
   margin: 3px 0 0;
   font-family: ui-monospace, 'SF Mono', Consolas, monospace;
-  font-size: 30px; font-weight: 700; letter-spacing: .1em;
+  font-size: clamp(31px, 8.6vw, 42px); font-weight: 700; letter-spacing: .1em;
 }
 .party-codehint { margin: 4px 0 0; font-size: 12.5px; color: var(--muted); }
 
