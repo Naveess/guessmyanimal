@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-31T00:00:00.000Z",
+  "generatedAt": "2026-09-08T00:00:00.000Z",
   "title": "Design System: Guess My Animal",
   "extensions": {
     "colorMeta": {
@@ -14,8 +14,23 @@
       "line": { "role": "neutral", "displayName": "Line", "canonical": "#d7d9cc" },
       "flat-bg": { "role": "neutral", "displayName": "Flat", "canonical": "#e4e6da" },
       "good": { "role": "semantic", "displayName": "Good", "canonical": "#0a6b3d", "tonalRamp": ["#062a18", "#0a6b3d", "#12934f", "#2cb56c", "#58cf9b", "#8fe0bc", "#c1efdb", "#dbe9dd"] },
+      "good-bg": { "role": "semantic", "displayName": "Good Background", "canonical": "#dbe9dd" },
       "warn": { "role": "semantic", "displayName": "Warn", "canonical": "#8a5600", "tonalRamp": ["#2e1c00", "#8a5600", "#b3730a", "#d6911f", "#efbc63", "#f4d09a", "#f8e2c1", "#f4e6c9"] },
-      "bad": { "role": "semantic", "displayName": "Bad", "canonical": "#b8321a", "tonalRamp": ["#3f1109", "#8f2313", "#b8321a", "#df4a2a", "#ff7f63", "#ffa793", "#ffcabf", "#f2ddd6"] }
+      "warn-bg": { "role": "semantic", "displayName": "Warn Background", "canonical": "#f4e6c9" },
+      "bad": { "role": "semantic", "displayName": "Bad", "canonical": "#b8321a", "tonalRamp": ["#3f1109", "#8f2313", "#b8321a", "#df4a2a", "#ff7f63", "#ffa793", "#ffcabf", "#f2ddd6"] },
+      "bad-bg": { "role": "semantic", "displayName": "Bad Background", "canonical": "#f2ddd6" },
+      "paper-dark": { "role": "neutral", "displayName": "Paper (Dark)", "canonical": "#14150f" },
+      "card-dark": { "role": "neutral", "displayName": "Card (Dark)", "canonical": "#1e2019" },
+      "ink-dark": { "role": "neutral", "displayName": "Ink (Dark)", "canonical": "#eef0e4" },
+      "muted-dark": { "role": "neutral", "displayName": "Muted (Dark)", "canonical": "#989c88" },
+      "line-dark": { "role": "neutral", "displayName": "Line (Dark)", "canonical": "#2c2f25" },
+      "flat-bg-dark": { "role": "neutral", "displayName": "Flat (Dark)", "canonical": "#262920" },
+      "good-dark": { "role": "semantic", "displayName": "Good (Dark)", "canonical": "#58cf9b" },
+      "good-bg-dark": { "role": "semantic", "displayName": "Good Background (Dark)", "canonical": "#12301f" },
+      "warn-dark": { "role": "semantic", "displayName": "Warn (Dark)", "canonical": "#efbc63" },
+      "warn-bg-dark": { "role": "semantic", "displayName": "Warn Background (Dark)", "canonical": "#33270e" },
+      "bad-dark": { "role": "semantic", "displayName": "Bad (Dark)", "canonical": "#ff7f63" },
+      "bad-bg-dark": { "role": "semantic", "displayName": "Bad Background (Dark)", "canonical": "#3a1912" }
     },
     "typographyMeta": {
       "display": { "displayName": "Display", "purpose": "Home wordmark only." },
@@ -41,7 +56,9 @@
       { "name": "pulse", "value": "opacity .35<->.85, 1.3s ease-in-out infinite", "purpose": "Quiet loading indicator on the photo fallback emoji while the Wikipedia fetch is in flight; stops on a real photo landing or on both requests settling with nothing found." }
     ],
     "breakpoints": [
-      { "name": "wide", "value": "620px" }
+      { "name": "wide", "value": "620px" },
+      { "name": "desktop", "value": "860px" },
+      { "name": "paw-field", "value": "900px" }
     ]
   },
   "components": [
@@ -89,7 +106,7 @@
       "name": "Menu Panel",
       "kind": "nav",
       "refersTo": "menu-panel",
-      "description": "Floating dropdown from the corner menu button. Card surface, lifted shadow, rise-in entrance.",
+      "description": "Floating dropdown from the corner menu button. Card surface, lifted shadow, rise-in entrance. Now present on every page, not just the splash and animal view.",
       "html": "<div class=\"ds-menu-panel\"><a class=\"ds-menu-item\" href=\"#\">About the game</a><a class=\"ds-menu-item\" href=\"#\">Report a problem</a></div>",
       "css": ".ds-menu-panel { min-width: 210px; display: flex; flex-direction: column; padding: 6px; background: #f8f9f3; border-radius: 16px; box-shadow: 0 2px 6px rgba(29,30,25,.07), 0 22px 44px -22px rgba(29,30,25,.45); } .ds-menu-item { font-size: 15px; font-weight: 500; text-align: left; text-decoration: none; color: #1d1e19; background: transparent; border: 0; padding: 12px 13px; border-radius: 11px; min-height: 46px; display: flex; align-items: center; transition: background .13s cubic-bezier(.16,1,.3,1); } .ds-menu-item:hover { background: #e4e6da; }"
     }
