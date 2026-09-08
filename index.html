@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260908-2">
+<link rel="stylesheet" href="style.css?v=20260908-3">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
      stream.html: that page is a transparent OBS overlay with no content
      of its own, never opened as a real page. -->
@@ -215,6 +215,15 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </div>
     </article>
 
+    <!-- Everything but the photo, grouped purely for the desktop
+         two-column layout below (see style.css's 860px ANIMAL PAGE
+         block) - the photo becomes a sticky sidebar and this wrapper
+         becomes the scrolling column beside it, the same split
+         .mystery-panel-top/-bottom already does for the Mystery page.
+         Mobile ignores this entirely (a plain, unstyled div below that
+         breakpoint), so nothing here changes the mobile DOM order or
+         visual result. -->
+    <div class="feed-content">
     <p class="blurb" id="blurb"></p>
 
     <h3 class="label">Quick answers</h3>
@@ -277,6 +286,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>.</p>
       <p><a href="about.html">About the game</a></p>
     </footer>
+    </div>
 
   </main>
 </div>

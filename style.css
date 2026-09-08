@@ -749,6 +749,17 @@ body.view-home #q { font-size: 17px; }
     background-repeat: repeat;
     background-size: 140px 140px;
   }
+  /* The splash stays the same one-column hero - nothing new competes
+     with the search box, per the product's own "nothing else competes"
+     principle - but a fixed 460px hero on a desktop window read as a
+     stretched phone screen floating in the paw field above rather than
+     a considered desktop moment. Letting the hero itself (search box,
+     starter chips, the Mystery Animal CTA) grow with the viewport, capped
+     well short of the full window, gives it real desktop presence without
+     turning this into a multi-panel page. The wordmark's own type ramp is
+     untouched (see DESIGN.md's Display token) - only the interactive
+     cluster gets the extra room. */
+  .home-in { max-width: clamp(460px, 38vw, 640px); }
 }
 
 /* Mystery Animal never got its own desktop treatment - it just inherited
@@ -859,6 +870,63 @@ body.view-home #q { font-size: 17px; }
   .mysteryview .mystery-stat-streak b { font-size: clamp(36px, 2.9vw, 48px); }
   .mysteryview .mystery-stat span { font-size: clamp(11.5px, .85vw, 13.5px); }
   .mysteryview .mystery-result-name { font-size: clamp(20px, 1.7vw, 28px); }
+}
+
+/* -- Animal page: desktop -------------------------------------------
+   The same problem Mystery Animal had before its own 860px treatment
+   above: on a wide window this was one long single-file column (photo,
+   blurb, quick answers, at a glance, fact, related, actions) with real
+   width sitting empty either side - streamers now play this on desktop
+   too, and reading a whole animal meant scrolling well past the photo
+   to reach anything else, or losing the photo off the top of the screen
+   entirely. Same fix, same breakpoint, same shared gap/width vocabulary
+   as Mystery's own block: the photo becomes a sticky sidebar (not a
+   fixed top/bottom split like Mystery's, since this page has one
+   flowing column of facts rather than controls above and below a hero)
+   so it never scrolls out of view while the facts beside it do, and the
+   whole page reads in far less scrolling than a 560px single column
+   ever could. Mobile is untouched below this breakpoint - .feed-content
+   is a plain unstyled div there (see index.html). */
+@media (min-width: 860px) {
+  .animalview .feed {
+    max-width: clamp(860px, 80vw, 1280px);
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 28px;
+    display: grid;
+    grid-template-columns: clamp(300px, 26vw, 400px) 1fr;
+    column-gap: clamp(28px, 3vw, 44px);
+    align-items: start;
+  }
+  /* Lined up with the topbar's own back button below, which recomputes
+     its padding against this same max-width - see .animalview .topbar
+     right after. */
+  .animalview .feed > .pcard {
+    position: sticky;
+    /* Clears the sticky topbar (its own height plus the safe-area inset
+       it already pads for) with a little breathing room, so the photo
+       settles just under it rather than touching. */
+    top: calc(84px + env(safe-area-inset-top));
+    /* Reverts the 620px rule's wide 3/2 landscape crop, same reasoning
+       Mystery's own sidebar hero uses: that ratio assumes the card spans
+       the whole feed width, and here it's a narrower fixed column where
+       the mobile portrait framing this component already uses reads far
+       better than a short, squat rectangle would. */
+    aspect-ratio: 4 / 5;
+  }
+  /* Cancels the 620px rule's hardcoded 46px, which was tuned for the
+     wide landscape card this element no longer is at this breakpoint -
+     reverts to DESIGN.md's own documented Headline token rather than
+     inventing a third size for a third context. */
+  .animalview .pcard-name { font-size: clamp(31px, 8.6vw, 42px); }
+  .animalview .feed-content { min-width: 0; }
+  /* Recentres the topbar's back button and search dock against this
+     block's own width instead of the 620px rule's narrower 588px, so
+     it stays lined up with the photo's left edge rather than drifting
+     off it once the feed grows past that point. */
+  .animalview .topbar {
+    padding-left: max(14px, calc((100% - clamp(860px, 80vw, 1280px)) / 2));
+  }
 }
 
 /* ==================================================================
