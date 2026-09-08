@@ -5,149 +5,71 @@ over as concrete follow-up work rather than left as ideas in a report.
 
 ## Party mode (Twitch chat + local/QR play)
 
-Looked at wos.gg as the closest existing example of this exact feature.
-It runs two modes side by side — chat-based for streaming, and a local
-QR-join mode for playing in person off a shared screen — and locks a
-round the instant someone's right so the revealed answer can't be
-copy-pasted into chat for extra points. Folding both into one plan below
-rather than two separate features, since almost everything (the
-session, the hints, the scoring, the lock) is identical between them —
-only how a guess *arrives* differs.
+**Local/QR play is built and working**, on branch `party-mode-page`
+(pushed to origin, not yet merged to `main` — the live site is
+unaffected until that merge happens). Twitch chat mode is also built
+(anonymous IRC overlay in the host's own tab, see `party.js`) but has
+had no polish pass since the original build — see "Not done yet"
+below.
 
-**Still no new persistent infra needed.** Cloudflare Pages Functions are
-request/response only, so nothing here can hold a live connection
-server-side, and nothing needs to:
+What's actually there, as of 2026-09-08:
+- `functions/api/party/{create,session,hint,next,guess,join}.js` +
+  `_lib.js`. Schema is `party_sessions`, `party_scores` (now with an
+  `icon` column) and `party_events` (join/guess/round-divider log) in
+  `schema.sql` — applied to both the live D1 database and local dev D1
+  already, no migration needed to resume work.
+- Everyone who joins locally shows up on the leaderboard immediately at
+  0 points (`join.js`), not just once they score - it doubles as a join
+  roster.
+- Every local guess - right or wrong - is logged to `party_events` and
+  rendered as a chat-style Activity feed, so a room full of people can
+  see an answer's already been tried. This required making local
+  guesses **server-authoritative**: `guess.js` now runs the match
+  itself (`GameCore.matches` against the session's own `target_slug`)
+  instead of trusting whatever the client already decided. The Twitch
+  path is untouched and still client-decided (see `chatMatches()` in
+  `party.js`) - deliberately out of scope so far.
+- The host can join in and guess too via an inline "play too" prompt
+  (not a blocking gate - the QR/code has to show up immediately). Both
+  roles can rename afterwards via "change" next to the You label -
+  `join.js` renames the existing `party_scores` row in place
+  (`previousName` param) rather than forking a duplicate.
+- Presence: `join.js` doubles as a ~12s heartbeat while a tab stays
+  open (piggybacked on the existing 1.2s poll loop, not a second
+  timer), so the leaderboard shows a live "in the party" dot + count
+  per player. No explicit "left" event - a closed tab just stops
+  heartbeating and ages out after `ONLINE_WINDOW_MS` (20s) - more
+  robust than trying to catch every way a tab can disappear.
+- Small emoji icon per player, picked at join/rename time.
+- Desktop layout (>=860px): leaderboard + Activity feed become a
+  sticky side column instead of stacking full-width under the round.
 
-- **Twitch guesses**: Twitch's chat IRC (`wss://irc-ws.chat.twitch.tv:443`)
-  allows **anonymous read-only** connections — join as `justinfanNNNNN`,
-  no OAuth token, no Twitch Dev app registration, just a WebSocket the
-  *browser* holds open. An **overlay tab** (OBS Browser Source, or any
-  tab) connects anonymously, joins the streamer's channel by name typed
-  in at setup, reads chat directly in JS, and runs the guess match
-  itself — reusing `matches()`/`near()` from `mystery.js`, the same
-  fuzzy-match logic solo mode already trusts client-side — POSTing only
-  the winning name once a message matches.
-- **Local guesses**: a player's phone is just another browser tab
-  polling the same D1 row, same as the overlay. No listener needed at
-  all — they type their guess straight into a page.
-- **Host control tab** — reveal next hint, start next round, show the QR
-  code. Gated by `host_key`, same spirit as Stream Mode's key. Twitch
-  channel name is one optional field on it: leave it blank and the
-  session is local-only, fill it in and the chat listener also runs —
-  both can be live on the same session at once for free, since nothing
-  about the schema or the guess endpoint cares where a guess came from.
-- All tabs (host, overlay, every player's phone) sync through D1 via the
-  same 1.2s poll loop as `stream.js` — no new sync mechanism, Stream
-  Mode's proven pattern reused again, just with more readers.
+**Not done yet / known gaps:**
+- **Twitch mode has no presence, no feed, no rename** - it's still the
+  original build. Deliberately deprioritised (Navee: "the streamer
+  element should branch off... I want it to work differently" -
+  2026-09-08) - don't extend the local-play patterns onto it without
+  checking that's still the plan, it may end up as a genuinely separate
+  surface rather than sharing this code.
+- Rename silently no-ops into "join as new identity" if the target name
+  is already taken by someone else in the same session (avoids a
+  merge-two-people's-scores bug, but the user gets no message saying
+  why). Fine for now, worth a one-line explanation if it comes up.
+- `party-mode-page` branch not yet merged to `main` - that's a decision
+  to make once this has had real playtesting, not a leftover task.
+- Verified end-to-end with Playwright (host+2 players, wrong/right
+  guesses, rename, presence aging out, desktop grid) - not manually
+  played by an actual group of people yet.
 
-**wos.gg's "padlock"** — round locks the instant someone's right, so a
-chat message repeating the revealed answer, or a slower phone a second
-behind, can't double-score — is just the atomic first-writer-wins update
-already planned below (`UPDATE ... SET resolved=1 WHERE code=? AND
-resolved=0`, check rows-affected). Not a separate mechanic to add, both
-guess paths land on the same write.
-
-**Not carrying over**: wos.gg's levels/progression-toward-a-group-goal
-layer. Neat, but a separate feature sitting on top of a working
-scoreboard, not part of getting this shipped — worth a look once the
-core loop's live and actually used a few times, not before.
-
-**Pre-build check, same discipline as the AdSense read for Teachers:**
-confirm Twitch's current policy/behaviour for anonymous read-only IRC
-still holds (long-standing, widely relied on by existing chat overlay
-tools, but verify for real before building on it, not from memory).
-
-**Proposed schema** (additive, doesn't touch `reports`/`stream_state`;
-the identity column is widened since it's not Twitch-only anymore):
-
-```sql
-CREATE TABLE IF NOT EXISTS party_sessions (
-  code           TEXT PRIMARY KEY,   -- short, typeable, shown as text + QR on the host tab
-  host_key       TEXT NOT NULL,
-  twitch_channel TEXT,               -- null/blank = local-only session
-  category       TEXT,               -- a CATEGORY_BUCKETS key, null = All
-  target_slug    TEXT NOT NULL,
-  shown          INTEGER NOT NULL DEFAULT 1,
-  resolved       INTEGER NOT NULL DEFAULT 0,
-  round_no       INTEGER NOT NULL DEFAULT 1,
-  created_at     INTEGER NOT NULL,
-  updated_at     INTEGER NOT NULL
-);
-CREATE TABLE IF NOT EXISTS party_scores (
-  session_code   TEXT NOT NULL REFERENCES party_sessions(code),
-  player_name    TEXT NOT NULL,      -- a Twitch username or a locally-typed name, same column either way
-  source         TEXT NOT NULL DEFAULT 'local',  -- 'twitch' | 'local' — cheap to keep, useful later
-  score          INTEGER NOT NULL DEFAULT 0,
-  rounds_won     INTEGER NOT NULL DEFAULT 0,
-  updated_at     INTEGER NOT NULL,
-  PRIMARY KEY (session_code, player_name)
-);
-```
-
-**Proposed endpoints** (`functions/api/party/*.js`, same validation
-style as `report.js`/`stream.js`):
-- `POST /api/party/create` `{category, twitchChannel?}` — server picks
-  the target, generates `code` (retry on collision) + `host_key`.
-  `twitchChannel` omitted/blank → local-only session.
-- `GET /api/party/session?code=` — full state + scoreboard, polled by
-  the host tab, the overlay tab, and every player's phone alike.
-- `POST /api/party/hint` `{code, hostKey}` — host-only, increments
-  `shown`.
-- `POST /api/party/guess` `{code, playerName, hintsShown}` — called by
-  whichever client already matched the guess itself (overlay, reading
-  chat, or a player's own phone) — same **atomic first-writer-wins**
-  write either way: `UPDATE party_sessions SET resolved=1 WHERE code=?
-  AND resolved=0`, check rows-affected before awarding the point, since
-  a burst of near-simultaneous correct guesses right after a hint drops
-  is the normal case here, not an edge case.
-- `POST /api/party/next` `{code, hostKey}` — new round: fresh target
-  (excluding targets already shown this session), reset
-  `shown`/`resolved`, `round_no + 1`.
-
-**Scoring**: first correct guess per round wins, scored via the existing
-`pointsForHints()` curve on however many hints were showing when they
-got it. Scoreboard accumulates across the whole session, keyed by
-`player_name`. Display cap ~30-50 rows (top N + "…and N more").
-
-**New client surface for local play** (the chat-only draft didn't need
-this): a `.partyview` panel in `index.html`, routed via `?party=<code>`
-in `app.js`'s `routeFromURL()` — same pattern as the existing
-`?stream=1`/`?report=1` handling. Name entry once (saved to
-localStorage), then hints + a guess box underneath, reusing Mystery
-Animal's own rendering and matching — basically its guess box, pointed
-at a shared target instead of a private one. Plus the QR code itself on
-the host tab, pointing at `guessmyanimal.com/?party=<code>` — needs a
-small vendored client-side QR-generation library, not a call to a
-third-party QR image API (the site doesn't phone out to services it
-doesn't need anywhere else, no reason to start here).
-
-**Open items to confirm/verify during build, not decided here:**
-1. Verify the anonymous Twitch IRC read-access assumption above for
-   real before relying on it.
-2. Public chat is noisier than a solo text box — people chatting about
-   other things, emote spam, links. `matches()`/`near()` as-is may need
-   a cheap pre-filter (skip messages with links/commands, skip wildly
-   off-length messages) before running the real fuzzy match, so the
-   overlay isn't scoring "lol" as a near-miss on a 3-letter animal.
-3. Repeat-target avoidance within one session (don't reshow the same
-   animal twice in one party/stream).
-4. Both guess paths should pre-filter obviously-irrelevant input before
-   ever calling the guess endpoint, not just rely on the D1 atomic
-   update — that update stops double-scoring, it doesn't stop every
-   chat line or keystroke from hitting the API.
-5. Local names have no uniqueness check — two people could type the
-   same name in one session and share a scoreboard row. Low-stakes for
-   a party game, but worth a one-line "name taken, try another" rather
-   than silently merging two people's scores.
-6. Pick the vendored QR library (small, no network dependency at
-   render-time).
-
-**Rough build order**: schema → the four endpoints (the atomic guess
-handler is still the one piece needing real care) → host control tab
-(reveal hints, show QR + code, optional Twitch channel field) → overlay
-tab (Twitch IRC listener) → `.partyview` local play panel (name entry +
-hint/guess reuse) → the same critique → audit → polish pass Mystery
-Animal already went through.
+**Operational gotcha hit tonight, worth remembering**: `wrangler pages
+dev` spawns a full process tree (`npx` → `wrangler.js` → `cli.js` →
+`workerd.exe`). Killing only the `workerd.exe` leaves the parent chain
+alive, which just respawns a fresh `workerd.exe` - looks like a
+zombie/respawning process but is actually the supervisor doing its job.
+To actually stop one: find the root `npx-cli.js` node.exe PID (`Get-
+CimInstance Win32_Process -Filter "Name='node.exe'" | Where-Object
+{ $_.CommandLine -like '*wrangler pages dev*' }` in PowerShell) and
+`taskkill //PID <root> //T //F` (bash) to kill the whole tree at once.
 
 ## Teachers outreach
 
