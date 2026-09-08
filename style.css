@@ -2206,3 +2206,21 @@ body.view-page { background: var(--paper); }
 .party-hintbtn { width: 100%; }
 .party-hintbtn[disabled] { opacity: .45; cursor: default; }
 #partyNext[hidden] { display: none; }
+
+/* Beta tag. The Micro step (the system's smallest label, same treatment
+   as the theme toggle's "Appearance") - it has to read as a status
+   marker attached to the thing next to it, never as a second label
+   competing with it. Muted on flat-bg, so it carries no colour of its
+   own and can sit in a menu, a dialog title or a topbar unchanged. */
+.beta-tag {
+  margin-left: 7px; padding: 3px 6px;
+  border-radius: 6px; background: var(--flat-bg);
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--muted);
+  vertical-align: 2px;
+}
+/* Inside a 22px dialog title the Micro step alone reads as a typo
+   rather than a badge, so it takes the surface a shade stronger and
+   lifts off the baseline to sit with the cap height. */
+.dlg-title .beta-tag { vertical-align: 5px; background: color-mix(in srgb, var(--ink) 8%, var(--flat-bg)); }

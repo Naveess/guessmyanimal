@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260908-11">
+<link rel="stylesheet" href="style.css?v=20260908-12">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
      stream.html: that page is a transparent OBS overlay with no content
      of its own, never opened as a real page. -->
@@ -84,7 +84,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="browse.html">Browse all animals</a>
     <button class="menu-item" type="button" data-mystery>Mystery Animal</button>
     <button class="menu-item" type="button" id="streamOpen">Stream Mode</button>
-    <button class="menu-item" type="button" id="partyOpen">Party Mode</button>
+    <button class="menu-item" type="button" id="partyOpen">Party Mode <span class="beta-tag">beta</span></button>
     <!-- Wired in app.js, which owns the sound engine and this preference
          for the whole site. The label carries the state rather than a
          separate switch, same as the rest of this menu is plain items.
@@ -569,7 +569,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <path d="M15 5 8 12l7 7"/>
       </svg>
     </button>
-    <p class="mystery-title">Party <span class="party-join-code" id="partyJoinCode"></span></p>
+    <p class="mystery-title">Party <span class="party-join-code" id="partyJoinCode"></span> <span class="beta-tag">beta</span></p>
   </header>
 
   <main class="feed">
@@ -616,7 +616,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      ============================================================ -->
 <dialog class="dlg dlg-party" id="partyDlg" aria-labelledby="partyTitle">
   <div class="dlg-in">
-    <h2 class="dlg-title" id="partyTitle">Party Mode</h2>
+    <h2 class="dlg-title" id="partyTitle">Party Mode <span class="beta-tag">beta</span></h2>
 
     <div id="partySetup">
       <p class="dlg-note">One animal, hints you reveal, and whoever names it first takes the round. People can play on their phones, in your Twitch chat, or both at once.</p>
