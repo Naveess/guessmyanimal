@@ -1067,6 +1067,10 @@
       wantKind: 'facts',
     });
   });
+  // The desktop footer's own Report link (see index.html, .desktop-foot)
+  // reuses this exact handler rather than duplicating the mystery-aware
+  // context above - simplest to just trigger the real button.
+  el('mysteryDesktopReport').addEventListener('click', () => el('mysteryReport').click());
 
   el('mysteryTabDaily').addEventListener('click', () => switchMode('daily'));
   el('mysteryTabEndless').addEventListener('click', () => switchMode('endless'));

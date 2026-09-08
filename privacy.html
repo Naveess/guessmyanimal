@@ -24,7 +24,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260908-8">
+<link rel="stylesheet" href="style.css?v=20260908-9">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -72,13 +72,16 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
     <a class="menu-item" href="./?stream=1">Stream Mode</a>
     <button class="menu-item" type="button" id="soundToggle" aria-pressed="true">Sound on</button>
-    <a class="menu-item" href="./?report=1">Report a problem</a>
-    <a class="menu-item" href="privacy.html">Privacy</a>
-    <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
+    <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
+         there's room for them to just be visible - see style.css. Mobile
+         is untouched. -->
+    <a class="menu-item menu-desktop-hide" href="./?report=1">Report a problem</a>
+    <a class="menu-item menu-desktop-hide" href="privacy.html">Privacy</a>
+    <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal"
        target="_blank" rel="noopener">Source on GitHub</a>
-    <hr class="menu-sep">
-    <p class="theme-label" id="themeLabel">Appearance</p>
-    <div class="theme" role="group" aria-labelledby="themeLabel">
+    <hr class="menu-sep menu-desktop-hide">
+    <p class="theme-label menu-desktop-hide" id="themeLabel">Appearance</p>
+    <div class="theme menu-desktop-hide" role="group" aria-labelledby="themeLabel">
       <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
       <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
       <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
@@ -102,6 +105,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     </svg>
     Guess my animal
   </a>
+  <!-- Desktop-only, absolutely positioned within the sticky topbar so it
+       takes no part in its flex layout - see style.css. -->
+  <div class="theme-dial" role="group" aria-label="Appearance">
+    <button type="button" class="theme-dial-opt" data-theme-set="system" aria-pressed="true"><span class="theme-dial-dot" aria-hidden="true"></span>System</button>
+    <button type="button" class="theme-dial-opt" data-theme-set="light" aria-pressed="false"><span class="theme-dial-dot" aria-hidden="true"></span>Light</button>
+    <button type="button" class="theme-dial-opt" data-theme-set="dark" aria-pressed="false"><span class="theme-dial-dot" aria-hidden="true"></span>Dark</button>
+  </div>
 </header>
 
 <main class="prose">
@@ -166,6 +176,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
        this polls briefly instead of checking once on page load. -->
   <p id="fcPrivacyRow" hidden><a href="#" id="fcPrivacyLink">Manage ad consent</a></p>
 </footer>
+<!-- Desktop-only: moved out of the corner menu, see style.css. -->
+<div class="desktop-foot">
+  <a href="./?report=1">Report a problem</a>
+  <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
+</div>
 
 <script>
 (function () {

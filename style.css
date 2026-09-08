@@ -821,11 +821,15 @@ body.view-home #q { font-size: 17px; }
     margin: auto;
     display: grid;
     grid-template-columns: clamp(320px, 27vw, 480px) 1fr;
-    grid-template-areas: "hero top" "hero bottom";
-    grid-template-rows: auto 1fr;
+    grid-template-areas: "hero top" "hero bottom" "foot foot";
+    grid-template-rows: auto 1fr auto;
     column-gap: clamp(28px, 3vw, 44px);
     align-items: start;
   }
+  /* Spans both columns, under the photo and the round alike - the
+     desktop-foot's own top border/margin (see the MENU section) already
+     supplies the separation from whichever of the two sits above it. */
+  .mysteryview .desktop-foot { grid-area: foot; }
   /* min-width:0 overrides a grid item's default auto-minimum (its
      content's own min-content size) - without it, the filter chip row's
      intentionally-nowrap, horizontally-scrolling content (see
@@ -967,6 +971,141 @@ body.view-home .menu-btn {
   border-color: color-mix(in srgb, var(--home-ink) 24%, transparent);
 }
 body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
+
+/* -- Desktop-only: theme dial + decluttered menu ---------------------
+   On a phone the menu is the only place there's room for Report a
+   problem / Privacy / Source on GitHub and the three-way theme switch,
+   so they all live there. Once there's real width, cramming them into
+   a dropdown when they could just be visible is the wrong tradeoff -
+   the three links move to a footer row at the bottom of the page (see
+   .desktop-foot, added once per page/view), and theme becomes its own
+   small control by the corner menu, a real click closer instead of two
+   deep in a panel. Mobile is completely untouched: every element this
+   touches only changes past 860px. */
+@media (min-width: 860px) {
+  .menu-desktop-hide { display: none; }
+}
+
+/* Three small radio dots, not the menu's own segmented-pill treatment -
+   deliberately a different shape so it doesn't read as a stray leftover
+   piece of the menu now sitting outside it. Reuses [data-theme-set]
+   verbatim (see app.js/menu.js), so no new JS was needed: applyTheme()
+   already syncs aria-pressed across every matching element on the page,
+   in-menu group included on mobile.
+
+   Two different placements, not one, because there isn't one spot safe
+   on every screen this appears on:
+   - Every topbar-carrying page/view (About/Browse/Privacy, the animal
+     page, Mystery Animal) positions it absolutely *inside* `.topbar`
+     (itself already `position: sticky`, which is enough to anchor an
+     absolutely-positioned child) rather than as a normal flex sibling -
+     the animal page's search box centres itself with auto-margins in
+     that same row, and Mystery Animal's own title uses a flex:1 +
+     text-align:center "balance the back button" trick documented on
+     both rules; a fourth flex item in either row would have thrown one
+     or the other off. Absolute positioning removes it from that flow
+     entirely, so neither is affected. right:68px reuses the same menu-
+     clearance distance the animal page's search row already reserves.
+   - The splash has no topbar to anchor to, but is also the one screen
+     here that never scrolls (100svh, centred content) - fixed, at the
+     same conceptual spot, carries no risk of drifting over content the
+     way it would on a scrolling feed. */
+.theme-dial {
+  display: none;
+}
+@media (min-width: 860px) {
+  .topbar .theme-dial {
+    display: flex; align-items: center; gap: 14px;
+    position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  }
+  body.view-home > .theme-dial {
+    display: flex; align-items: center; gap: 14px;
+    position: fixed; z-index: 60;
+    right: 14px; top: calc(66px + env(safe-area-inset-top));
+  }
+  /* The animal page's search box is the one topbar occupant genuinely
+     wide enough to reach this zone: centred via auto-margins in the
+     same row, capped at 460px but with under 200px of margin either
+     side once this breakpoint's own width is barely past its 860px
+     floor (worked out by hand against .dock-top's own centering math -
+     a real live overlap, not a guess) - so the dial waits for 1024px
+     there specifically, where the search box has grown enough margin
+     to clear it. Every other topbar (no search box competing for the
+     row) keeps the 860px start. */
+  .theme-dial-opt {
+    display: flex; align-items: center; gap: 6px;
+    font: inherit; font-size: 13px; font-weight: 500;
+    color: var(--muted); cursor: pointer;
+    background: none; border: 0; padding: 4px 0;
+    transition: color .14s var(--ease);
+  }
+  .theme-dial-opt:hover { color: var(--ink); }
+  .theme-dial-dot {
+    width: 13px; height: 13px; flex: none;
+    border-radius: 999px;
+    border: 1.5px solid var(--muted);
+    transition: border-color .14s var(--ease);
+  }
+  /* The filled centre is a separate pseudo-element rather than a solid
+     background fill on the dot itself, so the ring stays visible at the
+     same weight whether it's on or off - a real radio control's own
+     resting/checked distinction, not a colour swap. */
+  .theme-dial-dot::after {
+    content: ''; display: block; margin: 2.5px;
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--ink);
+    opacity: 0; transform: scale(.4);
+    transition: opacity .14s var(--ease), transform .14s var(--ease);
+  }
+  .theme-dial-opt[aria-pressed="true"] { color: var(--ink); font-weight: 600; }
+  .theme-dial-opt[aria-pressed="true"] .theme-dial-dot { border-color: var(--ink); }
+  .theme-dial-opt[aria-pressed="true"] .theme-dial-dot::after { opacity: 1; transform: scale(1); }
+  /* Same outline-on-yellow logic as the menu button right above it. */
+  body.view-home .theme-dial-opt { color: color-mix(in srgb, var(--home-ink) 72%, transparent); }
+  body.view-home .theme-dial-opt:hover,
+  body.view-home .theme-dial-opt[aria-pressed="true"] { color: var(--home-ink); }
+  body.view-home .theme-dial-dot { border-color: color-mix(in srgb, var(--home-ink) 55%, transparent); }
+  body.view-home .theme-dial-opt[aria-pressed="true"] .theme-dial-dot { border-color: var(--home-ink); }
+  body.view-home .theme-dial-dot::after { background: var(--home-ink); }
+}
+@media (min-width: 860px) and (max-width: 1023px) {
+  .animalview .theme-dial { display: none; }
+}
+
+/* Report a problem / Privacy / Source on GitHub, moved out of the menu
+   above - quiet, centred, found when looked for, matching the existing
+   .foot's own typography rather than inventing a second footer voice. */
+.desktop-foot { display: none; }
+@media (min-width: 860px) {
+  .desktop-foot {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    gap: 8px 22px;
+    margin-top: 30px; padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 13.5px; font-weight: 500; color: var(--muted);
+  }
+  .desktop-foot a, .desktop-foot button {
+    font: inherit; color: var(--ink); text-decoration: none;
+    background: none; border: 0; padding: 0; cursor: pointer;
+  }
+  .desktop-foot a:hover, .desktop-foot button:hover {
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  /* The splash centres its content vertically in the viewport (flex +
+     justify-content:center) - a normal-flow footer there would grow
+     with the row and shift that centring upward every time. Anchored to
+     the bottom of .home instead, outside that flex column entirely, the
+     same way the corner menu already treats the splash as a different
+     colour context (home-ink/home-bg, not ink/card). */
+  .home { position: relative; }
+  .home > .desktop-foot {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    margin-top: 0; padding: 16px 20px calc(20px + env(safe-area-inset-bottom));
+    border-top-color: color-mix(in srgb, var(--home-ink) 20%, transparent);
+    color: color-mix(in srgb, var(--home-ink) 72%, transparent);
+  }
+  .home > .desktop-foot a, .home > .desktop-foot button { color: var(--home-ink); }
+}
 
 /* The corner menu's mirror image on the opposite side - same fixed
    position and outline treatment, but carrying words instead of an
