@@ -276,6 +276,35 @@
     behaviour.forEach(([ic, key, value]) => renderChip(ic, key, value, i++));
   }
 
+  // Real <a href> elements so a crawler can follow them and a middle-click
+  // opens a new tab, same reasoning as every other link on this page.
+  // preventDefault only stops the full-page navigation; it never stops
+  // the click from bubbling, so the document-level sound listener still
+  // fires on these without a call here needing to repeat it.
+  function renderRelated(a) {
+    const box = el('related');
+    box.innerHTML = '';
+    const rel = window.Related ? Related.relatedFor(a, ANIMALS) : [];
+    for (const b of rel) {
+      const slug = slugify(b.n);
+      const link = document.createElement('a');
+      link.className = 'related-item';
+      link.href = '?a=' + slug;
+      const em = document.createElement('span');
+      em.className = 'r-emoji';
+      em.setAttribute('aria-hidden', 'true');
+      em.textContent = b.e || '🐾';
+      const nm = document.createElement('span');
+      nm.textContent = b.n;
+      link.append(em, nm);
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        show({ a: b, slug: slug });
+      });
+      box.appendChild(link);
+    }
+  }
+
   /* -- Wikipedia -----------------------------------------------------
      Two calls. The summary gives the lead photo and a one-line blurb.
      The media list gives the rest of the article's pictures in document
@@ -476,6 +505,7 @@
     el('wiki').href = 'https://en.wikipedia.org/wiki/' + encodeURIComponent(wikiTitle(a));
     renderAnswers(a);
     renderGlance(a);
+    renderRelated(a);
 
     // Reset the pictures before the requests, or the previous animal's
     // photo sits there looking like this animal until the new one lands.

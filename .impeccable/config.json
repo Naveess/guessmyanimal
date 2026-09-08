@@ -165,6 +165,15 @@
         ],
         "createdAt": "2026-09-07T23:28:41.147Z",
         "reason": "Ceiling of the Mystery Animal presentation scale for the revealed-answer name (20px base) - see DESIGN.md Typography Hierarchy. Stops deliberately short of the 31px Headline floor so it never competes with the animal's name on the photo card, which is the real Headline on that screen."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "privacy.html"
+        ],
+        "createdAt": "2026-09-08T07:38:07.983Z",
+        "reason": "Agent: same as about.html/index.html - real hierarchy runs 13.5-18.5px body copy against clamp(31px,8vw,44px) h1; static scanner can't resolve clamp() so only sees the flat body sizes. Verified live-rendered in both themes."
       }
     ]
   },

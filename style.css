@@ -589,6 +589,27 @@ body.view-home #q { font-size: 17px; }
 .gchip svg { width: 14px; height: 14px; flex: none; color: var(--muted); }
 .gchip .gk { color: var(--muted); font-weight: 400; }
 
+/* -- Related animals -------------------------------------------------
+   .gchip's own surface (card/line, pill radius) with two changes a real
+   link needs that a passive info chip doesn't: a hover/active state, and
+   min-height 44px rather than 7px vertical padding - this is the one
+   place on the page inviting someone to tap away to somewhere else. */
+.related { display: flex; flex-wrap: wrap; gap: 8px; }
+.related-item {
+  display: inline-flex; align-items: center; gap: 7px;
+  min-height: 44px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 15px;
+  font-size: 14.5px; font-weight: 600;
+  color: var(--ink); text-decoration: none;
+  transition: background .14s var(--ease), transform .14s var(--ease);
+}
+.related-item:hover { background: var(--flat-bg); }
+.related-item:active { transform: scale(.96); }
+.related-item .r-emoji { font-size: 16px; line-height: 1; }
+
 /* -- Fact ----------------------------------------------------------- */
 
 /* Read-only content, not an action - a solid Sun fill here competed with

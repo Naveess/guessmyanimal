@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy — Guess My Animal</title>
+<meta name="description" content="What Guess My Animal stores, what its ads set, and how to reach the person who runs it.">
+<meta name="theme-color" content="#ffce1f">
+
+<meta property="og:title" content="Privacy — Guess My Animal">
+<meta property="og:description" content="What Guess My Animal stores, what its ads set, and how to reach the person who runs it.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preload" href="fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){try{var t=localStorage.getItem('gma-theme');
+if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="style.css?v=20260907-3">
+<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
+     crossorigin="anonymous"></script>
+<!-- Funding Choices: the consent message itself is authored in the
+     AdSense dashboard (Privacy & messaging), not in this file - this is
+     just the loader plus the standard "signal a CMP is present" iframe
+     every IAB TCF-compliant site carries, unchanged from Google's own
+     snippet. The message itself still needs publishing once, in AdSense
+     under Privacy & messaging - this loader alone shows nothing. -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-2495070274777193?ers=1"></script>
+<script>
+(function() {
+  function signalGooglefcPresent() {
+    if (!window.frames['googlefcPresent']) {
+      if (document.body) {
+        var iframe = document.createElement('iframe');
+        iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
+        iframe.style.display = 'none';
+        iframe.name = 'googlefcPresent';
+        document.body.appendChild(iframe);
+      } else {
+        setTimeout(signalGooglefcPresent, 0);
+      }
+    }
+  }
+  signalGooglefcPresent();
+})();
+</script>
+</head>
+<body class="view-page">
+
+<header class="topbar">
+  <a class="back" href="./" aria-label="Back to search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 5 8 12l7 7"/>
+    </svg>
+  </a>
+  <a class="topbar-mark" href="./">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <ellipse cx="32" cy="41" rx="14.5" ry="12"/>
+      <ellipse cx="14.5" cy="27" rx="6.4" ry="8"/>
+      <ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/>
+      <ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/>
+      <ellipse cx="49.5" cy="27" rx="6.4" ry="8"/>
+    </svg>
+    Guess my animal
+  </a>
+</header>
+
+<main class="prose">
+
+  <h1>Privacy</h1>
+
+  <p class="lede">Short version: there's no account, no sign-up, and nothing
+    here is sold. This page covers what the site itself stores, what its
+    ads set, and how to reach the person who runs it.</p>
+
+  <h2>What the site itself stores</h2>
+
+  <p>Everything below stays on your device, in your browser's local
+    storage - it is never sent anywhere, and there's no account for it to
+    be attached to even if it were:</p>
+
+  <ul class="ticks">
+    <li>Your theme choice (light, dark, or system)</li>
+    <li>Mystery Animal progress - streaks, best score, which filter you last used</li>
+    <li>Whether you've seen the Daily intro before</li>
+  </ul>
+
+  <p>If you send a problem report, what you typed and which animal it was
+    about are stored so the issue can be fixed. No IP address, no cookie,
+    no account, nothing that identifies who sent it.</p>
+
+  <h2>What the ads set</h2>
+
+  <p>The site runs Google AdSense, which uses its own cookies to serve and
+    measure ads. That's Google's activity on Google's terms, not something
+    this site controls - their <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">ad
+    privacy policy</a> covers what it involves and what choices you have
+    over it.</p>
+
+  <p>If you're visiting from the UK or the EEA, you'll be shown a consent
+    message before any personalised ad loads, and you can change your
+    choice at any time from the link in the footer below.</p>
+
+  <h2>Get in touch</h2>
+
+  <p>Wrong photo, wrong fact, a missing animal, or anything about how the
+    site handles your data: the <a href="./?report=1">report form</a> reaches
+    the person who runs this directly, or open an issue on
+    <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">GitHub</a>
+    if you'd rather do that in the open.</p>
+
+  <h2>The rest</h2>
+
+  <p>The site is free, has no accounts, and is an early, ongoing project
+    made for fun - expect it to keep changing. See <a href="about.html">About
+    the game</a> for how it works and why it exists.</p>
+
+</main>
+
+<footer class="foot prose-foot">
+  <p><a href="./">Look up an animal</a></p>
+  <!-- Starts hidden and only ever revealed once window.googlefc genuinely
+       exists (see the script below) - an unconfigured message means the
+       revocation UI has nothing to open, so the link stays off rather
+       than sitting here as a dead click. Funding Choices loads async, so
+       this polls briefly instead of checking once on page load. -->
+  <p id="fcPrivacyRow" hidden><a href="#" id="fcPrivacyLink">Manage ad consent</a></p>
+</footer>
+
+<script>
+(function () {
+  var tries = 0;
+  var t = setInterval(function () {
+    tries++;
+    if (window.googlefc && typeof window.googlefc.showRevocationMessage === 'function') {
+      document.getElementById('fcPrivacyRow').hidden = false;
+      clearInterval(t);
+    } else if (tries > 20) {
+      clearInterval(t); // ~10s: no CMP configured yet, stop polling silently
+    }
+  }, 500);
+  document.getElementById('fcPrivacyLink').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (window.googlefc && window.googlefc.showRevocationMessage) window.googlefc.showRevocationMessage();
+  });
+})();
+</script>
+
+</body>
+</html>

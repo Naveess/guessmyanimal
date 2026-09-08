@@ -40,6 +40,31 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      of its own, never opened as a real page. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
+
+<!-- Funding Choices: the consent message itself is authored in the
+     AdSense dashboard (Privacy & messaging), not in this file - this is
+     just the loader plus the standard "signal a CMP is present" iframe
+     every IAB TCF-compliant site carries, unchanged from Google's own
+     snippet. -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-2495070274777193?ers=1"></script>
+<script>
+(function() {
+  function signalGooglefcPresent() {
+    if (!window.frames['googlefcPresent']) {
+      if (document.body) {
+        var iframe = document.createElement('iframe');
+        iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
+        iframe.style.display = 'none';
+        iframe.name = 'googlefcPresent';
+        document.body.appendChild(iframe);
+      } else {
+        setTimeout(signalGooglefcPresent, 0);
+      }
+    }
+  }
+  signalGooglefcPresent();
+})();
+</script>
 </head>
 <body class="view-home">
 
@@ -65,6 +90,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          it plays its own click instead of taking the delegated one. -->
     <button class="menu-item" type="button" id="soundToggle" aria-pressed="true" data-sfx="off">Sound on</button>
     <button class="menu-item" type="button" data-report>Report a problem</button>
+    <a class="menu-item" href="privacy.html">Privacy</a>
     <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
        target="_blank" rel="noopener">Source on GitHub</a>
     <hr class="menu-sep">
@@ -202,6 +228,15 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <div class="factcard"><p id="fact"></p></div>
 
     <div class="shot" id="shot3"></div>
+
+    <!-- Every real link this page has to another animal - the only route
+         in otherwise is typing a fresh guess into search. Real <a href>
+         elements, not buttons: a crawler follows these, and so does a
+         middle-click into a new tab. Built server-side too (see
+         relatedHtml in tools/build-seo.js) so the links exist before any
+         JS runs, not just after. -->
+    <h3 class="label">You might also like</h3>
+    <div class="related" id="related"></div>
 
     <div class="actions">
       <a class="btn" id="wiki" href="#" target="_blank" rel="noopener">Read on Wikipedia</a>
@@ -481,11 +516,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <script src="animals.js?v=20260907-1"></script>
 <script src="render-data.js?v=20260901-1"></script>
+<script src="related.js?v=20260908-1"></script>
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
 <script src="mystery.js?v=20260907-3"></script>
-<script src="app.js?v=20260907-1"></script>
+<script src="app.js?v=20260908-1"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

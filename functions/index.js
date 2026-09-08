@@ -109,7 +109,8 @@ export async function onRequestGet(context) {
     .on('#fact', new SetText(entry.fact))
     .on('#wiki', new SetAttr('href', entry.wikiHref))
     .on('#answers', new SetHtml(entry.answersHtml))
-    .on('#glance', new SetHtml(entry.glanceHtml));
+    .on('#glance', new SetHtml(entry.glanceHtml))
+    .on('#related', new SetHtml(entry.relatedHtml));
 
   if (!isBot) return rewriter.transform(res);
 

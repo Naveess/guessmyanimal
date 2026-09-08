@@ -14,6 +14,7 @@ const fs = require('fs');
 const path = require('path');
 const { ANIMALS } = require('../animals.js');
 const { answers, glanceGroups, ICONS } = require('../render-data.js');
+const { relatedFor } = require('../related.js');
 
 const SITE = 'https://guessmyanimal.com';
 const MAX_DESC = 158;
@@ -59,6 +60,18 @@ function glanceHtml(a) {
   return appearance.map(chip).join('') + '<div class="glance-gap"></div>' + behaviour.map(chip).join('');
 }
 
+// Mirrors renderRelated()'s DOM exactly: same .related-item shape, same
+// real <a href> - this is the version a crawler actually sees, so it has
+// to be real anchors here too, not just in the client-rendered copy.
+function relatedHtml(a) {
+  return relatedFor(a, ANIMALS)
+    .map((b) => {
+      const slug = slugify(b.n);
+      return `<a class="related-item" href="/?a=${slug}"><span class="r-emoji" aria-hidden="true">${b.e || '🐾'}</span>${escapeHtml(b.n)}</a>`;
+    })
+    .join('');
+}
+
 const meta = {};
 const urls = [];
 let longest = 0;
@@ -66,15 +79,21 @@ let longest = 0;
 for (const a of ANIMALS) {
   const slug = slugify(a.n);
   const lower = a.n.toLowerCase();
+  // "Is a elephant dangerous?" - the indefinite article has to match the
+  // sound the name starts with, not just its spelling ("a hour" is wrong
+  // for the same reason "an elephant" is right), but every name in this
+  // dataset is a plain animal noun with no silent-consonant exceptions,
+  // so a vowel-letter check is the whole rule here.
+  const article = /^[aeiou]/i.test(lower) ? 'an' : 'a';
 
   const title = `${a.n} — is it dangerous? | Guess My Animal`;
 
-  let description = `${a.f} Is a ${lower} dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal.`;
+  let description = `${a.f} Is ${article} ${lower} dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal.`;
   if (description.length > MAX_DESC) {
     // Keep the hand-written fact whole - it's the one truly unique part of
     // the description - and drop the templated tail instead of chopping
     // mid-sentence.
-    description = `${a.f} Is a ${lower} dangerous? Get the answer on Guess My Animal.`;
+    description = `${a.f} Is ${article} ${lower} dangerous? Get the answer on Guess My Animal.`;
   }
   if (description.length > MAX_DESC) {
     // The fact alone is already long (e.g. Poison dart frog). Drop the
@@ -107,6 +126,7 @@ for (const a of ANIMALS) {
     wikiHref: 'https://en.wikipedia.org/wiki/' + encodeURIComponent(wikiTitle),
     answersHtml: answersHtml(a),
     glanceHtml: glanceHtml(a),
+    relatedHtml: relatedHtml(a),
   };
   urls.push(`${SITE}/?a=${slug}`);
 }
@@ -123,7 +143,7 @@ fs.writeFileSync(
 // Cloudflare Pages' clean-URLs feature 308-redirects /about.html to
 // /about, so the sitemap should point straight at the URL that actually
 // serves, not the one that immediately bounces.
-const staticUrls = [SITE + '/', SITE + '/about'];
+const staticUrls = [SITE + '/', SITE + '/about', SITE + '/privacy'];
 const lastmod = new Date().toISOString().slice(0, 10);
 const all = staticUrls.concat(urls);
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${all
