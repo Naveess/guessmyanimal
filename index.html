@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260908-9">
+<link rel="stylesheet" href="style.css?v=20260908-10">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
      stream.html: that page is a transparent OBS overlay with no content
      of its own, never opened as a real page. -->
@@ -91,10 +91,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          it plays its own click instead of taking the delegated one. -->
     <button class="menu-item" type="button" id="soundToggle" aria-pressed="true" data-sfx="off">Sound on</button>
     <!-- menu-desktop-hide: these three plus Appearance move to a footer
-         row / the corner theme dial once there's room for them to just
-         be visible instead of tucked in a dropdown - see .desktop-foot
-         and .theme-dial in style.css. Mobile is untouched; the class
-         only does anything from 860px up. -->
+         row / the sliding theme toggle by the corner menu once there's
+         room for them to just be visible instead of tucked in a
+         dropdown - see .desktop-foot and .theme-toggle in style.css.
+         Mobile is untouched; the class only does anything from 860px up. -->
     <button class="menu-item menu-desktop-hide" type="button" data-report>Report a problem</button>
     <a class="menu-item menu-desktop-hide" href="privacy.html">Privacy</a>
     <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal"
@@ -119,16 +119,30 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      second play button and sends people to the wrong place. -->
 <a class="play-link" id="playLink" href="about.html">How it works</a>
 
-<!-- Desktop-only: the splash has no topbar to anchor this to the way
-     the animal/mystery views do (see style.css), and is also the one
-     screen here that never scrolls, so a fixed position carries no risk
-     of drifting over content. Reuses [data-theme-set] - app.js's own
+<!-- Desktop-only sliding theme switch, next to the corner menu button -
+     one shared instance (not one per view) since it's fixed-position
+     and persists across the home/animal/mystery views the same way the
+     menu itself does. Reuses [data-theme-set] - app.js's own
      applyTheme() syncs aria-pressed across every matching element on
      the page already, this group included. -->
-<div class="theme-dial" role="group" aria-label="Appearance">
-  <button type="button" class="theme-dial-opt" data-theme-set="system" aria-pressed="true"><span class="theme-dial-dot" aria-hidden="true"></span>System</button>
-  <button type="button" class="theme-dial-opt" data-theme-set="light" aria-pressed="false"><span class="theme-dial-dot" aria-hidden="true"></span>Light</button>
-  <button type="button" class="theme-dial-opt" data-theme-set="dark" aria-pressed="false"><span class="theme-dial-dot" aria-hidden="true"></span>Dark</button>
+<div class="theme-toggle" role="group" aria-label="Appearance">
+  <button type="button" class="theme-toggle-opt" data-theme-set="light" aria-pressed="false" aria-label="Light">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.5"/>
+      <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+    </svg>
+  </button>
+  <button type="button" class="theme-toggle-opt" data-theme-set="dark" aria-pressed="false" aria-label="Dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>
+    </svg>
+  </button>
+  <button type="button" class="theme-toggle-opt" data-theme-set="system" aria-pressed="true" aria-label="System">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="13" rx="2"/>
+      <path d="M8 21h8M12 17v4"/>
+    </svg>
+  </button>
 </div>
 
 <!-- ============================================================
@@ -213,15 +227,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </svg>
     </button>
     <div class="dock dock-top" id="dockTop"></div>
-    <!-- Desktop-only, absolutely positioned so it takes no part in this
-         row's own flex layout (see style.css) - the search box already
-         centres itself with auto-margins here, and a fourth flex item
-         would have thrown that off. -->
-    <div class="theme-dial" role="group" aria-label="Appearance">
-      <button type="button" class="theme-dial-opt" data-theme-set="system" aria-pressed="true"><span class="theme-dial-dot" aria-hidden="true"></span>System</button>
-      <button type="button" class="theme-dial-opt" data-theme-set="light" aria-pressed="false"><span class="theme-dial-dot" aria-hidden="true"></span>Light</button>
-      <button type="button" class="theme-dial-opt" data-theme-set="dark" aria-pressed="false"><span class="theme-dial-dot" aria-hidden="true"></span>Dark</button>
-    </div>
   </header>
 
   <main class="feed">
@@ -342,15 +347,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </svg>
     </button>
     <p class="mystery-title">Mystery Animal</p>
-    <!-- Desktop-only, absolutely positioned so it takes no part in this
-         row's own flex layout - .mystery-title balances the back button
-         with flex:1 + text-align:center, and a fourth flex item would
-         have thrown that centring off. -->
-    <div class="theme-dial" role="group" aria-label="Appearance">
-      <button type="button" class="theme-dial-opt" data-theme-set="system" aria-pressed="true"><span class="theme-dial-dot" aria-hidden="true"></span>System</button>
-      <button type="button" class="theme-dial-opt" data-theme-set="light" aria-pressed="false"><span class="theme-dial-dot" aria-hidden="true"></span>Light</button>
-      <button type="button" class="theme-dial-opt" data-theme-set="dark" aria-pressed="false"><span class="theme-dial-dot" aria-hidden="true"></span>Dark</button>
-    </div>
   </header>
 
   <main class="feed">

@@ -9,11 +9,11 @@
 // strings in index.html - bump both together whenever a shell file
 // changes, or a returning visitor keeps the stale cached version
 // forever instead of picking up the new one.
-const VERSION = 'gma-20260908-10';
+const VERSION = 'gma-20260908-11';
 
 const SHELL = [
   '/',
-  '/style.css?v=20260908-9',
+  '/style.css?v=20260908-10',
   '/animals.js?v=20260907-1',
   '/render-data.js?v=20260901-1',
   '/related.js?v=20260908-1',
