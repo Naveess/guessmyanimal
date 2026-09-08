@@ -906,6 +906,14 @@
     mode = next;
     setModeStore(mode);
     updateTabsUI();
+    // A brief landing pulse on the tab that just became active, on top
+    // of the thumb's own slide (style.css) - two independent signals for
+    // a switch that's often watched on a small, compressed stream feed
+    // rather than read closely.
+    const activeTab = el(next === 'daily' ? 'mysteryTabDaily' : 'mysteryTabEndless');
+    activeTab.classList.remove('anim-pulse');
+    void activeTab.offsetWidth;
+    activeTab.classList.add('anim-pulse');
     if (mode === 'daily') enterDaily(); else enterEndless();
   }
 

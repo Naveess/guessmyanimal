@@ -1065,6 +1065,12 @@
       // to load at all - fall through to home rather than show nothing.
     }
 
+    // ?stream=1 and ?report=1 are the corner menu's own entry points from
+    // the static pages (about/browse/privacy), which have no menu, stream
+    // or report dialog of their own to open directly - see menu.js.
+    if (url.searchParams.get('stream')) { openStream(); return; }
+    if (url.searchParams.get('report')) { openReport(); return; }
+
     const wanted = url.searchParams.get('a');
     if (wanted) {
       const entry = INDEX.find((x) => x.slug === slugify(wanted));

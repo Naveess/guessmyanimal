@@ -24,7 +24,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260908-1">
+<link rel="stylesheet" href="style.css?v=20260908-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -50,6 +50,36 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </script>
 </head>
 <body class="view-page">
+
+<!-- Same corner menu as index.html (see menu.js for why Mystery Animal,
+     Stream Mode and Report a problem are plain links here rather than the
+     buttons that open dialogs on the home page). -->
+<nav class="menu" id="menu">
+  <button class="menu-btn" id="menuBtn" type="button"
+          aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </svg>
+  </button>
+  <div class="menu-panel" id="menuPanel" hidden>
+    <a class="menu-item" href="about.html">About the game</a>
+    <a class="menu-item" href="browse.html">Browse all animals</a>
+    <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
+    <a class="menu-item" href="./?stream=1">Stream Mode</a>
+    <button class="menu-item" type="button" id="soundToggle" aria-pressed="true">Sound on</button>
+    <a class="menu-item" href="./?report=1">Report a problem</a>
+    <a class="menu-item" href="privacy.html">Privacy</a>
+    <a class="menu-item" href="https://github.com/Naveess/guessmyanimal"
+       target="_blank" rel="noopener">Source on GitHub</a>
+    <hr class="menu-sep">
+    <p class="theme-label" id="themeLabel">Appearance</p>
+    <div class="theme" role="group" aria-labelledby="themeLabel">
+      <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
+      <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+    </div>
+  </div>
+</nav>
 
 <header class="topbar">
   <a class="back" href="./" aria-label="Back to search">
@@ -110,5 +140,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <p><a href="privacy.html">Privacy</a></p>
 </footer>
 
+<script src="menu.js?v=20260908-1"></script>
 </body>
 </html>
