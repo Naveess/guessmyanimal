@@ -34,18 +34,37 @@ encyclopedic questions but not game questions — no source has a field for
 more than four legs." Guess My Animal's mechanism is a hand-curated set of
 game-relevant judgment calls (Quick answers / At a glance) layered on top of
 live Wikipedia photos and summaries, covering land, sea, and bird species
-broadly (435 animals) rather than a narrow curated list. It is deliberately
-**not** a solver — nothing guesses the animal for the user, and there is no
-mode that plays the game for you, because that would remove the only good
-part of the game.
+broadly (438 animals) rather than a narrow curated list. It is deliberately
+**not** a solver — nothing guesses the animal for the user, because that
+would remove the only good part of the game. The site does now ship games of
+its own (see Modes below), but they are games to *play*, not machines that
+play the guessing game on the user's behalf; the rule is unchanged.
+
+## Modes
+
+The site began as lookup only. Two games now ship alongside it, and the
+lookup remains the default and the reason people arrive.
+
+- **Lookup** — the original and still the core: search an animal, get Quick
+  answers and At a glance.
+- **Mystery Animal** — a solo round against a blurred photo that sharpens as
+  hints are spent. Built on the same dataset, no extra content needed.
+- **Party Mode** *(beta)* — one host on a big screen, everyone else joining
+  from their own phone by QR code or a five-character room code. A Twitch
+  chat path exists but is unfinished and carries an on-screen warning not to
+  stream it; see `TWITCH-REBUILD.md`.
 
 ## Operating Context
 
 - Played casually and socially, most often on mobile, often in a moving car
   or somewhere without reliable focus time — the lookup has to be fast and
   need no setup.
-- No accounts, no login, no persistent per-user state beyond a local
-  light/dark theme preference.
+- No accounts and no login anywhere. Lookup and Mystery Animal keep nothing
+  beyond local light/dark and sound preferences. Party Mode is the one
+  exception: a room's code, chosen display names, emoji, scores and guess log
+  live server-side in D1 for the life of the session, because several devices
+  have to see the same room. Still no account, no email, no identity that
+  outlives the party.
 - Search-driven: a player types an animal name (including plurals, informal
   names, and common breed names like "husky" or "siamese") and expects a
   single confident result.
@@ -54,7 +73,7 @@ part of the game.
 
 ## Capabilities and Constraints
 
-- **Dataset**: 435 animals covering mammals, birds, fish, reptiles,
+- **Dataset**: 438 animals covering mammals, birds, fish, reptiles,
   amphibians, and invertebrates, each with a fixed schema of hand-written
   gameplay-relevant fields (habitat, diet, danger, domesticability, edibility,
   conservation status, size, group name, sound, lifespan, etc.), plus alias
@@ -72,13 +91,14 @@ part of the game.
 - **Privacy**: the site sets no cookies and tracks no users. This is a
   stated commitment in the About page's small print, not just a current
   implementation detail.
-- **Monetization**: ads are a confirmed future plan to cover hosting costs,
-  not yet implemented. Future design and layout work should stay compatible
-  with inserting an ad slot without letting it interfere with the answers —
-  the About page already commits to that priority in writing.
+- **Monetization**: AdSense Auto ads are live, behind a Funding Choices
+  consent message, to cover hosting costs. Design and layout work must keep
+  ads from interfering with the answers — the About page commits to that
+  priority in writing, and `.adslot` reserves its height whether or not a
+  unit fills it so nothing shifts on load.
 - **Hosting**: static site plus Cloudflare Pages Functions, deployed to
   Cloudflare Pages (production branch `main`), with a Cloudflare D1 database
-  for reports.
+  for reports and party sessions.
 
 ## Brand Commitments
 
@@ -91,7 +111,7 @@ part of the game.
 
 ## Evidence on Hand
 
-- Live production site with the full 435-animal dataset, a working report
+- Live production site with the full 438-animal dataset, a working report
   pipeline (tested end-to-end, including a real submitted-then-deleted test
   report), and a published About page explaining the game, the site's
   purpose, and its sourcing honestly.
@@ -106,8 +126,12 @@ part of the game.
   ("can be," "sometimes," "in places") rather than asserting false
   precision.
 - Never solve the game for the player: the product answers factual
-  questions, but must never guess or suggest the animal itself.
+  questions, but must never guess or suggest the animal itself. Shipping
+  games of its own doesn't change this — a game the user plays is not a
+  machine that plays for them.
 - Privacy by default: no accounts, no cookies, no tracking, no PII in the
-  feedback pipeline — this is a standing constraint, not a placeholder.
+  feedback pipeline — this is a standing constraint, not a placeholder. A
+  party session's display names are user-chosen and session-scoped, which is
+  the most identity the site is ever allowed to hold.
 - Broad, real coverage over a curated highlight reel: the dataset aims at
   "any animal someone might plausibly pick," not just crowd-pleasers.

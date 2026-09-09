@@ -249,7 +249,9 @@ The palette pairs one loud, fixed brand colour with a warm neutral system that f
 
 Single-column, phone-first, capped for reading rather than stretched to the viewport. The feed maxes out at 560px; prose pages at 640px with a 62ch text measure inside that. At 620px+ the photo card's aspect ratio relaxes from portrait (4:5) to landscape (3:2) and the answer rows go two-up in a grid, but the container width stays capped — this is a mobile product that tolerates a wider window, not a desktop layout that shrinks down.
 
-Two screens, not a nav: `.home` (a full-bleed centered splash) and the animal view (a sticky top bar over a scrolling feed). The search box is the one element that physically moves between them — it lives centered in the hero on `.home`, then relocates into the sticky top bar once an animal is showing, so the "look something else up" affordance never disappears.
+Four views inside one page, swapped by `hidden` rather than routed: `.home` (a full-bleed centered splash), the animal view (a sticky top bar over a scrolling feed), `#mysteryview`, and `#partyview`. Home and the animal view are the spine — the search box physically moves between them, living centered in the hero on `.home` and relocating into the sticky top bar once an animal is showing, so the "look something else up" affordance never disappears. The two game views are destinations reached from the nav (see Navigation below) and each own the full screen while they're up; neither is a layer over the feed.
+
+The nav bar this implies is a late addition, and deliberately thin — it exists because four destinations stopped fitting in a corner dropdown on desktop, not because the product became a multi-page site. The lookup is still the default and the reason people arrive.
 
 Spacing runs on an 8px-family rhythm without being a rigid grid: 8/13/20/30px show up repeatedly (chip gaps, card padding, section gaps, row padding), tightened or loosened by feel rather than snapped to a stricter scale.
 
@@ -306,6 +308,14 @@ No sharp corners anywhere in the system; a new surface should round to the neare
 - **Background:** Card surface, 1px Line border, no shadow at rest (flush-in-flow — see the Border-Or-Shadow Rule).
 - **The photo card is the exception:** it floats (`--shadow-l`, no border) because it's the one element the whole screen is built around.
 
+### Under-Construction Panel (`.wip`)
+For a feature that's reachable but not finished — currently only Party Mode's Twitch chat field. The case it exists for is a feature that works *well enough to look ready*, which is the dangerous kind: someone could put it in front of an audience before it deserves one.
+- **Register:** Warn, not Bad. This is a caution about timing, not a failure — nothing is broken yet. Warn text on Warn-bg clears AA at body size in both themes (4.98:1 light, 8.38:1 dark), so the whole panel including the note is readable, not just the heading.
+- **Structure:** `.wip-head` (a mark, a name, and a `.wip-tag` pushed right on `margin-left: auto`), a `.wip-note` in plain language, then the live control it's warning about. Border, no shadow — it sits flush in the setup flow (see the Border-Or-Shadow Rule).
+- **Never Sun.** Warn is the palette's *other* yellow-ish register, far enough from Sun in saturation that it never reads as brand — but a solid-Sun element in the same panel would break the One-Yellow Rule outright and make a warning look like a call to action.
+- **The control stays live.** The panel is a sign, not a wall: a half-built path still has to be testable. Disabling the input is a separate decision, and a louder one.
+- **Third-party marks** (the Twitch glyph, `.wip-mark`) are drawn with `currentColor` like every other icon on the site, so they take the Warn tone. Shipping a vendor's brand colour would put the only off-palette colour on the site inside a warning box.
+
 ### Inputs / Fields
 - **Search box** (`.searchrow`): Card background, Line border that shifts toward Ink at 40% on focus — no glow, no colour-only focus ring, just a border-strength change plus the standard 3px focus-visible outline for keyboard users.
 - **Textarea** (report dialog): Paper background (one step recessed from the dialog's Card background), same focus treatment.
@@ -315,6 +325,17 @@ No sharp corners anywhere in the system; a new surface should round to the neare
 - **Corner menu:** on mobile, fixed top-right on every screen, drawn as an outline button on the splash and a filled Card button everywhere else — same position, different treatment, so it reads as "the same control" without breaking the splash's flatness. It opens a dropdown holding every option, including the three links and the theme switch that desktop moves elsewhere (see `.menu-desktop-hide`).
 - **Sound toggle:** its own fixed icon button (speaker, waves swapped for a mute slash on `aria-pressed`), same `.menu-btn` treatment, one slot left of the corner menu on mobile and dropped into its vacated corner on desktop — not a dropdown item, since muting is a one-tap decision made mid-sound rather than a settings change.
 - **Desktop nav bar (≥860px):** the corner button and its dropdown become a single always-visible bar — no reason to hide four options behind a click when there's width to just show them. Centred at the top of the page rather than pinned to a corner, and drawn as a glass pill (translucent Card tint + `blur(18px)`, no border — the Border-Or-Shadow Rule's `--shadow-l` alone defines the edge) rather than a solid one, the same frosted language the sticky top bar already spends over the feed. Three of the four labels (About, Browse, Party) shorten for the row; Mystery Animal has no shorter form to fall back to. Mobile's dropdown has the vertical room to spell every one out in full and never sees the short form. Sound is its own fixed icon button next to the corner menu, not a dropdown item — see the Sound Toggle entry below.
+
+### Party Mode surface
+Party Mode is the one screen designed to be looked at by several people on several devices at once, and its components exist to answer questions a solo screen never raises: who else is here, what have they already tried, which one am I.
+- **Leaderboard rows** (`.party-score`): a rank, an emoji, a name, and tabular-nums points. Rows are separated by a 1px Line top-border rather than boxed individually — a roster is one object, not a stack of cards.
+- **"Which one is me"** (`.party-score.is-mine`): a Sun tint at 14% plus a weight step on the name, never a solid fill — the same read-only tint language the fact card uses, and the same reason (this is state, not an action, so the One-Yellow Rule keeps it off a fill).
+- **Presence dot** (`.party-score-dot`, `.is-online`): a Good-coloured dot, driven by a ~12s heartbeat and a 20s window. Absence is never drawn as an error — a closed tab just stops refreshing and the dot goes out.
+- **Twitch names** (`.party-score-name.is-twitch`) carry a marker rather than an icon, because a chat viewer never picked one.
+- **Activity feed** (`.party-feed`): every guess, right or wrong, as a chat-style log in Muted. It exists so a room can see an answer's already been tried — its job is suppressing repetition, so it must never out-shout the round itself.
+- **Icon picker** (`.party-icon-picker`): a small emoji radiogroup at join/rename. The one piece of self-expression the product offers, deliberately tiny.
+- **Invite panel** (`.party-codebox`): QR, room code, and a copyable link side by side, so whichever way a person prefers to join is already on screen. It shows immediately and never blocks behind a host's setup choices.
+- **`.beta-tag`:** Micro type on Flat-bg, lifted off the baseline to sit with the cap height. Used where a surface is real but still moving.
 
 ### Photo Card (signature component)
 The product's one authored visual moment. A blurred, 1.3×-scaled, saturated-and-darkened copy of the photo fills the card behind the real image (`object-fit: contain`), so a landscape photo in a portrait frame gets bands of its own colour instead of losing the animal to a hard crop. The name sits directly on the photo, bottom-aligned over a gradient scrim, so the first thing on screen reads as one object (an animal with its name), not two stacked elements. It arrives with the `deal` animation — lift, settle, uncover top-down — the single moment of drama the whole system allows itself.

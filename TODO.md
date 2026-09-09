@@ -45,12 +45,22 @@ What's actually there, as of 2026-09-08:
   sticky side column instead of stacking full-width under the round.
 
 **Not done yet / known gaps:**
-- **Twitch mode has no presence, no feed, no rename** - it's still the
-  original build. Deliberately deprioritised (Navee: "the streamer
-  element should branch off... I want it to work differently" -
-  2026-09-08) - don't extend the local-play patterns onto it without
-  checking that's still the plan, it may end up as a genuinely separate
-  surface rather than sharing this code.
+- **Twitch mode is the next piece of work** - see `TWITCH-REBUILD.md`
+  for the full brief. It's still the original build: no presence, no
+  feed, no rename, and guesses are client-trusted rather than
+  server-authoritative the way local play now is. Direction confirmed
+  2026-09-09: it becomes a **genuinely separate streamer surface**, not
+  local play with the same patterns extended onto it (Navee: "the
+  streamer element should branch off... I want it to work differently").
+  Don't reuse `.party-score`/presence/rename wholesale - one host plus
+  hundreds of chat viewers is a different problem from six people in a
+  room, and per-viewer presence dots make no sense there.
+- Since it's reachable on the live site and works well enough to look
+  ready, the Twitch field now sits inside an on-screen "under
+  construction" panel (`.wip`, see DESIGN.md) telling streamers not to
+  run it live. The input is deliberately **left enabled** - it has to
+  stay testable during the rebuild. Take the panel down when the rebuild
+  ships, not before.
 - The standalone Stream Mode feature (OBS Browser Source overlay,
   `stream.html`/`stream.js`/`functions/api/stream.js`, its own
   `stream_state` D1 table) was removed entirely 2026-09-09 - Navee is

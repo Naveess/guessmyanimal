@@ -2614,7 +2614,60 @@ body.view-page { background: var(--paper); }
   padding: 0 13px; min-height: 46px;
 }
 .party-select:focus, #partyTwitch:focus {
-  outline: none; border-color: color-mix(in srgb, var(--ink) 45%, transparent);
+  border-color: color-mix(in srgb, var(--ink) 45%, transparent);
+}
+
+/* -- Under construction ---------------------------------------------
+   For a feature that's reachable but not finished. Twitch chat play is
+   the case it was built for: it works well enough to look ready, which
+   is exactly the danger - a streamer could put it on air.
+
+   Warn, not Bad: this is a caution about timing, not a failure. Border
+   and no shadow per the Border-Or-Shadow Rule, since it sits flush in
+   the setup flow. No Sun anywhere, so the One-Yellow Rule is untouched
+   - and Warn is deliberately the palette's other yellow-ish register,
+   far enough from Sun in saturation to never read as brand.
+
+   Warn on Warn-bg is 4.98:1 light and 8.38:1 dark, so every line here
+   clears AA at body size, including the note. */
+.wip {
+  display: flex; flex-direction: column; gap: 11px;
+  padding: 15px; border-radius: var(--r-card);
+  background: var(--warn-bg);
+  border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+}
+.wip-head {
+  display: flex; align-items: center; gap: 8px;
+  margin: 0; font-size: 15.5px; font-weight: 600; color: var(--warn);
+}
+/* currentColor, so the Twitch mark takes the Warn tone like every other
+   drawn icon on the site takes Muted or Ink. Shipping it in Twitch
+   purple would be the only colour on the site outside the palette. */
+.wip-mark { flex: none; width: 17px; height: 17px; }
+.wip-tag {
+  margin-left: auto; padding: 3px 7px;
+  border-radius: 5px;
+  border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent);
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase;
+}
+.wip-note { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--warn); }
+.wip .fld-label { color: var(--warn); }
+/* The field is still live on purpose - the sign is a sign, not a wall,
+   and this path has to stay testable while it's rebuilt. Paper at 70%
+   keeps it reading as an input against the warm panel without going to
+   a flat fill. */
+.wip #partyTwitch {
+  background: color-mix(in srgb, var(--paper) 70%, transparent);
+  border-color: color-mix(in srgb, var(--warn) 32%, transparent);
+}
+
+/* The tag pushes right off .wip-head's auto margin, which needs a row
+   it can't win. Below ~380px "Under construction" and the heading stop
+   fitting on one line together, so the tag drops to its own. */
+@media (max-width: 380px) {
+  .wip-head { flex-wrap: wrap; }
+  .wip-tag { margin-left: 25px; }
 }
 
 .party-codebox {

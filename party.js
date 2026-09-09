@@ -8,14 +8,15 @@
  * overlay page used), so whatever's on screen here is what's on
  * screen, full stop. See TODO.md for the design history.
  *
- * Both roles poll /api/party/session on the same 1.2s loop stream.js
- * pioneered. Local/QR guesses are no longer client-decided: every
- * submission (right or wrong) goes to the server, which is now the
+ * Both roles poll /api/party/session on the same 1.2s loop the removed
+ * overlay page pioneered. Local/QR guesses are no longer client-decided:
+ * every submission (right or wrong) goes to the server, which is now the
  * one place that knows the target - see guess.js. That's also what
  * makes the wrong-guess feed possible, since a client that already
  * knew it was wrong would have no reason to tell the server about it.
  * The Twitch chat path is untouched and still decides client-side
- * (chatMatches() below) - out of scope for this pass, see TODO.md.
+ * (chatMatches() below). It's unfinished, carries an on-screen warning
+ * not to stream it, and is being rebuilt - see TWITCH-REBUILD.md.
  */
 (function () {
   'use strict';

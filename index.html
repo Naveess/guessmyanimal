@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260909-1">
+<link rel="stylesheet" href="style.css?v=20260909-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -626,19 +626,38 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
     <!-- Host only: shown before a party exists. -->
     <div id="partySetup">
-      <p class="dlg-note">One animal, hints you reveal, and whoever names it first takes the round. Play on phones, in your Twitch chat, or both at once.</p>
+      <p class="dlg-note">One animal, hints you reveal, and whoever names it first takes the round. Everyone plays along on their own phone.</p>
 
       <label class="fld">
         <span class="fld-label">Animals to use</span>
         <select id="partyCategory" class="party-select"></select>
       </label>
 
-      <label class="fld">
-        <span class="fld-label">Twitch channel <span class="fld-optional">optional</span></span>
-        <input type="text" id="partyTwitch" autocomplete="off" autocapitalize="off"
-               spellcheck="false" placeholder="your_channel_name">
-      </label>
-      <p class="dlg-note dlg-note-tight">Leave this blank for phones-only play. Fill it in and this page reads your Twitch chat live, so viewers can just type their guess there.</p>
+      <!-- Twitch chat play is reachable by anyone who opens Party Mode,
+           but it's still the original unpolished build - no presence, no
+           activity feed, no rename (see TODO.md). A streamer could put it
+           on air before it's ready, so the warning is a panel in the Warn
+           register rather than a footnote under the field. The input stays
+           usable on purpose: it has to be testable while it's rebuilt, and
+           the sign is aimed at someone arriving cold, not at a wall. -->
+      <div class="wip">
+        <p class="wip-head">
+          <svg class="wip-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0 1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
+          </svg>
+          Twitch chat
+          <span class="wip-tag">Under construction</span>
+        </p>
+        <p class="wip-note"><b>Please don't run this on a live stream yet.</b> Chat guesses are read and scored, but there's no list of who's playing, no activity feed, and no way to fix a name — on stream it will look broken. This half is being rebuilt properly next.</p>
+
+        <label class="fld wip-fld">
+          <span class="fld-label">Your channel <span class="fld-optional">optional</span></span>
+          <input type="text" id="partyTwitch" autocomplete="off" autocapitalize="off"
+                 spellcheck="false" placeholder="your_channel_name">
+        </label>
+      </div>
+
+      <p class="dlg-note dlg-note-tight">Leave the Twitch box empty for phones-only play — that half is finished, and it's the one to use today.</p>
 
       <p class="party-msg" id="partySetupMsg" role="status"></p>
 

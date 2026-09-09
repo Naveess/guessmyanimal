@@ -3,10 +3,10 @@
  * covers. No DOM, no state, no fetches - just the logic several
  * surfaces need to agree on.
  *
- * Party mode has three of those surfaces (the host controls in
- * index.html, the OBS overlay on its own page, and the API endpoints
- * that pick a target server-side), and they have to score and hint
- * identically or the same round means different things in two places.
+ * Party mode has two of those surfaces (the host and player controls in
+ * index.html, and the API endpoints that pick a target server-side), and
+ * they have to score and hint identically or the same round means
+ * different things in two places.
  *
  * Loaded as a plain <script> before the files that use it (browser
  * global), and via require()/import from Node and Pages Functions -
