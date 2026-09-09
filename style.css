@@ -2605,7 +2605,13 @@ body.view-page { background: var(--paper); }
 /* -- Host: setup and the invite panel -------------------------------- */
 
 .dlg-note-tight { margin-top: -6px; font-size: 13.5px; }
-.fld-optional { font-weight: 400; opacity: .75; }
+/* Weight alone (400 vs the label's 500) carries the de-emphasis; opacity
+   only has to nudge it further without dropping below AA in either
+   context this sits in - Muted-on-Card (most fields) or Warn-on-Warn-bg
+   (inside the .wip panel, whose .fld-label recolours to Warn). .75
+   landed at 3.48:1 muted / 4.13:1 warn, both under 4.5:1 for text this
+   size. .96 clears both, tightest case (warn, light) at 4.62:1. */
+.fld-optional { font-weight: 400; opacity: .96; }
 
 .party-select, #partyTwitch {
   font: inherit; font-size: 15.5px;
