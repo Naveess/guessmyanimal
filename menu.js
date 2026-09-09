@@ -2,13 +2,13 @@
   'use strict';
 
   // The corner menu, standalone for the static pages (about/browse/privacy)
-  // that don't load app.js. Mystery Animal, Stream Mode and Report a
-  // problem have no dialog to open here, so those items are plain links
-  // back to index.html with a query param app.js's routeFromURL() reads
-  // on load (?mystery=1 already existed for sharing; ?stream=1 and
-  // ?report=1 were added alongside this file). Theme and sound share the
-  // same localStorage keys as app.js so a choice made here or there stays
-  // in sync everywhere.
+  // that don't load app.js. Mystery Animal and Report a problem have no
+  // dialog to open here, so those items are plain links back to
+  // index.html with a query param app.js's routeFromURL() reads on load
+  // (?mystery=1 already existed for sharing; ?report=1 was added
+  // alongside this file). Theme and sound share the same localStorage
+  // keys as app.js so a choice made here or there stays in sync
+  // everywhere.
 
   const el = (id) => document.getElementById(id);
   const THEME_KEY = 'gma-theme';
@@ -47,8 +47,8 @@
   const soundBtn = el('soundToggle');
   if (soundBtn) {
     function updateSoundToggle() {
-      soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
       soundBtn.setAttribute('aria-pressed', String(soundOn));
+      soundBtn.setAttribute('aria-label', soundOn ? 'Sound on' : 'Sound off');
     }
     soundBtn.addEventListener('click', () => {
       soundOn = !soundOn;

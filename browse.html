@@ -24,7 +24,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260908-14">
+<link rel="stylesheet" href="style.css?v=20260909-1">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -51,9 +51,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </head>
 <body class="view-page">
 
-<!-- Same corner menu as index.html (see menu.js for why Mystery Animal,
-     Stream Mode and Report a problem are plain links here rather than the
-     buttons that open dialogs on the home page). -->
+<!-- Same corner menu as index.html (see menu.js for why Mystery Animal
+     and Report a problem are plain links here rather than the buttons
+     that open dialogs on the home page). -->
 <nav class="menu" id="menu">
   <button class="menu-btn" id="menuBtn" type="button"
           aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
@@ -62,12 +62,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     </svg>
   </button>
   <div class="menu-panel" id="menuPanel" hidden>
-    <a class="menu-item" href="about.html">About the game</a>
-    <a class="menu-item" href="browse.html">Browse all animals</a>
+    <a class="menu-item" href="about.html"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
+    <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
     <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
-    <a class="menu-item" href="./?stream=1">Stream Mode</a>
-    <a class="menu-item" href="./?party=1">Party Mode <span class="beta-tag">beta</span></a>
-    <button class="menu-item" type="button" id="soundToggle" aria-pressed="true">Sound on</button>
+    <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
     <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
          there's room for them to just be visible - see style.css. Mobile
          is untouched. -->
@@ -84,6 +82,16 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     </div>
   </div>
 </nav>
+
+<!-- Own icon button, not a menu item - see index.html for why. -->
+<button class="sound-toggle" id="soundToggle" type="button"
+        aria-pressed="true" aria-label="Sound on">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/>
+    <path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/>
+    <path class="sw-mute" d="M15.5 9.5l5 5m0-5l-5 5"/>
+  </svg>
+</button>
 
 <!-- Desktop-only sliding theme switch, next to the corner menu button.
      Reuses [data-theme-set] - menu.js's own applyTheme() syncs
@@ -173,6 +181,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
 </div>
 
-<script src="menu.js?v=20260908-1"></script>
+<script src="menu.js?v=20260909-1"></script>
 </body>
 </html>

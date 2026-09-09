@@ -32,10 +32,10 @@ colors:
 typography:
   display:
     fontFamily: "Onest, ui-sans-serif, system-ui, 'Segoe UI', sans-serif"
-    fontSize: "clamp(40px, 12vw, 60px)"
+    fontSize: "clamp(58px, 16vw, 150px)"
     fontWeight: 700
-    lineHeight: 0.95
-    letterSpacing: "-0.04em"
+    lineHeight: 0.92
+    letterSpacing: "-0.045em"
   headline:
     fontFamily: "Onest, ui-sans-serif, system-ui, 'Segoe UI', sans-serif"
     fontSize: "clamp(31px, 8.6vw, 42px)"
@@ -176,14 +176,17 @@ pills, instead of competing with a loud background.
 
 The system rejects two things by construction: a cold neutral-grey palette
 (every "grey" here is tinted from the ink, never a flat `#888`), and motion
-as decoration. There is exactly one authored animation — the photo card
-arriving, lifting and uncovering itself top-down — and everything else is
-quiet, functional feedback (a rise-in, a scale-down on press).
+as decoration. There are two authored animations, never on screen
+together because they live on mutually exclusive screens — the photo card
+arriving on the animal view (lifting and uncovering itself top-down), and
+the paw stamping down on the splash, whose impact is what throws the
+wordmark's letters — and everything else is quiet, functional feedback
+(a rise-in, a scale-down on press).
 
 **Key Characteristics:**
 - Warm bone ground and olive-black ink, never cold neutral grey
 - One electric-yellow accent (`--sun`), spent deliberately and rarely
-- One authored motion moment (the card "deal"); everything else is quiet feedback
+- Two authored motion moments, one per screen (the card "deal", the splash's paw stamp); everything else is quiet feedback
 - Pills state the answer in words first; colour is a second signal, never the only one
 - Three-state theming (System / Light / Dark), with the splash intentionally *not* yellow in dark mode
 
@@ -223,7 +226,7 @@ The palette pairs one loud, fixed brand colour with a warm neutral system that f
 **Character:** A single geometric-humanist grotesque carries the whole system — no serif, no mono, no second family. Tight negative tracking on large sizes (`-0.04em`) gives headlines a compressed, confident set; body copy relaxes to `-0.011em`. Variable-weight means the same face does the work a font pairing would elsewhere: 700 for anything that announces, 400–500 for anything that explains.
 
 ### Hierarchy
-- **Display** (700, `clamp(40px, 12vw, 60px)`, line-height 0.95): the home wordmark only.
+- **Display** (700, `clamp(58px, 16vw, 150px)`, line-height 0.92): the home wordmark only — sized to be the biggest thing on the page, not merely the biggest on the splash. Full-bleed (breaks out of `.home-in`'s 460px reading column to span the true viewport width) rather than sharing that column's measure the way every other splash element does; nothing else on the site gets either treatment.
 - **Headline** (700, `clamp(31px, 8.6vw, 42px)`, line-height 1.02): the animal's name on the photo card. At the 620px breakpoint this fixes to 46px rather than continuing to scale with viewport, since the card itself stops being phone-shaped there. The About page `<h1>` uses its own, slightly taller clamp (`clamp(31px, 8vw, 44px)`) because it is the single biggest text on that page rather than sharing a screen with a photo — same role, a 2px-taller ceiling for a quieter context.
 - **Subhead** (700, `clamp(20px, 5vw, 24px)`): About page `<h2>` section headings.
 - **Title** (700, 22px): dialog titles.
@@ -309,7 +312,9 @@ No sharp corners anywhere in the system; a new surface should round to the neare
 
 ### Navigation
 - **Top bar:** sticky, frosted (`blur(14px)` over 84%-opacity Paper) rather than opaque, so the feed is still legible scrolling underneath it. Search box lives here once an animal is showing.
-- **Corner menu:** fixed top-right on every screen, drawn as an outline button on the splash and a filled Card button everywhere else — same position, different treatment, so it reads as "the same control" without breaking the splash's flatness.
+- **Corner menu:** on mobile, fixed top-right on every screen, drawn as an outline button on the splash and a filled Card button everywhere else — same position, different treatment, so it reads as "the same control" without breaking the splash's flatness. It opens a dropdown holding every option, including the three links and the theme switch that desktop moves elsewhere (see `.menu-desktop-hide`).
+- **Sound toggle:** its own fixed icon button (speaker, waves swapped for a mute slash on `aria-pressed`), same `.menu-btn` treatment, one slot left of the corner menu on mobile and dropped into its vacated corner on desktop — not a dropdown item, since muting is a one-tap decision made mid-sound rather than a settings change.
+- **Desktop nav bar (≥860px):** the corner button and its dropdown become a single always-visible bar — no reason to hide four options behind a click when there's width to just show them. Centred at the top of the page rather than pinned to a corner, and drawn as a glass pill (translucent Card tint + `blur(18px)`, no border — the Border-Or-Shadow Rule's `--shadow-l` alone defines the edge) rather than a solid one, the same frosted language the sticky top bar already spends over the feed. Three of the four labels (About, Browse, Party) shorten for the row; Mystery Animal has no shorter form to fall back to. Mobile's dropdown has the vertical room to spell every one out in full and never sees the short form. Sound is its own fixed icon button next to the corner menu, not a dropdown item — see the Sound Toggle entry below.
 
 ### Photo Card (signature component)
 The product's one authored visual moment. A blurred, 1.3×-scaled, saturated-and-darkened copy of the photo fills the card behind the real image (`object-fit: contain`), so a landscape photo in a portrait frame gets bands of its own colour instead of losing the animal to a hard crop. The name sits directly on the photo, bottom-aligned over a gradient scrim, so the first thing on screen reads as one object (an animal with its name), not two stacked elements. It arrives with the `deal` animation — lift, settle, uncover top-down — the single moment of drama the whole system allows itself.
@@ -330,6 +335,6 @@ Each animal carries one emoji, used only as a fallback (search-suggestion leadin
 ### Don't:
 - **Don't** add a second typeface. Hierarchy comes from Onest's weight/size/tracking range, not a display face.
 - **Don't** let more than one solid-Sun element appear on a single non-splash screen.
-- **Don't** add a second authored animation moment to the core flow. The card `deal` is the one beat; everything else stays quiet (`rise`, scale-on-press, the `pulse` loading indicator on the photo fallback).
+- **Don't** add a third authored animation moment. The card `deal` (animal view) and the paw stamp (splash) are the two beats this system spends, each scoped to a screen the other never appears on; everything else stays quiet (`rise`, scale-on-press, the `pulse` loading indicator on the photo fallback).
 - **Don't** use emoji as the primary hero image — it's a fallback for a missing or unloaded photo only.
-- **Don't** reach for a glow, gradient text, or a bounce easing — arrivals use `--ease` (`cubic-bezier(.16, 1, .3, 1)`), a confident settle with no overshoot.
+- **Don't** reach for a glow, gradient text, or a bounce easing — arrivals use `--ease` (`cubic-bezier(.16, 1, .3, 1)`), a confident settle with no overshoot. The splash stamp is not an exception to this: its weight comes from where its keyframes sit (a hard accelerating fall, a squash on contact, a decreasing rebound), not from an elastic curve smeared over a single move. Cartoon physics is authored frame by frame; an overshoot easing is the shortcut that reads as one.

@@ -14,8 +14,10 @@
      shapes - rather than five stock clips that merely coexist.
 
      Off is remembered; on is the default, since a site that goes quiet
-     by default has to be discovered to be heard. The toggle sits in the
-     menu with everything else adjustable here. */
+     by default has to be discovered to be heard. The toggle is its own
+     fixed icon button (see .sound-toggle in index.html/style.css), not
+     a menu item, since muting is a one-tap decision made mid-sound
+     rather than a settings change. */
   const SOUND_KEY = 'gma-mystery-sound';
   let soundOn = (() => { try { return localStorage.getItem(SOUND_KEY) !== 'off'; } catch (e) { return true; } })();
   let audioCtx = null;
@@ -83,8 +85,8 @@
   function updateSoundToggle() {
     const btn = el('soundToggle');
     if (!btn) return;
-    btn.textContent = soundOn ? 'Sound on' : 'Sound off';
     btn.setAttribute('aria-pressed', String(soundOn));
+    btn.setAttribute('aria-label', soundOn ? 'Sound on' : 'Sound off');
   }
 
   el('soundToggle').addEventListener('click', () => {
@@ -421,6 +423,25 @@
     node.classList.add('stagger');
   }
 
+  /* The splash paw can be stamped again by tapping it. The fall, the
+     squash, the ring, the dust and the letters it throws are all
+     declared in CSS and play by themselves on load, so this only has
+     to take those animations away and hand them straight back - one
+     frame without them restarts every one of them together, still in
+     step. Nothing here is needed for the stamp to play the first
+     time; with this file gone the splash still lands correctly. */
+  const markStage = el('markStage');
+  if (markStage) {
+    markStage.addEventListener('click', () => {
+      const box = markStage.closest('.home-in');
+      if (!box) return;
+      box.classList.add('restamp');
+      void box.offsetWidth;                    // restart, not resume
+      box.classList.remove('restamp');
+      sfx('tap');
+    });
+  }
+
   // Kept short on purpose. This is a screen you came to read, not a
   // title sequence, so everything has landed inside a second.
   function playEntrance() {
@@ -488,7 +509,6 @@
     const a = entry.a;
     current = entry;
     recordRecent(entry);
-    broadcastToStream(entry);
 
     document.body.className = 'view-animal';
     el('home').hidden = true;
@@ -947,110 +967,6 @@
     }
   });
 
-  /* -- Stream Mode -----------------------------------------------------
-     An OBS Browser Source is a fully separate browser process from
-     whatever's actually being used to look animals up, so there's no
-     localStorage or BroadcastChannel that reaches it - the two sides
-     only meet through /api/stream (see schema.sql for the fuller
-     version of this). The key lives in localStorage on THIS side only;
-     it travels to the overlay as a URL parameter, once, when it's
-     copied into OBS. */
-
-  const STREAM_KEY = 'gma-stream-key';
-  const STREAM_ON = 'gma-stream-on';
-
-  function randomKey() {
-    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    let s = '';
-    for (let i = 0; i < 12; i++) s += chars[Math.floor(Math.random() * chars.length)];
-    return s;
-  }
-
-  function getStreamKey() {
-    let k = null;
-    try { k = localStorage.getItem(STREAM_KEY); } catch (err) { /* private mode */ }
-    if (!k) {
-      k = randomKey();
-      try { localStorage.setItem(STREAM_KEY, k); } catch (err) { /* still usable this session */ }
-    }
-    return k;
-  }
-
-  function isStreaming() {
-    try { return localStorage.getItem(STREAM_ON) === '1'; } catch (err) { return false; }
-  }
-
-  function setStreaming(on) {
-    try { localStorage.setItem(STREAM_ON, on ? '1' : '0'); } catch (err) { /* not persisted, still works this tab */ }
-  }
-
-  function broadcastToStream(entry) {
-    if (!isStreaming()) return;
-    fetch('api/stream', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ key: getStreamKey(), slug: entry.slug }),
-    }).catch(() => {});
-  }
-
-  const streamDlg = el('streamDlg');
-
-  function openStream() {
-    setMenu(false);
-    // First time: broadcasting defaults on, since opening this panel is
-    // the whole ask. A returning visitor keeps whatever they last chose.
-    const firstTime = !(function () { try { return !!localStorage.getItem(STREAM_KEY); } catch (err) { return false; } })();
-    const key = getStreamKey();
-    if (firstTime) setStreaming(true);
-
-    // The clean URL, not stream.html directly - Cloudflare Pages
-    // 308-redirects the .html form, and there's no reason to make OBS
-    // (or the preview iframe below) take that extra hop every load.
-    const url = location.origin + '/stream?key=' + key;
-    el('streamUrl').value = url;
-    el('streamPreview').src = url;
-    el('streamCopyStatus').textContent = '';
-    updateStreamToggleUI();
-
-    // .show(), not .showModal(): a modal dialog makes the rest of the
-    // page inert, including the real search box the live preview asks
-    // you to type into. This one floats instead - deliberately not
-    // dismissed by clicking the page behind it, since using the page
-    // behind it is the point.
-    if (typeof streamDlg.show === 'function') streamDlg.show();
-    else streamDlg.setAttribute('open', '');
-  }
-
-  function updateStreamToggleUI() {
-    const on = isStreaming();
-    const btn = el('streamToggle');
-    btn.setAttribute('aria-pressed', String(on));
-    btn.textContent = on ? 'On' : 'Off';
-  }
-
-  el('streamOpen').addEventListener('click', openStream);
-  el('streamClose').addEventListener('click', () => streamDlg.close());
-  el('streamToggle').addEventListener('click', () => {
-    setStreaming(!isStreaming());
-    updateStreamToggleUI();
-  });
-  el('streamCopy').addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(el('streamUrl').value);
-      el('streamCopyStatus').textContent = 'Copied.';
-    } catch (err) {
-      el('streamUrl').select();
-      el('streamCopyStatus').textContent = "Couldn't copy — selected it instead, copy with Ctrl/Cmd+C.";
-    }
-  });
-  // Escape-to-close is native to showModal(), not to show() - this
-  // dialog uses the latter on purpose (see openStream), so it needs its
-  // own handler, same pattern the share panel already uses for its own
-  // non-native dismiss behaviour.
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && streamDlg.open) { streamDlg.close(); el('streamOpen').focus(); }
-  });
-
   /* -- Routing -------------------------------------------------------
      /?a=octopus opens straight on that animal, and the phone's back
      button steps back through what you looked up rather than leaving
@@ -1071,7 +987,7 @@
     // real room code opens the player view directly - whoever followed
     // it is joining a party someone else is already running. Anything
     // else (?party=1, the static pages' menu entry) opens the host
-    // controls instead, the same way ?stream=1 opens Stream Mode's.
+    // controls instead.
     const partyCode = url.searchParams.get('party');
     if (partyCode) {
       if (/^[A-Za-z0-9]{4,6}$/.test(partyCode) && typeof window.openPartyPlayer === 'function') {
@@ -1081,10 +997,9 @@
       if (typeof window.openPartyHost === 'function') { window.openPartyHost(); return; }
     }
 
-    // ?stream=1 and ?report=1 are the corner menu's own entry points from
-    // the static pages (about/browse/privacy), which have no menu, stream
-    // or report dialog of their own to open directly - see menu.js.
-    if (url.searchParams.get('stream')) { openStream(); return; }
+    // ?report=1 is the corner menu's own entry point from the static
+    // pages (about/browse/privacy), which have no menu or report
+    // dialog of their own to open directly - see menu.js.
     if (url.searchParams.get('report')) { openReport(); return; }
 
     const wanted = url.searchParams.get('a');

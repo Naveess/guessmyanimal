@@ -1,6 +1,7 @@
 // Full session state + scoreboard, polled every 1.2s by the host tab,
-// the overlay tab, and every player's phone alike - the same poll-a-D1-row
-// pattern stream.js already proved, just a richer payload and more readers.
+// the overlay tab, and every player's phone alike - a poll-a-D1-row
+// pattern, just with a richer payload and more readers than a single
+// value.
 //
 // target_slug is sent to every poller, including players who haven't
 // guessed yet - the target has to reach several separate devices somehow,

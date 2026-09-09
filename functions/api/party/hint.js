@@ -1,7 +1,7 @@
 // Host-only: reveal the next hint. hostKey just needs to match what
-// create.js handed back - same "enough friction, not a real security
-// boundary" spirit as Stream Mode's key, since the only thing at stake
-// is what a party's hint list shows.
+// create.js handed back - enough friction, not a real security
+// boundary, since the only thing at stake is what a party's hint list
+// shows.
 
 import { CODE_RE, HOST_KEY_RE, json } from './_lib.js';
 

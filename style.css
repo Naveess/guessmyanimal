@@ -222,28 +222,194 @@ body.view-home :focus-visible { outline-color: var(--home-ink); }
   background: var(--home-bg);
   color: var(--home-ink);
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  align-items: center; justify-content: flex-start;
   gap: 30px;
-  padding: 36px 20px calc(20px + env(safe-area-inset-bottom));
+  padding: 48px 20px calc(20px + env(safe-area-inset-bottom));
   text-align: center;
 }
 .home[hidden] { display: none; }
 
 .home-in { width: 100%; max-width: 460px; }
 
-.mark {
-  width: 76px; height: 76px;
-  display: block; margin: 0 auto 20px;
-  fill: var(--home-mark);
+/* -- The stamp -----------------------------------------------------
+   The splash's authored moment. The paw falls in, compresses against
+   the ground 38% into its fall, and that single impact is what throws
+   the ring, the dust, and the letters below it - so the splash reads
+   as one physical event rather than four elements each arriving on
+   their own schedule. Every delay here is measured off that impact
+   (266ms into a 700ms fall); change the fall and they all move with
+   it. Cheap by construction: transform and opacity only, nothing
+   loops, and the whole thing is over before a second is out. */
+
+.mark-stage {
+  position: relative;
+  width: clamp(84px, 19vw, 130px);
+  height: clamp(84px, 19vw, 130px);
+  margin: 0 auto 16px;
+  cursor: pointer;
+  user-select: none; -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
+.mark {
+  position: relative; z-index: 1;
+  width: 100%; height: 100%; display: block;
+  fill: var(--home-mark);
+  /* The underside of the pad: the squash has to compress onto the
+     ground, not around the paw's own middle. */
+  transform-origin: 50% 83%;
+  /* Two animations, not one keyframe doing both: the fall wants a
+     hard accelerating curve and the fade wants a short linear one,
+     and a single keyframe list would force the fade's stop point to
+     restart the fall's curve mid-drop. */
+  animation: stampFall 700ms backwards, stampFade 80ms backwards;
+  transition: transform .22s var(--ease);
+}
+
+/* Anticipation, not the stamp: the paw picks itself up, ready to come
+   back down if you click it. Pointer-only - there is nothing here a
+   touch device can hover, and nothing is lost by not having it. */
+@media (hover: hover) {
+  .mark-stage:hover .mark { transform: translateY(-7%) scaleY(1.04) scaleX(.97); }
+  .mark-stage:active .mark { transform: translateY(1%) scaleY(.93) scaleX(1.06); transition-duration: .08s; }
+}
+
+/* The toes splay on contact - the part of a footprint that actually
+   spreads when weight goes through it. Per-toe direction lives in the
+   markup, since it is a fact about where that toe sits. */
+.mark-toe { animation: toeSplay 700ms backwards; }
+
+/* A ground ripple, so squashed vertically it reads as a ring seen
+   flat rather than a bubble expanding at the camera. */
+.mark-ring {
+  position: absolute; z-index: 0;
+  left: 50%; top: 83%;
+  width: 30px; height: 30px; margin: -15px 0 0 -15px;
+  border-radius: 999px;
+  border: 2.5px solid var(--home-mark);
+  opacity: 0;
+  animation: stampRing 620ms 266ms backwards;
+}
+
+/* The specks spawn under the pad, so they have to clear its silhouette
+   while they are still opaque or they never read as anything - hence
+   the front-loaded curve and a travel distance measured against the
+   paw's width rather than the speck's own size. */
+.mark-dust { position: absolute; z-index: 2; inset: 0; pointer-events: none; }
+.mark-dust i {
+  position: absolute;
+  left: 50%; top: 83%;
+  width: 6px; height: 6px; margin: -3px 0 0 -3px;
+  border-radius: 999px;
+  background: var(--home-mark);
+  opacity: 0;
+  animation: dustFly 560ms 266ms cubic-bezier(.05, .8, .25, 1) backwards,
+             dustFade 560ms 266ms backwards;
+}
+
+@keyframes stampFall {
+  0%   { transform: translateY(-120%) scaleY(1.2) scaleX(.86);
+         animation-timing-function: cubic-bezier(.52, 0, .9, .42); }
+  /* contact */
+  38%  { transform: translateY(0) scaleY(1.14) scaleX(.9);
+         animation-timing-function: cubic-bezier(.2, .78, .4, 1); }
+  50%  { transform: translateY(3%) scaleY(.58) scaleX(1.36);
+         animation-timing-function: cubic-bezier(.3, .9, .45, 1); }
+  63%  { transform: translateY(-2%) scaleY(1.13) scaleX(.92); }
+  76%  { transform: translateY(0) scaleY(.95) scaleX(1.04); }
+  88%  { transform: translateY(0) scaleY(1.03) scaleX(.985); }
+  100% { transform: translateY(0) scaleY(1) scaleX(1); }
+}
+@keyframes stampFade { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes toeSplay {
+  0%, 38% { transform: translate(0, 0); }
+  50%     { transform: translate(var(--tx, 0), var(--ty, 0)); }
+  72%     { transform: translate(calc(var(--tx, 0) * -.22), calc(var(--ty, 0) * -.3)); }
+  100%    { transform: translate(0, 0); }
+}
+
+@keyframes stampRing {
+  0%   { opacity: 0; transform: scale(.3) scaleY(.5); }
+  14%  { opacity: .5; }
+  100% { opacity: 0; transform: scale(4.4) scaleY(.5); }
+}
+
+@keyframes dustFly {
+  from { transform: rotate(var(--a, 0deg)) translateX(5px) scale(.4); }
+  to   { transform: rotate(var(--a, 0deg)) translateX(var(--far, 60px)) scale(.9); }
+}
+@keyframes dustFade {
+  0%   { opacity: 0; }
+  10%  { opacity: .6; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No fall, no impact, nothing thrown - but the paw still arrives,
+     because something appearing is the part that carries meaning. */
+  .mark { animation: stampFade 200ms backwards; }
+  .mark-toe, .mark-ring, .mark-dust i { animation: none; }
+  .mark-stage { cursor: default; }
+  .mark-stage:hover .mark, .mark-stage:active .mark { transform: none; }
+}
+
+/* The one deliberately oversized element on the page - wide enough
+   that it has to break out of .home-in's 460px reading column rather
+   than share it, the same full-bleed trick used nowhere else in this
+   file because nothing else needs it. The formula only centres
+   correctly because .home-in is itself centred in .home's full width
+   at every viewport this site supports - if that ever changes, this
+   breaks with it. */
 .wordmark {
-  margin: 0;
-  font-size: clamp(40px, 12vw, 60px);
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  padding: 0 3vw;
+  box-sizing: border-box;
+  font-size: clamp(58px, 16vw, 150px);
   font-weight: 700;
-  line-height: .95;
-  letter-spacing: -.04em;
+  line-height: .92;
+  letter-spacing: -.045em;
   text-wrap: balance;
+}
+.wm-row { display: block; }
+.wm-word { display: inline-block; white-space: nowrap; }
+
+/* The letters are not arriving - they are already standing there when
+   the page paints, which is why the title is readable from the first
+   frame instead of after a title sequence. What happens to them is
+   that the paw lands and knocks them loose: the shockwave reaches the
+   letter under the impact first and throws it highest, and everything
+   further out goes later and lower. Rest and finish are both the plain
+   un-transformed letter, so a dropped animation costs nothing. */
+.wm-l {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  --lift: calc((6 - var(--d, 0)) * .055em);
+  animation: wmFling 460ms;
+  animation-delay: calc(266ms + var(--d, 0) * 26ms);
+}
+
+@keyframes wmFling {
+  0%   { transform: none;
+         animation-timing-function: cubic-bezier(.12, .82, .3, 1); }
+  26%  { transform: translateY(calc(var(--lift) * -1)) rotate(var(--r, 0deg)) scaleY(1.05);
+         animation-timing-function: cubic-bezier(.5, 0, .78, .5); }
+  58%  { transform: translateY(0) rotate(calc(var(--r, 0deg) * .22)) scaleY(.93) scaleX(1.03); }
+  78%  { transform: translateY(calc(var(--lift) * -.2)) rotate(0deg) scaleY(1.02); }
+  100% { transform: none; }
+}
+
+/* Removing the animations and putting them straight back is what
+   replays the stamp - see #markStage in app.js. */
+.home-in.restamp .mark,
+.home-in.restamp .mark-toe,
+.home-in.restamp .mark-ring,
+.home-in.restamp .mark-dust i,
+.home-in.restamp .wm-l { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wm-l { animation: none; }
 }
 
 .tagline {
@@ -277,14 +443,14 @@ body.view-home #q { font-size: 17px; }
   font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
   color: var(--home-ink);
   background: transparent;
-  border: 1.5px solid color-mix(in srgb, var(--home-ink) 24%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--home-ink) 68%, transparent);
   border-radius: 999px;
   padding: 9px 15px; min-height: 44px;
   transition: background .16s var(--ease), border-color .16s var(--ease), transform .16s var(--ease);
 }
 .chip:hover {
   background: color-mix(in srgb, var(--home-ink) 8%, transparent);
-  border-color: color-mix(in srgb, var(--home-ink) 45%, transparent);
+  border-color: color-mix(in srgb, var(--home-ink) 85%, transparent);
 }
 .chip:active { transform: scale(.97); }
 
@@ -317,10 +483,12 @@ body.view-home #q { font-size: 17px; }
   font: inherit; font-size: 16px; font-weight: 500;
   color: var(--ink);
   background: transparent;
-  border: 0; outline: none;
+  border: 0;
   padding: 10px 0;
   min-height: 44px;
 }
+/* No outline:none here - an ID-selector one would beat the global
+   :focus-visible ring on specificity and suppress it outright. */
 #q::placeholder { color: var(--muted); font-weight: 400; }
 /* The native clear button is un-themed OS blue by default - restyled as a
    mask so it recolours with --muted/--ink like every other drawn icon,
@@ -749,6 +917,13 @@ body.view-home #q { font-size: 17px; }
     background-repeat: repeat;
     background-size: 140px 140px;
   }
+  /* The same spare vertical space the paw field above exists to fill.
+     .home stays flex-start (not centered) everywhere, on purpose: a
+     centered column taller than the viewport would push the paw and
+     wordmark above the fold with no way to scroll back up to them on a
+     short, narrow phone screen. A desktop window is never that
+     cramped, so it can afford to just start further down instead. */
+  .home { padding-top: clamp(48px, 12vh, 160px); }
   /* The splash stays the same one-column hero - nothing new competes
      with the search box, per the product's own "nothing else competes"
      principle - but a fixed 460px hero on a desktop window read as a
@@ -972,6 +1147,42 @@ body.view-home .menu-btn {
 }
 body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
 
+/* Same fixed-corner treatment as .menu-btn, one slot over: right:68px
+   sits it just left of the menu button on mobile (nothing else is
+   there), and right:14px on desktop drops it straight into the
+   corner .menu-btn itself vacates once the nav bar replaces it (see
+   the desktop rules below) - one control, two slots, same technique
+   .theme-toggle already uses for its own fixed position. */
+.sound-toggle {
+  position: fixed; z-index: 60; right: 68px; top: calc(12px + env(safe-area-inset-top));
+  width: 44px; height: 44px;
+  display: grid; place-items: center; cursor: pointer;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  transition: background .16s var(--ease), transform .16s var(--ease);
+}
+.sound-toggle svg { width: 21px; height: 21px; }
+.sound-toggle:hover { background: var(--flat-bg); }
+.sound-toggle:active { transform: scale(.94); }
+/* One icon, two states: the cone is always drawn, and only one of the
+   wave arcs / mute slash shows at a time, swapped on aria-pressed
+   rather than by swapping the whole icon - same reasoning as the
+   theme toggle's knob reusing one element instead of redrawing. */
+.sound-toggle .sw-mute { display: none; }
+.sound-toggle[aria-pressed="false"] .sw-waves { display: none; }
+.sound-toggle[aria-pressed="false"] .sw-mute { display: block; }
+body.view-home .sound-toggle {
+  color: var(--home-ink);
+  background: transparent;
+  border-color: color-mix(in srgb, var(--home-ink) 24%, transparent);
+}
+body.view-home .sound-toggle:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
+@media (min-width: 860px) {
+  .sound-toggle { right: 14px; }
+}
+
 /* -- Desktop-only: theme dial + decluttered menu ---------------------
    On a phone the menu is the only place there's room for Report a
    problem / Privacy / Source on GitHub and the three-way theme switch,
@@ -984,6 +1195,16 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
    touches only changes past 860px. */
 @media (min-width: 860px) {
   .menu-desktop-hide { display: none; }
+  /* Two of the elements this hides (.menu-item, .theme) set their own
+     unconditional display:flex later in the file, at the same
+     specificity as the plain rule above - a tie that source order
+     resolves in the later rule's favour, so on its own the rule above
+     was silently losing to them and leaving Report/Privacy/GitHub and
+     the theme radio group visible at desktop widths whenever the
+     dropdown was opened. These compound selectors outrank that tie
+     outright regardless of source order. */
+  .menu-item.menu-desktop-hide,
+  .theme.menu-desktop-hide { display: none; }
 }
 
 /* A real sliding toggle switch, three stops instead of the usual two -
@@ -1075,16 +1296,16 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
   .desktop-foot a:hover, .desktop-foot button:hover {
     text-decoration: underline; text-underline-offset: 3px;
   }
-  /* The splash centres its content vertically in the viewport (flex +
-     justify-content:center) - a normal-flow footer there would grow
-     with the row and shift that centring upward every time. Anchored to
-     the bottom of .home instead, outside that flex column entirely, the
-     same way the corner menu already treats the splash as a different
-     colour context (home-ink/home-bg, not ink/card). */
-  .home { position: relative; }
+  /* This used to pin to the bottom edge with position:absolute, back
+     when the hero reliably cleared one screen and a normal-flow footer
+     would have shifted the centred group upward. Now that the wordmark
+     routinely runs taller than the viewport (see .home's justify-content
+     below), flow is what actually works at every height - it sits right
+     after .home-foot and the page scrolls to it like every other
+     .desktop-foot already does. Only the colour treatment stays
+     splash-specific, swapped to the home-ink/home-bg pair the corner
+     menu already uses for the same reason. */
   .home > .desktop-foot {
-    position: absolute; left: 0; right: 0; bottom: 0;
-    margin-top: 0; padding: 16px 20px calc(20px + env(safe-area-inset-bottom));
     border-top-color: color-mix(in srgb, var(--home-ink) 20%, transparent);
     color: color-mix(in srgb, var(--home-ink) 72%, transparent);
   }
@@ -1114,27 +1335,22 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
 body.view-home .play-link { display: inline-flex; }
 
 /* A second thing to do on the splash, for the visitor who came to play
-   rather than settle an argument mid-game. This is the splash's one
-   primary action, so it earns the splash's own boldest pairing rather
-   than the corner controls' quiet outline treatment: solid Home-Ink
-   fill, Home-Bg text - the exact contrast pair ::selection already uses
-   on this screen (see body.view-home ::selection above), just spent on
-   a button instead of a text highlight. Sun itself can't do this job
-   here (the splash ground already *is* Sun in light mode - a solid-Sun
-   button would vanish into its own background), so Home-Ink stands in
-   as this screen's one deliberate fill, same spirit as the One-Yellow
-   Rule elsewhere: exactly one solid, decisive element per screen. */
+   rather than settle an argument mid-game - but the search box above it
+   is the splash's one decisive action now, so this stays in the same
+   quiet-outline register as .play-link and .chip (transparent fill,
+   Home-Ink text and border) rather than competing with it for the
+   screen's one solid fill. */
 .mystery-play {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   width: 100%; margin-top: 22px; padding: 13px 20px; min-height: 48px;
   font: inherit; font-size: 15px; font-weight: 700;
-  color: var(--home-bg); cursor: pointer;
-  background: var(--home-ink);
-  border: none;
+  color: var(--home-ink); cursor: pointer;
+  background: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--home-ink) 68%, transparent);
   border-radius: 14px;
   transition: background .16s var(--ease), transform .16s var(--ease);
 }
-.mystery-play:hover { background: color-mix(in srgb, var(--home-ink) 88%, var(--home-bg)); }
+.mystery-play:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
 .mystery-play:active { transform: scale(.98); }
 /* Nothing else on the splash moves, so this is the one thing that does:
    it settles in a beat after the rest of the hero is already on screen,
@@ -1166,6 +1382,49 @@ body.view-home .play-link { display: inline-flex; }
              mystery-nudge 3.4s var(--ease) 1.3s 3;
 }
 .mystery-play.settled { animation: none; }
+
+/* -- Home-screen party-code entry: quiet outline register, matching the
+   splash's other secondary controls (.play-link, .chip, .mystery-play).
+   ------------------------------------------------------------------- */
+.home-code-link {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 44px; margin: 14px auto 0; padding: 4px;
+  font: inherit; font-size: 13.5px; font-weight: 600;
+  color: color-mix(in srgb, var(--home-ink) 72%, transparent);
+  text-decoration: underline; text-underline-offset: 2px;
+  background: none; border: none; cursor: pointer;
+}
+.home-code-link:hover { color: var(--home-ink); }
+.home-code-link[hidden] { display: none; }
+
+.home-code-form { display: flex; gap: 8px; margin-top: 14px; }
+.home-code-form[hidden] { display: none; }
+#partyCodeInput {
+  flex: 1; min-width: 0;
+  font: inherit; font-size: 16px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--home-ink); background: color-mix(in srgb, var(--home-ink) 8%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--home-ink) 24%, transparent);
+  border-radius: 13px; padding: 0 14px; min-height: 46px;
+}
+#partyCodeInput::placeholder {
+  color: color-mix(in srgb, var(--home-ink) 68%, transparent);
+  text-transform: none; letter-spacing: normal; font-weight: 400;
+}
+#partyCodeInput:focus { border-color: color-mix(in srgb, var(--home-ink) 55%, transparent); }
+.home-code-submit {
+  flex: none; font: inherit; font-size: 15px; font-weight: 700;
+  padding: 0 20px; min-height: 46px; cursor: pointer;
+  color: var(--home-ink); background: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--home-ink) 24%, transparent);
+  border-radius: 13px;
+  transition: background .16s var(--ease), transform .16s var(--ease);
+}
+.home-code-submit:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
+.home-code-submit:active { transform: scale(.97); }
+.home-code-msg { margin: 10px 0 0; font-size: 13.5px; color: color-mix(in srgb, var(--home-ink) 72%, transparent); }
+.home-code-msg:empty { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   /* The nudge is pure spatial shake with nothing else to reduce it to -
      drop it outright and keep only the (already-shortened, see the
@@ -1212,15 +1471,80 @@ body:has(#sharePanel:not([hidden]))::before {
   transition: background .13s var(--ease);
 }
 .menu-item:hover { background: var(--flat-bg); }
+/* The desktop bar below swaps four of these to shorter labels so a row
+   of full sentences doesn't turn the pill into the width of the page;
+   mobile's dropdown has the vertical room to spell them out, so it
+   keeps .mi-full and never sees .mi-short at all. */
+.menu-item .mi-short { display: none; }
 
-/* Room for the button so a long search box never slides under it. A flat
-   68px at every width, not a centering formula: growing it with the
-   viewport was leaving an ever-widening dead zone between the search
+/* Room for the button(s) so a long search box never slides under them.
+   A flat 112px at every width, not a centering formula: growing it with
+   the viewport was leaving an ever-widening dead zone between the search
    unit and the menu on wide desktop windows, while the left edge stays
-   aligned with the feed regardless. Animal view only, same reasoning as
-   the left-padding rule above - the mystery view's centred title needs
-   a symmetric bar, not this search-box clearance. */
-.animalview .topbar { padding-right: 68px; }
+   aligned with the feed regardless. 112px, not 68, because the sound
+   toggle now sits fixed one slot further out than the menu button on
+   mobile (right:68px, see .sound-toggle) - on desktop both it and the
+   theme dial already land inside the original 68px margin with room to
+   spare, so the extra 44px only ever matters on the narrow end. Animal
+   view only, same reasoning as the left-padding rule above - the
+   mystery view's centred title needs a symmetric bar, not this
+   search-box clearance. */
+.animalview .topbar { padding-right: 112px; }
+
+/* -- Desktop-only: the corner hamburger becomes the nav itself --------
+   There's no reason to hide six options behind a click when a desktop
+   visitor already has the width to see them - so past 860px the button
+   disappears, the panel stops being a dropdown anchored under it and
+   becomes a centred, always-open bar instead: laid out in a row at the
+   top of the page rather than pinned to the corner, drawn as a glass
+   pill (translucent surface + backdrop-filter) rather than a solid
+   card, the same blur language the sticky .topbar already spends over
+   photos. .menu-desktop-hide above has already dropped Report/Privacy/
+   GitHub/theme-group from this panel on this same breakpoint, so what's
+   left - About, Browse, Mystery Animal, Party Mode - is exactly the row
+   a bar this size can hold. Mobile is untouched: every rule below only
+   changes past 860px. */
+@media (min-width: 860px) {
+  .menu { left: 50%; right: auto; transform: translateX(-50%); }
+  .menu-btn { display: none; }
+  .menu-panel,
+  .menu-panel[hidden] {
+    display: flex; flex-direction: row; align-items: center;
+    position: static;
+    min-width: 0; max-width: calc(100vw - 24px);
+    gap: 2px; padding: 5px;
+    background: color-mix(in srgb, var(--card) 78%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 999px;
+    box-shadow: var(--shadow-l);
+    animation: none;
+  }
+  .menu-panel .menu-item {
+    padding: 10px 15px; min-height: 0;
+    border-radius: 999px;
+    font-size: 14px; white-space: nowrap;
+  }
+  .menu-item .mi-full { display: none; }
+  .menu-item .mi-short { display: inline; }
+  /* Same outline-on-yellow swap the corner controls already do on the
+     splash, just spent on the pill's own glass tint instead of a plain
+     border - the ground here is strong enough that a card-toned pill
+     would fight it, same reasoning as body.view-home .menu-btn above. */
+  body.view-home .menu-panel {
+    background: color-mix(in srgb, var(--home-bg) 46%, transparent);
+  }
+  body.view-home .menu-panel .menu-item { color: var(--home-ink); }
+  body.view-home .menu-panel .menu-item:hover {
+    background: color-mix(in srgb, var(--home-ink) 9%, transparent);
+  }
+}
+/* At the narrow end of the desktop range the centred pill's right edge
+   creeps into the fixed theme dial's left edge - a size step down
+   clears it with room to spare, same technique as the pill itself. */
+@media (min-width: 860px) and (max-width: 919px) {
+  .menu-panel .menu-item { padding: 9px 10px; font-size: 13px; }
+}
 
 /* ==================================================================
    REPORT DIALOG
@@ -1290,75 +1614,11 @@ body:has(#sharePanel:not([hidden]))::before {
 .dlg-actions { display: flex; gap: 9px; }
 .dlg-actions .btn-solid { margin-left: auto; }
 
-/* ==================================================================
-   STREAM MODE DIALOG
-   ================================================================== */
-
-/* .show() (see app.js - deliberately not .showModal(), so the page
-   behind it stays usable) skips the centring a modal dialog gets for
-   free: without this it renders in normal document flow instead of
-   fixed over the viewport, which put it hundreds of pixels down the
-   page, invisible, the first time this shipped. Fixed + centred by
-   hand; no ::backdrop either, since that pseudo-element only exists
-   for a modal dialog and its absence here is the point. */
-.dlg-stream[open] {
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  max-height: calc(100vh - 28px);
-  overflow-y: auto;
-}
-
+/* A url-plus-copy-button row, shared by anything that hands someone a
+   link to paste elsewhere - currently just Party Mode's own join link
+   (#partyJoinUrl, see its dedicated rule further down). */
 .stream-url-row { display: flex; gap: 8px; }
-#streamUrl {
-  flex: 1; min-width: 0;
-  font: inherit; font-size: 13.5px; font-family: ui-monospace, 'SF Mono', Consolas, monospace;
-  color: var(--ink); background: var(--paper);
-  border: 1px solid var(--line); border-radius: 13px;
-  padding: 0 13px; min-height: 44px;
-}
-#streamUrl:focus { outline: none; border-color: color-mix(in srgb, var(--ink) 45%, transparent); }
 .stream-url-row .btn { flex: none; }
-
-.stream-toggle-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 3px 0;
-}
-.stream-toggle-label { font-size: 14.5px; font-weight: 500; }
-/* A standalone pill, not the theme switch's .theme-btn - that class
-   carries flex:1, sized for three equal segments inside .theme's own
-   flat-bg track, and stretched to fill the whole row the moment it
-   was reused here outside that context. */
-.stream-toggle {
-  flex: none; min-width: 56px; padding: 8px 16px;
-  border-radius: 999px; border: 1px solid var(--line);
-  background: var(--flat-bg); color: var(--ink);
-  font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
-  transition: background .16s var(--ease), color .16s var(--ease);
-}
-.stream-toggle[aria-pressed="true"] { background: var(--sun); color: var(--on-sun); border-color: var(--sun); }
-
-.stream-preview-label {
-  margin: 0; font-size: 12.5px; font-weight: 600;
-  letter-spacing: .04em; text-transform: uppercase; color: var(--muted);
-}
-.stream-preview-hint { margin: 3px 0 8px; font-size: 13px; color: var(--muted); }
-.stream-preview-frame {
-  border-radius: 16px; overflow: hidden;
-  border: 1px solid var(--line);
-  background:
-    linear-gradient(155deg, #2a2c22 0%, #1c1e17 55%, #14150f 100%);
-  height: 260px;
-}
-.stream-preview-frame iframe {
-  width: 100%; height: 100%; border: 0; display: block;
-  /* The iframe's own page is transparent by design (that's the whole
-     point, for OBS) - this dark gradient behind it stands in for the
-     gameplay it would normally composite over, so the preview shows
-     what an overlay actually looks like rather than a blank white box. */
-  color-scheme: light;
-}
 
 /* ==================================================================
    MYSTERY ANIMAL
@@ -2024,7 +2284,7 @@ body.view-page { background: var(--paper); }
   font: inherit; font-size: 13.5px; font-weight: 500;
   cursor: pointer; color: var(--muted);
   background: transparent; border: 0; border-radius: 9px;
-  padding: 8px 4px; min-height: 38px;
+  padding: 8px 4px; min-height: 44px;
   transition: background .14s var(--ease), color .14s var(--ease);
 }
 .theme-btn:hover { color: var(--ink); }
@@ -2078,7 +2338,7 @@ body.view-page { background: var(--paper); }
   background: var(--flat-bg);
 }
 .party-playtoo .dlg-note { margin: 0; }
-.party-playtoo #partyPlayTooName { min-height: 46px; font-size: 15.5px; }
+.party-playtoo #partyPlayTooName { font: inherit; min-height: 46px; font-size: 15.5px; }
 .party-playtoo-actions { align-self: flex-start; }
 
 /* One fixed emoji grid, reused by both the player join gate and the
@@ -2118,13 +2378,21 @@ body.view-page { background: var(--paper); }
 #partyStart { margin-top: 4px; }
 
 .party-roundhead {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 12px; margin: 18px 0 12px;
+  display: flex; flex-direction: column; gap: 10px;
+  margin: 18px 0 16px;
 }
-.party-round { font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
-.party-you { font-size: 14px; color: var(--muted); }
+.party-you { align-self: flex-end; font-size: 14px; color: var(--muted); }
 .party-you[hidden] { display: none; }
 .party-you b { font-weight: 600; color: var(--ink); }
+/* Mystery's own three-tile row sits inside .mystery-panel-top's card, so
+   the hairlines between tiles read as one grouped component rather than
+   loose floating numbers - Party's round head isn't card-wrapped
+   anywhere else, so this needs its own frame to earn that same reading. */
+.party-stats {
+  padding: 10px 4px;
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  background: var(--card);
+}
 .party-you-edit {
   margin-left: 2px; padding: 0; border: none; background: none;
   font: inherit; font-size: 12.5px; font-weight: 600;
@@ -2177,19 +2445,35 @@ body.view-page { background: var(--paper); }
 }
 
 .party-guess-form[hidden] { display: none; }
-
-.party-result {
-  margin: 14px 0 0; padding: 13px 15px;
-  border-radius: var(--r-card);
-  background: var(--flat-bg);
-  font-size: 15.5px; font-weight: 600; line-height: 1.4;
+/* .party-guess-form reuses .mystery-form's flex-row layout (see index.html)
+   but never got its own input styling the way #mysteryGuess has - it was
+   rendering in the browser's default form-control font and colors
+   instead of Onest, caught by the design detector's live computed-style
+   scan rather than by eye. Mirrors #mysteryGuess exactly, since this is
+   that same control's party-mode equivalent. */
+#partyGuess {
+  flex: 1; min-width: 0;
+  font: inherit; font-size: 16px; font-weight: 500;
+  color: var(--ink); background: var(--card);
+  border: 1px solid var(--line); border-radius: 15px;
+  padding: 0 16px; min-height: 52px;
+  transition: border-color .16s var(--ease);
 }
-.party-result[hidden] { display: none; }
-/* The one Sun-tinted state on either surface: you, specifically, got
-   it. Everything else about a round resolving is reported flat. */
-.party-result.is-mine {
-  background: color-mix(in srgb, var(--sun) 22%, var(--card));
-  border: 1px solid color-mix(in srgb, var(--sun) 50%, var(--line));
+#partyGuess:focus { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
+
+/* .party-result reuses .mystery-result's own layout (margin-top, the
+   flex column, the gap to its note) wholesale - see index.html. Only
+   the card's tint needs its own rule: Mystery's version is unconditional
+   because a solo round is always personal, but a shared round needs Sun
+   to mean "you, specifically, won this," not just "a round resolved" -
+   flat-bg by default, the tint added only via .is-mine. */
+.party-result .mystery-result-card {
+  background: var(--flat-bg);
+  border: 1px solid var(--line);
+}
+.party-result .mystery-result-card.is-mine {
+  background: color-mix(in srgb, var(--sun) 16%, var(--card));
+  border-color: color-mix(in srgb, var(--sun) 40%, var(--line));
 }
 
 .party-scores-label { margin-top: 26px; }
@@ -2228,6 +2512,19 @@ body.view-page { background: var(--paper); }
 .party-score-icon { flex: none; width: 20px; font-size: 16px; line-height: 1; text-align: center; }
 .party-score-pts { flex: none; font-weight: 700; font-variant-numeric: tabular-nums; }
 .party-score.is-winner .party-score-pts { color: var(--sun-deep, var(--ink)); }
+/* Finding your own row in a shared, growing leaderboard used to mean
+   reading every name - the rank number and "you" label above the board
+   don't help once there's more than a couple of players. A contained
+   wash, not a border (this is still a flush list row, not a card - see
+   the Border-Or-Shadow Rule), reusing the same sun-tint the result
+   cards already use for "this round belongs to you" (.is-mine there
+   too), just spent on ongoing identity instead of a one-off moment. */
+.party-score.is-mine {
+  margin: 0 -10px; padding: 11px 10px;
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--sun) 14%, transparent);
+}
+.party-score.is-mine .party-score-name { font-weight: 700; }
 
 /* -- Activity feed: a running chat-style log of joins and guesses,
    right and wrong. Local/QR play only - see party.js's header comment.
@@ -2244,7 +2541,7 @@ body.view-page { background: var(--paper); }
 .party-feed-empty { margin: 0; padding: 12px 0; font-size: 15px; color: var(--muted); }
 .party-feed-row {
   display: flex; align-items: flex-start; gap: 9px;
-  margin: 0; padding: 7px 6px; border-radius: 10px;
+  margin: 0; padding: 7px 6px; border-radius: 11px;
   font-size: 14px; line-height: 1.4;
 }
 .party-feed-icon { flex: none; font-size: 15px; line-height: 1.4; }
@@ -2296,6 +2593,13 @@ body.view-page { background: var(--paper); }
   }
   .party-scores-label { margin-top: 0; }
   .party-feed { max-height: min(48vh, 480px); }
+  /* .party-roundhead's 18px top margin is sized for the mobile single-
+     column flow, where it's the first thing under the topbar's own
+     padding. Here it's a grid sibling of the sidebar's "Leaderboard"
+     label, which starts flush at the grid's top edge (see the rule
+     above) - left alone, "Round N" sits a visible 18px lower than
+     "Leaderboard" despite both being the first line in their column. */
+  .party-roundhead { margin-top: 0; }
 }
 
 /* -- Host: setup and the invite panel -------------------------------- */
@@ -2372,6 +2676,14 @@ body.view-page { background: var(--paper); }
   color: var(--muted);
 }
 .party-endbtn[hidden] { display: none; }
+
+/* -- Recap: shown once, after a confirmed "End party" - see the closing
+   comment on partyEnd's click handler in party.js. Reuses .party-scores/
+   .party-score wholesale (same visual language as the live leaderboard,
+   just no presence dot - nobody's "online" once the session's gone). */
+#partyRecap[hidden] { display: none; }
+#partyRecap .label { margin-top: 4px; }
+#partyRecapDone { margin-top: 22px; width: 100%; }
 
 /* Beta tag. The Micro step (the system's smallest label, same treatment
    as the theme toggle's "Appearance") - it has to read as a status

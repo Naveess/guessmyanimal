@@ -51,6 +51,14 @@ What's actually there, as of 2026-09-08:
   2026-09-08) - don't extend the local-play patterns onto it without
   checking that's still the plan, it may end up as a genuinely separate
   surface rather than sharing this code.
+- The standalone Stream Mode feature (OBS Browser Source overlay,
+  `stream.html`/`stream.js`/`functions/api/stream.js`, its own
+  `stream_state` D1 table) was removed entirely 2026-09-09 - Navee is
+  consolidating the streaming angle into Party Mode's Twitch-chat path
+  above instead of maintaining two separate surfaces. The
+  `stream_state` table itself was only dropped from `schema.sql`
+  (fresh-install source), not from the live D1 database - worth a
+  manual `DROP TABLE stream_state` there if it's not wanted kept around.
 - Rename silently no-ops into "join as new identity" if the target name
   is already taken by someone else in the same session (avoids a
   merge-two-people's-scores bug, but the user gets no message saying

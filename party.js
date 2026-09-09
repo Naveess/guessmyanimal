@@ -238,6 +238,11 @@
   // shown count has actually moved, and only append the new row(s)
   // rather than rebuilding the ones already on screen.
   let renderedHints = { round: 0, count: 0 };
+  // Same append-only instinct as renderedHints above, keyed on the
+  // event id session.js already sends (oldest-first, stable, never
+  // reused) rather than a count - a chat log has no single "how many
+  // so far" number the way a fixed-length hint list does.
+  let renderedFeed = { lastId: 0 };
 
   function renderHintList() {
     const box = el('partyHints');
@@ -293,6 +298,7 @@
       const row = document.createElement('div');
       row.className = 'party-score' + (online ? ' is-online' : '');
       if (state.lastWinner && s.playerName === state.lastWinner && state.resolved) row.classList.add('is-winner');
+      if (playerName && s.playerName === playerName) row.classList.add('is-mine');
       const rank = document.createElement('span');
       rank.className = 'party-score-rank';
       rank.textContent = String(i + 1);
@@ -318,25 +324,49 @@
   }
 
   /* -- Activity feed: joins + guesses (right and wrong), local/QR play
-     only. A chat log, not a scoreboard - full re-render each poll since
-     the list is capped server-side (see EVENT_LIMIT in session.js), but
-     scroll position is only pinned to the bottom if the reader was
-     already there, same as any chat UI. --------------------------- */
+     only. A chat log, not a scoreboard. Same append-only instinct as
+     renderHintList above, keyed on event id rather than a count -
+     rebuilding this from scratch every 1.2s poll (the original
+     approach) re-announced the entire log to aria-live="polite" screen
+     readers nonstop during a live round, and snapped a sighted reader's
+     scroll position back to the top even when they'd scrolled up to
+     reread something. Scroll position is still only pinned to the
+     bottom if the reader was already there, same as any chat UI. ---- */
 
   function renderFeed() {
     const box = el('partyFeed');
     if (!box || !state) return;
-    const wasNearBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 48;
-    box.innerHTML = '';
     const events = state.events || [];
+
     if (!events.length) {
-      const empty = document.createElement('p');
-      empty.className = 'party-feed-empty';
-      empty.textContent = 'Nothing yet — invite a few people in.';
-      box.appendChild(empty);
+      if (renderedFeed.lastId !== 0) {
+        box.innerHTML = '';
+        const empty = document.createElement('p');
+        empty.className = 'party-feed-empty';
+        empty.textContent = 'Nothing yet — invite a few people in.';
+        box.appendChild(empty);
+      }
+      renderedFeed.lastId = 0;
       return;
     }
-    events.forEach((ev) => {
+
+    const wasNearBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 48;
+    // Server sends only the newest EVENT_LIMIT rows (session.js) - if
+    // the oldest id in this payload is newer than what's already
+    // rendered, older rows rolled off between polls and appending alone
+    // would leave stale rows on screen the server no longer stands
+    // behind. Rebuild in that case; append-only otherwise.
+    const rolledOff = renderedFeed.lastId > 0 && events[0].id > renderedFeed.lastId + 1;
+    if (renderedFeed.lastId === 0 || rolledOff) {
+      box.innerHTML = '';
+      events.forEach(appendFeedRow);
+    } else {
+      events.filter((ev) => ev.id > renderedFeed.lastId).forEach(appendFeedRow);
+    }
+    renderedFeed.lastId = events[events.length - 1].id;
+    if (wasNearBottom) box.scrollTop = box.scrollHeight;
+
+    function appendFeedRow(ev) {
       if (ev.kind === 'round') {
         const div = document.createElement('div');
         div.className = 'party-feed-divider';
@@ -368,8 +398,7 @@
       }
       row.append(icon, body);
       box.appendChild(row);
-    });
-    if (wasNearBottom) box.scrollTop = box.scrollHeight;
+    }
   }
 
   function renderRound(opts) {
@@ -378,6 +407,7 @@
     if (opts && opts.roundChanged) {
       el('partyGuess').value = '';
       el('partyFeedback').textContent = '';
+      el('partyResultCelebrate').innerHTML = '';
     }
 
     applyPixelation();
@@ -385,9 +415,13 @@
     renderScores();
     renderFeed();
 
-    el('partyRoundLabel').textContent = surface === 'host'
-      ? 'Round ' + state.roundNo + ' · Hint ' + Math.min(state.shown, MAX_HINTS) + ' of ' + MAX_HINTS
-      : 'Round ' + state.roundNo;
+    el('partyStatRound').textContent = String(state.roundNo);
+    el('partyStatHint').textContent = Math.min(state.shown, MAX_HINTS) + '/' + MAX_HINTS;
+    el('partyStatScoreWrap').hidden = !playerName;
+    if (playerName) {
+      const mine = state.scores && state.scores.find((s) => s.playerName === playerName);
+      el('partyStatScore').textContent = String(mine ? mine.score : 0);
+    }
 
     const done = state.resolved;
     const a = targetAnimal();
@@ -408,16 +442,51 @@
 
     el('partyResult').hidden = !done;
     if (done) {
-      const mine = !!(state.lastWinner && playerName && state.lastWinner === playerName);
-      el('partyResult').textContent = mine
-        ? 'You got it — ' + (a ? a.n : '') + '!'
-        : (state.lastWinner ? state.lastWinner + ' got it — ' + (a ? a.n : '') + '.' : 'Round over — ' + (a ? a.n : '') + '.');
-      el('partyResult').classList.toggle('is-mine', mine);
+      const won = !!(state.lastWinner && playerName && state.lastWinner === playerName);
+      el('partyResultEmoji').textContent = a ? (a.e || '🐾') : '🐾';
+      el('partyResultName').textContent = a ? a.n : '';
+      el('partyResultCard').classList.toggle('is-mine', won);
+      el('partyResultNote').textContent = won
+        ? 'You got it!'
+        : (state.lastWinner ? state.lastWinner + ' got it.' : 'Round over.');
     }
 
     if (opts && opts.justResolved) {
-      const mine = playerName && state.lastWinner === playerName;
-      sfx(mine ? 'win' : (surface === 'host' ? 'win' : 'hint'));
+      const won = playerName && state.lastWinner === playerName;
+      if (won) celebrateWin(); else el('partyResultCelebrate').innerHTML = '';
+      sfx(won ? 'win' : (surface === 'host' ? 'win' : 'hint'));
+    }
+  }
+
+  // Same particle recipe as Mystery Animal's own celebrate() (mystery.js)
+  // - the target's own emoji plus the site's paw mark and one sparkle,
+  // not generic confetti shapes, so the burst reads as "you got *this*
+  // animal" rather than a stock effect. Only ever called on a genuine,
+  // just-happened win (see justResolved above) - a round ending some
+  // other way shows the exact same card with this left empty.
+  const CELEBRATE_PARTICLES = [
+    { x: '8%', ty: '-64px', r: '-24deg', d: '0s' },
+    { x: '28%', ty: '-82px', r: '18deg', d: '.12s' },
+    { x: '50%', ty: '-56px', r: '-10deg', d: '.24s' },
+    { x: '72%', ty: '-80px', r: '22deg', d: '.12s' },
+    { x: '92%', ty: '-62px', r: '-18deg', d: '0s' },
+  ];
+  function celebrateWin() {
+    const box = el('partyResultCelebrate');
+    box.innerHTML = '';
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const a = targetAnimal();
+    const e = (a && a.e) || '🐾';
+    const glyphs = [e, '🐾', e, '✨', e];
+    for (let i = 0; i < CELEBRATE_PARTICLES.length; i++) {
+      const p = CELEBRATE_PARTICLES[i];
+      const s = document.createElement('span');
+      s.textContent = glyphs[i];
+      s.style.setProperty('--x', p.x);
+      s.style.setProperty('--ty', p.ty);
+      s.style.setProperty('--r', p.r);
+      s.style.setProperty('--d', p.d);
+      box.appendChild(s);
     }
   }
 
@@ -490,7 +559,57 @@
     el('partyNameForm').hidden = true;
     el('partyActive').hidden = true;
     el('partyPlayerMsg').hidden = true;
+    el('partyRecap').hidden = true;
   }
+
+  // A beat between "End party" and the blank setup form again - see
+  // partyEnd's click handler below for why. Host-only: a participant's
+  // own device currently learns the party's gone from a failed poll
+  // (onSessionGone), not from this - giving remote players a synced
+  // recap too would need the server to carry an "ended" signal, out of
+  // scope for what a purely host-local confirm+recap can do.
+  function showRecap(finalScores) {
+    el('partyTitleText').textContent = 'Party Mode';
+    el('partySetup').hidden = true;
+    el('partyNameForm').hidden = true;
+    el('partyActive').hidden = true;
+    el('partyPlayerMsg').hidden = true;
+
+    const box = el('partyRecapScores');
+    box.innerHTML = '';
+    const sorted = (finalScores || []).slice().sort((a, b) => b.score - a.score);
+    if (!sorted.length) {
+      const empty = document.createElement('p');
+      empty.className = 'party-scores-empty';
+      empty.textContent = 'No one scored this time.';
+      box.appendChild(empty);
+    } else {
+      sorted.forEach((s, i) => {
+        const row = document.createElement('div');
+        row.className = 'party-score' + (i === 0 && s.score > 0 ? ' is-winner' : '')
+          + (playerName && s.playerName === playerName ? ' is-mine' : '');
+        const rank = document.createElement('span');
+        rank.className = 'party-score-rank';
+        rank.textContent = String(i + 1);
+        const icon = document.createElement('span');
+        icon.className = 'party-score-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = s.icon || (s.source === 'twitch' ? '' : DEFAULT_ICON);
+        const name = document.createElement('span');
+        name.className = 'party-score-name';
+        name.textContent = s.playerName;
+        if (s.source === 'twitch') name.classList.add('is-twitch');
+        const pts = document.createElement('b');
+        pts.className = 'party-score-pts';
+        pts.textContent = String(s.score);
+        row.append(rank, icon, name, pts);
+        box.appendChild(row);
+      });
+    }
+    el('partyRecap').hidden = false;
+  }
+
+  el('partyRecapDone').addEventListener('click', showSetup);
 
   function showActiveRound() {
     el('partyTitleText').textContent = 'Party ' + code;
@@ -506,6 +625,8 @@
     editingIdentity = false;
     el('partyPlayTooCancel').hidden = true;
     el('partyPlayTooLabel').textContent = 'Want to play too, not just host?';
+    el('partyPlayTooSubmit').textContent = 'Join in';
+    el('partyPlayTooMsg').textContent = '';
     el('partyPlayToo').hidden = !isHost || !!playerName;
     el('partyYouLabel').hidden = !playerName;
     el('partyPlayerNameLabel').textContent = playerName || '';
@@ -550,6 +671,8 @@
       code = saved.code;
       hostKey = saved.hostKey;
       lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
+      renderedFeed = { lastId: 0 };
+      el('partyFeed').innerHTML = '';
       showActiveRound();
       startPolling();
       if (playerName) api('join', { code, playerName, icon: selectedIcon }).catch(() => {});
@@ -559,6 +682,30 @@
   }
 
   el('partyOpen').addEventListener('click', () => openPartyHost());
+
+  /* -- Home-screen "have a code?" entry: a typed alternative to the QR/
+     link, since the invite panel's own copy has always said "join...
+     with code" but nothing on the site accepted one typed in - only a
+     ?party=CODE URL (QR scan or exact link) worked. -------------------- */
+  el('partyCodeLink').addEventListener('click', () => {
+    el('partyCodeLink').hidden = true;
+    el('partyCodeForm').hidden = false;
+    el('partyCodeInput').focus();
+  });
+  el('partyCodeForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const raw = el('partyCodeInput').value.trim().toUpperCase();
+    if (!raw) {
+      el('partyCodeMsg').textContent = 'Type the code first.';
+      return;
+    }
+    if (!/^[A-Z0-9]{4,6}$/.test(raw)) {
+      el('partyCodeMsg').textContent = "That doesn't look like a party code — check for typos.";
+      return;
+    }
+    el('partyCodeMsg').textContent = '';
+    openPartyPlayer(raw);
+  });
 
   el('partyStart').addEventListener('click', async () => {
     const btn = el('partyStart');
@@ -579,6 +726,8 @@
       code = data.code;
       hostKey = data.hostKey;
       lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
+      renderedFeed = { lastId: 0 };
+      el('partyFeed').innerHTML = '';
       setStore(HOST_STORE, JSON.stringify({ code, hostKey }));
       showActiveRound();
       startPolling();
@@ -610,15 +759,28 @@
   });
 
   el('partyEnd').addEventListener('click', () => {
+    // One tap used to end the session for every participant outright,
+    // with no way back and no closing moment - the flattest point in
+    // the whole flow, right after the game's actual best one (the win
+    // reveal). A confirm plus a final-standings beat (see showRecap)
+    // fixes both at once.
+    if (!window.confirm("End the party for everyone? This can't be undone.")) return;
+
+    // Read before state is cleared below - showRecap needs one last
+    // look at the board this session actually produced.
+    const finalScores = state && state.scores;
+
     // The session just goes stale on the server - there's nothing to
     // close, and nothing stored anywhere that a next party would trip
     // over. This is only "forget it on this device".
     clearStore(HOST_STORE);
     code = null; hostKey = null; state = null;
     lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
+    renderedFeed = { lastId: 0 };
+    el('partyFeed').innerHTML = '';
     stopPolling();
     disconnectChat();
-    showSetup();
+    showRecap(finalScores);
   });
 
   function copyFrom(inputId, statusId) {
@@ -778,6 +940,8 @@
     code = String(joinCode || '').toUpperCase();
     state = null;
     lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
+    renderedFeed = { lastId: 0 };
+    el('partyFeed').innerHTML = '';
 
     enterPage();
     if (!(opts && opts.noPush) && window.GMA && typeof GMA.push === 'function') GMA.push('?party=' + code);
@@ -798,10 +962,41 @@
     }
   }
 
-  el('partyNameForm').addEventListener('submit', (e) => {
+  // True if `name` already belongs to someone else's row on the current
+  // leaderboard. `excludeName` is the identity being renamed (its own
+  // previous name never counts as a collision against itself) - omit it
+  // for a fresh join, where every existing row belongs to someone else.
+  function nameCollides(name, scores, excludeName) {
+    if (excludeName && name === excludeName) return false;
+    return (scores || []).some((s) => s.playerName === name);
+  }
+
+  // The initial join gate fires before polling has ever run (state is
+  // still null - see openPartyPlayer), so there's no leaderboard in
+  // memory yet to check against. One-off fetch rather than waiting for
+  // the first poll, so the very first name typed gets the same
+  // protection a later rename already has via `state.scores`.
+  async function nameTakenOnJoin(name) {
+    try {
+      const res = await fetch('api/party/session?code=' + encodeURIComponent(code));
+      const data = await res.json();
+      return nameCollides(name, data && data.scores);
+    } catch (e) { return false; } // offline - let the server be the final word
+  }
+
+  el('partyNameForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = el('partyName').value.trim().slice(0, 24);
     if (!name) return;
+    const btn = el('partyNameForm').querySelector('button[type=submit]');
+    btn.disabled = true;
+    const taken = await nameTakenOnJoin(name);
+    btn.disabled = false;
+    if (taken) {
+      el('partyNameMsg').textContent = 'Someone here is already using that name — try another.';
+      return;
+    }
+    el('partyNameMsg').textContent = '';
     setIdentity(name, selectedIcon);
     el('partyNameForm').hidden = true;
     showActiveRound();
@@ -818,6 +1013,14 @@
     const name = el('partyPlayTooName').value.trim().slice(0, 24);
     if (!name) return;
     const previous = editingIdentity ? playerName : null;
+    // Polling is already running by the time this form can appear, so
+    // state.scores is current enough to check synchronously - no need
+    // for the join gate's one-off fetch.
+    if (nameCollides(name, state && state.scores, previous)) {
+      el('partyPlayTooMsg').textContent = 'Someone here is already using that name — try another.';
+      return;
+    }
+    el('partyPlayTooMsg').textContent = '';
     setIdentity(name, selectedIcon, previous);
     editingIdentity = false;
     el('partyPlayToo').hidden = true;
@@ -829,17 +1032,25 @@
   el('partyEditName').addEventListener('click', () => {
     editingIdentity = true;
     el('partyPlayTooLabel').textContent = 'Change your name';
+    el('partyPlayTooSubmit').textContent = 'Save';
+    el('partyPlayTooMsg').textContent = '';
     el('partyPlayTooName').value = playerName || '';
     el('partyPlayTooCancel').hidden = false;
     el('partyYouLabel').hidden = true;
     el('partyGuessForm').hidden = true;
     el('partyPlayToo').hidden = false;
+    // Belongs to the now-hidden guess form, not the name editor - left
+    // alone, a stale "Not that one" from before "change" was clicked
+    // sits here with nothing on screen for it to be feedback about.
+    el('partyFeedback').textContent = '';
     el('partyPlayTooName').focus();
   });
 
   el('partyPlayTooCancel').addEventListener('click', () => {
     editingIdentity = false;
     el('partyPlayTooLabel').textContent = 'Want to play too, not just host?';
+    el('partyPlayTooSubmit').textContent = 'Join in';
+    el('partyPlayTooMsg').textContent = '';
     el('partyPlayTooCancel').hidden = true;
     el('partyPlayToo').hidden = true;
     el('partyYouLabel').hidden = !playerName;

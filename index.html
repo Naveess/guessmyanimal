@@ -34,10 +34,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260908-14">
-<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. Not on
-     stream.html: that page is a transparent OBS overlay with no content
-     of its own, never opened as a real page. -->
+<link rel="stylesheet" href="style.css?v=20260909-1">
+<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
 
@@ -80,17 +78,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     </svg>
   </button>
   <div class="menu-panel" id="menuPanel" hidden>
-    <a class="menu-item" href="about.html">About the game</a>
-    <a class="menu-item" href="browse.html">Browse all animals</a>
+    <a class="menu-item" href="about.html"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
+    <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
     <button class="menu-item" type="button" data-mystery>Mystery Animal</button>
-    <button class="menu-item" type="button" id="streamOpen">Stream Mode</button>
-    <button class="menu-item" type="button" id="partyOpen">Party Mode <span class="beta-tag">beta</span></button>
-    <!-- Wired in app.js, which owns the sound engine and this preference
-         for the whole site. The label carries the state rather than a
-         separate switch, same as the rest of this menu is plain items.
-         data-sfx="off" because turning sound *off* has to be silent, so
-         it plays its own click instead of taking the delegated one. -->
-    <button class="menu-item" type="button" id="soundToggle" aria-pressed="true" data-sfx="off">Sound on</button>
+    <button class="menu-item" type="button" id="partyOpen"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></button>
     <!-- menu-desktop-hide: these three plus Appearance move to a footer
          row / the sliding theme toggle by the corner menu once there's
          room for them to just be visible instead of tucked in a
@@ -119,6 +110,23 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      *does* start something), a same-flavoured label here reads as a
      second play button and sends people to the wrong place. -->
 <a class="play-link" id="playLink" href="about.html">How it works</a>
+
+<!-- Its own icon button rather than a menu item, since muting is a
+     one-tap decision made mid-sound (the paw stamp, a wrong-guess tone)
+     rather than a settings change someone digs into a dropdown for.
+     Fixed next to the corner menu on mobile, and in the menu button's
+     own vacated spot once the desktop nav bar replaces it - see
+     .sound-toggle in style.css. data-sfx="off" because turning sound
+     *off* has to be silent, so it plays its own click instead of taking
+     the delegated one. -->
+<button class="sound-toggle" id="soundToggle" type="button"
+        aria-pressed="true" aria-label="Sound on" data-sfx="off">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/>
+    <path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/>
+    <path class="sw-mute" d="M15.5 9.5l5 5m0-5l-5 5"/>
+  </svg>
+</button>
 
 <!-- Desktop-only sliding theme switch, next to the corner menu button -
      one shared instance (not one per view) since it's fixed-position
@@ -153,27 +161,98 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <section class="home" id="home">
   <div class="home-in">
 
-    <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="Guess My Animal">
-      <ellipse cx="32" cy="41" rx="14.5" ry="12"/>
-      <ellipse cx="14.5" cy="27" rx="6.4" ry="8"/>
-      <ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/>
-      <ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/>
-      <ellipse cx="49.5" cy="27" rx="6.4" ry="8"/>
-    </svg>
+    <!-- The paw does not arrive, it lands: it falls in, squashes against
+         the ground, throws a ring and a little dust, and the letters
+         below are knocked loose by the impact rather than animating in
+         on their own schedule (see .wm-l in style.css). Decorative, so
+         aria-hidden - the <h1> right below is the accessible name, and
+         labelling both made a screen reader say it twice. Tap it to
+         stamp again. -->
+    <div class="mark-stage" id="markStage">
+      <span class="mark-ring" aria-hidden="true"></span>
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <ellipse cx="32" cy="41" rx="14.5" ry="12"/>
+        <ellipse class="mark-toe" style="--tx:-1.4px; --ty:-.6px" cx="14.5" cy="27" rx="6.4" ry="8"/>
+        <ellipse class="mark-toe" style="--tx:-.7px; --ty:-1.2px" cx="26" cy="16.5" rx="6.4" ry="8.6"/>
+        <ellipse class="mark-toe" style="--tx:.7px; --ty:-1.2px" cx="38" cy="16.5" rx="6.4" ry="8.6"/>
+        <ellipse class="mark-toe" style="--tx:1.4px; --ty:-.6px" cx="49.5" cy="27" rx="6.4" ry="8"/>
+      </svg>
+      <span class="mark-dust" aria-hidden="true"
+        ><i style="--a:-168deg; --far:58px"></i><i style="--a:-140deg; --far:76px"></i
+        ><i style="--a:-108deg; --far:62px"></i><i style="--a:-72deg; --far:64px"></i
+        ><i style="--a:-40deg; --far:78px"></i><i style="--a:-12deg; --far:56px"></i
+      ></span>
+    </div>
 
-    <h1 class="wordmark">Guess my<br>animal</h1>
+    <!-- --d is how long the shockwave takes to reach this letter (0 =
+         directly under the paw) and drives both its delay and how high
+         it is thrown; --r is which way it tumbles, outward from the
+         point of impact. -->
+    <h1 class="wordmark" aria-label="Guess my animal">
+      <span class="wm-row" aria-hidden="true"><span class="wm-word"><span class="wm-l" style="--d:3; --r:-7deg">G</span><span class="wm-l" style="--d:2; --r:-5deg">u</span><span class="wm-l" style="--d:1; --r:-3deg">e</span><span class="wm-l" style="--d:0; --r:-1deg">s</span><span class="wm-l" style="--d:1; --r:2deg">s</span></span> <span class="wm-word"><span class="wm-l" style="--d:2; --r:5deg">m</span><span class="wm-l" style="--d:3; --r:7deg">y</span></span></span>
+      <span class="wm-row" aria-hidden="true"><span class="wm-word"><span class="wm-l" style="--d:5; --r:-6deg">a</span><span class="wm-l" style="--d:4; --r:-4deg">n</span><span class="wm-l" style="--d:3; --r:-2deg">i</span><span class="wm-l" style="--d:3; --r:2deg">m</span><span class="wm-l" style="--d:4; --r:4deg">a</span><span class="wm-l" style="--d:5; --r:6deg">l</span></span></span>
+    </h1>
     <p class="tagline">Someone is thinking of an animal.<br>Ask better questions.</p>
 
-    <div class="dock" id="dockHome"></div>
+    <!-- The search unit is a single element that gets moved between
+         the home hero and the top bar (see app.js's dock()) - one
+         input, one listbox, one set of handlers, in both places. It
+         lives here in the markup by default (not as an empty JS-filled
+         slot) so it's visible and usable on first paint, before any
+         script has run; dock('top') relocates it into #dockTop once an
+         animal is showing, and dock('home') is a no-op here since it's
+         already in place. -->
+    <div class="dock" id="dockHome">
+      <div class="searchunit" id="searchunit">
+        <div class="searchrow">
+          <span class="mag" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+              <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+            </svg>
+          </span>
+          <input id="q" type="search" autocomplete="off" autocorrect="off" autocapitalize="off"
+                 spellcheck="false" enterkeyhint="search"
+                 placeholder="Type an animal…" aria-label="Search for an animal"
+                 role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
+          <button class="dice" id="random" type="button" aria-label="Show me a random animal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/>
+              <circle cx="9" cy="9" r="1.35" fill="currentColor" stroke="none"/>
+              <circle cx="15" cy="15" r="1.35" fill="currentColor" stroke="none"/>
+              <circle cx="15" cy="9" r="1.35" fill="currentColor" stroke="none"/>
+              <circle cx="9" cy="15" r="1.35" fill="currentColor" stroke="none"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="suggest" id="suggest" role="listbox" aria-label="Matching animals" hidden></ul>
+        <p class="noresult" id="noresult" hidden></p>
+      </div>
+    </div>
 
     <div class="starters">
       <p class="starters-label" id="startersLabel">or try one of these</p>
-      <div class="chips" id="starterChips"></div>
+      <div class="chips" id="starterChips" role="group" aria-labelledby="startersLabel"></div>
     </div>
 
     <button class="mystery-play anim-rise" type="button" data-mystery>
       <span aria-hidden="true">🎯</span> Play Mystery Animal
     </button>
+
+    <!-- A typed alternative to the QR/link for Party Mode: someone told
+         a code out loud, rather than handed the QR or an exact link,
+         had no way in until this existed - see party.js. Collapsed
+         behind a quiet text link rather than a second visible input:
+         .mystery-play is deliberately this screen's one decisive
+         element (see its own comment), so this stays in the splash's
+         quiet-outline register instead of competing with it. -->
+    <button class="home-code-link" type="button" id="partyCodeLink">Have a party code?</button>
+    <form class="home-code-form" id="partyCodeForm" hidden>
+      <input id="partyCodeInput" type="text" inputmode="text" autocomplete="off" autocorrect="off"
+             autocapitalize="characters" spellcheck="false" maxlength="6"
+             placeholder="Code" aria-label="Party code">
+      <button class="home-code-submit" type="submit">Join</button>
+    </form>
+    <p class="home-code-msg" id="partyCodeMsg" role="status"></p>
 
   </div>
   <p class="home-foot" id="count"></p>
@@ -184,36 +263,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
   </div>
 </section>
-
-<!-- ============================================================
-     The search unit is a single element that gets moved between
-     the home hero and the top bar. One input, one listbox, one set
-     of handlers, in both places.
-     ============================================================ -->
-<div class="searchunit" id="searchunit">
-  <div class="searchrow">
-    <span class="mag" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
-        <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
-      </svg>
-    </span>
-    <input id="q" type="search" autocomplete="off" autocorrect="off" autocapitalize="off"
-           spellcheck="false" enterkeyhint="search"
-           placeholder="Type an animal…" aria-label="Search for an animal"
-           role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
-    <button class="dice" id="random" type="button" aria-label="Show me a random animal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/>
-        <circle cx="9" cy="9" r="1.35" fill="currentColor" stroke="none"/>
-        <circle cx="15" cy="15" r="1.35" fill="currentColor" stroke="none"/>
-        <circle cx="15" cy="9" r="1.35" fill="currentColor" stroke="none"/>
-        <circle cx="9" cy="15" r="1.35" fill="currentColor" stroke="none"/>
-      </svg>
-    </button>
-  </div>
-  <ul class="suggest" id="suggest" role="listbox" aria-label="Matching animals" hidden></ul>
-  <p class="noresult" id="noresult" hidden></p>
-</div>
 
 <!-- ============================================================
      ANIMAL. Photo card first, then the answers, with more photos
@@ -602,6 +651,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <input id="partyName" type="text" maxlength="24" autocomplete="off"
              placeholder="Your name" aria-label="Your name">
       <div class="party-icon-picker" id="partyIconPicker" role="radiogroup" aria-label="Pick an icon"></div>
+      <p class="party-msg" id="partyNameMsg" role="status"></p>
       <button class="btn btn-solid" type="submit">Join the party</button>
     </form>
 
@@ -625,11 +675,20 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
       <div class="party-columns">
         <div class="party-main">
+          <!-- Same .mystery-stats/.mystery-stat tiles Mystery Animal's own
+               round card uses (see style.css), so a round in progress reads
+               as the same kind of moment whether you're playing solo or in
+               a room - "Round"/"Hint" always show; "Score" only once an
+               identity's set, since there's no personal score before that. -->
           <div class="party-roundhead">
-            <span class="party-round" id="partyRoundLabel">Round 1</span>
             <span class="party-you" id="partyYouLabel" hidden>Playing as <b id="partyPlayerNameLabel"></b>
               <button type="button" class="party-you-edit" id="partyEditName">change</button>
             </span>
+            <div class="mystery-stats party-stats">
+              <div class="mystery-stat"><b id="partyStatRound">1</b><span>Round</span></div>
+              <div class="mystery-stat"><b id="partyStatHint">–</b><span>Hint</span></div>
+              <div class="mystery-stat" id="partyStatScoreWrap" hidden><b id="partyStatScore">0</b><span>Score</span></div>
+            </div>
           </div>
 
           <!-- Same Photo Card component and the same real-tiny-thumbnail
@@ -665,6 +724,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
             <input id="partyPlayTooName" type="text" maxlength="24" autocomplete="off"
                    placeholder="Your name" aria-label="Your name">
             <div class="party-icon-picker" id="partyPlayTooIconPicker" role="radiogroup" aria-label="Pick an icon"></div>
+            <p class="party-msg" id="partyPlayTooMsg" role="status"></p>
             <div class="party-playtoo-actions">
               <button class="btn btn-solid" type="submit" id="partyPlayTooSubmit">Join in</button>
               <button class="btn" type="button" id="partyPlayTooCancel" hidden>Cancel</button>
@@ -680,7 +740,22 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
           </form>
           <p class="mystery-feedback" id="partyFeedback" role="status" aria-live="polite"></p>
 
-          <p class="party-result" id="partyResult" role="status" hidden></p>
+          <!-- Same result-card component Mystery Animal resolves a round
+               into (see style.css/mystery.js's celebrate()) - reused
+               wholesale for the card itself and the win-burst, since a
+               round ending should look like the same kind of moment
+               either way. The one real difference: Sun here means "you,
+               specifically, won this," not just "a round resolved" (see
+               the .is-mine styling this relies on) - a shared room needs
+               that distinction Mystery's solo version never had to make. -->
+          <div class="mystery-result party-result" id="partyResult" hidden>
+            <div class="mystery-result-card" id="partyResultCard">
+              <span class="mystery-result-emoji" id="partyResultEmoji" aria-hidden="true"></span>
+              <span class="mystery-result-name" id="partyResultName"></span>
+              <div class="mystery-celebrate" id="partyResultCelebrate" aria-hidden="true"></div>
+            </div>
+            <p class="mystery-result-note" id="partyResultNote" role="status"></p>
+          </div>
 
           <!-- Host only. -->
           <button class="btn party-hintbtn" type="button" id="partyHint" hidden>Reveal next hint</button>
@@ -698,6 +773,17 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
       <!-- Host only. -->
       <button class="btn party-endbtn" type="button" id="partyEnd" hidden>End party</button>
+    </div>
+
+    <!-- Host only: a beat after "End party" (which asks to confirm
+         first) instead of dropping straight back to a blank setup form -
+         the win reveal is this feature's one real peak, and ending a
+         party with no closing moment at all was the flattest point in
+         the whole flow. -->
+    <div id="partyRecap" hidden>
+      <h2 class="label">Final standings</h2>
+      <div class="party-scores" id="partyRecapScores"></div>
+      <button class="btn btn-solid" type="button" id="partyRecapDone">Start a new party</button>
     </div>
   </main>
 </div>
@@ -743,44 +829,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </form>
 </dialog>
 
-<!-- ============================================================
-     STREAM MODE. A key generated once and kept in localStorage, an
-     overlay URL built from it, and a live preview of that exact URL
-     right here - so it's provably working before OBS ever opens it.
-     ============================================================ -->
-<dialog class="dlg dlg-stream" id="streamDlg" aria-labelledby="streamTitle">
-  <div class="dlg-in">
-    <h2 class="dlg-title" id="streamTitle">Stream Mode</h2>
-    <p class="dlg-note">Paste the link below into OBS as a Browser Source. Then just use the site as normal - whatever you look up shows up there too, a beat later.</p>
-
-    <label class="fld">
-      <span class="fld-label">Overlay link</span>
-      <div class="stream-url-row">
-        <input type="text" id="streamUrl" readonly aria-label="Overlay link">
-        <button class="btn" type="button" id="streamCopy">Copy</button>
-      </div>
-    </label>
-    <p class="copied" id="streamCopyStatus" aria-live="polite"></p>
-
-    <div class="stream-toggle-row">
-      <span class="stream-toggle-label">Broadcasting your lookups</span>
-      <button type="button" class="stream-toggle" id="streamToggle" aria-pressed="true">On</button>
-    </div>
-
-    <div class="stream-preview">
-      <p class="stream-preview-label">Live preview</p>
-      <p class="stream-preview-hint">Try looking an animal up — it appears here too.</p>
-      <div class="stream-preview-frame">
-        <iframe id="streamPreview" title="Stream Mode overlay preview" src="about:blank"></iframe>
-      </div>
-    </div>
-
-    <div class="dlg-actions">
-      <button class="btn btn-solid" type="button" id="streamClose">Done</button>
-    </div>
-  </div>
-</dialog>
-
 <script src="animals.js?v=20260907-1"></script>
 <script src="render-data.js?v=20260901-1"></script>
 <script src="related.js?v=20260908-1"></script>
@@ -794,12 +842,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      checks window.openPartyPlayer on its very first call, so a direct
      or refreshed ?party=CODE link (which is what every QR code and
      join link is) lands on the player view rather than the home page. -->
-<script src="party.js?v=20260908-2"></script>
+<script src="party.js?v=20260909-1"></script>
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
 <script src="mystery.js?v=20260908-9"></script>
-<script src="app.js?v=20260908-3"></script>
+<script src="app.js?v=20260909-1"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is
