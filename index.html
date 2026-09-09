@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260909-3">
+<link rel="stylesheet" href="style.css?v=20260909-4">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -621,6 +621,20 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <p class="mystery-title"><span id="partyTitleText">Party Mode</span> <span class="beta-tag">beta</span></p>
   </header>
 
+  <!-- Mobile-only "quick glance" strip: your rank, your score, and how
+       many are online, pinned just under the top bar once the round
+       card (#partyRoundhead) has scrolled out of view. Desktop already
+       shows this permanently in the sticky side column (see
+       .party-columns), so it's suppressed there entirely - see the
+       observer in party.js and the desktop override in style.css. -->
+  <div class="party-minibar" id="partyMiniBar" hidden aria-hidden="true">
+    <span class="party-minibar-me" id="partyMiniMe"></span>
+    <span class="party-minibar-online">
+      <span class="party-minibar-dot" aria-hidden="true"></span>
+      <span id="partyMiniOnlineText"></span>
+    </span>
+  </div>
+
   <main class="feed">
     <p class="party-msg" id="partyPlayerMsg" role="status" hidden></p>
 
@@ -699,7 +713,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
                as the same kind of moment whether you're playing solo or in
                a room - "Round"/"Hint" always show; "Score" only once an
                identity's set, since there's no personal score before that. -->
-          <div class="party-roundhead">
+          <div class="party-roundhead" id="partyRoundhead">
             <span class="party-you" id="partyYouLabel" hidden>Playing as <b id="partyPlayerNameLabel"></b>
               <button type="button" class="party-you-edit" id="partyEditName">change</button>
             </span>
@@ -861,7 +875,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      checks window.openPartyPlayer on its very first call, so a direct
      or refreshed ?party=CODE link (which is what every QR code and
      join link is) lands on the player view rather than the home page. -->
-<script src="party.js?v=20260909-1"></script>
+<script src="party.js?v=20260909-4"></script>
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->

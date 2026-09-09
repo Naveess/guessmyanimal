@@ -62,6 +62,7 @@
   let guessSending = false; // one local guess POST in flight at a time
   let photoFullSrc = null; // the real thumbnail URL for the current target, once fetched
   let photoForSlug = null; // which target the fetched photo belongs to, so a stale fetch can't paint it late
+  let miniBarObserver = null; // set up fresh each enterPage() - see setupMiniBar()
 
   function getStore(key) { try { return localStorage.getItem(key) || ''; } catch (e) { return ''; } }
   function setStore(key, v) { try { localStorage.setItem(key, v); } catch (e) {} }
@@ -130,6 +131,7 @@
     surface = null;
     stopPolling();
     disconnectChat();
+    el('partyMiniBar').hidden = true;
   }
 
   function applyState(data) {
@@ -162,6 +164,7 @@
       el('partyPlayerMsg').textContent = 'That party has finished, or the code was wrong.';
       el('partyPlayerMsg').hidden = false;
       el('partyActive').hidden = true;
+      el('partyMiniBar').hidden = true;
       stopPolling();
     }
   }
@@ -279,6 +282,16 @@
   // Twitch names never heartbeat (there's no tab to poll from on their
   // behalf), so they're never marked online here - the chat connection
   // status dot already covers "is the overlay actually listening".
+  // Shared by the live board and the final recap - a fresh node each
+  // call, since a row can only hold one. Visibility is pure CSS
+  // (.is-leader / .is-winner), so it's always safe to append.
+  function crownEl() {
+    const span = document.createElement('span');
+    span.className = 'party-score-crown';
+    span.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7Z"/></svg>';
+    return span;
+  }
+
   function renderScores() {
     const box = el('partyScores');
     box.innerHTML = '';
@@ -298,6 +311,11 @@
       if (online) onlineCount++;
       const row = document.createElement('div');
       row.className = 'party-score' + (online ? ' is-online' : '');
+      // Leader: top of the board right now, distinct from is-winner
+      // below (which flags whoever won the *last round*, and fades
+      // once the next one starts) - a room can watch both signals at
+      // once without them fighting for the same visual.
+      if (i === 0 && s.score > 0) row.classList.add('is-leader');
       if (state.lastWinner && s.playerName === state.lastWinner && state.resolved) row.classList.add('is-winner');
       if (playerName && s.playerName === playerName) row.classList.add('is-mine');
       const rank = document.createElement('span');
@@ -318,7 +336,7 @@
       const pts = document.createElement('b');
       pts.className = 'party-score-pts';
       pts.textContent = String(s.score);
-      row.append(rank, dot, icon, name, pts);
+      row.append(crownEl(), rank, dot, icon, name, pts);
       box.appendChild(row);
     });
     if (label) label.textContent = 'Leaderboard' + (onlineCount ? ' · ' + onlineCount + ' in the party' : '');
@@ -415,6 +433,7 @@
     renderHintList();
     renderScores();
     renderFeed();
+    updateMiniBar();
 
     el('partyStatRound').textContent = String(state.roundNo);
     el('partyStatHint').textContent = Math.min(state.shown, MAX_HINTS) + '/' + MAX_HINTS;
@@ -552,6 +571,7 @@
     // QR scan) leaves it stranded over this view's own topbar.
     if (window.GMA && typeof GMA.dock === 'function') GMA.dock('home');
     window.scrollTo(0, 0);
+    setupMiniBar();
   }
 
   function showSetup() {
@@ -559,6 +579,7 @@
     el('partySetup').hidden = false;
     el('partyNameForm').hidden = true;
     el('partyActive').hidden = true;
+    el('partyMiniBar').hidden = true;
     el('partyPlayerMsg').hidden = true;
     el('partyRecap').hidden = true;
   }
@@ -574,6 +595,7 @@
     el('partySetup').hidden = true;
     el('partyNameForm').hidden = true;
     el('partyActive').hidden = true;
+    el('partyMiniBar').hidden = true;
     el('partyPlayerMsg').hidden = true;
 
     const box = el('partyRecapScores');
@@ -603,7 +625,7 @@
         const pts = document.createElement('b');
         pts.className = 'party-score-pts';
         pts.textContent = String(s.score);
-        row.append(rank, icon, name, pts);
+        row.append(crownEl(), rank, icon, name, pts);
         box.appendChild(row);
       });
     }
@@ -1110,6 +1132,64 @@
 
   renderIconPicker(el('partyIconPicker'));
   renderIconPicker(el('partyPlayTooIconPicker'));
+
+  /* -- Mobile mini-strip: shows rank/score/online once the round card
+     (#partyRoundhead) scrolls out from under the sticky top bar. Set up
+     from enterPage(), not at module load - at load time #partyview (and
+     its topbar) is still [hidden] behind the home splash, which measures
+     as 0px height and would pin the bar right under the real top bar
+     instead of below it. The top bar's real height also varies with
+     env(safe-area-inset-top), so it's measured live rather than a guess
+     baked into CSS - see --topbar-h. Same feature-detected
+     IntersectionObserver idiom app.js already uses for the extra-photos
+     reveal. Re-run on every enterPage() rather than once, since a
+     rotated device or a re-entry after the topbar's content changed
+     could shift its height; the old observer is disconnected first so
+     repeat visits don't stack up duplicate callbacks. */
+  function setupMiniBar() {
+    // Scoped to this view specifically - a bare '.topbar' query returns
+    // whichever one is first in the document (the animal view's), which
+    // stays [hidden] and 0px tall the entire time party mode is open.
+    const topbarEl = el('partyview').querySelector('.topbar');
+    const h = topbarEl ? Math.ceil(topbarEl.getBoundingClientRect().height) : 58;
+    document.documentElement.style.setProperty('--topbar-h', h + 'px');
+    if (!('IntersectionObserver' in window)) return;
+    if (miniBarObserver) miniBarObserver.disconnect();
+    miniBarObserver = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        el('partyMiniBar').hidden = e.isIntersecting || el('partyActive').hidden;
+      }
+    }, { rootMargin: `-${h}px 0px 0px 0px` });
+    const roundhead = el('partyRoundhead');
+    if (roundhead) miniBarObserver.observe(roundhead);
+  }
+
+  function updateMiniBar() {
+    const bar = el('partyMiniBar');
+    if (!bar || !state) return;
+    const scores = state.scores || [];
+    const now = Date.now();
+    const onlineCount = scores.filter((s) => s.source !== 'twitch' && typeof s.updatedAt === 'number' && (now - s.updatedAt) < ONLINE_WINDOW_MS).length;
+
+    const meIdx = playerName ? scores.findIndex((s) => s.playerName === playerName) : -1;
+    const leading = meIdx === 0 && scores[0] && scores[0].score > 0;
+    const me = el('partyMiniMe');
+    me.innerHTML = '';
+    if (meIdx > -1) {
+      if (leading) me.appendChild(crownEl());
+      const rank = document.createElement('span');
+      rank.className = 'party-minibar-rank';
+      rank.textContent = '#' + (meIdx + 1) + ' · ';
+      const pts = document.createElement('b');
+      pts.className = 'party-minibar-score';
+      pts.textContent = scores[meIdx].score + ' pts';
+      me.append(rank, pts);
+    } else {
+      me.textContent = 'Watching';
+    }
+    bar.classList.toggle('is-leading', leading);
+    el('partyMiniOnlineText').textContent = onlineCount + ' in the party';
+  }
 
   window.openPartyHost = openPartyHost;
   window.openPartyPlayer = openPartyPlayer;

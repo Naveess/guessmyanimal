@@ -2476,9 +2476,19 @@ body.view-page { background: var(--paper); }
   border-color: color-mix(in srgb, var(--sun) 40%, var(--line));
 }
 
+/* Leaderboard and Activity are the two panels a shared room actually
+   watches, so each gets its own Card+Line frame (the Border-Or-Shadow
+   Rule) instead of bleeding straight into the page - previously both
+   were flush lists with no edge of their own, reading as leftover list
+   items rather than a panel worth looking at. */
 .party-scores-label { margin-top: 26px; }
-.party-scores { display: flex; flex-direction: column; }
-.party-scores-empty { margin: 0; padding: 12px 0; font-size: 15px; color: var(--muted); }
+.party-scores {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  background: var(--card);
+  padding: 2px 14px;
+}
+.party-scores-empty { margin: 0; padding: 14px 0; font-size: 15px; color: var(--muted); }
 .party-score {
   display: flex; align-items: center; gap: 11px;
   padding: 11px 0; font-size: 15.5px;
@@ -2489,6 +2499,18 @@ body.view-page { background: var(--paper); }
   font-size: 13px; font-weight: 600; color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
+/* Hidden by default, revealed only on the row currently in first place
+   (score > 0) - a recolour of an existing glyph, the same move
+   .is-winner already makes on the points figure below, not a new
+   solid-fill Sun element (the One-Yellow Rule's target is filled
+   panels/buttons, not a 14px icon taking a text colour). */
+.party-score-crown {
+  display: none; flex: none; width: 14px; height: 14px;
+  margin-right: -3px; color: var(--sun-deep);
+}
+.party-score-crown svg { width: 100%; height: 100%; }
+.party-score.is-leader .party-score-crown,
+.party-score.is-winner .party-score-crown { display: inline-flex; }
 .party-score-name { flex: 1; min-width: 0; font-weight: 500; overflow-wrap: anywhere; }
 /* Twitch guesses and phone guesses share one board, so the source has
    to be legible without being a second column of noise. */
@@ -2505,13 +2527,31 @@ body.view-page { background: var(--paper); }
    apart. Same dot idiom the Twitch chat status line already uses
    (.party-chat.is-live/.is-down), just smaller and inline. */
 .party-score-dot {
+  position: relative;
   flex: none; width: 7px; height: 7px; border-radius: 50%;
   background: var(--line);
 }
 .party-score.is-online .party-score-dot { background: var(--good); }
+/* A static dot reads as decoration; a live one has to look alive.
+   Rather than an emoji or a second dot, one ::after ring expands and
+   fades on a loop - the same "presence" idiom a chat client's online
+   indicator uses, sized down to fit a 7px dot. */
+.party-score.is-online .party-score-dot::after {
+  content: ''; position: absolute; inset: -3px; border-radius: 50%;
+  border: 1.5px solid var(--good);
+  animation: party-pulse 1.8s var(--ease) infinite;
+}
+@keyframes party-pulse {
+  0% { transform: scale(.6); opacity: .8; }
+  75%, 100% { transform: scale(1.9); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .party-score.is-online .party-score-dot::after { animation: none; display: none; }
+}
 .party-score-icon { flex: none; width: 20px; font-size: 16px; line-height: 1; text-align: center; }
 .party-score-pts { flex: none; font-weight: 700; font-variant-numeric: tabular-nums; }
-.party-score.is-winner .party-score-pts { color: var(--sun-deep, var(--ink)); }
+.party-score.is-winner .party-score-pts,
+.party-score.is-leader .party-score-pts { color: var(--sun-deep, var(--ink)); }
 /* Finding your own row in a shared, growing leaderboard used to mean
    reading every name - the rank number and "you" label above the board
    don't help once there's more than a couple of players. A contained
@@ -2536,13 +2576,21 @@ body.view-page { background: var(--paper); }
 .party-feed {
   display: flex; flex-direction: column; gap: 2px;
   max-height: 260px; overflow-y: auto;
-  padding: 4px 2px;
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  background: var(--card);
+  padding: 6px 8px;
 }
-.party-feed-empty { margin: 0; padding: 12px 0; font-size: 15px; color: var(--muted); }
+.party-feed-empty { margin: 0; padding: 14px 0; font-size: 15px; color: var(--muted); }
 .party-feed-row {
   display: flex; align-items: flex-start; gap: 9px;
   margin: 0; padding: 7px 6px; border-radius: 11px;
   font-size: 14px; line-height: 1.4;
+  /* A new row arriving mid-round should feel like it just happened, not
+     appear fully-formed - reuses the hint list's own entrance rather
+     than inventing a second motion language. Gets the same
+     reduced-motion fallback for free, since that's keyed to the
+     keyframe name, not this selector. */
+  animation: rise .3s var(--ease) backwards;
 }
 .party-feed-icon { flex: none; font-size: 15px; line-height: 1.4; }
 .party-feed-text { min-width: 0; overflow-wrap: anywhere; color: var(--muted); }
@@ -2550,12 +2598,74 @@ body.view-page { background: var(--paper); }
 /* A wrong guess is exactly the thing this feed exists to surface - it
    stays legible, not muted-away like a dismissed error would be. */
 .party-feed-row.is-wrong { background: var(--flat-bg); }
-.party-feed-row.is-correct { background: var(--good-bg); }
-.party-feed-row.is-correct .party-feed-text { color: var(--good); }
+/* A correct guess is the payoff moment the whole feed is building
+   toward, so it gets more than a colour swap: a brief one-shot flash
+   from a stronger Good wash down to the resting Good-bg, plus a weight
+   step on the text, so it's the loudest thing in the log for a moment
+   rather than reading identically to a routine wrong guess. */
+.party-feed-row.is-correct {
+  background: var(--good-bg);
+  animation: rise .3s var(--ease) backwards, party-correct-flash .9s var(--ease) backwards;
+}
+.party-feed-row.is-correct .party-feed-text { color: var(--good); font-weight: 600; }
+@keyframes party-correct-flash {
+  0% { background: color-mix(in srgb, var(--good) 40%, var(--good-bg)); }
+  100% { background: var(--good-bg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .party-feed-row.is-correct { animation: none; }
+}
+/* Recoloured to Sun-deep rather than Muted - the same "state, not a new
+   fill" move the crown and .is-winner's points figure already make, so
+   a fresh round reads as a small beat rather than a plain label. */
 .party-feed-divider {
-  margin: 10px 0 2px; padding: 0;
+  margin: 14px 0 4px; padding: 0;
   font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--muted); text-align: center;
+  color: var(--sun-deep); text-align: center;
+  animation: rise .3s var(--ease) backwards;
+}
+
+/* -- Mobile mini-strip: rank/score/online, pinned under the top bar
+   once the round card scrolls out of view (see the IntersectionObserver
+   in party.js). Solves the same problem the desktop side column
+   already solves a different way: once you've scrolled down to read
+   the leaderboard or feed, the round itself is off-screen and you've
+   lost track of your own place in it. Sticky, not fixed, so it only
+   ever occupies space once it's actually needed, and top is set from
+   JS (--topbar-h) rather than a guessed constant, since the top bar's
+   real height moves with env(safe-area-inset-top) per device. */
+.party-minibar {
+  position: sticky; top: var(--topbar-h, 58px); z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 9px 14px;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  font-size: 13.5px; font-weight: 600;
+}
+.party-minibar[hidden] { display: none; }
+.party-minibar-me { display: flex; align-items: center; gap: 6px; min-width: 0; overflow-wrap: anywhere; }
+.party-minibar-me .party-score-crown { margin-right: -5px; }
+.party-minibar-rank { color: var(--muted); font-variant-numeric: tabular-nums; }
+.party-minibar-score { font-variant-numeric: tabular-nums; }
+.party-minibar.is-leading .party-minibar-score { color: var(--sun-deep); }
+.party-minibar-online {
+  flex: none; display: flex; align-items: center; gap: 6px;
+  color: var(--muted); font-weight: 500;
+}
+.party-minibar-dot {
+  position: relative;
+  flex: none; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--good);
+}
+.party-minibar-dot::after {
+  content: ''; position: absolute; inset: -3px; border-radius: 50%;
+  border: 1.5px solid var(--good);
+  animation: party-pulse 1.8s var(--ease) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .party-minibar-dot::after { animation: none; display: none; }
 }
 
 /* -- Desktop: main round on the left, leaderboard + feed as a sticky
@@ -2600,6 +2710,10 @@ body.view-page { background: var(--paper); }
      above) - left alone, "Round N" sits a visible 18px lower than
      "Leaderboard" despite both being the first line in their column. */
   .party-roundhead { margin-top: 0; }
+  /* The side column is already permanently visible at this width, so
+     the mobile mini-strip would be pure duplication - never shown, and
+     never wired to appear via the observer either (see party.js). */
+  .party-minibar { display: none; }
 }
 
 /* -- Host: setup and the invite panel -------------------------------- */
