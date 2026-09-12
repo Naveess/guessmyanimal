@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Twitch stream mode — Guess My Animal</title>
+<meta name="description" content="Run Guess My Animal for your Twitch chat — connect your channel and let chat guess the animal live.">
+<meta name="theme-color" content="#ffce1f">
+<meta name="robots" content="noindex">
+
+<meta property="og:title" content="Twitch stream mode — Guess My Animal">
+<meta property="og:description" content="Run Guess My Animal for your Twitch chat — connect your channel and let chat guess the animal live.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preload" href="fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){try{var t=localStorage.getItem('gma-theme');
+if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="style.css?v=20260912-2">
+</head>
+<body class="view-page">
+
+<!-- Same corner menu as every other standalone page - see menu.js. -->
+<nav class="menu" id="menu">
+  <button class="menu-btn" id="menuBtn" type="button"
+          aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </svg>
+  </button>
+  <div class="menu-panel" id="menuPanel" hidden>
+    <a class="menu-item" href="about.html"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
+    <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
+    <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
+    <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
+    <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+    <a class="menu-item menu-desktop-hide" href="./?report=1">Report a problem</a>
+    <a class="menu-item menu-desktop-hide" href="privacy.html">Privacy</a>
+    <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal"
+       target="_blank" rel="noopener">Source on GitHub</a>
+    <hr class="menu-sep menu-desktop-hide">
+    <p class="theme-label menu-desktop-hide" id="themeLabel">Appearance</p>
+    <div class="theme menu-desktop-hide" role="group" aria-labelledby="themeLabel">
+      <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
+      <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+    </div>
+  </div>
+</nav>
+
+<div class="theme-toggle" role="group" aria-label="Appearance">
+  <button type="button" class="theme-toggle-opt" data-theme-set="light" aria-pressed="false" aria-label="Light">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.5"/>
+      <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+    </svg>
+  </button>
+  <button type="button" class="theme-toggle-opt" data-theme-set="dark" aria-pressed="false" aria-label="Dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>
+    </svg>
+  </button>
+  <button type="button" class="theme-toggle-opt" data-theme-set="system" aria-pressed="true" aria-label="System">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="13" rx="2"/>
+      <path d="M8 21h8M12 17v4"/>
+    </svg>
+  </button>
+</div>
+
+<header class="topbar">
+  <a class="back" href="./" aria-label="Back to search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 5 8 12l7 7"/>
+    </svg>
+  </a>
+  <p class="mystery-title">Twitch stream mode <span class="beta-tag">beta</span></p>
+</header>
+
+<main class="feed streamer-feed">
+
+  <!-- Step 1: no login yet - the marketing/reassurance surface. The
+       Connect button (rendered into #streamerPlatforms by streamer.js,
+       data-driven per platform) stays the screen's one solid-Sun element
+       (One-Yellow Rule); everything above it is a tint, a border, or
+       plain text. -->
+  <div id="streamerConnect">
+    <div class="streamer-hero anim-rise">
+      <p class="streamer-kicker">Twitch stream mode <span class="beta-tag">beta</span></p>
+      <h1 class="streamer-headline">Your chat, guessing live.</h1>
+      <p class="streamer-pitch">Pick a category, show the mystery photo, and let
+        chat race to guess it by typing in your stream. You play along too.</p>
+    </div>
+
+    <div class="streamer-points stagger">
+      <div class="card streamer-point" style="--i:0">
+        <span class="streamer-point-n" aria-hidden="true">✓</span>
+        <p><b>No download</b><br>Runs right here in this tab — nothing installs
+          for you or anyone watching.</p>
+      </div>
+      <div class="card streamer-point" style="--i:1">
+        <span class="streamer-point-n" aria-hidden="true">✓</span>
+        <p><b>Chat plays by typing</b><br>No extension, no bot commands to learn
+          — they just type the animal's name.</p>
+      </div>
+      <div class="card streamer-point" style="--i:2">
+        <span class="streamer-point-n" aria-hidden="true">✓</span>
+        <p><b>Works with any setup</b><br>One browser tab — capture it in OBS, a
+          browser source, or just share the window.</p>
+      </div>
+    </div>
+
+    <div class="card streamer-steps">
+      <h2 class="label">How it works</h2>
+      <ol class="streamer-steplist">
+        <li><span class="streamer-point-n" aria-hidden="true">1</span>
+          <p><b>Connect your channel</b> — confirms it's really yours, nothing else.</p></li>
+        <li><span class="streamer-point-n" aria-hidden="true">2</span>
+          <p><b>Pick a category</b> — locked in for the whole stream.</p></li>
+        <li><span class="streamer-point-n" aria-hidden="true">3</span>
+          <p><b>Chat guesses in chat</b> — hints reveal on a clock, first right
+            answer wins the round.</p></li>
+      </ol>
+    </div>
+
+    <div class="streamer-roles">
+      <div class="card">
+        <h3 class="label">You</h3>
+        <ul class="streamer-rolelist">
+          <li>Pick the category and go live</li>
+          <li>Watch hints reveal on the clock</li>
+          <li>Guess along under your own name</li>
+          <li>Call "Next round" whenever you're ready</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="label">Chat</h3>
+        <ul class="streamer-rolelist">
+          <li>Reads the photo and hints as they land</li>
+          <li>Types the animal's name to guess</li>
+          <li>Races the clock and each other</li>
+          <li>Climbs a live leaderboard, no sign-in needed</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="streamer-platforms" id="streamerPlatforms"></div>
+    <p class="party-msg" id="streamerConnectMsg" role="status"></p>
+  </div>
+
+  <!-- Step 2: connected, pick a category. -->
+  <div id="streamerGoLive" hidden>
+    <p class="dlg-note">Connected as <b id="streamerConnectedAs"></b>.</p>
+    <label class="fld">
+      <span class="fld-label">Animals to use</span>
+      <select id="streamerCategory" class="party-select"></select>
+    </label>
+    <p class="dlg-note dlg-note-tight">Locked in for the whole stream — ending early is the only way to change it.</p>
+    <p class="party-msg" id="streamerGoLiveMsg" role="status"></p>
+    <button class="btn btn-solid" type="button" id="streamerGoLiveBtn">Go live</button>
+  </div>
+
+  <!-- Step 3: live. Reuses local Party Mode's own two-column grid
+       wholesale (.party-columns/.party-main/.party-side, see style.css) -
+       the round on the left, the leaderboard a sticky column on the
+       right that stays pinned near the top instead of scrolling away,
+       exactly the split that pattern already exists for. Mobile stacks
+       to one column in DOM order: status, photo, the round, then the
+       board - the same grid rule that already does this for local play
+       does it here too.
+
+       No per-viewer presence, no rename, no join roster - there's no tab
+       to heartbeat from, and a hundred dots would be noise. -->
+  <div id="streamerDashboard" hidden>
+    <p class="streamer-chatstatus" id="streamerChatStatus" role="status" aria-live="polite" hidden></p>
+
+    <div class="party-columns">
+      <div class="party-main">
+        <div class="party-roundhead">
+          <div class="mystery-stats party-stats">
+            <div class="mystery-stat"><b id="streamerStatRound">1</b><span>Round</span></div>
+            <div class="mystery-stat"><b id="streamerStatHint">–</b><span>Hint</span></div>
+            <div class="mystery-stat" id="streamerStatTimerBox"><b id="streamerStatTimer">–</b><span id="streamerStatTimerLabel">Time left</span></div>
+          </div>
+        </div>
+
+        <!-- Same Photo Card component the animal view, Mystery Animal
+             and local Party Mode all use - the one signature visual,
+             reused wholesale rather than reinvented for this surface. -->
+        <article class="pcard party-hero" id="streamerHero">
+          <img class="pcard-bg" id="streamerPhotoBg" alt="" aria-hidden="true"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <img class="pcard-img" id="streamerPhotoImg" alt="" loading="lazy"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <div class="pcard-fallback" aria-hidden="true">
+            <span class="pcard-fallback-emoji">🐾</span>
+          </div>
+          <div class="pcard-scrim" aria-hidden="true"></div>
+          <div class="pcard-meta">
+            <h2 class="pcard-name"><span id="streamerPhotoName"></span> <span class="pcard-emoji" id="streamerPhotoEmoji" aria-hidden="true"></span></h2>
+            <p class="pcard-sub" id="streamerPhotoSub"></p>
+          </div>
+        </article>
+
+        <div class="card party-hintcard">
+          <div class="party-hints" id="streamerHints" aria-live="polite"></div>
+        </div>
+
+        <!-- The streamer plays too, guessing under their own channel
+             name so they land on the same board as chat rather than
+             needing a second notion of who's playing. -->
+        <form class="mystery-form" id="streamerForm" data-sfx="off">
+          <input id="streamerGuess" type="text" autocomplete="off" autocorrect="off"
+                 autocapitalize="off" spellcheck="false" placeholder="Type your guess…"
+                 aria-label="Your guess">
+          <button class="btn btn-solid" type="submit">Guess</button>
+        </form>
+        <p class="mystery-feedback" id="streamerFeedback" role="status" aria-live="polite"></p>
+
+        <div class="mystery-result party-result" id="streamerResult" hidden>
+          <div class="mystery-result-card" id="streamerResultCard">
+            <span class="mystery-result-emoji" id="streamerResultEmoji" aria-hidden="true"></span>
+            <span class="mystery-result-name" id="streamerResultName"></span>
+            <div class="mystery-celebrate" id="streamerResultCelebrate" aria-hidden="true"></div>
+          </div>
+          <p class="mystery-result-note" id="streamerResultNote" role="status"></p>
+        </div>
+
+        <button class="btn party-hintbtn" type="button" id="streamerHint">Reveal next hint</button>
+        <button class="btn btn-solid" type="button" id="streamerNext" hidden>Next round</button>
+      </div>
+
+      <div class="party-side">
+        <h3 class="label streamer-board-label" id="streamerBoardLabel">Chat leaderboard</h3>
+        <div class="streamer-board" id="streamerBoard"></div>
+      </div>
+    </div>
+
+    <button class="btn party-endbtn" type="button" id="streamerEnd">End stream</button>
+  </div>
+
+  <!-- Step 4: a beat after "End stream", same reasoning as local Party
+       Mode's own recap - a win reveal deserves a closing moment, not a
+       jump straight back to a blank form. -->
+  <div id="streamerRecap" hidden>
+    <h2 class="label">Final standings</h2>
+    <div class="streamer-board" id="streamerRecapBoard"></div>
+    <button class="btn btn-solid" type="button" id="streamerRecapDone">Start a new stream</button>
+  </div>
+</main>
+
+<script src="sfx.js?v=20260912-1"></script>
+<script src="animals.js?v=20260907-1"></script>
+<script src="game-core.js?v=20260912-2"></script>
+<script src="menu.js?v=20260912-2"></script>
+<script src="streamer.js?v=20260912-2"></script>
+</body>
+</html>

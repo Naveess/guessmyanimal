@@ -24,7 +24,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260909-4">
+<link rel="stylesheet" href="style.css?v=20260912-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -71,6 +71,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
     <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
     <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
+    <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
     <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
          there's room for them to just be visible - see style.css. Mobile
          is untouched. -->
@@ -88,9 +89,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </div>
 </nav>
 
-<!-- Own icon button, not a menu item - see index.html for why. -->
+<!-- Own icon button, not a menu item - see index.html for why.
+     data-sfx="off": turning sound off has to be silent, so the click
+     handler plays its own confirming tap instead of the delegated one. -->
 <button class="sound-toggle" id="soundToggle" type="button"
-        aria-pressed="true" aria-label="Sound on">
+        aria-pressed="true" aria-label="Sound on" data-sfx="off">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/>
     <path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/>
@@ -144,9 +147,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   <h1>Privacy</h1>
 
-  <p class="lede">Short version: there's no account, no sign-up, and nothing
-    here is sold. This page covers what the site itself stores, what its
-    ads set, and how to reach the person who runs it.</p>
+  <p class="lede">Short version: there's no account, nothing here is sold, and
+    the only sign-in on the site is one streamers can choose to use. This page
+    covers what the site itself stores, what its ads set, and how to reach the
+    person who runs it.</p>
 
   <h2>What the site itself stores</h2>
 
@@ -163,6 +167,30 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <p>If you send a problem report, what you typed and which animal it was
     about are stored so the issue can be fixed. No IP address, no cookie,
     no account, nothing that identifies who sent it.</p>
+
+  <h2>Playing together</h2>
+
+  <p>Party Mode and Twitch stream mode are the one place something is kept on
+    the server rather than on your device, because several people have to see
+    the same room: the room's code, the display names people chose, their
+    scores, and the guesses they made. It lasts as long as the session does.
+    There's no account attached to any of it, and a name is whatever someone
+    typed.</p>
+
+  <h2>Connecting a Twitch account</h2>
+
+  <p>Streamers can connect their Twitch account so their channel name fills
+    itself in. It's optional, it's only for the person running the stream, and
+    it's the only sign-in anywhere on this site — anyone guessing in chat signs
+    in to nothing.</p>
+
+  <p>It asks Twitch for no permissions at all. The site reads back which
+    channel is yours, once, and throws the access token away in the same
+    breath — nothing is saved, and there's no account to come back to. The
+    only cookie involved is a random anti-forgery value that lasts five
+    minutes, identifies nobody, and is deleted as soon as it's checked. Chat
+    messages themselves are read the way anyone can read a public Twitch
+    chat, without signing in to anything.</p>
 
   <h2>What the ads set</h2>
 
@@ -227,6 +255,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 })();
 </script>
 
-<script src="menu.js?v=20260909-1"></script>
+<script src="sfx.js?v=20260912-1"></script>
+<script src="menu.js?v=20260912-2"></script>
 </body>
 </html>

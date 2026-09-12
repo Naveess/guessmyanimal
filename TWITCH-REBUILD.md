@@ -1,13 +1,26 @@
 # Twitch chat play — rebuild brief
 
+> **Status: done, 2026-09-11. This is kept as the reasoning trail, not as
+> instructions.** The rebuild shipped as `streamer.html` + `streamer.js`, with
+> `functions/api/twitch/{_lib,login,callback}.js` for the "Connect with Twitch"
+> handshake. All four gaps below are closed; the `.wip` panel and `#partyTwitch`
+> are gone, and `party.js` is local/QR only.
+>
+> Two things went differently from what's written below. The open question
+> "does a mixed party still exist" was answered **no** — a session is now
+> strictly Twitch-only or phones-only (`party_sessions.twitch_channel` decides,
+> and `guess.js` rejects a mismatched `source`). And the question "is anonymous
+> IRC still the right transport" stayed **yes** — the OAuth added since is only
+> for identifying the streamer's own channel, never for reading chat, which is
+> still the same anonymous `justinfan` connection described here.
+>
+> Where this document and the code disagree, the code is right — that was true
+> when this was written and it is more true now.
+
 Written 2026-09-09 to be picked up cold, by someone (or some session) with no
 memory of the conversation that produced it.
 
 ## Start here
-
-> Read `TWITCH-REBUILD.md`. We're rebuilding Party Mode's Twitch chat path as a
-> separate streamer surface. Don't start writing code — walk me through what you'd
-> build first, and flag anything in the brief you disagree with.
 
 Read `TODO.md`'s Party Mode section and `DESIGN.md`'s Named Rules before touching
 anything. This codebase comments *why*, not *what* — the existing comments are the

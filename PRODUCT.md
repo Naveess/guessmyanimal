@@ -50,21 +50,35 @@ lookup remains the default and the reason people arrive.
 - **Mystery Animal** — a solo round against a blurred photo that sharpens as
   hints are spent. Built on the same dataset, no extra content needed.
 - **Party Mode** *(beta)* — one host on a big screen, everyone else joining
-  from their own phone by QR code or a five-character room code. A Twitch
-  chat path exists but is unfinished and carries an on-screen warning not to
-  stream it; see `TWITCH-REBUILD.md`.
+  from their own phone by QR code or a five-character room code. Phones
+  only; a room is either this or a stream, never both.
+- **Twitch stream mode** *(beta)* — its own page (`streamer.html`), for one
+  streamer whose whole chat plays along. The streamer connects their Twitch
+  account so the channel fills itself in, and chat guesses by typing the
+  animal. Built as a separate surface rather than Party Mode with a Twitch
+  field, because an anonymous chat of hundreds has no presence to show, no
+  names anyone can fix, and no "which one is me".
 
 ## Operating Context
 
 - Played casually and socially, most often on mobile, often in a moving car
   or somewhere without reliable focus time — the lookup has to be fast and
   need no setup.
-- No accounts and no login anywhere. Lookup and Mystery Animal keep nothing
-  beyond local light/dark and sound preferences. Party Mode is the one
-  exception: a room's code, chosen display names, emoji, scores and guess log
-  live server-side in D1 for the life of the session, because several devices
-  have to see the same room. Still no account, no email, no identity that
-  outlives the party.
+- No accounts anywhere, and one narrowly-scoped login. Lookup and Mystery
+  Animal keep nothing beyond local light/dark and sound preferences. Party
+  Mode is the one server-side exception: a room's code, chosen display names,
+  emoji, scores and guess log live in D1 for the life of the session, because
+  several devices have to see the same room. Still no account, no email, no
+  identity that outlives the party.
+- The single login on the site is **Twitch stream mode's optional "Connect
+  with Twitch"**, and it is the streamer's alone — never a viewer's. It asks
+  Twitch for no permissions at all, is used once to read back which channel
+  is theirs, and the access token is discarded in the same request that
+  fetched it: nothing is stored, and there is no account to come back to.
+  The only cookie involved is a short-lived (5 minute), httpOnly one holding
+  a random anti-forgery value during the handshake, cleared the moment it's
+  checked. People guessing in chat authenticate nothing and are as anonymous
+  as they have always been.
 - Search-driven: a player types an animal name (including plurals, informal
   names, and common breed names like "husky" or "siamese") and expects a
   single confident result.
@@ -88,8 +102,11 @@ lookup remains the default and the reason people arrive.
 - **Feedback loop**: a public, unauthenticated "report a problem" pipeline
   (wrong photo, wrong fact, missing animal) backed by Cloudflare D1. Stores
   no IP address, cookie, or user agent — only the report content.
-- **Privacy**: the site sets no cookies and tracks no users. This is a
-  stated commitment in the About page's small print, not just a current
+- **Privacy**: the site tracks no users and sets no cookies of its own, with
+  one exception that proves the shape of the rule — the 5-minute httpOnly
+  anti-forgery cookie during a streamer's Twitch sign-in, which holds a
+  random value, identifies nobody, and is cleared on use. This is a stated
+  commitment in the About page's small print, not just a current
   implementation detail.
 - **Monetization**: AdSense Auto ads are live, behind a Funding Choices
   consent message, to cover hosting costs. Design and layout work must keep
@@ -129,9 +146,14 @@ lookup remains the default and the reason people arrive.
   questions, but must never guess or suggest the animal itself. Shipping
   games of its own doesn't change this — a game the user plays is not a
   machine that plays for them.
-- Privacy by default: no accounts, no cookies, no tracking, no PII in the
-  feedback pipeline — this is a standing constraint, not a placeholder. A
-  party session's display names are user-chosen and session-scoped, which is
-  the most identity the site is ever allowed to hold.
+- Privacy by default: no accounts, no tracking, no PII in the feedback
+  pipeline — this is a standing constraint, not a placeholder. A party
+  session's display names are user-chosen and session-scoped, which is the
+  most identity the site is ever allowed to hold. A streamer's Twitch sign-in
+  is the one authenticated act on the site and is held to the same line: no
+  permissions requested, nothing stored, no account created, and no viewer
+  ever asked to sign in to anything. If a future feature needs a token kept
+  or an identity remembered, that is a change to this principle and has to
+  be argued as one, not slipped in as an extension of this.
 - Broad, real coverage over a curated highlight reel: the dataset aims at
   "any animal someone might plausibly pick," not just crowd-pleasers.

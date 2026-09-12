@@ -3,3 +3,7 @@ node_modules/
 .DS_Store
 .impeccable/hook.cache.json
 .impeccable/live/
+.dev.vars
+# package.json declares no dependencies; this gets regenerated as a
+# side effect of running npx and carries nothing worth tracking.
+package-lock.json

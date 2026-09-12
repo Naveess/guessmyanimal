@@ -1,18 +1,22 @@
-// Two very different callers land here, deliberately kept on separate
-// code paths rather than unified:
+// Two very different callers land here, on separate code paths because
+// they submit different things - but both are judged server-side, by
+// the same matcher family, for the same reason: a party's whole point
+// is that a "correct" claim in the room is worth trusting, so the
+// server (not either kind of client) has to be the one deciding.
 //
-// - Local/QR players (source 'local'): this endpoint is the authority
-//   on whether a guess is correct, not just who won. Every submission -
-//   right or wrong - is logged to party_events so the room can see a
-//   guess has already been tried, which only works if the server (not
-//   each player's own client) is the one deciding correct/incorrect.
-// - The Twitch chat overlay (source 'twitch'): unchanged from the
-//   original design - the host's tab already ran GameCore's matches()
-//   plus its own sentence-scanning chatMatches() before ever calling
-//   this, because a public chat's "is it a leopard?" phrasing needs
-//   tolerance this endpoint's plain matches() doesn't attempt. Not
-//   logged to the feed - see TODO.md, Twitch mode isn't getting this
-//   pass yet.
+// - Local/QR players (source 'local') submit raw guess text. Every
+//   submission - right or wrong - is logged to party_events so the
+//   room can see a guess has already been tried.
+// - Twitch chat (source 'twitch') also submits raw text now (the
+//   streamer page's own chatMatches() pre-filter is a volume filter
+//   only, keeping obviously-wrong chat lines from ever reaching this
+//   endpoint - it is not treated as authoritative here). The chat
+//   matcher (GameCore.chatMatches, via _lib.js) is deliberately
+//   different from the local matcher: chat is sentence-shaped ("is it
+//   a leopard?"), so it's scanned for the animal's name as a complete
+//   word run on top of the normal typo-tolerant check - see game-core.js
+//   for why that scan is exact, never fuzzy. Twitch guesses are logged
+//   to party_events too, same as local ones.
 //
 // Either way the round-lock is the same atomic first-writer-wins
 // update, not a read-then-write: a burst of near-simultaneous correct
@@ -20,8 +24,13 @@
 // edge case. roundNo is checked against the row, not just resolved=0,
 // so a guess already in flight when the host called next() can't land
 // against - and accidentally score into - the round that replaced it.
+//
+// A session is either a local/QR room or a Twitch-only one, never both
+// (see party_sessions.twitch_channel) - the source on a guess must
+// match which kind of session it's landing in, or it's rejected outright
+// rather than silently scored into the wrong leaderboard.
 
-import { CODE_RE, PLAYER_NAME_RE, SOURCE_RE, GUESS_TEXT_MAX, pointsForHints, matches, targetFor, cleanIcon, json } from './_lib.js';
+import { CODE_RE, PLAYER_NAME_RE, SOURCE_RE, GUESS_TEXT_MAX, pointsForHints, matches, chatMatches, looksLikeAGuess, targetFor, cleanIcon, DEFAULT_TWITCH_ICON, hintsFromElapsed, json } from './_lib.js';
 
 export async function onRequestPost({ request, env }) {
   if (!env.DB) return json({ error: 'unavailable' }, 503);
@@ -43,39 +52,21 @@ export async function onRequestPost({ request, env }) {
   if (!Number.isInteger(roundNo) || roundNo < 1) return json({ error: 'bad round' }, 400);
 
   const session = await env.DB
-    .prepare('SELECT round_no, resolved, shown, target_slug FROM party_sessions WHERE code = ?1')
+    .prepare('SELECT round_no, resolved, shown, target_slug, twitch_channel, round_started_at, round_ends_at FROM party_sessions WHERE code = ?1')
     .bind(code)
     .first();
   if (!session) return json({ error: 'not found' }, 404);
 
+  // A guess's source has to match which kind of session it's landing
+  // in - otherwise a stray local POST could score into a Twitch-only
+  // room's leaderboard or vice versa.
+  const isTwitchSession = !!session.twitch_channel;
+  if ((source === 'twitch') !== isTwitchSession) return json({ error: 'wrong session type' }, 400);
+
   const now = Date.now();
-
-  if (source === 'twitch') {
-    const hintsShown = Math.min(Math.max(Number(body.hintsShown) || 1, 1), 5);
-    if (session.round_no !== roundNo || session.resolved) return json({ won: false });
-
-    const update = await env.DB
-      .prepare('UPDATE party_sessions SET resolved = 1, last_winner = ?1, updated_at = ?2 WHERE code = ?3 AND round_no = ?4 AND resolved = 0')
-      .bind(playerName, now, code, roundNo)
-      .run();
-    if (!update.meta.changes) return json({ won: false });
-
-    const points = pointsForHints(hintsShown);
-    await env.DB
-      .prepare(
-        'INSERT INTO party_scores (session_code, player_name, source, score, rounds_won, updated_at) VALUES (?1, ?2, ?3, ?4, 1, ?5) ' +
-        'ON CONFLICT(session_code, player_name) DO UPDATE SET score = score + ?4, rounds_won = rounds_won + 1, source = ?3, updated_at = ?5'
-      )
-      .bind(code, playerName, source, points, now)
-      .run();
-
-    return json({ won: true, points });
-  }
-
-  // -- Local/QR play: server decides correct/incorrect itself. --------
   const text = String(body.text || '').trim().slice(0, GUESS_TEXT_MAX);
-  const icon = cleanIcon(body.icon);
-  if (!text) return json({ error: 'empty guess' }, 400);
+  if (!text || !looksLikeAGuess(text)) return json({ error: 'empty guess' }, 400);
+  const icon = source === 'twitch' ? DEFAULT_TWITCH_ICON : cleanIcon(body.icon);
 
   if (session.round_no !== roundNo) {
     // Stale: the round moved on while this was in flight. Nothing to
@@ -84,7 +75,7 @@ export async function onRequestPost({ request, env }) {
   }
 
   const animal = targetFor(session.target_slug);
-  const correct = !!animal && matches(text, animal);
+  const correct = !!animal && (source === 'twitch' ? chatMatches(text, animal) : matches(text, animal));
 
   await env.DB
     .prepare(
@@ -94,8 +85,14 @@ export async function onRequestPost({ request, env }) {
     .bind(code, roundNo, playerName, icon, text, correct ? 1 : 0, now)
     .run();
 
-  if (!correct || session.resolved) {
-    return json({ correct, won: false });
+  // Timed (Twitch) rounds only - local/QR has no deadline, round_ends_at
+  // is null there and this never trips. A guess is still logged above
+  // either way (right or wrong is chat history), it just can't win a
+  // round whose time is already up - that's the host's "time's up,
+  // reveal, Next round" moment now, not a photo finish.
+  const expired = !!(session.round_ends_at && now >= session.round_ends_at);
+  if (!correct || session.resolved || expired) {
+    return json({ correct, won: false, expired });
   }
 
   const update = await env.DB
@@ -109,7 +106,14 @@ export async function onRequestPost({ request, env }) {
     return json({ correct: true, won: false });
   }
 
-  const points = pointsForHints(session.shown);
+  // Same clock-boosted hint count session.js reports to viewers, not
+  // just whatever the host's manual button last wrote - a guess landing
+  // after the clock has already revealed hint 4 is worth hint-4 points,
+  // even if nobody happened to press the button that far yet.
+  const effectiveShown = session.round_ends_at
+    ? Math.max(session.shown, hintsFromElapsed(now - session.round_started_at, session.round_ends_at - session.round_started_at))
+    : session.shown;
+  const points = pointsForHints(effectiveShown);
   await env.DB
     .prepare(
       'INSERT INTO party_scores (session_code, player_name, source, score, rounds_won, icon, updated_at) VALUES (?1, ?2, ?3, ?4, 1, ?5, ?6) ' +

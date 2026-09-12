@@ -24,7 +24,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260909-4">
+<link rel="stylesheet" href="style.css?v=20260912-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -71,6 +71,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
     <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
     <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
+    <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
     <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
          there's room for them to just be visible - see style.css. Mobile
          is untouched. -->
@@ -88,9 +89,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </div>
 </nav>
 
-<!-- Own icon button, not a menu item - see index.html for why. -->
+<!-- Own icon button, not a menu item - see index.html for why.
+     data-sfx="off": turning sound off has to be silent, so the click
+     handler plays its own confirming tap instead of the delegated one. -->
 <button class="sound-toggle" id="soundToggle" type="button"
-        aria-pressed="true" aria-label="Sound on">
+        aria-pressed="true" aria-label="Sound on" data-sfx="off">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/>
     <path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/>
@@ -218,11 +221,17 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   <h2>The small print</h2>
 
-  <p>The site is free and has no accounts. It runs ads (Google AdSense) to
-    help cover hosting, which set their own cookies the way ads do
-    everywhere — see the <a href="privacy.html">privacy page</a> for what
-    that involves and what's stored. Ads are never allowed to get in the
-    way of the answers.</p>
+  <p>The site is free and has no accounts. There's one sign-in anywhere on
+    it, and you'll only meet it if you're a streamer: <a href="streamer.html">Twitch
+    stream mode</a> lets you connect your Twitch account so your channel name
+    fills itself in. It asks Twitch for no permissions, checks who you are
+    once, and keeps nothing afterwards — and people guessing in chat sign in
+    to nothing at all.</p>
+
+  <p>It runs ads (Google AdSense) to help cover hosting, which set their own
+    cookies the way ads do everywhere — see the
+    <a href="privacy.html">privacy page</a> for what that involves and what's
+    stored. Ads are never allowed to get in the way of the answers.</p>
 
   <p>It is an early, ongoing project made for fun, so expect it to keep changing.</p>
 
@@ -239,6 +248,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
 </div>
 
-<script src="menu.js?v=20260909-1"></script>
+<script src="sfx.js?v=20260912-1"></script>
+<script src="menu.js?v=20260912-2"></script>
 </body>
 </html>

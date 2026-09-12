@@ -9,26 +9,35 @@ CREATE TABLE IF NOT EXISTS reports (
 CREATE INDEX IF NOT EXISTS reports_open ON reports (handled, created_at);
 
 -- Party mode: one shared round (a target animal, hints revealed by a
--- host) that guesses can reach either through Twitch chat (read via an
--- anonymous overlay-side IRC connection, see functions/api/party/*.js)
--- or a player's own phone via a QR-code join link - see TODO.md for the
--- full design. Both paths call the same guess endpoint, which is why
--- there's no separate "how did they guess" table: player_name and
--- source are enough to tell the two apart on the scoreboard.
+-- host). A session is either a Twitch-only room, read via the streamer
+-- page's own anonymous chat connection (twitch_channel set - see
+-- streamer.js and functions/api/twitch/*.js), or a local/QR room joined
+-- by phone (twitch_channel null) - never both in the same session, see
+-- TODO.md for the full design. Both kinds call the same guess endpoint,
+-- which is why there's no separate "how did they guess" table:
+-- player_name and source are enough to tell rows apart on the scoreboard.
 CREATE TABLE IF NOT EXISTS party_sessions (
-  code           TEXT PRIMARY KEY,
-  host_key       TEXT NOT NULL,
-  twitch_channel TEXT,
-  category       TEXT,
-  target_slug    TEXT NOT NULL,
-  shown_slugs    TEXT NOT NULL DEFAULT '[]', -- JSON array, every target shown this session so next() can avoid repeats
-  shown          INTEGER NOT NULL DEFAULT 1,
-  resolved       INTEGER NOT NULL DEFAULT 0,
-  last_winner    TEXT,               -- who took the current round, for the "X got it!" line on the host tab and overlay
-  round_no       INTEGER NOT NULL DEFAULT 1,
-  created_at     INTEGER NOT NULL,
-  updated_at     INTEGER NOT NULL
+  code             TEXT PRIMARY KEY,
+  host_key         TEXT NOT NULL,
+  twitch_channel   TEXT,
+  category         TEXT,
+  target_slug      TEXT NOT NULL,
+  shown_slugs      TEXT NOT NULL DEFAULT '[]', -- JSON array, every target shown this session so next() can avoid repeats
+  shown            INTEGER NOT NULL DEFAULT 1,
+  resolved         INTEGER NOT NULL DEFAULT 0,
+  last_winner      TEXT,               -- who took the current round, for the "X got it!" line on the host tab and overlay
+  round_no         INTEGER NOT NULL DEFAULT 1,
+  round_started_at INTEGER,            -- ms epoch, Twitch sessions only - see next.js/create.js. Null for local/QR play.
+  round_ends_at    INTEGER,            -- ms epoch deadline the round expires at - same scope as round_started_at.
+  created_at       INTEGER NOT NULL,
+  updated_at       INTEGER NOT NULL
 );
+-- round_started_at/round_ends_at added 2026-09-12. This CREATE covers a
+-- fresh install; an existing database (including production) needs the
+-- same `ALTER TABLE party_sessions ADD COLUMN round_started_at INTEGER`
+-- / `... round_ends_at INTEGER` run against it once, same reasoning as
+-- icon below. Both nullable and only ever set for Twitch sessions (see
+-- next.js) so local/QR play is untouched by the timer.
 CREATE TABLE IF NOT EXISTS party_scores (
   session_code   TEXT NOT NULL REFERENCES party_sessions(code),
   player_name    TEXT NOT NULL,
@@ -48,8 +57,8 @@ CREATE TABLE IF NOT EXISTS party_scores (
 -- people playing together can see a guess has already been tried
 -- instead of repeating it) and round-start dividers, all one shared
 -- log so they render as a single cascading list in the order they
--- happened. Local/QR play only - Twitch chat isn't logged here, see
--- TODO.md and functions/api/party/guess.js for why.
+-- happened. Both local/QR play and Twitch chat guesses log here (a
+-- Twitch-only session never gets 'join' rows though - see join.js).
 CREATE TABLE IF NOT EXISTS party_events (
   id           INTEGER PRIMARY KEY AUTOINCREMENT,
   session_code TEXT NOT NULL,

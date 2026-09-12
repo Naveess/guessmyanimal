@@ -9,19 +9,25 @@
 // strings in index.html - bump both together whenever a shell file
 // changes, or a returning visitor keeps the stale cached version
 // forever instead of picking up the new one.
-const VERSION = 'gma-20260909-6';
+const VERSION = 'gma-20260912-2';
 
+// Only '/' and the files index.html itself loads. The standalone pages
+// (about/browse/privacy/streamer) aren't precached, so neither are the
+// scripts only they load - menu.js and streamer.js included. The
+// streamer page needs Twitch and the API to do anything at all, so
+// there's nothing for an offline copy of it to be.
 const SHELL = [
   '/',
-  '/style.css?v=20260909-4',
+  '/style.css?v=20260912-2',
+  '/sfx.js?v=20260912-1',
   '/animals.js?v=20260907-1',
   '/render-data.js?v=20260901-1',
   '/related.js?v=20260908-1',
-  '/game-core.js?v=20260908-2',
+  '/game-core.js?v=20260912-2',
   '/vendor/qrcode.js?v=1.4.4',
-  '/party.js?v=20260909-4',
-  '/mystery.js?v=20260908-9',
-  '/app.js?v=20260909-1',
+  '/party.js?v=20260912-2',
+  '/mystery.js?v=20260912-2',
+  '/app.js?v=20260912-2',
   '/fonts/onest-latin.woff2',
   '/favicon.svg',
   '/icons/icon-192.png',

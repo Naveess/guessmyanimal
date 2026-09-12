@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260909-4">
+<link rel="stylesheet" href="style.css?v=20260912-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -82,6 +82,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
     <button class="menu-item" type="button" data-mystery>Mystery Animal</button>
     <button class="menu-item" type="button" id="partyOpen"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></button>
+    <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
     <!-- menu-desktop-hide: these three plus Appearance move to a footer
          row / the sliding theme toggle by the corner menu once there's
          room for them to just be visible instead of tucked in a
@@ -606,9 +607,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- ============================================================
      PARTY MODE. One page, both roles - hosting and playing look the
      same (same blurred photo, same hints, same scoreboard), and only
-     the controls at the bottom differ. Hosting also reads Twitch chat
-     directly in this tab (see party.js) - no OBS overlay, no separate
-     page for that; whatever's on screen here is what's on screen.
+     the controls at the bottom differ. Phones and QR codes only;
+     Twitch chat play is its own page now (streamer.html), for the
+     reasons party.js's header comment gives.
      ============================================================ -->
 <div class="partyview" id="partyview" hidden>
 
@@ -647,31 +648,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <select id="partyCategory" class="party-select"></select>
       </label>
 
-      <!-- Twitch chat play is reachable by anyone who opens Party Mode,
-           but it's still the original unpolished build - no presence, no
-           activity feed, no rename (see TODO.md). A streamer could put it
-           on air before it's ready, so the warning is a panel in the Warn
-           register rather than a footnote under the field. The input stays
-           usable on purpose: it has to be testable while it's rebuilt, and
-           the sign is aimed at someone arriving cold, not at a wall. -->
-      <div class="wip">
-        <p class="wip-head">
-          <svg class="wip-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0 1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
-          </svg>
-          Twitch chat
-          <span class="wip-tag">Under construction</span>
-        </p>
-        <p class="wip-note"><b>Please don't run this on a live stream yet.</b> Chat guesses are read and scored, but there's no list of who's playing, no activity feed, and no way to fix a name — on stream it will look broken. This half is being rebuilt properly next.</p>
-
-        <label class="fld wip-fld">
-          <span class="fld-label">Your channel <span class="fld-optional">optional</span></span>
-          <input type="text" id="partyTwitch" autocomplete="off" autocapitalize="off"
-                 spellcheck="false" placeholder="your_channel_name">
-        </label>
-      </div>
-
-      <p class="dlg-note dlg-note-tight">Leave the Twitch box empty for phones-only play — that half is finished, and it's the one to use today.</p>
+      <p class="dlg-note dlg-note-tight">Streaming instead? <a href="streamer.html">Twitch stream mode</a> runs the
+        same game for your chat, with its own leaderboard.</p>
 
       <p class="party-msg" id="partySetupMsg" role="status"></p>
 
@@ -702,7 +680,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
             <button class="btn" type="button" id="partyJoinCopy">Copy link</button>
           </div>
           <p class="copied" id="partyCopyStatus" aria-live="polite"></p>
-          <p class="party-chat" id="partyChatStatus" hidden></p>
         </div>
       </div>
 
@@ -862,10 +839,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </form>
 </dialog>
 
+<!-- Before everything below: mystery.js/party.js/app.js all call sfx()
+     through window.GMA_SFX, which this defines. -->
+<script src="sfx.js?v=20260912-1"></script>
 <script src="animals.js?v=20260907-1"></script>
 <script src="render-data.js?v=20260901-1"></script>
 <script src="related.js?v=20260908-1"></script>
-<script src="game-core.js?v=20260908-2"></script>
+<script src="game-core.js?v=20260912-2"></script>
 <!-- Third-party, vendored rather than loaded from a CDN: the site
      doesn't call out to services it doesn't need, and a QR code is not
      a reason to start. MIT licensed, no dependencies - see the header
@@ -875,12 +855,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      checks window.openPartyPlayer on its very first call, so a direct
      or refreshed ?party=CODE link (which is what every QR code and
      join link is) lands on the player view rather than the home page. -->
-<script src="party.js?v=20260909-4"></script>
+<script src="party.js?v=20260912-2"></script>
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260908-9"></script>
-<script src="app.js?v=20260909-1"></script>
+<script src="mystery.js?v=20260912-2"></script>
+<script src="app.js?v=20260912-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

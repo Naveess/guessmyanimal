@@ -31,50 +31,12 @@
     return names.some((n) => n === g || (g.length >= 4 && near(n, g)));
   }
 
-  const DIET_HINT = {
-    Carnivore: 'It only eats meat.',
-    Omnivore: 'It eats both plants and meat.',
-    Herbivore: "It's a herbivore — plants only.",
-    Insectivore: 'It mostly eats insects.',
-  };
-  const cap = (s) => String(s).charAt(0).toUpperCase() + String(s).slice(1);
-
-  // skipCategory drops the "It's a mammal" hint when a filter chip
-  // already told the player the category - a single-category chip
-  // makes that hint a pure freebie, so the round runs one hint short
-  // instead of shipping it.
-  // r[0] values are Title Case for display elsewhere (chips, filters),
-  // but a few read as proper nouns they aren't once dropped into "Found
-  // in ___." - "Found in Worldwide.", "Found in Oceans.", "Found in
-  // Arctic." are backwards grammar, not just odd capitalisation, so each
-  // gets its own phrasing rather than a lowercase patch that'd still read
-  // wrong. Checked against every r[0] value in animals.js: continents,
-  // countries and named landmasses (Africa, Asia, Australia, Europe,
-  // North/South/Central America, Madagascar, New Zealand) take no
-  // article and read fine through the generic fallback below - only
-  // these five are genuine exceptions.
-  const REGION_HINT = {
-    Worldwide: "It's found worldwide.",
-    Oceans: 'Found in the oceans.',
-    Rivers: 'Found in rivers.',
-    Americas: 'Found in the Americas.',
-    Arctic: 'Found in the Arctic.',
-    Antarctic: 'Found in the Antarctic.',
-  };
-  function regionHint(r) {
-    return REGION_HINT[r] || ('Found in ' + r + '.');
-  }
-
-  function hintsFor(a, skipCategory) {
-    const list = [
-      "It's a " + a.c.toLowerCase() + '.',
-      regionHint(a.r[0]),
-      DIET_HINT[a.d] || '',
-      cap(a.sz) + ' in size.',
-      a.f,
-    ];
-    return skipCategory ? list.slice(1) : list;
-  }
+  // hintsFor itself now lives in game-core.js, tiered and shared with
+  // party/stream mode - was its own fixed-order copy here (class,
+  // region, diet, size, fact for every animal alike) from before that
+  // file existed. skipCategory below is still computed locally against
+  // this file's own CATEGORY_BUCKETS/bucketOf, since that part isn't
+  // hintsFor and both copies of that table already have to agree.
 
   /* -- Category filter (Endless only) -------------------------------
      Raw categories run 15 deep and several hold only 1-3 animals, too
@@ -614,7 +576,7 @@
     const bucket = forMode === 'endless' ? bucketOf(filter) : null;
     const skipCategory = !!(bucket && bucket.cats && bucket.cats.length === 1);
     target = forMode === 'endless' ? pickEndless() : pickDailyFor(archiveDate || todayStr());
-    hints = hintsFor(target, skipCategory);
+    hints = GameCore.hintsFor(target, skipCategory);
     shown = 1;
     roundStart = Date.now();
     el('mysteryGuess').value = '';
@@ -823,7 +785,7 @@
     resetHero();
     dealHero();
     if (target) {
-      hints = hintsFor(target, false);
+      hints = GameCore.hintsFor(target, false);
       shown = hints.length;
       renderHints();
       loadPhoto(target);

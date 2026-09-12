@@ -1,10 +1,12 @@
-// Starts a party session: host picks a category (optionally a Twitch
-// channel too - blank means local/QR play only, filled in runs both at
-// once, see TODO.md). Picks the first target, generates a short code
-// (retried on the rare collision) and a host_key the host's browser
-// keeps to gate hint/next-round calls later.
+// Starts a party session: host picks a category, plus a Twitch channel
+// if this is a Twitch-only session (set only by streamer.js, after its
+// own OAuth handshake confirms the channel - see functions/api/twitch/).
+// Blank means an ordinary local/QR room; the two never mix in one
+// session, see schema.sql. Picks the first target, generates a short
+// code (retried on the rare collision) and a host_key the host's
+// browser keeps to gate hint/next-round calls later.
 
-import { CATEGORY_RE, TWITCH_CHANNEL_RE, pickTarget, randomCode, randomHostKey, json } from './_lib.js';
+import { CATEGORY_RE, TWITCH_CHANNEL_RE, pickTarget, randomCode, randomHostKey, roundDeadline, json } from './_lib.js';
 
 export async function onRequestPost({ request, env }) {
   if (!env.DB) return json({ error: 'unavailable' }, 503);
@@ -26,22 +28,33 @@ export async function onRequestPost({ request, env }) {
   const targetSlug = pickTarget(category, []);
   const hostKey = randomHostKey();
   const now = Date.now();
+  const { roundStartedAt, roundEndsAt } = roundDeadline(twitchChannel, 1, now);
 
   // Collisions are astronomically unlikely at 33^5 codes, but the retry
   // is cheap insurance against the one-in-a-lot chance that isn't zero.
+  // Only a UNIQUE-constraint failure on the code itself is worth retrying -
+  // anything else (a missing table, a locked database, ...) will fail
+  // identically on every attempt, so burning all 5 just delays a real
+  // error and then reports the wrong one.
   for (let attempt = 0; attempt < 5; attempt++) {
     const code = randomCode();
     try {
       await env.DB
         .prepare(
-          'INSERT INTO party_sessions (code, host_key, twitch_channel, category, target_slug, shown_slugs, shown, resolved, round_no, created_at, updated_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, 1, 0, 1, ?7, ?7)'
+          'INSERT INTO party_sessions (code, host_key, twitch_channel, category, target_slug, shown_slugs, shown, resolved, round_no, round_started_at, round_ends_at, created_at, updated_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, 1, 0, 1, ?7, ?8, ?9, ?9)'
         )
-        .bind(code, hostKey, twitchChannel, category, targetSlug, JSON.stringify([targetSlug]), now)
+        .bind(code, hostKey, twitchChannel, category, targetSlug, JSON.stringify([targetSlug]), roundStartedAt, roundEndsAt, now)
         .run();
-      return json({ code, hostKey, category, twitchChannel, targetSlug, shown: 1, roundNo: 1 });
+      return json({ code, hostKey, category, twitchChannel, targetSlug, shown: 1, roundNo: 1, roundEndsAt, serverNow: now });
     } catch (err) {
-      // UNIQUE constraint on code - try again with a fresh one.
-      if (attempt === 4) return json({ error: 'could not allocate a room code' }, 500);
+      const message = String((err && err.message) || err);
+      const isCodeCollision = /unique constraint/i.test(message);
+      if (isCodeCollision && attempt < 4) continue;
+      console.error('party/create: insert failed —', message);
+      return json(
+        { error: isCodeCollision ? 'could not allocate a room code' : 'could not start the session' },
+        500
+      );
     }
   }
 }

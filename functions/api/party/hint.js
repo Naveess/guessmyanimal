@@ -3,9 +3,7 @@
 // boundary, since the only thing at stake is what a party's hint list
 // shows.
 
-import { CODE_RE, HOST_KEY_RE, json } from './_lib.js';
-
-const MAX_HINTS = 5; // category, region, diet, size, fact - see mystery.js's hintsFor()
+import { CODE_RE, HOST_KEY_RE, MAX_HINTS, json } from './_lib.js';
 
 export async function onRequestPost({ request, env }) {
   if (!env.DB) return json({ error: 'unavailable' }, 503);

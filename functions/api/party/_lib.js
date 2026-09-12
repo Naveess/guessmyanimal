@@ -21,6 +21,10 @@ export const GUESS_TEXT_MAX = 60;
 export const slugify = GameCore.slugify;
 export const pointsForHints = GameCore.pointsForHints;
 export const matches = GameCore.matches;
+export const looksLikeAGuess = GameCore.looksLikeAGuess;
+export const chatMatches = GameCore.chatMatches;
+export const MAX_HINTS = GameCore.MAX_HINTS;
+export const hintsFromElapsed = GameCore.hintsFromElapsed;
 
 const BY_SLUG = new Map(ANIMALS.map((a) => [slugify(a.n), a]));
 
@@ -41,6 +45,11 @@ export function cleanIcon(v) {
   return s || null;
 }
 
+// A chat guesser never picks an icon the way a local/QR player does -
+// this is what the streamer leaderboard renders instead so the row
+// isn't blank.
+export const DEFAULT_TWITCH_ICON = '💬';
+
 // excludeSlugs: targets already shown this session, so a round doesn't
 // repeat an animal the players just saw. Falls back to the full pool if
 // everything in it has already been shown, same shrink-to-fit spirit as
@@ -51,6 +60,16 @@ export function pickTarget(category, excludeSlugs) {
   const from = fresh.length ? fresh : pool;
   const a = from[Math.floor(Math.random() * from.length)];
   return slugify(a.n);
+}
+
+// The round timer, Twitch sessions only - a null twitchChannel (local/QR
+// play) always gets {null, null} back, which is exactly what
+// round_started_at/round_ends_at should be for a mode with no deadline.
+// Shared so create.js (round 1) and next.js (every round after) can't
+// drift on how a deadline gets computed.
+export function roundDeadline(twitchChannel, roundNo, now) {
+  if (!twitchChannel) return { roundStartedAt: null, roundEndsAt: null };
+  return { roundStartedAt: now, roundEndsAt: now + GameCore.roundSeconds(roundNo) * 1000 };
 }
 
 export function randomCode() {

@@ -2,27 +2,28 @@
  *
  * Hosting and playing render the same round (the same blurred photo,
  * the same hints, the same scoreboard) - only the controls at the
- * bottom differ, toggled by which role opened the page. There's no
- * separate OBS overlay any more: the host's own tab reads Twitch chat
- * directly (the same anonymous-IRC-over-WebSocket technique the old
- * overlay page used), so whatever's on screen here is what's on
- * screen, full stop. See TODO.md for the design history.
+ * bottom differ, toggled by which role opened the page.
  *
- * Both roles poll /api/party/session on the same 1.2s loop the removed
- * overlay page pioneered. Local/QR guesses are no longer client-decided:
- * every submission (right or wrong) goes to the server, which is now the
- * one place that knows the target - see guess.js. That's also what
- * makes the wrong-guess feed possible, since a client that already
- * knew it was wrong would have no reason to tell the server about it.
- * The Twitch chat path is untouched and still decides client-side
- * (chatMatches() below). It's unfinished, carries an on-screen warning
- * not to stream it, and is being rebuilt - see TWITCH-REBUILD.md.
+ * Phones and QR codes only. Twitch chat play used to live in this file
+ * too, sharing a session with the people in the room; it's now its own
+ * page (streamer.html/streamer.js), because one streamer with a chat of
+ * hundreds turned out to need none of what this file is built around -
+ * presence, renames, knowing which row is you. A session is one or the
+ * other now, never both, and guess.js rejects a guess whose source
+ * doesn't match the room it's aimed at.
+ *
+ * Both roles poll /api/party/session on the same 1.2s loop. Guesses are
+ * never client-decided: every submission (right or wrong) goes to the
+ * server, which is the one place that knows the target - see guess.js.
+ * That's also what makes the wrong-guess feed possible, since a client
+ * that already knew it was wrong would have no reason to tell the
+ * server about it.
  */
 (function () {
   'use strict';
 
   const el = (id) => document.getElementById(id);
-  const { hintsFor, matches, norm, MAX_HINTS, CATEGORY_BUCKETS, slugify, pixelStepFor, thumbAtWidth } = GameCore;
+  const { hintsFor, MAX_HINTS, CATEGORY_BUCKETS, skipCategoryFor, slugify, pixelStepFor, thumbAtWidth } = GameCore;
   const BY_SLUG = new Map(ANIMALS.map((a) => [slugify(a.n), a]));
   const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
@@ -82,7 +83,9 @@
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(body),
     });
-    return res.json();
+    const data = await res.json();
+    if (!res.ok) console.error('api/' + path + ': ' + res.status + ' —', data && data.error);
+    return data;
   }
 
   function targetAnimal() {
@@ -130,7 +133,6 @@
   function leave() {
     surface = null;
     stopPolling();
-    disconnectChat();
     el('partyMiniBar').hidden = true;
   }
 
@@ -151,14 +153,12 @@
 
     if (newHint) sfx('hint');
     renderRound({ justResolved, roundChanged });
-    if (surface === 'host') ensureChat();
   }
 
   function onSessionGone() {
     if (surface === 'host') {
       clearStore(HOST_STORE);
       code = null; hostKey = null; state = null;
-      disconnectChat();
       showSetup();
     } else if (surface === 'player') {
       el('partyPlayerMsg').textContent = 'That party has finished, or the code was wrong.';
@@ -252,7 +252,7 @@
     const box = el('partyHints');
     const a = targetAnimal();
     if (!a || !state) return;
-    const all = hintsFor(a);
+    const all = hintsFor(a, skipCategoryFor(state.category));
     const want = Math.min(state.shown, all.length);
 
     if (state.roundNo !== renderedHints.round) {
@@ -277,11 +277,8 @@
     renderedHints.count = want;
   }
 
-  // "Online" here means "a local/QR device with this name touched
-  // join.js within ONLINE_WINDOW_MS" - see the heartbeat in poll().
-  // Twitch names never heartbeat (there's no tab to poll from on their
-  // behalf), so they're never marked online here - the chat connection
-  // status dot already covers "is the overlay actually listening".
+  // "Online" here means "a device with this name touched join.js within
+  // ONLINE_WINDOW_MS" - see the heartbeat in poll().
   // Shared by the live board and the final recap - a fresh node each
   // call, since a row can only hold one. Visibility is pure CSS
   // (.is-leader / .is-winner), so it's always safe to append.
@@ -307,7 +304,7 @@
     const now = Date.now();
     let onlineCount = 0;
     state.scores.forEach((s, i) => {
-      const online = s.source !== 'twitch' && typeof s.updatedAt === 'number' && (now - s.updatedAt) < ONLINE_WINDOW_MS;
+      const online = typeof s.updatedAt === 'number' && (now - s.updatedAt) < ONLINE_WINDOW_MS;
       if (online) onlineCount++;
       const row = document.createElement('div');
       row.className = 'party-score' + (online ? ' is-online' : '');
@@ -328,11 +325,10 @@
       const icon = document.createElement('span');
       icon.className = 'party-score-icon';
       icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = s.icon || (s.source === 'twitch' ? '' : DEFAULT_ICON);
+      icon.textContent = s.icon || DEFAULT_ICON;
       const name = document.createElement('span');
       name.className = 'party-score-name';
       name.textContent = s.playerName;
-      if (s.source === 'twitch') name.classList.add('is-twitch');
       const pts = document.createElement('b');
       pts.className = 'party-score-pts';
       pts.textContent = String(s.score);
@@ -617,11 +613,10 @@
         const icon = document.createElement('span');
         icon.className = 'party-score-icon';
         icon.setAttribute('aria-hidden', 'true');
-        icon.textContent = s.icon || (s.source === 'twitch' ? '' : DEFAULT_ICON);
+        icon.textContent = s.icon || DEFAULT_ICON;
         const name = document.createElement('span');
         name.className = 'party-score-name';
         name.textContent = s.playerName;
-        if (s.source === 'twitch') name.classList.add('is-twitch');
         const pts = document.createElement('b');
         pts.className = 'party-score-pts';
         pts.textContent = String(s.score);
@@ -735,15 +730,9 @@
     btn.disabled = true;
     el('partySetupMsg').textContent = '';
     try {
-      const data = await api('create', {
-        category: el('partyCategory').value,
-        twitchChannel: el('partyTwitch').value.trim(),
-      });
+      const data = await api('create', { category: el('partyCategory').value });
       if (data.error) {
-        el('partySetupMsg').textContent =
-          data.error === 'bad twitch channel'
-            ? "That doesn't look like a Twitch channel name — letters, numbers and underscores only."
-            : 'Could not start the party. Try again in a moment.';
+        el('partySetupMsg').textContent = 'Could not start the party. Try again in a moment.';
         return;
       }
       code = data.code;
@@ -802,7 +791,6 @@
     renderedFeed = { lastId: 0 };
     el('partyFeed').innerHTML = '';
     stopPolling();
-    disconnectChat();
     showRecap(finalScores);
   });
 
@@ -819,142 +807,6 @@
     };
   }
   el('partyJoinCopy').addEventListener('click', copyFrom('partyJoinUrl', 'partyCopyStatus'));
-
-  /* -- Twitch chat, read directly in this tab ---------------------------
-     Twitch's chat IRC accepts anonymous read-only connections: connect
-     as justinfanNNNNN, JOIN a channel, every message arrives as a
-     PRIVMSG. No OAuth, no Twitch developer app - which is why this can
-     live in an ordinary browser tab instead of needing a server that
-     can hold a persistent connection (Cloudflare Pages Functions can't).
-     Ported from the OBS overlay this replaced. --------------------- */
-
-  let chat = null;
-  let joinedChannel = null;
-  let reconnectDelay = 1000;
-  let reconnectTimer = null;
-  let sendingGuess = false; // one guess POST in flight at a time
-
-  function ensureChat() {
-    const want = state && state.twitchChannel ? state.twitchChannel : null;
-    if (!want) { disconnectChat(); return; }
-    if (joinedChannel === want && chat && chat.readyState <= 1) return;
-    connectChat(want);
-  }
-
-  function disconnectChat() {
-    joinedChannel = null;
-    if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
-    if (chat) { try { chat.close(); } catch (e) {} chat = null; }
-    el('partyChatStatus').hidden = true;
-  }
-
-  function setChatStatus(text, cls) {
-    const node = el('partyChatStatus');
-    node.hidden = false;
-    node.textContent = text;
-    node.className = 'party-chat' + (cls ? ' ' + cls : '');
-  }
-
-  function connectChat(channel) {
-    joinedChannel = channel;
-    setChatStatus('Connecting to ' + channel + "'s chat…");
-
-    let ws;
-    try { ws = new WebSocket('wss://irc-ws.chat.twitch.tv:443'); }
-    catch (err) { scheduleReconnect(channel); return; }
-    chat = ws;
-
-    ws.addEventListener('open', () => {
-      reconnectDelay = 1000;
-      // Anonymous read-only: any justinfan* nick is accepted without a
-      // token. No CAP request - plain PRIVMSG lines are all this needs.
-      ws.send('NICK justinfan' + Math.floor(Math.random() * 90000 + 10000));
-      ws.send('JOIN #' + channel);
-      setChatStatus('Reading ' + channel + "'s chat", 'is-live');
-    });
-
-    ws.addEventListener('message', (e) => {
-      String(e.data).split('\r\n').forEach((line) => {
-        if (!line) return;
-        if (line.indexOf('PING') === 0) { ws.send('PONG :tmi.twitch.tv'); return; }
-        const m = line.match(/^:([^!]+)![^ ]+ PRIVMSG #[^ ]+ :(.*)$/);
-        if (m) handleChatLine(m[1], m[2]);
-      });
-    });
-
-    ws.addEventListener('close', () => {
-      if (chat === ws && joinedChannel === channel) setChatStatus('Chat disconnected — reconnecting…', 'is-down');
-      scheduleReconnect(channel);
-    });
-    ws.addEventListener('error', () => { try { ws.close(); } catch (err) {} });
-  }
-
-  function scheduleReconnect(channel) {
-    if (joinedChannel !== channel) return; // ensureChat() already moved on
-    reconnectTimer = setTimeout(() => { if (joinedChannel === channel) connectChat(channel); }, reconnectDelay);
-    reconnectDelay = Math.min(reconnectDelay * 2, 30000);
-  }
-
-  // A public chat is much noisier than a solo guess box, and every
-  // message here would otherwise reach the fuzzy matcher - which is
-  // tolerant by design ("gorila" should count) and so is exactly the
-  // wrong thing to point at general conversation. Filtered first, cost
-  // nothing:
-  const MAX_GUESS_LEN = 40;
-  function looksLikeAGuess(text) {
-    const t = text.trim();
-    if (!t || t.length > MAX_GUESS_LEN) return false;
-    if (t[0] === '!' || t[0] === '/') return false;      // bot commands
-    if (/https?:\/\//i.test(t)) return false;             // links
-    if (/^@/.test(t)) return false;                        // replies to other chatters
-    return true;
-  }
-
-  // Chat doesn't answer the way a guess box does. "leopard" is a guess
-  // and so is "is it a leopard?", and refusing the second one makes the
-  // game feel broken to everyone watching. So a bare message still gets
-  // GameCore's normal typo tolerance, and a longer one is additionally
-  // scanned for the animal's name as a complete run of words.
-  //
-  // Deliberately exact inside a sentence, never fuzzy: the pool has
-  // animals called Swift, Crane, Seal and Ray, and fuzzy-matching those
-  // against ordinary conversation would end rounds nobody was guessing
-  // in - a much worse failure than a missed phrasing, since first
-  // correct answer takes the round outright.
-  function chatMatches(text, a) {
-    if (matches(text, a)) return true;
-    const words = norm(text).split(' ').filter(Boolean);
-    const names = [a.n].concat(a.a || []).map(norm);
-    for (const name of names) {
-      const nw = name.split(' ').filter(Boolean);
-      if (!nw.length || nw.length > words.length) continue;
-      for (let i = 0; i + nw.length <= words.length; i++) {
-        if (nw.every((w, j) => w === words[i + j])) return true;
-      }
-    }
-    return false;
-  }
-
-  async function handleChatLine(username, text) {
-    if (!state || state.resolved || sendingGuess) return;
-    if (!looksLikeAGuess(text)) return;
-
-    const a = targetAnimal();
-    if (!a || !chatMatches(text, a)) return;
-
-    const roundNo = state.roundNo;
-    const hintsShown = state.shown;
-    sendingGuess = true;
-    try {
-      await fetch('api/party/guess', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ code, playerName: username, hintsShown, roundNo, source: 'twitch' }),
-      });
-      poll();
-    } catch (err) { /* the round just stays open - chat will say it again */ }
-    finally { sendingGuess = false; }
-  }
 
   /* -- Player (?party=CODE) ----------------------------------------------- */
 
@@ -1169,7 +1021,7 @@
     if (!bar || !state) return;
     const scores = state.scores || [];
     const now = Date.now();
-    const onlineCount = scores.filter((s) => s.source !== 'twitch' && typeof s.updatedAt === 'number' && (now - s.updatedAt) < ONLINE_WINDOW_MS).length;
+    const onlineCount = scores.filter((s) => typeof s.updatedAt === 'number' && (now - s.updatedAt) < ONLINE_WINDOW_MS).length;
 
     const meIdx = playerName ? scores.findIndex((s) => s.playerName === playerName) : -1;
     const leading = meIdx === 0 && scores[0] && scores[0].score > 0;

@@ -15,8 +15,10 @@ Three ways to use the site, all on one page:
 - **Lookup** — the default. Search an animal, get Quick answers and At a glance.
 - **Mystery Animal** — a solo round. A blurred photo sharpens as hints are spent.
 - **Party Mode** *(beta)* — one host, everyone else on their own phone via a QR
-  code or a five-character room code. Reading a Twitch chat is also wired up but
-  **unfinished** — see `TWITCH-REBUILD.md`.
+  code or a five-character room code.
+
+**Twitch stream mode** *(beta)* is its own page, `streamer.html` — one streamer,
+their whole chat guessing. A session is either this or a phone party, never both.
 
 ## How it works
 
@@ -31,13 +33,20 @@ for the things a static file can't do, and one vendored runtime dependency.
 - `app.js` — search, routing, the animal view, theme. `render-data.js` and
   `related.js` render the fact sections; `menu.js` runs the nav on the static
   pages.
-- `mystery.js` / `party.js` — the two game modes. `game-core.js` holds what they
-  share: answer matching, and the real-thumbnail pixelation both use to blur a
-  photo without shipping the sharp one to the browser.
+- `mystery.js` / `party.js` / `streamer.js` — the three game surfaces.
+  `game-core.js` holds what they share: answer matching (including the
+  sentence-scanning chat matcher the server uses too), and the real-thumbnail
+  pixelation they all use to blur a photo without shipping the sharp one to the
+  browser.
+- `streamer.html` / `streamer.js` — Twitch stream mode. Reads the channel's chat
+  straight from this tab over anonymous IRC-over-WebSocket, because Pages
+  Functions can't hold a persistent connection. Closing the tab stops chat play;
+  that's the hosting model, not a bug.
 - `functions/` — Pages Functions. `api/report.js` takes problem reports;
-  `api/party/*.js` runs party sessions. Both sit on a Cloudflare D1 database
-  whose schema is `schema.sql`. `index.js` injects per-animal SEO meta from the
-  generated `seo-meta.json`.
+  `api/party/*.js` runs party and stream sessions alike; `api/twitch/*.js` is
+  the streamer's OAuth handshake and nothing else. All sit on a Cloudflare D1
+  database whose schema is `schema.sql`. `index.js` injects per-animal SEO meta
+  from the generated `seo-meta.json`.
 - `vendor/qrcode.js` — the only runtime dependency, used for Party Mode's join
   code.
 - `sw.js` — caches the app shell, so every animal stays available offline, not
@@ -52,6 +61,25 @@ hand-bumped `?v=` query string. **Change one of those files and you must bump
 its `?v=` in every HTML file that loads it, plus `VERSION` and the matching
 `SHELL` entry in `sw.js`** — otherwise returning visitors keep the stale copy
 indefinitely.
+
+## Twitch login
+
+Twitch stream mode's "Connect with Twitch" needs an app registered at
+[dev.twitch.tv](https://dev.twitch.tv/console/apps) with both redirect URLs:
+`https://guessmyanimal.com/api/twitch/callback` and, for local work,
+`http://localhost:8788/api/twitch/callback` — Twitch requires HTTPS for every
+redirect URL *except* the literal hostname `localhost`, so `127.0.0.1` is
+rejected.
+
+Two variables, `TWITCH_CLIENT_ID` (not secret — it ends up in a redirect URL
+the browser can see) and `TWITCH_CLIENT_SECRET` (a real Pages secret, set with
+`npx wrangler pages secret put TWITCH_CLIENT_SECRET`). Locally both live in a
+gitignored `.dev.vars` at the repo root, which `wrangler pages dev` reads on its
+own. Without them the Connect button bounces back to `?twitcherror=config`.
+
+The login only ever answers "which channel is this streamer's". Chat itself is
+read anonymously and needs no token, so nothing about reading chat depends on
+any of this.
 
 ## Adding an animal
 
@@ -72,6 +100,12 @@ ads are live, behind a Funding Choices consent message.
     npm run og        regenerate the link-preview card
     npm run seo       rebuild functions/seo-meta.json from animals.js
     npm run deploy    publish to Cloudflare Pages
+
+Local dev is `npx wrangler pages dev . --port=8788`. Run it **without** a
+`--d1=DB` flag: that flag makes wrangler invent a throwaway database ("local-DB")
+instead of using the one `wrangler.toml` declares, so every party/stream endpoint
+500s against tables that exist in the other file. Apply the schema to the local
+database once with `npx wrangler d1 execute DB --local --file=schema.sql`.
 
 `main` is the production branch and deploys automatically on push. `npm run
 deploy` publishes straight from the working tree, bypassing git — useful if the

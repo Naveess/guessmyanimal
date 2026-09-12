@@ -12,7 +12,6 @@
 
   const el = (id) => document.getElementById(id);
   const THEME_KEY = 'gma-theme';
-  const SOUND_KEY = 'gma-mystery-sound';
 
   const themeMeta = document.querySelector('meta[name="theme-color"]');
   function syncThemeColour() {
@@ -43,19 +42,34 @@
   }
   applyTheme(readTheme());
 
-  let soundOn = (() => { try { return localStorage.getItem(SOUND_KEY) !== 'off'; } catch (e) { return true; } })();
+  // Reads/writes through sfx.js's own copy of this preference (loaded
+  // before this file - see the <script> order) rather than keeping a
+  // second one here that could drift from it.
   const soundBtn = el('soundToggle');
-  if (soundBtn) {
+  if (soundBtn && window.GMA_SFX) {
     function updateSoundToggle() {
-      soundBtn.setAttribute('aria-pressed', String(soundOn));
-      soundBtn.setAttribute('aria-label', soundOn ? 'Sound on' : 'Sound off');
+      const on = GMA_SFX.isSoundOn();
+      soundBtn.setAttribute('aria-pressed', String(on));
+      soundBtn.setAttribute('aria-label', on ? 'Sound on' : 'Sound off');
     }
     soundBtn.addEventListener('click', () => {
-      soundOn = !soundOn;
-      try { localStorage.setItem(SOUND_KEY, soundOn ? 'on' : 'off'); } catch (err) {}
+      GMA_SFX.setSoundOn(!GMA_SFX.isSoundOn());
       updateSoundToggle();
+      // Turning it on demonstrates itself; turning it off has to be
+      // silent, same reasoning as index.html's own toggle.
+      GMA_SFX.sfx('tap');
     });
     updateSoundToggle();
+  }
+
+  // Marks whichever menu item links to this same page - by basename, since
+  // hrefs are a mix of plain pages (about.html) and index.html query links
+  // (./?mystery=1) that should never match here. aria-current does the
+  // announcing (a screen reader gets "current page" for free); the CSS
+  // hook is the same attribute, not a class only sighted users would see.
+  const herePage = location.pathname.split('/').pop() || 'index.html';
+  for (const a of document.querySelectorAll('.menu-item[href]')) {
+    if (a.getAttribute('href').split('/').pop() === herePage) a.setAttribute('aria-current', 'page');
   }
 
   const menu = el('menu'), menuBtn = el('menuBtn'), menuPanel = el('menuPanel');

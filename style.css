@@ -55,14 +55,44 @@
   --r-photo: 26px;
   --shadow:   0 1px 2px rgba(29,30,25,.05), 0 6px 18px -10px rgba(29,30,25,.24);
   --shadow-l: 0 2px 6px rgba(29,30,25,.07), 0 22px 44px -22px rgba(29,30,25,.45);
+  /* A whisper of light along the top inside edge of the desktop nav's
+     glass pill - the material's own specular highlight, not a border. */
+  --gloss-inset: inset 0 1px 0 rgba(255,255,255,.5);
 
   /* Confident arrival, no bounce. */
   --ease: cubic-bezier(.16, 1, .3, 1);
+
+  /* The fixed nav's own footprint, so a page can clear it with
+     calc(var(--nav-h) + var(--page-top)) instead of a per-page guess -
+     nothing sizes off these on the splash, which floats the nav on
+     purpose. Both step up at the desktop breakpoint below, where the
+     nav becomes a taller centred pill instead of a corner button. */
+  --nav-h: 56px;
+  --page-top: 20px;
+
+  /* One stacking hierarchy for the whole site instead of ad-hoc
+     numbers per component. Bands, low to high: sticky in-feed
+     surfaces, the frosted top bar, a dropdown floating over it, the
+     dimming scrim behind an open panel, a floating panel itself, then
+     the fixed corner/nav chrome that always wins. */
+  --z-sticky:   20;
+  --z-topbar:   30;
+  --z-dropdown: 40;
+  --z-scrim:    45;
+  --z-panel:    50;
+  --z-chrome:   60;
 
   /* Wide screens have real empty margin around the phone-width column;
      a faint scatter of the site's own paw mark says that's a choice,
      not an unstyled gap. Ink-coloured, so it flips with the theme. */
   --paw-field: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg transform='translate(80.8,82) scale(.6)' fill='%231d1e19' fill-opacity='.05'%3E%3Cellipse cx='32' cy='41' rx='14.5' ry='12'/%3E%3Cellipse cx='14.5' cy='27' rx='6.4' ry='8'/%3E%3Cellipse cx='26' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='38' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='49.5' cy='27' rx='6.4' ry='8'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* The nav grows into a taller centred pill at the same breakpoint it
+   switches from a corner button to a bar (see .menu below) - these
+   two values step up together so pages always clear its real height. */
+@media (min-width: 860px) {
+  :root { --nav-h: 66px; --page-top: 34px; }
 }
 
 /* The dark palette is applied through two selectors: the media query for
@@ -89,6 +119,10 @@
 
     --shadow:   0 6px 18px -10px rgba(0,0,0,.8);
     --shadow-l: 0 22px 44px -22px rgba(0,0,0,.9);
+    /* A plain white wash nearly vanishes once --card goes near-black, so
+       dark gets a restrained line lifted off the surface itself instead
+       of a diluted version of the light gloss. */
+    --gloss-inset: inset 0 1px 0 rgba(255,255,255,.08);
 
     --paw-field: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg transform='translate(80.8,82) scale(.6)' fill='%23eef0e4' fill-opacity='.05'%3E%3Cellipse cx='32' cy='41' rx='14.5' ry='12'/%3E%3Cellipse cx='14.5' cy='27' rx='6.4' ry='8'/%3E%3Cellipse cx='26' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='38' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='49.5' cy='27' rx='6.4' ry='8'/%3E%3C/g%3E%3C/svg%3E");
   }
@@ -111,6 +145,10 @@
 
     --shadow:   0 6px 18px -10px rgba(0,0,0,.8);
     --shadow-l: 0 22px 44px -22px rgba(0,0,0,.9);
+    /* A plain white wash nearly vanishes once --card goes near-black, so
+       dark gets a restrained line lifted off the surface itself instead
+       of a diluted version of the light gloss. */
+    --gloss-inset: inset 0 1px 0 rgba(255,255,255,.08);
 
     --paw-field: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg transform='translate(80.8,82) scale(.6)' fill='%23eef0e4' fill-opacity='.05'%3E%3Cellipse cx='32' cy='41' rx='14.5' ry='12'/%3E%3Cellipse cx='14.5' cy='27' rx='6.4' ry='8'/%3E%3Cellipse cx='26' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='38' cy='16.5' rx='6.4' ry='8.6'/%3E%3Cellipse cx='49.5' cy='27' rx='6.4' ry='8'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -542,7 +580,7 @@ body.view-home #q { font-size: 17px; }
 }
 
 .suggest {
-  position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40;
+  position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: var(--z-dropdown);
   list-style: none; margin: 0; padding: 6px;
   background: var(--card);
   border-radius: 16px;
@@ -564,7 +602,7 @@ body.view-home #q { font-size: 17px; }
 .s-alias { color: var(--muted); font-size: 14px; font-weight: 400; }
 
 .noresult {
-  position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40;
+  position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: var(--z-dropdown);
   margin: 0; padding: 14px 16px;
   background: var(--card);
   border-radius: 16px;
@@ -582,7 +620,7 @@ body.view-home #q { font-size: 17px; }
 .animalview[hidden] { display: none; }
 
 .topbar {
-  position: sticky; top: 0; z-index: 30;
+  position: sticky; top: 0; z-index: var(--z-topbar);
   display: flex; align-items: center; gap: 9px;
   padding: 10px 14px;
   padding-top: calc(10px + env(safe-area-inset-top));
@@ -607,7 +645,11 @@ body.view-home #q { font-size: 17px; }
 .feed {
   max-width: 560px;
   margin: 0 auto;
-  padding: 14px 14px calc(30px + env(safe-area-inset-bottom));
+  /* Clears the fixed nav's real footprint instead of a per-view guess -
+     see --nav-h/--page-top. This is every game view (animal, mystery,
+     party, streamer); the splash is a different view entirely and never
+     carries this class, so it never pays this padding. */
+  padding: calc(var(--nav-h) + var(--page-top)) 14px calc(30px + env(safe-area-inset-bottom));
 }
 
 /* -- The photo card ------------------------------------------------
@@ -868,7 +910,6 @@ body.view-home #q { font-size: 17px; }
    ================================================================== */
 
 @media (min-width: 620px) {
-  .feed { padding-top: 20px; }
   .pcard { aspect-ratio: 3 / 2; }
   .pcard-name { font-size: 46px; }
   .rows { display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; }
@@ -1071,7 +1112,6 @@ body.view-home #q { font-size: 17px; }
     max-width: clamp(860px, 80vw, 1280px);
     width: 100%;
     margin: 0 auto;
-    padding-top: 28px;
     display: grid;
     grid-template-columns: clamp(300px, 26vw, 400px) 1fr;
     column-gap: clamp(28px, 3vw, 44px);
@@ -1084,8 +1124,11 @@ body.view-home #q { font-size: 17px; }
     position: sticky;
     /* Clears the sticky topbar (its own height plus the safe-area inset
        it already pads for) with a little breathing room, so the photo
-       settles just under it rather than touching. */
-    top: calc(84px + env(safe-area-inset-top));
+       settles just under it rather than touching. The 84px is that
+       original height+room figure, unchanged; --nav-h/--page-top is the
+       extra clearance the topbar itself now carries below, so this has
+       to grow by the same amount or the card would ride up under it. */
+    top: calc(var(--nav-h) + var(--page-top) + 84px + env(safe-area-inset-top));
     /* Reverts the 620px rule's wide 3/2 landscape crop, same reasoning
        Mystery's own sidebar hero uses: that ratio assumes the card spans
        the whole feed width, and here it's a narrower fixed column where
@@ -1105,6 +1148,12 @@ body.view-home #q { font-size: 17px; }
      off it once the feed grows past that point. */
   .animalview .topbar {
     padding-left: max(14px, calc((100% - clamp(860px, 80vw, 1280px)) / 2));
+    /* The centred nav pill and this bar's own centred search dock
+       occupy the same rectangle at this width (both are centred in the
+       viewport) - no z-index can fix that, they're just in the same
+       place. Pushing the bar's content down below the nav's real
+       footprint is the only fix that actually removes the overlap. */
+    padding-top: calc(var(--nav-h) + var(--page-top) + 10px + env(safe-area-inset-top));
   }
   /* The 620px rule caps the search dock at 460px but never centres it -
      once the topbar is wider than back-button-plus-460px, the leftover
@@ -1124,7 +1173,7 @@ body.view-home #q { font-size: 17px; }
    takes the card surface so it reads as a control rather than a hole.
    ================================================================== */
 
-.menu { position: fixed; z-index: 60; right: 14px; top: calc(12px + env(safe-area-inset-top)); }
+.menu { position: fixed; z-index: var(--z-chrome); right: 14px; top: calc(12px + env(safe-area-inset-top)); }
 
 .menu-btn {
   width: 44px; height: 44px;
@@ -1154,7 +1203,7 @@ body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 
    the desktop rules below) - one control, two slots, same technique
    .theme-toggle already uses for its own fixed position. */
 .sound-toggle {
-  position: fixed; z-index: 60; right: 68px; top: calc(12px + env(safe-area-inset-top));
+  position: fixed; z-index: var(--z-chrome); right: 68px; top: calc(12px + env(safe-area-inset-top));
   width: 44px; height: 44px;
   display: grid; place-items: center; cursor: pointer;
   color: var(--ink);
@@ -1231,7 +1280,7 @@ body.view-home .sound-toggle:hover { background: color-mix(in srgb, var(--home-i
 @media (min-width: 860px) {
   .theme-toggle {
     display: flex;
-    position: fixed; z-index: 60;
+    position: fixed; z-index: var(--z-chrome);
     right: 68px; top: calc(19px + env(safe-area-inset-top));
     padding: 3px;
     background: var(--flat-bg);
@@ -1319,7 +1368,7 @@ body.view-home .sound-toggle:hover { background: color-mix(in srgb, var(--home-i
    shown only when body.view-home is present. */
 .play-link {
   display: none;
-  position: fixed; z-index: 60; left: 14px; top: calc(12px + env(safe-area-inset-top));
+  position: fixed; z-index: var(--z-chrome); left: 14px; top: calc(12px + env(safe-area-inset-top));
   align-items: center;
   height: 44px; padding: 0 16px;
   font: inherit; font-size: 14.5px; font-weight: 600;
@@ -1457,7 +1506,7 @@ body.view-home .play-link { display: inline-flex; }
 body:has(#menuPanel:not([hidden]))::before,
 body:has(#sharePanel:not([hidden]))::before {
   content: '';
-  position: fixed; inset: 0; z-index: 45;
+  position: fixed; inset: 0; z-index: var(--z-scrim);
   background: rgba(20,21,15,.5);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
@@ -1471,6 +1520,10 @@ body:has(#sharePanel:not([hidden]))::before {
   transition: background .13s var(--ease);
 }
 .menu-item:hover { background: var(--flat-bg); }
+/* The page you're already on, in either nav presentation - aria-current
+   both drives this (screen readers get "About the game, current page"
+   for free) and marks it, rather than a plain class only CSS can see. */
+.menu-item[aria-current="page"] { background: var(--flat-bg); font-weight: 600; }
 /* The desktop bar below swaps four of these to shorter labels so a row
    of full sentences doesn't turn the pill into the width of the page;
    mobile's dropdown has the vertical room to spell them out, so it
@@ -1512,18 +1565,23 @@ body:has(#sharePanel:not([hidden]))::before {
     display: flex; flex-direction: row; align-items: center;
     position: static;
     min-width: 0; max-width: calc(100vw - 24px);
-    gap: 2px; padding: 5px;
+    gap: 4px; padding: 7px;
     background: color-mix(in srgb, var(--card) 78%, transparent);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-radius: 999px;
-    box-shadow: var(--shadow-l);
+    /* The lifted shadow gives the pill its edge (Border-Or-Shadow Rule);
+       the inset line on top of it is the glass's own gloss - a specular
+       highlight on the material, not a second edge treatment layered on
+       top of it. Themed separately below, not derived by opacity - a
+       plain wash reads as almost nothing once --card goes near-black. */
+    box-shadow: var(--shadow-l), var(--gloss-inset);
     animation: none;
   }
   .menu-panel .menu-item {
-    padding: 10px 15px; min-height: 0;
+    padding: 11px 18px; min-height: 0;
     border-radius: 999px;
-    font-size: 14px; white-space: nowrap;
+    white-space: nowrap;
   }
   .menu-item .mi-full { display: none; }
   .menu-item .mi-short { display: inline; }
@@ -1540,10 +1598,15 @@ body:has(#sharePanel:not([hidden]))::before {
   }
 }
 /* At the narrow end of the desktop range the centred pill's right edge
-   creeps into the fixed theme dial's left edge - a size step down
-   clears it with room to spare, same technique as the pill itself. */
+   creeps into the fixed theme dial's left edge - tightening padding and
+   gap clears it with room to spare. Font-size stays at the Control
+   label size (15px, set on .menu-item itself) rather than stepping
+   down - shrinking the pill's own padding is "the same control, a
+   little more compact"; shrinking its type out of its documented band
+   would read as a different, smaller control. */
 @media (min-width: 860px) and (max-width: 919px) {
-  .menu-panel .menu-item { padding: 9px 10px; font-size: 13px; }
+  .menu-panel { padding: 6px; gap: 2px; }
+  .menu-panel .menu-item { padding: 9px 13px; }
 }
 
 /* ==================================================================
@@ -1566,6 +1629,11 @@ body:has(#sharePanel:not([hidden]))::before {
 .dlg-sub { margin: -9px 0 0; font-size: 14.5px; color: var(--muted); }
 .dlg-sub:empty { display: none; }
 .dlg-note { margin: -9px 0 0; font-size: 14.5px; color: var(--muted); }
+/* The pull-up above only makes sense directly under a title it's
+   tightening the gap to - opening a container with a note and nothing
+   above it (the streamer Connect screen, Party's own setup screen)
+   was pulling it up past the container's own top padding instead. */
+.dlg-note:first-child { margin-top: 0; }
 
 .kinds { margin: 0; padding: 0; border: 0; display: flex; flex-wrap: wrap; gap: 7px; }
 .kinds legend {
@@ -1673,6 +1741,11 @@ body:has(#sharePanel:not([hidden]))::before {
   font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
   color: var(--muted);
 }
+/* Countdown urgency (streamer round timer) - colour never stands alone
+   (DESIGN.md), so the label text itself changes ("Hurry!"/"Almost up!")
+   alongside these. Reuses .mystery-stat rather than a new component. */
+.mystery-stat.is-warn b, .mystery-stat.is-warn span { color: var(--warn); }
+.mystery-stat.is-bad b, .mystery-stat.is-bad span { color: var(--bad); }
 /* The streak is the one number this whole mode is built around - the
    Daily hook is literally "don't break the chain" - so it earns its own
    distinction, but by size alone (reaching toward the Headline register
@@ -2136,7 +2209,10 @@ body.view-page { background: var(--paper); }
 .prose {
   max-width: 640px;
   margin: 0 auto;
-  padding: 26px 18px 40px;
+  /* Same nav clearance every game view uses (see .feed) - About, Browse
+     and Privacy sit under the same fixed nav and were guessing their
+     own number before. */
+  padding: calc(var(--nav-h) + var(--page-top)) 18px 40px;
 }
 /* Measure sits inside the comfortable range for reading rather than
    running the full width of the container. */
@@ -2242,7 +2318,7 @@ body.view-page { background: var(--paper); }
 .share[hidden] { display: none; }
 
 .share-panel {
-  position: absolute; left: 0; bottom: calc(100% + 8px); z-index: 50;
+  position: absolute; left: 0; bottom: calc(100% + 8px); z-index: var(--z-panel);
   min-width: 194px;
   display: flex; flex-direction: column;
   padding: 6px;
@@ -2315,7 +2391,6 @@ body.view-page { background: var(--paper); }
    background the way an OBS layer would have.
    ================================================================== */
 
-.partyview .feed { padding-top: 8px; }
 .party-join-code {
   font-family: ui-monospace, 'SF Mono', Consolas, monospace;
   letter-spacing: .12em;
@@ -2461,6 +2536,19 @@ body.view-page { background: var(--paper); }
 }
 #partyGuess:focus { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
 
+/* #streamerGuess reuses .mystery-form the same way #partyGuess does, and
+   was missing the same rule for the same reason - caught by /impeccable
+   critique's design review, not by eye. Identical to #partyGuess. */
+#streamerGuess {
+  flex: 1; min-width: 0;
+  font: inherit; font-size: 16px; font-weight: 500;
+  color: var(--ink); background: var(--card);
+  border: 1px solid var(--line); border-radius: 15px;
+  padding: 0 16px; min-height: 52px;
+  transition: border-color .16s var(--ease);
+}
+#streamerGuess:focus { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
+
 /* .party-result reuses .mystery-result's own layout (margin-top, the
    flex column, the gap to its note) wholesale - see index.html. Only
    the card's tint needs its own rule: Mystery's version is unconditional
@@ -2512,20 +2600,11 @@ body.view-page { background: var(--paper); }
 .party-score.is-leader .party-score-crown,
 .party-score.is-winner .party-score-crown { display: inline-flex; }
 .party-score-name { flex: 1; min-width: 0; font-weight: 500; overflow-wrap: anywhere; }
-/* Twitch guesses and phone guesses share one board, so the source has
-   to be legible without being a second column of noise. */
-.party-score-name.is-twitch::after {
-  content: "chat";
-  margin-left: 7px; padding: 2px 6px;
-  border-radius: 5px; background: var(--flat-bg);
-  font-size: 11px; font-weight: 600; letter-spacing: .04em;
-  color: var(--muted); vertical-align: 1px;
-}
 /* A live "here right now" signal, separate from rank - a 0-point row
    from someone who joined and left reads very differently from one
    who's mid-round with you, and the number alone can't tell them
-   apart. Same dot idiom the Twitch chat status line already uses
-   (.party-chat.is-live/.is-down), just smaller and inline. */
+   apart. Same dot idiom the streamer page's chat status line uses
+   (.streamer-chatstatus), just smaller and inline. */
 .party-score-dot {
   position: relative;
   flex: none; width: 7px; height: 7px; border-radius: 50%;
@@ -2635,7 +2714,7 @@ body.view-page { background: var(--paper); }
    JS (--topbar-h) rather than a guessed constant, since the top bar's
    real height moves with env(safe-area-inset-top) per device. */
 .party-minibar {
-  position: sticky; top: var(--topbar-h, 58px); z-index: 20;
+  position: sticky; top: var(--topbar-h, 58px); z-index: var(--z-sticky);
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   padding: 9px 14px;
   background: color-mix(in srgb, var(--paper) 92%, transparent);
@@ -2699,7 +2778,11 @@ body.view-page { background: var(--paper); }
   }
   .party-side {
     position: sticky;
-    top: calc(84px + env(safe-area-inset-top));
+    /* Flush with the grid's own top edge, which already clears the nav
+       via the page's own padding-top (C.2) - no extra offset needed here
+       the way the animal page's .pcard has, since this sidebar sits
+       directly under that padding rather than under a second topbar. */
+    top: calc(var(--nav-h) + var(--page-top) + env(safe-area-inset-top));
   }
   .party-scores-label { margin-top: 0; }
   .party-feed { max-height: min(48vh, 480px); }
@@ -2714,80 +2797,48 @@ body.view-page { background: var(--paper); }
      the mobile mini-strip would be pure duplication - never shown, and
      never wired to appear via the observer either (see party.js). */
   .party-minibar { display: none; }
+
+  /* Same width-widening step as the party view's own .feed rule just
+     above, but toggled by streamer.js's setWide() rather than a :has()
+     read of #streamerDashboard's hidden state - same job, a plain class
+     instead of a selector, see streamer.js's own comment on why. */
+  .streamer-feed.is-wide {
+    max-width: clamp(820px, 80vw, 1200px);
+    width: 100%;
+    margin: 0 auto;
+  }
+  .streamer-board-label { margin-top: 0; }
+
+  /* Same read-off-a-compressed-stream reasoning as Mystery Animal's own
+     presentation scale (.mysteryview .mystery-hint/.mystery-stat b,
+     above) - hints are the entire game here too, and the round stats sit
+     on the same broadcast surface as the chat leaderboard, which already
+     scales. Identical bases and ceilings to Mystery's, just scoped to
+     the shared .party-hint/.mystery-stat classes this page reuses rather
+     than the mystery-prefixed ones. */
+  .streamer-feed .party-hint { font-size: clamp(16px, 1.35vw, 21px); }
+  .streamer-feed .mystery-stat b { font-size: clamp(24px, 1.95vw, 32px); }
 }
 
 /* -- Host: setup and the invite panel -------------------------------- */
 
 .dlg-note-tight { margin-top: -6px; font-size: 13.5px; }
 /* Weight alone (400 vs the label's 500) carries the de-emphasis; opacity
-   only has to nudge it further without dropping below AA in either
-   context this sits in - Muted-on-Card (most fields) or Warn-on-Warn-bg
-   (inside the .wip panel, whose .fld-label recolours to Warn). .75
-   landed at 3.48:1 muted / 4.13:1 warn, both under 4.5:1 for text this
-   size. .96 clears both, tightest case (warn, light) at 4.62:1. */
+   only has to nudge it further without dropping below AA. .75 landed at
+   3.48:1 on Muted-on-Card, under 4.5:1 for text this size. .96 clears
+   it, and cleared the tightest case the retired .wip panel used to add
+   (Warn-on-Warn-bg, light) at 4.62:1 - worth keeping the headroom if a
+   coloured panel ever wraps a field again. */
 .fld-optional { font-weight: 400; opacity: .96; }
 
-.party-select, #partyTwitch {
+.party-select {
   font: inherit; font-size: 15.5px;
   color: var(--ink); background: var(--paper);
   border: 1px solid var(--line); border-radius: 13px;
   padding: 0 13px; min-height: 46px;
 }
-.party-select:focus, #partyTwitch:focus {
+.party-select:focus {
   border-color: color-mix(in srgb, var(--ink) 45%, transparent);
-}
-
-/* -- Under construction ---------------------------------------------
-   For a feature that's reachable but not finished. Twitch chat play is
-   the case it was built for: it works well enough to look ready, which
-   is exactly the danger - a streamer could put it on air.
-
-   Warn, not Bad: this is a caution about timing, not a failure. Border
-   and no shadow per the Border-Or-Shadow Rule, since it sits flush in
-   the setup flow. No Sun anywhere, so the One-Yellow Rule is untouched
-   - and Warn is deliberately the palette's other yellow-ish register,
-   far enough from Sun in saturation to never read as brand.
-
-   Warn on Warn-bg is 4.98:1 light and 8.38:1 dark, so every line here
-   clears AA at body size, including the note. */
-.wip {
-  display: flex; flex-direction: column; gap: 11px;
-  padding: 15px; border-radius: var(--r-card);
-  background: var(--warn-bg);
-  border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
-}
-.wip-head {
-  display: flex; align-items: center; gap: 8px;
-  margin: 0; font-size: 15.5px; font-weight: 600; color: var(--warn);
-}
-/* currentColor, so the Twitch mark takes the Warn tone like every other
-   drawn icon on the site takes Muted or Ink. Shipping it in Twitch
-   purple would be the only colour on the site outside the palette. */
-.wip-mark { flex: none; width: 17px; height: 17px; }
-.wip-tag {
-  margin-left: auto; padding: 3px 7px;
-  border-radius: 5px;
-  border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent);
-  font-size: 11.5px; font-weight: 600;
-  letter-spacing: .09em; text-transform: uppercase;
-}
-.wip-note { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--warn); }
-.wip .fld-label { color: var(--warn); }
-/* The field is still live on purpose - the sign is a sign, not a wall,
-   and this path has to stay testable while it's rebuilt. Paper at 70%
-   keeps it reading as an input against the warm panel without going to
-   a flat fill. */
-.wip #partyTwitch {
-  background: color-mix(in srgb, var(--paper) 70%, transparent);
-  border-color: color-mix(in srgb, var(--warn) 32%, transparent);
-}
-
-/* The tag pushes right off .wip-head's auto margin, which needs a row
-   it can't win. Below ~380px "Under construction" and the heading stop
-   fitting on one line together, so the tag drops to its own. */
-@media (max-width: 380px) {
-  .wip-head { flex-wrap: wrap; }
-  .wip-tag { margin-left: 25px; }
 }
 
 .party-codebox {
@@ -2825,21 +2876,6 @@ body.view-page { background: var(--paper); }
 }
 #partyJoinUrl:focus { outline: none; border-color: color-mix(in srgb, var(--ink) 45%, transparent); }
 
-/* Chat connection state, ported from the OBS overlay this replaced -
-   still worth surfacing: a host needs to know this tab is actually
-   reading their chat before they start a round, not find out from a
-   chat full of unscored correct answers. Section-label micro
-   treatment, so it reads as status rather than content. */
-.party-chat {
-  margin: 9px 0 0; padding: 0;
-  font-size: 12.5px; font-weight: 600;
-  letter-spacing: .08em; text-transform: uppercase;
-  color: var(--muted);
-}
-.party-chat[hidden] { display: none; }
-.party-chat.is-live::before { content: "● "; color: var(--good); letter-spacing: 0; }
-.party-chat.is-down::before { content: "● "; color: var(--bad); letter-spacing: 0; }
-
 .party-hintbtn { width: 100%; }
 .party-hintbtn[disabled] { opacity: .45; cursor: default; }
 .party-hintbtn[hidden] { display: none; }
@@ -2858,14 +2894,193 @@ body.view-page { background: var(--paper); }
 #partyRecap .label { margin-top: 4px; }
 #partyRecapDone { margin-top: 22px; width: 100%; }
 
+/* -- Twitch stream surface (streamer.html) ---------------------------
+   A separate screen from Party Mode rather than a variant of it: one
+   streamer running a round for a chat of hundreds who each have no tab,
+   no name they can fix and no icon they picked. So none of the local
+   room's "who else is here" machinery appears here, and what's left is
+   sized to be read off a stream rather than held in a hand. ------- */
+
+#streamerConnect[hidden], #streamerGoLive[hidden],
+#streamerDashboard[hidden], #streamerRecap[hidden] { display: none; }
+#streamerGoLive .fld { margin-top: 18px; }
+#streamerGoLiveBtn { margin-top: 18px; width: 100%; }
+#streamerRecap .label { margin-top: 4px; }
+#streamerRecapDone { margin-top: 22px; width: 100%; }
+#streamerNext[hidden] { display: none; }
+#streamerEnd { margin-top: 22px; width: 100%; color: var(--muted); }
+
+/* The screen's one solid-Sun element, and the only action on it until a
+   channel is confirmed (the One-Yellow Rule). The Twitch mark is drawn
+   in currentColor like every other icon on the site, so it takes On-Sun
+   here rather than shipping Twitch purple - the same reasoning the
+   retired .wip panel's mark followed. */
+.streamer-connectbtn {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  width: 100%; margin-top: 20px; text-decoration: none;
+}
+.streamer-connectbtn svg { flex: none; width: 18px; height: 18px; }
+
+/* -- Streamer landing (pre-connect) -----------------------------------
+   The "why would I run this" pitch, built entirely from primitives that
+   already exist elsewhere on this exact page - the numbered-circle badge
+   is .party-hint-n's own language, the reassurance/how-it-works/role
+   blocks are all plain Card+Line (Border-Or-Shadow Rule), and the one
+   Connect button stays the screen's only solid-Sun element. No new
+   visual system for a screen most people see once. */
+
+.streamer-hero { text-align: center; margin: 4px 0 28px; }
+.streamer-kicker {
+  margin: 0 0 8px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 12.5px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.streamer-headline {
+  margin: 0 0 10px; font-weight: 800; letter-spacing: -.02em;
+  font-size: clamp(28px, 4.4vw, 40px); line-height: 1.12;
+}
+.streamer-pitch {
+  margin: 0 auto; max-width: 46ch;
+  font-size: 16.5px; line-height: 1.5; color: var(--muted);
+}
+
+/* Shared numbered/tick badge - same size and tint .party-hint-n already
+   uses for the live hint list further down this same page, so a first-
+   time visitor and a mid-round streamer see one consistent language. */
+.streamer-point-n {
+  flex: none; width: 22px; height: 22px; margin-top: 1px;
+  display: grid; place-items: center; border-radius: 50%;
+  background: var(--flat-bg); color: var(--muted);
+  font-size: 12px; font-weight: 700;
+}
+
+.streamer-points { display: grid; gap: 14px; margin: 0 0 24px; }
+.streamer-point { display: flex; gap: 12px; align-items: flex-start; padding: 16px; }
+.streamer-point p { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
+.streamer-point p b { color: var(--ink); font-weight: 700; }
+
+.streamer-steps { margin: 0 0 22px; padding: 16px; }
+.streamer-steps .label { margin: 0; }
+.streamer-steplist { margin: 14px 0 0; padding: 0; list-style: none; }
+.streamer-steplist li { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; }
+.streamer-steplist li + li { border-top: 1px solid var(--line); }
+.streamer-steplist p { margin: 0; font-size: 15px; line-height: 1.4; }
+.streamer-steplist p b { color: var(--ink); }
+
+.streamer-roles { display: grid; gap: 14px; margin: 0 0 24px; }
+.streamer-roles .card { padding: 16px; }
+.streamer-roles .label { margin: 0 0 4px; }
+.streamer-rolelist { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.streamer-rolelist li {
+  position: relative; padding-left: 16px;
+  font-size: 14px; line-height: 1.4; color: var(--muted);
+}
+.streamer-rolelist li::before {
+  content: ""; position: absolute; left: 0; top: 8px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--line);
+}
+
+@media (min-width: 620px) {
+  .streamer-points { grid-template-columns: repeat(3, 1fr); }
+  .streamer-roles { grid-template-columns: 1fr 1fr; }
+}
+
+/* Coming Soon: visibly inert, Muted, no button at all - see C.8/PLATFORMS
+   in streamer.js. Adding a real platform later means one array entry
+   plus a functions/api/<key>/{login,callback}.js pair; this markup and
+   the live Connect button just above both render from that same array,
+   so nothing here needs redesigning when that happens. */
+.streamer-platform-soon {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 10px; padding: 13px 16px;
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  color: var(--muted);
+}
+.streamer-platform-soon b { font-weight: 600; color: var(--ink); }
+
+/* Chat connection state. The old inline version flipped to "live" the
+   moment JOIN was sent, which is not the same as having joined - a
+   typo'd channel sat green and silent. Three states now, and the middle
+   one exists precisely so "waiting to hear back" can't be mistaken for
+   "reading your chat": see the 366 gate in streamer.js. Section-label
+   micro treatment, so it reads as status, not content. */
+.streamer-chatstatus {
+  margin: 0 0 14px; padding: 0;
+  font-size: 12.5px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted);
+}
+.streamer-chatstatus[hidden] { display: none; }
+.streamer-chatstatus::before { content: "● "; letter-spacing: 0; color: var(--line); }
+.streamer-chatstatus.is-live::before { color: var(--good); }
+.streamer-chatstatus.is-waiting::before { color: var(--warn); }
+.streamer-chatstatus.is-down::before { color: var(--bad); }
+
+/* -- Chat leaderboard.
+   Deliberately not .party-score. That row answers "who else is here and
+   which one am I", which an anonymous chat can't ask: there's no
+   presence to show (no tab to heartbeat from), no "me" to mark, and no
+   picked icon to draw. This one answers "who's winning, from across the
+   room" - the top few only, on the Headline-adjacent scale the join
+   code already uses for the same reason, since both are read off a
+   screen someone else is looking at rather than out of your own hand. */
+.streamer-board-label { margin-top: 26px; }
+.streamer-board {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  background: var(--card);
+  padding: 2px 16px;
+}
+.streamer-board-empty { margin: 0; padding: 16px 0; font-size: 15px; color: var(--muted); }
+.streamer-board-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 0;
+  font-size: clamp(17px, 2.6vw, 22px);
+}
+.streamer-board-row + .streamer-board-row { border-top: 1px solid var(--line); }
+.streamer-board-rank {
+  flex: none; width: 22px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.streamer-board-crown {
+  display: none; flex: none; width: 16px; height: 16px;
+  margin-right: -4px; color: var(--sun-deep);
+}
+.streamer-board-crown svg { width: 100%; height: 100%; }
+.streamer-board-row.is-leader .streamer-board-crown,
+.streamer-board-row.is-winner .streamer-board-crown { display: inline-flex; }
+.streamer-board-icon { flex: none; width: 22px; font-size: 17px; line-height: 1; text-align: center; }
+.streamer-board-name { flex: 1; min-width: 0; font-weight: 500; overflow-wrap: anywhere; }
+.streamer-board-pts { flex: none; font-weight: 700; font-variant-numeric: tabular-nums; }
+.streamer-board-row.is-leader .streamer-board-pts,
+.streamer-board-row.is-winner .streamer-board-pts { color: var(--sun-deep, var(--ink)); }
+/* Whoever just took the round (.is-winner, transient) and the streamer's
+   own row once they've guessed (.is-mine, persistent) - two genuinely
+   separate questions ("who just won" vs "which one is me", same
+   distinction .party-score keeps) that happen to spend the same
+   read-only Sun tint .party-score.is-mine spends on identity. A row
+   that's both at once (the streamer winning their own round) just reads
+   as one unbroken instance of it rather than two competing for
+   attention, which is what sharing this rule buys for free. */
+.streamer-board-row.is-winner,
+.streamer-board-row.is-mine {
+  margin: 0 -12px; padding: 13px 12px;
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--sun) 14%, transparent);
+}
+.streamer-board-row.is-winner .streamer-board-name,
+.streamer-board-row.is-mine .streamer-board-name { font-weight: 700; }
+
 /* Beta tag. The Micro step (the system's smallest label, same treatment
    as the theme toggle's "Appearance") - it has to read as a status
    marker attached to the thing next to it, never as a second label
    competing with it. Muted on flat-bg, so it carries no colour of its
    own and can sit in a menu, a dialog title or a topbar unchanged.
-   Radius matches .party-score-name's "chat" tag exactly (5px) rather
-   than inventing a nearby value - same category of element, a small
-   inline meta badge, so it takes the same shape. */
+   Radius is the 5px small-inline-badge step rather than a nearby
+   invented value - same category of element, so it takes the same
+   shape. */
 .beta-tag {
   margin-left: 7px; padding: 3px 6px;
   border-radius: 5px; background: var(--flat-bg);

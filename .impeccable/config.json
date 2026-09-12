@@ -183,6 +183,15 @@
         ],
         "createdAt": "2026-09-08T08:03:30.711Z",
         "reason": "Agent: same as about.html/index.html/privacy.html - real hierarchy runs 13.5-18.5px body copy against clamp(31px,8vw,44px) h1; static scanner can't resolve clamp() so only sees the flat body sizes. Verified live-rendered in both themes + mobile."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "streamer.html"
+        ],
+        "createdAt": "2026-09-12T16:29:08.760Z",
+        "reason": "Pre-existing sitewide .label component (12.5px uppercase eyebrow, style.css:737) reused as-is for the new landing page's section headings (How it works/You/Chat); identical pattern already used site-wide predating this session (Quick answers, At a glance, Party Mode recap, streamer's own Chat leaderboard label) - not a new regression, and restyling .label would be an unscoped sitewide typography change"
       }
     ]
   },
