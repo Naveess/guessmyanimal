@@ -1,21 +1,23 @@
 // Step 2: Twitch sends the browser back here with a one-time code.
 // Exchange it for an access token server-side - the client secret never
-// reaches the browser - ask Get Users whose token it is, then throw the
-// token away. The only thing that outlives this function is a plain
-// channel-login string, handed to streamer.html in the redirect. See
-// _lib.js's file comment for why this isn't a general sign-in: nothing
-// here is stored in D1, a cookie, or anywhere else past this request.
+// reaches the browser - ask Get Users whose token it is, revoke the
+// token immediately (it's done its one job), then hand the browser a
+// signed, httpOnly proof that this channel was actually confirmed by
+// Twitch. See _lib.js's file comment for why this isn't a general
+// sign-in: nothing here is stored in D1 - the proof cookie is the only
+// thing that outlives this request, and it expires in 15 minutes.
 
-import { TOKEN_URL, USERS_URL, STATE_COOKIE, readCookie, clearStateCookie, redirectUriFor } from './_lib.js';
+import { TOKEN_URL, REVOKE_URL, USERS_URL, STATE_COOKIE, readCookie, clearStateCookie, signChannel, channelCookie, redirectUriFor } from './_lib.js';
 
-function toStreamer(query, request) {
-  return new Response(null, {
-    status: 302,
-    headers: {
-      location: new URL('/streamer.html' + query, request.url).toString(),
-      'set-cookie': clearStateCookie(request),
-    },
-  });
+// Two cookies to set on the way out: always clear the one-time state
+// cookie, and - only on a successful login - set the channel proof.
+// Response headers can't repeat 'set-cookie' as one string, so this
+// builds a Headers object and appends each cookie as its own header.
+function toStreamer(query, request, extraCookie) {
+  const headers = new Headers({ location: new URL('/streamer.html' + query, request.url).toString() });
+  headers.append('set-cookie', clearStateCookie(request));
+  if (extraCookie) headers.append('set-cookie', extraCookie);
+  return new Response(null, { status: 302, headers });
 }
 
 export async function onRequestGet({ request, env }) {
@@ -65,12 +67,28 @@ export async function onRequestGet({ request, env }) {
   } catch (err) {
     return toStreamer('?twitcherror=token', request);
   }
-  // accessToken deliberately goes out of scope here unused - it is
-  // never written to a cookie, D1, or the redirect that follows.
 
   if (!login) return toStreamer('?twitcherror=token', request);
 
-  return toStreamer('?tw_login=' + encodeURIComponent(login), request);
+  // The token has done its one job (proving whose channel this is) -
+  // tell Twitch to kill it now rather than leaving it valid until it
+  // naturally expires. Best-effort: a failed revoke must never fail a
+  // login that already succeeded, so this never touches the response.
+  try {
+    await fetch(REVOKE_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ client_id: env.TWITCH_CLIENT_ID, token: accessToken }),
+    });
+  } catch (err) {
+    // Nothing to do - the token still expires on its own, just not instantly.
+  }
+  // accessToken deliberately goes out of scope here unused past this
+  // point - it is never written to a cookie, D1, or the redirect below.
+
+  const now = Date.now();
+  const proof = await signChannel(login, env.TWITCH_CLIENT_SECRET, now);
+  return toStreamer('?tw_login=' + encodeURIComponent(login), request, channelCookie(proof, request));
 }
 
 export const onRequestPost = () => new Response('method not allowed', { status: 405 });

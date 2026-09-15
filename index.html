@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260912-2">
+<link rel="stylesheet" href="style.css?v=20260915-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -308,33 +308,65 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          block) - the photo becomes a sticky sidebar and this wrapper
          becomes the scrolling column beside it, the same split
          .mystery-panel-top/-bottom already does for the Mystery page.
-         Mobile ignores this entirely (a plain, unstyled div below that
-         breakpoint), so nothing here changes the mobile DOM order or
-         visual result. -->
+         Below 860px this is display: contents - no box of its own -
+         which is what lets the play block and the related rail (both
+         now direct children of .feed) sit between the answers and the
+         glance without anything moving in the DOM. -->
     <div class="feed-content">
     <p class="blurb" id="blurb"></p>
 
-    <h3 class="label">Quick answers</h3>
-    <div class="card"><div class="rows" id="answers"></div></div>
+    <section class="ansec ansec-answers">
+      <h3 class="label">Quick answers</h3>
+      <div class="card"><div class="rows" id="answers"></div></div>
+    </section>
 
     <div class="shot" id="shot2"></div>
 
-    <h3 class="label">At a glance</h3>
-    <div class="glance" id="glance"></div>
+    <section class="ansec ansec-glance">
+      <h3 class="label">At a glance</h3>
+      <div class="glance" id="glance"></div>
+    </section>
 
-    <h3 class="label">Did you know</h3>
-    <div class="factcard"><p id="fact"></p></div>
+    <section class="ansec ansec-fact">
+      <h3 class="label">Did you know</h3>
+      <div class="factcard"><p id="fact"></p></div>
+    </section>
 
     <div class="shot" id="shot3"></div>
+    </div>
 
     <!-- Every real link this page has to another animal - the only route
          in otherwise is typing a fresh guess into search. Real <a href>
          elements, not buttons: a crawler follows these, and so does a
          middle-click into a new tab. Built server-side too (see
          relatedHtml in tools/build-seo.js) so the links exist before any
-         JS runs, not just after. -->
-    <h3 class="label">You might also like</h3>
-    <div class="related" id="related"></div>
+         JS runs, not just after.
+
+         A direct child of .feed rather than of .feed-content, so it can
+         span both grid columns as a full-width band on desktop. -->
+    <section class="ansec ansec-related">
+      <h3 class="label">You might also like</h3>
+      <div class="related" id="related"></div>
+    </section>
+
+    <!-- The page's one route into the game. Static markup, no JS: both
+         destinations are ordinary links the router already handles. -->
+    <section class="animal-play" id="animalPlay">
+      <div class="animal-play-copy">
+        <p class="animal-play-kicker">Play</p>
+        <h3 class="animal-play-headline">Could you have guessed it?</h3>
+        <p class="animal-play-sub">A photo, a few hints, one guess. Same 438 animals.</p>
+      </div>
+      <div class="animal-play-actions">
+        <a class="btn btn-solid" href="./?mystery=1">Mystery Animal</a>
+        <a class="btn" href="./?party=1">Party Mode</a>
+      </div>
+    </section>
+
+    <!-- Wrapped so the two bands above can sit between the facts and the
+         footer on desktop - everything inside .feed-content shares one
+         grid area, so the footer would otherwise land above them. -->
+    <div class="animal-tail">
 
     <div class="actions">
       <a class="btn" id="wiki" href="#" target="_blank" rel="noopener">Read on Wikipedia</a>
@@ -362,7 +394,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </div>
       <!-- Contextual: a wrong photo is noticed here, not in a menu. -->
       <button class="btn" type="button" data-report>Report a problem</button>
-      <button class="btn btn-solid" id="another" type="button">Another animal</button>
+      <!-- .btn-solid removed: the play block above is now the page's
+           one solid-Sun control. -->
+      <button class="btn" id="another" type="button">Another animal</button>
     </div>
     <p class="copied" id="copied" aria-live="polite"></p>
 
@@ -412,14 +446,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          mobile DOM order or visual result. -->
     <div class="mystery-panel-top">
     <div class="mystery-tabs" role="group" aria-label="Game mode">
-      <button class="mystery-tab" type="button" id="mysteryTabDaily" aria-pressed="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3.5" y="5" width="17" height="15" rx="2.5"/>
-          <path d="M3.5 9.5h17M8 3v4M16 3v4"/>
-        </svg>
-        Daily
-      </button>
-      <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="false">
+      <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M17 2.5 21 6l-4 3.5"/>
           <path d="M3 12.5v-2a4 4 0 0 1 4-4h14"/>
@@ -427,6 +454,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
           <path d="M21 11.5v2a4 4 0 0 1-4 4H3"/>
         </svg>
         Endless
+      </button>
+      <button class="mystery-tab" type="button" id="mysteryTabDaily" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3.5" y="5" width="17" height="15" rx="2.5"/>
+          <path d="M3.5 9.5h17M8 3v4M16 3v4"/>
+        </svg>
+        Daily
       </button>
     </div>
 
@@ -641,6 +675,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
     <!-- Host only: shown before a party exists. -->
     <div id="partySetup">
+      <p class="party-lobby-kicker">Party mode · local &amp; QR</p>
+      <h1 class="party-lobby-headline">Start a party</h1>
       <p class="dlg-note">One animal, hints you reveal, and whoever names it first takes the round. Everyone plays along on their own phone.</p>
 
       <label class="fld">
@@ -855,11 +891,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      checks window.openPartyPlayer on its very first call, so a direct
      or refreshed ?party=CODE link (which is what every QR code and
      join link is) lands on the player view rather than the home page. -->
-<script src="party.js?v=20260912-2"></script>
+<script src="party.js?v=20260914-1"></script>
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260912-2"></script>
+<script src="mystery.js?v=20260915-1"></script>
 <script src="app.js?v=20260912-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.

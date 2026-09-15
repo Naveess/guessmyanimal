@@ -192,6 +192,42 @@
         ],
         "createdAt": "2026-09-12T16:29:08.760Z",
         "reason": "Pre-existing sitewide .label component (12.5px uppercase eyebrow, style.css:737) reused as-is for the new landing page's section headings (How it works/You/Chat); identical pattern already used site-wide predating this session (Quick answers, At a glance, Party Mode recap, streamer's own Chat leaderboard label) - not a new regression, and restyling .label would be an unscoped sitewide typography change"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "streamer.html"
+        ],
+        "createdAt": "2026-09-13T16:26:07.053Z",
+        "reason": "Arcade-cabinet handoff (design_handoff_streamer_page/README.md): glow is gated behind --arc-* tokens that resolve to flat var(--shadow)/var(--shadow-l) in light mode and only render as Sun glow in dark mode, specifically to avoid the generic AI-glow look on cream. Deliberate, spec'd treatment for #streamerConnect only."
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "value": "*",
+        "files": [
+          "streamer.html"
+        ],
+        "createdAt": "2026-09-13T16:30:05.863Z",
+        "reason": "The .streamer-kicker above .streamer-headline pairing pre-dates this session (was already 'Twitch stream mode [beta]' above the h1 before the arcade-cabinet redesign) — this change only added an icon to the existing kicker, matching the approved design handoff."
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "*.html"
+        ],
+        "createdAt": "2026-09-13T16:31:02.369Z",
+        "reason": "streamerSweep (style.css, added for the arcade-cabinet handoff) is a 3.4s decorative gloss sweep across the Connect button, not auto-scrolling content — nothing is hidden or unreadable at any moment, and prefers-reduced-motion already stops it. One CSS rule in the shared style.css, reported once per HTML page that loads it."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-15T09:41:02.726Z",
+        "reason": "Arcade-cabinet handoff (design_handoff_mystery_party_consent/README.md): same --arc-* glow-token mechanism already sanctioned for streamer.html (see that file's dark-glow ignore) — resolves to flat var(--shadow)/var(--shadow-l) in light mode, only renders as Sun glow in dark mode. Applied here to #mysteryview/#partyview by the same handoff."
       }
     ]
   },

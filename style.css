@@ -613,6 +613,59 @@ body.view-home #q { font-size: 17px; }
 }
 .noresult[hidden] { display: none; }
 
+/* -- Nav search (about/browse/privacy/streamer's own quick-search) ---
+   The standalone pages have no search box of their own - this is a way
+   to reach any animal without a trip back to the home page first. Grows
+   in place within the nav bar itself rather than dropping a floating
+   panel underneath it - a first attempt did that, and it read as a
+   second box under the nav rather than part of it. Its dropdown still
+   floats (.suggest/.noresult, reused verbatim from the home page's own
+   search), since a suggestion list overlaying content is an established,
+   expected pattern here - the search field itself just isn't one.
+   See menu.js. */
+.navsearch { position: relative; }
+#navSearchToggle { gap: 8px; }
+
+.navsearch-row {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 15px;
+  padding: 4px 4px 4px 13px; min-height: 44px;
+  width: 100%;
+}
+.navsearch-row[hidden] { display: none; }
+.navsearch-row:focus-within { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
+@media (min-width: 860px) {
+  .navsearch-row { width: 240px; }
+}
+
+.navsearch-close {
+  flex: none; width: 32px; height: 32px;
+  display: grid; place-items: center; cursor: pointer;
+  color: var(--muted); background: transparent; border: 0; border-radius: 9px;
+  transition: background .13s var(--ease);
+}
+.navsearch-close svg { width: 16px; height: 16px; }
+.navsearch-close:hover { background: var(--flat-bg); color: var(--ink); }
+
+#navSearchInput {
+  flex: 1; min-width: 0;
+  font: inherit; font-size: 15px; font-weight: 500;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  padding: 9px 0;
+  min-height: 40px;
+}
+#navSearchInput::placeholder { color: var(--muted); font-weight: 400; }
+#navSearchInput::-webkit-search-cancel-button {
+  cursor: pointer; -webkit-appearance: none; appearance: none;
+  width: 16px; height: 16px; margin-left: 2px;
+  background-color: var(--muted);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center / 70% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center / 70% no-repeat;
+}
+#navSearchInput::-webkit-search-cancel-button:hover { background-color: var(--ink); }
+
 /* ==================================================================
    ANIMAL VIEW
    ================================================================== */
@@ -628,6 +681,21 @@ body.view-home #q { font-size: 17px; }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
+}
+/* Below 860px the corner menu is a small fixed button tucked out of the
+   way, but at 860px+ it becomes the centred floating pill (see the
+   desktop nav bar rules) - which sits in exactly this bar's own
+   rectangle at top:0. Every page using the plain .topbar (About,
+   Browse, Privacy, Twitch stream mode, Mystery/Party's own topbars)
+   started at the very top of the viewport underneath the pill,
+   clipping the bar's content and its own border-bottom line. This
+   clears the pill's real footprint (--nav-h) plus a small fixed gap -
+   deliberately not --page-top (34px), which is tuned for the breathing
+   room before a whole content section, not a slim single-line header
+   bar; using it here read as a large dead band between the pill and
+   the title, not a gap. */
+@media (min-width: 860px) {
+  .topbar { padding-top: calc(var(--nav-h) + 14px + env(safe-area-inset-top)); }
 }
 .back {
   flex: none; width: 44px; height: 44px;
@@ -1163,6 +1231,266 @@ body.view-home #q { font-size: 17px; }
      than centred over the page - a real gap a live test caught. Auto
      margins on a flex item consume exactly that leftover space evenly. */
   .animalview .dock-top { margin-left: auto; margin-right: auto; }
+}
+
+/* ------------------------------------------------------------------
+   ANIMAL PAGE - arcade-lite  (2c on phones, 2b at 860px and up)
+   ------------------------------------------------------------------
+   Extends the ANIMAL VIEW section above plus its 620px and 860px
+   blocks - this does not replace either, it only names the new rows
+   and bands (the 860px block above still sets the grid, its columns,
+   align-items and the sticky photo).
+
+   Arcade-lite, as asked: the Sun palette and the uppercase marquee
+   type carry over from stream mode, but NO bracket corners and no
+   glow. This is a page people read, not a cabinet they play.
+
+   Needs the markup change in index.html's #animalview <main>: the
+   "You might also like" section lifts out of .feed-content to become a
+   direct child of .feed so it can span both columns; .animal-play is
+   new; .animal-tail wraps the actions/copied/adslot/footers so the two
+   new bands can sit above them instead of under the footer. The four
+   content sections are wrapped in .ansec elements so each can be
+   ordered as one unit. Every id functions/index.js's HTMLRewriter
+   targets (#answers, #glance, #related, #fact, #name, #emoji, #kicker,
+   #wiki) still matches - moving #related in the DOM doesn't touch it.
+
+   Two rules this respects:
+
+   - One-Yellow Rule. The play block is the page's one solid-Sun
+     element, which is why #another drops .btn-solid. A random-animal
+     shuffle should not outrank the actual "play the game" control.
+   - Light mode is not a dimmer dark mode. The --an-* set is declared
+     light-first and re-pointed in both dark blocks, the same way :root
+     does it higher up the file.
+------------------------------------------------------------------ */
+
+.animalview {
+  --an-rule:     color-mix(in srgb, var(--sun) 22%, var(--line));
+  --an-playfill: color-mix(in srgb, var(--sun) 16%, var(--card));
+  --an-playline: color-mix(in srgb, var(--sun) 40%, var(--line));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .animalview {
+    --an-rule:     color-mix(in srgb, var(--sun) 26%, var(--line));
+    --an-playfill: color-mix(in srgb, var(--sun) 13%, var(--card));
+    --an-playline: color-mix(in srgb, var(--sun) 34%, var(--line));
+  }
+}
+:root[data-theme="dark"] .animalview {
+  --an-rule:     color-mix(in srgb, var(--sun) 26%, var(--line));
+  --an-playfill: color-mix(in srgb, var(--sun) 13%, var(--card));
+  --an-playline: color-mix(in srgb, var(--sun) 34%, var(--line));
+}
+
+/* ── Section labels ───────────────────────────────────────────────
+   The one type change that carries the cabinet's voice onto this page:
+   the existing 12.5px uppercase label, at the marquee's weight and
+   tracking. Size and colour are untouched. */
+
+.animalview .label {
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+/* The wrappers themselves are layout-only - the .label inside each one
+   keeps its own top margin, so these must not add a second one. */
+.animalview .ansec { margin: 0; }
+
+/* ── The play block ───────────────────────────────────────────────
+   New. The page had no route into the game at all: it ended actions →
+   footer. */
+
+.animal-play {
+  padding: 22px;
+  border-radius: var(--r-card);
+  background: var(--an-playfill);
+  border: 1px solid var(--an-playline);
+}
+.animal-play-kicker {
+  margin: 0;
+  font-size: 11.5px; font-weight: 800; letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.animal-play-headline {
+  margin: 9px 0 0;
+  font-size: clamp(24px, 5.4vw, 30px); font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.08;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.animal-play-sub {
+  margin: 7px 0 16px;
+  font-size: 15px; font-weight: 500; line-height: 1.45;
+  color: var(--ink);
+  max-width: 44ch;
+}
+.animal-play-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+
+/* ==================================================================
+   2c - phones (max-width: 859px)
+   ================================================================== */
+
+@media (max-width: 859px) {
+
+  /* .feed-content exists only as the desktop right-hand column, and is
+     a plain unstyled div at this width already. Flattening it to
+     display: contents puts its sections in the same flex context as
+     the photo and the new bands, which is what lets the play block and
+     the related rail sit between the answers and the glance without
+     any of them moving in the DOM. */
+  .animalview .feed { display: flex; flex-direction: column; }
+  /* Explicit, not inherited: .pcard's children are all absolutely
+     positioned, so the card has no intrinsic width of its own. Under
+     any align-items other than stretch it collapses to 0x0 and the
+     photo silently disappears. The 860px block above sets
+     align-items: start, so this must not be left to the default. */
+  .animalview .feed { align-items: stretch; }
+  .animalview .feed-content { display: contents; }
+
+  .animalview .feed > .pcard { order: 1; }
+  .animalview .blurb         { order: 2; }
+  .animalview .ansec-answers { order: 3; }
+  .animalview .animal-play   { order: 4; }
+  .animalview .ansec-related { order: 5; }
+  .animalview .ansec-glance  { order: 6; }
+  .animalview .ansec-fact    { order: 7; }
+  .animalview #shot2         { order: 8; }
+  .animalview #shot3         { order: 9; }
+  .animalview .animal-tail   { order: 10; }
+
+  /* Square, not 4/5. The page's job here is to get to the answers, and
+     a portrait card pushed the first one below the fold on a phone. */
+  .animalview .feed > .pcard { aspect-ratio: 1 / 1; }
+
+  /* The answers lose their box. Eight bordered surfaces stacked down
+     the page is the "wall of cards" - a label, a hairline and the rows
+     read faster and leave the Sun to the one place that needs it.
+     Delete this one rule and the card comes straight back. */
+  .animalview .ansec-answers .card {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+  .animalview .ansec-answers .row { padding: 14px 4px; }
+
+  /* Same move for the fact: a Sun rule rather than a second tinted box
+     directly under the play block, which is already carrying Sun. */
+  .animalview .ansec-fact .factcard {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0 0 0 15px;
+    border-left: 3px solid var(--sun);
+  }
+
+  /* On a phone the play block is the full-width moment, so it takes the
+     solid Sun and inverts its own buttons rather than sitting as a
+     third tint on the page. Still exactly one solid-Sun element on
+     screen - the panel is the yellow, and the buttons invert out of
+     it. --on-sun is the ink Sun is designed to carry in both themes,
+     so this needs no dark-mode variant. */
+  .animalview .animal-play {
+    padding: 24px 22px;
+    background: var(--sun);
+    border-color: var(--sun);
+  }
+  .animalview .animal-play-kicker { color: var(--on-sun); opacity: .72; }
+  .animalview .animal-play-headline { color: var(--on-sun); }
+  .animalview .animal-play-sub {
+    color: var(--on-sun); opacity: .8; font-weight: 600;
+  }
+  .animalview .animal-play .btn-solid {
+    background: var(--on-sun);
+    color: var(--sun);
+    border-color: var(--on-sun);
+  }
+  .animalview .animal-play .btn-solid:hover {
+    background: color-mix(in srgb, var(--on-sun) 88%, transparent);
+    border-color: color-mix(in srgb, var(--on-sun) 88%, transparent);
+  }
+  .animalview .animal-play .btn:not(.btn-solid) {
+    background: none;
+    color: var(--on-sun);
+    border-color: color-mix(in srgb, var(--on-sun) 35%, transparent);
+  }
+  .animalview .animal-play .btn:not(.btn-solid):hover {
+    background: color-mix(in srgb, var(--on-sun) 8%, transparent);
+  }
+
+  /* Related sits directly under the play block now, so it needs its own
+     top margin back (the .label's 30px was doing that job when it was
+     buried at the bottom of the scroll). */
+  .animalview .ansec-related { margin-top: 4px; }
+}
+
+/* ==================================================================
+   2b - 860px and up
+   ------------------------------------------------------------------
+   Bands, not boxes. The two-column split stays for identity + facts;
+   then the related rail and the play block each span the full width,
+   on their own ground. The block above this one already declares the
+   grid, its two columns, the column-gap, align-items: start and the
+   sticky photo - all this adds is the row names and the bands.
+   ================================================================== */
+
+@media (min-width: 860px) {
+  .animalview .feed {
+    grid-template-areas:
+      "photo content"
+      "related related"
+      "play play"
+      "tail tail";
+  }
+  .animalview .feed > .pcard         { grid-area: photo; }
+  .animalview .feed > .feed-content  { grid-area: content; }
+  .animalview .feed > .ansec-related { grid-area: related; }
+  .animalview .feed > .animal-play   { grid-area: play; }
+  .animalview .feed > .animal-tail   { grid-area: tail; }
+
+  /* Bled out through .feed's own 14px horizontal padding so the band
+     spans the column edge to edge rather than sitting inside it as a
+     wider card. */
+  .animalview .ansec-related {
+    margin: 34px -14px 0;
+    padding: 24px 14px;
+    background: var(--flat-bg);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .animalview .ansec-related .label { margin-top: 0; }
+
+  /* The band directly under it, so the two read as one zone: discover,
+     then play. No border of its own - the related band's bottom rule
+     is already the line between them. */
+  .animalview .animal-play {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    margin: 0 -14px;
+    padding: 26px 14px;
+    border: 0;
+    border-radius: 0;
+  }
+  .animalview .animal-play-sub { margin-bottom: 0; }
+  .animalview .animal-play-actions {
+    flex: none;
+    display: flex;
+    gap: 9px;
+  }
+
+  /* The tail spans both columns but its content stays a readable
+     measure - four buttons stretched across 1280px is not an
+     improvement on four buttons in a column. */
+  .animalview .animal-tail {
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
+    padding-top: 30px;
+  }
 }
 
 /* ==================================================================
@@ -2266,10 +2594,10 @@ body.view-page { background: var(--paper); }
    site, widened and given its own list layout on top. */
 .prose.atoz { max-width: 900px; }
 
-.atoz-jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 22px 0 6px; }
+.atoz-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 6px; }
 .atoz-jump a {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 32px; height: 32px;
+  width: 44px; height: 44px;
   border-radius: 999px;
   background: var(--card); border: 1px solid var(--line);
   color: var(--ink); text-decoration: none;
@@ -2299,6 +2627,674 @@ body.view-page { background: var(--paper); }
   text-decoration: none; text-underline-offset: 3px;
 }
 .atoz-list a:hover { text-decoration: underline; }
+
+/* ------------------------------------------------------------------
+   A TO Z BROWSE PAGE - arcade-lite, layout 2e ("letter rail")
+   ------------------------------------------------------------------
+   Extends the A to Z browse page block above rather than replacing it
+   - the jump nav keeps its .atoz-jump class and every existing
+   selector still applies underneath.
+
+   What 2e changes: the jump nav stops being a row of chips at the top
+   that scrolls away, and becomes a rail down the side that is in reach
+   at any scroll depth. The list takes the full width beside it. Names
+   stay clean - no thumbnails, no emoji, no per-row metadata - and the
+   density goes up one step to comfortable.
+
+   Arcade-lite: the Sun palette and the uppercase marquee headline
+   carry over, but no bracket corners and no glow. This is an index.
+
+   Needs the markup from build-seo-atoz.patch.md (two wrapper elements
+   and the play block), baked into browse.html by tools/build-seo.js.
+   The active-letter highlight needs the optional scroll-spy in
+   atoz.js; without it the rail still works, it just never marks where
+   you are.
+
+   One-Yellow Rule: "Mystery Animal" in the play block is the page's
+   only solid-Sun element. The active letter is a Sun *tint with a Sun
+   border*, and the letter headings are underlined in Sun - borders and
+   tints, never fills.
+------------------------------------------------------------------ */
+
+.prose.atoz {
+  --az-playfill: color-mix(in srgb, var(--sun) 16%, var(--card));
+  --az-playline: color-mix(in srgb, var(--sun) 40%, var(--line));
+  --az-chipfill: color-mix(in srgb, var(--sun) 14%, transparent);
+  --az-chipline: color-mix(in srgb, var(--sun) 30%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .prose.atoz {
+    --az-playfill: color-mix(in srgb, var(--sun) 13%, var(--card));
+    --az-playline: color-mix(in srgb, var(--sun) 34%, var(--line));
+    --az-chipfill: color-mix(in srgb, var(--sun) 18%, transparent);
+    --az-chipline: color-mix(in srgb, var(--sun) 34%, transparent);
+  }
+}
+:root[data-theme="dark"] .prose.atoz {
+  --az-playfill: color-mix(in srgb, var(--sun) 13%, var(--card));
+  --az-playline: color-mix(in srgb, var(--sun) 34%, var(--line));
+  --az-chipfill: color-mix(in srgb, var(--sun) 18%, transparent);
+  --az-chipline: color-mix(in srgb, var(--sun) 34%, transparent);
+}
+
+/* ── The headline ─────────────────────────────────────────────────
+   The one piece of marquee type on the page. Heavier and uppercase
+   against .prose h1's 700/sentence-case, because this page is an index
+   with a title rather than a document with a heading. */
+
+.prose.atoz h1 {
+  font-size: clamp(30px, 6.4vw, 42px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+}
+
+/* ── The two-column body ──────────────────────────────────────────
+   A real wrapper rather than placing the nav into .prose.atoz's own
+   grid: the rail has to span every row of the list, and a row span to
+   an implicit final line is not something grid resolves reliably. */
+
+.atoz-body {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  column-gap: 26px;
+  align-items: start;
+  margin-top: 26px;
+}
+
+/* ── The rail ─────────────────────────────────────────────────────
+   Same element and same class as today's jump nav, so it still works
+   as a plain list of anchors if this block never loads. */
+
+.prose.atoz .atoz-jump {
+  position: sticky;
+  /* Clears the fixed nav the same way .feed and .prose do. */
+  top: calc(var(--nav-h) + var(--page-top) + 14px);
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 2px;
+  margin: 0;
+  padding: 8px 6px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.prose.atoz .atoz-jump a {
+  width: 40px;
+  height: 32px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.prose.atoz .atoz-jump a:hover {
+  background: var(--flat-bg);
+  color: var(--ink);
+}
+.prose.atoz .atoz-jump a:focus-visible {
+  outline: 2px solid var(--sun);
+  outline-offset: 2px;
+}
+/* Set by the optional scroll-spy (atoz.js). A Sun tint with a Sun
+   border, never a fill - the play block's button is the page's one
+   solid-Sun element. */
+.prose.atoz .atoz-jump a.is-here {
+  background: var(--az-chipfill);
+  border: 1px solid var(--az-chipline);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+/* ── The play block ───────────────────────────────────────────────
+   New. This page is where a lot of search traffic lands and it did
+   nothing with it: 438 links out, no route into the game. */
+
+.atoz-play {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 0 24px;
+  padding: 15px 18px;
+  border-radius: var(--r-card);
+  background: var(--az-playfill);
+  border: 1px solid var(--az-playline);
+}
+/* .prose p's reading measure and top margin are both wrong inside a
+   flex row. */
+.atoz-play p {
+  margin: 0;
+  max-width: none;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+}
+/* .prose .btn adds a 4px top margin meant for a button after a
+   paragraph, not one beside it. */
+.atoz-play .btn {
+  flex: none;
+  margin-top: 0;
+  min-height: 44px;
+  font-weight: 800;
+}
+
+/* ── Letters and lists ────────────────────────────────────────────
+   The letter is drawn as a rule rather than just larger type: at 24
+   sections down a long page, a line across the column is what actually
+   separates them. */
+
+.atoz-main > .atoz-group:first-of-type { margin-top: 0; }
+
+/* Specificity note: .prose h2 (0,2,0) outranks a bare .atoz-letter
+   (0,1,0) and was silently winning the margin, letter-spacing and
+   font-size. Scoped to .prose.atoz so these actually apply. */
+.prose.atoz .atoz-letter {
+  margin: 0 0 14px;
+  padding-bottom: 9px;
+  font-size: 22px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  /* Ink, not the inherited --muted. In 2e the letter is the spine of
+     the page rather than a label above a list - at muted it reads as
+     the quietest thing in its own section. */
+  color: var(--ink);
+  border-bottom: 2px solid var(--sun);
+  /* Clears the fixed nav AND the sticky rail's own top offset, so a
+     jump link never lands with its letter hidden behind either. */
+  scroll-margin-top: calc(var(--nav-h) + var(--page-top) + 24px);
+}
+
+/* Comfortable, one step up from today's 15px/7px. */
+.atoz-list li { margin-bottom: 11px; }
+.atoz-list a { font-size: 16px; font-weight: 500; }
+
+/* ── Phones ───────────────────────────────────────────────────────
+   A 52px sidebar is not a rail on a 375px screen, it's a third of the
+   list gone. Below 700px the nav returns to a horizontal strip -
+   sticky this time, so it keeps the one property that made the rail
+   worth building. */
+
+@media (max-width: 699px) {
+  .atoz-body { grid-template-columns: 1fr; }
+
+  .prose.atoz .atoz-jump {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--page-top));
+    z-index: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    /* Bled out through .prose's 18px padding so the strip spans the
+       full width and reads as a bar, not a floating card. */
+    margin: 0 -18px 20px;
+    padding: 10px 18px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .prose.atoz .atoz-jump a { width: 32px; }
+
+  .atoz-play {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 13px;
+  }
+  .atoz-play .btn { width: 100%; }
+}
+
+/* ------------------------------------------------------------------
+   Mystery Animal - the cabinet treatment (#mysteryview)
+   ------------------------------------------------------------------
+   Picked layouts: 1c on phones (the photo is the screen), 1b past
+   860px (photo sticky left, the round right).
+
+   Both are CSS only. 1b needs no structural work at all - the existing
+   860px block already places "hero top" / "hero bottom", which is
+   exactly 1b's shape; this file only changes how those areas look. 1c
+   reorders .mystery-panel-top's own children with `order` and lifts the
+   stat row onto the photo with a negative margin. If you ever want that
+   overlay gone, delete the one marked rule and the stats simply sit in a
+   chip row above the photo - nothing else depends on it.
+
+   Tokens are declared locally on #mysteryview rather than imported from
+   streamer-arcade.css, so this file is independent of load order.
+
+   One-Yellow Rule: "Guess" stays the only solid-Sun control. The active
+   mode tab and the active filter chip are Sun *tints* with Sun borders -
+   they read as selected without competing with the action.
+------------------------------------------------------------------ */
+
+#mysteryview {
+  --arc-line:      color-mix(in srgb, var(--sun) 30%, transparent);
+  --arc-tint:      color-mix(in srgb, var(--sun) 10%, transparent);
+  --arc-cabinet:   var(--card);
+  --arc-kicker:    var(--muted);
+  --arc-chev:      var(--sun-deep);
+  --arc-bracket:   var(--sun-deep);
+  --arc-title:     var(--ink);
+  --arc-titleglow: none;
+  --arc-tag-ink:   var(--ink);
+  --arc-frameglow: var(--shadow);
+  --arc-screenglow: var(--shadow-l);
+  --arc-ctaglow:   var(--shadow);
+}
+
+/* The paw as this screen's ground, not just a margin decoration. On
+   .feed rather than #mysteryview itself, the same way the streamer
+   page's own .streamer-feed carries its background as a sibling of
+   .topbar, not a shared parent - #mysteryview's other direct child is
+   the sitewide sticky <header class="topbar"> (its own padding, its
+   own translucent background), so painting the paw straight onto
+   #mysteryview would sit that header flush against a second, uninset
+   background underneath its own. Fixed, so it reads as the page
+   rather than texture glued to a panel. */
+#mysteryview .feed {
+  background: var(--paw-field) 0 0 / 190px 190px repeat fixed;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #mysteryview {
+    --arc-line:      color-mix(in srgb, var(--sun) 34%, transparent);
+    --arc-tint:      color-mix(in srgb, var(--sun) 14%, transparent);
+    --arc-cabinet:   #1a1c14;
+    --arc-kicker:    var(--sun);
+    --arc-chev:      var(--sun);
+    --arc-bracket:   var(--sun);
+    --arc-title:     var(--sun);
+    --arc-titleglow: 0 0 8px rgba(255,206,31,.45), 0 0 44px rgba(255,206,31,.3);
+    --arc-tag-ink:   var(--sun);
+    --arc-frameglow: 0 0 0 1px rgba(255,206,31,.35), 0 0 26px -6px rgba(255,206,31,.35);
+    --arc-screenglow: 0 0 70px -18px rgba(255,206,31,.45);
+    --arc-ctaglow:   0 0 40px -8px rgba(255,206,31,.7);
+  }
+}
+:root[data-theme="dark"] #mysteryview {
+  --arc-line:      color-mix(in srgb, var(--sun) 34%, transparent);
+  --arc-tint:      color-mix(in srgb, var(--sun) 14%, transparent);
+  --arc-cabinet:   #1a1c14;
+  --arc-kicker:    var(--sun);
+  --arc-chev:      var(--sun);
+  --arc-bracket:   var(--sun);
+  --arc-title:     var(--sun);
+  --arc-titleglow: 0 0 8px rgba(255,206,31,.45), 0 0 44px rgba(255,206,31,.3);
+  --arc-tag-ink:   var(--sun);
+  --arc-frameglow: 0 0 0 1px rgba(255,206,31,.35), 0 0 26px -6px rgba(255,206,31,.35);
+  --arc-screenglow: 0 0 70px -18px rgba(255,206,31,.45);
+  --arc-ctaglow:   0 0 40px -8px rgba(255,206,31,.7);
+}
+
+
+/* Prose links. An ink-forward warm step on cream (Sun-deep alone only
+   clears ~1.6:1 on that ground), bright Sun in the dark. Without this
+   an undefined link renders browser-default blue. */
+#mysteryview { --arc-link: color-mix(in srgb, var(--sun-deep) 35%, var(--ink)); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #mysteryview { --arc-link: var(--sun); }
+}
+:root[data-theme="dark"] #mysteryview { --arc-link: var(--sun); }
+#mysteryview a:not(.btn) {
+  color: var(--arc-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+#mysteryview a:not(.btn):hover { color: var(--sun-deep); }
+
+/* ── Mode switch ──────────────────────────────────────────────────────
+   One pill holding two options, the way a cabinet has one switch rather
+   than two lamps. Endless is first in the markup now (see
+   mystery-endless-first.patch.md - the tab order alone isn't enough). */
+
+#mysteryview .mystery-tabs {
+  gap: 4px; padding: 4px;
+  background: var(--flat-bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+#mysteryview .mystery-tab {
+  flex: 1;
+  justify-content: center; gap: 7px;
+  min-height: 44px; padding: 11px 12px;
+  border: 1px solid transparent; border-radius: 999px;
+  background: none; color: var(--muted);
+  font-size: 13px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase;
+}
+#mysteryview .mystery-tab svg { width: 15px; height: 15px; }
+#mysteryview .mystery-tab[aria-pressed="true"] {
+  background: var(--arc-tint);
+  border-color: var(--arc-line);
+  color: var(--arc-tag-ink);
+}
+
+/* ── Category filters ─────────────────────────────────────────────── */
+
+#mysteryview .mystery-filters { gap: 7px; }
+#mysteryview .mystery-filters button {
+  min-height: 38px; padding: 9px 14px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: none; color: var(--muted);
+  font-size: 12.5px; font-weight: 700;
+}
+#mysteryview .mystery-filters button[aria-pressed="true"] {
+  background: var(--arc-tint);
+  border-color: var(--arc-line);
+  color: var(--arc-tag-ink);
+  font-weight: 800;
+}
+
+/* ── The readout ──────────────────────────────────────────────────── */
+
+#mysteryview .mystery-stats {
+  position: relative;
+  padding: 18px 8px;
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 22px;
+  box-shadow: var(--arc-frameglow);
+}
+/* Bracket corners: four 2x14px Sun slivers per pseudo, the second box
+   mirrored. The same motif as every other cabinet panel on the site. */
+#mysteryview .mystery-stats::before,
+#mysteryview .mystery-stats::after,
+#mysteryview .mystery-hintcard::before,
+#mysteryview .mystery-hintcard::after {
+  content: "";
+  position: absolute; left: 9px; right: 9px; height: 14px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 14px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 2px 14px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 14px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 2px 14px no-repeat;
+}
+#mysteryview .mystery-stats::before,
+#mysteryview .mystery-hintcard::before { top: 9px; }
+#mysteryview .mystery-stats::after,
+#mysteryview .mystery-hintcard::after { bottom: 9px; transform: scaleY(-1); }
+
+#mysteryview .mystery-stat b {
+  font-size: clamp(28px, 6vw, 36px); line-height: 1;
+  color: var(--arc-title);
+  text-shadow: var(--arc-titleglow);
+}
+#mysteryview .mystery-stat span {
+  font-size: 11px; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+}
+/* The streak is the Daily hook, and the site already sizes it up - kept
+   ahead of Best/Score rather than flattened into them. */
+#mysteryview .mystery-stat-streak b { font-size: clamp(32px, 7vw, 42px); }
+
+/* ── The photo ────────────────────────────────────────────────────── */
+
+#mysteryview #mysteryHero {
+  border: 1px solid var(--arc-line);
+  box-shadow: var(--arc-screenglow);
+}
+/* Brackets must sit above the image, so they are one inset overlay box
+   with eight slivers rather than the two-pseudo trick used on panels. */
+#mysteryview #mysteryHero::after {
+  content: "";
+  position: absolute; inset: 11px;
+  pointer-events: none; z-index: 2;
+  background:
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top    / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top    / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top    / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top    / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  bottom / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  bottom / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right bottom / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right bottom / 2px 16px no-repeat;
+}
+#mysteryview .pcard-name {
+  text-transform: uppercase; letter-spacing: -.015em;
+}
+
+/* ── Hints ────────────────────────────────────────────────────────── */
+
+#mysteryview .mystery-hintcard {
+  position: relative;
+  padding: 20px;
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 22px;
+  box-shadow: var(--arc-frameglow);
+}
+#mysteryview .mystery-hint {
+  gap: 13px; padding: 13px 0;
+  font-size: clamp(16px, 1.6vw, 18px); line-height: 1.35;
+  font-weight: 600;
+}
+#mysteryview .mystery-hint + .mystery-hint {
+  border-top-color: color-mix(in srgb, var(--sun) 22%, var(--line));
+}
+/* Party's hints carry a .party-hint-n element; Mystery's are bare <p>s,
+   so the counter is drawn with a CSS counter rather than asking
+   renderHints() for new markup. Squared, not round: a cabinet counter,
+   and the one place a hint number carries the Sun tint. */
+#mysteryview .mystery-hints { counter-reset: hint; }
+#mysteryview .mystery-hint {
+  display: flex; align-items: flex-start;
+  counter-increment: hint;
+}
+#mysteryview .mystery-hint::before {
+  content: counter(hint);
+  flex: none; width: 26px; height: 26px; margin-top: 1px;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  background: var(--arc-tint);
+  border: 1px solid var(--arc-line);
+  font-size: 13px; font-weight: 800;
+  color: var(--arc-tag-ink);
+}
+
+/* ── Guessing ─────────────────────────────────────────────────────── */
+
+#mysteryview .mystery-form { gap: 9px; }
+#mysteryview #mysteryGuess {
+  min-height: 56px; padding: 14px 17px;
+  border-radius: 16px;
+  font-size: 17px; font-weight: 600;
+}
+#mysteryview #mysteryGuess:focus {
+  border-color: var(--sun);
+  box-shadow: 0 0 0 3px var(--arc-tint);
+}
+#mysteryview .mystery-form .btn-solid {
+  min-height: 56px; padding: 14px 26px;
+  border-radius: 16px;
+  font-size: 15px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: var(--arc-ctaglow);
+}
+#mysteryview .mystery-feedback {
+  font-size: 14.5px; font-weight: 700;
+}
+
+/* Secondary controls stay ghosts - a Sun border and an uppercase label,
+   never a second fill. */
+#mysteryview .mystery-hintbtn {
+  min-height: 50px;
+  border-color: var(--arc-line); border-radius: 16px;
+  font-size: 13.5px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase;
+}
+#mysteryview .mystery-giveup,
+#mysteryview .mystery-report {
+  border-color: var(--line); border-radius: 14px;
+  font-size: 12px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase;
+}
+#mysteryview .mystery-archive-open {
+  border-color: var(--arc-line); border-radius: 14px;
+  font-size: 12.5px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ── Result ───────────────────────────────────────────────────────── */
+
+#mysteryview .mystery-result-card {
+  border-radius: 22px; padding: 20px 22px;
+  border-color: var(--arc-line);
+}
+#mysteryview .mystery-result-name {
+  font-size: clamp(22px, 2.2vw, 30px); font-weight: 800;
+  text-transform: uppercase; letter-spacing: -.01em;
+}
+#mysteryview .mystery-result-note,
+#mysteryview .mystery-countdown {
+  font-size: 13px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+}
+#mysteryview #mysteryNext,
+#mysteryview #mysteryArchiveResultBack {
+  min-height: 56px; border-radius: 16px;
+  font-size: 16px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: var(--arc-ctaglow);
+}
+
+/* ── Archive ──────────────────────────────────────────────────────── */
+
+#mysteryview .mystery-archive-list {
+  border: 1px solid var(--arc-line); border-radius: 22px;
+  background: var(--arc-cabinet);
+  padding: 4px 16px;
+}
+#mysteryview .mystery-archive-list > * { padding: 14px 0; }
+
+/* ══ 1c — phones ══════════════════════════════════════════════════════
+   The photo becomes the screen: no card wrapper around the controls
+   above it, the stat row rides on the photo as three chips, and the
+   hints stack as separate rounded cards. */
+
+@media (max-width: 859px) {
+  /* Panel-top's card chrome is what makes today's phone layout read as
+     "a box of settings above a photo". Dropped, so the photo leads. */
+  #mysteryview .mystery-panel-top {
+    background: none; border: 0; border-radius: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  /* Reordered, not re-marked-up: switch, then filters, then the stats -
+     which have to be last in the box to sit over the photo below it. */
+  #mysteryview .mystery-tabs { order: 1; }
+  #mysteryview .mystery-daily-intro { order: 2; margin: 0; }
+  #mysteryview .mystery-milestone { order: 3; }
+  #mysteryview .mystery-archive-open { order: 4; align-self: flex-start; }
+  #mysteryview .mystery-filters { order: 5; }
+  #mysteryview .mystery-stats { order: 6; }
+
+  /* THE OVERLAY. Delete this one rule and the chips simply sit in a row
+     above the photo - nothing else depends on it. */
+  #mysteryview .mystery-stats {
+    z-index: 2;
+    margin: 0 6px -54px;
+    padding: 0;
+    display: flex; gap: 6px;
+    background: none; border: 0; box-shadow: none;
+  }
+  #mysteryview .mystery-stats::before,
+  #mysteryview .mystery-stats::after { content: none; }
+  /* Each tile becomes its own translucent pill, legible over any photo
+     because the fill is paper at 80%, not a alpha-thinned ink. */
+  #mysteryview .mystery-stat {
+    flex: 0 1 auto;
+    flex-direction: row; align-items: baseline; gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: color-mix(in srgb, var(--paper) 80%, transparent);
+    backdrop-filter: blur(4px);
+  }
+  #mysteryview .mystery-stat-streak {
+    border-color: var(--arc-line);
+    background: color-mix(in srgb, var(--paper) 80%, transparent);
+  }
+  #mysteryview .mystery-stat b { font-size: 15px; }
+  #mysteryview .mystery-stat-streak b { font-size: 15px; }
+  #mysteryview .mystery-stat span {
+    font-size: 11px; letter-spacing: .1em;
+  }
+  #mysteryview .mystery-stat-arrow { display: none; }
+
+  /* Square-ish on phones: the tallest shape that still leaves the guess
+     bar in reach without scrolling. */
+  #mysteryview #mysteryHero { aspect-ratio: 1 / 1; }
+  /* Room for the chips at the top, so they never touch the photo's own
+     name plate at the bottom. */
+  #mysteryview .pcard-meta { padding-top: 54px; }
+
+  /* Hints as separate cards rather than rows in one box - at phone width
+     two stacked cards read faster than two rows sharing a rule. */
+  /* The base .mystery-hintcard is already chrome-less - only the
+     desktop block above turns it into a panel, so phones just need the
+     brackets off and the rows spaced. */
+  #mysteryview .mystery-hintcard { padding: 4px 0; }
+  #mysteryview .mystery-hintcard::before,
+  #mysteryview .mystery-hintcard::after { content: none; }
+  #mysteryview .mystery-hints { gap: 8px; }
+  #mysteryview .mystery-hint {
+    padding: 13px 15px;
+    background: var(--card);
+    border: 1px solid var(--line); border-radius: 16px;
+  }
+  #mysteryview .mystery-hint + .mystery-hint { border-top: 1px solid var(--arc-line); }
+  #mysteryview .mystery-hint:last-child { border-color: var(--arc-line); }
+  /* Inside a card of its own, the counter is a plain Sun numeral - a
+     second bordered chip inside a bordered card is clutter. */
+  #mysteryview .mystery-hint::before {
+    width: auto; height: auto; margin-right: 2px;
+    background: none; border: 0; border-radius: 0;
+    font-size: inherit; font-weight: 800; color: var(--arc-chev);
+  }
+
+  #mysteryview #mysteryGuess { min-height: 58px; border-radius: 18px; font-size: 17.5px; }
+  #mysteryview .mystery-form .btn-solid { min-height: 58px; border-radius: 18px; font-size: 16px; }
+}
+
+/* ══ 1b — 860px and up ════════════════════════════════════════════════
+   The existing grid already puts the photo in a left column spanning
+   both panel rows. What changes: the photo sticks, the readout reads as
+   the cabinet's marquee across the top of the round column, and the
+   round's type steps up now that it has its own column. */
+
+@media (min-width: 860px) {
+  #mysteryview .mystery-panel-top {
+    background: none; border: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  /* The readout leads the round column, with the mode switch beside it -
+     one strip, the way 1b showed it. */
+  #mysteryview .mystery-stats {
+    order: 2;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  #mysteryview .mystery-tabs { order: 1; max-width: 340px; }
+  #mysteryview .mystery-filters { order: 3; }
+
+  /* A Sun light-pipe between readouts instead of the inherited
+     hairline. */
+  #mysteryview .mystery-stat + .mystery-stat { border-left: 0; position: relative; }
+  #mysteryview .mystery-stat + .mystery-stat::before {
+    content: "";
+    position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px;
+    background: linear-gradient(transparent,
+      color-mix(in srgb, var(--sun) 55%, transparent), transparent);
+  }
+
+  #mysteryview .mystery-hint { font-size: 18px; }
+  #mysteryview .mystery-panel-bottom { display: flex; flex-direction: column; gap: 14px; }
+  /* Hint and give-up share a row on desktop: two full-width stacked
+     ghosts under a form is a column of near-identical bars. */
+  #mysteryview .mystery-hintbtn { flex: 1; }
+}
 
 /* ==================================================================
    SHARE
@@ -2894,6 +3890,425 @@ body.view-page { background: var(--paper); }
 #partyRecap .label { margin-top: 4px; }
 #partyRecapDone { margin-top: 22px; width: 100%; }
 
+/* ------------------------------------------------------------------
+   Party Mode - the cabinet treatment (#partyview)
+   ------------------------------------------------------------------
+   Picked layouts: 1f for the lobby (#partySetup, pre-start) and 1d for
+   the round (#partyActive).
+
+   1d is CSS only - the existing 860px block already builds
+   .party-columns as round-plus-sticky-side, which is 1d's shape.
+
+   1f styles #partySetup's opening (kicker, headline, pitch) and its
+   cabinet-styled select/button. The moved invite panel and live roster
+   from the original handoff assumed a waiting-room phase between
+   creating a party and starting its first round; this app creates the
+   session and starts round one in the same click (see partyStart's
+   handler in party.js), so there's no pre-round moment for a code panel
+   or a roster to appear in. Skipped rather than shipped as dead markup -
+   see party-lobby.patch.md's own "if you skip both" note, which this
+   follows for the same reason.
+
+   Tokens are declared locally on #partyview, so this file doesn't
+   depend on load order relative to the other arcade files.
+
+   One-Yellow Rule: one solid-Sun control per state - "Start a party" in
+   the lobby, "Guess" in a round. Everything else is a tint, a border,
+   or plain text.
+------------------------------------------------------------------ */
+
+#partyview {
+  --arc-line:      color-mix(in srgb, var(--sun) 30%, transparent);
+  --arc-tint:      color-mix(in srgb, var(--sun) 10%, transparent);
+  --arc-cabinet:   var(--card);
+  --arc-kicker:    var(--muted);
+  --arc-chev:      var(--sun-deep);
+  --arc-bracket:   var(--sun-deep);
+  --arc-title:     var(--ink);
+  --arc-titleglow: none;
+  --arc-tag-ink:   var(--ink);
+  --arc-frameglow: var(--shadow);
+  --arc-screenglow: var(--shadow-l);
+  --arc-ctaglow:   var(--shadow);
+}
+
+/* On .feed, not #partyview itself - see the matching comment on
+   #mysteryview .feed above. #partyview's other direct child is the same
+   sitewide sticky .topbar. */
+#partyview .feed {
+  background: var(--paw-field) 0 0 / 190px 190px repeat fixed;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #partyview {
+    --arc-line:      color-mix(in srgb, var(--sun) 34%, transparent);
+    --arc-tint:      color-mix(in srgb, var(--sun) 14%, transparent);
+    --arc-cabinet:   #1a1c14;
+    --arc-kicker:    var(--sun);
+    --arc-chev:      var(--sun);
+    --arc-bracket:   var(--sun);
+    --arc-title:     var(--sun);
+    --arc-titleglow: 0 0 8px rgba(255,206,31,.45), 0 0 44px rgba(255,206,31,.3);
+    --arc-tag-ink:   var(--sun);
+    --arc-frameglow: 0 0 0 1px rgba(255,206,31,.35), 0 0 26px -6px rgba(255,206,31,.35);
+    --arc-screenglow: 0 0 70px -18px rgba(255,206,31,.45);
+    --arc-ctaglow:   0 0 40px -8px rgba(255,206,31,.7);
+  }
+}
+:root[data-theme="dark"] #partyview {
+  --arc-line:      color-mix(in srgb, var(--sun) 34%, transparent);
+  --arc-tint:      color-mix(in srgb, var(--sun) 14%, transparent);
+  --arc-cabinet:   #1a1c14;
+  --arc-kicker:    var(--sun);
+  --arc-chev:      var(--sun);
+  --arc-bracket:   var(--sun);
+  --arc-title:     var(--sun);
+  --arc-titleglow: 0 0 8px rgba(255,206,31,.45), 0 0 44px rgba(255,206,31,.3);
+  --arc-tag-ink:   var(--sun);
+  --arc-frameglow: 0 0 0 1px rgba(255,206,31,.35), 0 0 26px -6px rgba(255,206,31,.35);
+  --arc-screenglow: 0 0 70px -18px rgba(255,206,31,.45);
+  --arc-ctaglow:   0 0 40px -8px rgba(255,206,31,.7);
+}
+
+
+/* Prose links. An ink-forward warm step on cream (Sun-deep alone only
+   clears ~1.6:1 on that ground), bright Sun in the dark. Without this
+   an undefined link renders browser-default blue. */
+#partyview { --arc-link: color-mix(in srgb, var(--sun-deep) 35%, var(--ink)); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #partyview { --arc-link: var(--sun); }
+}
+:root[data-theme="dark"] #partyview { --arc-link: var(--sun); }
+#partyview a:not(.btn) {
+  color: var(--arc-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+#partyview a:not(.btn):hover { color: var(--sun-deep); }
+
+/* Shared bracket motif. Panels take two pseudo-elements (four 2x14px
+   Sun slivers each, the second mirrored); the photo takes a single
+   inset overlay further down, because its brackets sit above an image. */
+#partyview .party-stats::before,
+#partyview .party-stats::after,
+#partyview .party-codebox::before,
+#partyview .party-codebox::after,
+#partyview .party-hintcard::before,
+#partyview .party-hintcard::after,
+#partyview .party-scores::before,
+#partyview .party-scores::after {
+  content: "";
+  position: absolute; left: 9px; right: 9px; height: 14px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 14px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 2px 14px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 14px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 2px 14px no-repeat;
+}
+#partyview .party-stats::before,
+#partyview .party-codebox::before,
+#partyview .party-hintcard::before,
+#partyview .party-scores::before { top: 9px; }
+#partyview .party-stats::after,
+#partyview .party-codebox::after,
+#partyview .party-hintcard::after,
+#partyview .party-scores::after { bottom: 9px; transform: scaleY(-1); }
+
+/* ══ 1f — the lobby (#partySetup) ═════════════════════════════════════
+   Where a host actually starts, so it gets a real opening rather than a
+   note and a select. */
+
+#partySetup { display: flex; flex-direction: column; gap: 20px; }
+
+.party-lobby-kicker {
+  margin: 0;
+  font-size: 12px; font-weight: 800; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--arc-kicker);
+}
+.party-lobby-headline {
+  margin: 0;
+  font-size: clamp(30px, 7vw, 42px); line-height: 1.02;
+  letter-spacing: -.03em; text-transform: uppercase;
+  text-wrap: balance; overflow-wrap: break-word;
+  color: var(--arc-title);
+  text-shadow: var(--arc-titleglow);
+}
+#partySetup .dlg-note {
+  max-width: 42ch;
+  font-size: 16px; line-height: 1.5; font-weight: 600;
+}
+
+/* The invite panel, at the size a room across a table can read. Same
+   element in a round (1d) - see the compact override below. */
+#partyview .party-codebox {
+  position: relative;
+  padding: 20px;
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 22px;
+  box-shadow: var(--arc-frameglow);
+}
+/* Radius only. The white ground is deliberate and theme-proof in the
+   base stylesheet - a QR code that respects dark mode is a QR code a
+   phone camera refuses to read. */
+#partyview .party-qr { border-radius: 16px; }
+#partyview .party-codelabel {
+  font-size: 13px; font-weight: 600; letter-spacing: normal;
+  color: var(--muted);
+}
+#partyview .party-codeval {
+  font-size: clamp(34px, 8vw, 46px); font-weight: 800;
+  letter-spacing: .14em; line-height: 1;
+  color: var(--arc-chev);
+}
+#partyview .stream-url-row input {
+  border-radius: 12px; font-size: 13px;
+}
+#partyview .stream-url-row .btn,
+#partyview #partyJoinCopy {
+  border-radius: 12px;
+  font-size: 12px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+#partyview .fld-label,
+#partyview .party-lobby-label {
+  font-size: 11.5px; font-weight: 800; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--muted);
+}
+#partyview .party-select {
+  min-height: 54px; padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 16px; font-weight: 600;
+}
+#partyview #partyStart {
+  min-height: 58px; border-radius: 16px;
+  font-size: 17px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: var(--arc-ctaglow);
+}
+
+/* The join form a player lands on from the QR - same cabinet, smaller
+   voice, since they arrive knowing why they're here. */
+#partyview .party-name-form { gap: 12px; }
+#partyview .party-name-form .label,
+#partyview .party-lobby-roster-label {
+  font-size: 12px; font-weight: 800; letter-spacing: .2em;
+  color: var(--arc-kicker);
+}
+#partyview #partyName,
+#partyview #partyPlayTooName {
+  min-height: 54px; padding: 14px 16px;
+  border-radius: 16px; font-size: 16.5px;
+}
+#partyview .party-name-form .btn-solid {
+  min-height: 56px; border-radius: 16px;
+  font-size: 16px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* ══ 1d — the round (#partyActive) ════════════════════════════════════ */
+
+/* In a round the invite collapses to one strip: QR thumbnail, code,
+   copy. Nobody joining mid-round needs it at lobby size. */
+#partyActive .party-codebox {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 16px; border-radius: 20px;
+}
+#partyActive .party-qr { width: 60px; height: 60px; padding: 4px; }
+#partyActive .party-codeval { font-size: 28px; letter-spacing: .18em; }
+#partyActive .party-codemeta { display: flex; flex-direction: column; gap: 3px; }
+#partyActive .stream-url-row { margin-top: 4px; }
+
+#partyview .party-minibar {
+  gap: 10px; padding: 11px 14px;
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 999px;
+  font-size: 11.5px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase;
+}
+#partyview .party-minibar-dot { background: var(--good); }
+
+#partyview .party-you {
+  font-size: 11.5px; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+}
+#partyview .party-you b { font-weight: 800; color: var(--ink); }
+#partyview .party-you-edit {
+  font-size: 11.5px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--arc-chev);
+}
+
+#partyview .party-stats {
+  position: relative;
+  padding: 18px 8px;
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 22px;
+  box-shadow: var(--arc-frameglow);
+}
+#partyview .party-stats .mystery-stat b {
+  font-size: clamp(28px, 5vw, 34px); line-height: 1;
+  color: var(--arc-title);
+  text-shadow: var(--arc-titleglow);
+}
+#partyview .party-stats .mystery-stat span {
+  font-size: 11px; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+}
+#partyview .party-stats .mystery-stat + .mystery-stat { border-left: 0; position: relative; }
+#partyview .party-stats .mystery-stat + .mystery-stat::before {
+  content: "";
+  position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px;
+  background: linear-gradient(transparent,
+    color-mix(in srgb, var(--sun) 55%, transparent), transparent);
+}
+
+#partyview .party-hero {
+  border: 1px solid var(--arc-line);
+  box-shadow: var(--arc-screenglow);
+}
+#partyview .party-hero::after {
+  content: "";
+  position: absolute; inset: 11px;
+  pointer-events: none; z-index: 2;
+  background:
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top    / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top    / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top    / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top    / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  bottom / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  bottom / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right bottom / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right bottom / 2px 16px no-repeat;
+}
+#partyview .pcard-name { text-transform: uppercase; letter-spacing: -.015em; }
+
+#partyview .party-hintcard {
+  position: relative;
+  padding: 20px;
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 22px;
+  box-shadow: var(--arc-frameglow);
+}
+#partyview .party-hint {
+  gap: 13px; padding: 13px 0;
+  font-size: clamp(16px, 1.6vw, 18px); line-height: 1.35; font-weight: 600;
+}
+#partyview .party-hint + .party-hint {
+  border-top-color: color-mix(in srgb, var(--sun) 22%, var(--line));
+}
+#partyview .party-hint-n {
+  width: 26px; height: 26px; margin-top: 1px;
+  border-radius: 8px;
+  background: var(--arc-tint);
+  border: 1px solid var(--arc-line);
+  font-size: 13px; font-weight: 800;
+  color: var(--arc-tag-ink);
+}
+
+#partyview #partyGuess {
+  min-height: 56px; padding: 14px 17px;
+  border-radius: 16px; font-size: 17px; font-weight: 600;
+}
+#partyview #partyGuess:focus {
+  border-color: var(--sun);
+  box-shadow: 0 0 0 3px var(--arc-tint);
+}
+#partyview .party-guess-form .btn-solid {
+  min-height: 56px; padding: 14px 26px;
+  border-radius: 16px;
+  font-size: 15px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: var(--arc-ctaglow);
+}
+#partyview .mystery-feedback { font-size: 14.5px; font-weight: 700; }
+
+#partyview .party-hintbtn {
+  min-height: 50px;
+  border-color: var(--arc-line); border-radius: 16px;
+  font-size: 13px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase;
+}
+#partyview .party-endbtn {
+  border-color: var(--line);
+  font-size: 12px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase;
+}
+#partyview #partyNext {
+  min-height: 56px; border-radius: 16px;
+  font-size: 16px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: var(--arc-ctaglow);
+}
+
+#partyview .mystery-result-card {
+  border-radius: 22px; padding: 20px 22px;
+  border-color: var(--arc-line);
+}
+#partyview .mystery-result-name {
+  font-size: clamp(22px, 2.2vw, 30px); font-weight: 800;
+  text-transform: uppercase; letter-spacing: -.01em;
+}
+#partyview .mystery-result-note {
+  font-size: 13px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ── The scoreboard, as a high-score table ────────────────────────── */
+
+#partyview .party-side .label,
+#partyview .party-scores-label {
+  font-size: 12px; font-weight: 800; letter-spacing: .2em;
+  color: var(--arc-kicker);
+}
+#partyview .party-scores {
+  position: relative;
+  padding: 6px 16px;
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 22px;
+  box-shadow: var(--arc-frameglow);
+}
+#partyview .party-score { padding: 13px 0; font-size: 16px; }
+#partyview .party-score + .party-score {
+  border-top-color: color-mix(in srgb, var(--sun) 18%, var(--line));
+}
+#partyview .party-score-rank {
+  width: 22px;
+  font-size: 14px; font-weight: 800;
+  color: var(--arc-chev);
+}
+#partyview .party-score-name { font-weight: 700; }
+#partyview .party-score-pts { font-weight: 800; }
+#partyview .party-scores-empty {
+  padding: 18px 0;
+  font-size: 14.5px; font-weight: 600;
+}
+/* The presence dot, the crown and the is-mine / is-leader Sun tints are
+   all left exactly as the base stylesheet has them - they already say
+   what this panel needs them to say. */
+
+/* The activity feed isn't in this layout's brief, but it sits directly
+   under the board, so it takes the panel's edge rather than staying a
+   plain box beside a bracketed one. */
+#partyview .party-feed {
+  border-color: var(--arc-line); border-radius: 22px;
+}
+
+/* ── Phones ───────────────────────────────────────────────────────── */
+
+@media (max-width: 859px) {
+  #partyActive .party-codebox { flex-wrap: wrap; }
+  #partyview .party-hero { aspect-ratio: 1 / 1; }
+  #partyview #partyGuess { min-height: 58px; border-radius: 18px; }
+  #partyview .party-guess-form .btn-solid { min-height: 58px; border-radius: 18px; }
+}
+
 /* -- Twitch stream surface (streamer.html) ---------------------------
    A separate screen from Party Mode rather than a variant of it: one
    streamer running a round for a chat of hundreds who each have no tab,
@@ -2901,14 +4316,30 @@ body.view-page { background: var(--paper); }
    room's "who else is here" machinery appears here, and what's left is
    sized to be read off a stream rather than held in a hand. ------- */
 
-#streamerConnect[hidden], #streamerGoLive[hidden],
+#streamerConnect[hidden], #streamerConsent[hidden], #streamerGoLive[hidden],
 #streamerDashboard[hidden], #streamerRecap[hidden] { display: none; }
 #streamerGoLive .fld { margin-top: 18px; }
 #streamerGoLiveBtn { margin-top: 18px; width: 100%; }
 #streamerRecap .label { margin-top: 4px; }
 #streamerRecapDone { margin-top: 22px; width: 100%; }
 #streamerNext[hidden] { display: none; }
-#streamerEnd { margin-top: 22px; width: 100%; color: var(--muted); }
+
+/* End stream: a two-step inline confirm instead of window.confirm() -
+   OBS's Browser Source (a CEF view) is the documented way to capture
+   this whole surface, and a synchronous native dialog can silently
+   fail to render inside it. Same reasoning, same Card+Line language as
+   the rest of the page instead of the browser's own chrome. */
+.streamer-endzone { margin-top: 22px; }
+#streamerEnd { width: 100%; color: var(--muted); }
+#streamerEnd[hidden] { display: none; }
+.streamer-endconfirm {
+  padding: 16px; border: 1px solid var(--line); border-radius: var(--r-card);
+}
+.streamer-endconfirm[hidden] { display: none; }
+.streamer-endconfirm p { margin: 0 0 12px; font-size: 14.5px; line-height: 1.4; color: var(--ink); }
+.streamer-endconfirm-actions { display: flex; gap: 10px; }
+.streamer-endconfirm-actions .btn { flex: 1; }
+.streamer-endconfirm-yes { color: var(--bad); }
 
 /* The screen's one solid-Sun element, and the only action on it until a
    channel is confirmed (the One-Yellow Rule). The Twitch mark is drawn
@@ -2945,16 +4376,6 @@ body.view-page { background: var(--paper); }
   font-size: 16.5px; line-height: 1.5; color: var(--muted);
 }
 
-/* Shared numbered/tick badge - same size and tint .party-hint-n already
-   uses for the live hint list further down this same page, so a first-
-   time visitor and a mid-round streamer see one consistent language. */
-.streamer-point-n {
-  flex: none; width: 22px; height: 22px; margin-top: 1px;
-  display: grid; place-items: center; border-radius: 50%;
-  background: var(--flat-bg); color: var(--muted);
-  font-size: 12px; font-weight: 700;
-}
-
 .streamer-points { display: grid; gap: 14px; margin: 0 0 24px; }
 .streamer-point { display: flex; gap: 12px; align-items: flex-start; padding: 16px; }
 .streamer-point p { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
@@ -2967,6 +4388,18 @@ body.view-page { background: var(--paper); }
 .streamer-steplist li + li { border-top: 1px solid var(--line); }
 .streamer-steplist p { margin: 0; font-size: 15px; line-height: 1.4; }
 .streamer-steplist p b { color: var(--ink); }
+/* One drawn icon per point - shared by the reassurance cards above and
+   the how-it-works steps below, so the pitch screen has one badge
+   language instead of two. A streamer skimming this mid-setup reads the
+   icon and the bold lead-in, not the full sentence underneath it. Same
+   stroke language as every other icon on the site (2px, round
+   caps/joins), not emoji or a numeral. */
+.streamer-step-icon {
+  flex: none; width: 28px; height: 28px; margin-top: -2px;
+  display: grid; place-items: center; border-radius: 50%;
+  background: var(--flat-bg); color: var(--ink);
+}
+.streamer-step-icon svg { width: 16px; height: 16px; }
 
 .streamer-roles { display: grid; gap: 14px; margin: 0 0 24px; }
 .streamer-roles .card { padding: 16px; }
@@ -2984,6 +4417,858 @@ body.view-page { background: var(--paper); }
 @media (min-width: 620px) {
   .streamer-points { grid-template-columns: repeat(3, 1fr); }
   .streamer-roles { grid-template-columns: 1fr 1fr; }
+}
+
+/* ------------------------------------------------------------------
+   Twitch stream mode - the arcade-cabinet landing (#streamerConnect)
+   ------------------------------------------------------------------
+   Restyles the pre-login pitch screen into a marquee headline, a mock
+   game screen with chat guesses drifting around it, bracket-cornered
+   cabinet cards, and a You-vs-Chat split - same message, same ids/
+   classes streamer.js reads, no new tokens, hexes, fonts or radii
+   beyond the local --arc-* custom properties. The live round just
+   below is restyled by the block after this one, which shares this
+   --arc-* token set (declared on .streamer-feed, not just
+   #streamerConnect, so #streamerDashboard's descendants can read it
+   too - they're siblings under .streamer-feed, not #streamerConnect's
+   own children).
+
+   Two rules this keeps deliberately:
+
+   - One-Yellow Rule. The injected .streamer-connectbtn stays the only
+     solid-Sun element. Everything arcade about the rest of the screen
+     is a Sun *border*, a Sun *tint*, or a glow - never a fill.
+   - Light mode is not a dimmer dark mode. Glow only reads on the dark
+     ground; on cream it turns muddy and fails contrast. So the look is
+     driven by local custom properties, set light-first and re-pointed
+     in the two dark blocks, exactly the way :root does it further up
+     the file.
+
+   No scanlines - a CRT comb was here in an earlier pass and read as
+   dated/noisy rather than arcade; the cabinet reads from brackets,
+   borders and the Sun accent instead.
+------------------------------------------------------------------ */
+
+/* This page's own <header class="topbar"> already reserves the fixed
+   nav's real footprint for itself (see .topbar's 860px rule) - .feed's
+   base padding-top assumes no such header came first, so stacking both
+   double-counted that clearance into a dead band between the header
+   and the hero. Keep just the breathing room after the header; --page-
+   top already steps up with the same 860px breakpoint, so this stays
+   responsive rather than a fixed desktop-only number. */
+.streamer-feed { padding-top: var(--page-top); }
+
+/* Restores the sitewide "empty margin gets a faint paw scatter" treatment
+   (see --paw-field/body,.home above) for this page specifically, rather
+   than loosening body.view-page's flat background for every standalone
+   page that shares it (About/Browse/Privacy) - same asset, same 900px
+   breakpoint, same subtlety, just scoped here. The live round below
+   paints --paw-field directly on its own two screens instead, since
+   that's the surface people stare at for an hour rather than a margin. */
+@media (min-width: 900px) {
+  body:has(.streamer-feed) {
+    background-image: var(--paw-field);
+    background-repeat: repeat;
+    background-size: 140px 140px;
+  }
+}
+
+#streamerConnect,
+.streamer-feed {
+  --arc-line:      color-mix(in srgb, var(--sun) 30%, transparent);
+  /* Bracket corners: deep Sun on cream for definition, bright Sun in
+     the dark where it glows. */
+  --arc-bracket:   var(--sun-deep);
+  --arc-tint:      color-mix(in srgb, var(--sun) 10%, transparent);
+  --arc-cabinet:   var(--card);
+  --arc-kicker:    var(--muted);
+  --arc-chev:      var(--sun-deep);
+  /* Headline, icons and tag ink: full-contrast on cream, Sun in the dark. */
+  --arc-title:     var(--ink);
+  --arc-titleglow: none;
+  --arc-icon:      var(--sun-deep);
+  --arc-iconglow:  none;
+  --arc-tag-ink:   var(--ink);
+  /* Cabinet lighting. Off in light mode; the shadow token stands in. */
+  --arc-frameglow: var(--shadow);
+  /* The pulse peak. On cream there is nothing to pulse to, so it holds
+     the resting value and the cards simply sit flat. */
+  --arc-frameglow-hi: var(--shadow);
+  --arc-screenglow: var(--shadow-l);
+  --arc-ctaglow:   var(--shadow);
+
+  position: relative;
+  /* .feed caps this column at 560px whatever the window is doing, so the
+     block's own layout switches are container queries, not viewport
+     media queries - the existing 620px viewport rules above fire on a
+     wide desktop while the column is still phone-width, which is what
+     cramped the three cards. */
+  container-type: inline-size;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #streamerConnect,
+  :root:not([data-theme="light"]) .streamer-feed {
+    --arc-line:      color-mix(in srgb, var(--sun) 34%, transparent);
+    --arc-bracket:   var(--sun);
+    --arc-tint:      color-mix(in srgb, var(--sun) 14%, transparent);
+    --arc-cabinet:   #1a1c14;
+    --arc-kicker:    var(--sun);
+    --arc-chev:      var(--sun);
+    --arc-title:     var(--sun);
+    --arc-titleglow: 0 0 8px rgba(255,206,31,.5), 0 0 48px rgba(255,206,31,.35);
+    --arc-icon:      var(--sun);
+    --arc-iconglow:  drop-shadow(0 0 10px rgba(255,206,31,.55));
+    --arc-tag-ink:   var(--sun);
+    --arc-frameglow: 0 0 0 1px rgba(255,206,31,.35), 0 0 26px -6px rgba(255,206,31,.35);
+    --arc-frameglow-hi: 0 0 0 1px rgba(255,206,31,.6), 0 0 46px -4px rgba(255,206,31,.55);
+    --arc-screenglow: 0 0 70px -18px rgba(255,206,31,.45);
+    --arc-ctaglow:   0 0 40px -8px rgba(255,206,31,.7);
+  }
+}
+:root[data-theme="dark"] #streamerConnect,
+:root[data-theme="dark"] .streamer-feed {
+  --arc-line:      color-mix(in srgb, var(--sun) 34%, transparent);
+  --arc-bracket:   var(--sun);
+  --arc-tint:      color-mix(in srgb, var(--sun) 14%, transparent);
+  --arc-cabinet:   #1a1c14;
+  --arc-kicker:    var(--sun);
+  --arc-chev:      var(--sun);
+  --arc-title:     var(--sun);
+  --arc-titleglow: 0 0 8px rgba(255,206,31,.5), 0 0 48px rgba(255,206,31,.35);
+  --arc-icon:      var(--sun);
+  --arc-iconglow:  drop-shadow(0 0 10px rgba(255,206,31,.55));
+  --arc-tag-ink:   var(--sun);
+  --arc-frameglow: 0 0 0 1px rgba(255,206,31,.35), 0 0 26px -6px rgba(255,206,31,.35);
+  --arc-frameglow-hi: 0 0 0 1px rgba(255,206,31,.6), 0 0 46px -4px rgba(255,206,31,.55);
+  --arc-screenglow: 0 0 70px -18px rgba(255,206,31,.45);
+  --arc-ctaglow:   0 0 40px -8px rgba(255,206,31,.7);
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────── */
+
+#streamerConnect .streamer-hero { margin: 8px 0 22px; }
+
+#streamerConnect .streamer-kicker {
+  font-size: 12px; font-weight: 800; letter-spacing: .2em;
+  color: var(--arc-kicker);
+}
+#streamerConnect .streamer-kicker svg {
+  width: 15px; height: 15px; flex: none;
+}
+
+/* The marquee. Uppercase, tight, and the one place type is allowed to
+   go full Sun - in the dark, where it carries its own glow. */
+#streamerConnect .streamer-headline {
+  font-size: clamp(34px, 7.6vw, 58px);
+  line-height: .99; letter-spacing: -.03em;
+  text-transform: uppercase; text-wrap: balance;
+  color: var(--arc-title);
+  text-shadow: var(--arc-titleglow);
+}
+#streamerConnect .streamer-pitch {
+  max-width: 40ch; font-weight: 600;
+}
+
+/* ── The stage: mystery screen + chat shouting at it ──────────────── */
+
+.streamer-stage {
+  position: relative;
+  display: grid; place-items: center;
+  margin: 0 0 30px; padding: 26px 0 10px;
+}
+.streamer-screen {
+  position: relative;
+  width: min(100%, 430px); aspect-ratio: 4 / 3;
+  border-radius: var(--r-photo);
+  background: var(--flat-bg); border: 1px solid var(--line);
+  overflow: hidden;
+  box-shadow: var(--arc-screenglow);
+}
+/* The site's own paw field, borrowed as the "photo not revealed yet"
+   stand-in rather than a second placeholder graphic. */
+.streamer-screen::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--paw-field) center / 62% auto no-repeat;
+  transform: scale(1.6);
+}
+.streamer-screen-cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  margin: 0; padding: 34px 16px 14px;
+  background: linear-gradient(transparent,
+    color-mix(in srgb, var(--paper) 92%, transparent));
+  font-size: 11.5px; font-weight: 800; letter-spacing: .18em;
+  text-transform: uppercase; text-align: center; color: var(--muted);
+}
+
+/* Four guesses drifting around the screen, three wrong and one right.
+   Percentage-anchored so they hug the screen at any column width; the
+   right-hand pair flips its tail corner to point back at the photo. */
+.streamer-bubble {
+  position: absolute;
+  padding: 10px 14px;
+  border-radius: 16px 16px 16px 4px;
+  background: var(--card); border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  font-size: 14px; font-weight: 700; line-height: 1;
+  color: var(--muted);
+  animation: streamerFloat 5.4s var(--ease) infinite;
+}
+.streamer-bubble-win {
+  background: var(--arc-tint);
+  border-color: var(--arc-line);
+  color: var(--arc-tag-ink);
+  font-weight: 800;
+}
+.streamer-bubble:nth-of-type(1) { left: 2%;  top: 12%; color: var(--ink); animation-duration: 5s; }
+.streamer-bubble:nth-of-type(2) { left: 0;   bottom: 20%; animation-duration: 6.5s; animation-name: streamerFloatAlt; }
+.streamer-bubble:nth-of-type(3) { right: 2%; top: 18%; border-radius: 16px 16px 4px 16px; animation-duration: 5.8s; animation-name: streamerFloatAlt; }
+.streamer-bubble:nth-of-type(4) { right: 0;  bottom: 14%; border-radius: 16px 16px 4px 16px; animation-duration: 6s; }
+
+/* Under ~400px the bubbles would cover the photo rather than frame it,
+   so the two quiet ones step out and the rest shrink. */
+@media (max-width: 400px) {
+  .streamer-bubble { font-size: 12.5px; padding: 8px 11px; }
+  .streamer-bubble:nth-of-type(2),
+  .streamer-bubble:nth-of-type(3) { display: none; }
+}
+
+/* ── The three cabinet cards ──────────────────────────────────────── */
+
+/* One card per row in a phone-width column: icon left, copy right. The
+   cabinet frame, brackets and glow are identical - only the axis
+   changes, so the three cards stay readable instead of squeezing three
+   uppercase titles into 176px each. */
+#streamerConnect .streamer-points { grid-template-columns: 1fr; gap: 16px; margin: 0 0 26px; }
+
+#streamerConnect .streamer-point {
+  position: relative;
+  flex-direction: row; align-items: center; text-align: left;
+  gap: 16px; padding: 24px 22px;
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 22px;
+  box-shadow: var(--arc-frameglow);
+  animation: streamerGlow 4.5s var(--ease) infinite;
+}
+#streamerConnect .streamer-point:nth-child(2) { animation-delay: .6s; }
+#streamerConnect .streamer-point:nth-child(3) { animation-delay: 1.2s; }
+
+/* Bracket corners. One pseudo draws the top pair from four gradient
+   slivers; the other is the same box mirrored for the bottom pair -
+   cheaper and more robust than four extra spans in the markup. */
+#streamerConnect .streamer-point::before,
+#streamerConnect .streamer-point::after {
+  content: "";
+  position: absolute; left: 10px; right: 10px; height: 16px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 2px 16px no-repeat;
+}
+#streamerConnect .streamer-point::before { top: 10px; }
+#streamerConnect .streamer-point::after  { bottom: 10px; transform: scaleY(-1); }
+
+.streamer-point-icon {
+  display: grid; place-items: center;
+  flex: none;
+  width: 46px; height: 46px;
+  color: var(--arc-icon);
+  filter: var(--arc-iconglow);
+}
+.streamer-point-icon svg { width: 100%; height: 100%; }
+
+#streamerConnect .streamer-point p {
+  font-size: 14.5px; line-height: 1.45;
+}
+#streamerConnect .streamer-point p b {
+  display: block; margin-bottom: 5px;
+  font-size: 17.5px; font-weight: 800; line-height: 1.15;
+  letter-spacing: -.005em; text-transform: uppercase;
+}
+
+/* Wide enough for the cabinet to stand up: three centred panels, the
+   arcade layout proper. Reached on the desktop page only. */
+@container (min-width: 700px) {
+  #streamerConnect .streamer-points { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  #streamerConnect .streamer-point {
+    flex-direction: column; align-items: center; text-align: center;
+    gap: 15px; padding: 28px 22px 26px;
+  }
+  .streamer-point-icon { width: 56px; height: 56px; }
+  #streamerConnect .streamer-point p b { font-size: 19px; }
+}
+/* The card's punchline, as a Sun-tinted pill rather than Sun text -
+   keeps it legible on cream and keeps the fill count at one. */
+.streamer-point-tag {
+  display: inline-flex; align-items: center;
+  margin-top: 2px; padding: 6px 11px;
+  border-radius: 999px;
+  background: var(--arc-tint);
+  font-size: 12px; font-weight: 800; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--arc-tag-ink);
+}
+
+/* ── You vs Chat ──────────────────────────────────────────────────── */
+
+#streamerConnect .streamer-roles { position: relative; }
+#streamerConnect .streamer-roles .card {
+  background: var(--arc-cabinet);
+  border-color: var(--arc-line);
+  border-radius: 22px;
+  padding: 24px;
+}
+#streamerConnect .streamer-roles .label {
+  font-size: 12px; font-weight: 800; letter-spacing: .2em;
+  color: var(--arc-kicker);
+  margin: 0 0 12px;
+}
+#streamerConnect .streamer-rolelist { gap: 12px; }
+#streamerConnect .streamer-rolelist li {
+  padding-left: 18px;
+  font-size: 15.5px; font-weight: 600; color: var(--ink);
+}
+#streamerConnect .streamer-rolelist li::before {
+  content: "›";
+  top: -1px; left: 2px;
+  width: auto; height: auto;
+  background: none; border-radius: 0;
+  font-size: 17px; font-weight: 800; line-height: 1.4;
+  color: var(--arc-chev);
+}
+
+/* Wide enough for two columns: the two cards read as one cabinet split
+   by a light pipe rather than as two separate panels. */
+@container (min-width: 520px) {
+  #streamerConnect .streamer-roles {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--arc-cabinet);
+    border: 1px solid var(--arc-line);
+    border-radius: 22px;
+    box-shadow: var(--arc-frameglow);
+    overflow: hidden;
+  }
+  #streamerConnect .streamer-roles .card {
+    background: none; border: 0; border-radius: 0; box-shadow: none;
+    padding: 28px;
+  }
+  #streamerConnect .streamer-roles::after {
+    content: "";
+    position: absolute; top: 14px; bottom: 14px; left: 50%;
+    width: 1px;
+    background: linear-gradient(transparent,
+      color-mix(in srgb, var(--sun) 55%, transparent), transparent);
+  }
+}
+
+/* ── The one solid-Sun action ─────────────────────────────────────── */
+
+.streamer-cta {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin: 4px 0 0;
+}
+.streamer-cta::before,
+.streamer-cta::after {
+  font-size: 22px; font-weight: 800; line-height: 1;
+  color: var(--arc-chev);
+  animation: streamerChev 1.6s var(--ease) infinite;
+}
+.streamer-cta::before { content: "›››"; }
+.streamer-cta::after  { content: "‹‹‹"; animation-delay: .8s; }
+.streamer-cta .streamer-platforms { flex: 0 1 auto; min-width: 0; }
+
+/* The button itself is injected by streamer.js (PLATFORMS ->
+   .btn.btn-solid.streamer-connectbtn), so it is styled here rather than
+   authored in the markup - the arcade treatment must survive that
+   render path untouched. */
+#streamerConnect .streamer-connectbtn {
+  position: relative; overflow: hidden;
+  min-height: 56px; padding: 14px 30px;
+  border-radius: 16px;
+  font-size: 17px; font-weight: 800;
+  box-shadow: var(--arc-ctaglow);
+}
+/* A cabinet-marquee shine crossing the button every few seconds. Sits
+   above the fill but below the label's own stacking context. */
+#streamerConnect .streamer-connectbtn::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0; width: 40px;
+  background: linear-gradient(90deg, transparent,
+    rgba(255,255,255,.55), transparent);
+  animation: streamerSweep 3.4s var(--ease) infinite;
+  pointer-events: none;
+}
+
+.streamer-fineprint {
+  margin: 14px auto 0; max-width: 52ch;
+  text-align: center;
+  font-size: 13px; line-height: 1.5; color: var(--muted);
+}
+
+@media (max-width: 519px) {
+  .streamer-cta::before, .streamer-cta::after { display: none; }
+  .streamer-cta { display: block; }
+}
+
+/* ── Twitch consent screen (Step 1.5, before the Twitch redirect) ────
+   Plain stacked prose, not a card-in-a-card - the Border-Or-Shadow
+   Rule is already spent on .card elsewhere on this page. Reused as-is
+   for #streamerGoLive's own heading/fineprint just below. */
+.consent-title {
+  margin: 0 0 6px; font-weight: 800; letter-spacing: -.01em;
+  font-size: clamp(22px, 3.2vw, 28px); line-height: 1.2;
+}
+.consent-lede { margin: 0; font-size: 16.5px; color: var(--muted); }
+.consent-block { margin-top: 22px; }
+.consent-block .label { margin: 0 0 6px; }
+.consent-block .dlg-note { margin-top: 0; }
+.consent-block p code {
+  padding: 1px 5px; border-radius: 5px;
+  background: var(--flat-bg); font-size: .92em;
+}
+/* Same information as every other block, just worth reading slowly -
+   a Sun tint (One-Yellow Rule: everything but the one solid action is
+   a tint, border, or glow), not --warn - nothing here is actually
+   going wrong. */
+.consent-warn {
+  padding: 12px 14px; border-radius: var(--r-card);
+  background: color-mix(in srgb, var(--sun) 10%, transparent);
+}
+.consent-cant { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.consent-cant li {
+  position: relative; padding-left: 20px;
+  font-size: 15px; line-height: 1.4; color: var(--muted);
+}
+.consent-cant li::before {
+  content: "×"; position: absolute; left: 0; top: -1px;
+  font-weight: 700; color: var(--muted);
+}
+.consent-actions { display: flex; gap: 10px; margin-top: 26px; }
+.consent-actions .btn { flex: 1; }
+
+/* The arcade screen's own .streamer-fineprint is centred under a
+   full-bleed CTA (see above); these two screens are plain left-aligned
+   stacked prose instead. */
+#streamerConsent .streamer-fineprint,
+#streamerGoLive .streamer-fineprint {
+  margin: 18px 0 0; max-width: none; text-align: left;
+}
+
+/* ── Motion ───────────────────────────────────────────────────────── */
+
+@keyframes streamerSweep { 0% { transform: translateX(-120%); } 60%, 100% { transform: translateX(520%); } }
+@keyframes streamerChev  { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+@keyframes streamerFloat {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50%      { transform: translateY(-9px) rotate(1.5deg); }
+}
+@keyframes streamerFloatAlt {
+  0%, 100% { transform: translateY(-6px) rotate(2deg); }
+  50%      { transform: translateY(4px) rotate(-1deg); }
+}
+@keyframes streamerGlow {
+  0%, 100% { box-shadow: var(--arc-frameglow); }
+  50%      { box-shadow: var(--arc-frameglow-hi); }
+}
+
+/* Every loop here is decoration, so all of it stops - matching the
+   site's existing reduced-motion handling. */
+@media (prefers-reduced-motion: reduce) {
+  .streamer-bubble,
+  #streamerConnect .streamer-point,
+  .streamer-cta::before,
+  .streamer-cta::after,
+  #streamerConnect .streamer-connectbtn::after { animation: none; }
+  #streamerConnect .streamer-connectbtn::after { display: none; }
+}
+
+/* ------------------------------------------------------------------
+   Twitch stream mode - the live round as a cabinet
+   (#streamerDashboard, #streamerRecap)
+   ------------------------------------------------------------------
+   Shares the --arc-* token set declared just above on .streamer-feed.
+   No new tokens, no new hexes.
+
+   CSS only. Every selector below targets markup that already exists in
+   streamer.html - .party-columns / .party-stats / .pcard / .party-hints
+   / .mystery-form / .streamer-board - so the round needs no HTML edit
+   and streamer.js keeps every id and class it reads.
+
+   Two things this deliberately does NOT do:
+
+   - No scanlines, same as the landing screen above. The page's own paw
+     field is the background here instead.
+   - No second yellow fill. Exactly one solid-Sun control is on screen
+     at a time - "Guess" during a round, "Next round" once it's over -
+     which is how the markup already sequences them.
+------------------------------------------------------------------ */
+
+/* The paw, not a grid. .feed only scatters --paw-field into the empty
+   margins on very wide screens; the live round is the one screen people
+   stare at for an hour, so it gets the mark behind the column itself.
+   Painted on the element (not a -1 pseudo, which would fall behind the
+   body's own ground) and fixed, so it reads as the page's background
+   rather than texture glued to a panel. */
+#streamerDashboard,
+#streamerRecap {
+  background: var(--paw-field) 0 0 / 190px 190px repeat fixed;
+}
+
+/* ── Bracket corners ──────────────────────────────────────────────────
+   The cabinet's one repeated motif, shared by every panel on this
+   screen. Two pseudo-elements per panel: four 2px x 16px Sun slivers
+   make the top pair, and the second box is the same thing mirrored.
+   Matches the landing screen's .streamer-point corners exactly. */
+#streamerDashboard .party-stats::before,
+#streamerDashboard .party-stats::after,
+#streamerDashboard .party-hintcard::before,
+#streamerDashboard .party-hintcard::after,
+#streamerDashboard .streamer-board::before,
+#streamerDashboard .streamer-board::after,
+#streamerRecap .streamer-board::before,
+#streamerRecap .streamer-board::after {
+  content: "";
+  position: absolute; left: 9px; right: 9px; height: 14px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 14px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 2px 14px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 14px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 2px 14px no-repeat;
+}
+#streamerDashboard .party-stats::before,
+#streamerDashboard .party-hintcard::before,
+#streamerDashboard .streamer-board::before,
+#streamerRecap .streamer-board::before { top: 9px; }
+#streamerDashboard .party-stats::after,
+#streamerDashboard .party-hintcard::after,
+#streamerDashboard .streamer-board::after,
+#streamerRecap .streamer-board::after { bottom: 9px; transform: scaleY(-1); }
+
+/* ── Chat status: the coin slot ───────────────────────────────────── */
+
+#streamerDashboard .streamer-chatstatus {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin: 0 0 16px; padding: 9px 15px;
+  border: 1px solid var(--arc-line); border-radius: 999px;
+  background: var(--arc-tint);
+  font-size: 12px; font-weight: 800; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink);
+}
+/* The existing ● is a text bullet that can't be animated cleanly at
+   this size; swapped for a real dot that breathes while chat is live. */
+#streamerDashboard .streamer-chatstatus::before {
+  content: "";
+  width: 8px; height: 8px; flex: none;
+  border-radius: 50%; background: var(--line);
+}
+#streamerDashboard .streamer-chatstatus.is-live::before {
+  background: var(--good);
+  animation: streamerBlink 1.6s var(--ease) infinite;
+}
+#streamerDashboard .streamer-chatstatus.is-waiting::before { background: var(--warn); }
+#streamerDashboard .streamer-chatstatus.is-down::before { background: var(--bad); }
+
+/* "How this works" - a <details> strip, styled by element so it holds
+   whatever class name it carries. */
+#streamerDashboard details {
+  margin: 0 0 18px; padding: 0 16px;
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  background: var(--card);
+}
+#streamerDashboard summary {
+  list-style: none; cursor: pointer;
+  padding: 14px 0;
+  font-size: 12px; font-weight: 800; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--arc-kicker);
+}
+#streamerDashboard summary::-webkit-details-marker { display: none; }
+#streamerDashboard summary::after {
+  content: "›"; float: right;
+  font-size: 17px; line-height: .9; color: var(--arc-chev);
+  transition: transform .18s var(--ease);
+}
+#streamerDashboard details[open] summary::after { transform: rotate(90deg); }
+#streamerDashboard details > :not(summary) { padding-bottom: 14px; }
+
+/* ── The readout ──────────────────────────────────────────────────── */
+
+#streamerDashboard .party-roundhead { margin: 6px 0 18px; }
+
+#streamerDashboard .party-stats {
+  position: relative;
+  padding: 20px 8px;
+  border: 1px solid var(--arc-line); border-radius: 22px;
+  background: var(--arc-cabinet);
+  box-shadow: var(--arc-frameglow);
+}
+/* Numbers read off someone else's screen at stream bitrate, so they go
+   as large as the column allows - the same reasoning the existing
+   .is-wide block already applies to hints and the board. */
+#streamerDashboard .mystery-stat b {
+  font-size: clamp(30px, 3.4vw, 48px);
+  line-height: 1;
+  color: var(--arc-title);
+  text-shadow: var(--arc-titleglow);
+}
+#streamerDashboard .mystery-stat span {
+  font-size: clamp(11px, .95vw, 13px);
+  font-weight: 800; letter-spacing: .18em;
+  color: var(--muted);
+}
+/* The clock's warning states have to survive this block's id-level
+   specificity, so they are restated rather than left to the base rules. */
+#streamerDashboard .mystery-stat.is-warn b,
+#streamerDashboard .mystery-stat.is-warn span { color: var(--warn); text-shadow: none; }
+#streamerDashboard .mystery-stat.is-bad b,
+#streamerDashboard .mystery-stat.is-bad span { color: var(--bad); text-shadow: none; }
+
+/* A Sun light-pipe between readouts instead of a hairline. */
+#streamerDashboard .mystery-stat + .mystery-stat { border-left: 0; }
+#streamerDashboard .mystery-stat + .mystery-stat::before {
+  content: "";
+  position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px;
+  background: linear-gradient(transparent,
+    color-mix(in srgb, var(--sun) 55%, transparent), transparent);
+}
+
+/* ── The screen ───────────────────────────────────────────────────── */
+
+#streamerDashboard .party-hero {
+  position: relative;
+  border: 1px solid var(--arc-line);
+  border-radius: var(--r-photo);
+  box-shadow: var(--arc-screenglow);
+}
+/* Brackets have to sit above the photo, so they are drawn as one
+   overlay box inset from the card's edges - eight gradient slivers, two
+   per corner - rather than borrowing the scrim's pseudo-elements. */
+#streamerDashboard .party-hero::after {
+  content: "";
+  position: absolute; inset: 11px;
+  pointer-events: none; z-index: 2;
+  background:
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top    / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top    / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top    / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top    / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  bottom / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  bottom / 2px 16px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right bottom / 16px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right bottom / 2px 16px no-repeat;
+}
+
+/* ── Hints ────────────────────────────────────────────────────────── */
+
+#streamerDashboard .party-hintcard {
+  position: relative;
+  padding: 22px;
+  border: 1px solid var(--arc-line); border-radius: 22px;
+  background: var(--arc-cabinet);
+  box-shadow: var(--arc-frameglow);
+}
+#streamerDashboard .party-hint {
+  gap: 14px; padding: 15px 0;
+  font-size: clamp(16.5px, 1.5vw, 21px); line-height: 1.35;
+}
+#streamerDashboard .party-hint + .party-hint {
+  border-top-color: color-mix(in srgb, var(--sun) 22%, var(--line));
+}
+/* Squarer than the round chip used elsewhere - a cabinet counter, and
+   the one place the hint number is allowed to carry the Sun tint. */
+#streamerDashboard .party-hint-n {
+  width: 26px; height: 26px; margin-top: 2px;
+  border-radius: 8px;
+  background: var(--arc-tint);
+  border: 1px solid var(--arc-line);
+  font-size: 13px; font-weight: 800;
+  color: var(--arc-tag-ink);
+}
+
+/* ── Guessing ─────────────────────────────────────────────────────── */
+
+#streamerDashboard .mystery-form { gap: 10px; margin-top: 22px; }
+#streamerDashboard #streamerGuess {
+  min-height: 56px; padding: 14px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  font-size: 17px; font-weight: 600;
+}
+#streamerDashboard #streamerGuess:focus {
+  border-color: var(--sun);
+  box-shadow: 0 0 0 3px var(--arc-tint);
+}
+#streamerDashboard .mystery-form .btn-solid {
+  min-height: 56px; padding: 14px 28px;
+  border-radius: 16px;
+  font-size: 16px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: var(--arc-ctaglow);
+}
+#streamerDashboard .mystery-feedback {
+  font-size: 14.5px; font-weight: 700; letter-spacing: .02em;
+}
+
+/* Secondary controls stay ghosts: a Sun border and uppercase label,
+   never a fill. */
+#streamerDashboard .party-hintbtn {
+  min-height: 52px;
+  border-color: var(--arc-line);
+  border-radius: 16px;
+  font-size: 14px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase;
+}
+#streamerDashboard #streamerNext {
+  min-height: 56px;
+  border-radius: 16px;
+  font-size: 16px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: var(--arc-ctaglow);
+}
+#streamerDashboard .party-endbtn {
+  border-color: var(--line);
+  font-size: 12.5px; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* ── Round result ─────────────────────────────────────────────────── */
+
+#streamerDashboard .mystery-result-card {
+  border-radius: 22px; padding: 20px 22px;
+  border-color: var(--arc-line);
+}
+#streamerDashboard .mystery-result-name {
+  font-size: clamp(21px, 2.1vw, 28px); font-weight: 800;
+  text-transform: uppercase; letter-spacing: -.01em;
+}
+#streamerDashboard .mystery-result-note {
+  font-size: 13px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ── High-score table ─────────────────────────────────────────────── */
+
+#streamerDashboard .party-side .label,
+#streamerRecap > .label {
+  font-size: 12px; font-weight: 800; letter-spacing: .2em;
+  color: var(--arc-kicker);
+}
+#streamerDashboard .streamer-board,
+#streamerRecap .streamer-board {
+  position: relative;
+  padding: 10px 18px;
+  border: 1px solid var(--arc-line); border-radius: 22px;
+  background: var(--arc-cabinet);
+  box-shadow: var(--arc-frameglow);
+}
+#streamerDashboard .streamer-board-row,
+#streamerRecap .streamer-board-row { padding: 15px 0; }
+#streamerDashboard .streamer-board-rank,
+#streamerRecap .streamer-board-rank {
+  width: 26px;
+  font-size: 15px; font-weight: 800;
+  /* Rank is content a viewer reads off the stream, not decoration, so
+     it takes the ink/Sun token - --arc-chev is minted for glyphs and
+     washes out to ~1.9:1 on cream. */
+  color: var(--arc-tag-ink);
+}
+#streamerDashboard .streamer-board-name,
+#streamerRecap .streamer-board-name { font-weight: 700; }
+#streamerDashboard .streamer-board-pts,
+#streamerRecap .streamer-board-pts { font-weight: 800; }
+#streamerDashboard .streamer-board-empty,
+#streamerRecap .streamer-board-empty {
+  padding: 20px 0; font-size: 14.5px; font-weight: 600;
+}
+
+/* ── The countdown ────────────────────────────────────────────────────
+   Tension comes from three things escalating together: a rail that
+   visibly drains, digits that start breathing, and the panel itself
+   catching the warning colour.
+
+   The rail's length is the only part that needs JS, and renderTimer()
+   already computes it - see streamer-timer.patch.md. The property is
+   set on .party-roundhead (custom properties inherit down, not up, and
+   the rail is the panel's, not the timer cell's).
+   Without that line --arc-timer is unset and the rail falls back to
+   scaleX(0), i.e. invisible: a clock that isn't wired shows nothing
+   rather than a full bar that lies. The pulses need no JS at all -
+   .is-warn (<=30% left) and .is-bad (<=10%) are already toggled on
+   #streamerStatTimerBox by renderTimer(). */
+
+#streamerDashboard .party-roundhead { position: relative; }
+
+/* Track and fill both hug the panel's bottom inside edge, inset past
+   its 22px corners so the rail never runs into the bracket corners. */
+#streamerDashboard .party-roundhead::before,
+#streamerDashboard .party-roundhead::after {
+  content: "";
+  position: absolute; left: 26px; right: 26px; bottom: 11px;
+  height: 4px; border-radius: 999px;
+  pointer-events: none;
+}
+#streamerDashboard .party-roundhead::before {
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+}
+#streamerDashboard .party-roundhead::after {
+  background: var(--sun);
+  transform: scaleX(var(--arc-timer, 0));
+  transform-origin: left center;
+  /* 250ms is renderTimer()'s own tick, so the rail slides between
+     ticks instead of stepping. */
+  transition: transform .25s linear, background .3s var(--ease);
+}
+/* The rail takes the clock's own warning colours - :has() only decorates
+   here, so a browser that ignores it simply keeps a Sun rail. */
+#streamerDashboard .party-roundhead:has(.mystery-stat.is-warn)::after { background: var(--warn); }
+#streamerDashboard .party-roundhead:has(.mystery-stat.is-bad)::after { background: var(--bad); }
+/* Under ten percent the rail stops sliding smoothly and ticks in hard
+   steps - the same seconds, read as a countdown rather than a drain. */
+#streamerDashboard .party-roundhead:has(.mystery-stat.is-bad)::after {
+  transition: transform 0s, background .3s var(--ease);
+}
+
+/* Digits under pressure. Scale only - the colour is already carrying
+   warn/bad, and a second colour change would fight it. */
+#streamerDashboard .mystery-stat.is-warn b {
+  animation: streamerTense 1s var(--ease) infinite;
+}
+#streamerDashboard .mystery-stat.is-bad b {
+  animation: streamerTense .5s var(--ease) infinite;
+}
+/* The label is the one element saying the clock is about to run out, so
+   it never dims - it alternates colour at full opacity instead. (The
+   0.3 floor in streamerBlink is for the 8px status dot, not for text.) */
+#streamerDashboard .mystery-stat.is-bad span {
+  animation: streamerAlarm 1s steps(1, end) infinite;
+}
+/* And the cabinet itself notices. */
+#streamerDashboard .party-stats:has(.mystery-stat.is-bad) {
+  border-color: color-mix(in srgb, var(--bad) 55%, var(--line));
+}
+
+@keyframes streamerTense {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.055); }
+}
+@keyframes streamerAlarm {
+  0%, 100% { color: var(--bad); }
+  50%      { color: var(--ink); }
+}
+
+@keyframes streamerBlink { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+
+/* The rail is geometry, not motion, so it stays; everything that
+   breathes or blinks stops. */
+@media (prefers-reduced-motion: reduce) {
+  #streamerDashboard .streamer-chatstatus.is-live::before,
+  #streamerDashboard .mystery-stat.is-warn b,
+  #streamerDashboard .mystery-stat.is-bad b,
+  #streamerDashboard .mystery-stat.is-bad span { animation: none; }
 }
 
 /* Coming Soon: visibly inert, Muted, no button at all - see C.8/PLATFORMS
@@ -3005,17 +5290,105 @@ body.view-page { background: var(--paper); }
    one exists precisely so "waiting to hear back" can't be mistaken for
    "reading your chat": see the 366 gate in streamer.js. Section-label
    micro treatment, so it reads as status, not content. */
+.streamer-chatstatus-row {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px;
+  margin: 0 0 14px;
+}
+.streamer-chatstatus-row[hidden] { display: none; }
 .streamer-chatstatus {
-  margin: 0 0 14px; padding: 0;
+  margin: 0; padding: 0;
   font-size: 12.5px; font-weight: 600;
   letter-spacing: .08em; text-transform: uppercase;
   color: var(--muted);
 }
-.streamer-chatstatus[hidden] { display: none; }
 .streamer-chatstatus::before { content: "● "; letter-spacing: 0; color: var(--line); }
 .streamer-chatstatus.is-live::before { color: var(--good); }
 .streamer-chatstatus.is-waiting::before { color: var(--warn); }
 .streamer-chatstatus.is-down::before { color: var(--bad); }
+
+/* Quiet inline text action - the same treatment for two unrelated but
+   similarly small asks: retrying a dead chat connection (shown only
+   once a join has actually failed - see setChatStatus() in streamer.js;
+   a dropped connection already retries itself on a backoff, so this is
+   only for the two true dead ends) and backing out of the Go-live
+   screen's "connected as X" (see .streamer-connectedas-row below). One
+   class so a second small text-action never has to invent its own
+   treatment. */
+.streamer-textbtn {
+  flex: none; background: none; border: none; padding: 0; cursor: pointer;
+  font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink); text-decoration: underline; text-underline-offset: 2px;
+}
+.streamer-textbtn[hidden] { display: none; }
+.streamer-textbtn:hover { color: var(--muted); }
+
+/* Go-live screen: the flow's highest-commitment moment (a category
+   locked for the whole stream) was otherwise the emptiest screen with
+   no way back except abandoning the page. */
+.streamer-connectedas-row {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px;
+}
+
+/* Live-screen recap, collapsed by default (Progressive Disclosure) -
+   Border-Or-Shadow flush-in-flow like every other Card+Line surface
+   on this page. */
+.streamer-help {
+  margin: 0 0 20px; padding: 13px 16px;
+  border: 1px solid var(--line); border-radius: var(--r-card);
+}
+.streamer-help summary {
+  cursor: pointer; list-style: none;
+  font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink); text-decoration: underline; text-underline-offset: 2px;
+}
+.streamer-help summary::-webkit-details-marker { display: none; }
+.streamer-help[open] summary { margin-bottom: 10px; }
+.streamer-help ol {
+  margin: 0; padding-left: 18px;
+  display: flex; flex-direction: column; gap: 6px;
+  font-size: 14px; line-height: 1.4; color: var(--muted);
+}
+.streamer-help ol b { color: var(--ink); font-weight: 600; }
+
+/* Round countdown bar - full-bleed, pinned above everything else
+   (higher than --z-chrome, since it's read at a glance off the stream
+   itself, the same reason the round timer escalates colour). Anchored
+   right (margin-left: auto on the fill) so it visibly drains toward
+   that edge as the round runs out, matching #streamerStatTimer's own
+   Muted -> Warn -> Bad escalation - one state, shown two ways, never a
+   second source of truth. */
+.streamer-timerbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: calc(var(--z-chrome) + 1);
+  height: 4px;
+  background: var(--line);
+}
+.streamer-timerbar[hidden] { display: none; }
+.streamer-timerbar-fill {
+  width: 100%; height: 100%;
+  transform-origin: right center;
+  background: var(--muted);
+  transition: transform .25s linear, background-color .3s var(--ease);
+}
+.streamer-timerbar-fill.is-warn { background: var(--warn); }
+.streamer-timerbar-fill.is-bad { background: var(--bad); }
+
+/* Keyboard-shortcut hint on the two most-repeated live actions - a
+   streamer's hands are typically already at the keyboard mid-broadcast.
+   Visual only (aria-hidden in the markup); the button itself is what a
+   screen reader or click needs. */
+.streamer-kbd {
+  display: inline-block; margin-left: 6px;
+  padding: 1px 7px; border-radius: 9px;
+  background: var(--flat-bg); color: var(--muted);
+  font-size: 11.5px; font-weight: 600; letter-spacing: .02em;
+  vertical-align: 1px;
+}
+/* Next round sits on solid Sun (.btn-solid) - a flat neutral chip would
+   read as gray-on-brand, so tint from On-Sun instead of Ink/Muted. */
+.btn-solid .streamer-kbd {
+  background: color-mix(in srgb, var(--on-sun) 16%, transparent);
+  color: var(--on-sun);
+}
 
 /* -- Chat leaderboard.
    Deliberately not .party-score. That row answers "who else is here and
@@ -3095,3 +5468,323 @@ body.view-page { background: var(--paper); }
    mix - muted-on-flat-bg clears 4.5:1 in both themes; the darker mix
    this replaced fell to ~4.2:1, under WCAG AA for text this size. */
 .dlg-title .beta-tag { vertical-align: 5px; }
+
+/* ------------------------------------------------------------------
+   Twitch stream mode - the consent screen (#streamerConsent)
+   ------------------------------------------------------------------
+   Appended after the live round's cabinet CSS above. Reuses the
+   --arc-* token set already declared on #streamerConnect, .streamer-feed
+   (see that block near the top of the Twitch stream mode - the
+   arcade-cabinet landing section), so this page's <main> carries
+   .streamer-feed like the rest of stream mode. No new tokens, no new
+   hexes.
+
+   Why the page was restructured rather than restyled: the original is
+   seven small-caps labels over seven paragraphs at one weight, so the
+   most reassuring fact on the screen - the request asks Twitch for
+   nothing, which functions/api/twitch/login.js makes literally true by
+   sending scope='' - reads as the fourth-smallest thing on the page.
+   Here that fact is the marquee, the refusals become a scannable grid,
+   and the prose that's left is the part that genuinely needs sentences.
+
+   One solid-Sun control, as everywhere else: "Continue to Twitch".
+   Cancel is a ghost, and every reassurance is a tint or a border.
+------------------------------------------------------------------ */
+
+#streamerConsent {
+  background: var(--paw-field) 0 0 / 190px 190px repeat fixed;
+  /* Inline links: an ink-forward warm step on cream, bright Sun in the
+     dark. Sun-deep itself only clears ~1.6:1 on this ground - fine for
+     chrome, unreadable as 13px prose - and this page's links sit in
+     paragraphs, not on buttons. The ink share is set for the darkest
+     ground a link lands on (inside the warn-tinted callout, ~9% darker
+     than paper), so all three light values clear AA together. */
+  --arc-link: color-mix(in srgb, var(--sun-deep) 35%, var(--ink));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #streamerConsent { --arc-link: var(--sun); }
+}
+:root[data-theme="dark"] #streamerConsent { --arc-link: var(--sun); }
+
+/* Inline prose links only: the Continue button is an <a class="btn"> and
+   must keep .btn-solid's own ink and no underline, so the :not(.btn)
+   guard is load-bearing, not tidiness. */
+#streamerConsent a:not(.btn) {
+  color: var(--arc-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+#streamerConsent a:not(.btn):hover { color: var(--sun-deep); }
+
+/* ── Bracket corners ──────────────────────────────────────────────────
+   The same motif as the landing cards and the live round: four 2x14px
+   Sun slivers per pseudo, the second box mirrored for the bottom pair. */
+#streamerConsent .streamer-consent-readout::before,
+#streamerConsent .streamer-consent-readout::after,
+#streamerConsent .streamer-consent-denied::before,
+#streamerConsent .streamer-consent-denied::after,
+#streamerConsent .streamer-consent-flow::before,
+#streamerConsent .streamer-consent-flow::after {
+  content: "";
+  position: absolute; left: 9px; right: 9px; height: 14px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 14px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) left  top / 2px 14px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 14px 2px no-repeat,
+    linear-gradient(var(--arc-bracket), var(--arc-bracket)) right top / 2px 14px no-repeat;
+}
+#streamerConsent .streamer-consent-readout::before,
+#streamerConsent .streamer-consent-denied::before,
+#streamerConsent .streamer-consent-flow::before { top: 9px; }
+#streamerConsent .streamer-consent-readout::after,
+#streamerConsent .streamer-consent-denied::after,
+#streamerConsent .streamer-consent-flow::after { bottom: 9px; transform: scaleY(-1); }
+
+/* ── Hero ─────────────────────────────────────────────────────────── */
+
+.streamer-consent-hero {
+  display: flex; flex-direction: column; gap: 12px;
+  margin: 8px 0 22px;
+}
+.streamer-consent-kicker {
+  display: flex; align-items: center; gap: 8px;
+  margin: 0;
+  font-size: 12px; font-weight: 800; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--arc-kicker);
+}
+.streamer-consent-kicker svg { width: 15px; height: 15px; flex: none; }
+
+/* The whole screen's argument, at marquee size. The floor has to hold
+   "PERMISSIONS" inside a 320px-wide feed column, and break-word is the
+   backstop for narrower still. */
+.streamer-consent-headline {
+  margin: 0;
+  font-size: clamp(26px, 6.4vw, 46px);
+  line-height: 1.02; letter-spacing: -.03em;
+  text-transform: uppercase; text-wrap: balance;
+  overflow-wrap: break-word;
+  color: var(--arc-title);
+  text-shadow: var(--arc-titleglow);
+}
+.streamer-consent-sub {
+  margin: 0; max-width: 44ch;
+  font-size: 16.5px; line-height: 1.5; font-weight: 600;
+  color: var(--muted);
+}
+
+/* ── The readout ──────────────────────────────────────────────────────
+   Three numbers doing the work seven paragraphs were doing: what's
+   asked for, what comes back, how long anything lives. Same panel
+   language as the live round's round/hint/clock. */
+.streamer-consent-readout {
+  position: relative;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  margin: 0 0 20px; padding: 22px 8px;
+  border: 1px solid var(--arc-line); border-radius: 22px;
+  background: var(--arc-cabinet);
+  box-shadow: var(--arc-frameglow);
+}
+.streamer-consent-readout div {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 0 6px; text-align: center;
+}
+.streamer-consent-readout div + div::before {
+  content: "";
+  position: absolute; left: 0; top: 4px; bottom: 4px; width: 1px;
+  background: linear-gradient(transparent,
+    color-mix(in srgb, var(--sun) 55%, transparent), transparent);
+}
+.streamer-consent-readout b {
+  font-size: clamp(28px, 4.4vw, 40px); font-weight: 800; line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--arc-title);
+  text-shadow: var(--arc-titleglow);
+}
+.streamer-consent-readout span {
+  font-size: 11.5px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; line-height: 1.3;
+  color: var(--muted);
+}
+
+/* ── Refusals ─────────────────────────────────────────────────────────
+   The most convincing content on the page, so it gets the most weight.
+   A grid reads as a list of facts; the same lines as paragraphs read as
+   protesting too much. */
+.streamer-consent-denied {
+  position: relative;
+  margin: 0 0 20px; padding: 26px 22px 24px;
+  border: 1px solid var(--arc-line); border-radius: 22px;
+  background: var(--arc-cabinet);
+  box-shadow: var(--arc-frameglow);
+}
+.streamer-consent-denied .label { margin: 0 0 4px; }
+.streamer-consent-denylist {
+  margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: 1fr; gap: 2px;
+}
+.streamer-consent-denylist li {
+  display: flex; align-items: flex-start; gap: 11px;
+  padding: 9px 0;
+  font-size: 15px; font-weight: 600; line-height: 1.35;
+  color: var(--ink);
+}
+/* A drawn ✕ rather than the text one: at 15px the glyph sits off the
+   baseline and reads as a typo. */
+.streamer-consent-denylist li::before {
+  content: "";
+  flex: none; width: 17px; height: 17px; margin-top: 1px;
+  background:
+    linear-gradient(var(--bad), var(--bad)) center / 13px 2px no-repeat,
+    linear-gradient(var(--bad), var(--bad)) center / 2px 13px no-repeat;
+  transform: rotate(45deg);
+  opacity: .85;
+}
+/* The broadcast row. The thing streamers actually worry about, so it
+   leads and it gets the full width and a tint. A grid rather than the
+   flex row above, so its heading and explanation stack in one column
+   beside the mark instead of becoming two flex items. */
+.streamer-consent-denylist li.is-lead {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: auto 1fr;
+  column-gap: 11px; row-gap: 3px;
+  margin-bottom: 6px; padding: 14px 15px;
+  border-radius: 14px;
+  background: var(--arc-tint);
+  border: 1px solid var(--arc-line);
+  font-size: 15.5px;
+}
+.streamer-consent-denylist li.is-lead b,
+.streamer-consent-denylist li.is-lead span { grid-column: 2; }
+.streamer-consent-denylist li.is-lead b {
+  display: block;
+  font-size: 15.5px; font-weight: 800;
+  letter-spacing: .01em;
+}
+/* Full ink, not muted: this sits on the Sun tint rather than a flat
+   ground, where --muted drops under AA. The tint and the bold weight
+   already carry the hierarchy - sentence case rather than uppercase
+   since this is a five-word phrase, not a short label, and stays
+   readable by word-shape at this length. */
+.streamer-consent-denylist li.is-lead span { font-weight: 600; color: var(--ink); }
+
+/* ── What actually happens ────────────────────────────────────────── */
+
+.streamer-consent-flow {
+  position: relative;
+  margin: 0 0 20px; padding: 26px 22px 24px;
+  border: 1px solid var(--arc-line); border-radius: 22px;
+  background: var(--arc-cabinet);
+  box-shadow: var(--arc-frameglow);
+}
+.streamer-consent-flow .label { margin: 0 0 6px; }
+.streamer-consent-steps {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.streamer-consent-steps li {
+  display: flex; align-items: flex-start; gap: 13px;
+  padding: 11px 0;
+  font-size: 15px; font-weight: 600; line-height: 1.4;
+  color: var(--ink);
+}
+.streamer-consent-steps li + li { border-top: 1px solid color-mix(in srgb, var(--sun) 22%, var(--line)); }
+.streamer-consent-steps i {
+  flex: none; width: 26px; height: 26px; margin-top: -1px;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  background: var(--arc-tint); border: 1px solid var(--arc-line);
+  font-size: 13px; font-weight: 800; font-style: normal;
+  color: var(--arc-tag-ink);
+}
+.streamer-consent-steps b { font-weight: 800; }
+.streamer-consent-steps p { margin: 0; }
+.streamer-consent-steps span { display: block; font-weight: 500; color: var(--muted); }
+
+/* ── Twitch's own next screen ─────────────────────────────────────────
+   The one genuinely confusing thing a host will see, so it keeps its
+   callout - amber-bordered, because it's a heads-up rather than a
+   refusal, and left un-bracketed so it reads as an aside to the cabinet
+   rather than another panel of it. */
+.streamer-consent-heads {
+  margin: 0 0 20px; padding: 20px 22px;
+  border: 1px solid color-mix(in srgb, var(--warn) 45%, var(--line));
+  border-radius: var(--r-card);
+  background: color-mix(in srgb, var(--warn) 9%, transparent);
+}
+.streamer-consent-heads .label {
+  margin: 0 0 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.streamer-consent-heads .label svg {
+  width: 15px; height: 15px; flex: none; color: var(--warn);
+}
+.streamer-consent-heads p {
+  margin: 0;
+  font-size: 14.5px; line-height: 1.55; color: var(--ink);
+}
+.streamer-consent-heads code {
+  padding: 1px 5px; border-radius: 5px;
+  background: var(--flat-bg); border: 1px solid var(--line);
+  font-size: 13px;
+}
+
+/* ── Chat and retention, side by side ─────────────────────────────────
+   Two short facts that belong together: how chat is read, and what
+   survives the stream. Same split as the landing screen's You / Chat. */
+.streamer-consent-pair {
+  display: grid; grid-template-columns: 1fr; gap: 14px;
+  margin: 0 0 24px;
+}
+.streamer-consent-pair .card {
+  border-color: var(--arc-line); border-radius: 22px;
+  padding: 22px;
+}
+.streamer-consent-pair .label { margin: 0 0 8px; }
+.streamer-consent-pair p {
+  margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink);
+}
+
+#streamerConsent .label {
+  font-size: 12px; font-weight: 800; letter-spacing: .2em;
+  color: var(--arc-kicker);
+}
+
+/* ── Actions ──────────────────────────────────────────────────────── */
+
+.streamer-consent-actions {
+  display: flex; flex-wrap: wrap; gap: 11px;
+  margin: 0 0 14px;
+}
+.streamer-consent-actions .btn {
+  flex: 1 1 auto; min-height: 56px;
+  border-radius: 16px;
+  font-size: 16px; font-weight: 800; letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.streamer-consent-actions .btn-solid {
+  flex: 2 1 260px;
+  box-shadow: var(--arc-ctaglow);
+}
+.streamer-consent-actions .btn:not(.btn-solid) {
+  flex: 1 1 140px;
+  border-color: var(--line);
+  font-size: 14px; letter-spacing: .1em;
+  color: var(--muted);
+}
+
+.streamer-consent-fine {
+  margin: 0; max-width: 56ch;
+  font-size: 13px; line-height: 1.55; color: var(--muted);
+}
+
+/* Wide enough for two columns of refusals. Container query, not a
+   viewport one: .feed caps this column at 560px whatever the window
+   does, so a viewport rule would fire while the column is still
+   phone-width. */
+@container (min-width: 520px) {
+  .streamer-consent-denylist { grid-template-columns: 1fr 1fr; column-gap: 22px; }
+  .streamer-consent-pair { grid-template-columns: 1fr 1fr; }
+}

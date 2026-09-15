@@ -25,9 +25,18 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260912-2">
+<link rel="stylesheet" href="style.css?v=20260915-2">
 </head>
 <body class="view-page">
+
+<!-- Round countdown, read off the stream itself rather than the small
+     numeric stat - full-bleed on purpose (see style.css), pinned to the
+     right and draining left as the round runs out. Same server-set
+     deadline and the same Muted/Warn/Bad escalation as #streamerStatTimer,
+     never a second source of truth. -->
+<div class="streamer-timerbar" id="streamerTimerBar" hidden>
+  <div class="streamer-timerbar-fill" id="streamerTimerBarFill"></div>
+</div>
 
 <!-- Same corner menu as every other standalone page - see menu.js. -->
 <nav class="menu" id="menu">
@@ -43,6 +52,35 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
     <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
     <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+    <!-- Site-wide quick search - inline in the nav bar itself (grows in
+         place, doesn't drop a second box underneath it), not a
+         navigation to index.html's real search box, so it works from
+         any of these standalone pages. See menu.js. -->
+    <div class="navsearch" id="navSearch">
+      <button class="menu-item" id="navSearchToggle" type="button"
+              aria-label="Search animals" aria-expanded="false" aria-controls="navSearchRow">
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>Search</button>
+      <div class="navsearch-row" id="navSearchRow" hidden>
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>
+        <input id="navSearchInput" type="search" placeholder="Search an animal…"
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+               aria-label="Search animals" role="combobox" aria-expanded="false"
+               aria-autocomplete="list" aria-controls="navSearchResults">
+        <button class="navsearch-close" id="navSearchClose" type="button" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <ul class="suggest" id="navSearchResults" role="listbox" hidden></ul>
+      <p class="noresult" id="navSearchNoResult" hidden></p>
+    </div>
     <a class="menu-item menu-desktop-hide" href="./?report=1">Report a problem</a>
     <a class="menu-item menu-desktop-hide" href="privacy.html">Privacy</a>
     <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal"
@@ -88,64 +126,87 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <main class="feed streamer-feed">
 
-  <!-- Step 1: no login yet - the marketing/reassurance surface. The
-       Connect button (rendered into #streamerPlatforms by streamer.js,
-       data-driven per platform) stays the screen's one solid-Sun element
-       (One-Yellow Rule); everything above it is a tint, a border, or
-       plain text. -->
+  <!-- Step 1: no login yet - the marketing/reassurance surface, arcade-
+       cabinet treatment. The Connect button (rendered into
+       #streamerPlatforms by streamer.js, data-driven per platform) stays
+       the screen's one solid-Sun element (One-Yellow Rule); everything
+       above it is a tint, a border, or a glow - never a fill. -->
   <div id="streamerConnect">
     <div class="streamer-hero anim-rise">
-      <p class="streamer-kicker">Twitch stream mode <span class="beta-tag">beta</span></p>
-      <h1 class="streamer-headline">Your chat, guessing live.</h1>
-      <p class="streamer-pitch">Pick a category, show the mystery photo, and let
-        chat race to guess it by typing in your stream. You play along too.</p>
+      <p class="streamer-kicker">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="2"/>
+          <path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9M4.5 4.5a10.5 10.5 0 0 0 0 15M19.5 4.5a10.5 10.5 0 0 1 0 15"/>
+        </svg>
+        Twitch stream mode <span class="beta-tag">beta</span>
+      </p>
+      <h1 class="streamer-headline">Your chat, guessing live</h1>
+      <p class="streamer-pitch">Put the mystery photo on screen. Chat types. The clock
+        does the rest — and you're playing too.</p>
+    </div>
+
+    <!-- A still of a round in progress: the photo still hidden, the
+         hint that's showing, and chat shouting over it. Decorative, so
+         the whole stage is hidden from assistive tech - the same facts
+         are in the hero copy and the You/Chat lists below. -->
+    <div class="streamer-stage" aria-hidden="true">
+      <div class="streamer-screen">
+        <p class="streamer-screen-cap">Hint 2 · Mostly nocturnal</p>
+      </div>
+      <span class="streamer-bubble">CAPYBARA?</span>
+      <span class="streamer-bubble">anteater!!</span>
+      <span class="streamer-bubble">is that a snout</span>
+      <span class="streamer-bubble streamer-bubble-win">TAPIR ✓</span>
     </div>
 
     <div class="streamer-points stagger">
       <div class="card streamer-point" style="--i:0">
-        <span class="streamer-point-n" aria-hidden="true">✓</span>
-        <p><b>No download</b><br>Runs right here in this tab — nothing installs
-          for you or anyone watching.</p>
+        <span class="streamer-point-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M3 11h16M11 3c2.3 2.4 2.3 13.6 0 16M11 3c-2.3 2.4-2.3 13.6 0 16"/>
+            <path d="m14.5 14.5 6 6-2.4.6-.6 2.4z" fill="currentColor"/>
+          </svg>
+        </span>
+        <p><b>No download</b>Runs right here in this tab — nothing installs
+          for you or anyone watching.<br><span class="streamer-point-tag">Free, in-browser</span></p>
       </div>
       <div class="card streamer-point" style="--i:1">
-        <span class="streamer-point-n" aria-hidden="true">✓</span>
-        <p><b>Chat plays by typing</b><br>No extension, no bot commands to learn
-          — they just type the animal's name.</p>
+        <span class="streamer-point-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 14a2 2 0 0 1-2 2H9l-4 3.5V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
+            <path d="M8.5 10h7M8.5 13h4"/>
+          </svg>
+        </span>
+        <p><b>Chat plays by typing</b>No extension, no bot commands to learn
+          — they just type the animal's name.<br><span class="streamer-point-tag">No bot, no commands</span></p>
       </div>
       <div class="card streamer-point" style="--i:2">
-        <span class="streamer-point-n" aria-hidden="true">✓</span>
-        <p><b>Works with any setup</b><br>One browser tab — capture it in OBS, a
-          browser source, or just share the window.</p>
+        <span class="streamer-point-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="13" rx="2"/>
+            <path d="M8 21h8M12 17v4M6 8h5M6 11h3"/>
+          </svg>
+        </span>
+        <p><b>Works with any setup</b>One browser tab — capture it in OBS, a
+          browser source, or just share the window.<br><span class="streamer-point-tag">OBS-ready</span></p>
       </div>
-    </div>
-
-    <div class="card streamer-steps">
-      <h2 class="label">How it works</h2>
-      <ol class="streamer-steplist">
-        <li><span class="streamer-point-n" aria-hidden="true">1</span>
-          <p><b>Connect your channel</b> — confirms it's really yours, nothing else.</p></li>
-        <li><span class="streamer-point-n" aria-hidden="true">2</span>
-          <p><b>Pick a category</b> — locked in for the whole stream.</p></li>
-        <li><span class="streamer-point-n" aria-hidden="true">3</span>
-          <p><b>Chat guesses in chat</b> — hints reveal on a clock, first right
-            answer wins the round.</p></li>
-      </ol>
     </div>
 
     <div class="streamer-roles">
       <div class="card">
-        <h3 class="label">You</h3>
+        <h2 class="label">You</h2>
         <ul class="streamer-rolelist">
           <li>Pick the category and go live</li>
-          <li>Watch hints reveal on the clock</li>
+          <li>Watch hints drop on the clock</li>
           <li>Guess along under your own name</li>
           <li>Call "Next round" whenever you're ready</li>
         </ul>
       </div>
       <div class="card">
-        <h3 class="label">Chat</h3>
+        <h2 class="label">Chat</h2>
         <ul class="streamer-rolelist">
-          <li>Reads the photo and hints as they land</li>
+          <li>Reads the photo and the hints as they land</li>
           <li>Types the animal's name to guess</li>
           <li>Races the clock and each other</li>
           <li>Climbs a live leaderboard, no sign-in needed</li>
@@ -153,20 +214,137 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </div>
     </div>
 
-    <div class="streamer-platforms" id="streamerPlatforms"></div>
+    <div class="streamer-cta">
+      <div class="streamer-platforms" id="streamerPlatforms"></div>
+    </div>
+    <p class="streamer-fineprint">You'll see exactly what connecting means —
+      and what it doesn't — before anything happens.</p>
     <p class="party-msg" id="streamerConnectMsg" role="status"></p>
+  </div>
+
+  <!-- Step 1.5: what connecting actually means, before Twitch's own
+       consent screen (which this site can't rewrite - see the "About
+       Twitch's next screen" block below). The one screen on this site
+       that has to be exactly true, so it's static Twitch-specific copy
+       rather than rendered from the PLATFORMS array in streamer.js - a
+       future second live platform would need its own facts checked and
+       its own version of this, not a find/replace of "Twitch". -->
+  <div id="streamerConsent" hidden>
+    <div class="streamer-consent-hero anim-rise">
+      <p class="streamer-consent-kicker">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        Connect your Twitch account
+      </p>
+      <h1 class="streamer-consent-headline">Zero permissions requested</h1>
+      <p class="streamer-consent-sub">This is the smallest request Twitch allows.
+        It confirms which channel is yours — so your chat can play — and nothing else.</p>
+    </div>
+
+    <div class="streamer-consent-readout">
+      <div><b>0</b><span>Permissions<br>requested</span></div>
+      <div><b>1</b><span>Thing read:<br>your channel name</span></div>
+      <div><b>48h</b><span>Longest<br>anything is kept</span></div>
+    </div>
+
+    <div class="streamer-consent-denied">
+      <h2 class="label">What this can't do</h2>
+      <ul class="streamer-consent-denylist">
+        <li class="is-lead">
+          <b>Nothing to do with your broadcast</b>
+          <span>No stream key, no encoder or OBS settings, no access to your
+            creator dashboard. This never asks Twitch for them, and Twitch
+            doesn't hand them to apps like this one.</span>
+        </li>
+        <li>Post messages in your chat</li>
+        <li>Read your whispers or DMs</li>
+        <li>See your follows or subscriptions</li>
+        <li>Moderate, ban, or time anyone out</li>
+        <li>Change anything on your account</li>
+        <li>See your Twitch password</li>
+        <li>Read your email address</li>
+        <li>Keep you signed in</li>
+      </ul>
+    </div>
+
+    <div class="streamer-consent-heads">
+      <h2 class="label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 4 3 19h18z"/>
+          <path d="M12 10v4M12 16.5v.5"/>
+        </svg>
+        About Twitch's next screen
+      </h2>
+      <p>Twitch's own authorization page may say this app can get your email
+        address and whether it's verified. It can't — reading an email needs a
+        Twitch permission called <code>user:read:email</code>, and this app never
+        asks for it, so Twitch never sends it. That line is Twitch's standard
+        wording, shown even to apps that request nothing — a
+        <a href="https://github.com/twitchdev/issues/issues/808" target="_blank" rel="noopener">known
+        Twitch issue</a>, not something this app requested.</p>
+    </div>
+
+    <div class="streamer-consent-flow">
+      <h2 class="label">What actually happens</h2>
+      <ol class="streamer-consent-steps">
+        <li><i aria-hidden="true">1</i><p><b>You approve it at twitch.tv</b>
+          <span>On Twitch's own page, never here. Your password is only ever typed at Twitch.</span></p></li>
+        <li><i aria-hidden="true">2</i><p><b>Twitch tells us which channel is yours</b>
+          <span>We read one thing back — your channel name.</span></p></li>
+        <li><i aria-hidden="true">3</i><p><b>The access key goes straight back</b>
+          <span>Handed back to Twitch the moment it's used. Nothing from it is stored,
+            and there's no account to come back to.</span></p></li>
+      </ol>
+    </div>
+
+    <div class="streamer-consent-pair">
+      <div class="card">
+        <h2 class="label">Your chat</h2>
+        <p>Is read the way anyone can read a public Twitch chat — anonymously,
+          with no login at all, straight from this browser tab.</p>
+      </div>
+      <div class="card">
+        <h2 class="label">What we keep</h2>
+        <p>Your channel name, plus the names and guesses of people who play, for
+          as long as the stream runs — deleted when you end it, and automatically
+          after 48 hours either way. See the <a href="privacy.html" target="_blank" rel="noopener">privacy page</a>
+          for the rest.</p>
+      </div>
+    </div>
+
+    <div class="streamer-consent-actions">
+      <button class="btn" type="button" id="streamerConsentCancel">Cancel</button>
+      <a class="btn btn-solid" id="streamerConsentContinue" href="api/twitch/login" data-sfx="off">Continue to Twitch</a>
+    </div>
+    <p class="streamer-fineprint">You'll be taken to <b>twitch.tv</b> to
+      approve this. Remove access any time at
+      <a href="https://www.twitch.tv/settings/connections" target="_blank" rel="noopener">twitch.tv/settings/connections</a>,
+      or read Twitch's own <a href="https://dev.twitch.tv/docs/authentication/" target="_blank" rel="noopener">authentication docs</a>.</p>
   </div>
 
   <!-- Step 2: connected, pick a category. -->
   <div id="streamerGoLive" hidden>
-    <p class="dlg-note">Connected as <b id="streamerConnectedAs"></b>.</p>
+    <h1 class="consent-title">You've connected Twitch.</h1>
+    <div class="streamer-connectedas-row">
+      <p class="dlg-note">Playing as <b id="streamerConnectedAs"></b> —
+        <a id="streamerConnectedLink" href="#" target="_blank" rel="noopener"></a></p>
+      <button class="streamer-textbtn" type="button" id="streamerDisconnect">Disconnect</button>
+    </div>
+    <p class="dlg-note dlg-note-tight">Twitch has already been told to
+      forget the access key it gave us for this — nothing about this
+      login is stored. Pick a category and go live to start reading your
+      chat.</p>
     <label class="fld">
       <span class="fld-label">Animals to use</span>
       <select id="streamerCategory" class="party-select"></select>
     </label>
-    <p class="dlg-note dlg-note-tight">Locked in for the whole stream — ending early is the only way to change it.</p>
+    <p class="dlg-note dlg-note-tight">Once you go live, this category is locked for the whole stream — ending the stream early is the only way to change it.</p>
     <p class="party-msg" id="streamerGoLiveMsg" role="status"></p>
     <button class="btn btn-solid" type="button" id="streamerGoLiveBtn">Go live</button>
+    <p class="streamer-fineprint">Remove access any time at
+      <a href="https://www.twitch.tv/settings/connections" target="_blank" rel="noopener">twitch.tv/settings/connections</a>.</p>
   </div>
 
   <!-- Step 3: live. Reuses local Party Mode's own two-column grid
@@ -181,7 +359,23 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
        No per-viewer presence, no rename, no join roster - there's no tab
        to heartbeat from, and a hundred dots would be noise. -->
   <div id="streamerDashboard" hidden>
-    <p class="streamer-chatstatus" id="streamerChatStatus" role="status" aria-live="polite" hidden></p>
+    <div class="streamer-chatstatus-row" id="streamerChatStatusRow" hidden>
+      <p class="streamer-chatstatus" id="streamerChatStatus" role="status" aria-live="polite"></p>
+      <button class="streamer-textbtn" type="button" id="streamerChatRetry" hidden>Retry</button>
+    </div>
+
+    <!-- The pitch screen's how-it-works explanation otherwise vanishes
+         for good the moment you connect - collapsed by default so it
+         costs nothing mid-round, native <details> for free keyboard/
+         screen-reader support. -->
+    <details class="streamer-help">
+      <summary>How this works</summary>
+      <ol>
+        <li>Hints reveal automatically as the clock runs down; press <b>Reveal next hint</b> any time to pull ahead of it.</li>
+        <li>Chat guesses by typing the animal's name right in your stream; you guess too, under your own channel name.</li>
+        <li>First right answer, yours or chat's, wins the round. Press <b>Next round</b> when you're ready to continue.</li>
+      </ol>
+    </details>
 
     <div class="party-columns">
       <div class="party-main">
@@ -235,8 +429,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
           <p class="mystery-result-note" id="streamerResultNote" role="status"></p>
         </div>
 
-        <button class="btn party-hintbtn" type="button" id="streamerHint">Reveal next hint</button>
-        <button class="btn btn-solid" type="button" id="streamerNext" hidden>Next round</button>
+        <button class="btn party-hintbtn" type="button" id="streamerHint">Reveal next hint <span class="streamer-kbd" aria-hidden="true">Space</span></button>
+        <button class="btn btn-solid" type="button" id="streamerNext" hidden>Next round <span class="streamer-kbd" aria-hidden="true">Enter</span></button>
       </div>
 
       <div class="party-side">
@@ -245,7 +439,16 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </div>
     </div>
 
-    <button class="btn party-endbtn" type="button" id="streamerEnd">End stream</button>
+    <div class="streamer-endzone">
+      <button class="btn party-endbtn" type="button" id="streamerEnd">End stream</button>
+      <div class="streamer-endconfirm" id="streamerEndConfirm" hidden>
+        <p id="streamerEndConfirmMsg">End the stream? Chat can’t keep guessing after this.</p>
+        <div class="streamer-endconfirm-actions">
+          <button class="btn" type="button" id="streamerEndCancel" aria-describedby="streamerEndConfirmMsg">Cancel</button>
+          <button class="btn streamer-endconfirm-yes" type="button" id="streamerEndConfirmYes" aria-describedby="streamerEndConfirmMsg">Yes, end stream</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Step 4: a beat after "End stream", same reasoning as local Party
@@ -260,8 +463,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <script src="sfx.js?v=20260912-1"></script>
 <script src="animals.js?v=20260907-1"></script>
+<script src="search-core.js?v=20260913-1"></script>
 <script src="game-core.js?v=20260912-2"></script>
-<script src="menu.js?v=20260912-2"></script>
-<script src="streamer.js?v=20260912-2"></script>
+<script src="menu.js?v=20260913-2"></script>
+<script src="streamer.js?v=20260914-1"></script>
 </body>
 </html>

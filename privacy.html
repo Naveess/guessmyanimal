@@ -24,7 +24,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260912-2">
+<link rel="stylesheet" href="style.css?v=20260915-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -72,6 +72,35 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
     <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
     <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+    <!-- Site-wide quick search - inline in the nav bar itself (grows in
+         place, doesn't drop a second box underneath it), not a
+         navigation to index.html's real search box, so it works from
+         any of these standalone pages. See menu.js. -->
+    <div class="navsearch" id="navSearch">
+      <button class="menu-item" id="navSearchToggle" type="button"
+              aria-label="Search animals" aria-expanded="false" aria-controls="navSearchRow">
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>Search</button>
+      <div class="navsearch-row" id="navSearchRow" hidden>
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>
+        <input id="navSearchInput" type="search" placeholder="Search an animal…"
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+               aria-label="Search animals" role="combobox" aria-expanded="false"
+               aria-autocomplete="list" aria-controls="navSearchResults">
+        <button class="navsearch-close" id="navSearchClose" type="button" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <ul class="suggest" id="navSearchResults" role="listbox" hidden></ul>
+      <p class="noresult" id="navSearchNoResult" hidden></p>
+    </div>
     <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
          there's room for them to just be visible - see style.css. Mobile
          is untouched. -->
@@ -173,9 +202,17 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <p>Party Mode and Twitch stream mode are the one place something is kept on
     the server rather than on your device, because several people have to see
     the same room: the room's code, the display names people chose, their
-    scores, and the guesses they made. It lasts as long as the session does.
-    There's no account attached to any of it, and a name is whatever someone
-    typed.</p>
+    scores, and the guesses they typed. For Twitch stream mode, that includes
+    the Twitch username attached to a chat guess and the guess itself — only
+    the messages that actually looked like an answer, never the whole chat
+    log. There's no account attached to any of it, and a name is whatever
+    someone typed or their Twitch username.</p>
+
+  <p>It's deleted when the host ends the stream or party, and automatically
+    within 48 hours either way, so an abandoned room never lingers. Anyone who
+    has the room's code can see what's in it while it's running — the same
+    way anyone in the room already can — but the host key needed to run the
+    round itself is never shared.</p>
 
   <h2>Connecting a Twitch account</h2>
 
@@ -185,12 +222,18 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     in to nothing.</p>
 
   <p>It asks Twitch for no permissions at all. The site reads back which
-    channel is yours, once, and throws the access token away in the same
-    breath — nothing is saved, and there's no account to come back to. The
-    only cookie involved is a random anti-forgery value that lasts five
-    minutes, identifies nobody, and is deleted as soon as it's checked. Chat
-    messages themselves are read the way anyone can read a public Twitch
-    chat, without signing in to anything.</p>
+    channel is yours, once, tells Twitch to revoke the access key immediately,
+    and keeps nothing from the exchange — there's no account to come back to.
+    A short-lived signed cookie (15 minutes) is the only thing that outlives
+    the request, and it exists purely so a stream can't be started under
+    someone else's channel name; it's deleted the moment you go live or
+    disconnect. Twitch's own authorization screen may still say this app can
+    see your email address — that's <a href="https://github.com/twitchdev/issues/issues/808" target="_blank" rel="noopener">a
+    known issue on Twitch's side</a> that shows up even for apps asking for
+    nothing, not something this app requested; asking for an email address
+    needs a specific Twitch permission this app never uses. Chat messages
+    themselves are read the way anyone can read a public Twitch chat, without
+    signing in to anything.</p>
 
   <h2>What the ads set</h2>
 
@@ -256,6 +299,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </script>
 
 <script src="sfx.js?v=20260912-1"></script>
-<script src="menu.js?v=20260912-2"></script>
+<script src="animals.js?v=20260907-1"></script>
+<script src="search-core.js?v=20260913-1"></script>
+<script src="menu.js?v=20260913-2"></script>
 </body>
 </html>

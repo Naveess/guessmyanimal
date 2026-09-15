@@ -23,7 +23,7 @@ const MAX_DESC = 158;
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20260908-1';
+const STYLE_VERSION = '20260915-2';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
@@ -238,6 +238,104 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </head>
 <body class="view-page">
 
+<!-- Same corner menu as index.html (see menu.js for why Mystery Animal
+     and Report a problem are plain links here rather than the buttons
+     that open dialogs on the home page). -->
+<nav class="menu" id="menu">
+  <button class="menu-btn" id="menuBtn" type="button"
+          aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </svg>
+  </button>
+  <div class="menu-panel" id="menuPanel" hidden>
+    <a class="menu-item" href="about.html"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
+    <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
+    <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
+    <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
+    <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+    <!-- Site-wide quick search - inline in the nav bar itself (grows in
+         place, doesn't drop a second box underneath it), not a
+         navigation to index.html's real search box, so it works from
+         any of these standalone pages. See menu.js. -->
+    <div class="navsearch" id="navSearch">
+      <button class="menu-item" id="navSearchToggle" type="button"
+              aria-label="Search animals" aria-expanded="false" aria-controls="navSearchRow">
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>Search</button>
+      <div class="navsearch-row" id="navSearchRow" hidden>
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>
+        <input id="navSearchInput" type="search" placeholder="Search an animal…"
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+               aria-label="Search animals" role="combobox" aria-expanded="false"
+               aria-autocomplete="list" aria-controls="navSearchResults">
+        <button class="navsearch-close" id="navSearchClose" type="button" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <ul class="suggest" id="navSearchResults" role="listbox" hidden></ul>
+      <p class="noresult" id="navSearchNoResult" hidden></p>
+    </div>
+    <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
+         there's room for them to just be visible - see style.css. Mobile
+         is untouched. -->
+    <a class="menu-item menu-desktop-hide" href="./?report=1">Report a problem</a>
+    <a class="menu-item menu-desktop-hide" href="privacy.html">Privacy</a>
+    <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal"
+       target="_blank" rel="noopener">Source on GitHub</a>
+    <hr class="menu-sep menu-desktop-hide">
+    <p class="theme-label menu-desktop-hide" id="themeLabel">Appearance</p>
+    <div class="theme menu-desktop-hide" role="group" aria-labelledby="themeLabel">
+      <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
+      <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Own icon button, not a menu item - see index.html for why.
+     data-sfx="off": turning sound off has to be silent, so the click
+     handler plays its own confirming tap instead of the delegated one. -->
+<button class="sound-toggle" id="soundToggle" type="button"
+        aria-pressed="true" aria-label="Sound on" data-sfx="off">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/>
+    <path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/>
+    <path class="sw-mute" d="M15.5 9.5l5 5m0-5l-5 5"/>
+  </svg>
+</button>
+
+<!-- Desktop-only sliding theme switch, next to the corner menu button.
+     Reuses [data-theme-set] - menu.js's own applyTheme() syncs
+     aria-pressed across every matching element on the page already,
+     this group included. -->
+<div class="theme-toggle" role="group" aria-label="Appearance">
+  <button type="button" class="theme-toggle-opt" data-theme-set="light" aria-pressed="false" aria-label="Light">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.5"/>
+      <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+    </svg>
+  </button>
+  <button type="button" class="theme-toggle-opt" data-theme-set="dark" aria-pressed="false" aria-label="Dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>
+    </svg>
+  </button>
+  <button type="button" class="theme-toggle-opt" data-theme-set="system" aria-pressed="true" aria-label="System">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="13" rx="2"/>
+      <path d="M8 21h8M12 17v4"/>
+    </svg>
+  </button>
+</div>
+
 <header class="topbar">
   <a class="back" href="./" aria-label="Back to search">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -263,9 +361,19 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <p class="lede">All ${ANIMALS.length}, in one list. Pick one to see if it's dangerous,
     what it eats, and everything else people ask mid-game.</p>
 
-  <nav class="atoz-jump" aria-label="Jump to letter">${jump}</nav>
+  <div class="atoz-body">
+    <nav class="atoz-jump" aria-label="Jump to letter">${jump}</nav>
+    <div class="atoz-main">
 
-  ${sections}
+      <aside class="atoz-play">
+        <p>Or don't pick — let the game pick for you.</p>
+        <a class="btn btn-solid" href="/?mystery=1">Mystery Animal</a>
+      </aside>
+
+      ${sections}
+
+    </div>
+  </div>
 
 </main>
 
@@ -273,7 +381,20 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <p><a href="./">Look up an animal</a></p>
   <p><a href="privacy.html">Privacy</a></p>
 </footer>
+<!-- Desktop-only: moved out of the corner menu, see style.css. -->
+<div class="desktop-foot">
+  <a href="./?report=1">Report a problem</a>
+  <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
+</div>
 
+<script src="sfx.js?v=20260912-1"></script>
+<script src="animals.js?v=20260907-1"></script>
+<script src="search-core.js?v=20260913-1"></script>
+<script src="menu.js?v=20260913-2"></script>
+<!-- Decoration only, and only on this page: marks the letter you're
+     currently reading in the rail. Every jump link works with this
+     disabled - see atoz.js. -->
+<script src="atoz.js?v=20260915-2"></script>
 </body>
 </html>
 `;

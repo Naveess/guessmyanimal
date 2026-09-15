@@ -111,36 +111,56 @@
   const feedEl = document.querySelector('.streamer-feed');
   function setWide(wide) { if (feedEl) feedEl.classList.toggle('is-wide', wide); }
 
-  function showConnect(msg) {
-    el('streamerConnect').hidden = false;
+  // Every screen this function touches gets hidden first, the caller's
+  // own screen un-hidden after - one place that lists every step so a
+  // sixth screen later can't be added while forgetting to hide it
+  // somewhere else (see #streamerConsent, added alongside connect/
+  // go-live/dashboard/recap without touching any of the other three).
+  function hideAllScreens() {
+    el('streamerConnect').hidden = true;
+    el('streamerConsent').hidden = true;
     el('streamerGoLive').hidden = true;
     el('streamerDashboard').hidden = true;
     el('streamerRecap').hidden = true;
+    el('streamerTimerBar').hidden = true; // fixed/full-bleed - outlives #streamerDashboard's own hidden
+  }
+
+  function showConnect(msg) {
+    hideAllScreens();
+    el('streamerConnect').hidden = false;
     setWide(false);
     el('streamerConnectMsg').textContent = msg || '';
   }
 
+  // Step 1.5: what connecting means, shown before the redirect to
+  // Twitch rather than only trusting a fineprint line on the connect
+  // screen to be read. See streamer.html's #streamerConsent comment.
+  function showConsent() {
+    hideAllScreens();
+    el('streamerConsent').hidden = false;
+    setWide(false);
+  }
+
   function showGoLive(login) {
-    el('streamerConnect').hidden = true;
+    hideAllScreens();
     el('streamerGoLive').hidden = false;
-    el('streamerDashboard').hidden = true;
-    el('streamerRecap').hidden = true;
     setWide(false);
     el('streamerConnectedAs').textContent = login;
+    const link = el('streamerConnectedLink');
+    link.href = 'https://www.twitch.tv/' + encodeURIComponent(login);
+    link.textContent = 'twitch.tv/' + login;
   }
 
   function showDashboard() {
-    el('streamerConnect').hidden = true;
-    el('streamerGoLive').hidden = true;
+    hideAllScreens();
     el('streamerDashboard').hidden = false;
-    el('streamerRecap').hidden = true;
+    el('streamerEnd').hidden = false;
+    el('streamerEndConfirm').hidden = true;
     setWide(true);
   }
 
   function showRecap(finalScores) {
-    el('streamerConnect').hidden = true;
-    el('streamerGoLive').hidden = true;
-    el('streamerDashboard').hidden = true;
+    hideAllScreens();
     el('streamerRecap').hidden = false;
     setWide(false);
     renderBoardInto(el('streamerRecapBoard'), (finalScores || []).slice().sort((a, b) => b.score - a.score), true);
@@ -370,12 +390,18 @@
     const box = el('streamerStatTimerBox');
     const numEl = el('streamerStatTimer');
     const labelEl = el('streamerStatTimerLabel');
+    const bar = el('streamerTimerBar');
+    const fill = el('streamerTimerBarFill');
     if (!state || !state.roundEndsAt || !state.roundStartedAt) {
       box.classList.remove('is-warn', 'is-bad');
       numEl.textContent = '–';
       labelEl.textContent = 'Time left';
+      bar.hidden = true;
+      const head = box.closest('.party-roundhead');
+      if (head) head.style.removeProperty('--arc-timer');
       return;
     }
+    bar.hidden = false;
 
     const done = state.resolved || state.expired;
     const nowCorrected = Date.now() + clockOffsetMs;
@@ -389,17 +415,25 @@
 
     const totalMs = state.roundEndsAt - state.roundStartedAt;
     const frac = totalMs > 0 ? remainingMs / totalMs : 0;
+    // The countdown rail reads this - see the .party-roundhead::after
+    // rule in style.css. Display only; nothing decides anything on it.
+    const head = box.closest('.party-roundhead');
+    if (head) head.style.setProperty('--arc-timer', String(frac));
     const secs = Math.ceil(remainingMs / 1000);
     numEl.textContent = Math.floor(secs / 60) + ':' + String(secs % 60).padStart(2, '0');
+    fill.style.transform = 'scaleX(' + frac + ')';
 
     box.classList.remove('is-warn', 'is-bad');
+    fill.classList.remove('is-warn', 'is-bad');
     if (done) {
       labelEl.textContent = 'Round over';
     } else if (frac <= 0.10) {
       box.classList.add('is-bad');
+      fill.classList.add('is-bad');
       labelEl.textContent = 'Almost up!';
     } else if (frac <= 0.30) {
       box.classList.add('is-warn');
+      fill.classList.add('is-warn');
       labelEl.textContent = 'Hurry!';
     } else {
       labelEl.textContent = 'Time left';
@@ -519,14 +553,21 @@
     clearJoinTimeout();
     if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
     if (chat) { try { chat.close(); } catch (e) {} chat = null; }
-    el('streamerChatStatus').hidden = true;
+    el('streamerChatStatusRow').hidden = true;
+    el('streamerChatRetry').hidden = true;
   }
 
-  function setChatStatus(text, cls) {
+  // retry is explicit per call site, not inferred from cls: a dropped
+  // connection (also is-down) already has scheduleReconnect() running
+  // on its own backoff, and a "Retry" link next to "reconnecting..."
+  // text would just read as broken. Only the two true dead ends - a
+  // join that never confirmed, and a NOTICE refusal - pass retry:true.
+  function setChatStatus(text, cls, retry) {
     const node = el('streamerChatStatus');
-    node.hidden = false;
+    el('streamerChatStatusRow').hidden = false;
     node.textContent = text;
     node.className = 'streamer-chatstatus' + (cls ? ' ' + cls : '');
+    el('streamerChatRetry').hidden = !retry;
   }
 
   function clearJoinTimeout() {
@@ -554,7 +595,7 @@
       clearJoinTimeout();
       joinTimeoutTimer = setTimeout(() => {
         if (myGen === chatGen) {
-          setChatStatus('Couldn’t confirm ' + channel + '’s chat — check the channel name.', 'is-down');
+          setChatStatus('Couldn’t confirm ' + channel + '’s chat — check the channel name.', 'is-down', true);
         }
       }, JOIN_TIMEOUT_MS);
     });
@@ -587,7 +628,7 @@
         const notice = line.match(/^:tmi\.twitch\.tv NOTICE [^ ]+ :(.*)$/);
         if (notice) {
           clearJoinTimeout();
-          setChatStatus('Twitch says: ' + notice[1], 'is-down');
+          setChatStatus('Twitch says: ' + notice[1], 'is-down', true);
           return;
         }
 
@@ -688,6 +729,16 @@
         twitchChannel: connectedLogin,
       });
       if (data.error) {
+        // The signed proof cookie from the OAuth callback expires after
+        // 15 minutes (functions/api/twitch/_lib.js) - long enough to
+        // pick a category, not long enough to sit on this screen
+        // overnight. Send them back to connect again rather than retry
+        // a create() that will just 403 again.
+        if (data.error === 'twitch channel not confirmed') {
+          connectedLogin = null;
+          showConnect('That confirmation expired — connect again.');
+          return;
+        }
         el('streamerGoLiveMsg').textContent = 'Could not start the session. Try again in a moment.';
         return;
       }
@@ -725,9 +776,27 @@
     poll();
   });
 
+  // In-page two-step confirm instead of window.confirm() - OBS's Browser
+  // Source (a CEF view) is the documented way to capture this surface,
+  // and a synchronous native dialog can silently fail to render there.
   el('streamerEnd').addEventListener('click', () => {
-    if (!window.confirm('End the stream session? Chat can’t keep guessing after this.')) return;
+    el('streamerEnd').hidden = true;
+    el('streamerEndConfirm').hidden = false;
+    el('streamerEndCancel').focus(); // hiding #streamerEnd would otherwise drop focus to <body>
+  });
+
+  el('streamerEndCancel').addEventListener('click', () => {
+    el('streamerEndConfirm').hidden = true;
+    el('streamerEnd').hidden = false;
+    el('streamerEnd').focus();
+  });
+
+  el('streamerEndConfirmYes').addEventListener('click', () => {
     const finalScores = state && state.scores;
+    // Fire-and-forget: the recap below reads from finalScores, already
+    // captured above, so a slow or failed delete must never hold up the
+    // "thanks for playing" screen. See functions/api/party/end.js.
+    if (code && hostKey) api('end', { code, hostKey }).catch(() => {});
     clearStore(HOST_STORE);
     code = null; hostKey = null; state = null;
     lastRound = 0; lastResolved = false; lastShown = 0;
@@ -736,6 +805,47 @@
     stopPolling();
     disconnectChat();
     showRecap(finalScores);
+  });
+
+  // Space/Enter for the two live actions a streamer repeats most, since
+  // hands are typically already on the keyboard mid-broadcast. Ignored
+  // whenever focus is on any control that already has its own Space/
+  // Enter behavior - a field (typing a space, submitting with Enter),
+  // a button (its own click), a link, or the "How this works" summary
+  // (its own native disclosure toggle) - so this only fires when focus
+  // isn't parked on something that would otherwise double-handle it.
+  // Also ignored whenever the dashboard itself isn't the visible screen.
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (el('streamerDashboard').hidden) return;
+    const tag = document.activeElement && document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || tag === 'A' || tag === 'SUMMARY') return;
+    if (e.key === ' ') {
+      const btn = el('streamerHint');
+      if (!btn.hidden && !btn.disabled) { e.preventDefault(); btn.click(); }
+    } else if (e.key === 'Enter') {
+      const btn = el('streamerNext');
+      if (!btn.hidden && !btn.disabled) { e.preventDefault(); btn.click(); }
+    }
+  });
+
+  el('streamerDisconnect').addEventListener('click', () => {
+    // Best-effort: clears the signed channel-proof cookie server-side
+    // (see functions/api/twitch/disconnect.js) so it can't be reused to
+    // start a session as this channel. The screen moves on regardless -
+    // there's nothing else to wait for, the token itself was already
+    // revoked back in callback.js.
+    fetch('api/twitch/disconnect', { method: 'POST' }).catch(() => {});
+    connectedLogin = null;
+    showConnect('');
+  });
+
+  el('streamerChatRetry').addEventListener('click', () => {
+    if (!joinedChannel) return;
+    const channel = joinedChannel;
+    el('streamerChatRetry').hidden = true;
+    if (chat) { try { chat.close(); } catch (err) {} }
+    connectChat(channel);
   });
 
   el('streamerRecapDone').addEventListener('click', () => showConnect(''));
@@ -752,12 +862,18 @@
 
   /* -- Platforms (landing screen, C.8) -----------------------------------
      One array drives both the live Connect button and the inert Coming
-     Soon rows, so adding a real platform later is one entry here plus a
-     functions/api/<key>/{login,callback}.js pair - never a redesign of
-     this screen. A 'soon' entry needs no backend at all. */
+     Soon rows. The live button opens #streamerConsent (see renderPlatforms
+     below) rather than navigating anywhere itself - that screen's own
+     "Continue to Twitch" link is the real destination, and it's static
+     Twitch-specific markup rather than rendered from here, since its
+     claims (what a scope means, what Twitch's own screen says) don't
+     transfer to a future second platform. Adding one is still one entry
+     here plus a functions/api/<key>/{login,callback}.js pair for the
+     Coming Soon -> live flip; its consent screen is separate work. A
+     'soon' entry needs no backend at all. */
   const PLATFORMS = [
     {
-      key: 'twitch', name: 'Twitch', status: 'live', href: 'api/twitch/login',
+      key: 'twitch', name: 'Twitch', status: 'live',
       icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0 1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>',
     },
     { key: 'youtube', name: 'YouTube', status: 'soon' },
@@ -768,19 +884,18 @@
     const box = el('streamerPlatforms');
     PLATFORMS.forEach((p) => {
       if (p.status === 'live') {
-        const note = document.createElement('p');
-        note.className = 'dlg-note';
-        note.textContent = 'Connect your ' + p.name + ' account so your channel fills in ' +
-          'automatically — no typing a name, no risk of the wrong room. This only confirms ' +
-          'which channel is yours; chat itself is still read anonymously, the same way it ' +
-          'always was, and nothing about this login is stored once your channel’s confirmed.';
-        box.appendChild(note);
-        const a = document.createElement('a');
-        a.className = 'btn btn-solid streamer-connectbtn';
-        a.href = p.href;
-        a.setAttribute('data-sfx', 'off');
-        a.innerHTML = p.icon + 'Connect with ' + p.name;
-        box.appendChild(a);
+        // Opens the consent screen (C.5 in streamer.html) rather than
+        // navigating straight to p.href - what connecting actually
+        // means gets its own screen now instead of a fineprint line
+        // underneath this button. The consent screen's own "Continue
+        // to Twitch" link is the real navigation.
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn btn-solid streamer-connectbtn';
+        btn.setAttribute('data-sfx', 'off');
+        btn.innerHTML = p.icon + 'Connect with ' + p.name;
+        btn.addEventListener('click', showConsent);
+        box.appendChild(btn);
       } else {
         const row = document.createElement('div');
         row.className = 'streamer-platform-soon';
@@ -789,6 +904,8 @@
       }
     });
   })();
+
+  el('streamerConsentCancel').addEventListener('click', () => showConnect(''));
 
   /* -- Entry -------------------------------------------------------------
      Three ways in: already hosting (resume), just came back from Twitch

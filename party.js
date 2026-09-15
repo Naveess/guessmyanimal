@@ -782,9 +782,10 @@
     // look at the board this session actually produced.
     const finalScores = state && state.scores;
 
-    // The session just goes stale on the server - there's nothing to
-    // close, and nothing stored anywhere that a next party would trip
-    // over. This is only "forget it on this device".
+    // Fire-and-forget: the recap below reads from finalScores, already
+    // captured above, so a slow or failed delete must never hold up the
+    // "thanks for playing" screen. See functions/api/party/end.js.
+    if (code && hostKey) api('end', { code, hostKey }).catch(() => {});
     clearStore(HOST_STORE);
     code = null; hostKey = null; state = null;
     lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };

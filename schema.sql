@@ -71,3 +71,9 @@ CREATE TABLE IF NOT EXISTS party_events (
   created_at   INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS party_events_session ON party_events (session_code, id);
+
+-- Added 2026-09-14 to support _lib.js's sweepStale() - an existing
+-- database needs `CREATE INDEX IF NOT EXISTS party_sessions_stale ON
+-- party_sessions (updated_at);` run against it once, same convention as
+-- every other column/index added after the fresh-install CREATE above.
+CREATE INDEX IF NOT EXISTS party_sessions_stale ON party_sessions (updated_at);

@@ -24,7 +24,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260912-2">
+<link rel="stylesheet" href="style.css?v=20260915-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -72,6 +72,35 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
     <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
     <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+    <!-- Site-wide quick search - inline in the nav bar itself (grows in
+         place, doesn't drop a second box underneath it), not a
+         navigation to index.html's real search box, so it works from
+         any of these standalone pages. See menu.js. -->
+    <div class="navsearch" id="navSearch">
+      <button class="menu-item" id="navSearchToggle" type="button"
+              aria-label="Search animals" aria-expanded="false" aria-controls="navSearchRow">
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>Search</button>
+      <div class="navsearch-row" id="navSearchRow" hidden>
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>
+        <input id="navSearchInput" type="search" placeholder="Search an animal…"
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+               aria-label="Search animals" role="combobox" aria-expanded="false"
+               aria-autocomplete="list" aria-controls="navSearchResults">
+        <button class="navsearch-close" id="navSearchClose" type="button" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <ul class="suggest" id="navSearchResults" role="listbox" hidden></ul>
+      <p class="noresult" id="navSearchNoResult" hidden></p>
+    </div>
     <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
          there's room for them to just be visible - see style.css. Mobile
          is untouched. -->
@@ -225,8 +254,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     it, and you'll only meet it if you're a streamer: <a href="streamer.html">Twitch
     stream mode</a> lets you connect your Twitch account so your channel name
     fills itself in. It asks Twitch for no permissions, checks who you are
-    once, and keeps nothing afterwards — and people guessing in chat sign in
-    to nothing at all.</p>
+    once, and revokes the access key immediately — and people guessing in
+    chat sign in to nothing at all. See the <a href="privacy.html">privacy
+    page</a> for exactly what that means and what a stream session stores.</p>
 
   <p>It runs ads (Google AdSense) to help cover hosting, which set their own
     cookies the way ads do everywhere — see the
@@ -249,6 +279,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </div>
 
 <script src="sfx.js?v=20260912-1"></script>
-<script src="menu.js?v=20260912-2"></script>
+<script src="animals.js?v=20260907-1"></script>
+<script src="search-core.js?v=20260913-1"></script>
+<script src="menu.js?v=20260913-2"></script>
 </body>
 </html>

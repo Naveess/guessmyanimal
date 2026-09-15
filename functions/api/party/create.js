@@ -5,11 +5,21 @@
 // session, see schema.sql. Picks the first target, generates a short
 // code (retried on the rare collision) and a host_key the host's
 // browser keeps to gate hint/next-round calls later.
+//
+// A Twitch channel here has to come with the signed proof cookie the
+// OAuth callback set, or this would just be a client-supplied string -
+// anyone could POST any channel name and the streamer OAuth screen
+// would have bought nothing. See functions/api/twitch/_lib.js.
 
-import { CATEGORY_RE, TWITCH_CHANNEL_RE, pickTarget, randomCode, randomHostKey, roundDeadline, json } from './_lib.js';
+import { CATEGORY_RE, TWITCH_CHANNEL_RE, pickTarget, randomCode, randomHostKey, roundDeadline, sweepStale, json } from './_lib.js';
+import { CHANNEL_COOKIE, readCookie, verifyChannel, clearChannelCookie } from '../twitch/_lib.js';
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, waitUntil }) {
   if (!env.DB) return json({ error: 'unavailable' }, 503);
+
+  // After the response, not before it - a stranger's abandoned room
+  // from days ago is never worth adding to this request's latency.
+  waitUntil(sweepStale(env, Date.now()));
 
   const type = request.headers.get('content-type') || '';
   if (!type.includes('application/json')) return json({ error: 'bad content-type' }, 415);
@@ -24,6 +34,12 @@ export async function onRequestPost({ request, env }) {
   const twitchChannelRaw = String(body.twitchChannel || '').trim();
   if (twitchChannelRaw && !TWITCH_CHANNEL_RE.test(twitchChannelRaw)) return json({ error: 'bad twitch channel' }, 400);
   const twitchChannel = twitchChannelRaw ? twitchChannelRaw.toLowerCase() : null;
+
+  if (twitchChannel) {
+    if (!env.TWITCH_CLIENT_SECRET) return json({ error: 'unavailable' }, 503);
+    const proofLogin = await verifyChannel(readCookie(request, CHANNEL_COOKIE), env.TWITCH_CLIENT_SECRET, Date.now());
+    if (proofLogin !== twitchChannel) return json({ error: 'twitch channel not confirmed' }, 403);
+  }
 
   const targetSlug = pickTarget(category, []);
   const hostKey = randomHostKey();
@@ -45,7 +61,12 @@ export async function onRequestPost({ request, env }) {
         )
         .bind(code, hostKey, twitchChannel, category, targetSlug, JSON.stringify([targetSlug]), roundStartedAt, roundEndsAt, now)
         .run();
-      return json({ code, hostKey, category, twitchChannel, targetSlug, shown: 1, roundNo: 1, roundEndsAt, serverNow: now });
+      // The proof cookie has done its one job (binding this session to
+      // the confirmed channel) - clear it rather than let it sit until
+      // its own 15-minute expiry, same "used once, gone immediately"
+      // shape as the access token itself in callback.js.
+      const extra = twitchChannel ? [['set-cookie', clearChannelCookie(request)]] : null;
+      return json({ code, hostKey, category, twitchChannel, targetSlug, shown: 1, roundNo: 1, roundEndsAt, serverNow: now }, 200, extra);
     } catch (err) {
       const message = String((err && err.message) || err);
       const isCodeCollision = /unique constraint/i.test(message);

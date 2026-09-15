@@ -100,7 +100,9 @@
   const setDailyBest = (v) => setNum(DAILY_BEST_KEY, v);
   const getDailyDate = () => getStr(DAILY_DATE_KEY, '');
   const setDailyDate = (v) => setStr(DAILY_DATE_KEY, v);
-  const getModeStore = () => getStr(MODE_KEY, 'daily');
+  // Endless is the front door now: it's the mode someone can actually
+  // play more than once in a sitting, and Daily is a deliberate visit.
+  const getModeStore = () => getStr(MODE_KEY, 'endless');
   const setModeStore = (v) => setStr(MODE_KEY, v);
   const getFilterStore = () => getStr(FILTER_KEY, 'all');
   const setFilterStore = (v) => setStr(FILTER_KEY, v);

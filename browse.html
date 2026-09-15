@@ -24,7 +24,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260912-2">
+<link rel="stylesheet" href="style.css?v=20260915-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -67,6 +67,35 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
     <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
     <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+    <!-- Site-wide quick search - inline in the nav bar itself (grows in
+         place, doesn't drop a second box underneath it), not a
+         navigation to index.html's real search box, so it works from
+         any of these standalone pages. See menu.js. -->
+    <div class="navsearch" id="navSearch">
+      <button class="menu-item" id="navSearchToggle" type="button"
+              aria-label="Search animals" aria-expanded="false" aria-controls="navSearchRow">
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>Search</button>
+      <div class="navsearch-row" id="navSearchRow" hidden>
+        <span class="mag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+          </svg>
+        </span>
+        <input id="navSearchInput" type="search" placeholder="Search an animal…"
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+               aria-label="Search animals" role="combobox" aria-expanded="false"
+               aria-autocomplete="list" aria-controls="navSearchResults">
+        <button class="navsearch-close" id="navSearchClose" type="button" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <ul class="suggest" id="navSearchResults" role="listbox" hidden></ul>
+      <p class="noresult" id="navSearchNoResult" hidden></p>
+    </div>
     <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
          there's room for them to just be visible - see style.css. Mobile
          is untouched. -->
@@ -145,9 +174,16 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <p class="lede">All 438, in one list. Pick one to see if it's dangerous,
     what it eats, and everything else people ask mid-game.</p>
 
-  <nav class="atoz-jump" aria-label="Jump to letter"><a href="#A">A</a><a href="#B">B</a><a href="#C">C</a><a href="#D">D</a><a href="#E">E</a><a href="#F">F</a><a href="#G">G</a><a href="#H">H</a><a href="#I">I</a><a href="#J">J</a><a href="#K">K</a><a href="#L">L</a><a href="#M">M</a><a href="#N">N</a><a href="#O">O</a><a href="#P">P</a><a href="#Q">Q</a><a href="#R">R</a><a href="#S">S</a><a href="#T">T</a><a href="#V">V</a><a href="#W">W</a><a href="#Y">Y</a><a href="#Z">Z</a></nav>
+  <div class="atoz-body">
+    <nav class="atoz-jump" aria-label="Jump to letter"><a href="#A">A</a><a href="#B">B</a><a href="#C">C</a><a href="#D">D</a><a href="#E">E</a><a href="#F">F</a><a href="#G">G</a><a href="#H">H</a><a href="#I">I</a><a href="#J">J</a><a href="#K">K</a><a href="#L">L</a><a href="#M">M</a><a href="#N">N</a><a href="#O">O</a><a href="#P">P</a><a href="#Q">Q</a><a href="#R">R</a><a href="#S">S</a><a href="#T">T</a><a href="#V">V</a><a href="#W">W</a><a href="#Y">Y</a><a href="#Z">Z</a></nav>
+    <div class="atoz-main">
 
-  <section class="atoz-group"><h2 class="atoz-letter" id="A">A</h2><ul class="atoz-list"><li><a href="/?a=aardvark">Aardvark</a></li><li><a href="/?a=african-wild-dog">African wild dog</a></li><li><a href="/?a=agouti">Agouti</a></li><li><a href="/?a=albatross">Albatross</a></li><li><a href="/?a=alligator">Alligator</a></li><li><a href="/?a=alpaca">Alpaca</a></li><li><a href="/?a=anaconda">Anaconda</a></li><li><a href="/?a=anchovy">Anchovy</a></li><li><a href="/?a=angelfish">Angelfish</a></li><li><a href="/?a=anglerfish">Anglerfish</a></li><li><a href="/?a=ant">Ant</a></li><li><a href="/?a=anteater">Anteater</a></li><li><a href="/?a=antelope">Antelope</a></li><li><a href="/?a=ape">Ape</a></li><li><a href="/?a=arctic-fox">Arctic fox</a></li><li><a href="/?a=armadillo">Armadillo</a></li><li><a href="/?a=axolotl">Axolotl</a></li><li><a href="/?a=aye-aye">Aye-aye</a></li></ul></section>
+      <aside class="atoz-play">
+        <p>Or don't pick — let the game pick for you.</p>
+        <a class="btn btn-solid" href="/?mystery=1">Mystery Animal</a>
+      </aside>
+
+      <section class="atoz-group"><h2 class="atoz-letter" id="A">A</h2><ul class="atoz-list"><li><a href="/?a=aardvark">Aardvark</a></li><li><a href="/?a=african-wild-dog">African wild dog</a></li><li><a href="/?a=agouti">Agouti</a></li><li><a href="/?a=albatross">Albatross</a></li><li><a href="/?a=alligator">Alligator</a></li><li><a href="/?a=alpaca">Alpaca</a></li><li><a href="/?a=anaconda">Anaconda</a></li><li><a href="/?a=anchovy">Anchovy</a></li><li><a href="/?a=angelfish">Angelfish</a></li><li><a href="/?a=anglerfish">Anglerfish</a></li><li><a href="/?a=ant">Ant</a></li><li><a href="/?a=anteater">Anteater</a></li><li><a href="/?a=antelope">Antelope</a></li><li><a href="/?a=ape">Ape</a></li><li><a href="/?a=arctic-fox">Arctic fox</a></li><li><a href="/?a=armadillo">Armadillo</a></li><li><a href="/?a=axolotl">Axolotl</a></li><li><a href="/?a=aye-aye">Aye-aye</a></li></ul></section>
   <section class="atoz-group"><h2 class="atoz-letter" id="B">B</h2><ul class="atoz-list"><li><a href="/?a=babirusa">Babirusa</a></li><li><a href="/?a=baboon">Baboon</a></li><li><a href="/?a=badger">Badger</a></li><li><a href="/?a=bandicoot">Bandicoot</a></li><li><a href="/?a=barnacle">Barnacle</a></li><li><a href="/?a=barracuda">Barracuda</a></li><li><a href="/?a=basilisk-lizard">Basilisk lizard</a></li><li><a href="/?a=bass">Bass</a></li><li><a href="/?a=bat">Bat</a></li><li><a href="/?a=bat-eared-fox">Bat-eared fox</a></li><li><a href="/?a=bearded-dragon">Bearded dragon</a></li><li><a href="/?a=beaver">Beaver</a></li><li><a href="/?a=bee">Bee</a></li><li><a href="/?a=beetle">Beetle</a></li><li><a href="/?a=beluga">Beluga</a></li><li><a href="/?a=bighorn-sheep">Bighorn sheep</a></li><li><a href="/?a=bilby">Bilby</a></li><li><a href="/?a=binturong">Binturong</a></li><li><a href="/?a=bird-of-paradise">Bird of paradise</a></li><li><a href="/?a=bison">Bison</a></li><li><a href="/?a=black-bear">Black bear</a></li><li><a href="/?a=black-panther">Black panther</a></li><li><a href="/?a=black-widow">Black widow</a></li><li><a href="/?a=blackbird">Blackbird</a></li><li><a href="/?a=blobfish">Blobfish</a></li><li><a href="/?a=blue-whale">Blue whale</a></li><li><a href="/?a=boa-constrictor">Boa constrictor</a></li><li><a href="/?a=bobcat">Bobcat</a></li><li><a href="/?a=bongo">Bongo</a></li><li><a href="/?a=bonobo">Bonobo</a></li><li><a href="/?a=boomslang">Boomslang</a></li><li><a href="/?a=brown-bear">Brown bear</a></li><li><a href="/?a=budgerigar">Budgerigar</a></li><li><a href="/?a=buffalo">Buffalo</a></li><li><a href="/?a=bull">Bull</a></li><li><a href="/?a=bullfrog">Bullfrog</a></li><li><a href="/?a=bumblebee">Bumblebee</a></li><li><a href="/?a=bushbaby">Bushbaby</a></li><li><a href="/?a=butterfly">Butterfly</a></li><li><a href="/?a=buzzard">Buzzard</a></li></ul></section>
   <section class="atoz-group"><h2 class="atoz-letter" id="C">C</h2><ul class="atoz-list"><li><a href="/?a=caecilian">Caecilian</a></li><li><a href="/?a=caiman">Caiman</a></li><li><a href="/?a=camel">Camel</a></li><li><a href="/?a=canary">Canary</a></li><li><a href="/?a=capuchin-monkey">Capuchin monkey</a></li><li><a href="/?a=capybara">Capybara</a></li><li><a href="/?a=caracal">Caracal</a></li><li><a href="/?a=carp">Carp</a></li><li><a href="/?a=cassowary">Cassowary</a></li><li><a href="/?a=caterpillar">Caterpillar</a></li><li><a href="/?a=catfish">Catfish</a></li><li><a href="/?a=centipede">Centipede</a></li><li><a href="/?a=chameleon">Chameleon</a></li><li><a href="/?a=chamois">Chamois</a></li><li><a href="/?a=cheetah">Cheetah</a></li><li><a href="/?a=chicken">Chicken</a></li><li><a href="/?a=chimpanzee">Chimpanzee</a></li><li><a href="/?a=chinchilla">Chinchilla</a></li><li><a href="/?a=chipmunk">Chipmunk</a></li><li><a href="/?a=cicada">Cicada</a></li><li><a href="/?a=civet">Civet</a></li><li><a href="/?a=clouded-leopard">Clouded leopard</a></li><li><a href="/?a=clownfish">Clownfish</a></li><li><a href="/?a=coati">Coati</a></li><li><a href="/?a=cobra">Cobra</a></li><li><a href="/?a=cockatiel">Cockatiel</a></li><li><a href="/?a=cockatoo">Cockatoo</a></li><li><a href="/?a=cockroach">Cockroach</a></li><li><a href="/?a=cod">Cod</a></li><li><a href="/?a=coelacanth">Coelacanth</a></li><li><a href="/?a=condor">Condor</a></li><li><a href="/?a=copperhead">Copperhead</a></li><li><a href="/?a=coral">Coral</a></li><li><a href="/?a=cormorant">Cormorant</a></li><li><a href="/?a=cougar">Cougar</a></li><li><a href="/?a=cow">Cow</a></li><li><a href="/?a=coyote">Coyote</a></li><li><a href="/?a=crab">Crab</a></li><li><a href="/?a=crane">Crane</a></li><li><a href="/?a=crayfish">Crayfish</a></li><li><a href="/?a=cricket">Cricket</a></li><li><a href="/?a=crocodile">Crocodile</a></li><li><a href="/?a=crow">Crow</a></li><li><a href="/?a=cuckoo">Cuckoo</a></li><li><a href="/?a=cuttlefish">Cuttlefish</a></li></ul></section>
   <section class="atoz-group"><h2 class="atoz-letter" id="D">D</h2><ul class="atoz-list"><li><a href="/?a=deer">Deer</a></li><li><a href="/?a=dhole">Dhole</a></li><li><a href="/?a=dik-dik">Dik-dik</a></li><li><a href="/?a=dingo">Dingo</a></li><li><a href="/?a=dodo">Dodo</a></li><li><a href="/?a=dog">Dog</a></li><li><a href="/?a=dolphin">Dolphin</a></li><li><a href="/?a=domestic-cat">Domestic cat</a></li><li><a href="/?a=donkey">Donkey</a></li><li><a href="/?a=dormouse">Dormouse</a></li><li><a href="/?a=dragonfly">Dragonfly</a></li><li><a href="/?a=dromedary">Dromedary</a></li><li><a href="/?a=duck">Duck</a></li><li><a href="/?a=dugong">Dugong</a></li></ul></section>
@@ -172,6 +208,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <section class="atoz-group"><h2 class="atoz-letter" id="Y">Y</h2><ul class="atoz-list"><li><a href="/?a=yak">Yak</a></li></ul></section>
   <section class="atoz-group"><h2 class="atoz-letter" id="Z">Z</h2><ul class="atoz-list"><li><a href="/?a=zebra">Zebra</a></li><li><a href="/?a=zebrafish">Zebrafish</a></li><li><a href="/?a=zebu">Zebu</a></li><li><a href="/?a=zonkey">Zonkey</a></li></ul></section>
 
+    </div>
+  </div>
+
 </main>
 
 <footer class="foot prose-foot">
@@ -185,6 +224,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </div>
 
 <script src="sfx.js?v=20260912-1"></script>
-<script src="menu.js?v=20260912-2"></script>
+<script src="animals.js?v=20260907-1"></script>
+<script src="search-core.js?v=20260913-1"></script>
+<script src="menu.js?v=20260913-2"></script>
+<!-- Decoration only, and only on this page: marks the letter you're
+     currently reading in the rail. Every jump link works with this
+     disabled - see atoz.js. -->
+<script src="atoz.js?v=20260915-2"></script>
 </body>
 </html>
