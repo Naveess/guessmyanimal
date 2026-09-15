@@ -228,6 +228,15 @@
         ],
         "createdAt": "2026-09-15T09:41:02.726Z",
         "reason": "Arcade-cabinet handoff (design_handoff_mystery_party_consent/README.md): same --arc-* glow-token mechanism already sanctioned for streamer.html (see that file's dark-glow ignore) — resolves to flat var(--shadow)/var(--shadow-l) in light mode, only renders as Sun glow in dark mode. Applied here to #mysteryview/#partyview by the same handoff."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-15T10:52:44.599Z",
+        "reason": "Agent: intentional per design handoff (README-animal-page.md) - .ansec-fact .factcard's 3px Sun left rule on phones replaces a second Sun-tinted box directly under the solid-Sun play block, which already carries Sun; a blockquote-style rule, not a full card treatment, and matches the approved preview render (preview-animal.html)."
       }
     ]
   },
