@@ -141,10 +141,12 @@
       if (i === 4) {
         const gap = document.createElement('div');
         gap.className = 'ans-gap';
+        gap.setAttribute('role', 'presentation');
         box.appendChild(gap);
       }
       const row = document.createElement('div');
       row.className = 'row';
+      row.setAttribute('role', 'listitem');
       row.style.setProperty('--i', i);
       const kk = document.createElement('span');
       kk.className = 'k';
@@ -191,6 +193,7 @@
     function renderChip(ic, key, value, i) {
       const c = document.createElement('div');
       c.className = 'gchip';
+      c.setAttribute('role', 'listitem');
       c.style.setProperty('--i', i);
       c.appendChild(icon(ic));
       if (key) {
@@ -209,6 +212,7 @@
     appearance.forEach(([ic, key, value]) => renderChip(ic, key, value, i++));
     const gap = document.createElement('div');
     gap.className = 'glance-gap';
+    gap.setAttribute('role', 'presentation');
     box.appendChild(gap);
     behaviour.forEach(([ic, key, value]) => renderChip(ic, key, value, i++));
   }

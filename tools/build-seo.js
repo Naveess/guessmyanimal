@@ -15,6 +15,7 @@ const path = require('path');
 const { ANIMALS } = require('../animals.js');
 const { answers, glanceGroups, ICONS } = require('../render-data.js');
 const { relatedFor } = require('../related.js');
+const { CATEGORY_BUCKETS } = require('../game-core.js');
 
 const SITE = 'https://guessmyanimal.com';
 const MAX_DESC = 158;
@@ -23,7 +24,7 @@ const MAX_DESC = 158;
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20260915-2';
+const STYLE_VERSION = '20260916-5';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
@@ -45,9 +46,9 @@ function answersHtml(a) {
   const rows = answers(a);
   let html = '';
   rows.forEach(([k, v, state], i) => {
-    if (i === 4) html += '<div class="ans-gap"></div>';
+    if (i === 4) html += '<div class="ans-gap" role="presentation"></div>';
     const cls = 'pill' + (state ? ' ' + state : '');
-    html += `<div class="row" style="--i:${i}"><span class="k">${escapeHtml(k)}</span><span class="${cls}">${escapeHtml(v)}</span></div>`;
+    html += `<div class="row" role="listitem" style="--i:${i}"><span class="k">${escapeHtml(k)}</span><span class="${cls}">${escapeHtml(v)}</span></div>`;
   });
   return html;
 }
@@ -59,11 +60,11 @@ function glanceHtml(a) {
   let i = 0;
   const chip = ([ic, key, value]) => {
     const keyHtml = key ? `<span class="gk">${escapeHtml(key)}</span>` : '';
-    const html = `<div class="gchip" style="--i:${i}">${iconSvg(ic)}${keyHtml}<b>${escapeHtml(value)}</b></div>`;
+    const html = `<div class="gchip" role="listitem" style="--i:${i}">${iconSvg(ic)}${keyHtml}<b>${escapeHtml(value)}</b></div>`;
     i++;
     return html;
   };
-  return appearance.map(chip).join('') + '<div class="glance-gap"></div>' + behaviour.map(chip).join('');
+  return appearance.map(chip).join('') + '<div class="glance-gap" role="presentation"></div>' + behaviour.map(chip).join('');
 }
 
 // Mirrors renderRelated()'s DOM exactly: same .related-item shape, same
@@ -175,13 +176,48 @@ function browseHtml() {
   const letters = Object.keys(groups).sort();
   for (const l of letters) groups[l].sort((x, y) => x.n.localeCompare(y.n));
 
+  // Same bucket table Party Mode's own category picker uses (game-core.js)
+  // - one canonical mapping from an animal's real class (a.c) to a filter
+  // key, not a second, divergent taxonomy invented for this page alone.
+  const bucketKeyFor = (a) => {
+    const b = CATEGORY_BUCKETS.find((bk) => bk.cats && bk.cats.includes(a.c));
+    return b ? b.key : 'all';
+  };
+  const catChips = CATEGORY_BUCKETS
+    .map((b) => `<button type="button" data-cat-filter="${b.key}" aria-pressed="${b.key === 'all'}">${escapeHtml(b.label)}</button>`)
+    .join('');
+
   const jump = letters.map((l) => `<a href="#${l}">${l}</a>`).join('');
+
+  const itemHtml = (a) => `<li data-cat="${bucketKeyFor(a)}"><a href="/?a=${slugify(a.n)}">${escapeHtml(a.n)}</a></li>`;
+
+  // Letters past this size get chunked into labelled sub-groups so a
+  // jump to "S" (60+ names) isn't one undifferentiated column to scan -
+  // small letters stay a plain flat list, since a sub-head over three
+  // names is its own kind of noise. Fixed-size chunks rather than exact
+  // second-letter boundaries, so every sub-group is a similar, readable
+  // size regardless of how lumpy the real second-letter distribution is.
+  const SUBDIVIDE_AT = 20;
+  const CHUNK_SIZE = 14;
+
   const sections = letters
     .map((l) => {
-      const items = groups[l]
-        .map((a) => `<li><a href="/?a=${slugify(a.n)}">${escapeHtml(a.n)}</a></li>`)
-        .join('');
-      return `<section class="atoz-group"><h2 class="atoz-letter" id="${l}">${l}</h2><ul class="atoz-list">${items}</ul></section>`;
+      const items = groups[l];
+      const countTag = `<span class="sr-only">, ${items.length} animal${items.length === 1 ? '' : 's'}</span>`;
+      let body;
+      if (items.length > SUBDIVIDE_AT) {
+        const chunks = [];
+        for (let i = 0; i < items.length; i += CHUNK_SIZE) chunks.push(items.slice(i, i + CHUNK_SIZE));
+        body = `<div class="atoz-subgroups">${chunks
+          .map((chunk) => {
+            const label = escapeHtml(chunk[0].n.slice(0, 2)) + '–' + escapeHtml(chunk[chunk.length - 1].n.slice(0, 2));
+            return `<div class="atoz-subgroup"><h3 class="label atoz-sublabel">${label}</h3><ul class="atoz-list">${chunk.map(itemHtml).join('')}</ul></div>`;
+          })
+          .join('')}</div>`;
+      } else {
+        body = `<ul class="atoz-list">${items.map(itemHtml).join('')}</ul>`;
+      }
+      return `<section class="atoz-group"><h2 class="atoz-letter" id="${l}">${l}${countTag}</h2>${body}</section>`;
     })
     .join('\n  ');
 
@@ -237,6 +273,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </script>
 </head>
 <body class="view-page">
+
+<!-- First focusable element on purpose: a keyboard/screen-reader user
+     otherwise tabs through the corner menu, sound toggle, and theme
+     switch before ever reaching the 438-link list that IS this page. -->
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- Same corner menu as index.html (see menu.js for why Mystery Animal
      and Report a problem are plain links here rather than the buttons
@@ -354,12 +395,38 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </a>
 </header>
 
-<main class="prose atoz">
+<main class="prose atoz" id="main">
 
   <h1>Every animal, A to Z</h1>
 
   <p class="lede">All ${ANIMALS.length}, in one list. Pick one to see if it's dangerous,
     what it eats, and everything else people ask mid-game.</p>
+
+  <!-- Always visible, unlike the corner menu's own quick-search below -
+       this is the one page whose entire job is finding a name, so the
+       fastest way to do that shouldn't be two taps inside a hamburger.
+       Reuses SearchCore (search-core.js) and the .searchrow/.suggest
+       components the corner search already uses, see atoz.js. -->
+  <div class="atoz-search" id="atozSearch">
+    <div class="searchrow">
+      <span class="mag" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
+        </svg>
+      </span>
+      <input id="atozSearchInput" type="search" placeholder="Search an animal…"
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+             aria-label="Search animals" role="combobox" aria-expanded="false"
+             aria-autocomplete="list" aria-controls="atozSearchResults">
+    </div>
+    <ul class="suggest" id="atozSearchResults" role="listbox" hidden></ul>
+    <p class="noresult" id="atozSearchNoResult" hidden></p>
+  </div>
+
+  <!-- Client-side show/hide only (see atoz.js) - every animal is still a
+       real <a href> in the DOM under every filter, so this never costs a
+       crawler or a no-JS visitor anything the plain list already had. -->
+  <div class="atoz-cats" role="group" aria-label="Filter by kind">${catChips}</div>
 
   <div class="atoz-body">
     <nav class="atoz-jump" aria-label="Jump to letter">${jump}</nav>
@@ -394,7 +461,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Decoration only, and only on this page: marks the letter you're
      currently reading in the rail. Every jump link works with this
      disabled - see atoz.js. -->
-<script src="atoz.js?v=20260915-2"></script>
+<script src="atoz.js?v=20260916-1"></script>
 </body>
 </html>
 `;

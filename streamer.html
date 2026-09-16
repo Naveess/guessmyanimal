@@ -25,7 +25,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260915-2">
+<link rel="stylesheet" href="style.css?v=20260916-5">
 </head>
 <body class="view-page">
 
@@ -142,7 +142,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </p>
       <h1 class="streamer-headline">Your chat, guessing live</h1>
       <p class="streamer-pitch">Put the mystery photo on screen. Chat types. The clock
-        does the rest — and you're playing too.</p>
+        does the rest, and you're playing too.</p>
     </div>
 
     <!-- A still of a round in progress: the photo still hidden, the
@@ -168,7 +168,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
             <path d="m14.5 14.5 6 6-2.4.6-.6 2.4z" fill="currentColor"/>
           </svg>
         </span>
-        <p><b>No download</b>Runs right here in this tab — nothing installs
+        <p><b>No download</b> Runs right here in this tab. Nothing installs
           for you or anyone watching.<br><span class="streamer-point-tag">Free, in-browser</span></p>
       </div>
       <div class="card streamer-point" style="--i:1">
@@ -178,8 +178,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
             <path d="M8.5 10h7M8.5 13h4"/>
           </svg>
         </span>
-        <p><b>Chat plays by typing</b>No extension, no bot commands to learn
-          — they just type the animal's name.<br><span class="streamer-point-tag">No bot, no commands</span></p>
+        <p><b>Chat plays by typing</b> No extension, no bot commands to learn.
+          They just type the animal's name.<br><span class="streamer-point-tag">No bot, no commands</span></p>
       </div>
       <div class="card streamer-point" style="--i:2">
         <span class="streamer-point-icon" aria-hidden="true">
@@ -188,9 +188,41 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
             <path d="M8 21h8M12 17v4M6 8h5M6 11h3"/>
           </svg>
         </span>
-        <p><b>Works with any setup</b>One browser tab — capture it in OBS, a
+        <p><b>Works with any setup</b> One browser tab, capture it in OBS, a
           browser source, or just share the window.<br><span class="streamer-point-tag">OBS-ready</span></p>
       </div>
+    </div>
+
+    <div class="card streamer-steps">
+      <h2 class="label">How a round works</h2>
+      <ol class="streamer-steplist">
+        <li>
+          <span class="streamer-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="14" rx="2"/>
+              <path d="M3 15.5 8 11l4 3 4.5-4.5L21 13"/>
+            </svg>
+          </span>
+          <p><b>The photo starts blurred.</b> Only the category shows at first. Nothing names the animal yet.</p>
+        </li>
+        <li>
+          <span class="streamer-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3.5 2"/>
+            </svg>
+          </span>
+          <p><b>Hints land on a clock.</b> A new one reveals itself every so often, until someone guesses right.</p>
+        </li>
+        <li>
+          <span class="streamer-step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+          </span>
+          <p><b>First correct guess wins.</b> You and chat both type the animal's name. Whoever lands it first takes the round.</p>
+        </li>
+      </ol>
     </div>
 
     <div class="streamer-roles">
@@ -217,8 +249,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <div class="streamer-cta">
       <div class="streamer-platforms" id="streamerPlatforms"></div>
     </div>
-    <p class="streamer-fineprint">You'll see exactly what connecting means —
-      and what it doesn't — before anything happens.</p>
+    <p class="streamer-fineprint">You'll see exactly what connecting means,
+      and what it doesn't, before anything happens.</p>
     <p class="party-msg" id="streamerConnectMsg" role="status"></p>
   </div>
 

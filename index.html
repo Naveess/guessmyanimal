@@ -34,7 +34,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260915-2">
+<link rel="stylesheet" href="style.css?v=20260916-5">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -298,8 +298,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </div>
       <div class="pcard-scrim" aria-hidden="true"></div>
       <div class="pcard-meta">
-        <h2 class="pcard-name"><span id="name"></span> <span class="pcard-emoji" id="emoji" aria-hidden="true"></span></h2>
+        <h1 class="pcard-name"><span id="name"></span> <span class="pcard-emoji" id="emoji" aria-hidden="true"></span></h1>
         <p class="pcard-sub" id="kicker"></p>
+        <p class="pcard-credit">Photo via Wikipedia · <button type="button" class="pcard-report" data-report>report an issue</button></p>
       </div>
     </article>
 
@@ -316,19 +317,19 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <p class="blurb" id="blurb"></p>
 
     <section class="ansec ansec-answers">
-      <h3 class="label">Quick answers</h3>
-      <div class="card"><div class="rows" id="answers"></div></div>
+      <h2 class="label">Quick answers</h2>
+      <div class="card"><div class="rows" id="answers" role="list"></div></div>
     </section>
 
     <div class="shot" id="shot2"></div>
 
     <section class="ansec ansec-glance">
-      <h3 class="label">At a glance</h3>
-      <div class="glance" id="glance"></div>
+      <h2 class="label">At a glance</h2>
+      <div class="glance" id="glance" role="list"></div>
     </section>
 
     <section class="ansec ansec-fact">
-      <h3 class="label">Did you know</h3>
+      <h2 class="label">Did you know</h2>
       <div class="factcard"><p id="fact"></p></div>
     </section>
 
@@ -345,7 +346,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          A direct child of .feed rather than of .feed-content, so it can
          span both grid columns as a full-width band on desktop. -->
     <section class="ansec ansec-related">
-      <h3 class="label">You might also like</h3>
+      <h2 class="label">You might also like</h2>
       <div class="related" id="related"></div>
     </section>
 
@@ -672,6 +673,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   <main class="feed">
     <p class="party-msg" id="partyPlayerMsg" role="status" hidden></p>
+    <button class="btn party-retrybtn" type="button" id="partyPlayerRetry" hidden>Try another code</button>
 
     <!-- Host only: shown before a party exists. -->
     <div id="partySetup">
@@ -805,6 +807,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
           <!-- Host only. -->
           <button class="btn party-hintbtn" type="button" id="partyHint" hidden>Reveal next hint</button>
+          <button class="btn mystery-giveup" type="button" id="partyGiveUp" hidden>Give up, show the answer</button>
           <button class="btn btn-solid" type="button" id="partyNext" hidden>Next round</button>
         </div>
 
@@ -891,12 +894,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      checks window.openPartyPlayer on its very first call, so a direct
      or refreshed ?party=CODE link (which is what every QR code and
      join link is) lands on the player view rather than the home page. -->
-<script src="party.js?v=20260914-1"></script>
+<script src="party.js?v=20260916-1"></script>
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
 <script src="mystery.js?v=20260915-1"></script>
-<script src="app.js?v=20260912-2"></script>
+<script src="app.js?v=20260916-1"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

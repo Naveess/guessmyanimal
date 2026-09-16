@@ -4,61 +4,315 @@
   "title": "Design System: Guess My Animal",
   "extensions": {
     "colorMeta": {
-      "sun": { "role": "primary", "displayName": "Sun", "canonical": "#ffce1f", "tonalRamp": ["#3d2f00", "#5c4600", "#7d5f00", "#a17b00", "#c99900", "#ffce1f", "#ffdd5c", "#ffedb0"] },
-      "sun-deep": { "role": "primary", "displayName": "Sun Deep", "canonical": "#e8b400" },
-      "on-sun": { "role": "primary", "displayName": "On Sun", "canonical": "#1d1e19" },
-      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#e9eae2", "tonalRamp": ["#14150f", "#20221a", "#2c2f25", "#4a4d40", "#767a68", "#a8ac98", "#c9ccbc", "#e9eae2"] },
-      "card": { "role": "neutral", "displayName": "Card", "canonical": "#f8f9f3" },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#1d1e19", "tonalRamp": ["#1d1e19", "#3a3c30", "#5f6255", "#84876f", "#a8ab92", "#c6c9b3", "#e3e5d4", "#eef0e4"] },
-      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#5f6255" },
-      "line": { "role": "neutral", "displayName": "Line", "canonical": "#d7d9cc" },
-      "flat-bg": { "role": "neutral", "displayName": "Flat", "canonical": "#e4e6da" },
-      "good": { "role": "semantic", "displayName": "Good", "canonical": "#0a6b3d", "tonalRamp": ["#062a18", "#0a6b3d", "#12934f", "#2cb56c", "#58cf9b", "#8fe0bc", "#c1efdb", "#dbe9dd"] },
-      "good-bg": { "role": "semantic", "displayName": "Good Background", "canonical": "#dbe9dd" },
-      "warn": { "role": "semantic", "displayName": "Warn", "canonical": "#8a5600", "tonalRamp": ["#2e1c00", "#8a5600", "#b3730a", "#d6911f", "#efbc63", "#f4d09a", "#f8e2c1", "#f4e6c9"] },
-      "warn-bg": { "role": "semantic", "displayName": "Warn Background", "canonical": "#f4e6c9" },
-      "bad": { "role": "semantic", "displayName": "Bad", "canonical": "#b8321a", "tonalRamp": ["#3f1109", "#8f2313", "#b8321a", "#df4a2a", "#ff7f63", "#ffa793", "#ffcabf", "#f2ddd6"] },
-      "bad-bg": { "role": "semantic", "displayName": "Bad Background", "canonical": "#f2ddd6" },
-      "paper-dark": { "role": "neutral", "displayName": "Paper (Dark)", "canonical": "#14150f" },
-      "card-dark": { "role": "neutral", "displayName": "Card (Dark)", "canonical": "#1e2019" },
-      "ink-dark": { "role": "neutral", "displayName": "Ink (Dark)", "canonical": "#eef0e4" },
-      "muted-dark": { "role": "neutral", "displayName": "Muted (Dark)", "canonical": "#989c88" },
-      "line-dark": { "role": "neutral", "displayName": "Line (Dark)", "canonical": "#2c2f25" },
-      "flat-bg-dark": { "role": "neutral", "displayName": "Flat (Dark)", "canonical": "#262920" },
-      "good-dark": { "role": "semantic", "displayName": "Good (Dark)", "canonical": "#58cf9b" },
-      "good-bg-dark": { "role": "semantic", "displayName": "Good Background (Dark)", "canonical": "#12301f" },
-      "warn-dark": { "role": "semantic", "displayName": "Warn (Dark)", "canonical": "#efbc63" },
-      "warn-bg-dark": { "role": "semantic", "displayName": "Warn Background (Dark)", "canonical": "#33270e" },
-      "bad-dark": { "role": "semantic", "displayName": "Bad (Dark)", "canonical": "#ff7f63" },
-      "bad-bg-dark": { "role": "semantic", "displayName": "Bad Background (Dark)", "canonical": "#3a1912" }
+      "sun": {
+        "role": "primary",
+        "displayName": "Sun",
+        "canonical": "#ffce1f",
+        "tonalRamp": [
+          "#3d2f00",
+          "#5c4600",
+          "#7d5f00",
+          "#a17b00",
+          "#c99900",
+          "#ffce1f",
+          "#ffdd5c",
+          "#ffedb0"
+        ]
+      },
+      "sun-deep": {
+        "role": "primary",
+        "displayName": "Sun Deep",
+        "canonical": "#e8b400"
+      },
+      "on-sun": {
+        "role": "primary",
+        "displayName": "On Sun",
+        "canonical": "#1d1e19"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#e9eae2",
+        "tonalRamp": [
+          "#14150f",
+          "#20221a",
+          "#2c2f25",
+          "#4a4d40",
+          "#767a68",
+          "#a8ac98",
+          "#c9ccbc",
+          "#e9eae2"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card",
+        "canonical": "#f8f9f3"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1d1e19",
+        "tonalRamp": [
+          "#1d1e19",
+          "#3a3c30",
+          "#5f6255",
+          "#84876f",
+          "#a8ab92",
+          "#c6c9b3",
+          "#e3e5d4",
+          "#eef0e4"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#5f6255"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#d7d9cc"
+      },
+      "flat-bg": {
+        "role": "neutral",
+        "displayName": "Flat",
+        "canonical": "#e4e6da"
+      },
+      "good": {
+        "role": "semantic",
+        "displayName": "Good",
+        "canonical": "#0a6b3d",
+        "tonalRamp": [
+          "#062a18",
+          "#0a6b3d",
+          "#12934f",
+          "#2cb56c",
+          "#58cf9b",
+          "#8fe0bc",
+          "#c1efdb",
+          "#dbe9dd"
+        ]
+      },
+      "good-bg": {
+        "role": "semantic",
+        "displayName": "Good Background",
+        "canonical": "#dbe9dd"
+      },
+      "warn": {
+        "role": "semantic",
+        "displayName": "Warn",
+        "canonical": "#8a5600",
+        "tonalRamp": [
+          "#2e1c00",
+          "#8a5600",
+          "#b3730a",
+          "#d6911f",
+          "#efbc63",
+          "#f4d09a",
+          "#f8e2c1",
+          "#f4e6c9"
+        ]
+      },
+      "warn-bg": {
+        "role": "semantic",
+        "displayName": "Warn Background",
+        "canonical": "#f4e6c9"
+      },
+      "bad": {
+        "role": "semantic",
+        "displayName": "Bad",
+        "canonical": "#ab2e18",
+        "tonalRamp": [
+          "#3f1109",
+          "#8f2313",
+          "#ab2e18",
+          "#df4a2a",
+          "#ff7f63",
+          "#ffa793",
+          "#ffcabf",
+          "#f2ddd6"
+        ]
+      },
+      "bad-bg": {
+        "role": "semantic",
+        "displayName": "Bad Background",
+        "canonical": "#f2ddd6"
+      },
+      "paper-dark": {
+        "role": "neutral",
+        "displayName": "Paper (Dark)",
+        "canonical": "#14150f"
+      },
+      "card-dark": {
+        "role": "neutral",
+        "displayName": "Card (Dark)",
+        "canonical": "#1e2019"
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink (Dark)",
+        "canonical": "#eef0e4"
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Muted (Dark)",
+        "canonical": "#989c88"
+      },
+      "line-dark": {
+        "role": "neutral",
+        "displayName": "Line (Dark)",
+        "canonical": "#2c2f25"
+      },
+      "flat-bg-dark": {
+        "role": "neutral",
+        "displayName": "Flat (Dark)",
+        "canonical": "#262920"
+      },
+      "good-dark": {
+        "role": "semantic",
+        "displayName": "Good (Dark)",
+        "canonical": "#58cf9b"
+      },
+      "good-bg-dark": {
+        "role": "semantic",
+        "displayName": "Good Background (Dark)",
+        "canonical": "#12301f"
+      },
+      "warn-dark": {
+        "role": "semantic",
+        "displayName": "Warn (Dark)",
+        "canonical": "#efbc63"
+      },
+      "warn-bg-dark": {
+        "role": "semantic",
+        "displayName": "Warn Background (Dark)",
+        "canonical": "#33270e"
+      },
+      "bad-dark": {
+        "role": "semantic",
+        "displayName": "Bad (Dark)",
+        "canonical": "#ff7f63"
+      },
+      "bad-bg-dark": {
+        "role": "semantic",
+        "displayName": "Bad Background (Dark)",
+        "canonical": "#3a1912"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Home wordmark only." },
-      "headline": { "displayName": "Headline", "purpose": "Animal name on the photo card; About page H1 uses its own taller clamp." },
-      "subhead": { "displayName": "Subhead", "purpose": "About page H2 section headings." },
-      "title": { "displayName": "Title", "purpose": "Dialog titles." },
-      "lede": { "displayName": "Lede", "purpose": "About page opening paragraph." },
-      "body": { "displayName": "Body", "purpose": "Blurb and prose paragraphs." },
-      "control-label": { "displayName": "Control Label", "purpose": "Button, chip, and menu-item text." },
-      "meta": { "displayName": "Meta", "purpose": "Dialog subtitles, field labels, glance-chip values." },
-      "caption": { "displayName": "Caption", "purpose": "Footers, figure captions, inactive theme-toggle labels." },
-      "label": { "displayName": "Section Label", "purpose": "Uppercase category markers: Quick answers, At a glance." },
-      "micro": { "displayName": "Micro", "purpose": "Smallest label in the system: the theme-toggle heading." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home wordmark only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Animal name on the photo card; About page H1 uses its own taller clamp."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "About page H2 section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Dialog titles."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "About page opening paragraph."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Blurb and prose paragraphs."
+      },
+      "control-label": {
+        "displayName": "Control Label",
+        "purpose": "Button, chip, and menu-item text."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Dialog subtitles, field labels, glance-chip values."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Footers, figure captions, inactive theme-toggle labels."
+      },
+      "label": {
+        "displayName": "Section Label",
+        "purpose": "Uppercase category markers: Quick answers, At a glance."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Smallest label in the system: the theme-toggle heading."
+      }
     },
     "shadows": [
-      { "name": "shadow", "value": "0 1px 2px rgba(29,30,25,.05), 0 6px 18px -10px rgba(29,30,25,.24)", "purpose": "Resting elevation for in-feed extra photos." },
-      { "name": "shadow-l", "value": "0 2px 6px rgba(29,30,25,.07), 0 22px 44px -22px rgba(29,30,25,.45)", "purpose": "Lifted elevation for the photo card, dialogs, menus, share panel." }
+      {
+        "name": "shadow",
+        "value": "0 1px 2px rgba(29,30,25,.05), 0 6px 18px -10px rgba(29,30,25,.24)",
+        "purpose": "Resting elevation for in-feed extra photos."
+      },
+      {
+        "name": "shadow-l",
+        "value": "0 2px 6px rgba(29,30,25,.07), 0 22px 44px -22px rgba(29,30,25,.45)",
+        "purpose": "Lifted elevation for the photo card, dialogs, menus, share panel."
+      },
+      {
+        "name": "arc-frameglow",
+        "value": "light: var(--shadow) · dark: 0 0 0 1px rgba(255,206,31,.35), 0 0 26px -6px rgba(255,206,31,.35)",
+        "purpose": "Cabinet-card frame elevation on the three game surfaces (Mystery Animal, Party Mode, Streamer); a plain shadow in light mode, a warm glow only in dark mode."
+      },
+      {
+        "name": "arc-screenglow",
+        "value": "light: var(--shadow-l) · dark: 0 0 70px -18px rgba(255,206,31,.45)",
+        "purpose": "Cabinet screen/photo elevation, same light/dark split as arc-frameglow."
+      },
+      {
+        "name": "arc-ctaglow",
+        "value": "light: var(--shadow) · dark: 0 0 40px -8px rgba(255,206,31,.7)",
+        "purpose": "Cabinet primary-CTA elevation (Connect/Guess/Start buttons), same light/dark split."
+      }
     ],
     "motion": [
-      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Confident arrival, no bounce — used for every transition and keyframe in the system." },
-      { "name": "rise", "value": "opacity 0->1, translateY(14px)->0, .55s var(--ease) backwards", "purpose": "Quiet entrance for menus, panels, list items, staggered rows." },
-      { "name": "deal", "value": "opacity 0->1, translateY(30px) scale(.955)->none, clip-path inset(14% 7% 0 7%)->inset(0), .72s var(--ease) backwards", "purpose": "The one authored moment: the photo card arriving, lifting and uncovering itself top-down." },
-      { "name": "pulse", "value": "opacity .35<->.85, 1.3s ease-in-out infinite", "purpose": "Quiet loading indicator on the photo fallback emoji while the Wikipedia fetch is in flight; stops on a real photo landing or on both requests settling with nothing found." }
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Confident arrival, no bounce — used for every transition and keyframe in the system."
+      },
+      {
+        "name": "rise",
+        "value": "opacity 0->1, translateY(14px)->0, .55s var(--ease) backwards",
+        "purpose": "Quiet entrance for menus, panels, list items, staggered rows."
+      },
+      {
+        "name": "deal",
+        "value": "opacity 0->1, translateY(30px) scale(.955)->none, clip-path inset(14% 7% 0 7%)->inset(0), .72s var(--ease) backwards",
+        "purpose": "The one authored moment: the photo card arriving, lifting and uncovering itself top-down."
+      },
+      {
+        "name": "pulse",
+        "value": "opacity .35<->.85, 1.3s ease-in-out infinite",
+        "purpose": "Quiet loading indicator on the photo fallback emoji while the Wikipedia fetch is in flight; stops on a real photo landing or on both requests settling with nothing found."
+      },
+      {
+        "name": "streamerGlow",
+        "value": "box-shadow arc-frameglow <-> arc-frameglow-hi, 4.5s var(--ease) infinite, staggered per card",
+        "purpose": "The Cabinet treatment's one authored ambient moment on Streamer's pre-connect reassurance cards, dark mode only."
+      }
     ],
     "breakpoints": [
-      { "name": "wide", "value": "620px" },
-      { "name": "desktop", "value": "860px" },
-      { "name": "paw-field", "value": "900px" }
+      {
+        "name": "wide",
+        "value": "620px"
+      },
+      {
+        "name": "desktop",
+        "value": "860px"
+      },
+      {
+        "name": "paw-field",
+        "value": "900px"
+      }
     ]
   },
   "components": [
@@ -122,11 +376,36 @@
       "Three-state theming (System / Light / Dark), with the splash intentionally not yellow in dark mode"
     ],
     "rules": [
-      { "name": "The Fixed-Sun Rule", "body": "--sun and --on-sun never change value between themes. Everything else in the palette flips; these two don't, because Sun is the brand identity and On-Sun is the guarantee that text on it stays readable regardless of theme.", "section": "colors" },
-      { "name": "The Tinted-Neutral Rule", "body": "No neutral in this system is a flat, hue-less grey. Every 'grey' token (Muted, Line, Flat) is mixed from Ink, so the whole neutral scale carries the same warm bias as the ground.", "section": "colors" },
-      { "name": "The One-Yellow Rule", "body": "Outside the splash, at most one solid-fill Sun element appears per screen. Its rarity is what makes it read as an accent rather than a theme colour.", "section": "colors" },
-      { "name": "The One-Family Rule", "body": "Every piece of type on the site is Onest. Hierarchy comes from size, weight, and tracking, never from switching typefaces.", "section": "typography" },
-      { "name": "The Border-Or-Shadow Rule", "body": "A surface gets a 1px line border when it sits flush in the flow, or a lifted shadow when it floats above other content. Never both.", "section": "elevation" }
+      {
+        "name": "The Fixed-Sun Rule",
+        "body": "--sun and --on-sun never change value between themes. Everything else in the palette flips; these two don't, because Sun is the brand identity and On-Sun is the guarantee that text on it stays readable regardless of theme.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tinted-Neutral Rule",
+        "body": "No neutral in this system is a flat, hue-less grey. Every 'grey' token (Muted, Line, Flat) is mixed from Ink, so the whole neutral scale carries the same warm bias as the ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The One-Yellow Rule",
+        "body": "Outside the splash, at most one solid-fill Sun element appears per screen. Its rarity is what makes it read as an accent rather than a theme colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The One-Family Rule",
+        "body": "Every piece of type on the site is Onest. Hierarchy comes from size, weight, and tracking, never from switching typefaces.",
+        "section": "typography"
+      },
+      {
+        "name": "The Border-Or-Shadow Rule",
+        "body": "A surface gets a 1px line border when it sits flush in the flow, or a lifted shadow when it floats above other content. Never both.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Cabinet Treatment",
+        "body": "Mystery Animal, Party Mode, and Streamer share bracket-cornered cabinet cards and a warm elevation glow that only lights up in dark mode (light mode resolves to the ordinary shadow tokens). Tokens are declared locally per surface for load-order independence. It is the one deliberate exception to the Border-Or-Shadow Rule and to the no-glow Don't, scoped to these three surfaces only.",
+        "section": "components"
+      }
     ],
     "dos": [
       "Do keep --sun and --on-sun identical in both themes — they are the one deliberately fixed pair.",

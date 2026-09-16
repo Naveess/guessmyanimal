@@ -14,7 +14,7 @@ colors:
   good-bg: "#dbe9dd"
   warn: "#8a5600"
   warn-bg: "#f4e6c9"
-  bad: "#b8321a"
+  bad: "#ab2e18"
   bad-bg: "#f2ddd6"
   flat-bg: "#e4e6da"
   paper-dark: "#14150f"
@@ -107,6 +107,7 @@ rounded:
   panel: "16px"
   splash-field: "18px"
   card: "20px"
+  cabinet-card: "22px"
   photo: "26px"
   pill: "999px"
 spacing:
@@ -210,7 +211,7 @@ The palette pairs one loud, fixed brand colour with a warm neutral system that f
 ### Semantic (answers, not brand)
 - **Good** (`#0a6b3d` on `#dbe9dd` / `#58cf9b` on `#12301f`): a "yes/safe/fine" answer pill.
 - **Warn** (`#8a5600` on `#f4e6c9` / `#efbc63` on `#33270e`): an "it depends" answer pill.
-- **Bad** (`#b8321a` on `#f2ddd6` / `#ff7f63` on `#3a1912`): a "no/danger" answer pill.
+- **Bad** (`#ab2e18` on `#f2ddd6` / `#ff7f63` on `#3a1912`): a "no/danger" answer pill. Darkened slightly from an earlier `#b8321a` — the danger signal is the one pill tied to physical safety, and it had the thinnest AA contrast margin of the three (4.58:1 vs. Good's 5.25:1 and Warn's 4.98:1); now ~5.13:1, in line with the others.
 
 ### Named Rules
 **The Fixed-Sun Rule.** `--sun` and `--on-sun` never change value between themes. Everything else in the palette flips; these two don't, because Sun is the brand identity and On-Sun is the guarantee that text on it stays readable regardless of theme.
@@ -286,6 +287,8 @@ A component's own internal paint order (e.g. a badge sitting over its own icon) 
 ### Named Rules
 **The Border-Or-Shadow Rule.** A surface gets a 1px `--line` border when it sits flush in the flow (cards, rows, chips, buttons), or a `--shadow-l` when it floats above other content (dialogs, menus, the photo card). Never both — edge and elevation are two different ways of saying "this is a distinct surface," and combining them muddies which one is doing the work.
 
+The Cabinet treatment on the three game surfaces (Mystery Animal, Party Mode, Streamer — see Components) is the one deliberate exception: its cards keep both a border, for the bracket-corner cabinet read, and a shadow token, for elevation, because both readings are wanted there at once. The exception is scoped to that one treatment; it is not a precedent for combining border and shadow anywhere else.
+
 ## Shapes
 
 Radius scales with size and role through a full ladder, not a fixed multiplier:
@@ -299,9 +302,10 @@ Radius scales with size and role through a full ladder, not a fixed multiplier:
 | `13px` | Square control | Back button, menu button, textarea |
 | `14px` | Button | `.btn` and its variants |
 | `15px` | Text field | The search row |
-| `16px` | Floating panel | Menu, share, and suggestion panels; "no results" note |
+| `16px` | Floating panel | Menu, share, and suggestion panels; "no results" note. Also reused by the Cabinet treatment's primary buttons (Guess, Start a party, Connect) on the three game surfaces. |
 | `18px` | Splash field | The oversized search box on the home screen |
 | `20px` (`--r-card`) | Card surface | Answer card, fact card, dialogs |
+| `22px` | Cabinet card | The Cabinet treatment's own card step (Mystery Animal, Party Mode, Streamer) — see Components |
 | `26px` (`--r-photo`) | Photo | The hero photo card and extra shots |
 | `999px` | Pill | Chips, pills, the theme toggle's active segment |
 
@@ -324,6 +328,16 @@ No sharp corners anywhere in the system; a new surface should round to the neare
 - **Background:** Card surface, 1px Line border, no shadow at rest (flush-in-flow — see the Border-Or-Shadow Rule).
 - **The photo card is the exception:** it floats (`--shadow-l`, no border) because it's the one element the whole screen is built around.
 
+### The Cabinet Treatment (Mystery Animal, Party Mode, Streamer)
+The three "play it" surfaces — Mystery Animal, Party Mode, and Twitch stream mode — share a second visual register the reference surfaces (lookup, About, Browse) never use: bracket-cornered "cabinet" cards and a warm elevation glow that only lights up in dark mode. It exists because these three screens are played, not read — a game screen earns a slightly louder register than a fact card, the way an arcade cabinet reads differently from a reference shelf.
+
+- **Tokens**: `--arc-line`, `--arc-tint`, `--arc-cabinet`, `--arc-bracket`, `--arc-kicker`, `--arc-chev`, `--arc-title`/`-glow`, `--arc-icon`/`-glow`, `--arc-tag-ink`, `--arc-frameglow`(`-hi`), `--arc-screenglow`, `--arc-ctaglow` — declared **locally** on each of `#mysteryview`, `#partyview`, and `#streamerConnect`/`.streamer-feed` rather than shared from one file, so each surface stays independent of script/stylesheet load order.
+- **Light mode is not a dimmer dark mode.** In light mode every glow token resolves to the ordinary `--shadow`/`--shadow-l` elevation tokens, and the text/icon glow tokens resolve to `none`. The warm yellow glow exists only in dark mode, because it reads as light against a dark ground and turns muddy on cream. At rest in light mode the treatment is just bordered cards with normal elevation — which is why it never reads as an off-brand skin there.
+- **The one scoped exception to the Border-Or-Shadow Rule.** A Cabinet card keeps both a `1px solid var(--arc-line)` border, for the bracket-corner edge, and a shadow token, for elevation, at once — the only place in the system this happens on purpose. See the Border-Or-Shadow Rule in Elevation & Depth.
+- **The One-Yellow Rule still holds inside this treatment.** Exactly one solid-Sun element per state (the Guess button, "Start a party," the Connect button) — everything else the Cabinet touches is a border, a tint, or a glow, never a fill.
+- **No scanlines.** An earlier pass tried a CRT scanline texture; it read as dated and noisy rather than arcade. The cabinet reads from brackets, borders, and the Sun accent instead — texture was the wrong instinct here.
+- **Motion budget.** Mystery Animal's and Party Mode's cabinet cards don't animate at rest. Streamer spends one authored ambient moment of its own within this treatment — a slow frame-glow pulse (`streamerGlow`) across the three pre-connect reassurance cards, dark mode only. The round timer's colour/label escalation (Muted → Warn → Bad, "Hurry!"/"Almost up!") is functional feedback, not decorative, and doesn't count against this budget. A handful of other loops on the Streamer landing screen — a drifting-bubble mockup, a blinking chevron pair either side of the Connect button, a marquee shine crossing it — carry no state and aren't part of this treatment; they're decorative surplus, not a second authored moment.
+
 ### Under-Construction Panel (`.wip`) — *retired 2026-09-11*
 Removed with the Twitch rebuild it was built for: the panel's whole job was to warn streamers off an unfinished Twitch chat field, and that field no longer exists (see Streamer surface below). Kept here as a record of the pattern, because the case will come up again — a feature that works *well enough to look ready* is the dangerous kind, and it earned these rules:
 - **Register:** Warn, not Bad. A caution about timing, not a failure. Warn text on Warn-bg cleared AA at body size in both themes (4.98:1 light, 8.38:1 dark), so the note was readable, not just the heading.
@@ -335,7 +349,7 @@ Removed with the Twitch rebuild it was built for: the panel's whole job was to w
 ### Streamer surface (`streamer.html`)
 Twitch stream mode is one person running a round for an audience that mostly types into a chat, but the streamer plays too — under their own channel name, on the same board, not a separate "host" identity. What Party Mode's surface answers for a room full of phones — who else is here, can I fix my name — still doesn't apply (there's no tab to heartbeat from, no rename for a chat username), so none of that is drawn. What's left is sized for someone reading it off a stream rather than holding it.
 - **Layout**: local Party Mode's own two-column grid (`.party-columns`/`.party-main`/`.party-side`), reused wholesale rather than rebuilt — the round on the left, the leaderboard a sticky column on the right that stays pinned near the top instead of scrolling away. Mobile stacks to one column in DOM order: status, photo, the round, then the board.
-- **The landing/pitch screen** (pre-connect state): a hero headline and one-line pitch, three reassurance points and a 3-step how-it-works as plain Card+Line tiles (the Border-Or-Shadow Rule, not a new frame), and a You/Chat role breakdown. Both the reassurance points and the how-it-works steps share one drawn-icon badge (`.streamer-step-icon`, 28px, Ink on Flat-bg) — a streamer skimming mid-setup reads the icon and the bold lead-in, not the full sentence under it. One badge language for both blocks on purpose: an earlier draft gave the reassurance points a separate numbered/tick circle, which read as two systems on one screen the moment icons replaced the how-it-works numbers.
+- **The landing/pitch screen** (pre-connect state): a hero headline and one-line pitch, a decorative round-in-progress mockup (`.streamer-stage`, `aria-hidden` — the same facts live in the text around it, never only in the mockup), three reassurance points and an accessible 3-step how-it-works, and a You/Chat role breakdown. The reassurance cards and the how-it-works list both carry the Cabinet treatment (see Components): bracket corners, a warm frame-glow in dark mode only, and the screen's one pulsing ambient moment across the reassurance cards. The reassurance points and the how-it-works steps share one drawn-icon badge (`.streamer-step-icon`, 28px, Ink on Flat-bg) — a streamer skimming mid-setup reads the icon and the bold lead-in, not the full sentence under it. One badge language for both blocks on purpose: an earlier draft gave the reassurance points a separate numbered/tick circle, which read as two systems on one screen the moment icons replaced the how-it-works numbers.
 - **Platform picker** (`PLATFORMS` in `streamer.js`): the live Connect button and any inert "Coming soon" rows render from one data array rather than being written twice, so a second real platform is one array entry plus a `functions/api/<key>/{login,callback}.js` pair — never a redesign of this screen. A "soon" entry is deliberately inert: Muted border card, a `.pill` reading "Coming soon", no button at all — it must not invite a tap that does nothing.
 - **The Connect button** (`.streamer-connectbtn`) is the screen's one solid-Sun element and the only action on it until a channel is confirmed. The Twitch glyph rides in `currentColor`, taking On-Sun — never Twitch purple, which would be the only off-palette colour on the site.
 - **Round timer** (third `.mystery-stat`, stream mode only): a server-set deadline the client renders as a plain countdown, ticking locally between polls but never deciding anything itself. Colour escalates on the existing semantic tokens — Muted → Warn at ≤30% of the round remaining → Bad at ≤10% — and the stat's own label text changes with it ("Hurry!", "Almost up!"), so the state is never colour alone. At expiry the stat freezes rather than counting past zero or into negative time, and the round's own reveal (`.mystery-result`) carries the actual outcome — the timer stops narrating once it's no longer live.
@@ -393,4 +407,4 @@ Each animal carries one emoji, used only as a fallback (search-suggestion leadin
 - **Don't** let more than one solid-Sun element appear on a single non-splash screen.
 - **Don't** add a third authored animation moment. The card `deal` (animal view) and the paw stamp (splash) are the two beats this system spends, each scoped to a screen the other never appears on; everything else stays quiet (`rise`, scale-on-press, the `pulse` loading indicator on the photo fallback).
 - **Don't** use emoji as the primary hero image — it's a fallback for a missing or unloaded photo only.
-- **Don't** reach for a glow, gradient text, or a bounce easing — arrivals use `--ease` (`cubic-bezier(.16, 1, .3, 1)`), a confident settle with no overshoot. The splash stamp is not an exception to this: its weight comes from where its keyframes sit (a hard accelerating fall, a squash on contact, a decreasing rebound), not from an elastic curve smeared over a single move. Cartoon physics is authored frame by frame; an overshoot easing is the shortcut that reads as one.
+- **Don't** reach for a glow, gradient text, or a bounce easing — arrivals use `--ease` (`cubic-bezier(.16, 1, .3, 1)`), a confident settle with no overshoot. The splash stamp is not an exception to this: its weight comes from where its keyframes sit (a hard accelerating fall, a squash on contact, a decreasing rebound), not from an elastic curve smeared over a single move. Cartoon physics is authored frame by frame; an overshoot easing is the shortcut that reads as one. The Cabinet treatment's dark-mode frame/screen/CTA glow on the three game surfaces (see Components) is the one named exception to "no glow" — it's off entirely in light mode, so it never substitutes for a real light-mode elevation decision the way an ordinary decorative glow would.

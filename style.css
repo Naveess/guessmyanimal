@@ -41,7 +41,7 @@
 
   --good:    #0a6b3d;  --good-bg: #dbe9dd;
   --warn:    #8a5600;  --warn-bg: #f4e6c9;
-  --bad:     #b8321a;  --bad-bg:  #f2ddd6;
+  --bad:     #ab2e18;  --bad-bg:  #f2ddd6;
   --flat-bg: #e4e6da;
 
   /* The splash's own ground. Light keeps the brand yellow; dark makes it
@@ -179,6 +179,31 @@ body.view-home { background-color: var(--home-bg); }
 
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 5px; }
 body.view-home :focus-visible { outline-color: var(--home-ink); }
+
+/* Visually hidden but still announced - screen-reader-only supplementary
+   text (e.g. an item count after a heading) that would just be clutter
+   for a sighted reader who already gets the same information from
+   layout. Clipped, not display:none, which would hide it from AT too. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Off-screen until focused, then the first thing a keyboard/screen-
+   reader user sees - lets them jump past repeated nav chrome straight
+   to a page's real content. No outline:none here (see #q::placeholder's
+   own comment above for why that would be a mistake). */
+.skip-link {
+  position: absolute; left: 10px; top: -100px;
+  z-index: var(--z-chrome);
+  padding: 10px 16px;
+  background: var(--card); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 11px;
+  font-size: 14px; font-weight: 600;
+  transition: top .15s var(--ease);
+}
+.skip-link:focus { top: 10px; }
 
 * { scrollbar-color: var(--line) transparent; scrollbar-width: thin; }
 ::-webkit-scrollbar { width: 11px; height: 11px; }
@@ -733,6 +758,17 @@ body.view-home #q { font-size: 17px; }
   background: var(--flat-bg);
   box-shadow: var(--shadow-l);
 }
+/* On a short viewport (a small handset, or a phone browser in landscape)
+   the 4:5 portrait ratio can consume most of the screen before Quick
+   answers ever appears - exactly the friction the "four second answer"
+   promise is trying to avoid. Capped by viewport HEIGHT, not width,
+   since this is a short-screen problem rather than a narrow one; every
+   other breakpoint keeps governing width-based sizing as before. Scoped
+   to the animal page specifically - Mystery/Party/Streamer's own hero
+   cards live under their own view roots and are untouched. */
+@media (max-height: 700px) {
+  .animalview .pcard { aspect-ratio: auto; height: 42vh; min-height: 220px; }
+}
 /* Blurred, over-scaled copy filling the card behind the real photo, so
    a landscape photo in a portrait card gets bands of its own colour
    rather than having the animal cropped out of frame. */
@@ -793,6 +829,28 @@ body.view-home #q { font-size: 17px; }
   color: var(--sun);
   text-shadow: 0 1px 10px rgba(0,0,0,.5);
 }
+
+/* Only shown once a real photo has landed (#hero.has-photo) - with no
+   photo, .pcard-fallback's own "No photo on file" note already covers
+   it, and crediting a source that isn't there would be worse than
+   saying nothing. Named specifically because a Wikipedia photo can be
+   the wrong animal entirely - this both credits the source and primes
+   the reader that it's automated, not curated, the one place the
+   site's "honest about uncertainty" principle didn't reach before. */
+.pcard-credit {
+  display: none;
+  margin: 7px 0 0;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.78);
+  text-shadow: 0 1px 8px rgba(0,0,0,.5);
+}
+#hero.has-photo .pcard-credit { display: block; }
+.pcard-report {
+  background: none; border: none; padding: 0; margin: 0;
+  color: inherit; font: inherit; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.pcard-report:hover { color: #fff; }
 
 .blurb {
   margin: 17px 4px 0;
@@ -2811,6 +2869,52 @@ body.view-page { background: var(--paper); }
 .atoz-list li { margin-bottom: 11px; }
 .atoz-list a { font-size: 16px; font-weight: 500; }
 
+/* ── Search box ──────────────────────────────────────────────────
+   Reuses .searchrow/.suggest/.noresult verbatim from the home page's
+   own search (see atoz.js) - same component, just always visible here
+   instead of living in the hero/top bar. */
+.atoz-search { position: relative; margin: 20px 0 18px; }
+
+/* ── Category filter chips ────────────────────────────────────────
+   Same Sun-tint-with-border language as the rail's own .is-here state
+   (--az-chipfill/--az-chipline above) - one active-state vocabulary for
+   the whole page, not two. */
+.atoz-cats { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.atoz-cats button {
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: var(--card); border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13.5px; font-weight: 700;
+  cursor: pointer;
+  transition: background .14s var(--ease), color .14s var(--ease), border-color .14s var(--ease);
+}
+.atoz-cats button:hover { background: var(--flat-bg); color: var(--ink); }
+.atoz-cats button[aria-pressed="true"] {
+  background: var(--az-chipfill);
+  border-color: var(--az-chipline);
+  color: var(--ink);
+}
+
+/* A letter with zero matches under the current filter dims rather than
+   disappears - its real total is still what the rail always shows, and
+   a tap back to "All" needs nothing re-rendered to bring it to life. */
+.atoz-jump a.is-empty { opacity: .35; }
+
+/* ── Sub-grouped letters ───────────────────────────────────────────
+   Letters past SUBDIVIDE_AT (tools/build-seo.js) chunk into a few
+   labelled, evenly-sized blocks instead of one 60-name column - each
+   block is its own short .atoz-list (so it never tries the 3/4-column
+   split meant for a full letter), arranged side by side by the grid
+   below instead. */
+.atoz-subgroups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 22px 24px;
+}
+.atoz-subgroup .atoz-list { columns: 1; }
+.atoz-sublabel { margin: 0 0 8px; }
+
 /* ── Phones ───────────────────────────────────────────────────────
    A 52px sidebar is not a rail on a 375px screen, it's a third of the
    list gone. Below 700px the nav returns to a horizontal strip -
@@ -3395,6 +3499,8 @@ body.view-page { background: var(--paper); }
 
 .party-msg { margin: 14px 0 0; font-size: 15px; color: var(--muted); }
 .party-msg:empty { display: none; }
+.party-retrybtn { margin: 14px 0 0; }
+.party-retrybtn[hidden] { display: none; }
 
 .party-name-form { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
 .party-name-form[hidden] { display: none; }
@@ -3436,7 +3542,10 @@ body.view-page { background: var(--paper); }
   border: 1px solid var(--line); border-radius: 15px;
   padding: 0 16px; min-height: 52px;
 }
-#partyName:focus { outline: none; border-color: color-mix(in srgb, var(--ink) 45%, transparent); }
+/* No outline:none here - an ID-selector one would beat the global
+   :focus-visible ring on specificity and suppress it outright (see
+   #q::placeholder's own comment above for the same pitfall). */
+#partyName:focus { border-color: color-mix(in srgb, var(--ink) 45%, transparent); }
 
 #partySetup { display: flex; flex-direction: column; gap: 15px; margin-top: 4px; }
 /* #partySetup's ID specificity outranks the generic [hidden]{display:none}
@@ -3568,6 +3677,7 @@ body.view-page { background: var(--paper); }
 .party-scores-label { margin-top: 26px; }
 .party-scores {
   display: flex; flex-direction: column;
+  max-height: 260px; overflow-y: auto;
   border: 1px solid var(--line); border-radius: var(--r-card);
   background: var(--card);
   padding: 2px 14px;
@@ -3781,6 +3891,11 @@ body.view-page { background: var(--paper); }
     top: calc(var(--nav-h) + var(--page-top) + env(safe-area-inset-top));
   }
   .party-scores-label { margin-top: 0; }
+  /* Both panels in the sticky sidebar get the same treatment - an
+     unbounded .party-scores used to be able to grow the sticky column
+     past the viewport in a real-sized room, the same reason .party-feed
+     was already capped and .party-scores wasn't. */
+  .party-scores { max-height: min(40vh, 420px); }
   .party-feed { max-height: min(48vh, 480px); }
   /* .party-roundhead's 18px top margin is sized for the mobile single-
      column flow, where it's the first thing under the topbar's own
@@ -3870,7 +3985,8 @@ body.view-page { background: var(--paper); }
   border: 1px solid var(--line); border-radius: 13px;
   padding: 0 13px; min-height: 44px;
 }
-#partyJoinUrl:focus { outline: none; border-color: color-mix(in srgb, var(--ink) 45%, transparent); }
+/* No outline:none here either - same pitfall as #partyName:focus above. */
+#partyJoinUrl:focus { border-color: color-mix(in srgb, var(--ink) 45%, transparent); }
 
 .party-hintbtn { width: 100%; }
 .party-hintbtn[disabled] { opacity: .45; cursor: default; }
@@ -4239,6 +4355,14 @@ body.view-page { background: var(--paper); }
   font-size: 12px; font-weight: 800; letter-spacing: .12em;
   text-transform: uppercase;
 }
+/* Same demoted-ghost treatment as .party-endbtn above - a lower-stakes
+   secondary action than the hint button next to it, never a second
+   solid-Sun fill competing with Next round. */
+#partyview .mystery-giveup {
+  border-color: var(--line);
+  font-size: 12px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase;
+}
 #partyview #partyNext {
   min-height: 56px; border-radius: 16px;
   font-size: 16px; font-weight: 800; letter-spacing: .04em;
@@ -4386,7 +4510,7 @@ body.view-page { background: var(--paper); }
 .streamer-steplist { margin: 14px 0 0; padding: 0; list-style: none; }
 .streamer-steplist li { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; }
 .streamer-steplist li + li { border-top: 1px solid var(--line); }
-.streamer-steplist p { margin: 0; font-size: 15px; line-height: 1.4; }
+.streamer-steplist p { margin: 0; font-size: 15px; line-height: 1.4; color: var(--muted); }
 .streamer-steplist p b { color: var(--ink); }
 /* One drawn icon per point - shared by the reassurance cards above and
    the how-it-works steps below, so the pitch screen has one badge
@@ -4602,9 +4726,12 @@ body.view-page { background: var(--paper); }
   text-transform: uppercase; text-align: center; color: var(--muted);
 }
 
-/* Four guesses drifting around the screen, three wrong and one right.
-   Percentage-anchored so they hug the screen at any column width; the
-   right-hand pair flips its tail corner to point back at the photo. */
+/* Four guesses scattered around the screen, three wrong and one right -
+   a static snapshot, not a loop (see the Cabinet treatment's motion
+   budget in DESIGN.md: this mockup carries no state, so it doesn't earn
+   a decorative animation). Percentage-anchored so they hug the screen at
+   any column width; the right-hand pair flips its tail corner to point
+   back at the photo. */
 .streamer-bubble {
   position: absolute;
   padding: 10px 14px;
@@ -4613,7 +4740,6 @@ body.view-page { background: var(--paper); }
   box-shadow: var(--shadow);
   font-size: 14px; font-weight: 700; line-height: 1;
   color: var(--muted);
-  animation: streamerFloat 5.4s var(--ease) infinite;
 }
 .streamer-bubble-win {
   background: var(--arc-tint);
@@ -4621,10 +4747,10 @@ body.view-page { background: var(--paper); }
   color: var(--arc-tag-ink);
   font-weight: 800;
 }
-.streamer-bubble:nth-of-type(1) { left: 2%;  top: 12%; color: var(--ink); animation-duration: 5s; }
-.streamer-bubble:nth-of-type(2) { left: 0;   bottom: 20%; animation-duration: 6.5s; animation-name: streamerFloatAlt; }
-.streamer-bubble:nth-of-type(3) { right: 2%; top: 18%; border-radius: 16px 16px 4px 16px; animation-duration: 5.8s; animation-name: streamerFloatAlt; }
-.streamer-bubble:nth-of-type(4) { right: 0;  bottom: 14%; border-radius: 16px 16px 4px 16px; animation-duration: 6s; }
+.streamer-bubble:nth-of-type(1) { left: 2%;  top: 12%; color: var(--ink); }
+.streamer-bubble:nth-of-type(2) { left: 0;   bottom: 20%; }
+.streamer-bubble:nth-of-type(3) { right: 2%; top: 18%; border-radius: 16px 16px 4px 16px; }
+.streamer-bubble:nth-of-type(4) { right: 0;  bottom: 14%; border-radius: 16px 16px 4px 16px; }
 
 /* Under ~400px the bubbles would cover the photo rather than frame it,
    so the two quiet ones step out and the rest shrink. */
@@ -4688,6 +4814,25 @@ body.view-page { background: var(--paper); }
   display: block; margin-bottom: 5px;
   font-size: 17.5px; font-weight: 800; line-height: 1.15;
   letter-spacing: -.005em; text-transform: uppercase;
+}
+
+/* The how-it-works list picks up the same cabinet surface as the
+   reassurance cards above it (one system, not two) and reuses their
+   icon's colour language - arc-icon/arc-iconglow, no flat-bg circle -
+   so "one drawn-icon badge" is actually one treatment, not two classes
+   that happen to look similar. No brackets here: those mark a standalone
+   card in the three-up grid, and a single wide list panel doesn't need
+   them to read as a distinct surface. */
+#streamerConnect .streamer-steps {
+  background: var(--arc-cabinet);
+  border: 1px solid var(--arc-line);
+  border-radius: 22px;
+  box-shadow: var(--arc-frameglow);
+}
+#streamerConnect .streamer-step-icon {
+  background: none;
+  color: var(--arc-icon);
+  filter: var(--arc-iconglow);
 }
 
 /* Wide enough for the cabinet to stand up: three centred panels, the
@@ -4771,36 +4916,20 @@ body.view-page { background: var(--paper); }
   display: flex; align-items: center; justify-content: center; gap: 16px;
   margin: 4px 0 0;
 }
-.streamer-cta::before,
-.streamer-cta::after {
-  font-size: 22px; font-weight: 800; line-height: 1;
-  color: var(--arc-chev);
-  animation: streamerChev 1.6s var(--ease) infinite;
-}
-.streamer-cta::before { content: "›››"; }
-.streamer-cta::after  { content: "‹‹‹"; animation-delay: .8s; }
 .streamer-cta .streamer-platforms { flex: 0 1 auto; min-width: 0; }
 
 /* The button itself is injected by streamer.js (PLATFORMS ->
    .btn.btn-solid.streamer-connectbtn), so it is styled here rather than
    authored in the markup - the arcade treatment must survive that
-   render path untouched. */
+   render path untouched. No chevrons and no marquee shine here on
+   purpose (removed) - this is the screen's one solid-Sun action, it
+   doesn't need a second, purely decorative attention-getter competing
+   with it; see the Cabinet treatment's motion budget in DESIGN.md. */
 #streamerConnect .streamer-connectbtn {
-  position: relative; overflow: hidden;
   min-height: 56px; padding: 14px 30px;
   border-radius: 16px;
   font-size: 17px; font-weight: 800;
   box-shadow: var(--arc-ctaglow);
-}
-/* A cabinet-marquee shine crossing the button every few seconds. Sits
-   above the fill but below the label's own stacking context. */
-#streamerConnect .streamer-connectbtn::after {
-  content: "";
-  position: absolute; top: 0; bottom: 0; width: 40px;
-  background: linear-gradient(90deg, transparent,
-    rgba(255,255,255,.55), transparent);
-  animation: streamerSweep 3.4s var(--ease) infinite;
-  pointer-events: none;
 }
 
 .streamer-fineprint {
@@ -4860,30 +4989,15 @@ body.view-page { background: var(--paper); }
 
 /* ── Motion ───────────────────────────────────────────────────────── */
 
-@keyframes streamerSweep { 0% { transform: translateX(-120%); } 60%, 100% { transform: translateX(520%); } }
-@keyframes streamerChev  { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
-@keyframes streamerFloat {
-  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
-  50%      { transform: translateY(-9px) rotate(1.5deg); }
-}
-@keyframes streamerFloatAlt {
-  0%, 100% { transform: translateY(-6px) rotate(2deg); }
-  50%      { transform: translateY(4px) rotate(-1deg); }
-}
 @keyframes streamerGlow {
   0%, 100% { box-shadow: var(--arc-frameglow); }
   50%      { box-shadow: var(--arc-frameglow-hi); }
 }
 
-/* Every loop here is decoration, so all of it stops - matching the
+/* The one loop left here is decoration, so it stops - matching the
    site's existing reduced-motion handling. */
 @media (prefers-reduced-motion: reduce) {
-  .streamer-bubble,
-  #streamerConnect .streamer-point,
-  .streamer-cta::before,
-  .streamer-cta::after,
-  #streamerConnect .streamer-connectbtn::after { animation: none; }
-  #streamerConnect .streamer-connectbtn::after { display: none; }
+  #streamerConnect .streamer-point { animation: none; }
 }
 
 /* ------------------------------------------------------------------

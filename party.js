@@ -30,6 +30,17 @@
   const HOST_STORE = 'gma-party-host';  // {code, hostKey} - so a host refresh resumes rather than orphaning the party
   const NAME_STORE = 'gma-party-name';
   const ICON_STORE = 'gma-party-icon';
+  // {code: name} - which rooms this device has actually joined, and
+  // under which name. NAME_STORE alone used to be trusted for a silent
+  // auto-rejoin on ANY code, but it's a sitewide "your name on this
+  // site" value with no per-room scope - two different people who both
+  // happen to use a common name ("Alex") in different rooms could have
+  // a device silently land on a stranger's existing scoreboard row.
+  // This is the record that says a name is actually *this device's*
+  // claim on *this* code, so a brand-new code always goes through the
+  // same collision check a fresh name does, while a genuine reopen/
+  // refresh of a room already joined can skip it.
+  const MEMBER_STORE = 'gma-party-member';
 
   const DEFAULT_ICON = '🐾';
   // A small, animal-flavoured set rather than a full emoji keyboard -
@@ -71,6 +82,29 @@
 
   function getHostSession() {
     try { return JSON.parse(getStore(HOST_STORE) || 'null'); } catch (e) { return null; }
+  }
+
+  function getMembership() {
+    try { return JSON.parse(getStore(MEMBER_STORE) || '{}'); } catch (e) { return {}; }
+  }
+  function rememberMembership(forCode, name) {
+    const m = getMembership();
+    m[forCode] = name;
+    setStore(MEMBER_STORE, JSON.stringify(m));
+  }
+  // True only if THIS device already joined THIS exact code under this
+  // exact name - see MEMBER_STORE above for why a sitewide cached name
+  // alone isn't enough to auto-join a room without checking first.
+  function canAutoJoin(forCode, name) {
+    return !!name && getMembership()[forCode] === name;
+  }
+  // Records the join before firing it, not after - a page navigated
+  // away mid-request should still leave the membership record in place,
+  // since the join itself is fire-and-forget (.catch(()=>{})) and a
+  // failed request is indistinguishable from a slow one from here.
+  function joinAs(name, icon) {
+    rememberMembership(code, name);
+    return api('join', { code, playerName: name, icon }).catch(() => {});
   }
 
   function sfx(name) {
@@ -161,13 +195,29 @@
       code = null; hostKey = null; state = null;
       showSetup();
     } else if (surface === 'player') {
-      el('partyPlayerMsg').textContent = 'That party has finished, or the code was wrong.';
-      el('partyPlayerMsg').hidden = false;
-      el('partyActive').hidden = true;
-      el('partyMiniBar').hidden = true;
-      stopPolling();
+      showPlayerJoinError('That party has finished, or the code was wrong.');
     }
   }
+
+  // Shared by the initial code check (openPartyPlayer) and a mid-round
+  // 404 (onSessionGone) - both are the same dead end for a player, and
+  // both used to leave nothing on screen but the corner back button. See
+  // partyPlayerRetry below for where the way out actually goes.
+  function showPlayerJoinError(msg) {
+    stopPolling();
+    el('partySetup').hidden = true;
+    el('partyNameForm').hidden = true;
+    el('partyActive').hidden = true;
+    el('partyMiniBar').hidden = true;
+    el('partyPlayerMsg').textContent = msg;
+    el('partyPlayerMsg').hidden = false;
+    el('partyPlayerRetry').hidden = false;
+  }
+
+  el('partyPlayerRetry').addEventListener('click', () => {
+    leave();
+    if (window.GMA && typeof GMA.goHome === 'function') GMA.goHome();
+  });
 
   /* -- Photo: same real-tiny-thumbnail pixelation Mystery Animal uses,
      never a CSS filter - see game-core.js's pixelStepFor/thumbAtWidth
@@ -447,6 +497,7 @@
     if (surface === 'host') {
       el('partyHint').disabled = done || state.shown >= MAX_HINTS;
       el('partyHint').hidden = done;
+      el('partyGiveUp').hidden = done;
       el('partyNext').hidden = !done;
       if (!editingIdentity) el('partyPlayToo').hidden = !!playerName;
     }
@@ -548,6 +599,7 @@
     playerName = name;
     setStore(NAME_STORE, name);
     setStore(ICON_STORE, icon);
+    rememberMembership(code, name);
     const body = { code, playerName: name, icon };
     if (previousName && previousName !== name) body.previousName = previousName;
     api('join', body).catch(() => {});
@@ -577,6 +629,7 @@
     el('partyActive').hidden = true;
     el('partyMiniBar').hidden = true;
     el('partyPlayerMsg').hidden = true;
+    el('partyPlayerRetry').hidden = true;
     el('partyRecap').hidden = true;
   }
 
@@ -593,6 +646,7 @@
     el('partyActive').hidden = true;
     el('partyMiniBar').hidden = true;
     el('partyPlayerMsg').hidden = true;
+    el('partyPlayerRetry').hidden = true;
 
     const box = el('partyRecapScores');
     box.innerHTML = '';
@@ -635,6 +689,7 @@
     el('partyNameForm').hidden = true;
     el('partyActive').hidden = false;
     el('partyPlayerMsg').hidden = true;
+    el('partyPlayerRetry').hidden = true;
 
     const isHost = surface === 'host';
     el('partyInvite').hidden = !isHost;
@@ -682,7 +737,7 @@
     // A name picked up from any earlier party (host or player) on this
     // device carries over, same as the player join flow already does -
     // it's "your name on this site", not "your name for this one code".
-    playerName = getStore(NAME_STORE) || null;
+    const cachedName = getStore(NAME_STORE) || null;
 
     const saved = getHostSession();
     if (saved && saved.code && saved.hostKey) {
@@ -691,10 +746,22 @@
       lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
       renderedFeed = { lastId: 0 };
       el('partyFeed').innerHTML = '';
+      // The cached name only carries into a RESUMED room if this device
+      // actually joined it before - someone else may have taken it in
+      // this room while the host's tab was closed (see MEMBER_STORE).
+      // A fresh room (the `else` branch below) can never have that
+      // problem, since nobody could have joined a code that didn't
+      // exist yet.
+      playerName = canAutoJoin(code, cachedName) ? cachedName : null;
       showActiveRound();
       startPolling();
-      if (playerName) api('join', { code, playerName, icon: selectedIcon }).catch(() => {});
+      if (playerName) {
+        api('join', { code, playerName, icon: selectedIcon }).catch(() => {});
+      } else if (cachedName) {
+        el('partyPlayTooName').value = cachedName;
+      }
     } else {
+      playerName = cachedName;
       showSetup();
     }
   }
@@ -743,7 +810,7 @@
       setStore(HOST_STORE, JSON.stringify({ code, hostKey }));
       showActiveRound();
       startPolling();
-      if (playerName) api('join', { code, playerName, icon: selectedIcon }).catch(() => {});
+      if (playerName) joinAs(playerName, selectedIcon);
     } catch (err) {
       el('partySetupMsg').textContent = 'Could not reach the server. Check your connection and try again.';
     } finally {
@@ -759,6 +826,14 @@
       state.shown = data.shown;
       renderRound({});
     }
+    poll();
+  });
+
+  el('partyGiveUp').addEventListener('click', async () => {
+    if (!code || !hostKey) return;
+    el('partyGiveUp').disabled = true;
+    await api('giveup', { code, hostKey }).catch(() => null);
+    el('partyGiveUp').disabled = false;
     poll();
   });
 
@@ -811,9 +886,10 @@
 
   /* -- Player (?party=CODE) ----------------------------------------------- */
 
-  function openPartyPlayer(joinCode, opts) {
+  async function openPartyPlayer(joinCode, opts) {
     surface = 'player';
     code = String(joinCode || '').toUpperCase();
+    const myCode = code; // captured so the async check below can tell if the user navigated elsewhere while it was in flight
     state = null;
     lastRound = 0; lastResolved = false; lastShown = 0; renderedHints = { round: 0, count: 0 };
     renderedFeed = { lastId: 0 };
@@ -825,16 +901,46 @@
     el('partyTitleText').textContent = 'Party ' + code;
     el('partySetup').hidden = true;
     el('partyActive').hidden = true;
+    el('partyNameForm').hidden = true;
     el('partyPlayerMsg').hidden = true;
+    el('partyPlayerRetry').hidden = true;
 
-    playerName = getStore(NAME_STORE);
-    if (playerName) {
+    // Checked up front rather than optimistically showing the name form
+    // or the round scaffold and only finding out ~1.2s later, on the
+    // first poll, that the code was wrong - a broken-looking flash
+    // followed by a dead end with no way back but the corner button.
+    const exists = await verifyPartyCode(code);
+    if (!exists || surface !== 'player' || code !== myCode) return; // surface/code may have changed while this was in flight
+
+    const cachedName = getStore(NAME_STORE);
+    if (canAutoJoin(code, cachedName)) {
+      playerName = cachedName;
       el('partyNameForm').hidden = true;
       showActiveRound();
       startPolling();
-      api('join', { code, playerName, icon: selectedIcon }).catch(() => {}); // refresh presence on a reopen/refresh too
+      joinAs(playerName, selectedIcon); // refresh presence on a reopen/refresh too
     } else {
+      // Either a brand-new device, or a cached name this device has
+      // never actually used in THIS room - it might already belong to
+      // someone else here (see MEMBER_STORE). Pre-fill it for
+      // convenience, but the submit handler below still runs the same
+      // collision check a fresh name gets.
+      playerName = null;
+      el('partyName').value = cachedName || '';
       el('partyNameForm').hidden = false;
+    }
+  }
+
+  async function verifyPartyCode(forCode) {
+    try {
+      const res = await fetch('api/party/session?code=' + encodeURIComponent(forCode));
+      if (res.status === 404) { showPlayerJoinError('That party has finished, or the code was wrong.'); return false; }
+      const data = await res.json();
+      if (data.error) { showPlayerJoinError('That party has finished, or the code was wrong.'); return false; }
+      return true;
+    } catch (err) {
+      showPlayerJoinError("Couldn't reach the server — check your connection and try again.");
+      return false;
     }
   }
 
@@ -956,6 +1062,12 @@
 
     if (!data || data.error) {
       el('partyFeedback').textContent = "Couldn't reach the server — try again.";
+    } else if (data.stale) {
+      // The round moved on while this was in flight (a host Next/Give
+      // up landed first) - this was never actually checked against the
+      // current target, so telling the player it was simply wrong would
+      // be lying to them about why.
+      el('partyFeedback').textContent = 'The round moved on before that landed — try the new one.';
     } else if (data.won) {
       el('partyFeedback').textContent = 'You got it, +' + data.points + '.';
       sfx('win');

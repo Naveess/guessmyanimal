@@ -237,6 +237,24 @@
         ],
         "createdAt": "2026-09-15T10:52:44.599Z",
         "reason": "Agent: intentional per design handoff (README-animal-page.md) - .ansec-fact .factcard's 3px Sun left rule on phones replaces a second Sun-tinted box directly under the solid-Sun play block, which already carries Sun; a blockquote-style rule, not a full card treatment, and matches the approved preview render (preview-animal.html)."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(59, 55, 26)",
+        "files": [
+          "browse.html"
+        ],
+        "createdAt": "2026-09-16T12:18:00.300Z",
+        "reason": "Agent: computed result of color-mix(in srgb, var(--sun) 16%, var(--card)) (--az-playfill, style.css), not a hand-picked literal - both source tokens are already documented. Reviewed in the browse-page critique (2026-09-16)."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(116, 101, 35)",
+        "files": [
+          "browse.html"
+        ],
+        "createdAt": "2026-09-16T12:18:00.300Z",
+        "reason": "Agent: computed result of color-mix(in srgb, var(--sun) 40%, var(--line)) (--az-playline, style.css), not a hand-picked literal - both source tokens are already documented. Reviewed in the browse-page critique (2026-09-16)."
       }
     ]
   },
