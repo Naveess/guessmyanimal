@@ -1,0 +1,40 @@
+{
+  "sci": "Hippopotamus amphibius",
+  "ov": "A huge, semi-aquatic grazer that spends its days in African rivers and lakes and comes out at night to feed. Its closest living relatives are whales and dolphins.",
+  "why": {
+    "dg": "Aggressive and unpredictable, and counted among the most dangerous animals in the world.",
+    "ac": "Stays in water or mud to keep cool by day, then comes out at dusk to graze."
+  },
+  "hb": [
+    "freshwater",
+    "grassland"
+  ],
+  "len": "2.9–5 m including the tail",
+  "ht": "1.3–1.65 m at the shoulder",
+  "wt": "About 1,300–1,500 kg on average",
+  "rg": "Rivers, lakes and swamps of sub-Saharan Africa, with grassland nearby to graze.",
+  "df": "Almost entirely grass: about 40 kg a night, gathered on walks of 3–5 km from the water.",
+  "fx": [
+    "Despite living in water, it’s debated whether hippos can actually swim."
+  ],
+  "iu": "VU",
+  "src": [
+    {
+      "title": "Wikipedia: Hippopotamus",
+      "url": "https://en.wikipedia.org/wiki/Hippopotamus",
+      "for": [
+        "ov",
+        "why",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx",
+        "iu"
+      ]
+    }
+  ],
+  "rv": null,
+  "notes": "ANSWER CHECK: animals.js has sw:true (the \"Can swim\" chip). Wikipedia says \"it is debated whether hippos can swim at all\". Either keep the chip and drop this fx, or change sw and keep it; one page shouldn't contradict itself."
+}

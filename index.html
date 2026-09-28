@@ -36,7 +36,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="/style.css?v=20260928-1">
+<link rel="stylesheet" href="/style.css?v=20260928-2">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -293,7 +293,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          now direct children of .feed) sit between the answers and the
          glance without anything moving in the DOM. -->
     <div class="feed-content">
+    <!-- Our own reviewed overview (content/animals/<slug>.json) when the
+         animal has one; until then, Wikipedia's first sentence, credited. -->
     <p class="blurb" id="blurb"></p>
+    <!-- Group entries only (Whale, Crocodile...): says the answers are for
+         a typical member, and links the species. -->
+    <p class="groupnote" id="groupNote" hidden></p>
 
     <section class="ansec ansec-answers">
       <h2 class="label">Quick answers</h2>
@@ -305,9 +310,28 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <div class="glance" id="glance" role="list"></div>
     </section>
 
+    <!-- The editorial sections from here down render only when the
+         animal's reviewed content has something real for them - see
+         sections() in render-data.js. A page has only the sections it
+         has content for. -->
+    <section class="ansec ansec-profile" id="profileSec" hidden>
+      <h2 class="label">In the wild</h2>
+      <dl class="card profile" id="profile"></dl>
+    </section>
+
     <section class="ansec ansec-fact">
       <h2 class="label">Did you know</h2>
-      <div class="factcard"><p id="fact"></p></div>
+      <div class="factcard"><p id="fact"></p><div class="more-facts" id="moreFacts"></div></div>
+    </section>
+
+    <section class="ansec ansec-confused" id="confusedSec" hidden>
+      <h2 class="label">Often confused with</h2>
+      <ul class="confused" id="confused"></ul>
+    </section>
+
+    <section class="ansec ansec-sources" id="sourcesSec" hidden>
+      <h2 class="label">Sources</h2>
+      <div class="sources" id="sources"></div>
     </section>
     </div>
     </div>
@@ -855,7 +879,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <script src="/sfx.js?v=20260912-1"></script>
 <script src="/animals.js?v=20260907-1"></script>
-<script src="/render-data.js?v=20260901-1"></script>
+<script src="/render-data.js?v=20260928-1"></script>
 <script src="/related.js?v=20260908-1"></script>
 <script src="/photo-credit.js?v=20260928-1"></script>
 <script src="/game-core.js?v=20260912-2"></script>
@@ -875,7 +899,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
 <script src="/mystery.js?v=20260928-1"></script>
-<script src="/app.js?v=20260928-1"></script>
+<script src="/app.js?v=20260928-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

@@ -1052,6 +1052,74 @@ body.view-home .sb-start > .play-link { display: inline-flex; }
   padding: 17px 19px;
 }
 .factcard p { margin: 0; font-size: 16.5px; font-weight: 500; line-height: 1.4; }
+.factcard .more-facts p { margin-top: 12px; }
+
+/* -- Editorial content ----------------------------------------------
+   Reviewed per-animal content (content/animals/, see render-data.js's
+   sections()). Every block is optional, so each one has to look finished
+   on its own and nothing may assume a neighbour exists. Same surfaces
+   and type sizes as the sections above: no new colours, no Sun. */
+
+/* Our own overview reads as the page's lede, not a quoted aside - ink,
+   not muted like the Wikipedia sentence it replaces. */
+.blurb.is-ov { color: var(--ink); }
+
+.groupnote {
+  margin: 12px 4px 0;
+  font-size: 14px; line-height: 1.45; color: var(--muted);
+  max-width: 62ch;
+}
+.groupnote a { color: var(--ink); text-underline-offset: 3px; }
+
+/* A why-note sits under its own row, full width, in the Caption size -
+   an aside to the answer, never louder than it. */
+.row.has-why { flex-wrap: wrap; row-gap: 5px; }
+.why {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 13.5px; line-height: 1.45; color: var(--muted);
+  max-width: 62ch;
+}
+
+.profile { margin: 0; }
+.prof-row {
+  display: grid; grid-template-columns: 8.5em 1fr; gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+.prof-row:last-child { border-bottom: 0; }
+.prof-row dt { font-size: 15.5px; color: var(--muted); }
+.prof-row dd { margin: 0; font-size: 15.5px; line-height: 1.45; }
+.prof-src { color: var(--muted); font-size: 13.5px; }
+.prof-src a { color: inherit; text-underline-offset: 2px; }
+@media (max-width: 419px) {
+  .prof-row { grid-template-columns: 1fr; gap: 3px; }
+}
+
+.confused { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.conf-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 6px 16px 13px;
+}
+.conf-name {
+  display: inline-flex; align-items: center; gap: 7px;
+  min-height: 40px;
+  font-size: 15.5px; font-weight: 600;
+  color: var(--ink); text-underline-offset: 3px;
+}
+.conf-name .r-emoji { font-size: 16px; line-height: 1; }
+.conf-tip { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
+
+.src-list {
+  margin: 0; padding-left: 1.4em;
+  font-size: 13.5px; line-height: 1.5; color: var(--muted);
+}
+.src-list li + li { margin-top: 3px; }
+.src-list a { color: inherit; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.src-list a:hover { color: var(--ink); }
+.src-reviewed { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
 
 /* -- Extra photos folded into the scroll ---------------------------- */
 
@@ -1137,6 +1205,12 @@ body.view-home .sb-start > .play-link { display: inline-flex; }
      clusters is a grid sibling too, so it shifts every row after it by
      one slot and an odd/even check would silently stop matching. */
   .rows > .row:nth-last-child(2) { border-bottom: 0; }
+  /* A why-note makes its row taller, and the grid stretches the row
+     beside it to match. Top-align what's inside so that neighbour's
+     answer lines up with this one's instead of floating mid-cell; the
+     dividers stay level because the boxes are still the same height.
+     (align-content needs a multi-line flex container, hence the wrap.) */
+  .rows > .row { flex-wrap: wrap; align-content: flex-start; }
   /* Four buttons fit one tidy row once there's room, rather than
      staying stacked in the mobile 2x2 grid. */
   .actions { grid-template-columns: repeat(4, 1fr); }
@@ -1457,6 +1531,12 @@ body.view-home .sb-start > .play-link { display: inline-flex; }
   .animalview .ansec-related { order: 5; }
   .animalview .ansec-glance  { order: 6; }
   .animalview .ansec-fact    { order: 7; }
+  /* The editorial sections: the group note stays with the overview it
+     qualifies; the rest follow the glance in DOM order. */
+  .animalview .groupnote      { order: 2; }
+  .animalview .ansec-profile  { order: 6; }
+  .animalview .ansec-confused { order: 8; }
+  .animalview .ansec-sources  { order: 9; }
   .animalview .animal-tail   { order: 10; }
 
   /* Square, not 4/5. The page's job here is to get to the answers, and
@@ -1474,6 +1554,14 @@ body.view-home .sb-start > .play-link { display: inline-flex; }
     padding: 0;
   }
   .animalview .ansec-answers .row { padding: 14px 4px; }
+  /* In the wild follows the answers' lead: rows under a label, no box. */
+  .animalview .ansec-profile .card {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+  .animalview .ansec-profile .prof-row { padding: 14px 4px; }
 
   /* Same move for the fact: a Sun rule rather than a second tinted box
      directly under the play block, which is already carrying Sun. */

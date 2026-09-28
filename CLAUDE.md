@@ -49,6 +49,7 @@ Keep it that way.
 | Path | What it is |
 |---|---|
 | `animals.js` | The dataset — 438 hand-written animals, fixed schema. Field meanings documented at the top of the file. |
+| `content/animals/<slug>.json` | **Editorial content**, separate from the game data: overview, why-notes on hedged answers, sizes, habitat, range, diet, look-alikes, sources. Validated by `tools/content.js` (a bad file fails `npm run seo`). **Only entries with `rv` (review date) set are published**, and `rv` is set only by a person via `npm run approve -- <slug>` after checking the sources. Never set `rv` yourself. `npm run review` writes a readable `content/REVIEW.md` (gitignored). The build bakes published entries into the pages and writes `data/animals/<slug>.json` + `data/published.json` for app.js. Draft preview: `localhost:8788/animals/<slug>?draft=1` (localhost only). The sections themselves are built by `sections()` in `render-data.js`. |
 | `game-core.js` | Shared logic with **no DOM, no state** — loaded as a browser global (`GameCore`) and via `import`/`require` from Node/Pages Functions. Answer matching, `hintsFor`, round timer math, the chat-guess matcher. If a surface needs matching/hinting/timing logic, it goes here, not duplicated per-page. |
 | `app.js` / `mystery.js` / `party.js` | Views inside `index.html`. `app.js` owns search/routing/theme and exposes `window.GMA` (push/goHome/setMenu/loadSummary/openReport/sfx) for the other two to call into. |
 | `streamer.js` / `streamer.html` | Twitch stream mode, standalone — does not load `app.js`, has no `window.GMA`. |
@@ -85,8 +86,11 @@ login" section. Without them the Connect button just bounces to
 
 `npm run og` — regenerate the link-preview card.
 `npm run seo` — rebuild `functions/seo-meta.json` + `sitemap.xml` +
-`browse.html` from `animals.js`, then re-inject the shared header into
-every page. Run after adding an animal or changing `tools/chrome.js`.
+`browse.html` from `animals.js` and the published `content/animals/`,
+then re-inject the shared header into every page. Run after adding an
+animal, approving content, or changing `tools/chrome.js`.
+`npm run review` / `npm run approve -- <slug>...` — the content review
+loop (see `content/animals` above).
 `npm run deploy` — publish straight from the working tree, bypassing
 git (useful when the Pages Git integration is misbehaving).
 

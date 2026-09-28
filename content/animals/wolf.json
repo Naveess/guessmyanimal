@@ -1,0 +1,45 @@
+{
+  "sci": "Canis lupus",
+  "ov": "The largest wild member of the dog family. Wolves live in family packs, usually a breeding pair and their young, that hunt large prey together over big territories.",
+  "why": {
+    "dg": "Attacks on people are rare, and most recorded ones involved wolves with rabies.",
+    "dm": "Wolves were never domesticated. Dogs come from an ancient wolf population, and today’s wolves are a sister line, not dogs’ direct ancestors."
+  },
+  "hb": [
+    "forest",
+    "grassland",
+    "mountain",
+    "polar"
+  ],
+  "len": "105–160 cm",
+  "ht": "80–85 cm at the shoulder",
+  "wt": "About 25–40 kg on average, by region",
+  "rg": "Across much of North America, Europe and Asia, from Arctic tundra to forest, steppe and desert edges.",
+  "df": "Mostly large hoofed animals such as deer, elk and moose, taken by the pack, plus smaller prey and carrion.",
+  "cf": [
+    {
+      "slug": "dog",
+      "tip": "A wolf has longer legs, bigger feet, a broader head and a straight tail carried low. Many dogs carry their tails curled or high."
+    }
+  ],
+  "iu": "LC",
+  "src": [
+    {
+      "title": "Wikipedia: Wolf",
+      "url": "https://en.wikipedia.org/wiki/Wolf",
+      "for": [
+        "ov",
+        "why",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "cf",
+        "iu"
+      ]
+    }
+  ],
+  "rv": null,
+  "notes": "ANSWER CHECK (fact, not answer): the existing animals.js fact \"Every dog alive is descended from them\" is loosely true, but Wikipedia says modern wolves are a SISTER line to dogs. Consider rewording it, e.g. \"Dogs were domesticated from an ancient wolf population, now extinct.\" The cf tip is general knowledge; the Wikipedia text does not describe dog tails."
+}

@@ -1,0 +1,49 @@
+{
+  "sci": "Ursus arctos",
+  "ov": "A huge, mostly plant-eating bear of northern forests, mountains and tundra, and one of the largest land carnivores alive. Grizzlies and Kodiak bears are brown bears too.",
+  "why": {
+    "h": "It dens up for the winter and lives off its fat, but it isn’t a full hibernator and can be woken easily."
+  },
+  "hb": [
+    "forest",
+    "mountain",
+    "grassland"
+  ],
+  "len": "1–2.8 m",
+  "wt": "80–600 kg",
+  "rg": "Northern North America, Europe and Asia. It lives in a wider range of habitats than any other bear, with small, fragmented populations left in western Europe.",
+  "df": "Mostly grass, roots, berries and nuts, plus insects, fish such as salmon, and mammals from rodents up to moose.",
+  "cf": [
+    {
+      "slug": "grizzly-bear",
+      "tip": "Same species: “grizzly” is the name for inland North American brown bears. Every grizzly is a brown bear, but not every brown bear is a grizzly."
+    },
+    {
+      "slug": "black-bear",
+      "tip": "Go by shape, not colour: a brown bear has a muscular shoulder hump; a black bear has none."
+    }
+  ],
+  "fx": [
+    "It can put on up to 180 kg of fat between summer and autumn to see it through the winter."
+  ],
+  "iu": "LC",
+  "src": [
+    {
+      "title": "Wikipedia: Brown bear",
+      "url": "https://en.wikipedia.org/wiki/Brown_bear",
+      "for": [
+        "ov",
+        "why",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "cf",
+        "fx",
+        "iu"
+      ]
+    }
+  ],
+  "rv": null,
+  "notes": "why.h repeats the existing fact (\"Does not truly hibernate\"); keep one or the other, or rewrite the animals.js fact. Did not add an et note: brown bear meat is eaten, but I found no source in the checked text."
+}

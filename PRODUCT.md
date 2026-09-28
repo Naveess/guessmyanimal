@@ -40,6 +40,19 @@ would remove the only good part of the game. The site does now ship games of
 its own (see Modes below), but they are games to *play*, not machines that
 play the guessing game on the user's behalf; the rule is unchanged.
 
+The same rule governs browsing. Lists of animals by a single thing (one
+region, one habitat, one answer) are reference material. A finder that
+**combines** filters (nocturnal + Africa + carnivore) is exactly what a
+guesser would type in mid-game to narrow down the answer, so it is a
+solver and doesn't ship, however it's labelled.
+
+Reviewed editorial content (an overview, why-notes under hedged answers,
+measurements, range, diet, look-alikes, sources) lives in
+`content/animals/<slug>.json`, separate from the game data. It's drafted
+with a source for each claim and published only after a person has
+checked it (`rv`, the review date, set by `npm run approve`). Nothing is
+mass-generated onto the site unreviewed.
+
 ## Modes
 
 The site began as lookup only. Two games now ship alongside it, and the

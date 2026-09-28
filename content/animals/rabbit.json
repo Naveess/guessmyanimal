@@ -1,0 +1,55 @@
+{
+  "sci": "Oryctolagus cuniculus",
+  "ov": "Every pet and farmed rabbit belongs to one species, the European rabbit. In the wild it lives in groups in underground burrow networks called warrens.",
+  "why": {
+    "dm": "Domesticated from the European rabbit, a wild species native only to Spain, Portugal and south-west France."
+  },
+  "hb": [
+    "grassland",
+    "scrub",
+    "farmland"
+  ],
+  "len": "38–50 cm (wild)",
+  "wt": "1.5–2.5 kg (wild; pet breeds vary)",
+  "rg": "Native to the Iberian Peninsula and south-west France; introduced across Europe, Australia, New Zealand, the Americas and elsewhere.",
+  "df": "Grasses and leafy plants.",
+  "cf": [
+    {
+      "slug": "hare",
+      "tip": "Hares are bigger, with longer ears and long hind legs. They live alone above ground rather than in burrows, and their young are born furred with open eyes."
+    }
+  ],
+  "fx": [
+    "In Spain and Portugal it has declined so far that predators that depend on it, like the Iberian lynx and Spanish imperial eagle, have suffered too."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: European rabbit",
+      "url": "https://en.wikipedia.org/wiki/European_rabbit",
+      "for": [
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Oryctolagus cuniculus",
+      "url": "https://animaldiversity.org/accounts/Oryctolagus_cuniculus/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    },
+    {
+      "title": "Wikipedia: Hare",
+      "url": "https://en.wikipedia.org/wiki/Hare",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": null,
+  "notes": "No iu on purpose: the IUCN listed the European rabbit as Endangered in 2019, but Wikipedia now says Near Threatened. Check the Red List page directly before adding one. The \"introduced to\" list is general knowledge; Wikipedia confirms introductions but I did not check each country."
+}

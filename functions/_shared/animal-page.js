@@ -86,6 +86,23 @@ export async function renderAnimal(context, slug, entry) {
     .on('#glance', new SetHtml(entry.glanceHtml))
     .on('#related', new SetHtml(entry.relatedHtml));
 
+  // Reviewed editorial content (tools/content.js), pre-rendered by the
+  // build with the same sections() app.js uses. Each section is unhidden
+  // only if it has something in it. The raw JSON goes in too, so app.js's
+  // first render uses it instead of fetching it again.
+  const c = entry.content;
+  if (c) {
+    if (c.overview) rewriter.on('#blurb', new SetAttrs({ class: 'blurb is-ov' })).on('#blurb', new SetText(c.overview));
+    if (c.group) rewriter.on('#groupNote', new SetHtml(c.group)).on('#groupNote', new RemoveAttr('hidden'));
+    if (c.profile) rewriter.on('#profile', new SetHtml(c.profile)).on('#profileSec', new RemoveAttr('hidden'));
+    if (c.moreFacts) rewriter.on('#moreFacts', new SetHtml(c.moreFacts));
+    if (c.confused) rewriter.on('#confused', new SetHtml(c.confused)).on('#confusedSec', new RemoveAttr('hidden'));
+    if (c.sources) rewriter.on('#sources', new SetHtml(c.sources)).on('#sourcesSec', new RemoveAttr('hidden'));
+    // "<" escaped so no string in the content can close the script tag.
+    const json = c.json.replace(/</g, '\\u003c');
+    rewriter.on('head', new AppendHead(`<script type="application/json" id="gma-content" data-slug="${slug}">${json}</script>`));
+  }
+
   // The licensed lead photo and its credit, baked in from
   // tools/photos.json - so it starts loading with the HTML (it's the
   // page's largest paint) instead of after app.js and two API calls, and

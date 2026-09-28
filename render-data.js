@@ -22,7 +22,13 @@
   // is spent on exactly one thing: this animal can hurt you. An earlier
   // version painted every "yes" red, which made "Lays eggs? Yes" look
   // like a warning and buried the one row that actually is one.
-  function answers(a) {
+  //
+  // `c` is the animal's reviewed editorial content (content/animals/
+  // <slug>.json), or null. Its why-notes ride along as a fourth element
+  // on the rows they explain - only the hedged or surprising ones have
+  // one, so most rows still have none.
+  function answers(a, c) {
+    const why = (c && c.why) || {};
     const yn = (b) => [b ? 'Yes' : 'No', b ? GOOD : FLAT];
 
     const diet =
@@ -37,35 +43,63 @@
     // way if this list ever changes.
     return [
       ['What is it?', a.c, FLAT],
-      ['Carnivore?', diet[0], diet[1]],
+      ['Carnivore?', diet[0], diet[1], why.d],
       ['Dangerous?',
         a.dg === 'yes' ? 'Yes' : a.dg === 'some' ? 'Can be' : 'No',
-        a.dg === 'yes' ? BAD : a.dg === 'some' ? WARN : FLAT],
-      ['Domesticated?'].concat(yn(a.dm)),
+        a.dg === 'yes' ? BAD : a.dg === 'some' ? WARN : FLAT, why.dg],
+      ['Domesticated?'].concat(yn(a.dm), [why.dm]),
       ['Awake when?',
-        a.ac === 'night' ? 'Night' : a.ac === 'day' ? 'Daytime' : 'Day & night', FLAT],
-      ['Hibernates?'].concat(yn(a.h)),
+        a.ac === 'night' ? 'Night' : a.ac === 'day' ? 'Daytime' : 'Day & night', FLAT, why.ac],
+      ['Hibernates?'].concat(yn(a.h), [why.h]),
       ['Kept as a pet?',
         a.p === 'common' ? 'Commonly' : a.p === 'some' ? 'Sometimes' : 'No',
-        a.p === 'common' ? GOOD : a.p === 'some' ? WARN : FLAT],
+        a.p === 'common' ? GOOD : a.p === 'some' ? WARN : FLAT, why.p],
       ['Do people eat it?',
         a.et === 'yes' ? 'Yes' : a.et === 'some' ? 'In places' : 'No',
-        a.et === 'yes' ? GOOD : a.et === 'some' ? WARN : FLAT],
+        a.et === 'yes' ? GOOD : a.et === 'some' ? WARN : FLAT, why.et],
     ];
   }
+
+  // The keys a why-note may explain - one per Quick Answers row except
+  // "What is it?", which is a classification, not a judgement call.
+  const WHY_KEYS = ['d', 'dg', 'dm', 'ac', 'h', 'p', 'et'];
+
+  // Habitat chips. A short fixed list on purpose: these are for reading,
+  // and a collection page per habitat later, so "temperate broadleaf
+  // forest" and "woodland" must not become two different things.
+  const HABITATS = {
+    forest: 'Forest', rainforest: 'Rainforest', grassland: 'Grassland',
+    scrub: 'Scrub', desert: 'Desert', mountain: 'Mountains',
+    wetland: 'Wetland', freshwater: 'Rivers & lakes', coast: 'Coast',
+    ocean: 'Open ocean', polar: 'Polar', farmland: 'Farmland', towns: 'Towns',
+  };
+
+  const IUCN = {
+    LC: 'Least Concern', NT: 'Near Threatened', VU: 'Vulnerable',
+    EN: 'Endangered', CR: 'Critically Endangered', EW: 'Extinct in the Wild',
+    EX: 'Extinct', DD: 'Data Deficient',
+  };
 
   // What it looks like and where you'd find it, then what it actually
   // does - a well-attributed animal can run to ten chips, and one flat
   // wrapped block of them reads as a second answer list. Splitting by
   // what the fact IS, the way Quick Answers splits identity from
   // behaviour, keeps it reading as a glance instead of a second read.
-  function glanceGroups(a) {
-    const appearance = [
-      ['globe', 'Found in', a.r.join(', ')],
+  function glanceGroups(a, c) {
+    c = c || {};
+    const appearance = [['globe', 'Found in', a.r.join(', ')]];
+    if (c.hb && c.hb.length) appearance.push(['leaf', 'Habitat', c.hb.map((h) => HABITATS[h] || h).join(', ')]);
+    appearance.push(
       ['drop',  'Colours', a.co.map(cap).join(', ')],
       ['ruler', 'Size', cap(a.sz)],
-      ['leg',   'Legs', a.lg === 0 ? 'None' : String(a.lg)],
-    ];
+    );
+    // The real measurements, next to the bucket they explain - "Large"
+    // tells you nothing on its own about whether it's the size of a dog
+    // or a car.
+    if (c.len) appearance.push(['ruler', 'Length', c.len]);
+    if (c.ht) appearance.push(['ruler', 'Height', c.ht]);
+    if (c.wt) appearance.push(['weight', 'Weight', c.wt]);
+    appearance.push(['leg', 'Legs', a.lg === 0 ? 'None' : String(a.lg)]);
     if (a.cv && a.cv !== 'None') appearance.push(['coat', 'Covered in', a.cv]);
 
     const behaviour = [
@@ -93,9 +127,73 @@
     wing:  '<path d="M20.4 4.2c-9.3 0-15.6 4.8-15.6 11 0 2.6 1.5 4.2 3.8 4.2 5.6 0 10-5.9 11.8-15.2Z"/>',
     wave:  '<path d="M2.8 8.4c2.3 0 2.3 2.1 4.6 2.1s2.3-2.1 4.6-2.1 2.3 2.1 4.6 2.1 2.3-2.1 4.6-2.1"/><path d="M2.8 14.8c2.3 0 2.3 2.1 4.6 2.1s2.3-2.1 4.6-2.1 2.3 2.1 4.6 2.1 2.3-2.1 4.6-2.1"/>',
     egg:   '<path d="M12 3.4c3.2 0 5.6 5.1 5.6 9A5.6 5.6 0 0 1 12 20.6 5.6 5.6 0 0 1 6.4 12.4c0-3.9 2.4-9 5.6-9Z"/>',
+    leaf:  '<path d="M19.6 4.4C10.4 4.4 4.4 8.9 4.4 14.8c0 2.9 1.9 4.8 4.8 4.8 5.9 0 10.4-6 10.4-15.2Z"/><path d="M4.4 19.6 13.4 10.6"/>',
+    weight: '<path d="M7.2 9.2h9.6l2.4 11H4.8l2.4-11Z"/><circle cx="12" cy="6.2" r="2.4"/>',
   };
 
-  const RenderData = { answers, glanceGroups, cap, ICONS, GOOD, WARN, BAD, FLAT };
+  const esc = (s) => String(s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  // "2026-09-28" -> "28 September 2026". By hand rather than
+  // toLocaleDateString so the build (Node) and the browser can't format
+  // the same date two different ways.
+  function longDate(iso) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+    return m ? `${+m[3]} ${MONTHS[+m[2] - 1]} ${m[1]}` : '';
+  }
+
+  /* The editorial sections - everything on an animal page that isn't the
+     game data. Each is an HTML string, '' when there's nothing real to
+     put in it, and the caller hides the section around an empty one: a
+     page only has the sections it has content for, so pages differ in
+     shape, not just in values. Strings rather than DOM so app.js and
+     tools/build-seo.js set the exact same markup.
+
+     `lookup(slug)` returns the animals.js entry for a slug (for names and
+     emoji on links), or null. */
+  function sections(c, lookup) {
+    const out = { group: '', profile: '', confused: '', moreFacts: '', sources: '' };
+    if (!c) return out;
+    const link = (slug) => {
+      const b = lookup(slug);
+      return b ? `<a href="/animals/${esc(slug)}">${esc(b.n)}</a>` : '';
+    };
+
+    if (c.grp && c.grp.length) {
+      const links = c.grp.map(link).filter(Boolean);
+      out.group = 'This entry covers a whole group, so the answers describe a typical member.' +
+        (links.length ? ` For a specific one, see ${links.join(', ')}.` : '');
+    }
+
+    const rows = [];
+    if (c.rg) rows.push(['Where it lives', esc(c.rg)]);
+    if (c.df) rows.push(['What it eats', esc(c.df)]);
+    if (c.iu && IUCN[c.iu]) {
+      const q = encodeURIComponent(c.sci || '');
+      rows.push(['Conservation', `${esc(IUCN[c.iu])} <span class="prof-src">(<a href="https://www.iucnredlist.org/search?query=${q}&amp;searchType=species" target="_blank" rel="noopener">IUCN Red List</a>)</span>`]);
+    }
+    out.profile = rows.map(([k, v]) => `<div class="prof-row"><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+
+    if (c.cf && c.cf.length) {
+      out.confused = c.cf.map((x) => {
+        const b = lookup(x.slug);
+        if (!b) return '';
+        return `<li class="conf-item"><a class="conf-name" href="/animals/${esc(x.slug)}"><span class="r-emoji" aria-hidden="true">${b.e || '🐾'}</span>${esc(b.n)}</a><p class="conf-tip">${esc(x.tip)}</p></li>`;
+      }).join('');
+    }
+
+    if (c.fx && c.fx.length) out.moreFacts = c.fx.map((f) => `<p>${esc(f)}</p>`).join('');
+
+    if (c.src && c.src.length) {
+      const items = c.src.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join('');
+      const when = longDate(c.rv);
+      out.sources = `<ol class="src-list">${items}</ol>` +
+        (when ? `<p class="src-reviewed">Last reviewed <time datetime="${esc(c.rv)}">${when}</time></p>` : '');
+    }
+    return out;
+  }
+
+  const RenderData = { answers, glanceGroups, sections, longDate, esc, cap, ICONS, WHY_KEYS, HABITATS, IUCN, GOOD, WARN, BAD, FLAT };
   if (typeof module !== 'undefined' && module.exports) module.exports = RenderData;
   if (typeof root !== 'undefined') root.RenderData = RenderData;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -1,0 +1,57 @@
+{
+  "sci": "Panthera pardus",
+  "ov": "The most widespread wild cat, a spotted, secretive hunter that survives almost anywhere with cover: rainforest, savanna, mountains and semi-desert across Africa and Asia.",
+  "hb": [
+    "forest",
+    "rainforest",
+    "grassland",
+    "scrub",
+    "mountain"
+  ],
+  "len": "92–183 cm plus a 66–102 cm tail",
+  "wt": "20–72 kg; big males up to 91 kg",
+  "rg": "Much of sub-Saharan Africa, with fragmented, declining populations across the Middle East, South and Southeast Asia, China and the Russian Far East.",
+  "df": "Almost anything it can overpower, from antelope and deer to monkeys, rodents and birds. Kills are often dragged up a tree.",
+  "cf": [
+    {
+      "slug": "jaguar",
+      "tip": "A jaguar is stockier with a bigger head, and its rosettes are larger, often with a spot inside. Jaguars live only in the Americas; leopards only in Africa and Asia."
+    },
+    {
+      "slug": "cheetah",
+      "tip": "A cheetah has solid round spots rather than rosettes, black “tear” lines from eye to mouth, and a slimmer, longer-legged build."
+    }
+  ],
+  "iu": "VU",
+  "src": [
+    {
+      "title": "Wikipedia: Leopard",
+      "url": "https://en.wikipedia.org/wiki/Leopard",
+      "for": [
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu"
+      ]
+    },
+    {
+      "title": "Wikipedia: Jaguar",
+      "url": "https://en.wikipedia.org/wiki/Jaguar",
+      "for": [
+        "cf"
+      ]
+    },
+    {
+      "title": "Wikipedia: Cheetah",
+      "url": "https://en.wikipedia.org/wiki/Cheetah",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": null,
+  "notes": "The existing fact already covers tree-hauling, so df only mentions it briefly. Trim it if it reads as repetitive."
+}

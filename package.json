@@ -7,6 +7,8 @@
     "og": "node tools/make-og.js",
     "photos": "node tools/build-photos.js",
     "seo": "node tools/build-seo.js",
+    "review": "node tools/content-review.js",
+    "approve": "node tools/content-approve.js",
     "chrome": "node tools/build-chrome.js",
     "deploy": "npx wrangler pages deploy . --project-name=guessmyanimal --branch=main"
   }

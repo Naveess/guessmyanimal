@@ -13,7 +13,8 @@
 const fs = require('fs');
 const path = require('path');
 const { ANIMALS } = require('../animals.js');
-const { answers, glanceGroups, ICONS } = require('../render-data.js');
+const { answers, glanceGroups, sections, ICONS } = require('../render-data.js');
+const { loadContent } = require('./content.js');
 const { relatedFor } = require('../related.js');
 const { creditHtml } = require('../photo-credit.js');
 // Lead photo + licence credit per animal, cached by tools/build-photos.js
@@ -32,10 +33,23 @@ const MAX_DESC = 158;
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20260928-1';
+const STYLE_VERSION = '20260928-2';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
+
+// Reviewed editorial content (tools/content.js). Any validation error
+// stops the build: a broken content file must never half-publish.
+const CONTENT = loadContent();
+if (CONTENT.errors.length) {
+  console.error('content/animals has errors:\n  ' + CONTENT.errors.join('\n  '));
+  process.exit(1);
+}
+const PUBLISHED = CONTENT.published;
+const lookup = (slug) => {
+  const a = ANIMALS.find((x) => slugify(x.n) === slug);
+  return a ? { n: a.n, e: a.e } : null;
+};
 
 const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -50,21 +64,22 @@ function iconSvg(name) {
 // property the CSS stagger reads. If this drifts from app.js's actual
 // output, a real visitor sees the baked version flash into the
 // client-rendered one on load - keep the two in step.
-function answersHtml(a) {
-  const rows = answers(a);
+function answersHtml(a, c) {
+  const rows = answers(a, c);
   let html = '';
-  rows.forEach(([k, v, state], i) => {
+  rows.forEach(([k, v, state, why], i) => {
     if (i === 4) html += '<div class="ans-gap" role="presentation"></div>';
     const cls = 'pill' + (state ? ' ' + state : '');
-    html += `<div class="row" role="listitem" style="--i:${i}"><span class="k">${escapeHtml(k)}</span><span class="${cls}">${escapeHtml(v)}</span></div>`;
+    const note = why ? `<p class="why">${escapeHtml(why)}</p>` : '';
+    html += `<div class="row${why ? ' has-why' : ''}" role="listitem" style="--i:${i}"><span class="k">${escapeHtml(k)}</span><span class="${cls}">${escapeHtml(v)}</span>${note}</div>`;
   });
   return html;
 }
 
 // Mirrors renderGlance()'s DOM exactly: same chip shape, same
 // appearance/behaviour split with the .glance-gap spacer between them.
-function glanceHtml(a) {
-  const { appearance, behaviour } = glanceGroups(a);
+function glanceHtml(a, c) {
+  const { appearance, behaviour } = glanceGroups(a, c);
   let i = 0;
   const chip = ([ic, key, value]) => {
     const keyHtml = key ? `<span class="gk">${escapeHtml(key)}</span>` : '';
@@ -101,20 +116,43 @@ for (const a of ANIMALS) {
   // so a vowel-letter check is the whole rule here.
   const article = /^[aeiou]/i.test(lower) ? 'an' : 'a';
 
-  const title = `${a.n} — is it dangerous? | Guess My Animal`;
+  const c = PUBLISHED[slug] || null;
 
-  let description = `${a.f} Is ${article} ${lower} dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal.`;
-  if (description.length > MAX_DESC) {
-    // Keep the hand-written fact whole - it's the one truly unique part of
-    // the description - and drop the templated tail instead of chopping
-    // mid-sentence.
-    description = `${a.f} Is ${article} ${lower} dangerous? Get the answer on Guess My Animal.`;
-  }
-  if (description.length > MAX_DESC) {
-    // The fact alone is already long (e.g. Poison dart frog). Drop the
-    // templated tail entirely rather than truncate mid-sentence - the fact
-    // by itself is still a perfectly good description.
-    description = a.f;
+  // Not "X — is it dangerous?" any more: that stamped one question on
+  // every page, and the page answers eight. app.js sets the same title.
+  const title = `${a.n}: quick answers and facts | Guess My Animal`;
+
+  // Our own reviewed overview when there is one; the fact-based
+  // template otherwise.
+  let description;
+  if (c && c.ov) {
+    // As many whole sentences as fit. If that leaves too little to be a
+    // description ("Africa's social big cat."), the word-boundary cut
+    // below takes over instead.
+    description = c.ov;
+    if (description.length > MAX_DESC) {
+      let kept = '';
+      for (const s of c.ov.split(/(?<=[.!?])\s+/)) {
+        const next = kept ? kept + ' ' + s : s;
+        if (next.length > MAX_DESC) break;
+        kept = next;
+      }
+      if (kept.length >= 90) description = kept;
+    }
+  } else {
+    description = `${a.f} Is ${article} ${lower} dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal.`;
+    if (description.length > MAX_DESC) {
+      // Keep the hand-written fact whole - it's the one truly unique part
+      // of the description - and drop the templated tail instead of
+      // chopping mid-sentence.
+      description = `${a.f} Is ${article} ${lower} dangerous? Get the answer on Guess My Animal.`;
+    }
+    if (description.length > MAX_DESC) {
+      // The fact alone is already long (e.g. Poison dart frog). Drop the
+      // templated tail entirely rather than truncate mid-sentence - the
+      // fact by itself is still a perfectly good description.
+      description = a.f;
+    }
   }
   if (description.length > MAX_DESC) {
     // The fact itself runs past the limit - truncate at the last whole
@@ -142,11 +180,15 @@ for (const a of ANIMALS) {
     photo: PHOTOS[slug]
       ? { src: PHOTOS[slug].src, width: PHOTOS[slug].width, height: PHOTOS[slug].height, creditHtml: creditHtml(PHOTOS[slug]) }
       : null,
-    answersHtml: answersHtml(a),
-    glanceHtml: glanceHtml(a),
+    answersHtml: answersHtml(a, c),
+    glanceHtml: glanceHtml(a, c),
     relatedHtml: relatedHtml(a),
+    // Only for animals with reviewed content (see sections() in
+    // render-data.js). `json` is what app.js would otherwise fetch from
+    // /data/animals/, embedded so the first render needs no second request.
+    content: c ? Object.assign({ overview: c.ov || '', json: JSON.stringify(c) }, sections(c, lookup)) : null,
   };
-  urls.push(`${SITE}/animals/${slug}`);
+  urls.push({ loc: `${SITE}/animals/${slug}`, lastmod: c ? c.rv : null });
 }
 
 if (longest > MAX_DESC) {
@@ -162,13 +204,12 @@ fs.writeFileSync(
 // /about, so the sitemap should point straight at the URL that actually
 // serves, not the one that immediately bounces.
 const staticUrls = ['/', '/about', '/how-we-answer', '/browse', '/streamer', '/contact', '/privacy', '/terms'].map((p) => SITE + p);
-// No <lastmod>: it used to be stamped with the build date on every URL,
-// which tells a crawler every page changed every time anyone ran this.
-// An honest per-page date needs a real "last reviewed" field per animal;
-// until that exists, omitting it is the accurate option.
-const all = staticUrls.concat(urls);
+// No build-date <lastmod>: it used to be stamped on every URL, which
+// tells a crawler every page changed every time anyone ran this. A
+// reviewed animal gets its real review date (rv); the rest get none.
+const all = staticUrls.map((loc) => ({ loc, lastmod: null })).concat(urls);
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${all
-  .map((u) => `  <url><loc>${u}</loc></url>`)
+  .map((u) => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`)
   .join('\n')}\n</urlset>\n`;
 
 fs.writeFileSync(path.join(__dirname, '..', 'sitemap.xml'), xml);
@@ -369,9 +410,26 @@ ${siteFooter()}
 
 fs.writeFileSync(path.join(__dirname, '..', 'browse.html'), browseHtml());
 
+// data/animals/<slug>.json: each published animal's content, for app.js
+// to fetch on in-app navigation. Reviewed entries only, reviewer notes
+// already stripped by loadContent(); files for anything no longer
+// published are removed.
+const DATA_DIR = path.join(__dirname, '..', 'data', 'animals');
+fs.mkdirSync(DATA_DIR, { recursive: true });
+for (const f of fs.readdirSync(DATA_DIR)) {
+  if (f.endsWith('.json') && !PUBLISHED[f.slice(0, -5)]) fs.unlinkSync(path.join(DATA_DIR, f));
+}
+for (const slug of Object.keys(PUBLISHED)) {
+  fs.writeFileSync(path.join(DATA_DIR, slug + '.json'), JSON.stringify(PUBLISHED[slug]));
+}
+// The list app.js checks before fetching, so the ~400 animals without
+// content yet don't each cost a 404 round trip.
+fs.writeFileSync(path.join(DATA_DIR, '..', 'published.json'), JSON.stringify(Object.keys(PUBLISHED)));
+
 console.log(`wrote functions/seo-meta.json (${ANIMALS.length} animals)`);
 console.log(`wrote sitemap.xml (${all.length} urls)`);
 console.log(`wrote browse.html (${ANIMALS.length} animals)`);
+console.log(`content: ${Object.keys(PUBLISHED).length} published, ${Object.keys(CONTENT.all).length - Object.keys(PUBLISHED).length} awaiting review`);
 
 // Last, so the hand-written pages pick up the same chrome browse.html
 // just got - see tools/build-chrome.js.

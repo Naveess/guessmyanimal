@@ -1,0 +1,33 @@
+{
+  "sci": "Giraffa camelopardalis",
+  "ov": "The tallest living land animal, browsing leaves from treetops across African savanna. No two giraffes have the same coat pattern.",
+  "hb": [
+    "grassland",
+    "scrub"
+  ],
+  "ht": "4.3–5.7 m",
+  "wt": "About 830 kg (females) to 1,190 kg (males)",
+  "rg": "Savanna and open woodland, mostly in eastern and southern Africa, with scattered populations in central and west Africa.",
+  "df": "Leaves and shoots, especially from acacias, pulled in with a tongue about 45 cm long. It can feed up to 4.5 m high.",
+  "fx": [
+    "Its neck alone can be up to 2.4 m long."
+  ],
+  "iu": "VU",
+  "src": [
+    {
+      "title": "Wikipedia: Giraffe",
+      "url": "https://en.wikipedia.org/wiki/Giraffe",
+      "for": [
+        "ov",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx",
+        "iu"
+      ]
+    }
+  ],
+  "rv": null,
+  "notes": "Taxonomy: some authorities now split giraffes into four species; the IUCN still assesses one (VU). The rg wording \"mostly eastern and southern\" is my summary of the range map. df \"especially from acacias\" is standard but check it against the Wikipedia Feeding section."
+}

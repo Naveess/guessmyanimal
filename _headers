@@ -4,3 +4,11 @@
 # an explicit no-cache here removes any doubt.
 /sw.js
   Cache-Control: no-cache
+
+# Raw editorial content: content/ holds drafts (and reviewer notes) as
+# well as reviewed entries, and data/ is the published copy app.js
+# fetches. Both are for the page to use, not for search results.
+/content/*
+  X-Robots-Tag: noindex
+/data/*
+  X-Robots-Tag: noindex

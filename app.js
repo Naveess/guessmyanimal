@@ -129,11 +129,11 @@
   // renders client-side - one function deciding the content, not two.
   const { answers, glanceGroups, cap, ICONS } = RenderData;
 
-  function renderAnswers(a) {
+  function renderAnswers(a, c) {
     const box = el('answers');
     box.innerHTML = '';
-    const rows = answers(a);
-    rows.forEach(([k, v, state], i) => {
+    const rows = answers(a, c);
+    rows.forEach(([k, v, state, why], i) => {
       // A breathing gap after the identity/risk cluster, before the
       // behaviour cluster - eight identical rows read as one wall of
       // text otherwise, and the first four are the ones worth reaching
@@ -155,6 +155,15 @@
       vv.className = 'pill' + (state ? ' ' + state : '');
       vv.textContent = v;
       row.append(kk, vv);
+      // Why this answer is hedged or surprising - only on rows whose
+      // reviewed content has a note, so most rows have none.
+      if (why) {
+        row.classList.add('has-why');
+        const note = document.createElement('p');
+        note.className = 'why';
+        note.textContent = why;
+        row.appendChild(note);
+      }
       box.appendChild(row);
     });
   }
@@ -184,11 +193,11 @@
      The details that are nice to have but nobody scans for first, so
      they sit below the answers as loose chips rather than in the list. */
 
-  function renderGlance(a) {
+  function renderGlance(a, c) {
     const box = el('glance');
     box.innerHTML = '';
 
-    const { appearance, behaviour } = glanceGroups(a);
+    const { appearance, behaviour } = glanceGroups(a, c);
 
     function renderChip(ic, key, value, i) {
       const c = document.createElement('div');
@@ -287,6 +296,109 @@
     photoCache.set(title, p);
     return p;
   }
+
+  /* -- Editorial content ---------------------------------------------
+     Reviewed per-animal content (content/animals/<slug>.json, published
+     by npm run seo into data/animals/). On a server-rendered first load
+     it's already embedded in the page (#gma-content); on in-app
+     navigation it's fetched, but only for animals data/published.json
+     lists, so the ones without content yet cost no request.
+
+     Draft preview: on localhost only, ?draft=1 renders the unreviewed
+     drafts straight from content/animals/ for the rest of the session,
+     so a batch can be read on the real page before it's approved. It
+     can't happen on the live site. */
+
+  const contentCache = new Map();
+  let publishedList = null;
+  let draftMode = false;
+  try {
+    if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+      if (new URLSearchParams(location.search).get('draft') === '1') sessionStorage.setItem('gma-draft', '1');
+      draftMode = sessionStorage.getItem('gma-draft') === '1';
+    }
+  } catch (err) { /* storage blocked: no preview, nothing else changes */ }
+
+  const getJson = (url) => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+
+  function contentFor(slug) {
+    if (contentCache.has(slug)) return contentCache.get(slug);
+    let p;
+    const baked = document.getElementById('gma-content');
+    if (draftMode) {
+      p = getJson('/content/animals/' + slug + '.json');
+    } else if (baked && baked.dataset.slug === slug) {
+      try { p = Promise.resolve(JSON.parse(baked.textContent)); }
+      catch (err) { p = Promise.resolve(null); }
+    } else {
+      if (!publishedList) publishedList = getJson('/data/published.json').then((l) => new Set(l || []));
+      p = publishedList.then((set) => (set.has(slug) ? getJson('/data/animals/' + slug + '.json') : null));
+    }
+    contentCache.set(slug, p);
+    return p;
+  }
+
+  const lookupSlug = (slug) => {
+    const hit = INDEX.find((x) => x.slug === slug);
+    return hit ? hit.a : null;
+  };
+
+  // Fills (or empties) every editorial section for this animal, and
+  // hides the ones with nothing in them. c is null for an animal with
+  // no reviewed content, which puts the page back to its base shape.
+  function renderContent(entry, c) {
+    const a = entry.a;
+    const s = RenderData.sections(c, lookupSlug);
+    if (c) {
+      renderAnswers(a, c);
+      renderGlance(a, c);
+    }
+    const fill = (id, secId, html) => {
+      el(id).innerHTML = html;
+      if (secId) el(secId).hidden = !html;
+    };
+    fill('groupNote', 'groupNote', s.group);
+    fill('profile', 'profileSec', s.profile);
+    fill('moreFacts', null, s.moreFacts);
+    fill('confused', 'confusedSec', s.confused);
+    fill('sources', 'sourcesSec', s.sources);
+  }
+
+  // Our overview if there is one, otherwise Wikipedia's first sentence,
+  // credited - the blurb is Wikipedia's own words then, so it says so.
+  function renderBlurb(entry, c) {
+    const a = entry.a;
+    const blurb = el('blurb');
+    blurb.textContent = '';
+    blurb.className = 'blurb';
+    if (c && c.ov) {
+      blurb.textContent = c.ov;
+      blurb.classList.add('is-ov');
+      return;
+    }
+    loadSummary(a).then((data) => {
+      if (current !== entry || !data || !data.extract) return;
+      const src = document.createElement('a');
+      src.className = 'blurb-src';
+      src.href = 'https://en.wikipedia.org/wiki/' + encodeURIComponent(wikiTitle(a));
+      src.target = '_blank';
+      src.rel = 'noopener';
+      src.textContent = 'Wikipedia';
+      blurb.append(firstSentence(data.extract) + ' ', '(', src, ')');
+    });
+  }
+
+  // Links inside the editorial sections open in place, like the related
+  // rail. One delegated listener, since that markup is set as HTML.
+  el('animalview').addEventListener('click', (e) => {
+    const link = e.target.closest('#groupNote a, #confused a');
+    if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const m = link.getAttribute('href').match(/^\/animals\/([^/]+)$/);
+    const entry = m && INDEX.find((x) => x.slug === m[1]);
+    if (!entry) return;
+    e.preventDefault();
+    show(entry);
+  });
 
   /* -- Motion --------------------------------------------------------
      One authored moment: the card arriving. Everything below it follows
@@ -403,23 +515,18 @@
     renderAnswers(a);
     renderGlance(a);
     renderRelated(a);
+    // The base page first, straight from animals.js; the reviewed content
+    // follows (immediately, when it's embedded in the page) and fills in
+    // the why-notes, measurements and the sections that have something.
+    renderContent(entry, null);
+    contentFor(entry.slug).then((c) => {
+      if (current !== entry) return;           // they've moved on
+      renderContent(entry, c);
+      renderBlurb(entry, c);
+    });
 
     const hero = el('hero');
     const photo = el('photo');
-
-    // The blurb is Wikipedia's own words, so it says so - a link to the
-    // article it's quoted from, not an unattributed sentence.
-    el('blurb').textContent = '';
-    loadSummary(a).then((data) => {
-      if (current !== entry || !data || !data.extract) return;
-      const src = document.createElement('a');
-      src.className = 'blurb-src';
-      src.href = 'https://en.wikipedia.org/wiki/' + encodeURIComponent(wikiTitle(a));
-      src.target = '_blank';
-      src.rel = 'noopener';
-      src.textContent = 'Wikipedia';
-      el('blurb').append(firstSentence(data.extract) + ' ', '(', src, ')');
-    });
 
     // First load of a server-rendered page: the photo and its credit are
     // already in the HTML (functions/_shared/animal-page.js, from
@@ -462,7 +569,7 @@
     // Matches the title functions/index.js bakes server-side for this
     // same animal (tools/build-seo.js), so the tab title doesn't visibly
     // change out from under someone the moment JS finishes loading.
-    document.title = a.n + ' — is it dangerous? | Guess My Animal';
+    document.title = a.n + ': quick answers and facts | Guess My Animal';
     window.scrollTo(0, 0);
     syncThemeColour();
     playEntrance();

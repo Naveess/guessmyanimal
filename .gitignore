@@ -7,3 +7,5 @@ node_modules/
 # package.json declares no dependencies; this gets regenerated as a
 # side effect of running npx and carries nothing worth tracking.
 package-lock.json
+# Derived from content/animals/*.json by npm run review.
+content/REVIEW.md
