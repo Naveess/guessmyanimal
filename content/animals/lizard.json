@@ -1,0 +1,48 @@
+{
+  "sci": "Lacertilia",
+  "ov": "Scaly reptiles, usually with four legs, with over 7,000 species. They range from a 13.5 mm nano-chameleon to the 3 m Komodo dragon, and many can drop their tails to escape predators.",
+  "why": {
+    "dg": "Most lizards are harmless, but the Komodo dragon has attacked and occasionally killed people.",
+    "et": "Green iguanas are eaten in Central America, and spiny-tailed lizards in Africa."
+  },
+  "hb": [
+    "desert",
+    "rainforest",
+    "forest",
+    "scrub"
+  ],
+  "len": "13.5 mm (nano-chameleon) to 3 m (Komodo dragon)",
+  "rg": "Every continent except Antarctica, and most oceanic island chains.",
+  "df": "Mainly carnivorous: small species eat insects and other invertebrates, larger ones bigger prey. Some eat plants.",
+  "grp": [
+    "gecko",
+    "iguana",
+    "chameleon",
+    "komodo-dragon",
+    "monitor-lizard",
+    "skink",
+    "bearded-dragon",
+    "basilisk-lizard"
+  ],
+  "fx": [
+    "Numerous lizards are kept as pets, including bearded dragons, iguanas, anoles and leopard geckos."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Lizard",
+      "url": "https://en.wikipedia.org/wiki/Lizard",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "grp",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact (many drop their tail and regrow it) is confirmed."
+}

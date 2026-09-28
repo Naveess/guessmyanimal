@@ -1,0 +1,40 @@
+{
+  "sci": "Sciuridae",
+  "ov": "Rodents with slender bodies, long bushy tails and large eyes. The family includes tree squirrels, ground squirrels such as chipmunks and prairie dogs, and flying squirrels.",
+  "hb": [
+    "forest",
+    "towns",
+    "grassland"
+  ],
+  "len": "10–14 cm (pygmy squirrels) to 1.27 m (giant flying squirrel)",
+  "wt": "12–26 g (pygmy squirrels) to 8 kg or more (marmots)",
+  "rg": "Native to the Americas, Eurasia and Africa, and introduced by people to Australia.",
+  "df": "Mainly seeds and nuts, plus fruit, fungi and green plants. Many also eat insects, and some take eggs and small animals.",
+  "grp": [
+    "chipmunk",
+    "prairie-dog",
+    "marmot",
+    "flying-squirrel"
+  ],
+  "fx": [
+    "In temperate regions, early spring is the hardest time for squirrels, because the nuts they buried start to sprout."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Squirrel",
+      "url": "https://en.wikipedia.org/wiki/Squirrel",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "grp",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): Wikipedia confirms that buried nuts sprout, but not the \"forgets where it buried things… plants forests\" part of the animals.js fact. Suggested wording: \"Buries nuts to eat later, and the ones it misses can sprout into trees.\" (still loosely sourced) RESOLVED: fact rewritten to the sourced part (buried nuts sprout by spring)."
+}

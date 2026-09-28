@@ -1,0 +1,27 @@
+{
+  "sci": "Gallus gallus domesticus",
+  "ov": "The domesticated form of the red junglefowl of Southeast Asia, first tamed around 8,000 years ago. Kept for meat and eggs and as pets, there were more than 26.5 billion chickens in 2023.",
+  "hb": [
+    "farmland"
+  ],
+  "rg": "Farmed worldwide. Its wild ancestor, the red junglefowl, comes from Southeast Asia.",
+  "df": "An omnivore. Chickens scratch at the soil for seeds and insects, and even take animals as large as lizards.",
+  "fx": [
+    "A hen bred for laying can produce more than 300 eggs a year."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Chicken",
+      "url": "https://en.wikipedia.org/wiki/Chicken",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"More of them alive than any other bird, by miles\" is plausible, but the article gives only the 26.5 billion figure. Suggested wording: \"There are over 26 billion alive at any one time.\" ANSWER NOTE: fl is false; Wikipedia says domestic chickens can fly only short distances, so false is fair. RESOLVED: fact rewritten."
+}

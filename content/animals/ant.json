@@ -1,0 +1,42 @@
+{
+  "sci": "Formicidae",
+  "ov": "Social insects living in colonies of a queen, workers and males, with more than 13,800 species described of an estimated 22,000. They live on almost every landmass on Earth.",
+  "why": {
+    "et": "Many human cultures use ants in food, medicine and rituals."
+  },
+  "hb": [
+    "forest",
+    "rainforest",
+    "grassland",
+    "towns"
+  ],
+  "rg": "Almost every landmass except Antarctica and a few remote islands; most abundant in moist tropical ecosystems.",
+  "df": "Most species are omnivorous generalists, acting as herbivores, predators and scavengers; a few are specialists.",
+  "cf": [
+    {
+      "slug": "termite",
+      "tip": "Termites live in colonies too, but they’re related to cockroaches, not ants."
+    }
+  ],
+  "fx": [
+    "Ant queens can live up to 30 years, while workers live one to three.",
+    "Only queens and males have wings, and queens shed theirs after the mating flight."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Ant",
+      "url": "https://en.wikipedia.org/wiki/Ant",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"All the ants on Earth weigh roughly as much as all the people\" was E. O. Wilson’s 2009 estimate. Wikipedia says more careful 2022 estimates put the ants’ total well below that. Suggested wording: \"There may be one to ten quadrillion ants alive at any one time.\" ANSWER NOTE: animals.js fl is false, but queens and males have wings (the nuptial flight). Consider \"some\", as with the shark’s eg, or keep false (workers can’t fly). RESOLVED: fl changed to \"some\" (chip: \"Can fly: Only some\"; the second fx explains it, and game hints only say \"It can fly\" on fl === true). Fact rewritten."
+}

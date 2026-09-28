@@ -1,0 +1,41 @@
+{
+  "sci": "Psittaciformes",
+  "ov": "About 410 species of intelligent, mostly tropical birds with strong curved beaks and grasping feet. They include macaws, cockatoos and budgies, and a third of all species are threatened with extinction.",
+  "hb": [
+    "rainforest",
+    "forest",
+    "grassland"
+  ],
+  "len": "8 cm (buff-faced pygmy parrot) to 1 m (hyacinth macaw)",
+  "wt": "Under 10 g (pygmy parrot) upward",
+  "rg": "Mostly tropical and subtropical regions, with the greatest variety in South America and Australasia.",
+  "df": "Mostly seeds, nuts, fruit, buds and other plant material; a few species sometimes eat animals.",
+  "grp": [
+    "macaw",
+    "cockatoo",
+    "cockatiel",
+    "kakapo",
+    "kea"
+  ],
+  "fx": [
+    "Large parrots such as macaws and cockatoos can live 80 years, with records of over 100."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Parrot",
+      "url": "https://en.wikipedia.org/wiki/Parrot",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "grp",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Some outlive their owners, and get written into wills\" isn’t in the article. The 80-year lifespan is (see fx). Suggested wording: \"Big parrots can live 80 years, so some outlive their owners.\" REGION: animals.js r is South America, Africa and Australia; Wikipedia also lists Asian parrots. Consider adding Asia. RESOLVED: Asia added to r; fact rewritten."
+}

@@ -1,0 +1,33 @@
+{
+  "sci": "Spheniscidae",
+  "ov": "Flightless seabirds of the Southern Hemisphere with flippers for swimming. They spend about half their lives on land and half at sea; only the Galápagos penguin lives at the equator.",
+  "hb": [
+    "polar",
+    "coast",
+    "ocean"
+  ],
+  "ht": "30–33 cm (little penguin) to about 1.1 m (emperor)",
+  "wt": "1.2–1.3 kg (little penguin) to about 35 kg (emperor)",
+  "rg": "Almost entirely the Southern Hemisphere, from Antarctica to the Galápagos Islands at the equator.",
+  "df": "Krill, fish, squid and other sea life, caught with the bill and swallowed whole while swimming.",
+  "fx": [
+    "Some extinct penguins were as tall or as heavy as an adult human."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Penguin",
+      "url": "https://en.wikipedia.org/wiki/Penguin",
+      "for": [
+        "sci",
+        "ov",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Some species propose with a carefully chosen pebble\" is not in the Wikipedia Penguin article. Source it or replace it, e.g. \"Only one species, the Galápagos penguin, lives at the equator.\" REGION: animals.js r is Antarctic, Africa and South America; the little penguin of Australia and New Zealand isn’t covered, but the article I used doesn’t state its range, so no change is proposed. RESOLVED: fact rewritten."
+}

@@ -1,0 +1,39 @@
+{
+  "sci": "Accipitridae (in part)",
+  "ov": "Large birds of prey with huge hooked beaks and powerful talons. “Eagle” isn’t one natural group: it covers about 68 species big enough to hunt sizeable vertebrates.",
+  "hb": [
+    "mountain",
+    "forest",
+    "grassland",
+    "coast"
+  ],
+  "wt": "From 450 g (Great Nicobar serpent eagle) upward",
+  "rg": "Mostly Eurasia and Africa. Only 14 species live elsewhere: 2 in North America, 9 in Central and South America, 3 in Australia.",
+  "df": "Live prey such as mammals, birds, reptiles and fish, carried to a perch and torn apart with the beak.",
+  "cf": [
+    {
+      "slug": "hawk",
+      "tip": "Eagles and hawks belong to the same family. “Eagle” just marks the bigger species, large enough to hunt prey about 50 cm long or more."
+    }
+  ],
+  "fx": [
+    "A bald eagle once flew carrying a 6.8 kg mule deer fawn, the heaviest verified load carried by any flying bird."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Eagle",
+      "url": "https://en.wikipedia.org/wiki/Eagle",
+      "for": [
+        "sci",
+        "ov",
+        "wt",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. No eagle species pages, so no grp. ANSWER CHECK (fact): the animals.js fact \"Spots a rabbit from about two miles up\" is not in the article, which says eagle eyesight is about twice as sharp as a human’s. Suggested wording: \"Its eyesight is about twice as sharp as a human’s.\" No why.dg: nothing in the source covers danger to people. RESOLVED: fact rewritten."
+}

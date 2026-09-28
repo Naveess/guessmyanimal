@@ -1,0 +1,42 @@
+{
+  "sci": "Folivora (Bradypus and Choloepus)",
+  "ov": "Slow-moving tree mammals of Central and South American rainforests, named for their very low metabolism. There are seven species: three-toed and two-toed sloths.",
+  "hb": [
+    "rainforest"
+  ],
+  "wt": "3.5–5.2 kg (three-toed); 4–8 kg (two-toed)",
+  "rg": "Tropical rainforests of Central and South America.",
+  "df": "Leaves, a low-energy diet that their slowness helps them live on.",
+  "fx": [
+    "Sloths climb down to the ground about once every eight days to defecate."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Sloth",
+      "url": "https://en.wikipedia.org/wiki/Sloth",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Bradypus variegatus",
+      "url": "https://animaldiversity.org/accounts/Bradypus_variegatus/",
+      "for": [
+        "wt"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Choloepus didactylus",
+      "url": "https://animaldiversity.org/accounts/Choloepus_didactylus/",
+      "for": [
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (seven species). The existing fact (green algae in the fur) is confirmed. sw:true is confirmed: sloths are almost helpless on the ground but can swim."
+}

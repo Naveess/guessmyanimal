@@ -1,0 +1,50 @@
+{
+  "sci": "Mus musculus (house mouse)",
+  "ov": "Small rodents best known through the house mouse, which lives alongside people almost everywhere. It was domesticated as the pet “fancy mouse” and as the laboratory mouse, one of biology’s most important model animals.",
+  "why": {
+    "ac": "Mostly crepuscular or nocturnal; mice avoid bright light."
+  },
+  "hb": [
+    "towns",
+    "farmland",
+    "grassland"
+  ],
+  "len": "6.5–9.5 cm, not counting the tail",
+  "wt": "12–30 g",
+  "rg": "Worldwide alongside people. The house mouse’s subspecies come from southern Asia and western Europe.",
+  "cf": [
+    {
+      "slug": "rat",
+      "tip": "Mice and rats are told apart mainly by size: “rat” is used for the bigger kinds, “mouse” for the smaller."
+    }
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: House mouse",
+      "url": "https://en.wikipedia.org/wiki/House_mouse",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Mus musculus",
+      "url": "https://animaldiversity.org/accounts/Mus_musculus/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    },
+    {
+      "title": "Wikipedia: Mouse",
+      "url": "https://en.wikipedia.org/wiki/Mouse",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Treated as the house mouse. The existing fact (ultrasonic songs) is confirmed: males court females with 30–110 kHz calls compared to bird song."
+}

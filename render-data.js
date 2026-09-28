@@ -107,7 +107,9 @@
       a.so === 'Solitary' ? ['group', null, 'Lives alone'] : ['group', 'Lives in', a.so.toLowerCase()],
       ['clock', 'Lives for', a.lf],
     ];
-    if (a.fl) behaviour.push(['wing', null, 'Can fly']);
+    // fl is 'some' where only some individuals fly (ant queens and males).
+    if (a.fl === 'some') behaviour.push(['wing', 'Can fly', 'Only some']);
+    else if (a.fl) behaviour.push(['wing', null, 'Can fly']);
     // sw is 'debated' where sources genuinely disagree (the hippo).
     if (a.sw === 'debated') behaviour.push(['wave', 'Swims', 'Debatable']);
     else if (a.sw) behaviour.push(['wave', null, 'Can swim']);

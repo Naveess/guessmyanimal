@@ -241,7 +241,7 @@
     tier1.push(regionHint(a.r[0]), cap(a.sz) + ' in size.', legsHint(a.lg), coveringHint(a.cv));
 
     const tier2 = [DIET_HINT[a.d], ACTIVE_HINT[a.ac], SOCIAL_HINT[a.so]].filter(Boolean);
-    if (a.fl) tier2.push('It can fly.');
+    if (a.fl === true) tier2.push('It can fly.'); // not the ant's 'some'
     if (a.sw === true) tier2.push('It can swim.'); // not the hippo's 'debated'
     if (a.eg === true) tier2.push('It lays eggs.'); // not the shark's 'some'
 

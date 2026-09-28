@@ -1,0 +1,30 @@
+{
+  "sci": "Octopoda",
+  "ov": "Eight-armed molluscs, about 300 species, with three hearts and copper-based blood. Over 500 million neurons, about as many as a dog, and two-thirds of them are in the arms.",
+  "why": {
+    "dg": "All octopuses are venomous, but only the blue-ringed octopuses are known to be deadly to people."
+  },
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "df": "A predator of crabs and other crustaceans, clams, snails, fish and other cephalopods, taken back to its den to eat.",
+  "fx": [
+    "Octopuses live only up to about four years, and some species’ life cycles finish in under a year."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Octopus",
+      "url": "https://en.wikipedia.org/wiki/Octopus",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact (three hearts, blue blood, two-thirds of neurons in the arms) is confirmed: the blood uses copper-rich haemocyanin."
+}

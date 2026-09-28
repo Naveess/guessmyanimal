@@ -1,0 +1,37 @@
+{
+  "sci": "Lutrinae",
+  "ov": "Semiaquatic members of the weasel family, with long slim bodies, webbed feet and very dense fur that keeps them warm and buoyant. There are 14 species, living in fresh water and at sea.",
+  "hb": [
+    "freshwater",
+    "coast",
+    "wetland"
+  ],
+  "len": "0.6–1.8 m",
+  "wt": "1–45 kg",
+  "rg": "Rivers, lakes and coasts across much of the world.",
+  "df": "Mainly fish, plus frogs, birds or shellfish, depending on the species.",
+  "grp": [
+    "sea-otter"
+  ],
+  "fx": [
+    "Otters are playful animals, known for sliding into water."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Otter",
+      "url": "https://en.wikipedia.org/wiki/Otter",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "grp",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Holds hands while sleeping\" is about sea otters, and isn’t in the Otter article. Suggest moving it to the sea-otter entry (with a source) and giving Otter e.g. \"Its fur is so dense it keeps it warm and buoyant in water.\" The size range spans the Asian small-clawed otter to the giant and sea otters. RESOLVED: fact replaced; the sea otter page already carries the hand-holding fact."
+}
