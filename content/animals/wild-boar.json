@@ -1,0 +1,45 @@
+{
+  "sci": "Sus scrofa",
+  "ov": "The wild pig of Eurasia and North Africa, now one of the widest-ranging mammals in the world after introductions to the Americas and Oceania. Females and young live in family groups.",
+  "hb": [
+    "forest",
+    "farmland",
+    "wetland",
+    "grassland"
+  ],
+  "len": "153–240 cm",
+  "wt": "66–272 kg",
+  "rg": "Native to much of Europe, Asia and North Africa; introduced to the Americas and Oceania, where it is often invasive.",
+  "cf": [
+    {
+      "slug": "pig",
+      "tip": "The wild boar is the ancestor of most domestic pig breeds."
+    }
+  ],
+  "fx": [
+    "It probably originated in Southeast Asia and spread across the Old World."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Wild boar",
+      "url": "https://en.wikipedia.org/wiki/Wild_boar",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Sus scrofa",
+      "url": "https://animaldiversity.org/accounts/Sus_scrofa/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Every domestic pig alive descends from this animal\" is stronger than the source: \"the ancestor of most domestic pig breeds\". Suggested wording: \"The ancestor of most domestic pig breeds.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

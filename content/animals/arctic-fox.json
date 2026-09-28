@@ -1,0 +1,46 @@
+{
+  "sci": "Vulpes lagopus",
+  "ov": "A small fox of the Arctic tundra with thick fur and a big, fluffy tail. The common form is brown in summer and turns white in winter to blend in with the snow.",
+  "hb": [
+    "polar",
+    "coast",
+    "mountain"
+  ],
+  "len": "46–68 cm",
+  "wt": "About 5.2 kg (average)",
+  "rg": "Arctic regions right around the Northern Hemisphere.",
+  "df": "Lemmings, voles, ringed seal pups, fish and seabirds, plus carrion, berries, seaweed and insects.",
+  "cf": [
+    {
+      "slug": "red-fox",
+      "tip": "The Arctic fox is smaller than the red fox, with a rounder body and white winter coat."
+    }
+  ],
+  "fx": [
+    "In winter it slows its metabolism by about a third to save its fat reserves."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Arctic fox",
+      "url": "https://en.wikipedia.org/wiki/Arctic_fox",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Vulpes lagopus",
+      "url": "https://animaldiversity.org/accounts/Vulpes_lagopus/",
+      "for": [
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Turns brown to white for winter and survives minus 50 without shivering\" is half sourced: the colour change yes, the minus 50 figure isn’t in the article. Suggested wording: \"Turns from brown to white for winter, and slows its metabolism to save fat.\" No why.et: the source doesn’t say they’re eaten. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

@@ -1,0 +1,37 @@
+{
+  "sci": "Gulo gulo",
+  "ov": "The largest land-dwelling member of the weasel family, a solitary, muscular carnivore of the far north. It has a reputation for ferocity and strength out of all proportion to its size.",
+  "hb": [
+    "forest",
+    "polar",
+    "mountain"
+  ],
+  "len": "65–105 cm",
+  "wt": "9–30 kg",
+  "rg": "Northern forests and tundra of the Northern Hemisphere: Canada, Alaska, the Nordic countries, Russia and Siberia.",
+  "fx": [
+    "Its pungent scent glands earned it the nicknames “skunk bear” and “nasty cat”."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Wolverine",
+      "url": "https://en.wikipedia.org/wiki/Wolverine",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Gulo gulo",
+      "url": "https://animaldiversity.org/accounts/Gulo_gulo/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"The size of a dog, but will drive a bear off a carcass\" isn’t in the article, which says bears can kill adult wolverines. It does say it can \"kill prey many times larger than itself\". Suggested wording: \"Can kill prey many times larger than itself.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

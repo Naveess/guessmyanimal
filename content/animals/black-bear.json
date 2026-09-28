@@ -1,0 +1,44 @@
+{
+  "sci": "Ursus americanus",
+  "ov": "The smallest and most widespread bear in North America, mostly living in forests. There are about twice as many as all other bear species combined.",
+  "hb": [
+    "forest",
+    "mountain",
+    "wetland"
+  ],
+  "wt": "39–409 kg",
+  "rg": "North America.",
+  "df": "An omnivore whose diet changes a lot with the season and place.",
+  "cf": [
+    {
+      "slug": "grizzly-bear",
+      "tip": "The black bear is smaller than the grizzly, and one of the most tree-loving bears."
+    }
+  ],
+  "fx": [
+    "Black bears are excellent swimmers, and swim for pleasure as well as to catch fish."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: American black bear",
+      "url": "https://en.wikipedia.org/wiki/American_black_bear",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Ursus americanus",
+      "url": "https://animaldiversity.org/accounts/Ursus_americanus/",
+      "for": [
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Climbs trees better than any other bear, and cubs are sent up at the first sign of trouble\" overstates the source. It says black bears are among the most arboreal bears, alongside the Asian black bear and the sun bear, and says nothing about cubs. Suggested wording: \"One of the most tree-loving bears: it climbs to feed, escape danger and even hibernate.\" No why.dg or why.et: the source doesn’t cover these. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

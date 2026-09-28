@@ -1,0 +1,40 @@
+{
+  "sci": "Okapia johnstoni",
+  "ov": "A forest animal of the Democratic Republic of the Congo, with zebra-like stripes on its legs but a close relative of the giraffe. The okapi and giraffe are the only living members of their family.",
+  "hb": [
+    "rainforest"
+  ],
+  "ht": "About 1.5 m at the shoulder",
+  "wt": "200–350 kg",
+  "rg": "North-eastern Democratic Republic of the Congo.",
+  "cf": [
+    {
+      "slug": "giraffe",
+      "tip": "The okapi is the giraffe’s only living relative."
+    },
+    {
+      "slug": "zebra",
+      "tip": "Despite the striped legs, the okapi isn’t related to zebras."
+    }
+  ],
+  "fx": [
+    "Males have short, horn-like bumps on the head, like a giraffe’s."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Okapi",
+      "url": "https://en.wikipedia.org/wiki/Okapi",
+      "for": [
+        "sci",
+        "ov",
+        "ht",
+        "wt",
+        "rg",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "The existing fact is confirmed: the species was formally recognised in 1901."
+}

@@ -1,0 +1,38 @@
+{
+  "sci": "Gazella, Eudorcas and Nanger",
+  "ov": "Small, fast antelopes, mostly fawn-coloured, living in herds in the deserts, grasslands and savannas of Africa and in south-west and central Asia and India.",
+  "hb": [
+    "grassland",
+    "desert",
+    "scrub"
+  ],
+  "ht": "60–110 cm at the shoulder",
+  "rg": "Africa, south-west and central Asia, and the Indian subcontinent.",
+  "df": "Fine, easily digested plants and leaves.",
+  "cf": [
+    {
+      "slug": "antelope",
+      "tip": "Gazelles are one group of antelopes."
+    }
+  ],
+  "fx": [
+    "Some gazelles can sprint at 100 km/h or hold 50 km/h."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Gazelle",
+      "url": "https://en.wikipedia.org/wiki/Gazelle",
+      "for": [
+        "sci",
+        "ov",
+        "ht",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact is half confirmed: Thomson’s gazelles stot (jump high) when threatened, but the article doesn’t say why. Suggested wording: \"Leaps high on stiff legs when a predator is near.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

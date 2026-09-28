@@ -1,0 +1,43 @@
+{
+  "sci": "Monodon monoceros",
+  "ov": "A toothed whale of the Arctic, closely related to the beluga. Males have a spiralled tusk 1.5–3 m long, an overgrown left canine tooth.",
+  "hb": [
+    "polar",
+    "ocean"
+  ],
+  "len": "4–5 m",
+  "wt": "900–1,600 kg",
+  "rg": "Arctic waters.",
+  "cf": [
+    {
+      "slug": "beluga",
+      "tip": "Narwhals and belugas are close relatives, similarly built and known to interbreed; only the narwhal has a tusk."
+    }
+  ],
+  "fx": [
+    "Narwhals spend long periods at great depths."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Narwhal",
+      "url": "https://en.wikipedia.org/wiki/Narwhal",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Monodon monoceros",
+      "url": "https://animaldiversity.org/accounts/Monodon_monoceros/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "The existing fact is mostly confirmed: the tusk is the left tooth with \"millions of nerve endings\". The article doesn’t say ten million. Suggested wording: \"The tusk is an overgrown left tooth, packed with millions of nerve endings.\" No why.et: the source doesn’t mention it being eaten. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

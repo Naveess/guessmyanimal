@@ -1,0 +1,42 @@
+{
+  "sci": "Herpestidae",
+  "ov": "Small carnivores of Africa, Asia and southern Europe, 34 species in two subfamilies. A large introduced population lives in Hawaii.",
+  "hb": [
+    "grassland",
+    "scrub",
+    "forest"
+  ],
+  "rg": "Africa, Asia and southern Europe; introduced to Hawaii.",
+  "df": "Mainly insects, rodents, reptiles and birds.",
+  "cf": [
+    {
+      "slug": "meerkat",
+      "tip": "The meerkat is a small mongoose from southern Africa."
+    }
+  ],
+  "fx": [
+    "Its name comes from Indian languages, altered to end in “-goose” by folk etymology."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mongoose",
+      "url": "https://en.wikipedia.org/wiki/Mongoose",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Meerkat",
+      "url": "https://en.wikipedia.org/wiki/Meerkat",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact is half confirmed: mongooses have mutated nerve receptors that stop snake venom binding, but \"fast enough to fight one and win\" isn’t in the article. Suggested wording: \"Its nerve receptors are mutated so that cobra venom can’t bind to them.\" REGION: the source adds southern Europe. Consider adding Europe. RESOLVED (owner: approve all): Europe added to r; fact rewritten as suggested."
+}

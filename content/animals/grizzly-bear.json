@@ -1,0 +1,45 @@
+{
+  "sci": "Ursus arctos horribilis",
+  "ov": "The North American brown bear, a population or subspecies of the brown bear. Some brown bears elsewhere, such as the Kodiak and Kamchatka bears, are sometimes also called grizzlies.",
+  "hb": [
+    "forest",
+    "mountain",
+    "grassland"
+  ],
+  "rg": "North America.",
+  "cf": [
+    {
+      "slug": "brown-bear",
+      "tip": "A grizzly is a brown bear: the name is used for the North American population."
+    },
+    {
+      "slug": "black-bear",
+      "tip": "The black bear is smaller than the grizzly and a better tree-climber."
+    }
+  ],
+  "fx": [
+    "“Grizzly” probably means grizzled: its fur has grey-tipped hairs."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Grizzly bear",
+      "url": "https://en.wikipedia.org/wiki/Grizzly_bear",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: American black bear",
+      "url": "https://en.wikipedia.org/wiki/American_black_bear",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Loses a third of its body weight over winter without eating or drinking\" isn’t in the Grizzly bear or Brown bear articles. Suggested wording: \"Its name probably means grizzled, from the grey-tipped hairs in its coat.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

@@ -1,0 +1,50 @@
+{
+  "sci": "Tamiina",
+  "ov": "Small, striped burrowing squirrels of North America, plus the Siberian chipmunk of Asia. They carry food home in their cheek pouches and store it for winter.",
+  "why": {
+    "h": "Many chipmunks stay in their burrows through winter, feeding on a larder of stored food."
+  },
+  "hb": [
+    "forest",
+    "towns",
+    "scrub"
+  ],
+  "len": "25.5–26.6 cm (eastern chipmunk)",
+  "wt": "66–115 g (eastern chipmunk)",
+  "rg": "North America; the Siberian chipmunk in Asia.",
+  "df": "Seeds, nuts, fruit and buds, plus fungi, insects, worms, eggs and small frogs.",
+  "cf": [
+    {
+      "slug": "squirrel",
+      "tip": "Chipmunks are small, striped, ground-living squirrels."
+    }
+  ],
+  "fx": [
+    "Its seed-storing habit helps spread seedlings and fungi through forests."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Chipmunk",
+      "url": "https://en.wikipedia.org/wiki/Chipmunk",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Tamias striatus",
+      "url": "https://animaldiversity.org/accounts/Tamias_striatus/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Its cheek pouches stretch to three times the size of its head\" gives a size the article doesn’t. Suggested wording: \"Carries food home in its cheek pouches and stores it for winter.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}
