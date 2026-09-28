@@ -1,8 +1,9 @@
 (function () {
   'use strict';
 
-  // The corner menu, standalone for the static pages (about/browse/privacy)
-  // that don't load app.js. Mystery Animal and Report a problem have no
+  // The menu, theme and sound wiring for the standalone pages
+  // (about/browse/privacy/streamer) that don't load app.js. The bar's
+  // Search lives in navsearch.js, shared with index.html. Mystery Animal and Report a problem have no
   // dialog to open here, so those items are plain links back to
   // index.html with a query param app.js's routeFromURL() reads on load
   // (?mystery=1 already existed for sharing; ?report=1 was added
@@ -62,9 +63,9 @@
     updateSoundToggle();
   }
 
-  // Marks whichever menu item links to this same page - by basename, since
-  // hrefs are a mix of plain pages (about.html) and index.html query links
-  // (./?mystery=1) that should never match here. aria-current does the
+  // Marks whichever menu item links to this same page - by last path
+  // segment, since hrefs are a mix of plain pages (/about) and index.html
+  // query links (/?mystery=1) that should never match here. aria-current does the
   // announcing (a screen reader gets "current page" for free); the CSS
   // hook is the same attribute, not a class only sighted users would see.
   const herePage = location.pathname.split('/').pop() || 'index.html';
@@ -77,7 +78,10 @@
     function setMenu(open) {
       menuPanel.hidden = !open;
       menuBtn.setAttribute('aria-expanded', String(open));
+      // One panel at a time - see navsearch.js for the other half.
+      if (open) document.dispatchEvent(new CustomEvent('gma:menu-open'));
     }
+    document.addEventListener('gma:search-open', () => setMenu(false));
     menuBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       setMenu(menuPanel.hidden);
@@ -87,102 +91,6 @@
     });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !menuPanel.hidden) { setMenu(false); menuBtn.focus(); }
-    });
-  }
-
-  // -- Nav search --------------------------------------------------------
-  // The standalone pages have no search box of their own; this is a way
-  // to reach any animal without a trip back to the home page first.
-  // Reuses SearchCore (search-core.js) rather than the home page's own
-  // copy of the same matching, so this file doesn't need app.js at all.
-  const navSearch = el('navSearch'), navToggle = el('navSearchToggle'),
-        navRow = el('navSearchRow'), navClose = el('navSearchClose'), navInput = el('navSearchInput'),
-        navResults = el('navSearchResults'), navNoResult = el('navSearchNoResult');
-  if (navSearch && navToggle && navRow && navClose && navInput && navResults && navNoResult && window.SearchCore) {
-    let results = [];
-    let cursor = -1;
-
-    // The toggle button and the field swap places in the same slot in
-    // the nav bar - never both visible at once - rather than the field
-    // dropping into a second box underneath the nav.
-    function setSearchOpen(open) {
-      navToggle.hidden = open;
-      navRow.hidden = !open;
-      navToggle.setAttribute('aria-expanded', String(open));
-      if (open) { navInput.focus(); navInput.select(); }
-      else { results = []; cursor = -1; renderResults(); navInput.value = ''; navNoResult.hidden = true; }
-    }
-
-    function renderResults() {
-      navResults.innerHTML = '';
-      if (!results.length) {
-        navResults.hidden = true;
-        navInput.setAttribute('aria-expanded', 'false');
-        return;
-      }
-      const typed = SearchCore.norm(navInput.value);
-      results.forEach((entry, i) => {
-        const li = document.createElement('li');
-        li.setAttribute('role', 'option');
-        li.setAttribute('aria-selected', String(i === cursor));
-        const em = document.createElement('span');
-        em.className = 's-emoji';
-        em.textContent = entry.a.e || '🐾';
-        const nm = document.createElement('span');
-        nm.textContent = entry.a.n;
-        li.append(em, nm);
-        const alias = (entry.a.a || []).find((x) => SearchCore.norm(x).startsWith(typed));
-        if (alias && !SearchCore.norm(entry.a.n).startsWith(typed)) {
-          const al = document.createElement('span');
-          al.className = 's-alias';
-          al.textContent = '· ' + alias;
-          li.appendChild(al);
-        }
-        li.addEventListener('mousedown', (e) => { e.preventDefault(); pick(entry); });
-        navResults.appendChild(li);
-      });
-      navResults.hidden = false;
-      navInput.setAttribute('aria-expanded', 'true');
-    }
-
-    function pick(entry) {
-      location.href = './?a=' + entry.slug;
-    }
-
-    navToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setSearchOpen(true);
-    });
-
-    navClose.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setSearchOpen(false);
-      navToggle.focus();
-    });
-
-    navInput.addEventListener('input', () => {
-      results = SearchCore.search(navInput.value, 8);
-      cursor = results.length ? 0 : -1;
-      renderResults();
-      if (navInput.value.trim() && !results.length) {
-        navNoResult.hidden = false;
-        navNoResult.textContent = 'No match for "' + navInput.value.trim() +
-          '". It might not be in here yet — there are ' + SearchCore.count + ' so far.';
-      } else {
-        navNoResult.hidden = true;
-      }
-    });
-
-    navInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') { e.stopPropagation(); setSearchOpen(false); navToggle.focus(); return; }
-      if (!results.length) return;
-      if (e.key === 'ArrowDown') { e.preventDefault(); cursor = (cursor + 1) % results.length; renderResults(); }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); cursor = (cursor - 1 + results.length) % results.length; renderResults(); }
-      else if (e.key === 'Enter') { e.preventDefault(); pick(results[Math.max(cursor, 0)]); }
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!navSearch.contains(e.target)) setSearchOpen(false);
     });
   }
 })();

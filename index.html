@@ -9,21 +9,23 @@
 
 <meta property="og:title" content="Guess My Animal — the animal cheat sheet">
 <meta property="og:description" content="Type an animal, get the answers. Carnivore? Nocturnal? Dangerous? Everything you keep googling mid-game, on one screen.">
+<link rel="canonical" href="https://guessmyanimal.com/">
+<meta property="og:url" content="https://guessmyanimal.com/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="og.png">
+<meta property="og:image" content="https://guessmyanimal.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
 <link rel="preconnect" href="https://en.wikipedia.org" crossorigin>
 <!-- Self-hosted variable face: one 33 KB file for the whole weight
      range, and no round trip to a font CDN before the first paint. -->
-<link rel="preload" href="fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -34,7 +36,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="style.css?v=20260916-5">
+<link rel="stylesheet" href="/style.css?v=20260928-1">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -67,93 +69,67 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <body class="view-home">
 
 <!-- ============================================================
-     MENU. Fixed to the corner so it is in the same place on the
-     splash and on an animal, rather than moving between views.
+     SITE BAR. Row 1 on every page: back, the nav (with Search),
+     sound + theme. Generated from tools/chrome.js - edit it there,
+     then npm run seo. Each view below opens with its own centred
+     brand row (row 2).
      ============================================================ -->
-<nav class="menu" id="menu">
-  <button class="menu-btn" id="menuBtn" type="button"
-          aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M4 7h16M4 12h16M4 17h16"/>
-    </svg>
-  </button>
-  <div class="menu-panel" id="menuPanel" hidden>
-    <a class="menu-item" href="about.html"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
-    <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
-    <button class="menu-item" type="button" data-mystery>Mystery Animal</button>
-    <button class="menu-item" type="button" id="partyOpen"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></button>
-    <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
-    <!-- menu-desktop-hide: these three plus Appearance move to a footer
-         row / the sliding theme toggle by the corner menu once there's
-         room for them to just be visible instead of tucked in a
-         dropdown - see .desktop-foot and .theme-toggle in style.css.
-         Mobile is untouched; the class only does anything from 860px up. -->
-    <button class="menu-item menu-desktop-hide" type="button" data-report>Report a problem</button>
-    <a class="menu-item menu-desktop-hide" href="privacy.html">Privacy</a>
-    <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal"
-       target="_blank" rel="noopener">Source on GitHub</a>
-    <hr class="menu-sep menu-desktop-hide">
-    <p class="theme-label menu-desktop-hide" id="themeLabel">Appearance</p>
-    <div class="theme menu-desktop-hide" role="group" aria-labelledby="themeLabel">
-      <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
-      <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
-      <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
-    </div>
+<!-- chrome:site-bar-index -->
+<header class="site-bar" id="siteBar">
+  <div class="sb-start">
+    <a class="play-link" id="playLink" href="/about">How it works</a>
+    <button class="back" id="back" type="button" aria-label="Back to search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
+    <button class="back" id="mysteryBack" type="button" aria-label="Back to search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
+    <button class="back" id="partyLeave" type="button" aria-label="Leave the party"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
   </div>
-</nav>
-
-<!-- Mirrors the corner menu on the opposite side, but only on the
-     splash - the animal view's top bar has no room for it, and "About
-     the game" already covers this once someone's looked something up.
-     Named "How it works" rather than anything with "game" or "play" in
-     it - this links to a static explainer, not an interactive round, and
-     sitting a few inches from the real Play Mystery Animal button (which
-     *does* start something), a same-flavoured label here reads as a
-     second play button and sends people to the wrong place. -->
-<a class="play-link" id="playLink" href="about.html">How it works</a>
-
-<!-- Its own icon button rather than a menu item, since muting is a
-     one-tap decision made mid-sound (the paw stamp, a wrong-guess tone)
-     rather than a settings change someone digs into a dropdown for.
-     Fixed next to the corner menu on mobile, and in the menu button's
-     own vacated spot once the desktop nav bar replaces it - see
-     .sound-toggle in style.css. data-sfx="off" because turning sound
-     *off* has to be silent, so it plays its own click instead of taking
-     the delegated one. -->
-<button class="sound-toggle" id="soundToggle" type="button"
-        aria-pressed="true" aria-label="Sound on" data-sfx="off">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/>
-    <path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/>
-    <path class="sw-mute" d="M15.5 9.5l5 5m0-5l-5 5"/>
-  </svg>
-</button>
-
-<!-- Desktop-only sliding theme switch, next to the corner menu button -
-     one shared instance (not one per view) since it's fixed-position
-     and persists across the home/animal/mystery views the same way the
-     menu itself does. Reuses [data-theme-set] - app.js's own
-     applyTheme() syncs aria-pressed across every matching element on
-     the page already, this group included. -->
-<div class="theme-toggle" role="group" aria-label="Appearance">
-  <button type="button" class="theme-toggle-opt" data-theme-set="light" aria-pressed="false" aria-label="Light">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="4.5"/>
-      <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
-    </svg>
-  </button>
-  <button type="button" class="theme-toggle-opt" data-theme-set="dark" aria-pressed="false" aria-label="Dark">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>
-    </svg>
-  </button>
-  <button type="button" class="theme-toggle-opt" data-theme-set="system" aria-pressed="true" aria-label="System">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <rect x="3" y="4" width="18" height="13" rx="2"/>
-      <path d="M8 21h8M12 17v4"/>
-    </svg>
-  </button>
-</div>
+  <nav class="menu" id="menu" aria-label="Main">
+    <div class="menu-panel" id="menuPanel" hidden>
+      <a class="menu-item" href="/about"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
+      <a class="menu-item" href="/browse"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
+      <button class="menu-item" type="button" data-mystery>Mystery Animal</button>
+      <button class="menu-item" type="button" id="partyOpen"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></button>
+      <a class="menu-item" href="/streamer"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+      <button class="menu-item menu-desktop-hide" type="button" data-report>Report a problem</button>
+      <a class="menu-item menu-desktop-hide" href="/privacy">Privacy</a>
+      <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
+      <hr class="menu-sep menu-desktop-hide">
+      <p class="theme-label menu-desktop-hide" id="themeLabel">Appearance</p>
+      <div class="theme menu-desktop-hide" role="group" aria-labelledby="themeLabel">
+        <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
+        <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
+        <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+    <div class="navsearch" id="navSearch">
+      <button class="navsearch-toggle" id="navSearchToggle" type="button"
+              aria-expanded="false" aria-controls="navSearchPop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span class="navsearch-label">Search</span></button>
+      <div class="navsearch-pop" id="navSearchPop" role="search" hidden>
+        <div class="searchrow">
+          <span class="mag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></span>
+          <input class="search-input" id="navSearchInput" type="search" placeholder="Search an animal…"
+                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="go"
+                 aria-label="Search animals" role="combobox" aria-expanded="false"
+                 aria-autocomplete="list" aria-controls="navSearchResults">
+          <button class="navsearch-close" id="navSearchClose" type="button" aria-label="Close search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        </div>
+        <ul class="suggest" id="navSearchResults" role="listbox" aria-label="Matching animals" hidden></ul>
+        <p class="noresult" id="navSearchNoResult" role="status" hidden></p>
+      </div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button"
+            aria-label="Menu" aria-expanded="false" aria-controls="menuPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </nav>
+  <div class="sb-end">
+    <div class="theme-toggle" role="group" aria-label="Appearance">
+      <button type="button" class="theme-toggle-opt" data-theme-set="light" aria-pressed="false" aria-label="Light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></button>
+      <button type="button" class="theme-toggle-opt" data-theme-set="dark" aria-pressed="false" aria-label="Dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="theme-toggle-opt" data-theme-set="system" aria-pressed="true" aria-label="System"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
+    </div>
+    <button class="sound-toggle" id="soundToggle" type="button"
+            aria-pressed="true" aria-label="Sound on" data-sfx="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/><path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/><path class="sw-mute" d="M15.5 9.5l5 5m0-5l-5 5"/></svg></button>
+  </div>
+</header>
+<!-- /chrome:site-bar-index -->
 
 <!-- ============================================================
      HOME. One flat field of colour, the mark, and the search box.
@@ -211,7 +187,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
               <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
             </svg>
           </span>
-          <input id="q" type="search" autocomplete="off" autocorrect="off" autocapitalize="off"
+          <input class="search-input" id="q" type="search" autocomplete="off" autocorrect="off" autocapitalize="off"
                  spellcheck="false" enterkeyhint="search"
                  placeholder="Type an animal…" aria-label="Search for an animal"
                  role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
@@ -257,12 +233,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   </div>
   <p class="home-foot" id="count"></p>
-  <!-- Desktop-only: moved out of the corner menu, see style.css. -->
-  <div class="desktop-foot">
-    <button type="button" data-report>Report a problem</button>
-    <a href="privacy.html">Privacy</a>
-    <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
-  </div>
 </section>
 
 <!-- ============================================================
@@ -271,17 +241,24 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      ============================================================ -->
 <div class="animalview" id="animalview" hidden>
 
-  <header class="topbar">
-    <button class="back" id="back" type="button" aria-label="Back to search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 5 8 12l7 7"/>
-      </svg>
-    </button>
+  <!-- Row 2: the brand, then the search unit, which app.js docks
+       here from the splash (see dock()) so the next lookup is always
+       one tap away without squeezing into the bar beside the back button. -->
+  <div class="page-head">
+    <!-- chrome:brand -->
+<a class="brand" href="/"><svg class="brand-paw" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="41" rx="14.5" ry="12"/><ellipse cx="14.5" cy="27" rx="6.4" ry="8"/><ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="49.5" cy="27" rx="6.4" ry="8"/></svg>Guess My Animal</a>
+<!-- /chrome:brand -->
     <div class="dock dock-top" id="dockTop"></div>
-  </header>
+  </div>
 
   <main class="feed">
 
+    <!-- The photo and the facts beside it, as one box: on desktop the
+         photo is sticky, and a sticky element travels as far as its
+         container lets it - inside .feed it rode down over the full-width
+         bands below. Inside this it stops where the facts end. On phones
+         it is display: contents, so the flat ordering below is untouched. -->
+    <div class="feed-top">
     <article class="pcard" id="hero">
       <!-- Same picture twice: blurred to fill the card, then whole and
            uncropped on top. Wikipedia photos are mostly landscape, and a
@@ -300,7 +277,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <div class="pcard-meta">
         <h1 class="pcard-name"><span id="name"></span> <span class="pcard-emoji" id="emoji" aria-hidden="true"></span></h1>
         <p class="pcard-sub" id="kicker"></p>
-        <p class="pcard-credit">Photo via Wikipedia · <button type="button" class="pcard-report" data-report>report an issue</button></p>
+        <!-- Author + licence from Wikimedia Commons (photo-credit.js) - the
+             attribution the photo's licence requires, not a courtesy. -->
+        <p class="pcard-credit"><span id="photoCredit"></span> · <button type="button" class="pcard-report" data-report>wrong photo?</button></p>
       </div>
     </article>
 
@@ -321,8 +300,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <div class="card"><div class="rows" id="answers" role="list"></div></div>
     </section>
 
-    <div class="shot" id="shot2"></div>
-
     <section class="ansec ansec-glance">
       <h2 class="label">At a glance</h2>
       <div class="glance" id="glance" role="list"></div>
@@ -332,8 +309,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <h2 class="label">Did you know</h2>
       <div class="factcard"><p id="fact"></p></div>
     </section>
-
-    <div class="shot" id="shot3"></div>
+    </div>
     </div>
 
     <!-- Every real link this page has to another animal - the only route
@@ -359,8 +335,8 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <p class="animal-play-sub">A photo, a few hints, one guess. Same 438 animals.</p>
       </div>
       <div class="animal-play-actions">
-        <a class="btn btn-solid" href="./?mystery=1">Mystery Animal</a>
-        <a class="btn" href="./?party=1">Party Mode</a>
+        <a class="btn btn-solid" href="/?mystery=1">Mystery Animal</a>
+        <a class="btn" href="/?party=1">Party Mode</a>
       </div>
     </section>
 
@@ -404,17 +380,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <!-- Reserved now so adding a unit later cannot shove the page around. -->
     <div class="adslot" id="adslot" aria-hidden="true"></div>
 
-    <footer class="foot">
-      <p>Built for a guessing game that got out of hand. Photos and summaries from
-        <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>.</p>
-      <p><a href="about.html">About the game</a></p>
-    </footer>
-    <!-- Desktop-only: moved out of the corner menu, see style.css. -->
-    <div class="desktop-foot">
-      <button type="button" data-report>Report a problem</button>
-      <a href="privacy.html">Privacy</a>
-      <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
-    </div>
     </div>
 
   </main>
@@ -426,14 +391,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      ============================================================ -->
 <div class="mysteryview" id="mysteryview" hidden>
 
-  <header class="topbar">
-    <button class="back" id="mysteryBack" type="button" aria-label="Back to search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 5 8 12l7 7"/>
-      </svg>
-    </button>
-    <p class="mystery-title">Mystery Animal</p>
-  </header>
+  <div class="page-head">
+    <!-- chrome:brand -->
+<a class="brand" href="/"><svg class="brand-paw" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="41" rx="14.5" ry="12"/><ellipse cx="14.5" cy="27" rx="6.4" ry="8"/><ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="49.5" cy="27" rx="6.4" ry="8"/></svg>Guess My Animal</a>
+<!-- /chrome:brand -->
+    <p class="page-title">Mystery Animal</p>
+  </div>
 
   <main class="feed">
 
@@ -629,13 +592,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     </div>
     </div>
 
-    <!-- Desktop-only: moved out of the corner menu, see style.css. -->
-    <div class="desktop-foot">
-      <button type="button" id="mysteryDesktopReport">Report a problem</button>
-      <a href="privacy.html">Privacy</a>
-      <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
-    </div>
-
   </main>
 </div>
 
@@ -648,14 +604,12 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      ============================================================ -->
 <div class="partyview" id="partyview" hidden>
 
-  <header class="topbar">
-    <button class="back" id="partyLeave" type="button" aria-label="Back to search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 5 8 12l7 7"/>
-      </svg>
-    </button>
-    <p class="mystery-title"><span id="partyTitleText">Party Mode</span> <span class="beta-tag">beta</span></p>
-  </header>
+  <div class="page-head">
+    <!-- chrome:brand -->
+<a class="brand" href="/"><svg class="brand-paw" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="41" rx="14.5" ry="12"/><ellipse cx="14.5" cy="27" rx="6.4" ry="8"/><ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="49.5" cy="27" rx="6.4" ry="8"/></svg>Guess My Animal</a>
+<!-- /chrome:brand -->
+    <p class="page-title"><span id="partyTitleText">Party Mode</span> <span class="beta-tag">beta</span></p>
+  </div>
 
   <!-- Mobile-only "quick glance" strip: your rank, your score, and how
        many are online, pinned just under the top bar once the round
@@ -686,7 +640,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <select id="partyCategory" class="party-select"></select>
       </label>
 
-      <p class="dlg-note dlg-note-tight">Streaming instead? <a href="streamer.html">Twitch stream mode</a> runs the
+      <p class="dlg-note dlg-note-tight">Streaming instead? <a href="/streamer">Twitch stream mode</a> runs the
         same game for your chat, with its own leaderboard.</p>
 
       <p class="party-msg" id="partySetupMsg" role="status"></p>
@@ -880,26 +834,48 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <!-- Before everything below: mystery.js/party.js/app.js all call sfx()
      through window.GMA_SFX, which this defines. -->
-<script src="sfx.js?v=20260912-1"></script>
-<script src="animals.js?v=20260907-1"></script>
-<script src="render-data.js?v=20260901-1"></script>
-<script src="related.js?v=20260908-1"></script>
-<script src="game-core.js?v=20260912-2"></script>
+<!-- One footer for every view (home, animal, Mystery, Party) - from
+     tools/chrome.js. -->
+<!-- chrome:site-footer-index -->
+<footer class="site-foot">
+  <nav class="sf-links" aria-label="Site">
+    <a href="/about">About</a>
+    <a href="/how-we-answer">How we answer</a>
+    <a href="/browse">All animals</a>
+    <a href="/contact">Contact</a>
+    <button type="button" id="footerReport">Report a problem</button>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
+  </nav>
+  <p class="sf-note">Made by Nav. Free to use, supported by ads (see <a href="/privacy">Privacy</a>).
+    Photos from Wikimedia Commons, credited on each animal's page.</p>
+</footer>
+<!-- /chrome:site-footer-index -->
+
+<script src="/sfx.js?v=20260912-1"></script>
+<script src="/animals.js?v=20260907-1"></script>
+<script src="/render-data.js?v=20260901-1"></script>
+<script src="/related.js?v=20260908-1"></script>
+<script src="/photo-credit.js?v=20260928-1"></script>
+<script src="/game-core.js?v=20260912-2"></script>
+<script src="/search-core.js?v=20260913-1"></script>
+<script src="/navsearch.js?v=20260928-1"></script>
 <!-- Third-party, vendored rather than loaded from a CDN: the site
      doesn't call out to services it doesn't need, and a QR code is not
      a reason to start. MIT licensed, no dependencies - see the header
      in the file itself. -->
-<script src="vendor/qrcode.js?v=1.4.4"></script>
+<script src="/vendor/qrcode.js?v=1.4.4"></script>
 <!-- Before app.js, same reason as mystery.js below: routeFromURL()
      checks window.openPartyPlayer on its very first call, so a direct
      or refreshed ?party=CODE link (which is what every QR code and
      join link is) lands on the player view rather than the home page. -->
-<script src="party.js?v=20260916-1"></script>
+<script src="/party.js?v=20260928-1"></script>
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="mystery.js?v=20260915-1"></script>
-<script src="app.js?v=20260916-1"></script>
+<script src="/mystery.js?v=20260928-1"></script>
+<script src="/app.js?v=20260928-1"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

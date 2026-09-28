@@ -974,7 +974,7 @@
     el('partyview').hidden = true;
     el('mysteryview').hidden = false;
     window.scrollTo(0, 0);
-    if (!(opts && opts.noPush) && window.GMA) window.GMA.push('?mystery=1');
+    if (!(opts && opts.noPush) && window.GMA) window.GMA.push('/?mystery=1');
     updateTabsUI();
     if (mode === 'daily') enterDaily(); else enterEndless();
   }
@@ -1032,10 +1032,8 @@
       wantKind: 'facts',
     });
   });
-  // The desktop footer's own Report link (see index.html, .desktop-foot)
-  // reuses this exact handler rather than duplicating the mystery-aware
-  // context above - simplest to just trigger the real button.
-  el('mysteryDesktopReport').addEventListener('click', () => el('mysteryReport').click());
+  // The site footer's Report button defers to #mysteryReport while this
+  // view is open, for the same spoiler-safe context - see app.js.
 
   el('mysteryTabDaily').addEventListener('click', () => switchMode('daily'));
   el('mysteryTabEndless').addEventListener('click', () => switchMode('endless'));

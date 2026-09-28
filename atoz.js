@@ -147,7 +147,7 @@
     }
 
     function pick(entry) {
-      location.href = '/?a=' + entry.slug;
+      location.href = '/animals/' + entry.slug;
     }
 
     input.addEventListener('input', function () {

@@ -14,7 +14,7 @@ import { TOKEN_URL, REVOKE_URL, USERS_URL, STATE_COOKIE, readCookie, clearStateC
 // Response headers can't repeat 'set-cookie' as one string, so this
 // builds a Headers object and appends each cookie as its own header.
 function toStreamer(query, request, extraCookie) {
-  const headers = new Headers({ location: new URL('/streamer.html' + query, request.url).toString() });
+  const headers = new Headers({ location: new URL('/streamer' + query, request.url).toString() });
   headers.append('set-cookie', clearStateCookie(request));
   if (extraCookie) headers.append('set-cookie', extraCookie);
   return new Response(null, { status: 302, headers });

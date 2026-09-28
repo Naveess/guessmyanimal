@@ -230,7 +230,7 @@
       const slug = slugify(b.n);
       const link = document.createElement('a');
       link.className = 'related-item';
-      link.href = '?a=' + slug;
+      link.href = '/animals/' + slug;
       const em = document.createElement('span');
       em.className = 'r-emoji';
       em.setAttribute('aria-hidden', 'true');
@@ -246,17 +246,18 @@
     }
   }
 
-  /* -- Wikipedia -----------------------------------------------------
-     Two calls. The summary gives the lead photo and a one-line blurb.
-     The media list gives the rest of the article's pictures in document
-     order, which matters: asking the images API for them instead returns
-     whatever is on the page in no order at all, and a Tiger comes back
-     with a jaguar in it. Document order keeps the animal at the top.
-     Both cached for the session, because during a game you flick back
-     and forth between the same few animals. */
+  /* -- Wikipedia + Commons -------------------------------------------
+     The summary gives the one-line blurb and names the article's lead
+     image; Commons then gives that image's author, licence and a sized
+     rendition (photo-credit.js), because the licence requires the credit
+     wherever the photo is shown. Only that one photo is used - the rest
+     of an article's pictures (the old media-list gallery) were unvetted,
+     and a Lion page once dealt a leopard. Both cached for the session,
+     since during a game you flick back and forth between the same few
+     animals. */
 
   const summaryCache = new Map();
-  const mediaCache = new Map();
+  const photoCache = new Map();
 
   function wikiTitle(a) { return a.w || a.n.replace(/ /g, '_'); }
 
@@ -270,73 +271,21 @@
     return p;
   }
 
-  // Range maps, IUCN status badges, anatomy diagrams, skeletons and
-  // fossils are all in these articles and none of them are a picture of
-  // the animal, which is the only thing anyone came here to look at.
-  const JUNK_FILE = /(status[_ ]iucn|distribution|range[_ ]map|[_ ]range[_.]|locator|skeleton|skull|fossil|cladogram|phylogen|diagram|schematic|life[-_ ]?cycle|anatomy|_sem[_.]|micrograph|stamp|coat[_ ]of[_ ]arms|logo|icon|\.svg)/i;
-  const JUNK_CAPTION = /^(a )?(artist'?s |life )?(diagram|map|distribution|range|skeleton|phylogen|cladogram|illustration|drawing|chart|restoration|reconstruction)/i;
-
-  function fileOf(url) {
-    const m = String(url || '').match(/\/([^/?]+?)(\?|$)/);
-    return m ? decodeURIComponent(m[1]).replace(/^\d+px-/, '').toLowerCase() : '';
-  }
-
-  // Highest resolution the API actually offers for an image. Never build a
-  // URL by hand: rewriting the thumbnail width to something Wikimedia has
-  // not generated comes back as an error page, which the browser then
-  // blocks outright and the picture silently never appears.
-  function bestSrc(item) {
-    const set = item.srcset || [];
-    const best = set[set.length - 1] || set[0];
-    return best && best.src ? best.src.replace(/^\/\//, 'https://') : null;
-  }
-
-  function loadMedia(a) {
+  // The licensed photo for an animal, or null (no Commons file, a
+  // non-free one, offline). Resolves to { src, width, height, credit... }.
+  function loadPhoto(a) {
     const title = wikiTitle(a);
-    if (mediaCache.has(title)) return mediaCache.get(title);
-    const p = fetch('https://en.wikipedia.org/api/rest_v1/page/media-list/' + encodeURIComponent(title))
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => {
-        if (!j || !j.items) return { lead: null, shots: [] };
-        const images = j.items.filter((i) => i.type === 'image' && i.showInGallery !== false);
-        const leadItem = images.find((i) => i.leadImage);
-        const shots = images
-          .filter((i) => !i.leadImage)
-          .filter((i) => !JUNK_FILE.test(i.title || ''))
-          .filter((i) => !(i.caption && JUNK_CAPTION.test(i.caption.text || '')))
-          .map((i) => {
-            const src = bestSrc(i);
-            return src ? { src, file: fileOf(src), caption: i.caption ? i.caption.text : '' } : null;
-          })
-          .filter(Boolean);
-        return { lead: leadItem ? bestSrc(leadItem) : null, shots };
-      })
-      .catch(() => ({ lead: null, shots: [] }));  // rate limited or offline: just no extras
-    mediaCache.set(title, p);
+    if (photoCache.has(title)) return photoCache.get(title);
+    const p = loadSummary(a).then((data) => {
+      const img = data && (data.originalimage || data.thumbnail);
+      const file = img && window.PhotoCredit && PhotoCredit.fileTitleFromUrl(img.source);
+      if (!file) return null;
+      return fetch(PhotoCredit.apiUrl(file))
+        .then((r) => (r.ok ? r.json() : null))
+        .then((j) => PhotoCredit.fromApi(j));
+    }).catch(() => null);
+    photoCache.set(title, p);
     return p;
-  }
-
-  function renderShot(slot, shot, name) {
-    slot.innerHTML = '';
-    if (!shot) return;
-    const fig = document.createElement('figure');
-    const img = document.createElement('img');
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    img.alt = name;
-    // If it fails, take the whole figure out rather than leaving a grey box.
-    img.onerror = () => { slot.innerHTML = ''; };
-    img.src = shot.src;
-    fig.appendChild(img);
-    if (shotWatcher) shotWatcher.observe(fig);
-    if (shot.caption) {
-      const cp = document.createElement('figcaption');
-      cp.textContent = shot.caption.length > 120
-        ? shot.caption.slice(0, 117).trim() + '…'
-        : shot.caption;
-      fig.appendChild(cp);
-    }
-    slot.appendChild(fig);
   }
 
   /* -- Motion --------------------------------------------------------
@@ -395,19 +344,6 @@
     play(document.querySelector('.factcard'), 'anim-rise', 420);
   }
 
-  /* The extra photos are the only thing that animates on scroll, and
-     they reuse the hero's arrival rather than a generic section fade -
-     a picture being dealt is the same idea as the card being dealt. */
-  const shotWatcher = ('IntersectionObserver' in window)
-    ? new IntersectionObserver((entries, obs) => {
-        for (const e of entries) {
-          if (!e.isIntersecting) continue;
-          play(e.target, 'anim-deal', 0);
-          obs.unobserve(e.target);
-        }
-      }, { rootMargin: '0px 0px -12% 0px' })
-    : null;
-
   /* -- Views ---------------------------------------------------------
      One search unit, moved between the hero and the top bar, so there is
      only ever one input and one set of handlers to keep in step. */
@@ -434,7 +370,7 @@
     el('noresult').hidden = true;
     renderQuickPicks();
     document.title = 'Guess My Animal — the animal cheat sheet';
-    if (!opts || !opts.noPush) push(location.pathname);
+    if (!opts || !opts.noPush) push('/');
     syncThemeColour();
     window.scrollTo(0, 0);
   }
@@ -468,63 +404,61 @@
     renderGlance(a);
     renderRelated(a);
 
-    // Reset the pictures before the requests, or the previous animal's
-    // photo sits there looking like this animal until the new one lands.
     const hero = el('hero');
-    hero.classList.remove('has-photo');
-    hero.classList.add('is-loading');
-    el('photoFallbackEmoji').textContent = a.e || '🐾';
-    el('photoFallbackNote').textContent = '';
-    el('photo').alt = '';
-    el('photo').src = BLANK;
-    el('photoBg').src = BLANK;
-    el('shot2').innerHTML = '';
-    el('shot3').innerHTML = '';
+    const photo = el('photo');
 
-    let heroFile = '';
+    // The blurb is Wikipedia's own words, so it says so - a link to the
+    // article it's quoted from, not an unattributed sentence.
+    el('blurb').textContent = '';
+    loadSummary(a).then((data) => {
+      if (current !== entry || !data || !data.extract) return;
+      const src = document.createElement('a');
+      src.className = 'blurb-src';
+      src.href = 'https://en.wikipedia.org/wiki/' + encodeURIComponent(wikiTitle(a));
+      src.target = '_blank';
+      src.rel = 'noopener';
+      src.textContent = 'Wikipedia';
+      el('blurb').append(firstSentence(data.extract) + ' ', '(', src, ')');
+    });
 
-    // The summary answers first and carries a small thumbnail, so the card
-    // fills straight away and the sharper lead image swaps in behind the
-    // scenes when the media list lands a moment later.
-    function setHero(src) {
-      if (!src) return;
-      heroFile = fileOf(src);
-      const img = el('photo');
-      img.onerror = () => { img.onerror = null; hero.classList.remove('has-photo'); };
-      img.alt = a.n;
-      img.src = src;
-      el('photoBg').src = src;
-      hero.classList.add('has-photo');
-      hero.classList.remove('is-loading');
+    // First load of a server-rendered page: the photo and its credit are
+    // already in the HTML (functions/_shared/animal-page.js, from
+    // tools/photos.json) - keep them rather than blanking the card and
+    // asking again. Consumed once; every later navigation looks up live.
+    if (photo.dataset.ssr === entry.slug) {
+      delete photo.dataset.ssr;
+    } else {
+      // Reset before the request, or the previous animal's photo sits
+      // there looking like this animal until the new one lands.
+      hero.classList.remove('has-photo');
+      hero.classList.add('is-loading');
+      el('photoFallbackEmoji').textContent = a.e || '🐾';
+      el('photoFallbackNote').textContent = '';
+      el('photoCredit').innerHTML = '';
+      photo.alt = '';
+      photo.src = BLANK;
+      el('photoBg').src = BLANK;
+
+      loadPhoto(a).then((p) => {
+        if (current !== entry) return;          // they typed something else
+        hero.classList.remove('is-loading');
+        if (!p) {
+          // The emoji is the true resting state, not a still-loading one -
+          // and it says so, for anyone who can't tell resting from loading
+          // by the animation alone (a glance, or prefers-reduced-motion).
+          el('photoFallbackNote').textContent = 'No photo on file';
+          return;
+        }
+        photo.onerror = () => { photo.onerror = null; hero.classList.remove('has-photo'); };
+        photo.alt = a.n;
+        photo.src = p.src;
+        el('photoBg').src = p.src;
+        el('photoCredit').innerHTML = PhotoCredit.creditHtml(p);
+        hero.classList.add('has-photo');
+      });
     }
 
-    const summaryReq = loadSummary(a).then((data) => {
-      if (current !== entry) return;          // they typed something else
-      if (data && data.thumbnail && data.thumbnail.source) setHero(data.thumbnail.source);
-      if (data && data.extract) el('blurb').textContent = firstSentence(data.extract);
-    });
-
-    const mediaReq = loadMedia(a).then((media) => {
-      if (current !== entry) return;
-      if (media.lead) setHero(media.lead);
-      const usable = media.shots.filter((s) => s.file && s.file !== heroFile);
-      renderShot(el('shot2'), usable[0], a.n);
-      renderShot(el('shot3'), usable[1], a.n);
-    });
-
-    // Neither request found a photo: stop pulsing and let the emoji settle
-    // as the true resting state, not a still-loading one - and say so, for
-    // anyone who can't tell "resting" from "loading" by the animation
-    // alone (a glance, or prefers-reduced-motion).
-    Promise.allSettled([summaryReq, mediaReq]).then(() => {
-      if (current !== entry) return;
-      hero.classList.remove('is-loading');
-      if (!hero.classList.contains('has-photo')) {
-        el('photoFallbackNote').textContent = 'No photo on file';
-      }
-    });
-
-    if (!opts || !opts.noPush) push('?a=' + entry.slug);
+    if (!opts || !opts.noPush) push('/animals/' + entry.slug);
     // Matches the title functions/index.js bakes server-side for this
     // same animal (tools/build-seo.js), so the tab title doesn't visibly
     // change out from under someone the moment JS finishes loading.
@@ -807,8 +741,12 @@
   function setMenu(open) {
     menuPanel.hidden = !open;
     menuBtn.setAttribute('aria-expanded', String(open));
-    if (open) { results = []; renderSuggest(); setShare(false); }   // one panel at a time
+    if (open) {   // one panel at a time
+      results = []; renderSuggest(); setShare(false);
+      document.dispatchEvent(new CustomEvent('gma:menu-open'));   // see navsearch.js
+    }
   }
+  document.addEventListener('gma:search-open', () => setMenu(false));
 
   menuBtn.addEventListener('click', (e) => {
     // stopPropagation here keeps the click-outside-to-close handler below
@@ -864,6 +802,17 @@
   for (const b of document.querySelectorAll('[data-report]')) {
     b.addEventListener('click', openReport);
   }
+  // The site footer is shared by every view, so its Report can't just be
+  // [data-report]: inside Mystery it has to hand off to Mystery's own
+  // report button, which attaches the round's animal without showing it.
+  const footerReport = el('footerReport');
+  if (footerReport) {
+    footerReport.addEventListener('click', () => {
+      const mysteryReport = el('mysteryReport');
+      if (!el('mysteryview').hidden && mysteryReport) mysteryReport.click();
+      else openReport();
+    });
+  }
   el('reportCancel').addEventListener('click', () => dlg.close());
 
   el('reportForm').addEventListener('submit', async (e) => {
@@ -884,7 +833,7 @@
 
     const picked = dlg.querySelector('input[name="kind"]:checked');
     try {
-      const res = await fetch('api/report', {
+      const res = await fetch('/api/report', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -941,10 +890,23 @@
     // dialog of their own to open directly - see menu.js.
     if (url.searchParams.get('report')) { openReport(); return; }
 
-    const wanted = url.searchParams.get('a');
+    // /animals/<slug> is the real address. The old /?a=<slug> still works
+    // here too, even though the server 301s it: the service worker's
+    // offline fallback serves the cached shell for *any* navigation,
+    // so an old link opened offline arrives with the query intact - it's
+    // quietly rewritten to the real address rather than left on it.
+    const path = url.pathname.match(/^\/animals\/([^/]+)\/?$/);
+    const legacy = url.searchParams.get('a');
+    const wanted = path ? decodeURIComponent(path[1]) : legacy;
     if (wanted) {
       const entry = INDEX.find((x) => x.slug === slugify(wanted));
-      if (entry) { show(entry, { noPush: true }); return; }
+      if (entry) {
+        show(entry, { noPush: true });
+        if (legacy || path[1] !== entry.slug) {
+          try { history.replaceState(null, '', '/animals/' + entry.slug); } catch (err) { /* harmless */ }
+        }
+        return;
+      }
     }
     goHome({ noPush: true });
   }
@@ -954,7 +916,21 @@
   // Deliberately small: the things mystery.js (a separate view that
   // still needs to feel like part of the same app) needs back from the
   // routing/view state this file owns.
-  window.GMA = { goHome, push, setMenu, loadSummary, dock, openReport, sfx };
+  // The site bar's Search (navsearch.js) opens an animal through this
+  // rather than a page load, the same in-place show() the home search
+  // uses. Returns false so the caller falls back to a real navigation for
+  // an unknown slug, or from inside Mystery/Party - those views own
+  // timers and a poll loop that only their own back buttons tear down,
+  // and a full page load is the one exit guaranteed to stop them.
+  function openSlug(slug) {
+    if (!el('mysteryview').hidden || !el('partyview').hidden) return false;
+    const entry = INDEX.find((x) => x.slug === slug);
+    if (!entry) return false;
+    show(entry);
+    return true;
+  }
+
+  window.GMA = { goHome, push, setMenu, loadSummary, dock, openReport, sfx, openSlug };
 
   /* -- Boot ---------------------------------------------------------- */
 

@@ -9,22 +9,24 @@
 
 <meta property="og:title" content="Privacy — Guess My Animal">
 <meta property="og:description" content="What Guess My Animal stores, what its ads set, and how to reach the person who runs it.">
+<link rel="canonical" href="https://guessmyanimal.com/privacy">
+<meta property="og:url" content="https://guessmyanimal.com/privacy">
 <meta property="og:type" content="article">
-<meta property="og:image" content="og.png">
+<meta property="og:image" content="https://guessmyanimal.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="preload" href="fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" href="/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="style.css?v=20260916-5">
+<link rel="stylesheet" href="/style.css?v=20260928-1">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -56,123 +58,71 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 </head>
 <body class="view-page">
 
-<!-- Same corner menu as index.html (see menu.js for why Mystery Animal
-     and Report a problem are plain links here rather than the buttons
-     that open dialogs on the home page). -->
-<nav class="menu" id="menu">
-  <button class="menu-btn" id="menuBtn" type="button"
-          aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M4 7h16M4 12h16M4 17h16"/>
-    </svg>
-  </button>
-  <div class="menu-panel" id="menuPanel" hidden>
-    <a class="menu-item" href="about.html"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
-    <a class="menu-item" href="browse.html"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
-    <a class="menu-item" href="./?mystery=1">Mystery Animal</a>
-    <a class="menu-item" href="./?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
-    <a class="menu-item" href="streamer.html"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
-    <!-- Site-wide quick search - inline in the nav bar itself (grows in
-         place, doesn't drop a second box underneath it), not a
-         navigation to index.html's real search box, so it works from
-         any of these standalone pages. See menu.js. -->
-    <div class="navsearch" id="navSearch">
-      <button class="menu-item" id="navSearchToggle" type="button"
-              aria-label="Search animals" aria-expanded="false" aria-controls="navSearchRow">
-        <span class="mag" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
-            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
-          </svg>
-        </span>Search</button>
-      <div class="navsearch-row" id="navSearchRow" hidden>
-        <span class="mag" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
-            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>
-          </svg>
-        </span>
-        <input id="navSearchInput" type="search" placeholder="Search an animal…"
-               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-               aria-label="Search animals" role="combobox" aria-expanded="false"
-               aria-autocomplete="list" aria-controls="navSearchResults">
-        <button class="navsearch-close" id="navSearchClose" type="button" aria-label="Close search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
-        </button>
-      </div>
-      <ul class="suggest" id="navSearchResults" role="listbox" hidden></ul>
-      <p class="noresult" id="navSearchNoResult" hidden></p>
-    </div>
-    <!-- menu-desktop-hide: moves to the desktop footer / theme dial once
-         there's room for them to just be visible - see style.css. Mobile
-         is untouched. -->
-    <a class="menu-item menu-desktop-hide" href="./?report=1">Report a problem</a>
-    <a class="menu-item menu-desktop-hide" href="privacy.html">Privacy</a>
-    <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal"
-       target="_blank" rel="noopener">Source on GitHub</a>
-    <hr class="menu-sep menu-desktop-hide">
-    <p class="theme-label menu-desktop-hide" id="themeLabel">Appearance</p>
-    <div class="theme menu-desktop-hide" role="group" aria-labelledby="themeLabel">
-      <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
-      <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
-      <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
-    </div>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- Row 1 (sticky) and row 2 (brand) - generated from tools/chrome.js,
+     edit it there, then npm run seo. -->
+<!-- chrome:site-bar -->
+<header class="site-bar" id="siteBar">
+  <div class="sb-start">
+    <a class="back" href="/" aria-label="Back to search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></a>
   </div>
-</nav>
+  <nav class="menu" id="menu" aria-label="Main">
+    <div class="menu-panel" id="menuPanel" hidden>
+      <a class="menu-item" href="/about"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
+      <a class="menu-item" href="/browse"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
+      <a class="menu-item" href="/?mystery=1">Mystery Animal</a>
+      <a class="menu-item" href="/?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
+      <a class="menu-item" href="/streamer"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+      <a class="menu-item menu-desktop-hide" href="/?report=1">Report a problem</a>
+      <a class="menu-item menu-desktop-hide" href="/privacy">Privacy</a>
+      <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
+      <hr class="menu-sep menu-desktop-hide">
+      <p class="theme-label menu-desktop-hide" id="themeLabel">Appearance</p>
+      <div class="theme menu-desktop-hide" role="group" aria-labelledby="themeLabel">
+        <button class="theme-btn" type="button" data-theme-set="system" aria-pressed="true">System</button>
+        <button class="theme-btn" type="button" data-theme-set="light" aria-pressed="false">Light</button>
+        <button class="theme-btn" type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+    <div class="navsearch" id="navSearch">
+      <button class="navsearch-toggle" id="navSearchToggle" type="button"
+              aria-expanded="false" aria-controls="navSearchPop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span class="navsearch-label">Search</span></button>
+      <div class="navsearch-pop" id="navSearchPop" role="search" hidden>
+        <div class="searchrow">
+          <span class="mag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></span>
+          <input class="search-input" id="navSearchInput" type="search" placeholder="Search an animal…"
+                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="go"
+                 aria-label="Search animals" role="combobox" aria-expanded="false"
+                 aria-autocomplete="list" aria-controls="navSearchResults">
+          <button class="navsearch-close" id="navSearchClose" type="button" aria-label="Close search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        </div>
+        <ul class="suggest" id="navSearchResults" role="listbox" aria-label="Matching animals" hidden></ul>
+        <p class="noresult" id="navSearchNoResult" role="status" hidden></p>
+      </div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button"
+            aria-label="Menu" aria-expanded="false" aria-controls="menuPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </nav>
+  <div class="sb-end">
+    <div class="theme-toggle" role="group" aria-label="Appearance">
+      <button type="button" class="theme-toggle-opt" data-theme-set="light" aria-pressed="false" aria-label="Light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></button>
+      <button type="button" class="theme-toggle-opt" data-theme-set="dark" aria-pressed="false" aria-label="Dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="theme-toggle-opt" data-theme-set="system" aria-pressed="true" aria-label="System"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
+    </div>
+    <button class="sound-toggle" id="soundToggle" type="button"
+            aria-pressed="true" aria-label="Sound on" data-sfx="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/><path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/><path class="sw-mute" d="M15.5 9.5l5 5m0-5l-5 5"/></svg></button>
+  </div>
+</header>
+<!-- /chrome:site-bar -->
 
-<!-- Own icon button, not a menu item - see index.html for why.
-     data-sfx="off": turning sound off has to be silent, so the click
-     handler plays its own confirming tap instead of the delegated one. -->
-<button class="sound-toggle" id="soundToggle" type="button"
-        aria-pressed="true" aria-label="Sound on" data-sfx="off">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/>
-    <path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/>
-    <path class="sw-mute" d="M15.5 9.5l5 5m0-5l-5 5"/>
-  </svg>
-</button>
-
-<!-- Desktop-only sliding theme switch, next to the corner menu button.
-     Reuses [data-theme-set] - menu.js's own applyTheme() syncs
-     aria-pressed across every matching element on the page already,
-     this group included. -->
-<div class="theme-toggle" role="group" aria-label="Appearance">
-  <button type="button" class="theme-toggle-opt" data-theme-set="light" aria-pressed="false" aria-label="Light">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="4.5"/>
-      <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
-    </svg>
-  </button>
-  <button type="button" class="theme-toggle-opt" data-theme-set="dark" aria-pressed="false" aria-label="Dark">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>
-    </svg>
-  </button>
-  <button type="button" class="theme-toggle-opt" data-theme-set="system" aria-pressed="true" aria-label="System">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <rect x="3" y="4" width="18" height="13" rx="2"/>
-      <path d="M8 21h8M12 17v4"/>
-    </svg>
-  </button>
+<div class="page-head">
+  <!-- chrome:brand -->
+<a class="brand" href="/"><svg class="brand-paw" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="41" rx="14.5" ry="12"/><ellipse cx="14.5" cy="27" rx="6.4" ry="8"/><ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="49.5" cy="27" rx="6.4" ry="8"/></svg>Guess My Animal</a>
+<!-- /chrome:brand -->
 </div>
 
-<header class="topbar">
-  <a class="back" href="./" aria-label="Back to search">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 5 8 12l7 7"/>
-    </svg>
-  </a>
-  <a class="topbar-mark" href="./">
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-      <ellipse cx="32" cy="41" rx="14.5" ry="12"/>
-      <ellipse cx="14.5" cy="27" rx="6.4" ry="8"/>
-      <ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/>
-      <ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/>
-      <ellipse cx="49.5" cy="27" rx="6.4" ry="8"/>
-    </svg>
-    Guess my animal
-  </a>
-</header>
-
-<main class="prose">
+<main class="prose" id="main">
 
   <h1>Privacy</h1>
 
@@ -245,39 +195,49 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   <p>If you're visiting from the UK or the EEA, you'll be shown a consent
     message before any personalised ad loads, and you can change your
-    choice at any time from the link in the footer below.</p>
+    choice at any time with the link below.</p>
 
-  <h2>Get in touch</h2>
-
-  <p>Wrong photo, wrong fact, a missing animal, or anything about how the
-    site handles your data: the <a href="./?report=1">report form</a> reaches
-    the person who runs this directly, or open an issue on
-    <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">GitHub</a>
-    if you'd rather do that in the open.</p>
-
-  <h2>The rest</h2>
-
-  <p>The site is free, has no accounts, and is an early, ongoing project
-    made for fun - expect it to keep changing. See <a href="about.html">About
-    the game</a> for how it works and why it exists.</p>
-
-</main>
-
-<footer class="foot prose-foot">
-  <p><a href="./">Look up an animal</a></p>
-  <p><a href="browse.html">Browse all animals</a></p>
   <!-- Starts hidden and only ever revealed once window.googlefc genuinely
        exists (see the script below) - an unconfigured message means the
        revocation UI has nothing to open, so the link stays off rather
        than sitting here as a dead click. Funding Choices loads async, so
        this polls briefly instead of checking once on page load. -->
   <p id="fcPrivacyRow" hidden><a href="#" id="fcPrivacyLink">Manage ad consent</a></p>
+
+  <h2>Get in touch</h2>
+
+  <p>Wrong photo, wrong fact, a missing animal, or anything about how the
+    site handles your data: the <a href="/?report=1">report form</a> reaches
+    the person who runs this directly, as does email at
+    <a href="mailto:naveessharma@gmail.com">naveessharma@gmail.com</a> (see
+    <a href="/contact">Contact</a>), or open an issue on
+    <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">GitHub</a>
+    if you'd rather do that in the open.</p>
+
+  <h2>The rest</h2>
+
+  <p>The site is free, has no accounts, and is an early, ongoing project
+    made for fun - expect it to keep changing. See <a href="/about">About
+    the game</a> for how it works and why it exists.</p>
+
+</main>
+
+<!-- chrome:site-footer -->
+<footer class="site-foot">
+  <nav class="sf-links" aria-label="Site">
+    <a href="/about">About</a>
+    <a href="/how-we-answer">How we answer</a>
+    <a href="/browse">All animals</a>
+    <a href="/contact">Contact</a>
+    <a href="/?report=1">Report a problem</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
+  </nav>
+  <p class="sf-note">Made by Nav. Free to use, supported by ads (see <a href="/privacy">Privacy</a>).
+    Photos from Wikimedia Commons, credited on each animal's page.</p>
 </footer>
-<!-- Desktop-only: moved out of the corner menu, see style.css. -->
-<div class="desktop-foot">
-  <a href="./?report=1">Report a problem</a>
-  <a href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
-</div>
+<!-- /chrome:site-footer -->
 
 <script>
 (function () {
@@ -298,9 +258,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 })();
 </script>
 
-<script src="sfx.js?v=20260912-1"></script>
-<script src="animals.js?v=20260907-1"></script>
-<script src="search-core.js?v=20260913-1"></script>
-<script src="menu.js?v=20260913-2"></script>
+<script src="/sfx.js?v=20260912-1"></script>
+<script src="/animals.js?v=20260907-1"></script>
+<script src="/search-core.js?v=20260913-1"></script>
+<script src="/navsearch.js?v=20260928-1"></script>
+<script src="/menu.js?v=20260928-1"></script>
 </body>
 </html>

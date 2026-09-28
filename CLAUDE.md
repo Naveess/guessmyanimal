@@ -32,7 +32,17 @@ Party Mode, swapped by `hidden` attributes, not routed) and three
 standalone pages — `about.html`, `browse.html`, `privacy.html`,
 `streamer.html` (Twitch stream mode — its own page, not a view inside
 `index.html`, because a chat of hundreds needs none of Party Mode's
-presence/rename machinery).
+presence/rename machinery). Plus `404.html`, which Pages serves (with a
+real 404) for anything unmatched.
+
+**URLs**: animals live at `/animals/<slug>`, served by
+`functions/animals/[slug].js`, which rewrites `index.html` with that
+animal's pre-rendered content from `functions/seo-meta.json` (logic in
+`functions/_shared/animal-page.js`). `/?a=<slug>` 301s there forever
+(`functions/index.js`), and an unknown slug gets `404.html` with a 404
+status. Every link and asset in the HTML is **root-absolute** (`/style.css`,
+`/api/...`, `/about`), because a relative one breaks under `/animals/`.
+Keep it that way.
 
 ## Important directories/files
 
@@ -43,7 +53,11 @@ presence/rename machinery).
 | `app.js` / `mystery.js` / `party.js` | Views inside `index.html`. `app.js` owns search/routing/theme and exposes `window.GMA` (push/goHome/setMenu/loadSummary/openReport/sfx) for the other two to call into. |
 | `streamer.js` / `streamer.html` | Twitch stream mode, standalone — does not load `app.js`, has no `window.GMA`. |
 | `sfx.js` | The sound engine (synthesised tones, not samples) plus the one delegated `pointerdown` tap-sound listener. Loaded by every page. |
-| `menu.js` | Nav/theme/sound-toggle wiring for the four standalone pages only (`index.html` has its own nav logic in `app.js`). |
+| `tools/chrome.js` | **The shared header**: the site bar (back · nav · sound/theme) and the brand row. `npm run seo` writes it into every page between `<!-- chrome:NAME -->` markers (`tools/build-chrome.js`). Never hand-edit a generated block; edit `chrome.js` and rebuild. |
+| `menu.js` | Menu/theme/sound-toggle wiring for the standalone pages only (`index.html` has its own in `app.js`). |
+| `photo-credit.js` + `tools/build-photos.js` → `tools/photos.json` | Each animal's lead photo **plus the author/licence credit its licence requires**, from Wikimedia Commons. Non-free or non-Commons files are never shown. `npm run photos` refreshes the cache (network; `--refresh` re-checks everything), `npm run seo` bakes it into the pages, and `app.js` looks it up live on in-app navigation. |
+| `about` / `how-we-answer` / `contact` / `terms` / `privacy` `.html` | The trust pages. `how-we-answer.html` defines every answer and **must stay true to how `animals.js` actually uses each value**. Update it if a convention changes. |
+| `navsearch.js` + `search-core.js` | The site bar's Search popover, on every page including `index.html`. It opens an animal in place via `GMA.openSlug` when `app.js` is present, and navigates otherwise. |
 | `functions/api/party/*.js` | Party + Twitch session backend — create/session/hint/next/guess/join, sharing `_lib.js`. |
 | `functions/api/twitch/*.js` | The Twitch OAuth handshake only (`_lib.js`, `login.js`, `callback.js`). Unrelated to reading chat. |
 | `schema.sql` | Fresh-install D1 schema (`CREATE TABLE IF NOT EXISTS`). Also the living record of every manual migration — see Database below. |
@@ -71,7 +85,8 @@ login" section. Without them the Connect button just bounces to
 
 `npm run og` — regenerate the link-preview card.
 `npm run seo` — rebuild `functions/seo-meta.json` + `sitemap.xml` +
-`browse.html` from `animals.js`. Run after adding an animal.
+`browse.html` from `animals.js`, then re-inject the shared header into
+every page. Run after adding an animal or changing `tools/chrome.js`.
 `npm run deploy` — publish straight from the working tree, bypassing
 git (useful when the Pages Git integration is misbehaving).
 
@@ -109,7 +124,7 @@ Trace: **Connect button → `/api/twitch/login`** (redirects to Twitch,
 sets a 5-minute httpOnly anti-forgery cookie) **→ Twitch consent →
 `/api/twitch/callback`** (verifies the cookie's state, exchanges the
 code for a token server-side, calls Get Users once, discards the token
-immediately, redirects to `streamer.html?tw_login=<channel>`) **→
+immediately, redirects to `/streamer?tw_login=<channel>`) **→
 `streamer.js`** reads `tw_login`, shows the "Go live" category picker
 **→ `/api/party/create`** with `twitchChannel` set **→ gameplay.**
 
@@ -180,7 +195,9 @@ The ones most likely to matter to a change:
   raise the z-index.
 - **Cache-busting discipline**: `style.css`, and every shared `.js`
   (`game-core.js`, `sfx.js`, `app.js`, `party.js`, `mystery.js`,
-  `menu.js`) are loaded with a hand-bumped `?v=`. Changing one of these
+  `menu.js`, `navsearch.js`, `search-core.js`) are loaded with a
+  hand-bumped `?v=`. `browse.html`'s stylesheet version is
+  `STYLE_VERSION` in `tools/build-seo.js`. Changing one of these
   files means bumping its `?v=` in **every HTML file that loads it**,
   plus `sw.js`'s `VERSION` and the matching `SHELL` entry if it's
   precached — otherwise returning visitors keep the stale cached copy

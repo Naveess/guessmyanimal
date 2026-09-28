@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+# The Functions API (party sessions, reports, Twitch sign-in) - nothing a
+# search engine should crawl.
+Disallow: /api/
 
 Sitemap: https://guessmyanimal.com/sitemap.xml

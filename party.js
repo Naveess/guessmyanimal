@@ -112,7 +112,7 @@
   }
 
   async function api(path, body) {
-    const res = await fetch('api/party/' + path, {
+    const res = await fetch('/api/party/' + path, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(body),
@@ -135,7 +135,7 @@
     if (surface && el('partyview').hidden) { leave(); return; }
     if (!surface || !code) return;
     try {
-      const res = await fetch('api/party/session?code=' + encodeURIComponent(code));
+      const res = await fetch('/api/party/session?code=' + encodeURIComponent(code));
       if (res.status === 404) { onSessionGone(); return; }
       const data = await res.json();
       if (data.error) return;
@@ -732,7 +732,7 @@
   function openPartyHost(opts) {
     surface = 'host';
     enterPage();
-    if (!(opts && opts.noPush) && window.GMA && typeof GMA.push === 'function') GMA.push('?party=1');
+    if (!(opts && opts.noPush) && window.GMA && typeof GMA.push === 'function') GMA.push('/?party=1');
 
     // A name picked up from any earlier party (host or player) on this
     // device carries over, same as the player join flow already does -
@@ -896,7 +896,7 @@
     el('partyFeed').innerHTML = '';
 
     enterPage();
-    if (!(opts && opts.noPush) && window.GMA && typeof GMA.push === 'function') GMA.push('?party=' + code);
+    if (!(opts && opts.noPush) && window.GMA && typeof GMA.push === 'function') GMA.push('/?party=' + code);
 
     el('partyTitleText').textContent = 'Party ' + code;
     el('partySetup').hidden = true;
@@ -933,7 +933,7 @@
 
   async function verifyPartyCode(forCode) {
     try {
-      const res = await fetch('api/party/session?code=' + encodeURIComponent(forCode));
+      const res = await fetch('/api/party/session?code=' + encodeURIComponent(forCode));
       if (res.status === 404) { showPlayerJoinError('That party has finished, or the code was wrong.'); return false; }
       const data = await res.json();
       if (data.error) { showPlayerJoinError('That party has finished, or the code was wrong.'); return false; }
@@ -960,7 +960,7 @@
   // protection a later rename already has via `state.scores`.
   async function nameTakenOnJoin(name) {
     try {
-      const res = await fetch('api/party/session?code=' + encodeURIComponent(code));
+      const res = await fetch('/api/party/session?code=' + encodeURIComponent(code));
       const data = await res.json();
       return nameCollides(name, data && data.scores);
     } catch (e) { return false; } // offline - let the server be the final word
@@ -1099,26 +1099,20 @@
   renderIconPicker(el('partyPlayTooIconPicker'));
 
   /* -- Mobile mini-strip: shows rank/score/online once the round card
-     (#partyRoundhead) scrolls out from under the sticky top bar. Set up
-     from enterPage(), not at module load - at load time #partyview (and
-     its topbar) is still [hidden] behind the home splash, which measures
-     as 0px height and would pin the bar right under the real top bar
-     instead of below it. The top bar's real height also varies with
-     env(safe-area-inset-top), so it's measured live rather than a guess
-     baked into CSS - see --topbar-h. Same feature-detected
-     IntersectionObserver idiom app.js already uses for the extra-photos
-     reveal. Re-run on every enterPage() rather than once, since a
-     rotated device or a re-entry after the topbar's content changed
-     could shift its height; the old observer is disconnected first so
-     repeat visits don't stack up duplicate callbacks. */
+     (#partyRoundhead) scrolls out from under the sticky site bar. Where
+     it pins is pure CSS (.party-minibar, off --bar-h). Set up from
+     enterPage(), not at module load, since #partyview is still [hidden]
+     then. Same feature-detected IntersectionObserver idiom app.js
+     already uses for the extra-photos reveal; the old observer is
+     disconnected first so repeat visits don't stack up duplicate
+     callbacks. */
   function setupMiniBar() {
-    // Scoped to this view specifically - a bare '.topbar' query returns
-    // whichever one is first in the document (the animal view's), which
-    // stays [hidden] and 0px tall the entire time party mode is open.
-    const topbarEl = el('partyview').querySelector('.topbar');
-    const h = topbarEl ? Math.ceil(topbarEl.getBoundingClientRect().height) : 58;
-    document.documentElement.style.setProperty('--topbar-h', h + 'px');
     if (!('IntersectionObserver' in window)) return;
+    // "Scrolled out from under the bar" means past the sticky site
+    // bar's bottom edge, not the viewport's top - measured live since
+    // the safe-area inset adds to it per device.
+    const siteBar = el('siteBar');
+    const h = siteBar ? Math.ceil(siteBar.getBoundingClientRect().height) : 64;
     if (miniBarObserver) miniBarObserver.disconnect();
     miniBarObserver = new IntersectionObserver((entries) => {
       for (const e of entries) {

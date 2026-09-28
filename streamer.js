@@ -69,7 +69,7 @@
   }
 
   async function api(path, body) {
-    const res = await fetch('api/party/' + path, {
+    const res = await fetch('/api/party/' + path, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(body),
@@ -171,7 +171,7 @@
   async function poll() {
     if (!code) return;
     try {
-      const res = await fetch('api/party/session?code=' + encodeURIComponent(code));
+      const res = await fetch('/api/party/session?code=' + encodeURIComponent(code));
       if (res.status === 404) { onSessionGone(); return; }
       const data = await res.json();
       if (data.error) return;
@@ -835,7 +835,7 @@
     // start a session as this channel. The screen moves on regardless -
     // there's nothing else to wait for, the token itself was already
     // revoked back in callback.js.
-    fetch('api/twitch/disconnect', { method: 'POST' }).catch(() => {});
+    fetch('/api/twitch/disconnect', { method: 'POST' }).catch(() => {});
     connectedLogin = null;
     showConnect('');
   });

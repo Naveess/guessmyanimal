@@ -1,0 +1,3936 @@
+{
+ "aardvark": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Orycteropus_afer_175359469.jpg/960px-Orycteropus_afer_175359469.jpg",
+  "width": 900,
+  "height": 623,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Orycteropus_afer_175359469.jpg",
+  "artist": "Kelly Abram",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "african-wild-dog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/African_Wild_Dog_at_Working_with_Wildlife.jpg/960px-African_Wild_Dog_at_Working_with_Wildlife.jpg",
+  "width": 900,
+  "height": 506,
+  "filePage": "https://commons.wikimedia.org/wiki/File:African_Wild_Dog_at_Working_with_Wildlife.jpg",
+  "artist": "AfricanConservation",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "agouti": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Agouti_Tulum_Take_2.jpg/960px-Agouti_Tulum_Take_2.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Agouti_Tulum_Take_2.jpg",
+  "artist": "Chuck Homler, Focus On Wildlife",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "albatross": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/7/73/Short_tailed_Albatross1.jpg",
+  "width": 900,
+  "height": 873,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Short_tailed_Albatross1.jpg",
+  "artist": "Jlfutari at English Wikipedia",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
+ },
+ "alligator": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Chinese%2Bamerican_alligators.png/960px-Chinese%2Bamerican_alligators.png",
+  "width": 900,
+  "height": 917,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Chinese%2Bamerican_alligators.png",
+  "artist": "C. J. Cornish et al",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "alpaca": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Alpaca_in_Higashiyama_Zoo_-_1.jpg/960px-Alpaca_in_Higashiyama_Zoo_-_1.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Alpaca_in_Higashiyama_Zoo_-_1.jpg",
+  "artist": "KKPCW",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "anaconda": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Eunectes_murinus2.jpg",
+  "width": 900,
+  "height": 660,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eunectes_murinus2.jpg",
+  "artist": "LA Dawson",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "anchovy": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Anchovy_closeup.jpg/960px-Anchovy_closeup.jpg",
+  "width": 900,
+  "height": 586,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Anchovy_closeup.jpg",
+  "artist": "",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "angelfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/20110527_Sea_Life_Blankenberge_%286%29.jpg/960px-20110527_Sea_Life_Blankenberge_%286%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:20110527_Sea_Life_Blankenberge_(6).jpg",
+  "artist": "Donar Reiskoffer",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "anglerfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Lophiiformes_Collage.png/960px-Lophiiformes_Collage.png",
+  "width": 900,
+  "height": 1365,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Lophiiformes_Collage.png",
+  "artist": "Anthropophoca",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "ant": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Red_Ant_-_March_2025.jpg/960px-Red_Ant_-_March_2025.jpg",
+  "width": 900,
+  "height": 635,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Red_Ant_-_March_2025.jpg",
+  "artist": "Samantha Henneke from Seagrove, North Carolin…",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "anteater": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Tamandu%C3%A1-bandeira_no_Parque_Nacional_da_Serra_da_Canastra_%28cropped%29.jpg/960px-Tamandu%C3%A1-bandeira_no_Parque_Nacional_da_Serra_da_Canastra_%28cropped%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tamandu%C3%A1-bandeira_no_Parque_Nacional_da_Serra_da_Canastra_(cropped).jpg",
+  "artist": "Nortondefeis",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "antelope": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Blackbuck_male_female.jpg",
+  "width": 900,
+  "height": 644,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Blackbuck_male_female.jpg",
+  "artist": "Mr Raja Purohit",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "ape": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/013_Alpha_male_chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg/960px-013_Alpha_male_chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:013_Alpha_male_chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "arctic-fox": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Vulpes_lagopus_in_Iceland_%28cropped_3%29.jpg/960px-Vulpes_lagopus_in_Iceland_%28cropped_3%29.jpg",
+  "width": 900,
+  "height": 1113,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Vulpes_lagopus_in_Iceland_(cropped_3).jpg",
+  "artist": "Jonatan Pie ( unsplash.com/@r3dmax )",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "armadillo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Nine-banded_Armadillo.jpg/960px-Nine-banded_Armadillo.jpg",
+  "width": 900,
+  "height": 543,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Nine-banded_Armadillo.jpg",
+  "artist": "http://www.birdphotos.com",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "axolotl": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Axolotl_ganz.jpg/960px-Axolotl_ganz.jpg",
+  "width": 900,
+  "height": 502,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Axolotl_ganz.jpg",
+  "artist": "LoKiLeCh",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "aye-aye": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Wild_aye_aye.jpg/960px-Wild_aye_aye.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Wild_aye_aye.jpg",
+  "artist": "nomis-simon",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "babirusa": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Hirscheber1a.jpg/960px-Hirscheber1a.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hirscheber1a.jpg",
+  "artist": "Masteraah at German Wikipedia",
+  "license": "CC BY-SA 2.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en"
+ },
+ "baboon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Olive_baboon_Ngorongoro.jpg/960px-Olive_baboon_Ngorongoro.jpg",
+  "width": 900,
+  "height": 818,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Olive_baboon_Ngorongoro.jpg",
+  "artist": "Muhammad Mahdi Karim",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "badger": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/European_badger_%28Meles_meles_taxus%29_Drenthe.jpg/960px-European_badger_%28Meles_meles_taxus%29_Drenthe.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:European_badger_(Meles_meles_taxus)_Drenthe.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "bandicoot": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Perameles_gunni.jpg/960px-Perameles_gunni.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Perameles_gunni.jpg",
+  "artist": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "barnacle": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Chthamalus_stellatus.jpg/960px-Chthamalus_stellatus.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Chthamalus_stellatus.jpg",
+  "artist": "MichaelMaggs",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "barracuda": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Barracuda_laban.jpg/960px-Barracuda_laban.jpg",
+  "width": 900,
+  "height": 676,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Barracuda_laban.jpg",
+  "artist": "",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "basilisk-lizard": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Brown-basilisk-detail.jpg/960px-Brown-basilisk-detail.jpg",
+  "width": 900,
+  "height": 606,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Brown-basilisk-detail.jpg",
+  "artist": "Benjamint444",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "bass": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Largemouth_Bass_%28Micropterus_salmoides%29_June_2023_%28cropped%29.jpg/960px-Largemouth_Bass_%28Micropterus_salmoides%29_June_2023_%28cropped%29.jpg",
+  "width": 900,
+  "height": 506,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Largemouth_Bass_(Micropterus_salmoides)_June_2023_(cropped).jpg",
+  "artist": "USFWS Mountain Prairie",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "bat": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/Big-eared-townsend-fledermaus.jpg",
+  "width": 900,
+  "height": 547,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Big-eared-townsend-fledermaus.jpg",
+  "artist": "PD-USGov, exact author unknown",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "bat-eared-fox": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Otocyon_megalotis_-_Etosha_2014.jpg/960px-Otocyon_megalotis_-_Etosha_2014.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Otocyon_megalotis_-_Etosha_2014.jpg",
+  "artist": "Yathin S Krishnappa",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "bearded-dragon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Eastern_Bearded_Dragon%2C_Majura%2C_ACT_2609%2C_Australia_imported_from_iNaturalist_photo_67070853_%28cropped%29.jpg/960px-Eastern_Bearded_Dragon%2C_Majura%2C_ACT_2609%2C_Australia_imported_from_iNaturalist_photo_67070853_%28cropped%29.jpg",
+  "width": 900,
+  "height": 446,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eastern_Bearded_Dragon,_Majura,_ACT_2609,_Australia_imported_from_iNaturalist_photo_67070853_(cropped).jpg",
+  "artist": "(c) Kai Squires, some rights reserved (CC BY)",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "beaver": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/6/6b/American_Beaver.jpg",
+  "width": 900,
+  "height": 901,
+  "filePage": "https://commons.wikimedia.org/wiki/File:American_Beaver.jpg",
+  "artist": "Steve from Washington, DC, USA",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "bee": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Tetragonula_carbonaria_%2814521993792%29.jpg/960px-Tetragonula_carbonaria_%2814521993792%29.jpg",
+  "width": 900,
+  "height": 680,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tetragonula_carbonaria_(14521993792).jpg",
+  "artist": "Graham Wise from Brisbane, Australia",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "beetle": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Coleoptera_collage.png/960px-Coleoptera_collage.png",
+  "width": 900,
+  "height": 858,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Coleoptera_collage.png",
+  "artist": "Bugboy52.40",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "beluga": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Oceanogr%C3%A0fic_29102004.jpg/960px-Oceanogr%C3%A0fic_29102004.jpg",
+  "width": 900,
+  "height": 474,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Oceanogr%C3%A0fic_29102004.jpg",
+  "artist": "Javier Yaya Tur / CIUDAD DE LAS ARTES Y LAS C…",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "bighorn-sheep": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/New_Mexico_Bighorn_Sheep.JPG/960px-New_Mexico_Bighorn_Sheep.JPG",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:New_Mexico_Bighorn_Sheep.JPG",
+  "artist": "Jwanamaker",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "bilby": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Bilby_at_Sydney_Wildlife_World.jpg/960px-Bilby_at_Sydney_Wildlife_World.jpg",
+  "width": 900,
+  "height": 541,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bilby_at_Sydney_Wildlife_World.jpg",
+  "artist": "Dcoetzee",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "binturong": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Binturong_in_Overloon.jpg",
+  "width": 900,
+  "height": 613,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Binturong_in_Overloon.jpg",
+  "artist": "Tassilo Rau",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "bird-of-paradise": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Raggiana_Bird-of-Paradise_wild_5.jpg/960px-Raggiana_Bird-of-Paradise_wild_5.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Raggiana_Bird-of-Paradise_wild_5.jpg",
+  "artist": "markaharper1",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "bison": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/American_bison_k5680-1.jpg/960px-American_bison_k5680-1.jpg",
+  "width": 900,
+  "height": 587,
+  "filePage": "https://commons.wikimedia.org/wiki/File:American_bison_k5680-1.jpg",
+  "artist": "Jack Dykinga",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "black-bear": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Vancouver_Island_black_bear_%28Ursus_americanus_vancouveri%29_Tofino_4.jpg/960px-Vancouver_Island_black_bear_%28Ursus_americanus_vancouveri%29_Tofino_4.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Vancouver_Island_black_bear_(Ursus_americanus_vancouveri)_Tofino_4.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "black-panther": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Black_Panther_-_India.jpg/960px-Black_Panther_-_India.jpg",
+  "width": 900,
+  "height": 605,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Black_Panther_-_India.jpg",
+  "artist": "Davidvraju",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "black-widow": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Latrodectus_hesperus_Berkeley%2C_California.jpg/960px-Latrodectus_hesperus_Berkeley%2C_California.jpg",
+  "width": 900,
+  "height": 672,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Latrodectus_hesperus_Berkeley,_California.jpg",
+  "artist": "Ken-ichi Ueda",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "blackbird": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Common_Blackbird.jpg/960px-Common_Blackbird.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Common_Blackbird.jpg",
+  "artist": "Andreas Trepte",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "blobfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Psychrolutes_marcidus.jpg/960px-Psychrolutes_marcidus.jpg",
+  "width": 900,
+  "height": 356,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Psychrolutes_marcidus.jpg",
+  "artist": "Alan Riverstone McCulloch (1885-1925)",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "blue-whale": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg/960px-Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg",
+  "width": 900,
+  "height": 623,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg",
+  "artist": "NOAA Photo Library",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "boa-constrictor": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Red-tailed_boa_%28Boa_constrictor_constrictor%29_Rio_Napo.jpg/960px-Red-tailed_boa_%28Boa_constrictor_constrictor%29_Rio_Napo.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Red-tailed_boa_(Boa_constrictor_constrictor)_Rio_Napo.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "bobcat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Bobcat_at_Columbus_Zoo_Boo.jpg/960px-Bobcat_at_Columbus_Zoo_Boo.jpg",
+  "width": 900,
+  "height": 1345,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bobcat_at_Columbus_Zoo_Boo.jpg",
+  "artist": "Becker1999 (Paul and Cathy)",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "bongo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Tragelaphus_eurycerus_-Marwell_Wildlife%2C_Hampshire%2C_England-8a.jpg/960px-Tragelaphus_eurycerus_-Marwell_Wildlife%2C_Hampshire%2C_England-8a.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tragelaphus_eurycerus_-Marwell_Wildlife,_Hampshire,_England-8a.jpg",
+  "artist": "Charles Miller from Basingstoke, United Kingdom",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "bonobo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Apeldoorn_Apenheul_zoo_Bonobo.jpg/960px-Apeldoorn_Apenheul_zoo_Bonobo.jpg",
+  "width": 900,
+  "height": 892,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Apeldoorn_Apenheul_zoo_Bonobo.jpg",
+  "artist": "natataek",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "boomslang": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Dispholidus_typus_333317716.jpg/960px-Dispholidus_typus_333317716.jpg",
+  "width": 900,
+  "height": 536,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Dispholidus_typus_333317716.jpg",
+  "artist": "Miguel da Fonseca",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "brown-bear": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/2010-kodiak-bear-1.jpg/960px-2010-kodiak-bear-1.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:2010-kodiak-bear-1.jpg",
+  "artist": "Yathin S Krishnappa",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "budgerigar": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Budgerigar-male-strzelecki-qld.jpg/960px-Budgerigar-male-strzelecki-qld.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Budgerigar-male-strzelecki-qld.jpg",
+  "artist": "Benjamint444",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "buffalo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/African_buffalo_%28Syncerus_caffer_caffer%29_male_with_cattle_egret.jpg/960px-African_buffalo_%28Syncerus_caffer_caffer%29_male_with_cattle_egret.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:African_buffalo_(Syncerus_caffer_caffer)_male_with_cattle_egret.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "bull": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/960px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg",
+  "width": 900,
+  "height": 602,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cow_(Fleckvieh_breed)_Oeschinensee_Slaunger_2009-07-07.jpg",
+  "artist": "Kim Hansen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "bullfrog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/North-American-bullfrog1.jpg/960px-North-American-bullfrog1.jpg",
+  "width": 900,
+  "height": 697,
+  "filePage": "https://commons.wikimedia.org/wiki/File:North-American-bullfrog1.jpg",
+  "artist": "Carl D. Howe",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "bumblebee": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Bombus_lapidarius_-_Melilotus_officinalis_-_Tallinn.jpg/960px-Bombus_lapidarius_-_Melilotus_officinalis_-_Tallinn.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bombus_lapidarius_-_Melilotus_officinalis_-_Tallinn.jpg",
+  "artist": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "bushbaby": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Brown_Greater_Galago.jpg/960px-Brown_Greater_Galago.jpg",
+  "width": 900,
+  "height": 596,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Brown_Greater_Galago.jpg",
+  "artist": "Jacobmacmillan",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "butterfly": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Fesoj_-_Papilio_machaon_%28by%29.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Fesoj_-_Papilio_machaon_(by).jpg",
+  "artist": "fesoj",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "buzzard": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Common_Buzzard_by_caroline_legg_%28cropped%29.jpg/960px-Common_Buzzard_by_caroline_legg_%28cropped%29.jpg",
+  "width": 900,
+  "height": 1198,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Common_Buzzard_by_caroline_legg_(cropped).jpg",
+  "artist": "caroline legg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "caecilian": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Oscaecilia_ochrocephala_%2816983972190%29.jpg/960px-Oscaecilia_ochrocephala_%2816983972190%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Oscaecilia_ochrocephala_(16983972190).jpg",
+  "artist": "Brian Gratwicke from DC, USA",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "caiman": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Caiman_yacare.jpg/960px-Caiman_yacare.jpg",
+  "width": 900,
+  "height": 603,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Caiman_yacare.jpg",
+  "artist": "Lea Maimone",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "camel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/07._Camel_Profile%2C_near_Silverton%2C_NSW%2C_07.07.2007.jpg/960px-07._Camel_Profile%2C_near_Silverton%2C_NSW%2C_07.07.2007.jpg",
+  "width": 900,
+  "height": 1108,
+  "filePage": "https://commons.wikimedia.org/wiki/File:07._Camel_Profile,_near_Silverton,_NSW,_07.07.2007.jpg",
+  "artist": "Jjron",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "canary": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/GelbA.JPG/960px-GelbA.JPG",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:GelbA.JPG",
+  "artist": "NEWSchr",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "capuchin-monkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Capuchin_Costa_Rica.jpg/960px-Capuchin_Costa_Rica.jpg",
+  "width": 900,
+  "height": 881,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Capuchin_Costa_Rica.jpg",
+  "artist": "David M. Jensen ( Storkk )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "capybara": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Capybaracropped.jpg/960px-Capybaracropped.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Capybaracropped.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "caracal": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Caracal_on_the_road%2C_early_morning_in_Kgalagadi_%2836173878220%29_%28cropped%29.jpg/960px-Caracal_on_the_road%2C_early_morning_in_Kgalagadi_%2836173878220%29_%28cropped%29.jpg",
+  "width": 900,
+  "height": 1115,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Caracal_on_the_road,_early_morning_in_Kgalagadi_(36173878220)_(cropped).jpg",
+  "artist": "Derek Keats",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "carp": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Unsere_S%C3%BC%C3%9Fwasserfische_%28Tafel_33%29_%286102602781%29.jpg/960px-Unsere_S%C3%BC%C3%9Fwasserfische_%28Tafel_33%29_%286102602781%29.jpg",
+  "width": 900,
+  "height": 613,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Unsere_S%C3%BC%C3%9Fwasserfische_(Tafel_33)_(6102602781).jpg",
+  "artist": "Walter, Emil",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "cassowary": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Cassowary_Diversity.jpg/960px-Cassowary_Diversity.jpg",
+  "width": 900,
+  "height": 523,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cassowary_Diversity.jpg",
+  "artist": "PaleoNeolitic (montage creator) BS Thurner Ho…",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "caterpillar": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Chenille_de_Grand_porte_queue_%28macaon%29.jpg/960px-Chenille_de_Grand_porte_queue_%28macaon%29.jpg",
+  "width": 900,
+  "height": 545,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Chenille_de_Grand_porte_queue_(macaon).jpg",
+  "artist": "Didier Descouens",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "catfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Siluriformes.png/960px-Siluriformes.png",
+  "width": 900,
+  "height": 1210,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Siluriformes.png",
+  "artist": "authors of the images used: HalbsHännile Thom…",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "centipede": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Chilopoda_collage.png",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Chilopoda_collage.png",
+  "artist": "Thomas Brown AfroBrazilian Warut Siriwut, Gre…",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "chameleon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Panther_Chameleon_738367_%28cropped%29.jpg/960px-Panther_Chameleon_738367_%28cropped%29.jpg",
+  "width": 900,
+  "height": 562,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Panther_Chameleon_738367_(cropped).jpg",
+  "artist": "Rod Waddington",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "chamois": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/064_Wild_Chamois_Parc_r%C3%A9gional_Chasseral_Photo_by_Giles_Laurent.jpg/960px-064_Wild_Chamois_Parc_r%C3%A9gional_Chasseral_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:064_Wild_Chamois_Parc_r%C3%A9gional_Chasseral_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "cheetah": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Male_cheetah_facing_left_in_South_Africa.jpg/960px-Male_cheetah_facing_left_in_South_Africa.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Male_cheetah_facing_left_in_South_Africa.jpg",
+  "artist": "AfricanConservation",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "chicken": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/8/84/Male_and_female_chicken_sitting_together.jpg",
+  "width": 900,
+  "height": 1201,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Male_and_female_chicken_sitting_together.jpg",
+  "artist": "Andrei Niemimäki from Turku, Finland",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "chimpanzee": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/015_Chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg/960px-015_Chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:015_Chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "chinchilla": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Chinchilla_lanigera_%28Wroclaw_zoo%29-2.JPG/960px-Chinchilla_lanigera_%28Wroclaw_zoo%29-2.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Chinchilla_lanigera_(Wroclaw_zoo)-2.JPG",
+  "artist": "Guérin Nicolas ( messages )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "chipmunk": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Chipmunk_with_stuffed_cheeks_in_Prospect_Park_%2805980%29.jpg/960px-Chipmunk_with_stuffed_cheeks_in_Prospect_Park_%2805980%29.jpg",
+  "width": 900,
+  "height": 651,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Chipmunk_with_stuffed_cheeks_in_Prospect_Park_(05980).jpg",
+  "artist": "Rhododendrites",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "cicada": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Cicada_-_Neotibicen_linnei%2C_Woodbridge%2C_Virginia.jpg/960px-Cicada_-_Neotibicen_linnei%2C_Woodbridge%2C_Virginia.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cicada_-_Neotibicen_linnei,_Woodbridge,_Virginia.jpg",
+  "artist": "Judy Gallagher",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "civet": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Civettictis_civetta_12.jpg",
+  "width": 900,
+  "height": 599,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Civettictis_civetta_12.jpg",
+  "artist": "Николай Усик / http://paradoxusik.livejournal…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "clouded-leopard": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Neofelis_nebulosa%2C_Clouded_leopard.jpg/960px-Neofelis_nebulosa%2C_Clouded_leopard.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Neofelis_nebulosa,_Clouded_leopard.jpg",
+  "artist": "Rushenb",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "clownfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Amphiprion_ocellaris_%28Clown_anemonefish%29_by_Nick_Hobgood.jpg/960px-Amphiprion_ocellaris_%28Clown_anemonefish%29_by_Nick_Hobgood.jpg",
+  "width": 900,
+  "height": 613,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Amphiprion_ocellaris_(Clown_anemonefish)_by_Nick_Hobgood.jpg",
+  "artist": "Nick Hobgood",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "coati": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/WNCoati_Alajuela_CR.png/960px-WNCoati_Alajuela_CR.png",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:WNCoati_Alajuela_CR.png",
+  "artist": "Chuck Homler, Focus On Wildlife",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "cobra": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/6/66/Indiancobra.jpg",
+  "width": 900,
+  "height": 644,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Indiancobra.jpg",
+  "artist": "Kamalnv",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "cockatiel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Cockatiel_3.jpg/960px-Cockatiel_3.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cockatiel_3.jpg",
+  "artist": "Photo by: Ganatron – paulweberphoto.com",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "cockatoo": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Cacatua_galerita_Tas_2.jpg",
+  "width": 900,
+  "height": 1497,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cacatua_galerita_Tas_2.jpg",
+  "artist": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "cockroach": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Snodgrass_common_household_roaches.png/960px-Snodgrass_common_household_roaches.png",
+  "width": 900,
+  "height": 1135,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Snodgrass_common_household_roaches.png",
+  "artist": "",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "cod": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Gadus_morhua_Cod-2b-Atlanterhavsparken-Norway.JPG/960px-Gadus_morhua_Cod-2b-Atlanterhavsparken-Norway.JPG",
+  "width": 900,
+  "height": 493,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Gadus_morhua_Cod-2b-Atlanterhavsparken-Norway.JPG",
+  "artist": "Hans-Petter Fjeld",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "coelacanth": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast%2C_South_Africa%2C_on_22_November_2019.png/960px-Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast%2C_South_Africa%2C_on_22_November_2019.png",
+  "width": 900,
+  "height": 540,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast,_South_Africa,_on_22_November_2019.png",
+  "artist": "Bruce A.S. Henderson",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "condor": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/AndeanCondorMale.jpg/960px-AndeanCondorMale.jpg",
+  "width": 900,
+  "height": 1126,
+  "filePage": "https://commons.wikimedia.org/wiki/File:AndeanCondorMale.jpg",
+  "artist": "Greg Hume",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "copperhead": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Agkistrodon_contortrix_contortrix_CDC-a.png/960px-Agkistrodon_contortrix_contortrix_CDC-a.png",
+  "width": 900,
+  "height": 713,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Agkistrodon_contortrix_contortrix_CDC-a.png",
+  "artist": "",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "coral": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Coral_Outcrop_Flynn_Reef.jpg/960px-Coral_Outcrop_Flynn_Reef.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Coral_Outcrop_Flynn_Reef.jpg",
+  "artist": "Toby Hudson",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "cormorant": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Microcarbo_melanoleucos_Austins_Ferry_3.jpg/960px-Microcarbo_melanoleucos_Austins_Ferry_3.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Microcarbo_melanoleucos_Austins_Ferry_3.jpg",
+  "artist": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "cougar": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Mountain_Lion_in_Glacier_National_Park.jpg/960px-Mountain_Lion_in_Glacier_National_Park.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mountain_Lion_in_Glacier_National_Park.jpg",
+  "artist": "National Park Service",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "cow": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/960px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg",
+  "width": 900,
+  "height": 602,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cow_(Fleckvieh_breed)_Oeschinensee_Slaunger_2009-07-07.jpg",
+  "artist": "Kim Hansen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "coyote": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/9/9c/2009-Coyote-Yosemite.jpg",
+  "width": 900,
+  "height": 1045,
+  "filePage": "https://commons.wikimedia.org/wiki/File:2009-Coyote-Yosemite.jpg",
+  "artist": "Yathin S Krishnappa",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "crab": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Cancer_pagurus.jpg/960px-Cancer_pagurus.jpg",
+  "width": 900,
+  "height": 676,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cancer_pagurus.jpg",
+  "artist": "Hans Hillewaert",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "crane": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Antigone_canadensis_353731480_%28cropped%29.jpg/960px-Antigone_canadensis_353731480_%28cropped%29.jpg",
+  "width": 900,
+  "height": 1012,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Antigone_canadensis_353731480_(cropped).jpg",
+  "artist": "Zygy",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "crayfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Paranephrops.jpg/960px-Paranephrops.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Paranephrops.jpg",
+  "artist": "Gusmonkeyboy at English Wikipedia",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "cricket": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Pollock_to_Hussey.jpg/960px-Pollock_to_Hussey.jpg",
+  "width": 900,
+  "height": 390,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pollock_to_Hussey.jpg",
+  "artist": "Prescott Pym on Flickr",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "crocodile": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Nile_crocodile_head.jpg/960px-Nile_crocodile_head.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Nile_crocodile_head.jpg",
+  "artist": "Leigh Bedford",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "crow": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Corvus_corone_-near_Canford_Cliffs%2C_Poole%2C_England-8.jpg",
+  "width": 900,
+  "height": 960,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Corvus_corone_-near_Canford_Cliffs,_Poole,_England-8.jpg",
+  "artist": "Ian Kirk from Broadstone, Dorset, UK",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "cuckoo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Cuculus_canorus_vogelartinfo.jpg/960px-Cuculus_canorus_vogelartinfo.jpg",
+  "width": 900,
+  "height": 623,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cuculus_canorus_vogelartinfo.jpg",
+  "artist": "Vogelartinfo",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "cuttlefish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Sepia_com%C3%BAn_%28Sepia_officinalis%29%2C_Parque_natural_de_la_Arr%C3%A1bida%2C_Portugal%2C_2020-07-21%2C_DD_62.jpg/960px-Sepia_com%C3%BAn_%28Sepia_officinalis%29%2C_Parque_natural_de_la_Arr%C3%A1bida%2C_Portugal%2C_2020-07-21%2C_DD_62.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sepia_com%C3%BAn_(Sepia_officinalis),_Parque_natural_de_la_Arr%C3%A1bida,_Portugal,_2020-07-21,_DD_62.jpg",
+  "artist": "Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "deer": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Family_Cervidae_five_species.jpg",
+  "width": 900,
+  "height": 1017,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Family_Cervidae_five_species.jpg",
+  "artist": "This image is a derivative work of the follow…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "dhole": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Dhole_%28Asiatic_wild_dog%29_cropped.jpg/960px-Dhole_%28Asiatic_wild_dog%29_cropped.jpg",
+  "width": 900,
+  "height": 836,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Dhole_(Asiatic_wild_dog)_cropped.jpg",
+  "artist": "Davidvraju",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "dik-dik": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Madoqua_kirkii_-_male_%28Namutoni%29.jpg/960px-Madoqua_kirkii_-_male_%28Namutoni%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Madoqua_kirkii_-_male_(Namutoni).jpg",
+  "artist": "Yathin S Krishnappa",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "dingo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Dingo_%28Canis_lupus_dingo%29_Kakadu_2.jpg/960px-Dingo_%28Canis_lupus_dingo%29_Kakadu_2.jpg",
+  "width": 900,
+  "height": 794,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Dingo_(Canis_lupus_dingo)_Kakadu_2.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "dodo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Oxford_Dodo_display.jpg/960px-Oxford_Dodo_display.jpg",
+  "width": 900,
+  "height": 594,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Oxford_Dodo_display.jpg",
+  "artist": "BazzaDaRambler",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "dog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Huskiesatrest.jpg/960px-Huskiesatrest.jpg",
+  "width": 900,
+  "height": 598,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Huskiesatrest.jpg",
+  "artist": "M. Rehemtulla",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "dolphin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Tursiops_truncatus_01.jpg/960px-Tursiops_truncatus_01.jpg",
+  "width": 900,
+  "height": 599,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tursiops_truncatus_01.jpg",
+  "artist": "NASA",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "domestic-cat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Siam_lilacpoint.jpg/960px-Siam_lilacpoint.jpg",
+  "width": 900,
+  "height": 916,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Siam_lilacpoint.jpg",
+  "artist": "Karin Langner-Bahmann , upload von Martin Bah…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "donkey": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Donkey_in_Clovelly%2C_North_Devon%2C_England.jpg",
+  "width": 900,
+  "height": 643,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Donkey_in_Clovelly,_North_Devon,_England.jpg",
+  "artist": "Adrian Pingstone",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "dormouse": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/4/43/Graphiurus_spec_-murinus-1.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Graphiurus_spec_-murinus-1.jpg",
+  "artist": "H. Osadnik",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "dragonfly": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Red_grasshawk_%28Neurothemis_fluctuans%29_male_Phuket_2.jpg/960px-Red_grasshawk_%28Neurothemis_fluctuans%29_male_Phuket_2.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Red_grasshawk_(Neurothemis_fluctuans)_male_Phuket_2.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "dromedary": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Camelus_dromedarius_in_Nuweiba.jpg/960px-Camelus_dromedarius_in_Nuweiba.jpg",
+  "width": 900,
+  "height": 602,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Camelus_dromedarius_in_Nuweiba.jpg",
+  "artist": "Florian Prischl",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "duck": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Bucephala-albeola-010.jpg/960px-Bucephala-albeola-010.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bucephala-albeola-010.jpg",
+  "artist": "Mdf",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "dugong": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Dugong.JPG/960px-Dugong.JPG",
+  "width": 900,
+  "height": 638,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Dugong.JPG",
+  "artist": "Gejuni",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en"
+ },
+ "eagle": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Eagles_together.jpg/960px-Eagles_together.jpg",
+  "width": 900,
+  "height": 749,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eagles_together.jpg",
+  "artist": "User:Punetor i Rregullt5",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "earwig": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Earwig_on_white_background.jpg/960px-Earwig_on_white_background.jpg",
+  "width": 900,
+  "height": 387,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Earwig_on_white_background.jpg",
+  "artist": "fir0002 flagstaffotos [at] gmail.com Canon 20…",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "echidna": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Short-beaked_echidna_in_ANBG.jpg/960px-Short-beaked_echidna_in_ANBG.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Short-beaked_echidna_in_ANBG.jpg",
+  "artist": "Gunjan Pandey",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "eel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/New_Zealand_longfin_eel_%28Anguilla_dieffenbachii%29_Piha.jpg/960px-New_Zealand_longfin_eel_%28Anguilla_dieffenbachii%29_Piha.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:New_Zealand_longfin_eel_(Anguilla_dieffenbachii)_Piha.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "egret": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Ardea_modesta.jpg/960px-Ardea_modesta.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ardea_modesta.jpg",
+  "artist": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "eland": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Taurotragus_oryx_-_young_bull_-_Etosha_2015.jpg/960px-Taurotragus_oryx_-_young_bull_-_Etosha_2015.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Taurotragus_oryx_-_young_bull_-_Etosha_2015.jpg",
+  "artist": "Yathin S Krishnappa",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "electric-eel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Electric-eel.jpg/960px-Electric-eel.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Electric-eel.jpg",
+  "artist": "Steven G. Johnson",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "elephant": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/African_Bush_Elephant.jpg/960px-African_Bush_Elephant.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:African_Bush_Elephant.jpg",
+  "artist": "Muhammad Mahdi Karim Facebook The making of t…",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "elk": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Jasper.Wapiti-Hirsch.P1033401.jpg/960px-Jasper.Wapiti-Hirsch.P1033401.jpg",
+  "width": 900,
+  "height": 842,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Jasper.Wapiti-Hirsch.P1033401.jpg",
+  "artist": "Membeth",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "emu": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Emu_1_-_Tidbinbilla.jpg/960px-Emu_1_-_Tidbinbilla.jpg",
+  "width": 900,
+  "height": 720,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Emu_1_-_Tidbinbilla.jpg",
+  "artist": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "falcon": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/df/Eurasian_hobby_%28Falco_subbuteo%29_by_Shantanu_Kuveskar.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eurasian_hobby_(Falco_subbuteo)_by_Shantanu_Kuveskar.jpg",
+  "artist": "Shantanu Kuveskar",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "fennec-fox": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Fennec_Fox_Vulpes_zerda.jpg/960px-Fennec_Fox_Vulpes_zerda.jpg",
+  "width": 900,
+  "height": 697,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Fennec_Fox_Vulpes_zerda.jpg",
+  "artist": "Drew Avery",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "ferret": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Ferret_2008.png/960px-Ferret_2008.png",
+  "width": 900,
+  "height": 525,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ferret_2008.png",
+  "artist": "Alfredo Gutiérrez",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "finch": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Pyrrhula_pyrrhula_female_2.jpg/960px-Pyrrhula_pyrrhula_female_2.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pyrrhula_pyrrhula_female_2.jpg",
+  "artist": "Francis C. Franklin",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "firefly": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Photuris_lucicrescens.jpg/960px-Photuris_lucicrescens.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Photuris_lucicrescens.jpg",
+  "artist": "Bruce Marlin",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "flamingo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Flamingos_Laguna_Colorada.jpg/960px-Flamingos_Laguna_Colorada.jpg",
+  "width": 900,
+  "height": 606,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Flamingos_Laguna_Colorada.jpg",
+  "artist": "Valdiney Pimenta",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "flea": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Flea_Scanning_Electron_Micrograph_False_Color.jpg/960px-Flea_Scanning_Electron_Micrograph_False_Color.jpg",
+  "width": 900,
+  "height": 1161,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Flea_Scanning_Electron_Micrograph_False_Color.jpg",
+  "artist": "CDC/Janice Haney Carr",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "fly": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Bessenbandzweefvlieg_Vrouwtje_%282%29.JPG/960px-Bessenbandzweefvlieg_Vrouwtje_%282%29.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bessenbandzweefvlieg_Vrouwtje_(2).JPG",
+  "artist": "Sjonnoh",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "flying-squirrel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Glaucomys_sabrinus_248041903_%28cropped%29.jpg/960px-Glaucomys_sabrinus_248041903_%28cropped%29.jpg",
+  "width": 900,
+  "height": 766,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Glaucomys_sabrinus_248041903_(cropped).jpg",
+  "artist": "Henrique Pacheco",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "fossa": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Cryptoprocta_Ferox.JPG/960px-Cryptoprocta_Ferox.JPG",
+  "width": 900,
+  "height": 681,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cryptoprocta_Ferox.JPG",
+  "artist": "Ran Kirlian",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "frog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Red-eyed_Leaf_Frog_%2849661076226%29.jpg/960px-Red-eyed_Leaf_Frog_%2849661076226%29.jpg",
+  "width": 900,
+  "height": 643,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Red-eyed_Leaf_Frog_(49661076226).jpg",
+  "artist": "Charlie Jackson",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "fruit-bat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/047_Indian_flying_fox_in_Keoladeo_National_Park_Photo_by_Giles_Laurent.jpg/960px-047_Indian_flying_fox_in_Keoladeo_National_Park_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:047_Indian_flying_fox_in_Keoladeo_National_Park_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "gazelle": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Chinkara_-_Shreeram_M_V_-_Bikaner.jpg/960px-Chinkara_-_Shreeram_M_V_-_Bikaner.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Chinkara_-_Shreeram_M_V_-_Bikaner.jpg",
+  "artist": "Mvshreeram",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "gecko": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Phelsuma_l._laticauda.jpg",
+  "width": 900,
+  "height": 1106,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Phelsuma_l._laticauda.jpg",
+  "artist": "",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "genet": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Large-spotted_Genet_%28Genetta_tigrina%29_%2817356502041%29_%28crop%29.jpg/960px-Large-spotted_Genet_%28Genetta_tigrina%29_%2817356502041%29_%28crop%29.jpg",
+  "width": 900,
+  "height": 554,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Large-spotted_Genet_(Genetta_tigrina)_(17356502041)_(crop).jpg",
+  "artist": "Bernard Dupont from FRANCE",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "gerbil": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Meriones_unguiculatus_%28wild%29.jpg/960px-Meriones_unguiculatus_%28wild%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Meriones_unguiculatus_(wild).jpg",
+  "artist": "Alastair Rae from London, United Kingdom",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "gharial": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Gharial_%28Gavialis_gangeticus%29_male.jpg/960px-Gharial_%28Gavialis_gangeticus%29_male.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Gharial_(Gavialis_gangeticus)_male.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "ghost-crab": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Horned_Ghost_Crab_%288626790684%29.jpg/960px-Horned_Ghost_Crab_%288626790684%29.jpg",
+  "width": 900,
+  "height": 714,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Horned_Ghost_Crab_(8626790684).jpg",
+  "artist": "Steve Jurvetson from Menlo Park, USA",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "gibbon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Hylobates_lar_-_Kaeng_Krachan_WB.jpg/960px-Hylobates_lar_-_Kaeng_Krachan_WB.jpg",
+  "width": 900,
+  "height": 506,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hylobates_lar_-_Kaeng_Krachan_WB.jpg",
+  "artist": "JJ Harrison ( jjharrison89@facebook.com )",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "giraffe": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Giraffe_Mikumi_National_Park.jpg/960px-Giraffe_Mikumi_National_Park.jpg",
+  "width": 900,
+  "height": 1138,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Giraffe_Mikumi_National_Park.jpg",
+  "artist": "Muhammad Mahdi Karim Facebook The making of t…",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "goat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Hausziege_04.jpg/960px-Hausziege_04.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hausziege_04.jpg",
+  "artist": "Kuebi = Armin Kübelbeck",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "goldfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Gold_fish1.jpg/960px-Gold_fish1.jpg",
+  "width": 900,
+  "height": 588,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Gold_fish1.jpg",
+  "artist": "לינה אבוגוש",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "goose": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Anser_anser_1_%28Piotr_Kuczynski%29_%28cropped%29.jpg/960px-Anser_anser_1_%28Piotr_Kuczynski%29_%28cropped%29.jpg",
+  "width": 900,
+  "height": 691,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Anser_anser_1_(Piotr_Kuczynski)_(cropped).jpg",
+  "artist": "Piotr Kuczynski",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "gopher": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Pocket-Gopher_Ano-Nuevo-SP.jpg/960px-Pocket-Gopher_Ano-Nuevo-SP.jpg",
+  "width": 900,
+  "height": 996,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pocket-Gopher_Ano-Nuevo-SP.jpg",
+  "artist": "LeonardoWeiss",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "gorilla": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Gorille_des_plaines_de_l%27ouest_%C3%A0_l%27Espace_Zoologique.jpg/960px-Gorille_des_plaines_de_l%27ouest_%C3%A0_l%27Espace_Zoologique.jpg",
+  "width": 900,
+  "height": 1355,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Gorille_des_plaines_de_l%27ouest_%C3%A0_l%27Espace_Zoologique.jpg",
+  "artist": "Thurundir",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "grass-snake": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Grass_snake_%28Natrix_natrix%29_Pieniny.jpg/960px-Grass_snake_%28Natrix_natrix%29_Pieniny.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Grass_snake_(Natrix_natrix)_Pieniny.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "grasshopper": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/American_Bird_Grasshopper.jpg/960px-American_Bird_Grasshopper.jpg",
+  "width": 900,
+  "height": 563,
+  "filePage": "https://commons.wikimedia.org/wiki/File:American_Bird_Grasshopper.jpg",
+  "artist": "http://www.birdphotos.com",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "grizzly-bear": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/GrizzlyBearJeanBeaufort.jpg/960px-GrizzlyBearJeanBeaufort.jpg",
+  "width": 900,
+  "height": 647,
+  "filePage": "https://commons.wikimedia.org/wiki/File:GrizzlyBearJeanBeaufort.jpg",
+  "artist": "Jean Beaufort",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "groundhog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Marmota_monax_UL_04.jpg/960px-Marmota_monax_UL_04.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Marmota_monax_UL_04.jpg",
+  "artist": "Cephas",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "grouse": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Metsis_ehk_m%C3%B5tus_%28Tetrao_urogallus%29%2C_Euroopa_suurim_kanaline_2012.jpg/960px-Metsis_ehk_m%C3%B5tus_%28Tetrao_urogallus%29%2C_Euroopa_suurim_kanaline_2012.jpg",
+  "width": 900,
+  "height": 819,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Metsis_ehk_m%C3%B5tus_(Tetrao_urogallus),_Euroopa_suurim_kanaline_2012.jpg",
+  "artist": "Jaan Künnap",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "guanaco": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Guanaco_%28Lama_guanicoe%29_Leona_Amarga.jpg/960px-Guanaco_%28Lama_guanicoe%29_Leona_Amarga.jpg",
+  "width": 900,
+  "height": 790,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Guanaco_(Lama_guanicoe)_Leona_Amarga.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "guinea-pig": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/George_the_amazing_guinea_pig.jpg/960px-George_the_amazing_guinea_pig.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:George_the_amazing_guinea_pig.jpg",
+  "artist": "",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "guppy": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Guppy_pho_0048.jpg/960px-Guppy_pho_0048.jpg",
+  "width": 900,
+  "height": 462,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Guppy_pho_0048.jpg",
+  "artist": "Per Harald Olsen",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "hagfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Collage_of_hagfish_genera.png/960px-Collage_of_hagfish_genera.png",
+  "width": 900,
+  "height": 524,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Collage_of_hagfish_genera.png",
+  "artist": "Charles Keith Peter Southwood Nobu Tamura ema…",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "halibut": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Hippoglossus_hippoglossus.jpg/960px-Hippoglossus_hippoglossus.jpg",
+  "width": 900,
+  "height": 454,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hippoglossus_hippoglossus.jpg",
+  "artist": "",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "hamster": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/European_hamster_%28Cricetus_cricetus%29_Meidling.jpg/960px-European_hamster_%28Cricetus_cricetus%29_Meidling.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:European_hamster_(Cricetus_cricetus)_Meidling.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "hare": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Scrub_Hare_%28Lepus_saxatilis%29_close-up_%2830544290256%29_%282%29.jpg/960px-Scrub_Hare_%28Lepus_saxatilis%29_close-up_%2830544290256%29_%282%29.jpg",
+  "width": 900,
+  "height": 1262,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Scrub_Hare_(Lepus_saxatilis)_close-up_(30544290256)_(2).jpg",
+  "artist": "Bernard DUPONT from FRANCE",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "hartebeest": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Coke%27s_Hartebeest.jpg/960px-Coke%27s_Hartebeest.jpg",
+  "width": 900,
+  "height": 860,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Coke%27s_Hartebeest.jpg",
+  "artist": "D. Gordon E. Robertson",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "hawk": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/8/81/Northern_Goshawk_ad_M2.jpg",
+  "width": 900,
+  "height": 1469,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Northern_Goshawk_ad_M2.jpg",
+  "artist": "Norbert Kenntner, Berlin",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "hedgehog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Igel.JPG/960px-Igel.JPG",
+  "width": 900,
+  "height": 708,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Igel.JPG",
+  "artist": "Gibe",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "hellbender": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Hellbender.jpg/960px-Hellbender.jpg",
+  "width": 900,
+  "height": 590,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hellbender.jpg",
+  "artist": "Brian Gratwicke",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "hermit-crab": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Calliactis_and_Dardanus_001.JPG/960px-Calliactis_and_Dardanus_001.JPG",
+  "width": 900,
+  "height": 663,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Calliactis_and_Dardanus_001.JPG",
+  "artist": "H. Zell",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "heron": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Ardeidae-01.jpg/960px-Ardeidae-01.jpg",
+  "width": 900,
+  "height": 1120,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ardeidae-01.jpg",
+  "artist": "MathKnight",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "herring": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Clupea_harengus_Gervais.flipped.jpg/960px-Clupea_harengus_Gervais.flipped.jpg",
+  "width": 900,
+  "height": 297,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Clupea_harengus_Gervais.flipped.jpg",
+  "artist": "Gervais et Boulart, 1877",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "hippopotamus": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Portrait_Hippopotamus_in_the_water.jpg/960px-Portrait_Hippopotamus_in_the_water.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Portrait_Hippopotamus_in_the_water.jpg",
+  "artist": "Muhammad Mahdi Karim",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "hornbill": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Great_hornbill_Photograph_by_Shantanu_Kuveskar.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Great_hornbill_Photograph_by_Shantanu_Kuveskar.jpg",
+  "artist": "Shantanu Kuveskar",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "hornet": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Hornet.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hornet.jpg",
+  "artist": "Mehdi Taba",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "horse": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/de/Nokota_Horses_cropped.jpg",
+  "width": 900,
+  "height": 619,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Nokota_Horses_cropped.jpg",
+  "artist": "Nokota_Horses.jpg : François Marchal derivati…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "horsefly": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Horse_fly_Tabanus_2.jpg/960px-Horse_fly_Tabanus_2.jpg",
+  "width": 900,
+  "height": 689,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Horse_fly_Tabanus_2.jpg",
+  "artist": "Bruce Marlin",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "horseshoe-crab": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Tachypleus_gigas.JPG/960px-Tachypleus_gigas.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tachypleus_gigas.JPG",
+  "artist": "Shubham Chatterjee",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "howler-monkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Mantled_howler_monkey_and_baby_%2881337%292.jpg/960px-Mantled_howler_monkey_and_baby_%2881337%292.jpg",
+  "width": 900,
+  "height": 1108,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mantled_howler_monkey_and_baby_(81337)2.jpg",
+  "artist": "Rhododendrites",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "human": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/6/68/Akha_cropped_hires.JPG",
+  "width": 900,
+  "height": 1506,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Akha_cropped_hires.JPG",
+  "artist": "Weltenbummler84",
+  "license": "CC BY-SA 2.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en"
+ },
+ "hummingbird": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Trinidad_and_Tobago_hummingbirds_composite.jpg/960px-Trinidad_and_Tobago_hummingbirds_composite.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Trinidad_and_Tobago_hummingbirds_composite.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "humpback-whale": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Humpback_whale_breaching_off_Cabo_San_Lucas.jpg/960px-Humpback_whale_breaching_off_Cabo_San_Lucas.jpg",
+  "width": 900,
+  "height": 630,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Humpback_whale_breaching_off_Cabo_San_Lucas.jpg",
+  "artist": "Juan Cruzado Cortés",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "hyena": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Hyaenidae_Diversity.jpg/960px-Hyaenidae_Diversity.jpg",
+  "width": 900,
+  "height": 678,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hyaenidae_Diversity.jpg",
+  "artist": "Termininja",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "ibex": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Capra_ibex_ibex.jpg/960px-Capra_ibex_ibex.jpg",
+  "width": 900,
+  "height": 571,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Capra_ibex_ibex.jpg",
+  "artist": "T.Voekler",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "ibis": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Black-headed_Ibis_%28Threskiornis_melanocephalus%29.jpg/960px-Black-headed_Ibis_%28Threskiornis_melanocephalus%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Black-headed_Ibis_(Threskiornis_melanocephalus).jpg",
+  "artist": "Hari Krishnan",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "iguana": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Green_Iguana_In_Florida.jpg/960px-Green_Iguana_In_Florida.jpg",
+  "width": 900,
+  "height": 1125,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Green_Iguana_In_Florida.jpg",
+  "artist": "Ajoshi54",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "impala": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Common_impala_%28Aepyceros_melampus_melampus%29_male_Serengeti.jpg/960px-Common_impala_%28Aepyceros_melampus_melampus%29_male_Serengeti.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Common_impala_(Aepyceros_melampus_melampus)_male_Serengeti.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "indri": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Indri_%28Indri_indri%29.jpg/960px-Indri_%28Indri_indri%29.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Indri_(Indri_indri).jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "jackal": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Flickr_-_Rainbirder_-_Golden_Jackal_%281%29.jpg/960px-Flickr_-_Rainbirder_-_Golden_Jackal_%281%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Flickr_-_Rainbirder_-_Golden_Jackal_(1).jpg",
+  "artist": "Steve Garvie from Dunfermline, Fife, Scotland",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "jackdaw": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Western_Jackdaw_and_Daurian_Jackdaw.jpg/960px-Western_Jackdaw_and_Daurian_Jackdaw.jpg",
+  "width": 900,
+  "height": 629,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Western_Jackdaw_and_Daurian_Jackdaw.jpg",
+  "artist": "Sergey Yeliseev",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "jaguar": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Standing_jaguar.jpg",
+  "width": 900,
+  "height": 620,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Standing_jaguar.jpg",
+  "artist": "USFWS",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "jellyfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Jelly_cc11.jpg/960px-Jelly_cc11.jpg",
+  "width": 900,
+  "height": 599,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Jelly_cc11.jpg",
+  "artist": "Dan90266",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "jerboa": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Scarturus_euphraticus_438215030_%28cropped%29.jpg/960px-Scarturus_euphraticus_438215030_%28cropped%29.jpg",
+  "width": 900,
+  "height": 505,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Scarturus_euphraticus_438215030_(cropped).jpg",
+  "artist": "Marius Burger",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "kakapo": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Sirocco_full_length_portrait.jpg",
+  "width": 900,
+  "height": 1177,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sirocco_full_length_portrait.jpg",
+  "artist": "Department of Conservation",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "kangaroo": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Forester_kangaroo_%28Macropus_giganteus_tasmaniensis%29_juvenile_hopping_Esk_Valley.jpg/960px-Forester_kangaroo_%28Macropus_giganteus_tasmaniensis%29_juvenile_hopping_Esk_Valley.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Forester_kangaroo_(Macropus_giganteus_tasmaniensis)_juvenile_hopping_Esk_Valley.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "katydid": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Tettigonia_viridissima_qtl2.jpg/960px-Tettigonia_viridissima_qtl2.jpg",
+  "width": 900,
+  "height": 643,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tettigonia_viridissima_qtl2.jpg",
+  "artist": "Quartl",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "kea": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Nestor_notabilis_-Fiordland%2C_New_Zealand-8b.jpg/960px-Nestor_notabilis_-Fiordland%2C_New_Zealand-8b.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Nestor_notabilis_-Fiordland,_New_Zealand-8b.jpg",
+  "artist": "Mark Whatmough",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "kestrel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/American_kestrel_%28Falco_sparverius_cinnamominus%29_male_Leona_Amarga.jpg/960px-American_kestrel_%28Falco_sparverius_cinnamominus%29_male_Leona_Amarga.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:American_kestrel_(Falco_sparverius_cinnamominus)_male_Leona_Amarga.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "kingfisher": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Alcedo_azurea_-_Julatten.jpg/960px-Alcedo_azurea_-_Julatten.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Alcedo_azurea_-_Julatten.jpg",
+  "artist": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "kinkajou": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/31/Potos_flavus_%288973438737%29.jpg",
+  "width": 900,
+  "height": 1250,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Potos_flavus_(8973438737).jpg",
+  "artist": "Dick Culbert from Gibsons, B.C., Canada",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "kiwi": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/TeTuatahianui.jpg/960px-TeTuatahianui.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:TeTuatahianui.jpg",
+  "artist": "Maungatautari Ecological Island Trust",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "koala": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Koala_climbing_tree.jpg/960px-Koala_climbing_tree.jpg",
+  "width": 900,
+  "height": 885,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Koala_climbing_tree.jpg",
+  "artist": "Diliff",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "komodo-dragon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/202306_Varanus_komodoensis.jpg/960px-202306_Varanus_komodoensis.jpg",
+  "width": 900,
+  "height": 643,
+  "filePage": "https://commons.wikimedia.org/wiki/File:202306_Varanus_komodoensis.jpg",
+  "artist": "James Jolokia ( james1203 )",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "kookaburra": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Dacelo_novaeguineae_waterworks.jpg/960px-Dacelo_novaeguineae_waterworks.jpg",
+  "width": 900,
+  "height": 658,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Dacelo_novaeguineae_waterworks.jpg",
+  "artist": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "krill": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Meganyctiphanes_norvegica2.jpg/960px-Meganyctiphanes_norvegica2.jpg",
+  "width": 900,
+  "height": 514,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Meganyctiphanes_norvegica2.jpg",
+  "artist": "Øystein Paulsen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "kudu": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Kudu_%2817418137574%29.jpg/960px-Kudu_%2817418137574%29.jpg",
+  "width": 900,
+  "height": 720,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Kudu_(17418137574).jpg",
+  "artist": "StormSignal from Magaliesburg, South Africa",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "ladybird": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Coccinella-septempunctata-15-fws.jpg/960px-Coccinella-septempunctata-15-fws.jpg",
+  "width": 900,
+  "height": 666,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Coccinella-septempunctata-15-fws.jpg",
+  "artist": "Francisco Welter-Schultes",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "leech": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Sucking_leech.jpg/960px-Sucking_leech.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sucking_leech.jpg",
+  "artist": "GlebK",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "lemming": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Tunturisopuli_Lemmus_Lemmus.jpg/960px-Tunturisopuli_Lemmus_Lemmus.jpg",
+  "width": 900,
+  "height": 711,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tunturisopuli_Lemmus_Lemmus.jpg",
+  "artist": "Argus fin",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "lemur": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Lemuroidea.jpg/960px-Lemuroidea.jpg",
+  "width": 900,
+  "height": 1394,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Lemuroidea.jpg",
+  "artist": "Katta család.jpg : Veszprémi Állatkert Aye-ay…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "leopard": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/960px-African_leopard_male_%28cropped%29.jpg",
+  "width": 900,
+  "height": 899,
+  "filePage": "https://commons.wikimedia.org/wiki/File:African_leopard_male_(cropped).jpg",
+  "artist": "Sumeet Moghe",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "liger": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Liger_couple.jpg/960px-Liger_couple.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Liger_couple.jpg",
+  "artist": "Hkandy",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "limpet": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Common_limpets1.jpg/960px-Common_limpets1.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Common_limpets1.jpg",
+  "artist": "Tango22",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "lion": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg/960px-020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "lionfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Red_lionfish_near_Gilli_Banta_Island.JPG/960px-Red_lionfish_near_Gilli_Banta_Island.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Red_lionfish_near_Gilli_Banta_Island.JPG",
+  "artist": "Alexander Vasenin",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "lizard": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Hemidactylus_platyurus_%28Flat-tailed_House_Gecko%29_on_white_background%2C_focus_stacking.jpg/960px-Hemidactylus_platyurus_%28Flat-tailed_House_Gecko%29_on_white_background%2C_focus_stacking.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hemidactylus_platyurus_(Flat-tailed_House_Gecko)_on_white_background,_focus_stacking.jpg",
+  "artist": "Basile Morin",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "llama": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Llamas%2C_Vernagt-Stausee%2C_Italy.jpg/960px-Llamas%2C_Vernagt-Stausee%2C_Italy.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Llamas,_Vernagt-Stausee,_Italy.jpg",
+  "artist": "Andrija12345678",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "lobster": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/KreeftbijDenOsse.jpg/960px-KreeftbijDenOsse.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:KreeftbijDenOsse.jpg",
+  "artist": "Bart Braun",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "locust": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Locusta-migratoria-wanderheuschrecke.jpg/960px-Locusta-migratoria-wanderheuschrecke.jpg",
+  "width": 900,
+  "height": 629,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Locusta-migratoria-wanderheuschrecke.jpg",
+  "artist": "Holger Krisp",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "lungfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Neoceratodus_forsteri%2C_2014-09-19.JPG/960px-Neoceratodus_forsteri%2C_2014-09-19.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Neoceratodus_forsteri,_2014-09-19.JPG",
+  "artist": "Mitch Ames",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "lynx": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Lynx_heads_collage.jpg",
+  "width": 900,
+  "height": 1093,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Lynx_heads_collage.jpg",
+  "artist": "Jan Czeczotka (c)\"Programa de Conservación Ex…",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
+ },
+ "lyrebird": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Superb_lyrbird_in_scrub.jpg/960px-Superb_lyrbird_in_scrub.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Superb_lyrbird_in_scrub.jpg",
+  "artist": "Fir0002",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "macaque": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/4/43/Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg",
+  "width": 900,
+  "height": 1525,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bonnet_macaque_(Macaca_radiata)_Photograph_By_Shantanu_Kuveskar.jpg",
+  "artist": "Shantanu Kuveskar",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "macaw": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Ara_macao%2C_Ara_ararauna_and_Ara_militaris.jpg",
+  "width": 900,
+  "height": 556,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ara_macao,_Ara_ararauna_and_Ara_militaris.jpg",
+  "artist": "LancerEvolution ; from New Jersey, United Sta…",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "magpie": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Pica_pica_-_Compans_Caffarelli_-_2012-03-16.jpg/960px-Pica_pica_-_Compans_Caffarelli_-_2012-03-16.jpg",
+  "width": 900,
+  "height": 799,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pica_pica_-_Compans_Caffarelli_-_2012-03-16.jpg",
+  "artist": "Pierre-Selim",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "mallard": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Anas_platyrhynchos_male_female_quadrat.jpg/960px-Anas_platyrhynchos_male_female_quadrat.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Anas_platyrhynchos_male_female_quadrat.jpg",
+  "artist": "This picture was realized by Richard Bartz by…",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "mamba": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Hartebeespoort_Zoo_and_snake_park%2C_Black_Mamba_-_panoramio.jpg",
+  "width": 900,
+  "height": 545,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hartebeespoort_Zoo_and_snake_park,_Black_Mamba_-_panoramio.jpg",
+  "artist": "Hendrik van den Berg",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "manatee": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Underwater_photography_on_endangered_mammal_manatee.jpg/960px-Underwater_photography_on_endangered_mammal_manatee.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Underwater_photography_on_endangered_mammal_manatee.jpg",
+  "artist": "Ramos Keith, U.S. Fish and Wildlife Service",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "mandrill": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Mandrill_Albert_September_2015_Zoo_Berlin_%282%29.jpg/960px-Mandrill_Albert_September_2015_Zoo_Berlin_%282%29.jpg",
+  "width": 900,
+  "height": 1175,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mandrill_Albert_September_2015_Zoo_Berlin_(2).jpg",
+  "artist": "Katma0601",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "maned-wolf": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Lobo_Guar%C3%A1_andando.jpg/960px-Lobo_Guar%C3%A1_andando.jpg",
+  "width": 900,
+  "height": 582,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Lobo_Guar%C3%A1_andando.jpg",
+  "artist": "Jonathan Wilkins",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "manta-ray": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG/960px-Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG",
+  "width": 900,
+  "height": 597,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG",
+  "artist": "Shiyam ElkCloner",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "mantis-shrimp": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/OdontodactylusScyllarus2.jpg/960px-OdontodactylusScyllarus2.jpg",
+  "width": 900,
+  "height": 445,
+  "filePage": "https://commons.wikimedia.org/wiki/File:OdontodactylusScyllarus2.jpg",
+  "artist": "Roy L. Caldwell, Department of Integrative Bi…",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "markhor": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Markhor_Schraubenziege_Capra_falconeri_Zoo_Augsburg-02.jpg/960px-Markhor_Schraubenziege_Capra_falconeri_Zoo_Augsburg-02.jpg",
+  "width": 900,
+  "height": 910,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Markhor_Schraubenziege_Capra_falconeri_Zoo_Augsburg-02.jpg",
+  "artist": "Rufus46",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "marlin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Atlantic_blue_marlin.jpg/960px-Atlantic_blue_marlin.jpg",
+  "width": 900,
+  "height": 656,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Atlantic_blue_marlin.jpg",
+  "artist": "NOAA",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "marmoset": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Marmoset_copy.jpg",
+  "width": 900,
+  "height": 1351,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Marmoset_copy.jpg",
+  "artist": "Carmem A. Busko",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
+ },
+ "marmot": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/071_Wild_marmot_at_Grand_Muveran_Nature_Reserve_Photo_by_Giles_Laurent.jpg/960px-071_Wild_marmot_at_Grand_Muveran_Nature_Reserve_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:071_Wild_marmot_at_Grand_Muveran_Nature_Reserve_Photo_by_Giles_Laurent.jpg",
+  "artist": "Photography captured by Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "mayfly": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Rhithrogena_germanica_subimago_on_Equisetum_hyemale.jpg/960px-Rhithrogena_germanica_subimago_on_Equisetum_hyemale.jpg",
+  "width": 900,
+  "height": 1110,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Rhithrogena_germanica_subimago_on_Equisetum_hyemale.jpg",
+  "artist": "Richard Bartz , Munich aka Makro Freak Image:…",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "meerkat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Meerkat_%28Suricata_suricatta%29_Tswalu.jpg/960px-Meerkat_%28Suricata_suricatta%29_Tswalu.jpg",
+  "width": 900,
+  "height": 741,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Meerkat_(Suricata_suricatta)_Tswalu.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "millipede": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Millipede_collage.jpg/960px-Millipede_collage.jpg",
+  "width": 900,
+  "height": 1357,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Millipede_collage.jpg",
+  "artist": "Golovatch, S.; Mikhaljova, E.; Chang, H. Hedi…",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "mink": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/American_Mink.jpg/960px-American_Mink.jpg",
+  "width": 900,
+  "height": 616,
+  "filePage": "https://commons.wikimedia.org/wiki/File:American_Mink.jpg",
+  "artist": "Patrick Reijnders",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "mite": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Trombidium_holosericeum_%28aka%29.jpg",
+  "width": 900,
+  "height": 1024,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Trombidium_holosericeum_(aka).jpg",
+  "artist": "André Karwath aka Aka",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "mockingbird": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Mockingbird_in_Bay_Ridge_%2885082%29.jpg/960px-Mockingbird_in_Bay_Ridge_%2885082%29.jpg",
+  "width": 900,
+  "height": 642,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mockingbird_in_Bay_Ridge_(85082).jpg",
+  "artist": "Rhododendrites",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "mole": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Kret_mole.jpg/960px-Kret_mole.jpg",
+  "width": 900,
+  "height": 719,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Kret_mole.jpg",
+  "artist": "Stanislaw Szydlo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "mongoose": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/39/Mongoose_collection.png",
+  "width": 900,
+  "height": 996,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mongoose_collection.png",
+  "artist": "edit: Alborzagros",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "monitor-lizard": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Worldwidevaranus.PNG/960px-Worldwidevaranus.PNG",
+  "width": 900,
+  "height": 447,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Worldwidevaranus.PNG",
+  "artist": "user:Martin-rnr",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "monkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Ubud_Monkey_Family.jpg/960px-Ubud_Monkey_Family.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ubud_Monkey_Family.jpg",
+  "artist": "Deerpeter",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "moose": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Alaska_moose.jpg/960px-Alaska_moose.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Alaska_moose.jpg",
+  "artist": "Paxson Woelber",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "moray-eel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Moray_eel.jpg/960px-Moray_eel.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Moray_eel.jpg",
+  "artist": "Mstroeck at en.wikipedia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "mosquito": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Aedes_aegypti.jpg/960px-Aedes_aegypti.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Aedes_aegypti.jpg",
+  "artist": "Muhammad Mahdi Karim",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "moth": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Autographa_gamma_en_Trachelospermum_jasminoides_-_02.jpg/960px-Autographa_gamma_en_Trachelospermum_jasminoides_-_02.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Autographa_gamma_en_Trachelospermum_jasminoides_-_02.jpg",
+  "artist": "Carlos Delgado",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "mountain-goat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Mountain_Goat%2C_Enchantments_Basin.jpg/960px-Mountain_Goat%2C_Enchantments_Basin.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mountain_Goat,_Enchantments_Basin.jpg",
+  "artist": "Adam Schneider",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "mouse": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/%D0%9C%D1%8B%D1%88%D1%8C_2.jpg/960px-%D0%9C%D1%8B%D1%88%D1%8C_2.jpg",
+  "width": 900,
+  "height": 475,
+  "filePage": "https://commons.wikimedia.org/wiki/File:%D0%9C%D1%8B%D1%88%D1%8C_2.jpg",
+  "artist": "George Shuklin ( talk )",
+  "license": "CC BY-SA 1.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/1.0"
+ },
+ "mudskipper": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/GambianMudskippers.jpg/960px-GambianMudskippers.jpg",
+  "width": 900,
+  "height": 642,
+  "filePage": "https://commons.wikimedia.org/wiki/File:GambianMudskippers.jpg",
+  "artist": "Bjørn Christian Tørrissen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "mule": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Pack_Mules_Waiting_%2815755930793%29.jpg/960px-Pack_Mules_Waiting_%2815755930793%29.jpg",
+  "width": 900,
+  "height": 655,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pack_Mules_Waiting_(15755930793).jpg",
+  "artist": "Pacific Southwest Region 5",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "muntjac": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Indian_Muntjac_Muntiacus_muntjak_by_Raju_Kasambe_DSCN3312_%281%29_02.jpg/960px-Indian_Muntjac_Muntiacus_muntjak_by_Raju_Kasambe_DSCN3312_%281%29_02.jpg",
+  "width": 900,
+  "height": 672,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Indian_Muntjac_Muntiacus_muntjak_by_Raju_Kasambe_DSCN3312_(1)_02.jpg",
+  "artist": "Dr. Raju Kasambe",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "muskox": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Muskox_%28Ovibos_moschatus%29_male_Dovrefjell_4.jpg/960px-Muskox_%28Ovibos_moschatus%29_male_Dovrefjell_4.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Muskox_(Ovibos_moschatus)_male_Dovrefjell_4.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "muskrat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Muskrat_swimming_Ottawa.jpg/960px-Muskrat_swimming_Ottawa.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Muskrat_swimming_Ottawa.jpg",
+  "artist": "D. Gordon E. Robertson",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "mussel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/CornishMussels.JPG/960px-CornishMussels.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:CornishMussels.JPG",
+  "artist": "Wilson44691 at English Wikipedia",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "naked-mole-rat": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Webs180130-rat.jpg",
+  "width": 900,
+  "height": 700,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Webs180130-rat.jpg",
+  "artist": "Kein keen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "narwhal": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/%D0%9D%D0%B0%D1%80%D0%B2%D0%B0%D0%BB_%D0%B2_%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%90%D1%80%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.jpg/960px-%D0%9D%D0%B0%D1%80%D0%B2%D0%B0%D0%BB_%D0%B2_%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%90%D1%80%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B0%D1%80%D0%B2%D0%B0%D0%BB_%D0%B2_%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%90%D1%80%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.jpg",
+  "artist": "пресс-служба ПАО \"Газпром нефть\"",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "nautilus": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Nautilus_belauensis_from_Palau.jpg/960px-Nautilus_belauensis_from_Palau.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Nautilus_belauensis_from_Palau.jpg",
+  "artist": "Manuae",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "newt": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Uhandre_goimenditarra.jpg/960px-Uhandre_goimenditarra.jpg",
+  "width": 900,
+  "height": 589,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Uhandre_goimenditarra.jpg",
+  "artist": "Joxerra Aihartza",
+  "license": "FAL",
+  "licenseUrl": "http://artlibre.org/licence/lal/en"
+ },
+ "nightingale": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Luscinia_megarhynchos_-_Common_nightingale_-_Nachtegaal_%28cropped%29.jpg/960px-Luscinia_megarhynchos_-_Common_nightingale_-_Nachtegaal_%28cropped%29.jpg",
+  "width": 900,
+  "height": 750,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Luscinia_megarhynchos_-_Common_nightingale_-_Nachtegaal_(cropped).jpg",
+  "artist": "Warrieboy",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "nudibranch": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Berghia_coerulescens_%28Laurillard%2C_1830%29.jpg/960px-Berghia_coerulescens_%28Laurillard%2C_1830%29.jpg",
+  "width": 900,
+  "height": 507,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Berghia_coerulescens_(Laurillard,_1830).jpg",
+  "artist": "Géry PARENT",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "numbat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Numbat%2C_Dryandra_Woodland%2C_Western_Australia.jpg/960px-Numbat%2C_Dryandra_Woodland%2C_Western_Australia.jpg",
+  "width": 900,
+  "height": 559,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Numbat,_Dryandra_Woodland,_Western_Australia.jpg",
+  "artist": "JJ Harrison",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "nuthatch": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Sitta_europaea_-Rouge_Cloitre_estate%2C_Sonian_Forest%2C_near_Brussels%2C_Belgium-8.jpg/960px-Sitta_europaea_-Rouge_Cloitre_estate%2C_Sonian_Forest%2C_near_Brussels%2C_Belgium-8.jpg",
+  "width": 900,
+  "height": 720,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sitta_europaea_-Rouge_Cloitre_estate,_Sonian_Forest,_near_Brussels,_Belgium-8.jpg",
+  "artist": "Serge Ninanne",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "nyala": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Nyala_%28Tragelaphus_angasii%29_male_Maputo.jpg/960px-Nyala_%28Tragelaphus_angasii%29_male_Maputo.jpg",
+  "width": 900,
+  "height": 666,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Nyala_(Tragelaphus_angasii)_male_Maputo.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "oarfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Cuvier-69-Gymn%C3%A8tre.jpg/960px-Cuvier-69-Gymn%C3%A8tre.jpg",
+  "width": 900,
+  "height": 625,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cuvier-69-Gymn%C3%A8tre.jpg",
+  "artist": "Georges Cuvier",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "ocelot": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/016_Ocelot_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/960px-016_Ocelot_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:016_Ocelot_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "octopus": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Octopus2.jpg/960px-Octopus2.jpg",
+  "width": 900,
+  "height": 685,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Octopus2.jpg",
+  "artist": "albert kok",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "okapi": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Saint-Aignan_%28Loir-et-Cher%29._Okapi.jpg/960px-Saint-Aignan_%28Loir-et-Cher%29._Okapi.jpg",
+  "width": 900,
+  "height": 601,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Saint-Aignan_(Loir-et-Cher)._Okapi.jpg",
+  "artist": "Daniel Jolivet",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "olm": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/6/65/Proteus_anguinus_distribution.png",
+  "width": 900,
+  "height": 854,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Proteus_anguinus_distribution.png",
+  "artist": "Yerpo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "opossum": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Didelphis_virginiana_with_young.JPG/960px-Didelphis_virginiana_with_young.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Didelphis_virginiana_with_young.JPG",
+  "artist": "Specialjake",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "orangutan": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Orang_Utan%2C_Semenggok_Forest_Reserve%2C_Sarawak%2C_Borneo%2C_Malaysia.JPG/960px-Orang_Utan%2C_Semenggok_Forest_Reserve%2C_Sarawak%2C_Borneo%2C_Malaysia.JPG",
+  "width": 900,
+  "height": 1300,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Orang_Utan,_Semenggok_Forest_Reserve,_Sarawak,_Borneo,_Malaysia.JPG",
+  "artist": "Eleifert",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "orca": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Killerwhales_jumping.jpg/960px-Killerwhales_jumping.jpg",
+  "width": 900,
+  "height": 598,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Killerwhales_jumping.jpg",
+  "artist": "Robert Pittman",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "oryx": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Oryx_gazella_male_8054.jpg/960px-Oryx_gazella_male_8054.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Oryx_gazella_male_8054.jpg",
+  "artist": "Alchemist-hp ( talk ) ( www.pse-mendelejew.de )",
+  "license": "FAL",
+  "licenseUrl": "http://artlibre.org/licence/lal/en"
+ },
+ "osprey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Osprey_Perched_Snag_Heislerville.jpg/960px-Osprey_Perched_Snag_Heislerville.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Osprey_Perched_Snag_Heislerville.jpg",
+  "artist": "Chuck Homler / Focus On Wildlife",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "ostrich": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Struthio_Diversity.jpg/960px-Struthio_Diversity.jpg",
+  "width": 900,
+  "height": 468,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Struthio_Diversity.jpg",
+  "artist": "PaleoNeolitic (montage creator) Diego Delso n…",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "otter": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Fischotter%2C_Lutra_Lutra.JPG",
+  "width": 900,
+  "height": 493,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Fischotter,_Lutra_Lutra.JPG",
+  "artist": "Bernard Landgraf",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "owl": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Bubo_bubo_sibiricus_-_01.JPG/960px-Bubo_bubo_sibiricus_-_01.JPG",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bubo_bubo_sibiricus_-_01.JPG",
+  "artist": "Carlos Delgado",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "oyster": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Crassostrea_gigas_p1040848.jpg/960px-Crassostrea_gigas_p1040848.jpg",
+  "width": 900,
+  "height": 626,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg",
+  "artist": "David Monniaux",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "panda": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/960px-Grosser_Panda.JPG",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Grosser_Panda.JPG",
+  "artist": "J. Patrick Fischer",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "pangolin": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/2/28/Eupholidota.jpg",
+  "width": 900,
+  "height": 1374,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eupholidota.jpg",
+  "artist": "derivative work: user:The Explaner",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "parrot": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Rainbow_lorikeet_%28Trichoglossus_moluccanus_moluccanus%29_Sydney.jpg/960px-Rainbow_lorikeet_%28Trichoglossus_moluccanus_moluccanus%29_Sydney.jpg",
+  "width": 900,
+  "height": 1164,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Rainbow_lorikeet_(Trichoglossus_moluccanus_moluccanus)_Sydney.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "parrotfish": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Scarus_frenatus_by_Ewa_Barska.jpg",
+  "width": 900,
+  "height": 604,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Scarus_frenatus_by_Ewa_Barska.jpg",
+  "artist": "",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "partridge": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/CRESTED_WOOD-PARTRIDGE_%287181284331%29.jpg/960px-CRESTED_WOOD-PARTRIDGE_%287181284331%29.jpg",
+  "width": 900,
+  "height": 543,
+  "filePage": "https://commons.wikimedia.org/wiki/File:CRESTED_WOOD-PARTRIDGE_(7181284331).jpg",
+  "artist": "cuatrok77",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "peacock": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Peacock_Plumage.jpg/960px-Peacock_Plumage.jpg",
+  "width": 900,
+  "height": 551,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Peacock_Plumage.jpg",
+  "artist": "Jatin Sindhu",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "peacock-spider": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/MalePeacockSpider.jpg",
+  "width": 900,
+  "height": 788,
+  "filePage": "https://commons.wikimedia.org/wiki/File:MalePeacockSpider.jpg",
+  "artist": "Jürgen Otto",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "pelican": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Pelikan_Walvis_Bay.jpg/960px-Pelikan_Walvis_Bay.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pelikan_Walvis_Bay.jpg",
+  "artist": "Rui Ornelas from Lisboa, Portugal",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "pelican-eel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Eurypharynx_pelecanoides.jpg/960px-Eurypharynx_pelecanoides.jpg",
+  "width": 900,
+  "height": 520,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eurypharynx_pelecanoides.jpg",
+  "artist": "",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "penguin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/South_Shetland-2016-Deception_Island%E2%80%93Chinstrap_penguin_%28Pygoscelis_antarctica%29_04.jpg/960px-South_Shetland-2016-Deception_Island%E2%80%93Chinstrap_penguin_%28Pygoscelis_antarctica%29_04.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:South_Shetland-2016-Deception_Island%E2%80%93Chinstrap_penguin_(Pygoscelis_antarctica)_04.jpg",
+  "artist": "Godot13",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "pheasant": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Pheasant.jpg/960px-Pheasant.jpg",
+  "width": 900,
+  "height": 591,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pheasant.jpg",
+  "artist": "gary noon",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "pig": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Pig_farm_Vampula_1.jpg/960px-Pig_farm_Vampula_1.jpg",
+  "width": 900,
+  "height": 557,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pig_farm_Vampula_1.jpg",
+  "artist": "kallerna",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "pigeon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Treron_vernans_male_-_Kent_Ridge_Park.jpg/960px-Treron_vernans_male_-_Kent_Ridge_Park.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Treron_vernans_male_-_Kent_Ridge_Park.jpg",
+  "artist": "JJ Harrison ( https://tiny.jjharrison.com.au/…",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "pika": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/American_pika_%28Ochotona_princeps_princeps%29_haying_spotted_saxifrage_%28Saxifraga_bronchialis%29_Moraine_Lake_2.jpg/960px-American_pika_%28Ochotona_princeps_princeps%29_haying_spotted_saxifrage_%28Saxifraga_bronchialis%29_Moraine_Lake_2.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:American_pika_(Ochotona_princeps_princeps)_haying_spotted_saxifrage_(Saxifraga_bronchialis)_Moraine_Lake_2.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "pine-marten": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Pine_Marten_%2848173751702%29.jpg/960px-Pine_Marten_%2848173751702%29.jpg",
+  "width": 900,
+  "height": 555,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pine_Marten_(48173751702).jpg",
+  "artist": "caroline legg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "piranha": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Pygocentrus_nattereri_-_Karlsruhe_Zoo_01.jpg/960px-Pygocentrus_nattereri_-_Karlsruhe_Zoo_01.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pygocentrus_nattereri_-_Karlsruhe_Zoo_01.jpg",
+  "artist": "H. Zell",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "platypus": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Duck-billed_platypus_%28Ornithorhynchus_anatinus%29_Scottsdale.jpg/960px-Duck-billed_platypus_%28Ornithorhynchus_anatinus%29_Scottsdale.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Duck-billed_platypus_(Ornithorhynchus_anatinus)_Scottsdale.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "poison-dart-frog": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Blue-poison.dart.frog.and.Yellow-banded.dart.frog.arp.jpg",
+  "width": 900,
+  "height": 1854,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Blue-poison.dart.frog.and.Yellow-banded.dart.frog.arp.jpg",
+  "artist": "Pixeltoo",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "polar-bear": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/6/66/Polar_Bear_-_Alaska_%28cropped%29.jpg",
+  "width": 900,
+  "height": 903,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Polar_Bear_-_Alaska_(cropped).jpg",
+  "artist": "Alan Wilson",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "polecat": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Polecat_in_denmark.jpg",
+  "width": 900,
+  "height": 779,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Polecat_in_denmark.jpg",
+  "artist": "Ilder.jpg : User:Malene / *derivative work: M…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "pony": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Gracie-rhs2005.jpg/960px-Gracie-rhs2005.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Gracie-rhs2005.jpg",
+  "artist": "Confuslefu at English Wikipedia",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "porcupine": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Erethizon_dorsatum_-_Prince_Rupert.jpg/960px-Erethizon_dorsatum_-_Prince_Rupert.jpg",
+  "width": 900,
+  "height": 566,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Erethizon_dorsatum_-_Prince_Rupert.jpg",
+  "artist": "The Cosmonaut",
+  "license": "CC BY-SA 2.5 ca",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/ca/deed.en"
+ },
+ "porpoise": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Phocoena_phocoena.2.jpg/960px-Phocoena_phocoena.2.jpg",
+  "width": 900,
+  "height": 676,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Phocoena_phocoena.2.jpg",
+  "artist": "Erik Christensen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "prairie-dog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Black-Tailed_Prairie_Dog.jpg/960px-Black-Tailed_Prairie_Dog.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Black-Tailed_Prairie_Dog.jpg",
+  "artist": "Joe Ravi",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "praying-mantis": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Mantis_%28European%29.jpg/960px-Mantis_%28European%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mantis_(European).jpg",
+  "artist": "Mihai C. Popa",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "proboscis-monkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Proboscis_Monkey_in_Borneo.jpg/960px-Proboscis_Monkey_in_Borneo.jpg",
+  "width": 900,
+  "height": 643,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Proboscis_Monkey_in_Borneo.jpg",
+  "artist": "David Dennis",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "pronghorn": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Antilocapra_americana.jpg",
+  "width": 900,
+  "height": 755,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Antilocapra_americana.jpg",
+  "artist": "www.naturespicsonline.com",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "pufferfish": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Tetraodon-hispidus.jpg",
+  "width": 900,
+  "height": 576,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tetraodon-hispidus.jpg",
+  "artist": "National Oceanic and Atmospheric Administration",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "puffin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Papageitaucher_Fratercula_arctica.jpg/960px-Papageitaucher_Fratercula_arctica.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Papageitaucher_Fratercula_arctica.jpg",
+  "artist": "Richard Bartz",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "python": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/32/Python_molurus_molurus_2.jpg",
+  "width": 900,
+  "height": 871,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Python_molurus_molurus_2.jpg",
+  "artist": "Tigerpython",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "quail": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Brown_Quail.jpg/960px-Brown_Quail.jpg",
+  "width": 900,
+  "height": 746,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Brown_Quail.jpg",
+  "artist": "Duncan Wright",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "quokka": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Setonix_brachyurus_on_Rottnest_Island_1.jpg/960px-Setonix_brachyurus_on_Rottnest_Island_1.jpg",
+  "width": 900,
+  "height": 1248,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Setonix_brachyurus_on_Rottnest_Island_1.jpg",
+  "artist": "Christophe95",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "quoll": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Eastern_quoll_%28Dasyurus_viverrinus%29_fawn_morph_Esk_Valley.jpg/960px-Eastern_quoll_%28Dasyurus_viverrinus%29_fawn_morph_Esk_Valley.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eastern_quoll_(Dasyurus_viverrinus)_fawn_morph_Esk_Valley.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "rabbit": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/960px-Oryctolagus_cuniculus_Rcdo.jpg",
+  "width": 900,
+  "height": 1115,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Oryctolagus_cuniculus_Rcdo.jpg",
+  "artist": "JM Ligero Loarte",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "raccoon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Raccoon_in_Central_Park_%2835264%29.jpg/960px-Raccoon_in_Central_Park_%2835264%29.jpg",
+  "width": 900,
+  "height": 705,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Raccoon_in_Central_Park_(35264).jpg",
+  "artist": "Rhododendrites",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "raccoon-dog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Nyctereutes.png/960px-Nyctereutes.png",
+  "width": 900,
+  "height": 1315,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Nyctereutes.png",
+  "artist": "Доктор рукиноги KKPCW",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "rat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Brown_Rat_%28Rattus_norvegicus%29.jpg/960px-Brown_Rat_%28Rattus_norvegicus%29.jpg",
+  "width": 900,
+  "height": 614,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Brown_Rat_(Rattus_norvegicus).jpg",
+  "artist": "Dunpharlain",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "rattlesnake": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Crotalus_cerastes_mesquite_springs_CA-2.jpg/960px-Crotalus_cerastes_mesquite_springs_CA-2.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Crotalus_cerastes_mesquite_springs_CA-2.jpg",
+  "artist": "derivative work: Victorrocha ( talk · contrib…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "raven": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/3782_Common_Raven_in_flight.jpg/960px-3782_Common_Raven_in_flight.jpg",
+  "width": 900,
+  "height": 598,
+  "filePage": "https://commons.wikimedia.org/wiki/File:3782_Common_Raven_in_flight.jpg",
+  "artist": "Copetersen www.copetersen.com",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "red-fox": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg/960px-Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg",
+  "width": 900,
+  "height": 596,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_(cropped).jpg",
+  "artist": "ClaudiaTen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "red-panda": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Red_Panda%2C_Gentle_Tree-Dweller_of_the_Himalayas.jpg/960px-Red_Panda%2C_Gentle_Tree-Dweller_of_the_Himalayas.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Red_Panda,_Gentle_Tree-Dweller_of_the_Himalayas.jpg",
+  "artist": "Sunuwargr",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "reindeer": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Reinbukken_p%C3%A5_frisk_gr%C3%B8nt_beite._-_panoramio.jpg/960px-Reinbukken_p%C3%A5_frisk_gr%C3%B8nt_beite._-_panoramio.jpg",
+  "width": 900,
+  "height": 609,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Reinbukken_p%C3%A5_frisk_gr%C3%B8nt_beite._-_panoramio.jpg",
+  "artist": "Are G Nilsen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "rhea": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Greater_rhea_pair_arp.jpg/960px-Greater_rhea_pair_arp.jpg",
+  "width": 900,
+  "height": 705,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Greater_rhea_pair_arp.jpg",
+  "artist": "Adrian Pingstone ( Arpingstone )",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "rhinoceros": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/081_White_rhinoceros_%28male%29_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg/960px-081_White_rhinoceros_%28male%29_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:081_White_rhinoceros_(male)_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "roadrunner": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Greater_Roadrunner_Tingley_Beach.jpg/960px-Greater_Roadrunner_Tingley_Beach.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Greater_Roadrunner_Tingley_Beach.jpg",
+  "artist": "Polinova",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "robin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/960px-Erithacus_rubecula_with_cocked_head.jpg",
+  "width": 900,
+  "height": 720,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Erithacus_rubecula_with_cocked_head.jpg",
+  "artist": "Francis C. Franklin",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "saiga": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Saiga_antelope_at_the_Stepnoi_Sanctuary.jpg/960px-Saiga_antelope_at_the_Stepnoi_Sanctuary.jpg",
+  "width": 900,
+  "height": 763,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Saiga_antelope_at_the_Stepnoi_Sanctuary.jpg",
+  "artist": "Andrey Giljov",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "sailfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Naturalis_Biodiversity_Center_-_RMNH.ART.194_-_Istiophorus_platypterus_%28Shaw_and_Nodder%29_-_Kawahara_Keiga_-_1823_-_1829_-_Siebold_Collection_-_new_version.jpeg/960px-Naturalis_Biodiversity_Center_-_RMNH.ART.194_-_Istiophorus_platypterus_%28Shaw_and_Nodder%29_-_Kawahara_Keiga_-_1823_-_1829_-_Siebold_Collection_-_new_version.jpeg",
+  "width": 900,
+  "height": 512,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_RMNH.ART.194_-_Istiophorus_platypterus_(Shaw_and_Nodder)_-_Kawahara_Keiga_-_1823_-_1829_-_Siebold_Collection_-_new_version.jpeg",
+  "artist": "Kawahara Keiga",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "salamander": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/b/b2/SpottedSalamander.jpg",
+  "width": 900,
+  "height": 1346,
+  "filePage": "https://commons.wikimedia.org/wiki/File:SpottedSalamander.jpg",
+  "artist": "Camazine at English Wikipedia ) (Scott Camazi…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "salmon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Salmo_salar.jpg/960px-Salmo_salar.jpg",
+  "width": 900,
+  "height": 294,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Salmo_salar.jpg",
+  "artist": "Knepp, Timothy",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "sand-cat": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Persian_sand_CAT.jpg",
+  "width": 900,
+  "height": 623,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Persian_sand_CAT.jpg",
+  "artist": "Payman sazesh",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "sawfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Sawfish_Pristis_zijsron_Genova_Aquarium.jpg/960px-Sawfish_Pristis_zijsron_Genova_Aquarium.jpg",
+  "width": 900,
+  "height": 1020,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sawfish_Pristis_zijsron_Genova_Aquarium.jpg",
+  "artist": "Flavia Brandi from Roma, Italy",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "scallop": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/0/09/Argopecten_irradians.jpg",
+  "width": 900,
+  "height": 486,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Argopecten_irradians.jpg",
+  "artist": "Rachael Norris and Marina Freudzon / Mayscall…",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "scorpion": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Scorpion_Photograph_By_Shantanu_Kuveskar.jpg",
+  "width": 900,
+  "height": 643,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Scorpion_Photograph_By_Shantanu_Kuveskar.jpg",
+  "artist": "Shantanu Kuveskar",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "sea-anemone": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Actiniaria.jpg/960px-Actiniaria.jpg",
+  "width": 900,
+  "height": 577,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Actiniaria.jpg",
+  "artist": "Giacomo Merculiano",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "sea-cucumber": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Holothuroidea_orders_collage.png/960px-Holothuroidea_orders_collage.png",
+  "width": 900,
+  "height": 718,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Holothuroidea_orders_collage.png",
+  "artist": "Diego Delso / Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "sea-lion": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Steller_sea_lions_%28Eumetopias_jubatus_monteriensis%29_females_Tofino.jpg/960px-Steller_sea_lions_%28Eumetopias_jubatus_monteriensis%29_females_Tofino.jpg",
+  "width": 900,
+  "height": 599,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Steller_sea_lions_(Eumetopias_jubatus_monteriensis)_females_Tofino.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "sea-otter": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/0/02/Sea_Otter_%28Enhydra_lutris%29_%2825169790524%29_crop.jpg",
+  "width": 900,
+  "height": 823,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg",
+  "artist": "Marshal Hedin from San Diego",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "sea-sponge": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Sponges_in_Caribbean_Sea%2C_Cayman_Islands.jpg/960px-Sponges_in_Caribbean_Sea%2C_Cayman_Islands.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sponges_in_Caribbean_Sea,_Cayman_Islands.jpg",
+  "artist": "Twilight Zone Expedition Team 2007, NOAA-OE",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "sea-turtle": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Chelonia_mydas_is_going_for_the_air_edit.jpg/960px-Chelonia_mydas_is_going_for_the_air_edit.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Chelonia_mydas_is_going_for_the_air_edit.jpg",
+  "artist": "Brocken Inaglory",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "sea-urchin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Tripneustes_ventricosus_%28West_Indian_Sea_Egg-top%29_and_Echinometra_viridis_%28Reef_Urchin_-_bottom%29.jpg/960px-Tripneustes_ventricosus_%28West_Indian_Sea_Egg-top%29_and_Echinometra_viridis_%28Reef_Urchin_-_bottom%29.jpg",
+  "width": 900,
+  "height": 1201,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg",
+  "artist": "Nhobgood ( talk ) Nick Hobgood",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "seadragon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Leafy_Seadragon_on_Kangaroo_Island.jpg/960px-Leafy_Seadragon_on_Kangaroo_Island.jpg",
+  "width": 900,
+  "height": 599,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Leafy_Seadragon_on_Kangaroo_Island.jpg",
+  "artist": "James Rosindell",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "seagull": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Herring_Gull_%28Larus_argentatus%29%2C_Brighton%2C_England.JPG/960px-Herring_Gull_%28Larus_argentatus%29%2C_Brighton%2C_England.JPG",
+  "width": 900,
+  "height": 624,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Herring_Gull_(Larus_argentatus),_Brighton,_England.JPG",
+  "artist": "Beata May",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "seahorse": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Hippocampus_hippocampus_%28on_Ascophyllum_nodosum%29.jpg/960px-Hippocampus_hippocampus_%28on_Ascophyllum_nodosum%29.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Hippocampus_hippocampus_(on_Ascophyllum_nodosum).jpg",
+  "artist": "Hans Hillewaert",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "seal": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Pinnipeds_vertical_version_montage.jpg/960px-Pinnipeds_vertical_version_montage.jpg",
+  "width": 900,
+  "height": 969,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pinnipeds_vertical_version_montage.jpg",
+  "artist": "From a variety of images credited above.",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "serval": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Servalcropped.png/960px-Servalcropped.png",
+  "width": 900,
+  "height": 895,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Servalcropped.png",
+  "artist": "Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "shark": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Corl0207_%2828225976491%29.jpg/960px-Corl0207_%2828225976491%29.jpg",
+  "width": 900,
+  "height": 506,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Corl0207_(28225976491).jpg",
+  "artist": "NOAA Photo Library",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "sheep": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Flock_of_sheep.jpg/960px-Flock_of_sheep.jpg",
+  "width": 900,
+  "height": 1368,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Flock_of_sheep.jpg",
+  "artist": "Keith Weller",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "shrew": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/1/1d/4_shrews.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:4_shrews.jpg",
+  "artist": "Sorex-araneus.jpg : Soricida Suncus_etruscus.…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "shrimp": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Palaemon_serratus_Croazia.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Palaemon_serratus_Croazia.jpg",
+  "artist": "Etrusko25",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "sidewinder": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Crotalus_cerastes_mesquite_springs_CA-2.jpg/960px-Crotalus_cerastes_mesquite_springs_CA-2.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Crotalus_cerastes_mesquite_springs_CA-2.jpg",
+  "artist": "derivative work: Victorrocha ( talk · contrib…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "silkworm": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/4/47/Pairedmoths.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pairedmoths.jpg",
+  "artist": "Oakenking at en.wikipedia",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "skink": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/African_striped_skinks_%28Trachylepis_striata%29_Malolotja.jpg/960px-African_striped_skinks_%28Trachylepis_striata%29_Malolotja.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:African_striped_skinks_(Trachylepis_striata)_Malolotja.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "skunk": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Striped_Skunk.jpg/960px-Striped_Skunk.jpg",
+  "width": 900,
+  "height": 542,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Striped_Skunk.jpg",
+  "artist": "http://www.birdphotos.com",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "sloth": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Bicho-pregui%C3%A7a_3.jpg/960px-Bicho-pregui%C3%A7a_3.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bicho-pregui%C3%A7a_3.jpg",
+  "artist": "Daniella Maraschiello",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "sloth-bear": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Sloth_Bear_Washington_DC.JPG/960px-Sloth_Bear_Washington_DC.JPG",
+  "width": 900,
+  "height": 666,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sloth_Bear_Washington_DC.JPG",
+  "artist": "Asiir",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "slow-loris": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Nycticebus_coucang_002.jpg/960px-Nycticebus_coucang_002.jpg",
+  "width": 900,
+  "height": 1343,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Nycticebus_coucang_002.jpg",
+  "artist": "David Haring / Duke Lemur Center",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "slow-worm": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Anguidae.jpg",
+  "width": 900,
+  "height": 672,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Anguidae.jpg",
+  "artist": "",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "slug": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Slugs_1896.png",
+  "width": 900,
+  "height": 1242,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Slugs_1896.png",
+  "artist": "Adams, Lionel Ernest (1854–1945)",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "snail": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Snail.jpg/960px-Snail.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Snail.jpg",
+  "artist": "Geierunited",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "snake": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Trimeresurus_sabahi_fucatus%2C_Banded_pit_viper_-_Takua_Pa_District%2C_Phang-nga_Province_%2846710893582%29.jpg/960px-Trimeresurus_sabahi_fucatus%2C_Banded_pit_viper_-_Takua_Pa_District%2C_Phang-nga_Province_%2846710893582%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Trimeresurus_sabahi_fucatus,_Banded_pit_viper_-_Takua_Pa_District,_Phang-nga_Province_(46710893582).jpg",
+  "artist": "Rushenb",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "snow-leopard": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Irbis4.JPG/960px-Irbis4.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Irbis4.JPG",
+  "artist": "Irbis1983",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "sparrow": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/House_sparrow_male_in_Prospect_Park_%2853532%29.jpg/960px-House_sparrow_male_in_Prospect_Park_%2853532%29.jpg",
+  "width": 900,
+  "height": 700,
+  "filePage": "https://commons.wikimedia.org/wiki/File:House_sparrow_male_in_Prospect_Park_(53532).jpg",
+  "artist": "Rhododendrites",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "spectacled-bear": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Tremarctos_ornatus_in_Jardim_Zool%C3%B3gico_de_Curitiba.jpg/960px-Tremarctos_ornatus_in_Jardim_Zool%C3%B3gico_de_Curitiba.jpg",
+  "width": 900,
+  "height": 762,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tremarctos_ornatus_in_Jardim_Zool%C3%B3gico_de_Curitiba.jpg",
+  "artist": "Wilfredor",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "sperm-whale": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Mother_and_baby_sperm_whale.jpg/960px-Mother_and_baby_sperm_whale.jpg",
+  "width": 900,
+  "height": 506,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mother_and_baby_sperm_whale.jpg",
+  "artist": "Gabriel Barathieu",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "spider": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Araneus_diadematus_%28Clerck%2C_1757%29.JPG/960px-Araneus_diadematus_%28Clerck%2C_1757%29.JPG",
+  "width": 900,
+  "height": 579,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Araneus_diadematus_(Clerck,_1757).JPG",
+  "artist": "Michael Gäbler",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "spider-monkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Ateles_fusciceps_Colombia.JPG/960px-Ateles_fusciceps_Colombia.JPG",
+  "width": 900,
+  "height": 1033,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ateles_fusciceps_Colombia.JPG",
+  "artist": "Petruss",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "springbok": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/174_Male_Springbok_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg/960px-174_Male_Springbok_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:174_Male_Springbok_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "squid": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Sepioteuthis_sepioidea_%28Caribbean_Reef_Squid%29.jpg/960px-Sepioteuthis_sepioidea_%28Caribbean_Reef_Squid%29.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sepioteuthis_sepioidea_(Caribbean_Reef_Squid).jpg",
+  "artist": "Nhobgood Nick Hobgood",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "squirrel": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/6/68/Sciuridae.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sciuridae.jpg",
+  "artist": "Chicoutimi (montage) Karakal AndiW National P…",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "squirrel-monkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Saimiri_sciureus-1_Luc_Viatour.jpg/960px-Saimiri_sciureus-1_Luc_Viatour.jpg",
+  "width": 900,
+  "height": 668,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Saimiri_sciureus-1_Luc_Viatour.jpg",
+  "artist": "Luc Viatour",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "star-nosed-mole": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Condylura.jpg",
+  "width": 900,
+  "height": 572,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Condylura.jpg",
+  "artist": "US National Parks Service",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "starfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Starfish_montage.png/960px-Starfish_montage.png",
+  "width": 900,
+  "height": 705,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Starfish_montage.png",
+  "artist": "Top left: Klaus Rassinger (Museum Wiesbaden)…",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "starling": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Lamprotornis_hildebrandti_-Tanzania-8-2c.jpg/960px-Lamprotornis_hildebrandti_-Tanzania-8-2c.jpg",
+  "width": 900,
+  "height": 1149,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Lamprotornis_hildebrandti_-Tanzania-8-2c.jpg",
+  "artist": "Lamprotornis hildebrandti -Tanzania-8.jpg : N…",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "stick-insect": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Le_Caylar_fg01.JPG",
+  "width": 900,
+  "height": 1092,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Le_Caylar_fg01.JPG",
+  "artist": "Fritz Geller-Grimm and Felix Grimm",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "stingray": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/SStringray.jpg/960px-SStringray.jpg",
+  "width": 900,
+  "height": 686,
+  "filePage": "https://commons.wikimedia.org/wiki/File:SStringray.jpg",
+  "artist": "Wrtiii3644 at English Wikipedia",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "stoat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/R%C3%B8yskatt_%28Mustela_erminea_erminea%29%2C_Lista%2C_Norway.jpg/960px-R%C3%B8yskatt_%28Mustela_erminea_erminea%29%2C_Lista%2C_Norway.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:R%C3%B8yskatt_(Mustela_erminea_erminea),_Lista,_Norway.jpg",
+  "artist": "Marton Berntsen , crop by User:MPF",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "stonefish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Ichthyologie%3B_ou%2C_Histoire_naturelle_des_poissons_%28Plate_183%29_%286918426608%29.jpg/960px-Ichthyologie%3B_ou%2C_Histoire_naturelle_des_poissons_%28Plate_183%29_%286918426608%29.jpg",
+  "width": 900,
+  "height": 529,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ichthyologie;_ou,_Histoire_naturelle_des_poissons_(Plate_183)_(6918426608).jpg",
+  "artist": "Bloch, Marcus Elieser",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "stork": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Ringed_white_stork.jpg/960px-Ringed_white_stork.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ringed_white_stork.jpg",
+  "artist": "Soloneying",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "sturgeon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Huge_sturgeon_in_the_Gulf_of_St._Lawrence_ecosystem_-_panoramio.jpg/960px-Huge_sturgeon_in_the_Gulf_of_St._Lawrence_ecosystem_-_panoramio.jpg",
+  "width": 900,
+  "height": 534,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Huge_sturgeon_in_the_Gulf_of_St._Lawrence_ecosystem_-_panoramio.jpg",
+  "artist": "Jiaqian AirplaneFan",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+ },
+ "sugar-glider": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Petaurus_breviceps-Cayley.jpg",
+  "width": 900,
+  "height": 1136,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Petaurus_breviceps-Cayley.jpg",
+  "artist": "",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "sun-bear": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Sun-bear.jpg/960px-Sun-bear.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sun-bear.jpg",
+  "artist": "Rushenb",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "swallow": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Pied-winged_swallow_%28Hirundo_leucosoma%29.jpg/960px-Pied-winged_swallow_%28Hirundo_leucosoma%29.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Pied-winged_swallow_(Hirundo_leucosoma).jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "swan": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Mute_Swan_Emsworth2.JPG/960px-Mute_Swan_Emsworth2.JPG",
+  "width": 900,
+  "height": 681,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mute_Swan_Emsworth2.JPG",
+  "artist": "Geni",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "swift": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Apus_apus_01.jpg/960px-Apus_apus_01.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Apus_apus_01.jpg",
+  "artist": "Paweł Kuźniar ( Jojo_1 , Jojo )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "swordfish": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Xiphias_gladius_Linnaeus%2C_1758_2599925021.jpg/960px-Xiphias_gladius_Linnaeus%2C_1758_2599925021.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Xiphias_gladius_Linnaeus,_1758_2599925021.jpg",
+  "artist": "Naturalis Biodiversity Center",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+ },
+ "taipan": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/5/58/FierceSnakeOlive.jpg",
+  "width": 900,
+  "height": 433,
+  "filePage": "https://commons.wikimedia.org/wiki/File:FierceSnakeOlive.jpg",
+  "artist": "AllenMcC.",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "takin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Thimphu-Takin-Reservat-06-2015-gje.jpg/960px-Thimphu-Takin-Reservat-06-2015-gje.jpg",
+  "width": 900,
+  "height": 496,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Thimphu-Takin-Reservat-06-2015-gje.jpg",
+  "artist": "Gerd Eichmann",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "tamarin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Tamarin_portrait_2_edit3.jpg/960px-Tamarin_portrait_2_edit3.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tamarin_portrait_2_edit3.jpg",
+  "artist": "Brocken Inaglory , edited by Fir0002 , edited…",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "tapir": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Tapiridae.png/960px-Tapiridae.png",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tapiridae.png",
+  "artist": "蕭漫",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "tarantula": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Brachypelma_vagans_p1.jpg/960px-Brachypelma_vagans_p1.jpg",
+  "width": 900,
+  "height": 640,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Brachypelma_vagans_p1.jpg",
+  "artist": "Carlos Valenzuela Montuy",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "tardigrade": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/SEM_image_of_Milnesium_tardigradum_in_active_state_-_journal.pone.0045682.g001-2_%28white_background%29.png/960px-SEM_image_of_Milnesium_tardigradum_in_active_state_-_journal.pone.0045682.g001-2_%28white_background%29.png",
+  "width": 900,
+  "height": 786,
+  "filePage": "https://commons.wikimedia.org/wiki/File:SEM_image_of_Milnesium_tardigradum_in_active_state_-_journal.pone.0045682.g001-2_(white_background).png",
+  "artist": "Schokraie E, Warnken U, Hotz-Wagenblatt A, Gr…",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
+ },
+ "tarsier": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Philippine_tarsier_%28Carlito_syrichta_fraterculus%29_Bohol_2.jpg/960px-Philippine_tarsier_%28Carlito_syrichta_fraterculus%29_Bohol_2.jpg",
+  "width": 900,
+  "height": 590,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Philippine_tarsier_(Carlito_syrichta_fraterculus)_Bohol_2.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "tasmanian-devil": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Sarcophilus_harrisii_taranna.jpg/960px-Sarcophilus_harrisii_taranna.jpg",
+  "width": 900,
+  "height": 587,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sarcophilus_harrisii_taranna.jpg",
+  "artist": "JJ Harrison ( https://www.jjharrison.com.au/ )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "tenrec": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Tanrek.jpg/960px-Tanrek.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tanrek.jpg",
+  "artist": "",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "termite": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Coptotermes_formosanus_shiraki_USGov_k8204-7.jpg/960px-Coptotermes_formosanus_shiraki_USGov_k8204-7.jpg",
+  "width": 900,
+  "height": 1351,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Coptotermes_formosanus_shiraki_USGov_k8204-7.jpg",
+  "artist": "Photo by Scott Bauer.",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "terrapin": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Diamond_terrapin_turtle_reptile_malaclemys_terrapin.jpg/960px-Diamond_terrapin_turtle_reptile_malaclemys_terrapin.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Diamond_terrapin_turtle_reptile_malaclemys_terrapin.jpg",
+  "artist": "Ryan Hagerty",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "tick": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Ixodus_ricinus_5x.jpg/960px-Ixodus_ricinus_5x.jpg",
+  "width": 900,
+  "height": 614,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Ixodus_ricinus_5x.jpg",
+  "artist": "Richard Bartz",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "tiger": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Bengal_tiger_%28Panthera_tigris_tigris%29_female_3_crop.jpg/960px-Bengal_tiger_%28Panthera_tigris_tigris%29_female_3_crop.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bengal_tiger_(Panthera_tigris_tigris)_female_3_crop.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "tigon": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Tigon_tiger_x_lion_hybrid_by_artbyjrc_df4918k.jpg/960px-Tigon_tiger_x_lion_hybrid_by_artbyjrc_df4918k.jpg",
+  "width": 900,
+  "height": 604,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tigon_tiger_x_lion_hybrid_by_artbyjrc_df4918k.jpg",
+  "artist": "artbyjrc",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "toad": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/31/Bombina_bombina_1_%28Marek_Szczepanek%29.jpg",
+  "width": 900,
+  "height": 587,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bombina_bombina_1_(Marek_Szczepanek).jpg",
+  "artist": "",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "tortoise": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/A._gigantea_Aldabra_Giant_Tortoise.jpg/960px-A._gigantea_Aldabra_Giant_Tortoise.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:A._gigantea_Aldabra_Giant_Tortoise.jpg",
+  "artist": "Childzy at en.wikipedia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "toucan": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Toucans_%28Ramphastidae%29.jpg/960px-Toucans_%28Ramphastidae%29.jpg",
+  "width": 900,
+  "height": 558,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Toucans_(Ramphastidae).jpg",
+  "artist": "These images belongs to their respective owners.",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "tree-frog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Laubfrosch_cropped.jpg/960px-Laubfrosch_cropped.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Laubfrosch_cropped.jpg",
+  "artist": "Christoph Leeb",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "trout": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Salmo_trutta.jpg/960px-Salmo_trutta.jpg",
+  "width": 900,
+  "height": 1125,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Salmo_trutta.jpg",
+  "artist": "Eric Engbretson for U.S. Fish and Wildlife Se…",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "tuatara": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Tuatara_%285205719005%29.jpg/960px-Tuatara_%285205719005%29.jpg",
+  "width": 900,
+  "height": 720,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tuatara_(5205719005).jpg",
+  "artist": "Sid Mosdell from New Zealand",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+ },
+ "tuna": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/2/21/Tuna_assortment.png",
+  "width": 900,
+  "height": 873,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Tuna_assortment.png",
+  "artist": "NOAA",
+  "license": "Public domain",
+  "licenseUrl": ""
+ },
+ "turkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Male_wild_turkey_%28Meleagris_gallopavo%29_strutting.jpg/960px-Male_wild_turkey_%28Meleagris_gallopavo%29_strutting.jpg",
+  "width": 900,
+  "height": 900,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Male_wild_turkey_(Meleagris_gallopavo)_strutting.jpg",
+  "artist": "Frank Schulenburg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "turtle": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Turtle_diversity.jpg/960px-Turtle_diversity.jpg",
+  "width": 900,
+  "height": 506,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Turtle_diversity.jpg",
+  "artist": "See his respective owners",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "vampire-bat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Desmodus_rotundus_A_Catenazzi.jpg/960px-Desmodus_rotundus_A_Catenazzi.jpg",
+  "width": 900,
+  "height": 856,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Desmodus_rotundus_A_Catenazzi.jpg",
+  "artist": "Acatenazzi at English Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "vaquita": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Vaquita_size.svg/960px-Vaquita_size.svg.png",
+  "width": 900,
+  "height": 450,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Vaquita_size.svg",
+  "artist": "Chris_huh",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "vervet-monkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Cercopiteco_verde_%28Chlorocebus_pygerythrus%29%2C_parque_nacional_del_lago_Nakuru%2C_Kenia%2C_2024-05-18%2C_DD_77.jpg/960px-Cercopiteco_verde_%28Chlorocebus_pygerythrus%29%2C_parque_nacional_del_lago_Nakuru%2C_Kenia%2C_2024-05-18%2C_DD_77.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Cercopiteco_verde_(Chlorocebus_pygerythrus),_parque_nacional_del_lago_Nakuru,_Kenia,_2024-05-18,_DD_77.jpg",
+  "artist": "Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "vicuna": null,
+ "viper": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Viperidae-01.jpg/960px-Viperidae-01.jpg",
+  "width": 900,
+  "height": 1203,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Viperidae-01.jpg",
+  "artist": "MathKnight",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "vole": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/6/60/Bank_vole.jpg",
+  "width": 900,
+  "height": 555,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Bank_vole.jpg",
+  "artist": "Original by Soebe , edited by Fashionslide",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "vulture": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Gyps_rueppellii_-Nairobi_National_Park%2C_Kenya-8-4c.jpg/960px-Gyps_rueppellii_-Nairobi_National_Park%2C_Kenya-8-4c.jpg",
+  "width": 900,
+  "height": 731,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Gyps_rueppellii_-Nairobi_National_Park,_Kenya-8-4c.jpg",
+  "artist": "Gyps_rueppellii_-Nairobi_National_Park,_Kenya…",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "wallaby": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Red_necked_wallaby444.jpg/960px-Red_necked_wallaby444.jpg",
+  "width": 900,
+  "height": 1200,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Red_necked_wallaby444.jpg",
+  "artist": "User:benjamint444",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "walrus": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Walrus_in_the_Russian_Arctic_National_Park%2C_Novaya_Zemlya_2015-2.jpg/960px-Walrus_in_the_Russian_Arctic_National_Park%2C_Novaya_Zemlya_2015-2.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg",
+  "artist": "Nixette",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "warthog": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Southern_warthog_%28Phacochoerus_africanus_sundevallii%29_male.jpg/960px-Southern_warthog_%28Phacochoerus_africanus_sundevallii%29_male.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Southern_warthog_(Phacochoerus_africanus_sundevallii)_male.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "wasp": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Vespula_germanica_Richard_Bartz.jpg/960px-Vespula_germanica_Richard_Bartz.jpg",
+  "width": 900,
+  "height": 1201,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Vespula_germanica_Richard_Bartz.jpg",
+  "artist": "Richard Bartz , Munich aka Makro Freak",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ },
+ "weasel": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Mustela_nivalis_-British_Wildlife_Centre-4.jpg/960px-Mustela_nivalis_-British_Wildlife_Centre-4.jpg",
+  "width": 900,
+  "height": 769,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Mustela_nivalis_-British_Wildlife_Centre-4.jpg",
+  "artist": "Keven Law",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+ },
+ "whale": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Southern_right_whale.jpg",
+  "width": 900,
+  "height": 1349,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Southern_right_whale.jpg",
+  "artist": "Michaël CATANZARITI",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+ },
+ "wild-boar": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg/960px-Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg",
+  "width": 900,
+  "height": 649,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Wildschwein,_N%C3%A4he_Pulverstampftor_(cropped).jpg",
+  "artist": "Valentin Panzirsch",
+  "license": "CC BY-SA 3.0 at",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en"
+ },
+ "wildcat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Felis_silvestris_silvestris_Luc_Viatour.jpg/960px-Felis_silvestris_silvestris_Luc_Viatour.jpg",
+  "width": 900,
+  "height": 1350,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Felis_silvestris_silvestris_Luc_Viatour.jpg",
+  "artist": "Lviatour",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "wildebeest": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Blue_Wildebeest%2C_Ngorongoro.jpg/960px-Blue_Wildebeest%2C_Ngorongoro.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Blue_Wildebeest,_Ngorongoro.jpg",
+  "artist": "Muhammad Mahdi Karim",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "wolf": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Eurasian_wolf_2.jpg/960px-Eurasian_wolf_2.jpg",
+  "width": 900,
+  "height": 697,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eurasian_wolf_2.jpg",
+  "artist": "User:Mas3cf",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "wolverine": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/J%C3%A4rv1.jpg/960px-J%C3%A4rv1.jpg",
+  "width": 900,
+  "height": 563,
+  "filePage": "https://commons.wikimedia.org/wiki/File:J%C3%A4rv1.jpg",
+  "artist": "Esquilo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "wombat": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Vombatus_ursinus_-Maria_Island_National_Park.jpg/960px-Vombatus_ursinus_-Maria_Island_National_Park.jpg",
+  "width": 900,
+  "height": 600,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Vombatus_ursinus_-Maria_Island_National_Park.jpg",
+  "artist": "JJ Harrison ( jjharrison89@facebook.com )",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "woodlouse": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Woodlouse_collage_x4.png/960px-Woodlouse_collage_x4.png",
+  "width": 900,
+  "height": 689,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Woodlouse_collage_x4.png",
+  "artist": "Collage: User:Edit-pi (collage), original aut…",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "woodpecker": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/PileatedWoodpeckerFeedingonTree%2C_crop.jpg/960px-PileatedWoodpeckerFeedingonTree%2C_crop.jpg",
+  "width": 900,
+  "height": 997,
+  "filePage": "https://commons.wikimedia.org/wiki/File:PileatedWoodpeckerFeedingonTree,_crop.jpg",
+  "artist": "Joshlaymon",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "worm": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Eisenia_foetida_R.H._%288%29.JPG/960px-Eisenia_foetida_R.H._%288%29.JPG",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Eisenia_foetida_R.H._(8).JPG",
+  "artist": "Rob Hille",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+ },
+ "wrasse": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Vieille_coquette_%28Labrus_mixtus%29_%28Ifremer_00563-67488_-_23544%29_%28cropped_2%29.jpg/960px-Vieille_coquette_%28Labrus_mixtus%29_%28Ifremer_00563-67488_-_23544%29_%28cropped_2%29.jpg",
+  "width": 900,
+  "height": 529,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Vieille_coquette_(Labrus_mixtus)_(Ifremer_00563-67488_-_23544)_(cropped_2).jpg",
+  "artist": "Olivier Dugornay",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "wren": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Troglodytidae_diversity.jpg",
+  "width": 900,
+  "height": 1125,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Troglodytidae_diversity.jpg",
+  "artist": "Hector Bottai",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+ },
+ "yak": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Sarlyk_Yak2.jpg/960px-Sarlyk_Yak2.jpg",
+  "width": 900,
+  "height": 694,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Sarlyk_Yak2.jpg",
+  "artist": "Alexandr frolov",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "zebra": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/9/96/Plains_Zebra_Equus_quagga_cropped.jpg",
+  "width": 900,
+  "height": 1160,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Plains_Zebra_Equus_quagga_cropped.jpg",
+  "artist": "Muhammad Mahdi Karim",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
+ },
+ "zebrafish": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Zebrafisch.jpg",
+  "width": 900,
+  "height": 430,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Zebrafisch.jpg",
+  "artist": "Azul",
+  "license": "Copyrighted free use",
+  "licenseUrl": ""
+ },
+ "zebu": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/A_well-fed_bull_in_Kuno_WS_AJTJ_P1070807.jpg/960px-A_well-fed_bull_in_Kuno_WS_AJTJ_P1070807.jpg",
+  "width": 900,
+  "height": 675,
+  "filePage": "https://commons.wikimedia.org/wiki/File:A_well-fed_bull_in_Kuno_WS_AJTJ_P1070807.jpg",
+  "artist": "A. J. T. Johnsingh, WWF-India and NCF",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+ },
+ "zonkey": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Zoologist421898_080b.jpg/960px-Zoologist421898_080b.jpg",
+  "width": 900,
+  "height": 759,
+  "filePage": "https://commons.wikimedia.org/wiki/File:Zoologist421898_080b.jpg",
+  "artist": "various writers",
+  "license": "Public domain",
+  "licenseUrl": ""
+ }
+}

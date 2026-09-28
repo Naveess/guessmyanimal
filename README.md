@@ -32,7 +32,9 @@ for the things a static file can't do, and one vendored runtime dependency.
   by hand. It also means answers are instant, with nothing to wait for.
 - `app.js` — search, routing, the animal view, theme. `render-data.js` and
   `related.js` render the fact sections; `menu.js` runs the nav on the static
-  pages.
+  pages. The header itself (site bar and brand row) is one shared block,
+  `tools/chrome.js`, written into every page by `npm run seo`; its Search
+  popover is `navsearch.js`.
 - `mystery.js` / `party.js` / `streamer.js` — the three game surfaces.
   `game-core.js` holds what they share: answer matching (including the
   sentence-scanning chat matcher the server uses too), and the real-thumbnail
@@ -52,7 +54,10 @@ for the things a static file can't do, and one vendored runtime dependency.
 - `sw.js` — caches the app shell, so every animal stays available offline, not
   just ones visited before. Only the live Wikipedia photo and blurb need a
   connection.
-- `?a=octopus` deep links straight to an animal; `?party=ABCDE` joins a room.
+- `/animals/octopus` is an animal's page (`functions/animals/[slug].js`
+  renders it; an unknown one gets a real 404). The old `/?a=octopus` links
+  301 there permanently (`functions/index.js`). `/?party=ABCDE` joins a room,
+  and `/?mystery=1` opens Mystery Animal.
 
 ### Cache busting
 
@@ -98,7 +103,10 @@ ads are live, behind a Funding Choices consent message.
 ## Commands
 
     npm run og        regenerate the link-preview card
-    npm run seo       rebuild functions/seo-meta.json from animals.js
+    npm run photos    look up new animals' photos + licence credits (network)
+    npm run seo       rebuild seo-meta.json, sitemap and browse.html from
+                      animals.js, then re-inject the shared header
+    npm run chrome    re-inject the shared header only
     npm run deploy    publish to Cloudflare Pages
 
 Local dev is `npx wrangler pages dev . --port=8788`. Run it **without** a

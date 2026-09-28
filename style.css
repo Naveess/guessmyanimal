@@ -62,12 +62,15 @@
   /* Confident arrival, no bounce. */
   --ease: cubic-bezier(.16, 1, .3, 1);
 
-  /* The fixed nav's own footprint, so a page can clear it with
-     calc(var(--nav-h) + var(--page-top)) instead of a per-page guess -
-     nothing sizes off these on the splash, which floats the nav on
-     purpose. Both step up at the desktop breakpoint below, where the
-     nav becomes a taller centred pill instead of a corner button. */
-  --nav-h: 56px;
+  /* The sticky site bar's height (row 1: back, nav, controls - see
+     .site-bar), so anything else that sticks under it - the animal
+     photo, the A-Z rail, Party's mini strip - offsets by one shared
+     number instead of a per-page guess. The bar sits in normal flow,
+     so page content never has to clear it; --page-top is only the
+     breathing room between the brand row and a page's first section.
+     Both step up at the desktop breakpoint below, where the nav becomes
+     a taller centred pill instead of a corner button. */
+  --bar-h: 64px;
   --page-top: 20px;
 
   /* One stacking hierarchy for the whole site instead of ad-hoc
@@ -89,10 +92,10 @@
 }
 
 /* The nav grows into a taller centred pill at the same breakpoint it
-   switches from a corner button to a bar (see .menu below) - these
-   two values step up together so pages always clear its real height. */
+   switches from a corner button to a bar (see .menu below) - the bar's
+   height steps up with it. */
 @media (min-width: 860px) {
-  :root { --nav-h: 66px; --page-top: 34px; }
+  :root { --bar-h: 76px; --page-top: 28px; }
 }
 
 /* The dark palette is applied through two selectors: the media query for
@@ -541,7 +544,11 @@ body.view-home #q { font-size: 17px; }
 .mag { flex: none; width: 20px; height: 20px; color: var(--muted); }
 .mag svg { width: 100%; height: 100%; display: block; }
 
-#q {
+/* One input style for every search field on the site - the home/animal
+   search (#q), the site bar's Search popover and Browse's own box. It
+   used to be written per ID, and Browse's field, which nobody wrote a
+   rule for, fell through to the browser's default bordered box. */
+.search-input {
   flex: 1; min-width: 0;
   font: inherit; font-size: 16px; font-weight: 500;
   color: var(--ink);
@@ -549,21 +556,28 @@ body.view-home #q { font-size: 17px; }
   border: 0;
   padding: 10px 0;
   min-height: 44px;
+  -webkit-appearance: none; appearance: none;
 }
-/* No outline:none here - an ID-selector one would beat the global
-   :focus-visible ring on specificity and suppress it outright. */
-#q::placeholder { color: var(--muted); font-weight: 400; }
+.search-input::placeholder { color: var(--muted); font-weight: 400; }
+/* The focus ring belongs to the whole row, not the bare text inside it -
+   a ring drawn tight around the input read as a second box inside the
+   field. Moved, never removed: the row gets the exact same site-wide
+   ring (see :focus-visible above) whenever its input has keyboard
+   focus, so nothing is lost for a keyboard user. */
+.search-input:focus-visible { outline: none; }
+.searchrow:has(.search-input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+body.view-home .searchrow:has(.search-input:focus-visible) { outline-color: var(--home-ink); }
 /* The native clear button is un-themed OS blue by default - restyled as a
    mask so it recolours with --muted/--ink like every other drawn icon,
    rather than being the one cold, un-authored colour on the page. */
-#q::-webkit-search-cancel-button {
+.search-input::-webkit-search-cancel-button {
   cursor: pointer; -webkit-appearance: none; appearance: none;
   width: 16px; height: 16px; margin-left: 2px;
   background-color: var(--muted);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center / 70% no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center / 70% no-repeat;
 }
-#q::-webkit-search-cancel-button:hover { background-color: var(--ink); }
+.search-input::-webkit-search-cancel-button:hover { background-color: var(--ink); }
 
 .dice {
   flex: none; width: 44px; height: 44px;
@@ -638,93 +652,80 @@ body.view-home #q { font-size: 17px; }
 }
 .noresult[hidden] { display: none; }
 
-/* -- Nav search (about/browse/privacy/streamer's own quick-search) ---
-   The standalone pages have no search box of their own - this is a way
-   to reach any animal without a trip back to the home page first. Grows
-   in place within the nav bar itself rather than dropping a floating
-   panel underneath it - a first attempt did that, and it read as a
-   second box under the nav rather than part of it. Its dropdown still
-   floats (.suggest/.noresult, reused verbatim from the home page's own
-   search), since a suggestion list overlaying content is an established,
-   expected pattern here - the search field itself just isn't one.
-   See menu.js. */
-.navsearch { position: relative; }
-#navSearchToggle { gap: 8px; }
-
-.navsearch-row {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--card); border: 1px solid var(--line); border-radius: 15px;
-  padding: 4px 4px 4px 13px; min-height: 44px;
-  width: 100%;
-}
-.navsearch-row[hidden] { display: none; }
-.navsearch-row:focus-within { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
-@media (min-width: 860px) {
-  .navsearch-row { width: 240px; }
-}
-
-.navsearch-close {
-  flex: none; width: 32px; height: 32px;
-  display: grid; place-items: center; cursor: pointer;
-  color: var(--muted); background: transparent; border: 0; border-radius: 9px;
-  transition: background .13s var(--ease);
-}
-.navsearch-close svg { width: 16px; height: 16px; }
-.navsearch-close:hover { background: var(--flat-bg); color: var(--ink); }
-
-#navSearchInput {
-  flex: 1; min-width: 0;
-  font: inherit; font-size: 15px; font-weight: 500;
-  color: var(--ink);
-  background: transparent;
-  border: 0;
-  padding: 9px 0;
-  min-height: 40px;
-}
-#navSearchInput::placeholder { color: var(--muted); font-weight: 400; }
-#navSearchInput::-webkit-search-cancel-button {
-  cursor: pointer; -webkit-appearance: none; appearance: none;
-  width: 16px; height: 16px; margin-left: 2px;
-  background-color: var(--muted);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center / 70% no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center / 70% no-repeat;
-}
-#navSearchInput::-webkit-search-cancel-button:hover { background-color: var(--ink); }
-
 /* ==================================================================
-   ANIMAL VIEW
+   SITE BAR (row 1) + PAGE HEAD (row 2)
+
+   One header, generated from tools/chrome.js into every page, instead
+   of the six hand-written .topbar copies and a separately-fixed nav it
+   replaces. The old arrangement was the bug: a position:fixed nav pill
+   and an in-flow sticky topbar laid out independently, with the topbar
+   padding itself down past the pill - so on desktop the back button
+   always landed on a second line under the nav, and the two only lined
+   up as long as two unrelated offsets happened to agree.
+
+   Row 1, .site-bar, sticky: back slot, the nav, sound + theme - one flex
+   row on phones, a three-column grid on desktop so the pill stays truly
+   centred whatever the two sides hold. The nav sits *in* this row now,
+   so nothing has to clear anything.
+
+   Row 2, .page-head, in flow: the centred brand, then whatever a page
+   puts under it (the animal view's search, a mode's title). Scrolls
+   away with the page; row 1 stays.
    ================================================================== */
 
-.animalview[hidden] { display: none; }
-
-.topbar {
-  position: sticky; top: 0; z-index: var(--z-topbar);
-  display: flex; align-items: center; gap: 9px;
-  padding: 10px 14px;
-  padding-top: calc(10px + env(safe-area-inset-top));
+.site-bar {
+  position: sticky; top: 0;
+  /* The chrome band: the bar holds the menu dropdown and the Search
+     popover, which have to sit above the dimming scrim (--z-scrim)
+     that goes up behind them. Its own backdrop-filter makes it a
+     stacking context, so everything inside is layered by DOM order
+     under this one number - no per-control z-index anywhere below. */
+  z-index: var(--z-chrome);
+  display: flex; align-items: center; gap: 8px;
+  height: calc(var(--bar-h) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) 14px 0;
   background: color-mix(in srgb, var(--paper) 84%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
-/* Below 860px the corner menu is a small fixed button tucked out of the
-   way, but at 860px+ it becomes the centred floating pill (see the
-   desktop nav bar rules) - which sits in exactly this bar's own
-   rectangle at top:0. Every page using the plain .topbar (About,
-   Browse, Privacy, Twitch stream mode, Mystery/Party's own topbars)
-   started at the very top of the viewport underneath the pill,
-   clipping the bar's content and its own border-bottom line. This
-   clears the pill's real footprint (--nav-h) plus a small fixed gap -
-   deliberately not --page-top (34px), which is tuned for the breathing
-   room before a whole content section, not a slim single-line header
-   bar; using it here read as a large dead band between the pill and
-   the title, not a gap. */
-@media (min-width: 860px) {
-  .topbar { padding-top: calc(var(--nav-h) + 14px + env(safe-area-inset-top)); }
+/* The splash is one flat field of colour - the bar floats over it with
+   no surface of its own, and scrolls with it (there's nothing below the
+   fold worth keeping a bar pinned over). */
+body.view-home .site-bar {
+  position: absolute; left: 0; right: 0;
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
+
+/* Phones: back on the left, then sound, Search and the hamburger on the
+   right, in thumb order. DOM order stays back -> nav -> controls (the
+   order a screen reader and a desktop keyboard want); `order` only
+   moves the sound button visually. */
+.sb-start { display: flex; align-items: center; margin-right: auto; }
+.sb-end { display: flex; align-items: center; gap: 8px; order: 1; }
+.menu { order: 2; display: flex; align-items: center; gap: 8px; }
+
+/* index.html's back slot carries one control per view (see chrome.js):
+   the splash's "How it works" link, and a back button for each of the
+   animal, Mystery and Party views - each still bound by its own
+   script. Exactly one shows, picked by which view is on screen. */
+.sb-start > * { display: none; }
+.sb-start > .back:only-child,
+body.view-home .sb-start > .play-link,
+body.view-animal .sb-start > #back,
+body:has(#mysteryview:not([hidden])) .sb-start > #mysteryBack,
+body:has(#partyview:not([hidden])) .sb-start > #partyLeave { display: grid; }
+body.view-home .sb-start > .play-link { display: inline-flex; }
+
+/* No display here - which of the slot's controls shows is decided by
+   the .sb-start rules above, and a display on .back itself would
+   outrank them. */
 .back {
   flex: none; width: 44px; height: 44px;
-  display: grid; place-items: center; cursor: pointer;
+  place-items: center; cursor: pointer;
   color: var(--ink);
   background: var(--card);
   border: 1px solid var(--line); border-radius: 13px;
@@ -733,16 +734,93 @@ body.view-home #q { font-size: 17px; }
 .back svg { width: 21px; height: 21px; }
 .back:hover { background: var(--flat-bg); }
 .back:active { transform: scale(.94); }
+
+/* -- Row 2 --------------------------------------------------------- */
+.page-head {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  padding: 20px 14px 0;
+  text-align: center;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 15.5px; font-weight: 600; letter-spacing: -.02em;
+  color: var(--ink); text-decoration: none;
+  border-radius: 8px;
+  transition: opacity .16s var(--ease);
+}
+.brand:hover { opacity: .72; }
+.brand-paw { width: 21px; height: 21px; fill: var(--ink); flex: none; }
+/* A mode's name under the brand (Mystery Animal, Party Mode, Twitch
+   stream mode) - a label for where you are, not a page heading; each
+   of those views has its own real heading further down. */
+.page-title {
+  margin: -4px 0 0;
+  font-size: 15px; font-weight: 700; letter-spacing: -.01em;
+  color: var(--muted);
+}
+.page-head .dock-top { width: 100%; max-width: 560px; }
+
+/* -- Search (site bar) ---------------------------------------------
+   A toggle that never moves and a popover that floats under the bar.
+   The old version swapped the toggle for a 240px field *inside* the
+   pill - and since .menu-item's own display:flex outranked the
+   [hidden] attribute, the toggle never actually hid, so the field
+   stacked under it and the pill grew taller, wider, and (being centred)
+   slid sideways. Nothing here can change the nav's size: the popover is
+   absolutely positioned, out of flow. See navsearch.js. */
+.navsearch-toggle { gap: 8px; }
+.navsearch-toggle svg { width: 19px; height: 19px; flex: none; }
+.navsearch-pop {
+  position: absolute;
+  /* Phones: anchored to the bar itself (.navsearch and .menu stay
+     unpositioned here), full width under it. */
+  left: 14px; right: 14px; top: calc(100% + 8px);
+  padding: 8px;
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: var(--shadow-l);
+  text-align: left;
+  animation: rise .2s var(--ease) backwards;
+}
+.navsearch-pop[hidden] { display: none; }
+.navsearch-pop .searchrow { min-height: 48px; }
+/* The close button already clears and closes; a native clear "x"
+   right beside it read as two ways to do nearly the same thing. */
+.navsearch-pop .search-input::-webkit-search-cancel-button { display: none; }
+/* Inside the popover the results are part of the same card, not a
+   second floating one stacked under it. */
+.navsearch-pop .suggest,
+.navsearch-pop .noresult {
+  position: static;
+  margin-top: 6px; padding: 0;
+  box-shadow: none; border-radius: 0;
+  background: transparent;
+  animation: none;
+}
+.navsearch-pop .noresult { padding: 8px 6px 4px; }
+.navsearch-pop .suggest { max-height: min(52vh, 420px); }
+.navsearch-close {
+  flex: none; width: 36px; height: 36px;
+  display: grid; place-items: center; cursor: pointer;
+  color: var(--muted); background: transparent; border: 0; border-radius: 10px;
+  transition: background .13s var(--ease), color .13s var(--ease);
+}
+.navsearch-close svg { width: 16px; height: 16px; }
+.navsearch-close:hover { background: var(--flat-bg); color: var(--ink); }
+
+/* ==================================================================
+   ANIMAL VIEW
+   ================================================================== */
+
+.animalview[hidden] { display: none; }
 .dock-top { flex: 1; min-width: 0; }
 
 .feed {
   max-width: 560px;
   margin: 0 auto;
-  /* Clears the fixed nav's real footprint instead of a per-view guess -
-     see --nav-h/--page-top. This is every game view (animal, mystery,
-     party, streamer); the splash is a different view entirely and never
-     carries this class, so it never pays this padding. */
-  padding: calc(var(--nav-h) + var(--page-top)) 14px calc(30px + env(safe-area-inset-bottom));
+  /* The site bar sits in flow above the brand row, so all a view needs
+     here is breathing room under that row - see --page-top. */
+  padding: var(--page-top) 14px calc(30px + env(safe-area-inset-bottom));
 }
 
 /* -- The photo card ------------------------------------------------
@@ -845,6 +923,20 @@ body.view-home #q { font-size: 17px; }
   text-shadow: 0 1px 8px rgba(0,0,0,.5);
 }
 #hero.has-photo .pcard-credit { display: block; }
+/* The author and licence links the photo's licence requires - same
+   quiet-on-the-scrim register as the rest of the line, underlined so
+   they read as the links they are. */
+.pcard-credit a {
+  color: inherit;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
+}
+.pcard-credit a:hover { color: #fff; }
+/* "(Wikipedia)" after the quoted one-line summary. */
+.blurb-src {
+  color: inherit;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
+}
+.blurb-src:hover { color: var(--ink); }
 .pcard-report {
   background: none; border: none; padding: 0; margin: 0;
   color: inherit; font: inherit; cursor: pointer;
@@ -1045,29 +1137,6 @@ body.view-home #q { font-size: 17px; }
      clusters is a grid sibling too, so it shifts every row after it by
      one slot and an odd/even check would silently stop matching. */
   .rows > .row:nth-last-child(2) { border-bottom: 0; }
-  /* Keep the back button lined up with the feed's left edge instead of
-     letting the search box run the whole width of a desktop window.
-     Right padding is set below, alongside the menu-clearance rule it
-     has to stay in step with. Scoped to the animal view only - the
-     mystery view's topbar has no search dock, just a back button and a
-     centred title, and that title's own balancing trick (see
-     .mystery-title below) already keeps it centred at any width on
-     its own, as long as the bar's padding stays symmetric; inheriting
-     this asymmetric animal-view padding was dragging it off-centre. */
-  .animalview .topbar { padding-left: max(14px, calc((100% - 588px) / 2)); }
-  /* The search box itself (.dock-top) sits in a flex row between the
-     back button (aligned to the feed's left edge) and the padding
-     reserved for the fixed-position menu icon (aligned to the true
-     viewport edge) - two different anchors, so the row between them
-     widens on a desktop window. Capping it keeps the search bar a sane
-     width; margin:0 auto centering it within that leftover space was
-     wrong too - on an ultra-wide window padding-left grows far more
-     than padding-right stays flat, so the "leftover space" itself sits
-     well right of true centre and drags the whole search+dice cluster
-     away from the back button with it. Left-aligned (flex default)
-     keeps it planted right next to the back button instead, matching
-     the feed column below rather than floating in the middle distance. */
-  .dock-top { max-width: 460px; }
   /* Four buttons fit one tidy row once there's room, rather than
      staying stacked in the mobile 2x2 grid. */
   .actions { grid-template-columns: repeat(4, 1fr); }
@@ -1168,10 +1237,6 @@ body.view-home #q { font-size: 17px; }
     column-gap: clamp(28px, 3vw, 44px);
     align-items: start;
   }
-  /* Spans both columns, under the photo and the round alike - the
-     desktop-foot's own top border/margin (see the MENU section) already
-     supplies the separation from whichever of the two sits above it. */
-  .mysteryview .desktop-foot { grid-area: foot; }
   /* min-width:0 overrides a grid item's default auto-minimum (its
      content's own min-content size) - without it, the filter chip row's
      intentionally-nowrap, horizontally-scrolling content (see
@@ -1239,22 +1304,18 @@ body.view-home #q { font-size: 17px; }
     width: 100%;
     margin: 0 auto;
     display: grid;
+  }
+  .animalview .feed-top {
+    display: grid;
     grid-template-columns: clamp(300px, 26vw, 400px) 1fr;
     column-gap: clamp(28px, 3vw, 44px);
     align-items: start;
   }
-  /* Lined up with the topbar's own back button below, which recomputes
-     its padding against this same max-width - see .animalview .topbar
-     right after. */
-  .animalview .feed > .pcard {
+  .animalview .feed-top > .pcard {
     position: sticky;
-    /* Clears the sticky topbar (its own height plus the safe-area inset
-       it already pads for) with a little breathing room, so the photo
-       settles just under it rather than touching. The 84px is that
-       original height+room figure, unchanged; --nav-h/--page-top is the
-       extra clearance the topbar itself now carries below, so this has
-       to grow by the same amount or the card would ride up under it. */
-    top: calc(var(--nav-h) + var(--page-top) + 84px + env(safe-area-inset-top));
+    /* Settles just under the sticky site bar with the same breathing
+       room the page opens with. */
+    top: calc(var(--bar-h) + var(--page-top) + env(safe-area-inset-top));
     /* Reverts the 620px rule's wide 3/2 landscape crop, same reasoning
        Mystery's own sidebar hero uses: that ratio assumes the card spans
        the whole feed width, and here it's a narrower fixed column where
@@ -1268,27 +1329,6 @@ body.view-home #q { font-size: 17px; }
      inventing a third size for a third context. */
   .animalview .pcard-name { font-size: clamp(31px, 8.6vw, 42px); }
   .animalview .feed-content { min-width: 0; }
-  /* Recentres the topbar's back button and search dock against this
-     block's own width instead of the 620px rule's narrower 588px, so
-     it stays lined up with the photo's left edge rather than drifting
-     off it once the feed grows past that point. */
-  .animalview .topbar {
-    padding-left: max(14px, calc((100% - clamp(860px, 80vw, 1280px)) / 2));
-    /* The centred nav pill and this bar's own centred search dock
-       occupy the same rectangle at this width (both are centred in the
-       viewport) - no z-index can fix that, they're just in the same
-       place. Pushing the bar's content down below the nav's real
-       footprint is the only fix that actually removes the overlap. */
-    padding-top: calc(var(--nav-h) + var(--page-top) + 10px + env(safe-area-inset-top));
-  }
-  /* The 620px rule caps the search dock at 460px but never centres it -
-     once the topbar is wider than back-button-plus-460px, the leftover
-     flex space in the row was all landing after the dock (before the
-     menu-button clearance) instead of splitting either side of it, so
-     the search box read as stuck to the left near the back arrow rather
-     than centred over the page - a real gap a live test caught. Auto
-     margins on a flex item consume exactly that leftover space evenly. */
-  .animalview .dock-top { margin-left: auto; margin-right: auto; }
 }
 
 /* ------------------------------------------------------------------
@@ -1407,22 +1447,21 @@ body.view-home #q { font-size: 17px; }
      photo silently disappears. The 860px block above sets
      align-items: start, so this must not be left to the default. */
   .animalview .feed { align-items: stretch; }
+  .animalview .feed-top,
   .animalview .feed-content { display: contents; }
 
-  .animalview .feed > .pcard { order: 1; }
+  .animalview .feed-top > .pcard { order: 1; }
   .animalview .blurb         { order: 2; }
   .animalview .ansec-answers { order: 3; }
   .animalview .animal-play   { order: 4; }
   .animalview .ansec-related { order: 5; }
   .animalview .ansec-glance  { order: 6; }
   .animalview .ansec-fact    { order: 7; }
-  .animalview #shot2         { order: 8; }
-  .animalview #shot3         { order: 9; }
   .animalview .animal-tail   { order: 10; }
 
   /* Square, not 4/5. The page's job here is to get to the answers, and
      a portrait card pushed the first one below the fold on a phone. */
-  .animalview .feed > .pcard { aspect-ratio: 1 / 1; }
+  .animalview .feed-top > .pcard { aspect-ratio: 1 / 1; }
 
   /* The answers lose their box. Eight bordered surfaces stacked down
      the page is the "wall of cards" - a label, a hairline and the rows
@@ -1499,13 +1538,12 @@ body.view-home #q { font-size: 17px; }
 @media (min-width: 860px) {
   .animalview .feed {
     grid-template-areas:
-      "photo content"
-      "related related"
-      "play play"
-      "tail tail";
+      "top"
+      "related"
+      "play"
+      "tail";
   }
-  .animalview .feed > .pcard         { grid-area: photo; }
-  .animalview .feed > .feed-content  { grid-area: content; }
+  .animalview .feed > .feed-top      { grid-area: top; }
   .animalview .feed > .ansec-related { grid-area: related; }
   .animalview .feed > .animal-play   { grid-area: play; }
   .animalview .feed > .animal-tail   { grid-area: tail; }
@@ -1554,14 +1592,15 @@ body.view-home #q { font-size: 17px; }
 /* ==================================================================
    MENU
 
-   Fixed to the corner so it sits in the same place on the splash and
-   on an animal. On the yellow it is drawn in ink; over the feed it
-   takes the card surface so it reads as a control rather than a hole.
+   Lives in the site bar (see SITE BAR above): a hamburger with a
+   dropdown on phones, the centred pill on desktop. On the yellow splash
+   the square controls are drawn in ink; everywhere else they take the
+   card surface so they read as controls rather than holes.
    ================================================================== */
 
-.menu { position: fixed; z-index: var(--z-chrome); right: 14px; top: calc(12px + env(safe-area-inset-top)); }
-
-.menu-btn {
+/* The bar's square icon controls share one shape. */
+.menu-btn,
+.navsearch-toggle {
   width: 44px; height: 44px;
   display: grid; place-items: center; cursor: pointer;
   color: var(--ink);
@@ -1571,25 +1610,26 @@ body.view-home #q { font-size: 17px; }
   transition: background .16s var(--ease), transform .16s var(--ease);
 }
 .menu-btn svg { width: 21px; height: 21px; }
-.menu-btn:hover { background: var(--flat-bg); }
-.menu-btn:active { transform: scale(.94); }
+.menu-btn:hover, .navsearch-toggle:hover { background: var(--flat-bg); }
+.menu-btn:active, .navsearch-toggle:active { transform: scale(.94); }
+/* Icon-only on phones; the word is still there for a screen reader. */
+.navsearch-label {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap;
+}
 /* On the splash the ground is already a strong colour, so the button
    is an outline on it rather than another filled box. */
-body.view-home .menu-btn {
+body.view-home .menu-btn,
+body.view-home .navsearch-toggle {
   color: var(--home-ink);
   background: transparent;
   border-color: color-mix(in srgb, var(--home-ink) 24%, transparent);
 }
-body.view-home .menu-btn:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
+body.view-home .menu-btn:hover,
+body.view-home .navsearch-toggle:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
 
-/* Same fixed-corner treatment as .menu-btn, one slot over: right:68px
-   sits it just left of the menu button on mobile (nothing else is
-   there), and right:14px on desktop drops it straight into the
-   corner .menu-btn itself vacates once the nav bar replaces it (see
-   the desktop rules below) - one control, two slots, same technique
-   .theme-toggle already uses for its own fixed position. */
+/* Same square as .menu-btn, in the bar's right-hand group. */
 .sound-toggle {
-  position: fixed; z-index: var(--z-chrome); right: 68px; top: calc(12px + env(safe-area-inset-top));
   width: 44px; height: 44px;
   display: grid; place-items: center; cursor: pointer;
   color: var(--ink);
@@ -1614,9 +1654,6 @@ body.view-home .sound-toggle {
   border-color: color-mix(in srgb, var(--home-ink) 24%, transparent);
 }
 body.view-home .sound-toggle:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
-@media (min-width: 860px) {
-  .sound-toggle { right: 14px; }
-}
 
 /* -- Desktop-only: theme dial + decluttered menu ---------------------
    On a phone the menu is the only place there's room for Report a
@@ -1624,7 +1661,7 @@ body.view-home .sound-toggle:hover { background: color-mix(in srgb, var(--home-i
    so they all live there. Once there's real width, cramming them into
    a dropdown when they could just be visible is the wrong tradeoff -
    the three links move to a footer row at the bottom of the page (see
-   .desktop-foot, added once per page/view), and theme becomes its own
+   .site-foot, shared by every page), and theme becomes its own
    small control by the corner menu, a real click closer instead of two
    deep in a panel. Mobile is completely untouched: every element this
    touches only changes past 860px. */
@@ -1650,24 +1687,13 @@ body.view-home .sound-toggle:hover { background: color-mix(in srgb, var(--home-i
    every matching element on the page, the in-menu group (still there,
    unchanged, on mobile) included.
 
-   One placement now, not two - simple position:fixed next to the menu
-   button, same row, on every page/view. The radio-row version needed
-   two different placements and a delayed breakpoint on the animal page
-   specifically because it was wide enough (three labelled options) to
-   reach into the search box's own territory; this track is a fixed
-   ~84px regardless of content, comfortably inside the menu's own
-   right:68px clearance zone with no overlap at any width this
-   breakpoint covers - worked out against .dock-top's own centering math
-   the same way, this time with room to spare. One shared instance per
-   page (a body-level sibling next to <nav class="menu">, persisting
-   across index.html's three views the same way the menu itself does)
-   instead of one per topbar. */
+   Lives in the site bar's right-hand group, beside the sound toggle -
+   one instance per page, desktop only (phones keep the three-way
+   switch inside the menu). */
 .theme-toggle { display: none; }
 @media (min-width: 860px) {
   .theme-toggle {
-    display: flex;
-    position: fixed; z-index: var(--z-chrome);
-    right: 68px; top: calc(19px + env(safe-area-inset-top));
+    display: flex; position: relative;
     padding: 3px;
     background: var(--flat-bg);
     border-radius: 999px;
@@ -1712,51 +1738,52 @@ body.view-home .sound-toggle:hover { background: color-mix(in srgb, var(--home-i
   body.view-home .theme-toggle::before { background: var(--home-ink); }
 }
 
-/* Report a problem / Privacy / Source on GitHub, moved out of the menu
-   above - quiet, centred, found when looked for, matching the existing
-   .foot's own typography rather than inventing a second footer voice. */
-.desktop-foot { display: none; }
-@media (min-width: 860px) {
-  .desktop-foot {
-    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-    gap: 8px 22px;
-    margin-top: 30px; padding-top: 20px;
-    border-top: 1px solid var(--line);
-    font-size: 13.5px; font-weight: 500; color: var(--muted);
-  }
-  .desktop-foot a, .desktop-foot button {
-    font: inherit; color: var(--ink); text-decoration: none;
-    background: none; border: 0; padding: 0; cursor: pointer;
-  }
-  .desktop-foot a:hover, .desktop-foot button:hover {
-    text-decoration: underline; text-underline-offset: 3px;
-  }
-  /* This used to pin to the bottom edge with position:absolute, back
-     when the hero reliably cleared one screen and a normal-flow footer
-     would have shifted the centred group upward. Now that the wordmark
-     routinely runs taller than the viewport (see .home's justify-content
-     below), flow is what actually works at every height - it sits right
-     after .home-foot and the page scrolls to it like every other
-     .desktop-foot already does. Only the colour treatment stays
-     splash-specific, swapped to the home-ink/home-bg pair the corner
-     menu already uses for the same reason. */
-  .home > .desktop-foot {
-    border-top-color: color-mix(in srgb, var(--home-ink) 20%, transparent);
-    color: color-mix(in srgb, var(--home-ink) 72%, transparent);
-  }
-  .home > .desktop-foot a, .home > .desktop-foot button { color: var(--home-ink); }
+/* -- Site footer -------------------------------------------------------
+   One footer on every page and every view (tools/chrome.js): the
+   reference and trust pages, who makes the site, and the plain facts
+   about ads and photos. Quiet and centred - found when looked for,
+   never competing with the answers above it. Shown at every width now;
+   it replaces the desktop-only strip that used to carry three of these
+   links (phones still also get them in the menu). */
+.site-foot {
+  max-width: 720px;
+  margin: 44px auto 0;
+  padding: 22px 18px calc(30px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: 13.5px; font-weight: 400; line-height: 1.5;
+  color: var(--muted);
 }
+.sf-links {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 2px 18px;
+  font-weight: 500;
+}
+.sf-links a, .sf-links button {
+  font: inherit; color: var(--ink); text-decoration: none;
+  background: none; border: 0; cursor: pointer;
+  padding: 6px 2px;   /* a 32px-tall target, not just the text's own line */
+}
+.sf-links a:hover, .sf-links button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.sf-note { margin: 12px auto 0; max-width: 56ch; }
+.sf-note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+/* Under the splash the ground is still Sun, so the footer takes the same
+   ink-on-yellow pair the splash's own controls use. */
+body.view-home .site-foot {
+  border-top-color: color-mix(in srgb, var(--home-ink) 20%, transparent);
+  color: color-mix(in srgb, var(--home-ink) 72%, transparent);
+}
+body.view-home .sf-links a, body.view-home .sf-links button { color: var(--home-ink); }
 
-/* The corner menu's mirror image on the opposite side - same fixed
-   position and outline treatment, but carrying words instead of an
-   icon, since what it links to (the game itself) is worth naming
-   rather than tucking behind a symbol. Splash-only: hidden by default,
-   shown only when body.view-home is present. */
+/* The splash's occupant of the site bar's back slot (there's nothing to
+   go back to from the splash) - the same outline treatment as the
+   bar's other controls on the yellow, but carrying words instead of an
+   icon, since what it links to is worth naming. Shown only on the
+   splash - see .sb-start. */
 .play-link {
-  display: none;
-  position: fixed; z-index: var(--z-chrome); left: 14px; top: calc(12px + env(safe-area-inset-top));
   align-items: center;
   height: 44px; padding: 0 16px;
+  white-space: nowrap;
   font: inherit; font-size: 14.5px; font-weight: 600;
   color: var(--home-ink);
   text-decoration: none;
@@ -1767,7 +1794,6 @@ body.view-home .sound-toggle:hover { background: color-mix(in srgb, var(--home-i
 }
 .play-link:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
 .play-link:active { transform: scale(.97); }
-body.view-home .play-link { display: inline-flex; }
 
 /* A second thing to do on the splash, for the visitor who came to play
    rather than settle an argument mid-game - but the search box above it
@@ -1870,8 +1896,10 @@ body.view-home .play-link { display: inline-flex; }
   .mystery-play.anim-rise { animation-name: rise; }
 }
 
+/* Phones: a dropdown under the bar's right end (.menu is unpositioned,
+   so this anchors to the sticky bar itself). */
 .menu-panel {
-  position: absolute; right: 0; top: calc(100% + 8px);
+  position: absolute; right: 14px; top: calc(100% + 8px);
   min-width: 210px;
   display: flex; flex-direction: column;
   padding: 6px;
@@ -1916,41 +1944,35 @@ body:has(#sharePanel:not([hidden]))::before {
    keeps .mi-full and never sees .mi-short at all. */
 .menu-item .mi-short { display: none; }
 
-/* Room for the button(s) so a long search box never slides under them.
-   A flat 112px at every width, not a centering formula: growing it with
-   the viewport was leaving an ever-widening dead zone between the search
-   unit and the menu on wide desktop windows, while the left edge stays
-   aligned with the feed regardless. 112px, not 68, because the sound
-   toggle now sits fixed one slot further out than the menu button on
-   mobile (right:68px, see .sound-toggle) - on desktop both it and the
-   theme dial already land inside the original 68px margin with room to
-   spare, so the extra 44px only ever matters on the narrow end. Animal
-   view only, same reasoning as the left-padding rule above - the
-   mystery view's centred title needs a symmetric bar, not this
-   search-box clearance. */
-.animalview .topbar { padding-right: 112px; }
 
-/* -- Desktop-only: the corner hamburger becomes the nav itself --------
+/* -- Desktop-only: the hamburger becomes the nav itself --------------
    There's no reason to hide six options behind a click when a desktop
    visitor already has the width to see them - so past 860px the button
-   disappears, the panel stops being a dropdown anchored under it and
-   becomes a centred, always-open bar instead: laid out in a row at the
-   top of the page rather than pinned to the corner, drawn as a glass
-   pill (translucent surface + backdrop-filter) rather than a solid
-   card, the same blur language the sticky .topbar already spends over
-   photos. .menu-desktop-hide above has already dropped Report/Privacy/
-   GitHub/theme-group from this panel on this same breakpoint, so what's
-   left - About, Browse, Mystery Animal, Party Mode - is exactly the row
-   a bar this size can hold. Mobile is untouched: every rule below only
+   disappears and .menu itself becomes a glass pill (translucent surface
+   + backdrop-filter) in the centre column of the site bar, holding the
+   panel's links in a row and the Search toggle at its end.
+   .menu-desktop-hide has already dropped Report/Privacy/GitHub/the theme
+   group from the panel at this breakpoint (they move to the page
+   footer and the bar's theme dial), so what's left is exactly the row a
+   pill this size can hold. Mobile is untouched: every rule below only
    changes past 860px. */
 @media (min-width: 860px) {
-  .menu { left: 50%; right: auto; transform: translateX(-50%); }
-  .menu-btn { display: none; }
-  .menu-panel,
-  .menu-panel[hidden] {
-    display: flex; flex-direction: row; align-items: center;
-    position: static;
-    min-width: 0; max-width: calc(100vw - 24px);
+  /* Three columns, the outer two equal, so the pill is centred on the
+     page rather than in whatever space the back button and the theme/
+     sound pair happen to leave. minmax(max-content, 1fr) lets a side
+     column grow rather than overlap the pill if it ever outgrows its
+     share - at worst the pill drifts a few px off centre, never under
+     a control. */
+  .site-bar {
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
+    gap: 12px;
+  }
+  .sb-start { margin-right: 0; justify-self: start; }
+  .sb-end { order: 0; justify-self: end; }
+  .menu {
+    order: 0;
+    position: relative;   /* anchors the Search popover under the pill */
     gap: 4px; padding: 7px;
     background: color-mix(in srgb, var(--card) 78%, transparent);
     backdrop-filter: blur(18px);
@@ -1962,37 +1984,69 @@ body:has(#sharePanel:not([hidden]))::before {
        top of it. Themed separately below, not derived by opacity - a
        plain wash reads as almost nothing once --card goes near-black. */
     box-shadow: var(--shadow-l), var(--gloss-inset);
+  }
+  .menu-btn { display: none; }
+  .menu-panel,
+  .menu-panel[hidden] {
+    display: flex; flex-direction: row; align-items: center;
+    position: static;
+    min-width: 0;
+    gap: 4px; padding: 0;
+    background: none; box-shadow: none; border-radius: 0;
     animation: none;
   }
-  .menu-panel .menu-item {
+  .menu-panel .menu-item,
+  .navsearch-toggle {
+    width: auto; height: auto;
     padding: 11px 18px; min-height: 0;
-    border-radius: 999px;
+    border: 0; border-radius: 999px;
+    background: transparent;
+    font: inherit; font-size: 15px; font-weight: 500;
+    color: var(--ink);
     white-space: nowrap;
   }
+  .navsearch-toggle { display: flex; align-items: center; padding-left: 15px; }
+  .navsearch-toggle svg { width: 17px; height: 17px; }
+  .navsearch-toggle:hover,
+  .navsearch-toggle[aria-expanded="true"] { background: var(--flat-bg); }
+  .navsearch-toggle:active { transform: none; }
+  .navsearch-label { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
   .menu-item .mi-full { display: none; }
   .menu-item .mi-short { display: inline; }
-  /* Same outline-on-yellow swap the corner controls already do on the
-     splash, just spent on the pill's own glass tint instead of a plain
-     border - the ground here is strong enough that a card-toned pill
-     would fight it, same reasoning as body.view-home .menu-btn above. */
-  body.view-home .menu-panel {
+  /* Right-aligned under the pill's own end, where the toggle is. */
+  .navsearch-pop {
+    left: auto; right: 0; top: calc(100% + 12px);
+    width: 380px;
+  }
+  /* Same outline-on-yellow swap the square controls do on the splash,
+     spent on the pill's glass tint instead of a plain border - the
+     ground here is strong enough that a card-toned pill would fight it,
+     same reasoning as body.view-home .menu-btn above. */
+  body.view-home .menu {
     background: color-mix(in srgb, var(--home-bg) 46%, transparent);
   }
-  body.view-home .menu-panel .menu-item { color: var(--home-ink); }
-  body.view-home .menu-panel .menu-item:hover {
+  body.view-home .menu-panel .menu-item,
+  body.view-home .navsearch-toggle { color: var(--home-ink); border: 0; background: transparent; }
+  body.view-home .menu-panel .menu-item:hover,
+  body.view-home .navsearch-toggle:hover,
+  body.view-home .navsearch-toggle[aria-expanded="true"] {
     background: color-mix(in srgb, var(--home-ink) 9%, transparent);
   }
 }
-/* At the narrow end of the desktop range the centred pill's right edge
-   creeps into the fixed theme dial's left edge - tightening padding and
-   gap clears it with room to spare. Font-size stays at the Control
-   label size (15px, set on .menu-item itself) rather than stepping
-   down - shrinking the pill's own padding is "the same control, a
-   little more compact"; shrinking its type out of its documented band
-   would read as a different, smaller control. */
-@media (min-width: 860px) and (max-width: 919px) {
-  .menu-panel { padding: 6px; gap: 2px; }
+/* The narrow end of the desktop range: the pill plus both side groups
+   only just fit, so the pill tightens its padding and Search drops to
+   its icon (the word stays for a screen reader). Font-size stays at the
+   Control label size rather than stepping down - a more compact pill
+   is the same control; smaller type would read as a different one. */
+@media (min-width: 860px) and (max-width: 1079px) {
+  .menu, .menu-panel { gap: 2px; }
+  .menu { padding: 6px; }
   .menu-panel .menu-item { padding: 9px 13px; }
+  .navsearch-toggle { padding: 9px 12px; }
+  .navsearch-label {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0); white-space: nowrap;
+  }
 }
 
 /* ==================================================================
@@ -2077,16 +2131,6 @@ body:has(#sharePanel:not([hidden]))::before {
 /* ==================================================================
    MYSTERY ANIMAL
    ================================================================== */
-
-.mystery-title {
-  margin: 0; flex: 1; text-align: center;
-  font-size: 15px; font-weight: 700; letter-spacing: -.01em;
-  /* Balances the fixed-width back button on the other side, so the
-     title reads centred against the whole bar, not the leftover gap
-     after it - the same trick the .topbar-mark title on the about page
-     already leans on. */
-  margin-right: 44px;
-}
 
 /* Quiet on purpose - flat-bg, not the Sun-tint the streak tile/result
    card/milestone use, since this orients rather than celebrates. Shown
@@ -2585,20 +2629,13 @@ span.mystery-stat-arrow.is-visible { animation: mystery-stat-arrow-rise 1.1s var
 
 body.view-page { background: var(--paper); }
 
-.topbar-mark {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-size: 15.5px; font-weight: 600; letter-spacing: -.02em;
-  color: var(--ink); text-decoration: none;
-}
-.topbar-mark svg { width: 21px; height: 21px; fill: var(--ink); }
 
 .prose {
   max-width: 640px;
   margin: 0 auto;
-  /* Same nav clearance every game view uses (see .feed) - About, Browse
-     and Privacy sit under the same fixed nav and were guessing their
-     own number before. */
-  padding: calc(var(--nav-h) + var(--page-top)) 18px 40px;
+  /* Same breathing room under the brand row every view uses (see
+     .feed) - the site bar is in flow, so there's nothing to clear. */
+  padding: var(--page-top) 18px 40px;
 }
 /* Measure sits inside the comfortable range for reading rather than
    running the full width of the container. */
@@ -2768,8 +2805,8 @@ body.view-page { background: var(--paper); }
 
 .prose.atoz .atoz-jump {
   position: sticky;
-  /* Clears the fixed nav the same way .feed and .prose do. */
-  top: calc(var(--nav-h) + var(--page-top) + 14px);
+  /* Sticks just under the site bar. */
+  top: calc(var(--bar-h) + 14px + env(safe-area-inset-top));
   flex-direction: column;
   flex-wrap: nowrap;
   gap: 2px;
@@ -2860,9 +2897,9 @@ body.view-page { background: var(--paper); }
      the quietest thing in its own section. */
   color: var(--ink);
   border-bottom: 2px solid var(--sun);
-  /* Clears the fixed nav AND the sticky rail's own top offset, so a
+  /* Clears the site bar AND the sticky rail's own top offset, so a
      jump link never lands with its letter hidden behind either. */
-  scroll-margin-top: calc(var(--nav-h) + var(--page-top) + 24px);
+  scroll-margin-top: calc(var(--bar-h) + 24px + env(safe-area-inset-top));
 }
 
 /* Comfortable, one step up from today's 15px/7px. */
@@ -2926,7 +2963,7 @@ body.view-page { background: var(--paper); }
 
   .prose.atoz .atoz-jump {
     position: sticky;
-    top: calc(var(--nav-h) + var(--page-top));
+    top: calc(var(--bar-h) + env(safe-area-inset-top));
     z-index: 2;
     flex-direction: row;
     flex-wrap: wrap;
@@ -3042,13 +3079,13 @@ body.view-page { background: var(--paper); }
   :root:not([data-theme="light"]) #mysteryview { --arc-link: var(--sun); }
 }
 :root[data-theme="dark"] #mysteryview { --arc-link: var(--sun); }
-#mysteryview a:not(.btn) {
+#mysteryview a:not(.btn):not(.brand) {
   color: var(--arc-link);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
-#mysteryview a:not(.btn):hover { color: var(--sun-deep); }
+#mysteryview a:not(.btn):not(.brand):hover { color: var(--sun-deep); }
 
 /* ── Mode switch ──────────────────────────────────────────────────────
    One pill holding two options, the way a cabinet has one switch rather
@@ -3816,11 +3853,10 @@ body.view-page { background: var(--paper); }
    already solves a different way: once you've scrolled down to read
    the leaderboard or feed, the round itself is off-screen and you've
    lost track of your own place in it. Sticky, not fixed, so it only
-   ever occupies space once it's actually needed, and top is set from
-   JS (--topbar-h) rather than a guessed constant, since the top bar's
-   real height moves with env(safe-area-inset-top) per device. */
+   ever occupies space once it's actually needed. Pinned directly under
+   the site bar, whose height is a token (--bar-h), not measured. */
 .party-minibar {
-  position: sticky; top: var(--topbar-h, 58px); z-index: var(--z-sticky);
+  position: sticky; top: calc(var(--bar-h) + env(safe-area-inset-top)); z-index: var(--z-sticky);
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   padding: 9px 14px;
   background: color-mix(in srgb, var(--paper) 92%, transparent);
@@ -3884,11 +3920,9 @@ body.view-page { background: var(--paper); }
   }
   .party-side {
     position: sticky;
-    /* Flush with the grid's own top edge, which already clears the nav
-       via the page's own padding-top (C.2) - no extra offset needed here
-       the way the animal page's .pcard has, since this sidebar sits
-       directly under that padding rather than under a second topbar. */
-    top: calc(var(--nav-h) + var(--page-top) + env(safe-area-inset-top));
+    /* Settles under the sticky site bar with the page's own top
+       breathing room, the same offset the animal page's photo uses. */
+    top: calc(var(--bar-h) + var(--page-top) + env(safe-area-inset-top));
   }
   .party-scores-label { margin-top: 0; }
   /* Both panels in the sticky sidebar get the same treatment - an
@@ -4095,13 +4129,13 @@ body.view-page { background: var(--paper); }
   :root:not([data-theme="light"]) #partyview { --arc-link: var(--sun); }
 }
 :root[data-theme="dark"] #partyview { --arc-link: var(--sun); }
-#partyview a:not(.btn) {
+#partyview a:not(.btn):not(.brand) {
   color: var(--arc-link);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
-#partyview a:not(.btn):hover { color: var(--sun-deep); }
+#partyview a:not(.btn):not(.brand):hover { color: var(--sun-deep); }
 
 /* Shared bracket motif. Panels take two pseudo-elements (four 2x14px
    Sun slivers each, the second mirrored); the photo takes a single
