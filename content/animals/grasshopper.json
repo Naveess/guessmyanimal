@@ -1,0 +1,33 @@
+{
+  "sci": "Caelifera",
+  "ov": "Plant-eating insects with powerful hind legs for leaping, one of the oldest groups of chewing plant-eaters. Under crowded conditions some species change colour and behaviour and swarm as locusts.",
+  "why": {
+    "et": "Grasshoppers are eaten in countries such as Mexico and Indonesia."
+  },
+  "hb": [
+    "grassland",
+    "farmland",
+    "desert"
+  ],
+  "rg": "Worldwide, mostly in the tropics.",
+  "df": "Plants; swarming locusts can strip crops over wide areas.",
+  "fx": [
+    "Grasshoppers date back about 250 million years, to the early Triassic."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Grasshopper",
+      "url": "https://en.wikipedia.org/wiki/Grasshopper",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (aliases cricket and locust; crickets are a separate suborder). The existing fact (ears on its abdomen) is confirmed."
+}

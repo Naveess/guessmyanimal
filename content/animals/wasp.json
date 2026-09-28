@@ -1,0 +1,50 @@
+{
+  "sci": "Apocrita (in part)",
+  "ov": "Narrow-waisted insects that are neither bees nor ants, with tens of thousands of species. Yellowjackets and hornets live in colonies with a queen, but most wasp species live alone.",
+  "why": {
+    "dg": "Many wasps can sting, and colonies defend their nests. People are stung most in late summer, when workers look for sugary food."
+  },
+  "hb": [
+    "forest",
+    "grassland",
+    "farmland",
+    "towns"
+  ],
+  "len": "0.139 mm to 5 cm (Asian giant hornet)",
+  "rg": "Everywhere except the polar regions.",
+  "df": "Many are predators or parasites of other insects; some feed on nectar.",
+  "cf": [
+    {
+      "slug": "bee",
+      "tip": "Bees evolved from wasps. Bees feed on nectar and pollen and have feathery hairs for carrying pollen; most wasps hunt."
+    }
+  ],
+  "fx": [
+    "Wasps control crop pests such as whitefly in tomato greenhouses."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Wasp",
+      "url": "https://en.wikipedia.org/wiki/Wasp",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Bee",
+      "url": "https://en.wikipedia.org/wiki/Bee",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact (invented paper by chewing wood) is confirmed: social wasps build nests from wood fibres softened by chewing. ANSWER CHECK: animals.js has h:true, but the Wasp article doesn’t mention hibernation, so no why.h. ANSWER NOTE: so is \"Colonies\", but \"the majority of wasp species are solitary\". Bee was changed to \"Solitary\" for the same reason. Your call. RESOLVED: h changed to false and so to \"Solitary\" (owner’s calls). Fact reworded to \"Social wasps invented paper…\" to match so:\"Solitary\", as with Bee."
+}

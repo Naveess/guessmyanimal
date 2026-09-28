@@ -1,0 +1,43 @@
+{
+  "sci": "Culicidae",
+  "ov": "About 3,600 species of small flies. All drink nectar, but the females of many species also drink blood, which they need to make eggs. Their bites spread malaria, dengue, yellow fever and other diseases.",
+  "why": {
+    "dg": "Mosquito-borne diseases infect nearly 700 million people a year and kill over one million."
+  },
+  "hb": [
+    "wetland",
+    "freshwater",
+    "forest",
+    "towns"
+  ],
+  "len": "Usually 3–6 mm; up to 18 mm",
+  "rg": "Worldwide. Eggs are usually laid on still water.",
+  "df": "Nectar; females of many species also drink blood.",
+  "cf": [
+    {
+      "slug": "fly",
+      "tip": "A mosquito is a kind of fly, with a long piercing proboscis and long thin legs."
+    }
+  ],
+  "fx": [
+    "Males beat their wings 450 to 600 times a second."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mosquito",
+      "url": "https://en.wikipedia.org/wiki/Mosquito",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Kills more people every year than every other animal combined\" isn’t in the article, which gives over one million deaths a year. Suggested wording: \"The diseases it spreads kill over a million people a year.\" RESOLVED: fact rewritten as suggested."
+}

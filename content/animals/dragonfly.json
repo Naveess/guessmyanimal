@@ -1,0 +1,29 @@
+{
+  "sci": "Anisoptera",
+  "ov": "About 3,000 species of fast, agile predatory insects with huge compound eyes and two pairs of strong wings. Most of their life is spent as underwater nymphs; adults usually live only a few weeks.",
+  "hb": [
+    "wetland",
+    "freshwater",
+    "grassland"
+  ],
+  "rg": "Worldwide, mostly in the tropics; often near water.",
+  "df": "Other insects, caught in flight. The nymphs eat almost anything smaller than themselves.",
+  "fx": [
+    "Each compound eye has nearly 24,000 facets, and dragonflies see around 200 images a second."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Dragonfly",
+      "url": "https://en.wikipedia.org/wiki/Dragonfly",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact is confirmed: a study found dragonflies catch up to 95% of the prey they chase. Damselflies are the usual look-alike, but they aren’t on the site."
+}

@@ -1,0 +1,29 @@
+{
+  "sci": "Apteryx",
+  "ov": "Five species of flightless bird found only in New Zealand, about the size of a chicken and the smallest ratites. Their wings are so small they’re hidden under hair-like feathers, and they smell prey through nostrils at the tip of the beak.",
+  "hb": [
+    "forest",
+    "scrub"
+  ],
+  "rg": "New Zealand only.",
+  "df": "Prey it finds by smell, using the nostrils at the end of its long beak.",
+  "fx": [
+    "Its closest relative is the extinct elephant bird of Madagascar, not New Zealand’s moa.",
+    "Four of the five kiwi species are listed as Vulnerable, mainly because of introduced predators."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Kiwi",
+      "url": "https://en.wikipedia.org/wiki/Kiwi_(bird)",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (five species), so no single IUCN status. The existing fact is confirmed: the article says eggs weigh \"up to one-quarter the weight of the female\" (its lead says 20%). No len/wt: the sources I checked give no range."
+}

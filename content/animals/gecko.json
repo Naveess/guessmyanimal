@@ -1,0 +1,32 @@
+{
+  "sci": "Gekkota",
+  "ov": "Nearly 2,000 species of small, mostly nocturnal lizards, the most species-rich lizard group. Most can’t blink and lick their eyes clean. Unusually for lizards, they chirp and click to each other.",
+  "hb": [
+    "rainforest",
+    "forest",
+    "desert",
+    "towns"
+  ],
+  "len": "1.6 cm (Jaragua sphaero) to about 60 cm",
+  "rg": "Warm climates on every continent except Antarctica.",
+  "df": "Mostly insects; house geckos eat pests such as moths and mosquitoes.",
+  "fx": [
+    "In low light, gecko colour vision is about 350 times more sensitive than ours."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Gecko",
+      "url": "https://en.wikipedia.org/wiki/Gecko",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact (\"Sticks to glass using molecular forces, not suction or glue\") is broadly confirmed: the toe pads work without liquids or suction. Wikipedia says van der Waals forces were long thought responsible, but a 2014 study points mainly to electrostatic forces. Both are molecular."
+}

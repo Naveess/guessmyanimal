@@ -1,0 +1,39 @@
+{
+  "sci": "Theraphosidae",
+  "ov": "Large, often hairy spiders, over a thousand species in almost 200 genera. Most live in burrows and many New World species defend themselves by flicking irritating hairs.",
+  "why": {
+    "dg": "Bites from New World tarantulas usually cause only local pain, but allergic reactions can be serious, and the hairs can damage eyes.",
+    "et": "Tarantulas are eaten as a delicacy in places such as Venezuela and Cambodia, roasted over a fire to remove the bristles."
+  },
+  "hb": [
+    "rainforest",
+    "grassland",
+    "desert",
+    "scrub"
+  ],
+  "len": "Body 5–11 cm; leg span 8–30 cm",
+  "wt": "Up to 170 g (goliath birdeater)",
+  "rg": "The Americas, Africa and Asia, in savanna, grassland, rainforest, desert, scrub, mountains and cloud forest.",
+  "df": "Prey that it liquefies with digestive juices and sucks up.",
+  "fx": [
+    "Males die soon after maturing, so females, which can live 30 to 40 years, are preferred as pets."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Tarantula",
+      "url": "https://en.wikipedia.org/wiki/Tarantula",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact is confirmed; the article says females live 30 to 40 years. No cf: Spider already lists tarantula as a group member."
+}

@@ -1,0 +1,39 @@
+{
+  "sci": "Salmo salar and Oncorhynchus species",
+  "ov": "Fish that hatch in rivers, go to sea to grow, then return to fresh water to spawn, usually in the stream where they hatched. The Atlantic salmon lives in the North Atlantic, and six Pacific species in the North Pacific.",
+  "why": {
+    "dm": "Wild salmon aren’t domesticated, but salmon are intensively farmed. Norway is the largest producer, followed by Chile."
+  },
+  "hb": [
+    "freshwater",
+    "ocean",
+    "coast"
+  ],
+  "wt": "2.3–36 kg (Atlantic salmon)",
+  "rg": "Rivers and seas of the North Atlantic and North Pacific; introduced to the Great Lakes, Patagonia and New Zealand.",
+  "fx": [
+    "Pacific and Atlantic salmon split 10 to 20 million years ago, long before the ice ages."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Salmon",
+      "url": "https://en.wikipedia.org/wiki/Salmon",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Salmo salar",
+      "url": "https://animaldiversity.org/accounts/Salmo_salar/",
+      "for": [
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact (\"Navigates back to its home river by smell alone\") is broadly confirmed: homing depends on olfactory memory, and tracking studies show fish mostly return to their birth stream. \"Alone\" is a little stronger than the source. Your call. RESOLVED: fact changed to \"…largely by smell.\""
+}

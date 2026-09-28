@@ -1,0 +1,35 @@
+{
+  "sci": "Varanus komodoensis",
+  "ov": "The largest living lizard, a monitor lizard found only on a few Indonesian islands. It’s an apex predator that ambushes deer and pigs, eats a lot of carrion, and has a venomous bite.",
+  "hb": [
+    "grassland",
+    "forest",
+    "scrub"
+  ],
+  "len": "Up to 3 m (males)",
+  "wt": "Up to 150 kg (males)",
+  "rg": "The Indonesian islands of Komodo, Rinca, Flores, Gili Dasami and Gili Motang.",
+  "df": "Adults eat mainly Javan rusa deer and feral pigs, plus carrion; the young take insects and birds.",
+  "fx": [
+    "Young Komodo dragons live in trees to avoid cannibal adults."
+  ],
+  "iu": "EN",
+  "src": [
+    {
+      "title": "Wikipedia: Komodo dragon",
+      "url": "https://en.wikipedia.org/wiki/Komodo_dragon",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "The existing fact (largest living lizard, genuinely venomous) is confirmed: a 2009 study found venom glands in the lower jaw. The article notes some scientists dispute how much the venom matters."
+}

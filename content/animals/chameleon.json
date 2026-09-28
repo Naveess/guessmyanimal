@@ -1,0 +1,34 @@
+{
+  "sci": "Chamaeleonidae",
+  "ov": "About 200 species of Old World lizard with independently moving eyes, a projectile tongue and gripping feet and tail. About half of all species live only on Madagascar.",
+  "why": {
+    "p": "Chameleons are popular reptile pets, mostly imported from Africa, though stricter rules on wild-caught animals have cut the trade."
+  },
+  "hb": [
+    "rainforest",
+    "forest",
+    "scrub",
+    "desert"
+  ],
+  "rg": "Mostly Africa, about half of species only in Madagascar. One species in southern Europe, a few across southern Asia to India and Sri Lanka.",
+  "df": "Mostly insects, caught with the tongue; the large species also take small vertebrates.",
+  "fx": [
+    "Each eye moves on its own, so a chameleon’s brain handles two separate images until both eyes lock onto prey."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Chameleon",
+      "url": "https://en.wikipedia.org/wiki/Chameleon",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact (changes colour for mood and temperature, not to match wallpaper) is confirmed: colour change is \"most commonly\" for social signals and temperature, though some species do use it for camouflage."
+}

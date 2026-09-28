@@ -1,0 +1,52 @@
+{
+  "sci": "Dromaius novaehollandiae",
+  "ov": "A flightless bird found only in Australia, the country’s tallest native bird and the third-tallest living bird after the two ostriches. It can sprint at 48 km/h and go for weeks without eating.",
+  "why": {
+    "dg": "Emus have legs strong enough to tear down metal fencing and defend their young fiercely, but there are only two documented cases of emus attacking people.",
+    "et": "Emus are farmed for meat, oil and leather in Australia, North America, Peru and China. Commercial farming began around 1970."
+  },
+  "hb": [
+    "grassland",
+    "scrub",
+    "forest",
+    "desert"
+  ],
+  "ht": "Up to 1.9 m",
+  "wt": "36–40 kg",
+  "rg": "Most of mainland Australia. The Tasmanian, Kangaroo Island and King Island forms died out after European settlement.",
+  "df": "Omnivore: a wide variety of plants and insects.",
+  "cf": [
+    {
+      "slug": "ostrich",
+      "tip": "The African ostrich is taller and heavier. The emu is the third-tallest living bird, after the two ostrich species."
+    }
+  ],
+  "fx": [
+    "The male incubates the eggs for about eight weeks, hardly eating or drinking, and raises the chicks."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Emu",
+      "url": "https://en.wikipedia.org/wiki/Emu",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "ht",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Dromaius novaehollandiae",
+      "url": "https://animaldiversity.org/accounts/Dromaius_novaehollandiae/",
+      "for": [
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "The existing fact (Emu War, and the emus won) is confirmed: in 1932 the army was sent in with machine guns and \"the emus largely avoided the hunters\"."
+}

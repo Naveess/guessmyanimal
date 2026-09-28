@@ -1,0 +1,60 @@
+{
+  "sci": "Cathartidae and Accipitridae (in part)",
+  "ov": "Birds of prey that scavenge carrion. The 16 Old World vultures of Europe, Africa and Asia and the 7 New World vultures and condors of the Americas look alike but aren’t closely related.",
+  "hb": [
+    "grassland",
+    "mountain",
+    "desert",
+    "scrub"
+  ],
+  "rg": "Old World vultures: Europe, Africa and Asia. New World vultures and condors: North and South America.",
+  "df": "Carrion. The bearded vulture is the only vertebrate that specialises in eating bones.",
+  "cf": [
+    {
+      "slug": "eagle",
+      "tip": "Many vultures have a bare, unfeathered head that stays clean while they feed on carcasses. Eagles mostly hunt live prey."
+    }
+  ],
+  "fx": [
+    "Some New World vultures find carcasses by smell; Old World vultures use only sight.",
+    "A group of vultures in flight is a “kettle”, and a feeding group is a “wake”."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Vulture",
+      "url": "https://en.wikipedia.org/wiki/Vulture",
+      "for": [
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: New World vulture",
+      "url": "https://en.wikipedia.org/wiki/New_World_vulture",
+      "for": [
+        "sci",
+        "ov",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Old World vulture",
+      "url": "https://en.wikipedia.org/wiki/Old_World_vulture",
+      "for": [
+        "sci",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: Eagle",
+      "url": "https://en.wikipedia.org/wiki/Eagle",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact is confirmed: vulture stomach acid (pH 1.0) lets them safely digest carcasses carrying botulinum toxin and anthrax. Many vultures are in steep decline, but no single IUCN status fits the group."
+}
