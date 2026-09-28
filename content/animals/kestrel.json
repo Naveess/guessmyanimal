@@ -1,0 +1,50 @@
+{
+  "sci": "Falco tinnunculus",
+  "ov": "The common kestrel is a small falcon of open country across Europe, Asia and Africa, famous for hovering in one spot while it scans the ground. In Britain, where no other kestrel is common, it’s simply “the kestrel”.",
+  "hb": [
+    "grassland",
+    "farmland",
+    "towns"
+  ],
+  "len": "30–36 cm",
+  "wt": "150–190 g",
+  "rg": "Europe, Asia and Africa; occasionally reaches the east coast of North America.",
+  "cf": [
+    {
+      "slug": "falcon",
+      "tip": "Kestrels are small falcons. The name is given to the species that hover while hunting."
+    }
+  ],
+  "fx": [
+    "Its old country name “windhover” comes from its habit of hovering into the wind."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common kestrel",
+      "url": "https://en.wikipedia.org/wiki/Common_kestrel",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Falco tinnunculus",
+      "url": "https://animaldiversity.org/accounts/Falco_tinnunculus/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    },
+    {
+      "title": "Wikipedia: Falcon",
+      "url": "https://en.wikipedia.org/wiki/Falcon",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Hovers on the spot and sees the ultraviolet urine trails voles leave behind\" is half sourced: hovering yes, UV urine trails not in the article. Suggested wording: \"Hovers on the spot into the wind, which earned it the old name windhover.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

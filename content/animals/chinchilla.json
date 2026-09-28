@@ -1,0 +1,40 @@
+{
+  "sci": "Chinchilla",
+  "ov": "Two species of crepuscular rodents from the high Andes, living in colonies up to 4,270 m. They have the densest fur of any land mammal, which nearly wiped them out: wild colonies are now known only in Chile.",
+  "why": {
+    "p": "Domestic chinchillas, bred from the long-tailed chinchilla, are kept as pets, and most fur now comes from farms."
+  },
+  "hb": [
+    "mountain",
+    "scrub"
+  ],
+  "wt": "0.5–0.8 kg",
+  "rg": "The Andes; wild colonies are now known only in Chile.",
+  "fx": [
+    "Each follicle grows about 50 hairs, around 20,000 hairs per square centimetre."
+  ],
+  "iu": "EN",
+  "src": [
+    {
+      "title": "Wikipedia: Chinchilla",
+      "url": "https://en.wikipedia.org/wiki/Chinchilla",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "iu",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Chinchilla lanigera",
+      "url": "https://animaldiversity.org/accounts/Chinchilla_lanigera/",
+      "for": [
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (two species, both Endangered). ANSWER CHECK (fact): the animals.js fact \"The densest fur of any land mammal, and it bathes in volcanic dust rather than water\" is half sourced: the fur yes, the dust bath isn’t in the article. Suggested wording: \"The densest fur of any land mammal, about 20,000 hairs per square centimetre.\" ANSWER CHECK: p is \"common\" but Wikipedia says domestic chinchillas are \"sometimes kept as pets\". Consider p:\"some\". RESOLVED (owner: approve all): p changed to \"some\"; fact rewritten as suggested."
+}

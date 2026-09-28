@@ -128,14 +128,14 @@
   <url><loc>https://guessmyanimal.com/animals/ant</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/butterfly</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/moth</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://guessmyanimal.com/animals/ladybird</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/ladybird</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/dragonfly</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/grasshopper</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/beetle</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/fly</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/mosquito</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://guessmyanimal.com/animals/praying-mantis</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/worm</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/praying-mantis</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/worm</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/baboon</loc></url>
   <url><loc>https://guessmyanimal.com/animals/mandrill</loc></url>
   <url><loc>https://guessmyanimal.com/animals/macaque</loc></url>
@@ -147,19 +147,19 @@
   <url><loc>https://guessmyanimal.com/animals/vervet-monkey</loc></url>
   <url><loc>https://guessmyanimal.com/animals/marmoset</loc></url>
   <url><loc>https://guessmyanimal.com/animals/tamarin</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/lemur</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/lemur</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/aye-aye</loc></url>
   <url><loc>https://guessmyanimal.com/animals/tarsier</loc></url>
   <url><loc>https://guessmyanimal.com/animals/bushbaby</loc></url>
   <url><loc>https://guessmyanimal.com/animals/slow-loris</loc></url>
   <url><loc>https://guessmyanimal.com/animals/gibbon</loc></url>
   <url><loc>https://guessmyanimal.com/animals/bonobo</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/lynx</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/lynx</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/bobcat</loc></url>
   <url><loc>https://guessmyanimal.com/animals/ocelot</loc></url>
   <url><loc>https://guessmyanimal.com/animals/caracal</loc></url>
   <url><loc>https://guessmyanimal.com/animals/serval</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/snow-leopard</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/snow-leopard</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/clouded-leopard</loc></url>
   <url><loc>https://guessmyanimal.com/animals/black-panther</loc></url>
   <url><loc>https://guessmyanimal.com/animals/wildcat</loc></url>
@@ -178,7 +178,7 @@
   <url><loc>https://guessmyanimal.com/animals/sun-bear</loc></url>
   <url><loc>https://guessmyanimal.com/animals/sloth-bear</loc></url>
   <url><loc>https://guessmyanimal.com/animals/spectacled-bear</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/red-panda</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/red-panda</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/wolverine</loc></url>
   <url><loc>https://guessmyanimal.com/animals/weasel</loc></url>
   <url><loc>https://guessmyanimal.com/animals/stoat</loc></url>
@@ -211,8 +211,8 @@
   <url><loc>https://guessmyanimal.com/animals/pony</loc></url>
   <url><loc>https://guessmyanimal.com/animals/vicuna</loc></url>
   <url><loc>https://guessmyanimal.com/animals/guanaco</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/capybara</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/chinchilla</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/capybara</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/chinchilla</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/gerbil</loc></url>
   <url><loc>https://guessmyanimal.com/animals/chipmunk</loc></url>
   <url><loc>https://guessmyanimal.com/animals/marmot</loc></url>
@@ -248,24 +248,24 @@
   <url><loc>https://guessmyanimal.com/animals/falcon</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/hawk</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/vulture</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://guessmyanimal.com/animals/condor</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/kestrel</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/buzzard</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/condor</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/kestrel</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/buzzard</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/kingfisher</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/heron</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/stork</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/pelican</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://guessmyanimal.com/animals/albatross</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/puffin</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/toucan</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/pheasant</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/albatross</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/puffin</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/toucan</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/pheasant</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/quail</loc></url>
   <url><loc>https://guessmyanimal.com/animals/partridge</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/magpie</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/raven</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/magpie</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/raven</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/jackdaw</loc></url>
   <url><loc>https://guessmyanimal.com/animals/starling</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/sparrow</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/sparrow</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/finch</loc></url>
   <url><loc>https://guessmyanimal.com/animals/blackbird</loc></url>
   <url><loc>https://guessmyanimal.com/animals/nightingale</loc></url>
@@ -284,18 +284,18 @@
   <url><loc>https://guessmyanimal.com/animals/nuthatch</loc></url>
   <url><loc>https://guessmyanimal.com/animals/kookaburra</loc></url>
   <url><loc>https://guessmyanimal.com/animals/cockatoo</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/budgerigar</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/budgerigar</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/canary</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/macaw</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/macaw</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/bird-of-paradise</loc></url>
   <url><loc>https://guessmyanimal.com/animals/lyrebird</loc></url>
   <url><loc>https://guessmyanimal.com/animals/roadrunner</loc></url>
   <url><loc>https://guessmyanimal.com/animals/dodo</loc></url>
   <url><loc>https://guessmyanimal.com/animals/cobra</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/python</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://guessmyanimal.com/animals/boa-constrictor</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/anaconda</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/rattlesnake</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/boa-constrictor</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/anaconda</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/rattlesnake</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/viper</loc></url>
   <url><loc>https://guessmyanimal.com/animals/mamba</loc></url>
   <url><loc>https://guessmyanimal.com/animals/grass-snake</loc></url>
@@ -336,7 +336,7 @@
   <url><loc>https://guessmyanimal.com/animals/sea-anemone</loc></url>
   <url><loc>https://guessmyanimal.com/animals/nautilus</loc></url>
   <url><loc>https://guessmyanimal.com/animals/cuttlefish</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/slug</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/slug</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/mussel</loc></url>
   <url><loc>https://guessmyanimal.com/animals/oyster</loc></url>
   <url><loc>https://guessmyanimal.com/animals/krill</loc></url>

@@ -1,0 +1,41 @@
+{
+  "sci": "Phasianus colchicus",
+  "ov": "The common pheasant is a game bird native to Asia and the far south-east of Europe, introduced widely elsewhere for shooting. Males are brightly coloured, and many have a white neck ring.",
+  "why": {
+    "et": "Pheasants are a popular game bird, introduced to many countries to be shot by hunters."
+  },
+  "hb": [
+    "farmland",
+    "grassland",
+    "forest"
+  ],
+  "len": "42.5–53.6 cm",
+  "wt": "About 1.26 kg (average)",
+  "rg": "Native to Asia and the Caucasus foothills; introduced widely in Europe and elsewhere.",
+  "fx": [
+    "It usually cruises at 43–61 km/h, but can reach 90 km/h when chased."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common pheasant",
+      "url": "https://en.wikipedia.org/wiki/Common_pheasant",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Phasianus colchicus",
+      "url": "https://animaldiversity.org/accounts/Phasianus_colchicus/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Explodes almost vertically off the ground, but tires after a few hundred metres\" is half sourced: it can \"suddenly burst upwards at great speed\", but tiring after a few hundred metres isn’t in the article. Suggested wording: \"Bursts upward with a whirr of wings, and can hit 90 km/h when chased.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

@@ -1,0 +1,28 @@
+{
+  "sci": "Ramphastidae",
+  "ov": "Over 40 species of brightly marked birds of the American tropics with huge, often colourful bills. They live in trees, mostly eat fruit, and nest in holes made by other animals.",
+  "hb": [
+    "rainforest",
+    "forest"
+  ],
+  "rg": "Central and South America.",
+  "df": "Mostly fruit.",
+  "fx": [
+    "Toucans sometimes fence and wrestle with their bills, probably to settle who ranks higher."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Toucan",
+      "url": "https://en.wikipedia.org/wiki/Toucan",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact is mostly confirmed: the bill is a \"highly efficient thermoregulation system\". But it isn’t \"mostly hollow\": it’s very light, with bone struts and foam-like keratin. Suggested wording: \"The huge beak is light, filled with foam-like keratin, and works as a radiator to shed heat.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

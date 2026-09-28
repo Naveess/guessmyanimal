@@ -1,0 +1,34 @@
+{
+  "sci": "Coccinellidae",
+  "ov": "Over 6,000 species of small, domed beetles, often red with black spots that warn predators they taste bad. Most eat aphids and scale insects, which makes them welcome in gardens.",
+  "why": {
+    "h": "In temperate areas ladybirds hibernate through winter, gathering in clumps; tropical species go dormant in the dry season."
+  },
+  "hb": [
+    "grassland",
+    "farmland",
+    "forest",
+    "towns"
+  ],
+  "rg": "Worldwide.",
+  "df": "Mostly aphids and scale insects; some eat plants or fungi.",
+  "fx": [
+    "An adult lives up to a year."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Coccinellidae",
+      "url": "https://en.wikipedia.org/wiki/Coccinellidae",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (alias “ladybug”). ANSWER CHECK (fact): the animals.js fact \"Eats about 5,000 aphids in a lifetime, which is why gardeners love it\" gives a number that isn’t in the article. Suggested wording: \"Mostly eats aphids, which is why gardeners love it.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

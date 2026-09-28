@@ -1,0 +1,29 @@
+{
+  "sci": "Lumbricina (in part)",
+  "ov": "Earthworms are soil-dwelling annelids, among nature’s most important recyclers of dead plant matter. They have no skeleton and breathe through their moist skin.",
+  "hb": [
+    "grassland",
+    "farmland",
+    "forest",
+    "towns"
+  ],
+  "rg": "Worldwide, in soil.",
+  "df": "Dead plant matter and other organic material in the soil.",
+  "fx": [
+    "Earthworms are food for many animals, from moles and blackbirds to wild boar."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Earthworm",
+      "url": "https://en.wikipedia.org/wiki/Earthworm",
+      "for": [
+        "sci",
+        "ov",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (alias “earthworm”). ANSWER CHECK (fact): the animals.js fact \"Five hearts, no eyes, and it breathes through its skin\" is only one-third sourced: breathing through the skin yes, the hearts and eyes aren’t in the article. Suggested wording: \"Has no lungs: it breathes through its moist skin.\" No why.et: the source doesn’t mention eating earthworms. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

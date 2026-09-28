@@ -1,0 +1,47 @@
+{
+  "sci": "Corvus corax",
+  "ov": "The common raven is a big, all-black crow, the heaviest songbird, found across the Northern Hemisphere. It eats almost anything, and feats of problem-solving show it’s unusually intelligent.",
+  "hb": [
+    "mountain",
+    "coast",
+    "forest",
+    "polar"
+  ],
+  "len": "About 63 cm",
+  "wt": "About 1.47 kg; up to 2 kg",
+  "rg": "Across the Northern Hemisphere, the most widespread of all crows.",
+  "df": "Carrion, insects, grain, berries, fruit, small animals, eggs and chicks, and food waste.",
+  "cf": [
+    {
+      "slug": "crow",
+      "tip": "Ravens are the larger species of the crow genus. The American crow is smaller, with a less heavy beak."
+    }
+  ],
+  "fx": [
+    "Ravens can live over 23 years in the wild, and pairs mate for life."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common raven",
+      "url": "https://en.wikipedia.org/wiki/Common_raven",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: American crow",
+      "url": "https://en.wikipedia.org/wiki/American_crow",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Plans for the future, holds grudges, and can mimic human speech better than a parrot\" is only partly sourced: the article says ravens can mimic sounds \"including human speech\", but planning, grudges and \"better than a parrot\" aren’t in it. Suggested wording: \"Can mimic sounds around it, including human speech.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

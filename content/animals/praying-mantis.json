@@ -1,0 +1,34 @@
+{
+  "sci": "Mantodea",
+  "ov": "Over 2,400 species of predatory insects with big, grasping front legs held folded as if praying. Their closest relatives are termites and cockroaches.",
+  "why": {
+    "p": "Mantises are among the insects most commonly kept as pets."
+  },
+  "hb": [
+    "grassland",
+    "forest",
+    "rainforest",
+    "farmland"
+  ],
+  "rg": "Temperate and tropical habitats worldwide.",
+  "df": "Mostly ambush predators of other insects.",
+  "fx": [
+    "Mantises are sometimes mistaken for stick insects and grasshoppers."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mantis",
+      "url": "https://en.wikipedia.org/wiki/Mantis",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"The only insect that can turn its head to look behind it\" overstates it. The article says \"some species of mantis can rotate their heads nearly 180°\", not that it’s the only insect. Suggested wording: \"Some can turn their heads nearly 180 degrees.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

@@ -1,0 +1,42 @@
+{
+  "sci": "Buteo buteo",
+  "ov": "The common buzzard is a medium-sized bird of prey found across most of Europe and east into Asia, and probably the most common daytime raptor in Europe. It mostly hunts voles and other rodents from a perch.",
+  "hb": [
+    "farmland",
+    "forest",
+    "grassland"
+  ],
+  "rg": "Most of Europe and east to western Siberia, Mongolia and China; northern and eastern birds winter as far south as South Africa.",
+  "df": "Mostly small mammals, especially voles; an opportunist that takes many other prey.",
+  "cf": [
+    {
+      "slug": "hawk",
+      "tip": "In the US, buzzards of this group are called hawks."
+    }
+  ],
+  "fx": [
+    "Up to 30 buzzards have been seen foraging on the ground in a single large field."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common buzzard",
+      "url": "https://en.wikipedia.org/wiki/Common_buzzard",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Hawk",
+      "url": "https://en.wikipedia.org/wiki/Hawk",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"The most common bird of prey in Britain, and its call is the one films give to eagles\" isn’t in the article. It says the buzzard \"appears to be the most common diurnal raptor in Europe\"; the film call isn’t mentioned. Suggested wording: \"Probably the most common daytime bird of prey in Europe.\" REGION: r is Europe and Asia, but many buzzards winter in Africa, as far as South Africa. Consider adding Africa. RESOLVED (owner: approve all): Africa added to r; fact rewritten as suggested."
+}

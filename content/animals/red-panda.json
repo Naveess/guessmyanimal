@@ -1,0 +1,41 @@
+{
+  "sci": "Ailurus fulgens",
+  "ov": "A small, reddish-brown tree-climber of the eastern Himalayas and south-western China, with a ringed tail. Despite the name it’s closer to raccoons, weasels and skunks than to the giant panda, which is a bear.",
+  "why": {
+    "ac": "Red pandas appear to be both nocturnal and crepuscular, active at night and around dawn and dusk."
+  },
+  "hb": [
+    "forest",
+    "mountain"
+  ],
+  "len": "51–63.5 cm, plus a 28–48.5 cm tail",
+  "wt": "3.2–15 kg",
+  "rg": "The eastern Himalayas and south-western China.",
+  "df": "Mainly bamboo shoots and leaves.",
+  "cf": [
+    {
+      "slug": "panda",
+      "tip": "The giant panda is a bear. The red panda is small, red and long-tailed, and not closely related, though both have a “false thumb” for gripping bamboo."
+    }
+  ],
+  "iu": "EN",
+  "src": [
+    {
+      "title": "Wikipedia: Red panda",
+      "url": "https://en.wikipedia.org/wiki/Red_panda",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "cf",
+        "iu"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "The existing fact (not related to the giant panda, false thumb for bamboo) is confirmed."
+}
