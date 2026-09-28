@@ -3,7 +3,7 @@
   "ov": "Ocean mammals that breathe air and feed their young on milk, including the blue whale, the largest animal that has ever lived. Their closest living relatives are hippos.",
   "why": {
     "d": "Every whale eats animals. Baleen whales filter out krill and plankton; toothed whales hunt fish and squid.",
-    "et": "Arctic Indigenous peoples have traditionally eaten whale meat and blubber, and a few countries still hunt whales."
+    "et": "Arctic Indigenous peoples have traditionally eaten whale meat and blubber."
   },
   "hb": [
     "ocean",
@@ -31,6 +31,6 @@
       ]
     }
   ],
-  "rv": null,
-  "notes": "Group entry, linked to the six whale species on the site. \"Blue whale, largest animal ever\" is standard; Wikipedia's Blue whale article covers it. \"A few countries still hunt whales\" (Japan, Norway, Iceland) is general knowledge. Add a source if you want it kept."
+  "rv": "2026-09-28",
+  "notes": "Group entry, linked to the six whale species on the site. \"Blue whale, largest animal ever\" is standard; Wikipedia's Blue whale article covers it. \"A few countries still hunt whales\" (Japan, Norway, Iceland) is general knowledge. Add a source if you want it kept. RESOLVED: unsourced \"countries still hunt whales\" clause dropped."
 }

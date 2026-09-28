@@ -50,6 +50,6 @@
       ]
     }
   ],
-  "rv": null,
+  "rv": "2026-09-28",
   "notes": "ANSWER CHECK: animals.js has h:false, but Wikipedia describes alligators going through winter \"brumation\", and how-we-answer counts the cold-season dormancy of reptiles as \"Hibernates: Yes\". Consider h:true with a why-note. The existing fact already covers the snout difference, so the cf tip repeats it. That's fine, or shorten it."
 }

@@ -36,6 +36,6 @@
       ]
     }
   ],
-  "rv": null,
+  "rv": "2026-09-28",
   "notes": "Group entry covering three species. No grp links, because none of the three has its own page on the site. Adding \"African bush elephant\" and \"Asian elephant\" to animals.js would let this entry link to them. No IUCN status for the same reason (bush EN, forest CR, Asian EN)."
 }

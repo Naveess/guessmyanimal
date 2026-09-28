@@ -14,9 +14,6 @@
   "wt": "About 1,300–1,500 kg on average",
   "rg": "Rivers, lakes and swamps of sub-Saharan Africa, with grassland nearby to graze.",
   "df": "Almost entirely grass: about 40 kg a night, gathered on walks of 3–5 km from the water.",
-  "fx": [
-    "Despite living in water, it’s debated whether hippos can actually swim."
-  ],
   "iu": "VU",
   "src": [
     {
@@ -35,6 +32,6 @@
       ]
     }
   ],
-  "rv": null,
-  "notes": "ANSWER CHECK: animals.js has sw:true (the \"Can swim\" chip). Wikipedia says \"it is debated whether hippos can swim at all\". Either keep the chip and drop this fx, or change sw and keep it; one page shouldn't contradict itself."
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK: animals.js has sw:true (the \"Can swim\" chip). Wikipedia says \"it is debated whether hippos can swim at all\". Either keep the chip and drop this fx, or change sw and keep it; one page shouldn't contradict itself. RESOLVED: fx dropped so the page no longer contradicts the Can swim chip; sw itself unchanged."
 }

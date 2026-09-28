@@ -2,7 +2,6 @@
   "sci": "Acinonyx jubatus",
   "ov": "The fastest land animal: a lightweight, long-legged cat built for short sprints across open ground. Fewer than 7,000 adults are left in the wild.",
   "why": {
-    "dg": "A large predator, but shy of people. It gets “can be” rather than “yes” because serious attacks on people are not a known pattern.",
     "ac": "Hunts mainly by day, unusually for a big cat.",
     "p": "Tamed cheetahs were kept for hunting in ancient Egypt, Arabia and India, but the cheetah was never domesticated and isn’t a pet."
   },
@@ -44,6 +43,6 @@
       ]
     }
   ],
-  "rv": null,
-  "notes": "why.dg is our own reasoning for the \"Can be\" answer; Wikipedia gives no attack statistics. Check you agree with the wording. \"Fewer than 7,000\" is Wikipedia's 6,517 mature individuals (2021)."
+  "rv": "2026-09-28",
+  "notes": "why.dg is our own reasoning for the \"Can be\" answer; Wikipedia gives no attack statistics. Check you agree with the wording. \"Fewer than 7,000\" is Wikipedia's 6,517 mature individuals (2021). RESOLVED: unsourced why.dg dropped."
 }

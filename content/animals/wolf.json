@@ -40,6 +40,6 @@
       ]
     }
   ],
-  "rv": null,
+  "rv": "2026-09-28",
   "notes": "ANSWER CHECK (fact, not answer): the existing animals.js fact \"Every dog alive is descended from them\" is loosely true, but Wikipedia says modern wolves are a SISTER line to dogs. Consider rewording it, e.g. \"Dogs were domesticated from an ancient wolf population, now extinct.\" The cf tip is general knowledge; the Wikipedia text does not describe dog tails."
 }
