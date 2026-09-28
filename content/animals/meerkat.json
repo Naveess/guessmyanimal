@@ -1,0 +1,31 @@
+{
+  "sci": "Suricata suricatta",
+  "ov": "A small, highly social mongoose of southern Africa. Packs of up to 30 live in large burrow systems, and non-breeding members help raise the dominant pair’s pups.",
+  "hb": [
+    "desert",
+    "scrub",
+    "grassland"
+  ],
+  "len": "24–35 cm (head and body)",
+  "wt": "0.62–0.97 kg",
+  "rg": "Southern Africa.",
+  "fx": [
+    "A meerkat burrow system is about 5 m across, with around 15 entrances and two or three levels."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Meerkat",
+      "url": "https://en.wikipedia.org/wiki/Meerkat",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "The existing fact (takes turns on sentry duty) is confirmed: pack members take turns at jobs such as keeping a lookout for predators."
+}

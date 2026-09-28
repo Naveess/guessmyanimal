@@ -1,0 +1,39 @@
+{
+  "sci": "Caridea and Dendrobranchiata",
+  "ov": "Crustaceans with long bodies, long antennae and thin legs, which swim forward with paddles under the tail and flick backwards to escape. Thousands of species live in the sea and fresh water.",
+  "why": {
+    "dm": "Shrimp are farmed on a huge scale: about 440 billion farmed shrimp are slaughtered each year."
+  },
+  "hb": [
+    "ocean",
+    "coast",
+    "freshwater"
+  ],
+  "rg": "Most coasts and estuaries, plus rivers and lakes.",
+  "df": "Feeds near the seafloor.",
+  "fx": [
+    "The pistol shrimp’s claw snap fires a bubble at 90 km/h, and colonies are loud enough to disrupt sonar."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Shrimp",
+      "url": "https://en.wikipedia.org/wiki/Shrimp",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df"
+      ]
+    },
+    {
+      "title": "Wikipedia: Alpheidae",
+      "url": "https://en.wikipedia.org/wiki/Alpheidae",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (alias “prawn”). The existing fact (the pistol shrimp’s claw stuns a fish) is confirmed."
+}

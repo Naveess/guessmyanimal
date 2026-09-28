@@ -1,0 +1,54 @@
+{
+  "sci": "Accipitridae (in part)",
+  "ov": "Birds of prey of the eagle family, found on every continent except Antarctica. “True” hawks such as goshawks and sparrowhawks are woodland hunters with short, broad wings; in the US the name also covers the broad-winged buzzards.",
+  "hb": [
+    "forest",
+    "grassland",
+    "farmland"
+  ],
+  "rg": "Every continent except Antarctica.",
+  "df": "Live prey, often ambushed with a sudden dash from a hidden perch.",
+  "cf": [
+    {
+      "slug": "eagle",
+      "tip": "Eagles and hawks belong to the same family. “Eagle” marks the bigger species."
+    },
+    {
+      "slug": "falcon",
+      "tip": "Hawks kill with their talons; falcons kill with a notch on the beak and have longer, pointed wings."
+    }
+  ],
+  "fx": [
+    "Each hawk eye has two foveae, the patches of sharpest vision."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Hawk",
+      "url": "https://en.wikipedia.org/wiki/Hawk",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Eagle",
+      "url": "https://en.wikipedia.org/wiki/Eagle",
+      "for": [
+        "cf"
+      ]
+    },
+    {
+      "title": "Wikipedia: Falcon",
+      "url": "https://en.wikipedia.org/wiki/Falcon",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Sees roughly eight times more sharply than we do\" isn’t in the article, which says hawks have \"relatively high visual acuity\" and gives red-tailed hawks 16.8 cycles per degree. Suggested wording: \"Each eye has two foveae, the patches of sharpest vision.\" No why.dg or why.p: the source doesn’t cover danger to people or keeping hawks. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

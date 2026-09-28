@@ -1,0 +1,49 @@
+{
+  "sci": "Ardeidae",
+  "ov": "About 75 species of long-legged, long-necked wading birds of fresh water and coasts, including the egrets and bitterns. They fly with the neck pulled back, unlike storks and cranes.",
+  "hb": [
+    "wetland",
+    "freshwater",
+    "coast"
+  ],
+  "len": "84–102 cm (grey heron)",
+  "rg": "Every continent except Antarctica.",
+  "cf": [
+    {
+      "slug": "crane",
+      "tip": "A heron flies with its neck pulled back into an S; a crane flies with its neck stretched out."
+    }
+  ],
+  "fx": [
+    "Herons have “powder down”, special feathers that crumble into a powder they use to clean off fish slime."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Heron",
+      "url": "https://en.wikipedia.org/wiki/Heron",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Stork",
+      "url": "https://en.wikipedia.org/wiki/Stork",
+      "for": [
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Ardea cinerea",
+      "url": "https://animaldiversity.org/accounts/Ardea_cinerea/",
+      "for": [
+        "len"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. The existing fact (some herons drop bait and wait) is confirmed: little egrets and grey herons have been documented using bait."
+}

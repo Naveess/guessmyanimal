@@ -1,0 +1,38 @@
+{
+  "sci": "Erithacus rubecula",
+  "ov": "The European robin is a small insect-eating songbird with an orange-red breast and face, found across Europe to Western Siberia and North Africa. It’s unrelated to the larger American robin, a thrush.",
+  "hb": [
+    "forest",
+    "towns",
+    "farmland"
+  ],
+  "len": "12.5–14 cm",
+  "rg": "Europe, east to Western Siberia and south to North Africa.",
+  "df": "Mainly insects, plus seed mixtures and scraps from bird tables; occasionally small vertebrates.",
+  "fx": [
+    "Because so many die in their first year, a robin’s average life expectancy is just 1.1 years."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: European robin",
+      "url": "https://en.wikipedia.org/wiki/European_robin",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: American robin",
+      "url": "https://en.wikipedia.org/wiki/American_robin",
+      "for": [
+        "ov"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "The existing fact (fights to the death) is confirmed: territorial fights cause up to 10% of adult deaths in some areas. REGION: animals.js r includes North America, but the European robin doesn’t live there; the North American “robin” is a different bird, the American robin. Consider removing North America. RESOLVED (owner: approve all): North America removed from r."
+}

@@ -1,0 +1,29 @@
+{
+  "sci": "Pelecanus",
+  "ov": "Eight species of large water birds with a long beak and a huge throat pouch, used to scoop up fish and drain out the water before swallowing. Their bills and pouches turn bright colours before the breeding season.",
+  "hb": [
+    "coast",
+    "freshwater",
+    "wetland"
+  ],
+  "rg": "Tropical to temperate waters on every continent except Antarctica; absent from inland Amazonia, polar regions and the open ocean.",
+  "df": "Mainly fish, caught at or near the surface.",
+  "fx": [
+    "After heavy rain, at least one species flies to temporary lakes in the desert of Australia’s Red Centre."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Pelican",
+      "url": "https://en.wikipedia.org/wiki/Pelican",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Its throat pouch holds around 11 litres, three times what its stomach can take\" isn’t in the Pelican article, which gives no pouch capacity. Suggested wording: \"Its throat pouch scoops up fish, then drains the water out before it swallows.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

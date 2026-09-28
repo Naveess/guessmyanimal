@@ -1,0 +1,31 @@
+{
+  "sci": "Phalacrocoracidae",
+  "ov": "About 40 species of dark, fish-eating water birds, including the shags. They dive from the surface and swim with their feet, some down to 45 m, and their short wings give them among the highest flying costs of any bird.",
+  "hb": [
+    "coast",
+    "freshwater",
+    "wetland"
+  ],
+  "wt": "0.35–5 kg",
+  "rg": "Coasts and inland waters worldwide, except the central Pacific islands.",
+  "df": "Fish, caught by diving from the surface.",
+  "fx": [
+    "Cormorants nest in colonies on coasts, in trees, and on islets and cliffs."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Cormorant",
+      "url": "https://en.wikipedia.org/wiki/Cormorant",
+      "for": [
+        "sci",
+        "ov",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Its feathers are not waterproof, which is why it stands with wings spread to dry\" is disputed. Wikipedia says some sources call the feathers waterproof, others water-permeable, and others say only the outer layer gets wet. Suggested wording: \"Often stands with its wings spread after diving, though nobody agrees exactly why.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

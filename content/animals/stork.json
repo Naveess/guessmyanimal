@@ -1,0 +1,28 @@
+{
+  "sci": "Ciconiidae",
+  "ov": "Twenty species of large, long-legged, long-necked wading birds with stout bills. They soar on rising warm air to save energy, and many migrate long distances.",
+  "hb": [
+    "wetland",
+    "grassland",
+    "farmland"
+  ],
+  "df": "Frogs, fish, insects, earthworms, small birds and small mammals.",
+  "fx": [
+    "The marabou stork’s 3.2 m wingspan is among the widest of any land bird.",
+    "Some stork nests grow over 2 m across and are used for many years."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Stork",
+      "url": "https://en.wikipedia.org/wiki/Stork",
+      "for": [
+        "sci",
+        "ov",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): Wikipedia contradicts the animals.js fact \"Has no voice box, so it clatters its bill to communicate\": \"Although it is sometimes reported that storks lack syrinxes and are mute, they do have syrinxes\", though they rarely call. Suggested wording: \"Rarely calls: it talks by clattering its bill.\" No rg: the article doesn’t summarise the range. No wt: ADW’s white stork weight disagrees with other sources. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

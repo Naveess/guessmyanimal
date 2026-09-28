@@ -1,0 +1,36 @@
+{
+  "sci": "Amphiprion",
+  "ov": "Small reef fish of the warm Indo-Pacific that live among sea anemones, sheltered by the stinging tentacles. In return they defend, clean and feed the anemone.",
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "len": "Up to 11 cm (ocellaris clownfish)",
+  "rg": "Warm and tropical waters of the Indian and Pacific oceans.",
+  "df": "Omnivores, mostly plankton.",
+  "fx": [
+    "Groups have a strict size order: the female is largest, then the breeding male, then the non-breeders."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Amphiprioninae",
+      "url": "https://en.wikipedia.org/wiki/Amphiprioninae",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Amphiprion ocellaris",
+      "url": "https://animaldiversity.org/accounts/Amphiprion_ocellaris/",
+      "for": [
+        "len"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"All are born male, and the dominant one becomes female\" is close but not quite the source. Wikipedia says the breeding male changes into a female when the female is lost, and the largest non-breeder becomes the male. Suggested wording: \"If the female dies, the breeding male turns into a female.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}
