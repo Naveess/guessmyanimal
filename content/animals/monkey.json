@@ -1,0 +1,56 @@
+{
+  "sci": "Simiiformes, excluding apes",
+  "ov": "Primates of the Americas, Africa and Asia, split into New World and Old World monkeys. They range from the pygmy marmoset, at about 100 g, to the male mandrill, at up to 36 kg.",
+  "why": {
+    "et": "Monkeys are eaten as bushmeat in parts of Africa, and monkey brains are eaten as a delicacy in parts of South Asia, Africa and China."
+  },
+  "hb": [
+    "rainforest",
+    "forest",
+    "grassland"
+  ],
+  "rg": "Central and South America (New World monkeys), and Africa and Asia (Old World monkeys). Most live in trees; some, like baboons, live on the ground.",
+  "df": "Varies by species: fruit, leaves, seeds, nuts, flowers, eggs and small animals such as insects and spiders.",
+  "grp": [
+    "baboon",
+    "mandrill",
+    "macaque",
+    "vervet-monkey",
+    "proboscis-monkey",
+    "capuchin-monkey",
+    "howler-monkey",
+    "spider-monkey",
+    "squirrel-monkey",
+    "marmoset",
+    "tamarin"
+  ],
+  "cf": [
+    {
+      "slug": "gibbon",
+      "tip": "A gibbon is a small ape, not a monkey. Like all apes it has no tail, and it swings arm over arm between branches."
+    }
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Monkey",
+      "url": "https://en.wikipedia.org/wiki/Monkey",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "grp"
+      ]
+    },
+    {
+      "title": "Wikipedia: Gibbon",
+      "url": "https://en.wikipedia.org/wiki/Gibbon",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry linked to the 11 monkey species on the site. ANSWER CONFLICT: animals.js has p:\"no\", but Wikipedia says \"Some are kept as pets.\" Consider p:\"some\". REGION: Wikipedia puts New World monkeys in South AND Central America; animals.js r lacks \"Central America\". ANSWER CHECK (fact): the animals.js fact \"If it has a tail it is a monkey; apes do not have one\" has exceptions. Wikipedia names the tailless Barbary macaque, a monkey. Suggested wording: \"Apes have no tail, but a few monkeys don’t either.\" RESOLVED: \"Central America\" added to animals.js r. The pet answer stays \"no\" (owner’s call). RESOLVED: animals.js fact rewritten to \"Apes have no tail, but a few monkeys don't either.\""
+}

@@ -1,0 +1,41 @@
+{
+  "sci": "Ovis aries",
+  "ov": "Domesticated ruminants kept for wool, meat and milk, most likely descended from the wild mouflon. There were around 1.2 billion sheep in 2019, and their wool is the most widely used animal fibre.",
+  "hb": [
+    "farmland",
+    "grassland"
+  ],
+  "len": "120–180 cm",
+  "wt": "20–200 kg, depending on breed",
+  "rg": "Farmed across most of the inhabited world, especially in Australia, New Zealand, southern South America, South Africa and the British Isles.",
+  "df": "Grass and other short plants. Sheep graze close to the ground and avoid the woody growth that goats eat.",
+  "cf": [
+    {
+      "slug": "goat",
+      "tip": "A goat usually has a beard and holds its short tail up. A sheep’s tail hangs down, even when short, and its upper lip is split."
+    }
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Sheep",
+      "url": "https://en.wikipedia.org/wiki/Sheep",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "cf"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Ovis aries",
+      "url": "https://animaldiversity.org/accounts/Ovis_aries/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "The existing animals.js fact (remembers about 50 faces for years) is confirmed: Wikipedia quotes a 2001 Nature study, 50 faces for over 2 years."
+}

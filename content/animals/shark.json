@@ -1,0 +1,35 @@
+{
+  "sci": "Selachii",
+  "ov": "Cartilaginous fish with five to seven gill slits on each side and rows of replaceable teeth. More than 470 species range from the 17 cm dwarf lanternshark to the whale shark, the largest fish in the world.",
+  "why": {
+    "dg": "Only four of more than 470 species, the great white, oceanic whitetip, tiger and bull sharks, are behind a significant number of fatal, unprovoked attacks.",
+    "et": "Sharks are caught for their meat and their fins."
+  },
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "len": "17 cm (dwarf lanternshark) to over 12 m (whale shark)",
+  "rg": "All seas, commonly down to 2,000 m. A few, such as the bull shark and the river sharks, can also live in fresh water.",
+  "df": "Most hunt fish and other sea animals, but the biggest species, the whale and basking sharks, filter plankton from the water.",
+  "fx": [
+    "Most sharks give birth to live young: the eggs hatch inside the mother before the pups are born."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Shark",
+      "url": "https://en.wikipedia.org/wiki/Shark",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. No grp links: there are no shark species pages on the site. ANSWER CONFLICT: animals.js has eg:true, but Wikipedia says most sharks are ovoviviparous (the eggs hatch inside the mother and the young are born live). Only some species lay eggs. Consider eg:false. Not a why-note field, so it needs your call on the answer. ANSWER CHECK (fact): the animals.js fact \"Older than trees. They predate Saturn’s rings, too\" is not in the Wikipedia article. The article dates modern sharks to about 200 million years ago and shark-like fish to the Devonian, when the first trees also appeared, so \"older than trees\" is debatable. RESOLVED: animals.js eg changed to \"some\"; the chip reads \"Lays eggs: Some species\", and game hints only say \"It lays eggs\" on eg === true."
+}

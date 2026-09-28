@@ -1,0 +1,33 @@
+{
+  "sci": "Pongo",
+  "ov": "Great apes that live almost entirely in trees, now found only on Borneo and Sumatra. The name comes from Malay words meaning “person of the forest”, and they are the most solitary of the great apes.",
+  "hb": [
+    "rainforest"
+  ],
+  "ht": "About 115 cm (females) to 137 cm (males), standing",
+  "wt": "About 37 kg (females) and 75 kg (males)",
+  "rg": "Rainforests of Borneo and Sumatra. During the Pleistocene they ranged across Southeast Asia and South China.",
+  "df": "Mostly fruit, plus leaves and other vegetation, bark, honey, insects and bird eggs.",
+  "fx": [
+    "Dominant males grow large cheek pads, called flanges, and make long calls to attract females and warn off rivals."
+  ],
+  "iu": "CR",
+  "src": [
+    {
+      "title": "Wikipedia: Orangutan",
+      "url": "https://en.wikipedia.org/wiki/Orangutan",
+      "for": [
+        "sci",
+        "ov",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx",
+        "iu"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Three species (Bornean, Sumatran, Tapanuli), all Critically Endangered. No why.dg: nothing in the source covers danger to people."
+}

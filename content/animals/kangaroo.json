@@ -1,0 +1,54 @@
+{
+  "sci": "Osphranter and Macropus",
+  "ov": "The largest marsupials, and the only large mammals that get around mainly by hopping on two legs. The name covers four big species: the red, antilopine, eastern grey and western grey kangaroo.",
+  "why": {
+    "ac": "Many kangaroos are nocturnal or crepuscular, resting in the shade on hot days and feeding in the cool of evening, night and early morning.",
+    "dg": "Unprovoked attacks on people are very rare.",
+    "et": "Wild kangaroos are shot for meat, which is valued for being low in fat, and they have always been an important food for Aboriginal Australians."
+  },
+  "hb": [
+    "grassland",
+    "scrub"
+  ],
+  "len": "1.3–1.6 m plus a 1.2 m tail (male red kangaroo)",
+  "wt": "Female red kangaroos 18–40 kg; males about twice that",
+  "rg": "Australia and New Guinea.",
+  "df": "Mostly grass, cropped close to the ground with specialised teeth. Some species also eat a lot of shrubs.",
+  "cf": [
+    {
+      "slug": "wallaby",
+      "tip": "Wallabies are the smaller members of the same family. Kangaroos are the largest, with wallaroos in between."
+    }
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Kangaroo",
+      "url": "https://en.wikipedia.org/wiki/Kangaroo",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "cf"
+      ]
+    },
+    {
+      "title": "Wikipedia: Red kangaroo",
+      "url": "https://en.wikipedia.org/wiki/Red_kangaroo",
+      "for": [
+        "len",
+        "wt"
+      ]
+    },
+    {
+      "title": "Wikipedia: Wallaby",
+      "url": "https://en.wikipedia.org/wiki/Wallaby",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (four species). No grp links: none of the four has its own page. ANSWER CHECK (fact): the animals.js fact \"Physically cannot walk backwards\" is not in the Wikipedia Kangaroo article. Source it or replace it. REGION: Wikipedia adds New Guinea; animals.js r is [\"Australia\"] only. RESOLVED: \"New Guinea\" added to animals.js r, sourced to Wikipedia: Kangaroo (\"indigenous to Australia and New Guinea\"), which already covers rg."
+}

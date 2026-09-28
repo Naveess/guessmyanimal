@@ -1,0 +1,62 @@
+{
+  "sci": "Bufonidae (true toads) and others",
+  "ov": "A common name for frogs with short legs and dry, warty skin, especially the true toads. The “warts” are glands, and it’s a myth that handling a toad gives you warts.",
+  "why": {
+    "dg": "Glands behind the head hold a poison the toad releases when stressed. Some, like the cane toad, are much more toxic than others.",
+    "h": "Toads living on land in cold regions dig a burrow and hibernate through winter."
+  },
+  "hb": [
+    "forest",
+    "grassland",
+    "wetland"
+  ],
+  "len": "Up to about 15 cm (common toad)",
+  "rg": "True toads are native to every continent except Australia and Antarctica.",
+  "df": "Insects and other small invertebrates, hunted at night. The common toad will snap at almost any small, dark, moving object.",
+  "cf": [
+    {
+      "slug": "frog",
+      "tip": "Toads are frogs with drier, rougher, wartier skin that live more on land. The split is informal and doesn’t match scientific classification."
+    }
+  ],
+  "fx": [
+    "The common toad usually gets about by walking slowly or making short, shuffling jumps."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Toad",
+      "url": "https://en.wikipedia.org/wiki/Toad",
+      "for": [
+        "ov",
+        "cf"
+      ]
+    },
+    {
+      "title": "Wikipedia: Bufonidae",
+      "url": "https://en.wikipedia.org/wiki/Bufonidae",
+      "for": [
+        "sci",
+        "why",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: Frog",
+      "url": "https://en.wikipedia.org/wiki/Frog",
+      "for": [
+        "why"
+      ]
+    },
+    {
+      "title": "Wikipedia: Common toad",
+      "url": "https://en.wikipedia.org/wiki/Common_toad",
+      "for": [
+        "len",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "REGION: animals.js r is [\"Worldwide\"], but true toads are not native to Australia. The cane toad was introduced there, which general knowledge supports but these sources don’t spell out, so \"Worldwide\" can stay. ANSWER CHECK (fact): the animals.js fact \"Dry warty skin and it walks; frogs are wet and they jump\" is a fair rule of thumb, but Wikipedia calls the split informal."
+}

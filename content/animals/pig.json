@@ -1,0 +1,47 @@
+{
+  "sci": "Sus domesticus",
+  "ov": "A domesticated omnivore farmed mainly for pork. Pigs were domesticated twice, in the Near East and in China, and around 1.5 billion are raised every year.",
+  "why": {
+    "et": "Pork is the main reason pigs are kept, but eating it is forbidden in Islam and Judaism."
+  },
+  "hb": [
+    "farmland"
+  ],
+  "wt": "140–300 kg for an adult, more in some breeds",
+  "rg": "Farmed worldwide. Escaped pigs have gone feral in many parts of the world, including the southeastern United States.",
+  "df": "An omnivore that digs in the soil with its strong, sensitive snout to find food.",
+  "cf": [
+    {
+      "slug": "wild-boar",
+      "tip": "A wild boar has a coat of long, coarse bristles over brown under-fur, and its piglets have pale stripes. Farm pigs are only sparsely haired."
+    }
+  ],
+  "fx": [
+    "An adult pig has 44 teeth, and a male’s canines can grow into tusks that never stop growing."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Pig",
+      "url": "https://en.wikipedia.org/wiki/Pig",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "wt",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Wild boar",
+      "url": "https://en.wikipedia.org/wiki/Wild_boar",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact, not answer): the animals.js fact \"Cannot sweat\" is not quite right. Wikipedia says pigs have sweat glands but don’t use sweating to cool down; they wallow in mud or water instead. Suggested wording: \"Barely sweats to cool down, which is why it wallows in mud.\" Size from Wikipedia, not ADW: the ADW Sus scrofa account describes the wild boar. RESOLVED: animals.js fact rewritten to \"Barely sweats to cool down, which is why it wallows in mud.\""
+}

@@ -1,0 +1,52 @@
+{
+  "sci": "Ailuropoda melanoleuca",
+  "ov": "A black-and-white bear found only in the mountains of central China. It belongs to the carnivore order but lives almost entirely on bamboo, which makes up about 99% of its diet.",
+  "why": {
+    "dg": "Usually docile, but giant pandas have attacked people on rare occasions.",
+    "h": "Pandas don’t hibernate. In cold weather they move to lower, warmer elevations instead."
+  },
+  "hb": [
+    "forest",
+    "mountain"
+  ],
+  "len": "1.2–1.9 m",
+  "wt": "100–115 kg",
+  "rg": "Six mountain regions of central China, mostly in Sichuan, at elevations up to 3,000 m.",
+  "df": "About 99% bamboo and bamboo shoots: 9–14 kg a day, to make up for how little energy it gets from them.",
+  "cf": [
+    {
+      "slug": "red-panda",
+      "tip": "A red panda is a small reddish-brown animal with a ringed tail. It isn’t a bear, and it is more closely related to raccoons, weasels and skunks."
+    }
+  ],
+  "fx": [
+    "Its “thumb” is really an elongated wrist bone, which it uses to grip bamboo."
+  ],
+  "iu": "VU",
+  "src": [
+    {
+      "title": "Wikipedia: Giant panda",
+      "url": "https://en.wikipedia.org/wiki/Giant_panda",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu"
+      ]
+    },
+    {
+      "title": "Wikipedia: Red panda",
+      "url": "https://en.wikipedia.org/wiki/Red_panda",
+      "for": [
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact, not answer): the animals.js fact says it \"eats bamboo for 14 hours a day\". Wikipedia gives 9–14 kg of bamboo a day and no figure in hours, so the number looks like a kg/hours mix-up. Suggested wording: \"A carnivore’s gut that lives on bamboo, 9–14 kg of it a day.\" The fx false-thumb wording comes from the Red panda article. RESOLVED: animals.js fact rewritten to \"A carnivore's gut that lives on bamboo, 9–14 kg of it a day.\""
+}

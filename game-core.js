@@ -243,7 +243,7 @@
     const tier2 = [DIET_HINT[a.d], ACTIVE_HINT[a.ac], SOCIAL_HINT[a.so]].filter(Boolean);
     if (a.fl) tier2.push('It can fly.');
     if (a.sw === true) tier2.push('It can swim.'); // not the hippo's 'debated'
-    if (a.eg) tier2.push('It lays eggs.');
+    if (a.eg === true) tier2.push('It lays eggs.'); // not the shark's 'some'
 
     const tier3 = [coloursHint(a.co), 'It typically lives ' + a.lf + '.', DANGER_HINT[a.dg]].filter(Boolean);
     const pet = petHint(a.p, a.dm);

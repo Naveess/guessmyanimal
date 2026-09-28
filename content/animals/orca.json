@@ -1,0 +1,46 @@
+{
+  "sci": "Orcinus orca",
+  "ov": "The largest member of the dolphin family, black above and white below with white eye patches. Orcas are apex predators found in every ocean, living in family pods whose hunting methods and calls pass down the generations.",
+  "why": {
+    "dg": "No fatal attack by a wild orca has ever been recorded, but captive orcas have injured and killed their handlers in marine parks."
+  },
+  "hb": [
+    "ocean",
+    "coast",
+    "polar"
+  ],
+  "len": "Males 6–8 m, females 5–7 m",
+  "wt": "Males over 6 tonnes, females 3–4 tonnes",
+  "rg": "Every ocean, from the Arctic and Antarctic to tropical seas, but most often seen in cooler coastal waters.",
+  "df": "Varies by population: fish, sharks, rays, and marine mammals such as seals, dolphins and whales.",
+  "cf": [
+    {
+      "slug": "dolphin",
+      "tip": "An orca is far bigger than other dolphins, with males at 6–8 m, and has bold black-and-white markings with white eye patches."
+    }
+  ],
+  "fx": [
+    "Populations specialise. Off western North America, “resident” orcas eat fish, while “transients” hunt mammals."
+  ],
+  "iu": "DD",
+  "src": [
+    {
+      "title": "Wikipedia: Orca",
+      "url": "https://en.wikipedia.org/wiki/Orca",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "cf",
+        "fx",
+        "iu"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "IUCN lists the orca as Data Deficient because several orca types may be separate species."
+}

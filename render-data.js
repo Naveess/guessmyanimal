@@ -111,7 +111,9 @@
     // sw is 'debated' where sources genuinely disagree (the hippo).
     if (a.sw === 'debated') behaviour.push(['wave', 'Swims', 'Debatable']);
     else if (a.sw) behaviour.push(['wave', null, 'Can swim']);
-    if (a.eg) behaviour.push(['egg',  null, 'Lays eggs']);
+    // eg is 'some' for a group where only some species do (sharks).
+    if (a.eg === 'some') behaviour.push(['egg', 'Lays eggs', 'Some species']);
+    else if (a.eg) behaviour.push(['egg',  null, 'Lays eggs']);
 
     return { appearance, behaviour };
   }

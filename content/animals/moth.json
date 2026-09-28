@@ -1,0 +1,62 @@
+{
+  "sci": "Lepidoptera, excluding butterflies",
+  "ov": "The vast majority of the insect order that also includes butterflies, with about 160,000 species. Most fly at night, and only the caterpillars of a few species eat clothes.",
+  "why": {
+    "et": "Some caterpillars, the larvae of moths and butterflies, are eaten by people."
+  },
+  "hb": [
+    "forest",
+    "grassland",
+    "towns"
+  ],
+  "rg": "Every continent except Antarctica, across a huge range of land habitats.",
+  "df": "Caterpillars mostly eat plants. Some adults don’t eat at all.",
+  "grp": [
+    "silkworm"
+  ],
+  "cf": [
+    {
+      "slug": "butterfly",
+      "tip": "Butterflies fly by day, have clubbed antennae and rest with wings held upright. Most moths fly at night, have feathery or tapering antennae, and rest with wings flat."
+    }
+  ],
+  "fx": [
+    "Nobody knows for sure why moths circle lights. One idea is that they steer by the moon, and a lamp confuses them."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Moth",
+      "url": "https://en.wikipedia.org/wiki/Moth",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Caterpillar",
+      "url": "https://en.wikipedia.org/wiki/Caterpillar",
+      "for": [
+        "why"
+      ]
+    },
+    {
+      "title": "Wikipedia: Butterfly",
+      "url": "https://en.wikipedia.org/wiki/Butterfly",
+      "for": [
+        "cf"
+      ]
+    },
+    {
+      "title": "Wikipedia: Lepidoptera",
+      "url": "https://en.wikipedia.org/wiki/Lepidoptera",
+      "for": [
+        "grp"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry; grp links the silkworm (the silk moth’s caterpillar). ANSWER CHECK (fact): the animals.js fact \"Not attracted to light so much as confused by it\" states as fact what Wikipedia calls unsolved. Suggested wording: \"Why it circles lights is still unsolved; the moon may be involved.\" The fx is hedged the same way. RESOLVED: animals.js fact rewritten to \"Why it circles lights is still unsolved; the moon may be involved.\""
+}
