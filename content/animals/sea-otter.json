@@ -1,0 +1,53 @@
+{
+  "sci": "Enhydra lutris",
+  "ov": "The heaviest member of the weasel family, and one of the few mammals that use tools: it cracks shellfish open with rocks. Unlike most marine mammals it stays warm with fur, the densest in the animal kingdom, not blubber.",
+  "hb": [
+    "coast",
+    "ocean"
+  ],
+  "len": "1–1.5 m",
+  "wt": "14–45 kg",
+  "rg": "Coasts of the northern and eastern North Pacific.",
+  "df": "Mostly sea urchins, molluscs, crustaceans and some fish. By eating urchins, it protects kelp forests.",
+  "cf": [
+    {
+      "slug": "otter",
+      "tip": "A sea otter lives entirely at sea and has a short tail. All other otters have long, muscular tails."
+    }
+  ],
+  "fx": [
+    "A loose pouch of skin under each foreleg holds the food it has collected."
+  ],
+  "iu": "EN",
+  "src": [
+    {
+      "title": "Wikipedia: Sea otter",
+      "url": "https://en.wikipedia.org/wiki/Sea_otter",
+      "for": [
+        "sci",
+        "ov",
+        "wt",
+        "rg",
+        "df",
+        "fx",
+        "iu"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Enhydra lutris",
+      "url": "https://animaldiversity.org/accounts/Enhydra_lutris/",
+      "for": [
+        "len"
+      ]
+    },
+    {
+      "title": "Wikipedia: Otter",
+      "url": "https://en.wikipedia.org/wiki/Otter",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Holds hands while sleeping so it does not drift apart, and keeps a favourite rock in a pocket of skin\" isn’t in the Sea otter article. It says sea otters wrap themselves in kelp so they don’t drift, use rocks as tools, and store food in skin pouches. Suggested wording: \"Wraps itself in kelp so it won’t drift off while it sleeps.\" (Batch 3 replaced Otter’s hand-holding fact, pointing here.) RESOLVED: animals.js fact rewritten to \"Wraps itself in kelp so it won't drift off while it rests.\""
+}

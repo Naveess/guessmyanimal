@@ -1,0 +1,51 @@
+{
+  "sci": "Struthio camelus",
+  "ov": "The tallest and heaviest living bird, flightless and native to parts of Africa. It lays the largest eggs of any living bird and is the fastest runner on two legs.",
+  "why": {
+    "dg": "If cornered, an ostrich can attack with a powerful kick.",
+    "et": "Ostriches are farmed around the world for their meat, feathers and leather."
+  },
+  "hb": [
+    "grassland",
+    "desert",
+    "scrub"
+  ],
+  "ht": "2.1–2.75 m (males)",
+  "wt": "100–130 kg (males)",
+  "rg": "Parts of Africa, and historically Arabia.",
+  "df": "It swallows sand and pebbles, which help grind food in its gizzard, and can go days without drinking.",
+  "cf": [
+    {
+      "slug": "emu",
+      "tip": "The Australian emu is smaller, the third-tallest living bird after the two ostrich species."
+    }
+  ],
+  "fx": [
+    "It can run for a long time at 55 km/h, with short bursts of about 70 km/h."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common ostrich",
+      "url": "https://en.wikipedia.org/wiki/Common_ostrich",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Emu",
+      "url": "https://en.wikipedia.org/wiki/Emu",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Its eye is bigger than its brain\" isn’t in the article. Suggested wording: \"Lays the largest eggs of any living bird.\" ANSWER CHECK: ostrich is \"hiding by lying flat\", not burying its head. RESOLVED: animals.js fact rewritten to \"Lays the largest eggs of any living bird.\""
+}

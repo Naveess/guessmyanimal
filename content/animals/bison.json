@@ -1,0 +1,56 @@
+{
+  "sci": "Bison bison and Bison bonasus",
+  "ov": "Two species of huge, shaggy wild cattle: the American bison, often called buffalo, and the European bison, or wisent. The American bison fell from about 60 million to just 541 animals by 1889.",
+  "hb": [
+    "grassland",
+    "forest"
+  ],
+  "ht": "Up to about 1.9–2 m at the shoulder (American bison)",
+  "wt": "318–900 kg (American bison)",
+  "rg": "North America (American bison) and Europe (European bison).",
+  "cf": [
+    {
+      "slug": "buffalo",
+      "tip": "The American bison is often called a buffalo, but it isn’t one of the true buffalo."
+    }
+  ],
+  "fx": [
+    "The European bison was once extinct in the wild; its IUCN status has since improved to Near Threatened."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Bison",
+      "url": "https://en.wikipedia.org/wiki/Bison",
+      "for": [
+        "sci",
+        "ov",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: American bison",
+      "url": "https://en.wikipedia.org/wiki/American_bison",
+      "for": [
+        "ov",
+        "ht",
+        "cf"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Bison bison",
+      "url": "https://animaldiversity.org/accounts/Bison_bison/",
+      "for": [
+        "wt"
+      ]
+    },
+    {
+      "title": "Wikipedia: European bison",
+      "url": "https://en.wikipedia.org/wiki/European_bison",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry (two species). ANSWER CHECK (fact): the animals.js fact \"Two tonnes that can still clear a six-foot fence\" isn’t supported. Bison weigh up to about 1.2 t, and the jump isn’t in the source. Suggested wording: \"About 60 million once roamed North America; by 1889 just 541 were left.\" No why.dg: the source doesn’t cover danger to people. RESOLVED: animals.js fact rewritten to \"About 60 million once roamed North America; by 1889 just 541 were left.\""
+}

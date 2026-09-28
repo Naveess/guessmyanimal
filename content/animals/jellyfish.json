@@ -1,0 +1,38 @@
+{
+  "sci": "Medusozoa",
+  "ov": "Soft, free-swimming sea animals with a bell-shaped body and stinging tentacles. They have no true brain and have existed for at least 500 million years, making them the oldest multi-organ animal group.",
+  "why": {
+    "dg": "Stings from some box jellyfish, such as Chironex fleckeri, are extremely painful and often fatal to people.",
+    "et": "Some jellyfish are eaten, pressed and salted, as a delicacy in some Asian countries."
+  },
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "len": "About 1 mm to nearly 2 m across the bell",
+  "fx": [
+    "Jellyfish sometimes gather in huge masses called blooms."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Jellyfish",
+      "url": "https://en.wikipedia.org/wiki/Jellyfish",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Box jellyfish",
+      "url": "https://en.wikipedia.org/wiki/Box_jellyfish",
+      "for": [
+        "why"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"No brain, no heart, no blood, and older than the dinosaurs\" is broadly right. Wikipedia says most jellyfish lack specialised circulation and a true brain, and they date back at least 500 million years."
+}

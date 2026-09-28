@@ -1,0 +1,46 @@
+{
+  "sci": "Lama pacos",
+  "ov": "A domesticated South American camelid bred for its highly valued fibre, descended from the wild vicuña at least 5,000–6,000 years ago. It is smaller than its relative the llama.",
+  "hb": [
+    "mountain",
+    "grassland",
+    "farmland"
+  ],
+  "rg": "Domestic, from the Andes of South America.",
+  "cf": [
+    {
+      "slug": "llama",
+      "tip": "A llama is bigger than an alpaca, with a longer head and curved ears. Alpacas are smaller and bred for their finer fibre."
+    },
+    {
+      "slug": "vicuna",
+      "tip": "The vicuña is the alpaca’s wild ancestor: smaller and fine-haired."
+    }
+  ],
+  "fx": [
+    "There are two breeds, the Suri and the Huacaya, told apart by the type of fibre they grow."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Alpaca",
+      "url": "https://en.wikipedia.org/wiki/Alpaca",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Llama",
+      "url": "https://en.wikipedia.org/wiki/Llama",
+      "for": [
+        "ov",
+        "cf"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Hums to itself constantly, and to its young\" isn’t supported. Wikipedia lists humming only as a sign of stress. Suggested wording: \"Bred from the wild vicuña at least 5,000 years ago for its fine fibre.\" ANSWER CHECK: Wikipedia says alpacas spit mostly at each other, but occasionally at people. RESOLVED: animals.js fact rewritten to \"Bred from the wild vicuña at least 5,000 years ago for its fine fibre.\""
+}

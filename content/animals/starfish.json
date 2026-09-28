@@ -1,0 +1,28 @@
+{
+  "sci": "Asteroidea",
+  "ov": "Star-shaped echinoderms, not fish, with about 1,900 species on the seabed of every ocean. Most have five arms, can regrow lost arms, and some push their stomach out of their body to digest prey.",
+  "hb": [
+    "coast",
+    "ocean"
+  ],
+  "rg": "Every ocean, from warm tropical seas to frigid polar waters, down to 6,000 m.",
+  "df": "Mostly predators of slow or fixed seabed animals such as molluscs; some filter-feed.",
+  "fx": [
+    "Starfish can shed arms to escape predators and grow them back."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Starfish",
+      "url": "https://en.wikipedia.org/wiki/Starfish",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"No brain and no blood\" is wrong on the blood. Wikipedia describes a vascular system for \"circulation of blood\", and says starfish were only traditionally thought to lack a brain. Suggested wording: \"Can regrow lost arms, and some push their stomach out to digest prey.\" RESOLVED: animals.js fact rewritten to \"Can regrow lost arms, and some push their stomach out to digest prey.\""
+}

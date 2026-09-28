@@ -1,0 +1,36 @@
+{
+  "sci": "Trochilidae",
+  "ov": "The smallest birds, about 375 species native to the Americas. Their wings allow helicopter-like flight in any direction, and the hum of their wingbeats gives them their name.",
+  "why": {
+    "d": "Specialised for nectar from flowers, but every species also eats small insects."
+  },
+  "hb": [
+    "forest",
+    "rainforest",
+    "grassland",
+    "towns"
+  ],
+  "len": "5 cm (bee hummingbird) to 13 cm for most",
+  "rg": "The Americas, from Alaska to Tierra del Fuego.",
+  "df": "Nectar from flowers, plus small insects.",
+  "fx": [
+    "To save energy at night or when food is scarce, it can enter torpor, slowing its metabolism to a fifteenth of normal."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Hummingbird",
+      "url": "https://en.wikipedia.org/wiki/Hummingbird",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. REGION: animals.js r is North and South America; Alaska to Tierra del Fuego includes Central America. Consider adding it. ANSWER CHECK (fact): the animals.js fact \"The only bird that can fly backwards\" isn’t supported. Wikipedia says hummingbirds can fly in any direction, but not that they’re the only ones. Suggested wording: \"Can fly in any direction, even backwards, beating its wings up to 99 times a second.\" RESOLVED: animals.js fact rewritten to \"Can fly in any direction, even backwards, beating its wings up to 99 times a second.\" Region added."
+}

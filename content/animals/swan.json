@@ -1,0 +1,63 @@
+{
+  "sci": "Cygnus",
+  "ov": "The largest waterfowl, and among the largest flying birds in their range, with six living species. Northern Hemisphere swans are pure white; southern ones are black or black and white.",
+  "why": {
+    "dg": "Mute swans can be very aggressive defending their nests, hissing and then striking with bony spurs on their wings and biting."
+  },
+  "hb": [
+    "freshwater",
+    "wetland",
+    "coast"
+  ],
+  "len": "1.44–1.58 m (mute swan)",
+  "wt": "7.6–14.3 kg (mute swan)",
+  "rg": "Europe, Asia and North America, plus the black swan of Australia.",
+  "df": "Almost entirely plants: the roots, tubers, stems and leaves of water plants, with a few small animals.",
+  "cf": [
+    {
+      "slug": "goose",
+      "tip": "Swans, geese and ducks are one family; swans are the largest waterfowl, and ducks the smallest and shortest-necked."
+    }
+  ],
+  "fx": [
+    "In Britain, marked mute swans were once registered with the Crown, and any unmarked swan became Crown property."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Swan",
+      "url": "https://en.wikipedia.org/wiki/Swan",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "cf"
+      ]
+    },
+    {
+      "title": "Wikipedia: Duck",
+      "url": "https://en.wikipedia.org/wiki/Duck",
+      "for": [
+        "cf"
+      ]
+    },
+    {
+      "title": "Wikipedia: Mute swan",
+      "url": "https://en.wikipedia.org/wiki/Mute_swan",
+      "for": [
+        "why",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Cygnus olor",
+      "url": "https://animaldiversity.org/accounts/Cygnus_olor/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "rv": "2026-09-28",
+  "notes": "Group entry. REGION: animals.js r is Europe, Asia and North America; the Australian black swan suggests adding Australia. ANSWER CHECK (fact): the animals.js fact \"in the UK the Crown owns the wild ones\" is simplified. Wikipedia says unmarked mute swans became Crown property, and Thames swans are shared with two livery companies. \"Mates for life\" is confirmed (\"usually\"). Suggested wording: \"Usually mates for life, and unmarked mute swans in Britain belong to the Crown.\" RESOLVED: animals.js fact rewritten to \"Usually mates for life, and unmarked mute swans in Britain were Crown property.\" Region added."
+}
