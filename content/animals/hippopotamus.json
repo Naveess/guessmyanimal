@@ -33,5 +33,5 @@
     }
   ],
   "rv": "2026-09-28",
-  "notes": "ANSWER CHECK: animals.js has sw:true (the \"Can swim\" chip). Wikipedia says \"it is debated whether hippos can swim at all\". Either keep the chip and drop this fx, or change sw and keep it; one page shouldn't contradict itself. RESOLVED: fx dropped so the page no longer contradicts the Can swim chip; sw itself unchanged."
+  "notes": "ANSWER CHECK: animals.js has sw:true (the \"Can swim\" chip). Wikipedia says \"it is debated whether hippos can swim at all\". Either keep the chip and drop this fx, or change sw and keep it; one page shouldn't contradict itself. RESOLVED: fx dropped so the page no longer contradicts the Can swim chip; sw itself unchanged. RESOLVED: animals.js sw is now \"debated\" (chip reads Swims: Debatable)."
 }

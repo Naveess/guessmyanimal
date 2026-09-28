@@ -108,7 +108,9 @@
       ['clock', 'Lives for', a.lf],
     ];
     if (a.fl) behaviour.push(['wing', null, 'Can fly']);
-    if (a.sw) behaviour.push(['wave', null, 'Can swim']);
+    // sw is 'debated' where sources genuinely disagree (the hippo).
+    if (a.sw === 'debated') behaviour.push(['wave', 'Swims', 'Debatable']);
+    else if (a.sw) behaviour.push(['wave', null, 'Can swim']);
     if (a.eg) behaviour.push(['egg',  null, 'Lays eggs']);
 
     return { appearance, behaviour };
