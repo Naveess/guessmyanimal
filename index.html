@@ -36,7 +36,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="/style.css?v=20260928-2">
+<link rel="stylesheet" href="/style.css?v=20260930-1">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -293,8 +293,9 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
          now direct children of .feed) sit between the answers and the
          glance without anything moving in the DOM. -->
     <div class="feed-content">
-    <!-- Our own reviewed overview (content/animals/<slug>.json) when the
-         animal has one; until then, Wikipedia's first sentence, credited. -->
+    <!-- Our own reviewed overview (content/animals/<slug>.json). No
+         Wikipedia fallback: every animal has one, and if it didn't this
+         would stay empty rather than show another site's words. -->
     <p class="blurb" id="blurb"></p>
     <!-- Group entries only (Whale, Crocodile...): says the answers are for
          a typical member, and links the species. -->
@@ -899,7 +900,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
 <script src="/mystery.js?v=20260928-1"></script>
-<script src="/app.js?v=20260928-2"></script>
+<script src="/app.js?v=20260930-1"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

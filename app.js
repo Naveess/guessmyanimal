@@ -256,8 +256,8 @@
   }
 
   /* -- Wikipedia + Commons -------------------------------------------
-     The summary gives the one-line blurb and names the article's lead
-     image; Commons then gives that image's author, licence and a sized
+     The summary names the article's lead image (its text is not shown:
+     the page's prose is our own reviewed overview); Commons then gives that image's author, licence and a sized
      rendition (photo-credit.js), because the licence requires the credit
      wherever the photo is shown. Only that one photo is used - the rest
      of an article's pictures (the old media-list gallery) were unvetted,
@@ -364,28 +364,17 @@
     fill('sources', 'sourcesSec', s.sources);
   }
 
-  // Our overview if there is one, otherwise Wikipedia's first sentence,
-  // credited - the blurb is Wikipedia's own words then, so it says so.
+  // Our own reviewed overview, or nothing. There is deliberately no
+  // Wikipedia fallback any more: the page's lead prose is always words
+  // this site wrote and checked, never another site's embedded extract.
   function renderBlurb(entry, c) {
-    const a = entry.a;
     const blurb = el('blurb');
     blurb.textContent = '';
     blurb.className = 'blurb';
     if (c && c.ov) {
       blurb.textContent = c.ov;
       blurb.classList.add('is-ov');
-      return;
     }
-    loadSummary(a).then((data) => {
-      if (current !== entry || !data || !data.extract) return;
-      const src = document.createElement('a');
-      src.className = 'blurb-src';
-      src.href = 'https://en.wikipedia.org/wiki/' + encodeURIComponent(wikiTitle(a));
-      src.target = '_blank';
-      src.rel = 'noopener';
-      src.textContent = 'Wikipedia';
-      blurb.append(firstSentence(data.extract) + ' ', '(', src, ')');
-    });
   }
 
   // Links inside the editorial sections open in place, like the related
@@ -573,12 +562,6 @@
     window.scrollTo(0, 0);
     syncThemeColour();
     playEntrance();
-  }
-
-  function firstSentence(text) {
-    const m = String(text).match(/^.*?[.!?](\s|$)/);
-    const s = (m ? m[0] : text).trim();
-    return s.length > 190 ? s.slice(0, 187).trim() + '…' : s;
   }
 
   /* -- Suggestions --------------------------------------------------- */

@@ -52,7 +52,7 @@ for the things a static file can't do, and one vendored runtime dependency.
 - `vendor/qrcode.js` — the only runtime dependency, used for Party Mode's join
   code.
 - `sw.js` — caches the app shell, so every animal stays available offline, not
-  just ones visited before. Only the live Wikipedia photo and blurb need a
+  just ones visited before. Only the live Wikipedia photo needs a
   connection.
 - `/animals/octopus` is an animal's page (`functions/animals/[slug].js`
   renders it; an unknown one gets a real 404). The old `/?a=octopus` links

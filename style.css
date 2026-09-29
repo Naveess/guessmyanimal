@@ -931,12 +931,6 @@ body.view-home .sb-start > .play-link { display: inline-flex; }
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
 }
 .pcard-credit a:hover { color: #fff; }
-/* "(Wikipedia)" after the quoted one-line summary. */
-.blurb-src {
-  color: inherit;
-  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
-}
-.blurb-src:hover { color: var(--ink); }
 .pcard-report {
   background: none; border: none; padding: 0; margin: 0;
   color: inherit; font: inherit; cursor: pointer;
