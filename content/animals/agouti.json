@@ -1,0 +1,45 @@
+{
+  "sci": "Dasyprocta",
+  "ov": "Rodents related to guinea pigs but larger and longer-legged, living in forests and wooded areas of Central and South America. They sit up to eat, holding food in their forepaws, and bury seeds and nuts in small stores, helping to plant new trees.",
+  "hb": [
+    "rainforest",
+    "forest",
+    "grassland",
+    "farmland"
+  ],
+  "len": "40.5–76 cm",
+  "wt": "2.4–6 kg",
+  "rg": "Central America, northern and central South America and the southern Lesser Antilles; introduced elsewhere in the Caribbean and to Benin in West Africa.",
+  "df": "Mainly fallen fruit and seeds, plus leaves and roots, and sometimes eggs, crabs and shellfish.",
+  "fx": [
+    "Can live up to 20 years, remarkably long for a rodent.",
+    "In a study of 240 species, agoutis came fourth for sense of smell, ahead of dogs."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Agouti",
+      "url": "https://en.wikipedia.org/wiki/Agouti",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Central American agouti",
+      "url": "https://en.wikipedia.org/wiki/Central_American_agouti",
+      "for": [
+        "ov",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. ANSWER CHECK (fact): \"the only animal whose teeth can open a Brazil nut pod\" is overstated: agoutis are \"one of the few species (along with macaws) that can open Brazil nuts without tools\". Suggested wording: \"One of the few animals that can gnaw open a Brazil nut, and it buries seeds that grow into new trees.\" Optional REGIONS: introduced to Benin in West Africa; suggest adding \"Africa\" (introduced ranges count). Articles disagree on activity (\"reports differ\"; the Central American agouti is diurnal), so ac \"day\" stays. lf 15–20 fits \"as long as 20 years\".",
+  "rv": "2026-09-29"
+}

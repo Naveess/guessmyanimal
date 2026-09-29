@@ -1,0 +1,43 @@
+{
+  "sci": "Antidorcas marsupialis",
+  "ov": "A slender, fast antelope of the dry south-west of Africa, with a white face, a dark stripe from eye to mouth and a reddish-brown band along each flank. It lives in herds, feeds mainly at dawn and dusk, and is the national animal of South Africa.",
+  "why": {
+    "et": "Hunted as game and farmed; springbok meat is sold in South African supermarkets and exported."
+  },
+  "hb": [
+    "desert",
+    "grassland",
+    "scrub"
+  ],
+  "len": "1.2–1.5 m (head and body)",
+  "ht": "71–86 cm at the shoulder",
+  "wt": "27–42 kg",
+  "rg": "South and south-west Africa: north-west South Africa, the Kalahari, Namibia, Botswana and south-west Angola.",
+  "df": "Shrubs and succulents, plus grasses when green. It gets its water from juicy plants and can go without drinking for years.",
+  "iu": "LC",
+  "fx": [
+    "Clocked at 88 km/h (55 mph).",
+    "In extreme cases a springbok may never drink water in its whole life, eating flowers, seeds and leaves before dawn when they are juiciest."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Springbok",
+      "url": "https://en.wikipedia.org/wiki/Springbok",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): The fact is confirmed: pronking is \"multiple leaps into the air, up to 2 m ... with the back bowed\", and the name is Afrikaans spring (\"jump\") and bok (\"buck\"). lf 7–10 fits \"up to 10 years in the wild\". Optional (ac): the article says \"active mainly at dawn and dusk\", which how-we-answer counts as \"night\"; I would leave \"both\".",
+  "rv": "2026-09-29"
+}

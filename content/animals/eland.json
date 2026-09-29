@@ -1,0 +1,42 @@
+{
+  "sci": "Taurotragus oryx",
+  "ov": "The common eland, a huge spiral-horned antelope of the plains and open woodland of East and southern Africa. Both sexes have horns. It lives in loose herds of up to 500, feeds mainly at dawn and dusk, and has been farmed for its meat and rich milk.",
+  "why": {
+    "et": "Hunted and farmed for its meat; some southern African farmers have switched from cattle to eland because it suits the climate better.",
+    "dm": "Kept and farmed in southern Africa and Russia, but it has not been bred into a distinct domestic form."
+  },
+  "hb": [
+    "grassland",
+    "scrub",
+    "mountain"
+  ],
+  "ht": "Males 150–183 cm, females 125–153 cm at the shoulder",
+  "wt": "Males 400–942 kg; females 300–600 kg",
+  "rg": "East and southern Africa, from Ethiopia and South Sudan south to South Africa and west to Angola and Namibia.",
+  "df": "Leaves of flowering plants, plus grasses, forbs, seeds, tubers and fruit. It gets most of its water from its food.",
+  "iu": "LC",
+  "fx": [
+    "Herds make a loud clicking as they walk, probably the two halves of each hoof snapping together.",
+    "Its milk has 11–17% butterfat and, properly prepared, keeps for up to eight months."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common eland",
+      "url": "https://en.wikipedia.org/wiki/Common_eland",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): ANSWER CHECK (fact): the jump is confirmed (\"up to 2.5 m from a standing start\"), but \"the largest antelope on Earth\" is not stated in the common eland article (the giant eland is often given that title, and the article only calls the common eland \"large\"). It does call it \"the slowest antelope\". Suggested wording: \"The slowest antelope, yet it can clear 2.5 metres from a standing start.\" Optional (ac): the article calls it crepuscular (feeding in the morning and evening), which how-we-answer counts as \"night\"; I would leave \"both\". dm stays false: farmed, but not a distinct domestic form.",
+  "rv": "2026-09-29"
+}

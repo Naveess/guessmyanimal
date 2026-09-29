@@ -1,0 +1,36 @@
+{
+  "sci": "Phocoena sinus",
+  "ov": "The smallest of all whales, dolphins and porpoises, found only in the far north of the Gulf of California in Mexico. It is grey with black rings around its eyes and lips. It is on the brink of extinction, drowned as bycatch in illegal gillnets set for another fish, the totoaba.",
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "len": "Up to 150 cm (females) or 140 cm (males)",
+  "wt": "About 27–68 kg",
+  "rg": "Only the upper Gulf of California, Mexico: the smallest range of any whale or porpoise.",
+  "df": "Bottom-living fish such as grunts and croakers, plus crustaceans and squid.",
+  "iu": "CR",
+  "fx": [
+    "Scientists described it from skulls in 1958, but a fresh body to show what it looked like was not found until 1985.",
+    "Its name is Spanish for \"little cow\"."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Vaquita",
+      "url": "https://en.wikipedia.org/wiki/Vaquita",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): The fact is confirmed: monitoring in 2025 identified 7–10 individuals (\"rarest marine mammal\" is not stated in those words, but follows). Optional (so): \"generally seen alone or in pairs, often with a calf\"; \"Solitary\" is fine. lf 20 matches \"estimated at 20 years\".",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,38 @@
+{
+  "sci": "Geomyidae",
+  "ov": "About 41 species of pocket gophers, burrowing rodents of North and Central America named for their fur-lined cheek pouches. They spend nearly all their time in their own tunnel systems and are notorious for damaging farms, lawns and gardens.",
+  "why": {
+    "dg": "Usually flees, but if cornered it may attack cats and people and can inflict serious bites."
+  },
+  "hb": [
+    "farmland",
+    "towns"
+  ],
+  "len": "15–20 cm, plus a 2.5–5 cm tail",
+  "wt": "Usually about 200 g; a few species near 1 kg",
+  "rg": "North and Central America, from Canada through the US and Mexico to Panama and Colombia.",
+  "df": "Plant roots, shrubs and juicy vegetables such as carrots, lettuce and radishes.",
+  "fx": [
+    "Its cheek pouches reach back to the shoulders and can be turned inside out to empty them.",
+    "It uses its short, hairy tail to feel its way when walking backwards through tunnels."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Pocket gopher",
+      "url": "https://en.wikipedia.org/wiki/Pocket_gopher",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. ANSWER CHECK (fact): \"lips close behind its front teeth\" is not in the article. Suggested wording: \"Carries food in fur-lined cheek pouches that it can turn inside out to empty.\" (If you prefer to keep the lips fact, it needs another source.) REGIONS: the family ranges through Central America to Colombia; suggest adding \"Central America\" and \"South America\". Optional (dg): the article says gophers \"may attack other animals, including cats and humans, and can inflict serious bites\"; dg:\"some\" would fit how-we-answer (\"only if cornered\"). lf 1–3 matches.",
+  "rv": "2026-09-29"
+}

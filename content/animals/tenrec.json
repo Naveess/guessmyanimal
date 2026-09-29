@@ -1,0 +1,51 @@
+{
+  "sci": "Tenrecidae",
+  "ov": "A family of 31 species found only on Madagascar. Having evolved in isolation, different tenrecs look like hedgehogs, shrews, opossums or mice, and they live in trees, in burrows, on the ground or in streams. Most are nocturnal and eat mainly invertebrates.",
+  "why": {
+    "et": "Eaten by some people on Mauritius and Mayotte, where the tailless tenrec was introduced.",
+    "p": "The lesser hedgehog tenrec is increasingly popular in the pet trade."
+  },
+  "hb": [
+    "forest",
+    "rainforest",
+    "scrub"
+  ],
+  "len": "From 4.5 cm up to 39 cm (tailless tenrec)",
+  "wt": "From 5 g to about 2 kg",
+  "rg": "Madagascar; the tailless tenrec was also introduced to the Comoros, Mauritius, Réunion and the Seychelles.",
+  "df": "Mainly insects and other invertebrates; larger species also eat frogs, small mammals, fruit and leaves.",
+  "fx": [
+    "The tailless tenrec can have 32 young in one litter, and females have up to 29 teats, more than any other mammal.",
+    "It was the first tropical mammal found to hibernate, for up to nine months without waking."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Tenrec",
+      "url": "https://en.wikipedia.org/wiki/Tenrec",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Tailless tenrec",
+      "url": "https://en.wikipedia.org/wiki/Tailless_tenrec",
+      "for": [
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. The fact is confirmed in substance: tenrecs are afrotherians, and the article lists anatomical features \"shared by elephants, hyraxes, sengis, and golden moles ... consistent with their descent from a common ancestor\"; their closest relatives are otter shrews. h:true, p:\"some\", et:\"some\" and sw:true (the semiaquatic web-footed tenrec) all fit.",
+  "rv": "2026-09-29"
+}

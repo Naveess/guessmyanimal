@@ -1,0 +1,40 @@
+{
+  "sci": "Saiga tatarica",
+  "ov": "An antelope of the Central Asian steppes with a swollen, downward-pointing nose. It migrates in huge herds across Kazakhstan, Russia and Mongolia. Hunting for its horns and mass die-offs cut numbers by 95%, but it has since made a remarkable recovery.",
+  "why": {
+    "et": "Hunted for meat, which is compared to lamb; hunting reopened in Kazakhstan in 2025."
+  },
+  "hb": [
+    "grassland",
+    "desert"
+  ],
+  "len": "100–140 cm (head and body)",
+  "ht": "61–81 cm at the shoulder",
+  "wt": "26–69 kg",
+  "rg": "Steppes of Kazakhstan and Russia's Kalmykia and Astrakhan regions, wintering into Uzbekistan, plus western Mongolia.",
+  "df": "Many steppe plants, including some that are poisonous to other animals.",
+  "fx": [
+    "In May 2015 over 120,000 died within weeks, killed by a normally harmless bacterium, probably triggered by warm, wet weather.",
+    "Kazakhstan's saigas grew from about 21,000 in 2003 to an estimated 3.9 million adults in 2025."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Saiga antelope",
+      "url": "https://en.wikipedia.org/wiki/Saiga_antelope",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): ANSWER CHECK (fact): the bulbous nose is confirmed (\"closely spaced, bloated nostrils directed downward\"), but the article does not say it filters dust or warms air. Suggested wording: \"Its herds crashed by 95%, then recovered to millions: one of conservation's great comebacks.\" ANSWER CHECK (sw): animals.js has false, but saigas \"can cover long distances and swim across rivers\". Suggest sw:true. REGIONS: Kalmykia and Astrakhan are in European Russia and it was once found in Romania, Ukraine and Moldova; suggest adding \"Europe\". iu omitted: the article cites the earlier Critically Endangered listing and the 2023 IUCN \"full recovery\" without the current category.",
+  "rv": "2026-09-29"
+}

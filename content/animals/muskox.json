@@ -1,0 +1,42 @@
+{
+  "sci": "Ovibos moschatus",
+  "ov": "A shaggy, heavy-horned Arctic hoofed mammal, closer to sheep and goats than to oxen, named for the musky smell of males in the rut. It lives in herds on the tundra of Greenland, Arctic Canada and Alaska, and has been reintroduced to Siberia and Norway.",
+  "why": {
+    "dg": "Usually not aggressive, but it has killed people who came too close, including in Norway in 1964 and Alaska in 2022.",
+    "et": "Rarely farmed for meat; the muskox farms in Alaska raise it mainly for its wool."
+  },
+  "hb": [
+    "polar",
+    "grassland"
+  ],
+  "len": "Males 200–250 cm; females 135–200 cm",
+  "ht": "1.1–1.5 m at the shoulder",
+  "wt": "Usually 180–410 kg; about 285 kg on average",
+  "rg": "Greenland, Arctic Canada and Alaska; reintroduced to Siberia, and introduced to Norway, from where some spread to Sweden.",
+  "df": "Grasses, Arctic willows, woody plants, lichens and mosses.",
+  "iu": "LC",
+  "fx": [
+    "It can reach 60 km/h (37 mph) despite its bulk.",
+    "Muskoxen died out in Siberia around 2,700 years ago, probably through human hunting, and were brought back from North America in 1974."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Muskox",
+      "url": "https://en.wikipedia.org/wiki/Muskox",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): ANSWER CHECK (fact): the defensive ring is confirmed (\"adults will face outward to form a stationary ring or semicircle around the calves\"), but \"warmer than sheep's wool\" is not stated; the article only says qiviut is prized \"for its softness, length, and insulation value\". Suggested wording: \"Forms a defensive ring around its calves, and its soft underwool, qiviut, is prized for its warmth.\" REGIONS: reintroduced to Siberia (Taymyr, Wrangel Island) and introduced to Norway and Sweden; suggest adding \"Asia\" and \"Europe\". iu not stated in the article, so left out. lf 12–20 matches.",
+  "rv": "2026-09-29"
+}

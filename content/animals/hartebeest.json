@@ -1,0 +1,42 @@
+{
+  "sci": "Alcelaphus buselaphus",
+  "ov": "A large African antelope with a long face, oddly bent horns on both sexes, long legs and a back that slopes down from a hump over the shoulders. It grazes in herds of 20 to 300 on dry savannas and wooded grasslands, mainly in the morning and late afternoon.",
+  "why": {
+    "et": "A popular game animal because its meat is highly regarded."
+  },
+  "hb": [
+    "grassland",
+    "scrub"
+  ],
+  "len": "2–2.5 m (head and body)",
+  "ht": "Just over 1 m at the shoulder",
+  "wt": "100–200 kg",
+  "rg": "Much of sub-Saharan Africa, from West Africa to Ethiopia and south to South Africa; now extinct in North Africa.",
+  "df": "Mainly grasses, which make up at least 80% of its diet.",
+  "iu": "LC",
+  "fx": [
+    "When danger threatens, the whole herd flees in single file after one animal suddenly sets off.",
+    "The Bubal hartebeest of North Africa was declared extinct in 1994; the last one was shot in Algeria in 1925."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Hartebeest",
+      "url": "https://en.wikipedia.org/wiki/Hartebeest",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): ANSWER CHECK (fact): the lookout is confirmed (\"one individual stays on the lookout for danger, often standing on a termite mound to see farther\"), but the article gives no speed, so \"one of the fastest antelopes\" is unsourced. Suggested wording: \"While the herd feeds, one stands lookout, often on top of a termite mound to see farther.\" ac \"day\" and lf 12–20 fit (\"active mainly during daytime\"; lifespan 12 to 15 years). iu is the species as a whole; subspecies range from extinct to Least Concern.",
+  "rv": "2026-09-29"
+}

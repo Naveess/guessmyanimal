@@ -1,0 +1,49 @@
+{
+  "sci": "Muntiacus",
+  "ov": "Fourteen species of small deer from South and Southeast Asia, also called barking deer. Males have short antlers but fight with long, downward-pointing canine \"tusks\". Reeves's muntjac has spread widely in England after releases and escapes from Woburn Abbey in the early 1900s.",
+  "why": {
+    "et": "Its low-fat meat is noted for its culinary qualities."
+  },
+  "hb": [
+    "forest",
+    "rainforest",
+    "scrub"
+  ],
+  "len": "Reeves's muntjac: about 95 cm",
+  "ht": "Reeves's muntjac: up to 50 cm at the shoulder",
+  "wt": "Reeves's muntjac: 10–18 kg",
+  "rg": "South and Southeast Asia, southern China and Taiwan; Reeves's muntjac introduced to Britain, Ireland, Belgium, the Netherlands and Japan.",
+  "df": "Herbs, blossoms, shoots, fungi, berries, grasses and nuts, and occasionally eggs and carrion.",
+  "fx": [
+    "The southern red muntjac has the lowest chromosome number of any mammal: 7 in males and just 6 in females.",
+    "Muntjacs can mate at any time of year, a habit they kept even after being introduced to cooler countries."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Muntjac",
+      "url": "https://en.wikipedia.org/wiki/Muntjac",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Reeves's muntjac",
+      "url": "https://en.wikipedia.org/wiki/Reeves%27s_muntjac",
+      "for": [
+        "ov",
+        "why",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. ANSWER CHECK (fact): the tusks are confirmed and the bark gives it the name \"barking deer\", but \"for up to an hour\" is not in either article. Suggested wording: \"Barks like a dog when alarmed, and the males fight with small tusks.\" Optional (ac): Reeves's muntjac is described as \"crepuscular\", which how-we-answer counts as \"night\"; I would leave \"both\". The introduced range beyond Europe includes Japan, already covered by \"Asia\".",
+  "rv": "2026-09-29"
+}

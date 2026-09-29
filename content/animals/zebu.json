@@ -1,0 +1,35 @@
+{
+  "sci": "Bos indicus",
+  "ov": "Humped domestic cattle that originated in South Asia, with a fatty hump over the shoulders, a large dewlap and often drooping ears. Well adapted to heat and drought, they are raised throughout the tropics for draught work, milk, beef, hides and dung.",
+  "why": {
+    "p": "Small breeds such as the miniature zebu are kept as pets.",
+    "et": "Raised for beef across the tropics; zebu breeds make up most of Brazil's beef cattle."
+  },
+  "hb": [
+    "farmland",
+    "grassland"
+  ],
+  "rg": "Throughout the tropics: South Asia, China, Africa and Madagascar, and in large numbers in Brazil.",
+  "df": "Grazes on grasses; it thrives on poor-quality forage.",
+  "fx": [
+    "In Madagascar, zebu outnumber people.",
+    "It was domesticated from the Indian aurochs 6,000–7,000 years ago at Mehrgarh, in what is now Pakistan."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Zebu",
+      "url": "https://en.wikipedia.org/wiki/Zebu",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): ANSWER CHECK (fact): heat tolerance is confirmed (\"higher tolerance for drought, heat and sunlight\"), and it is \"said to be resilient to parasites\", but ticks and \"far more\" are not stated. Suggested wording: \"The humped cattle of South Asia, much better at coping with heat and drought than European breeds.\" ANSWER CHECK (p): animals.js has \"no\", but \"some small breeds such as Nadudana ... are also kept as pets like dogs\". Suggest p:\"some\". REGIONS: raised across the tropics, including over 80% of Brazil's beef cattle and in Madagascar; suggest adding \"South America\" and \"Madagascar\".",
+  "rv": "2026-09-29"
+}

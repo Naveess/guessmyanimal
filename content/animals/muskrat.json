@@ -1,0 +1,38 @@
+{
+  "sci": "Ondatra zibethicus",
+  "ov": "A large, semi-aquatic rodent of North American wetlands with thick brown fur and a scaly, flattened tail used as a rudder. It lives in families in bank burrows or mounds of vegetation called push-ups, and has become an invasive pest in Europe.",
+  "why": {
+    "et": "Eaten in parts of North America; in south-east Michigan Catholics are allowed to eat it on Lenten Fridays."
+  },
+  "hb": [
+    "wetland",
+    "freshwater"
+  ],
+  "len": "40–70 cm, about half of it tail",
+  "wt": "0.6–2 kg",
+  "rg": "Most of Canada and the US and a small part of northern Mexico; introduced to Europe, northern Asia and parts of South America.",
+  "df": "About 95% plants, mainly cattails and water lilies, plus mussels, frogs, crayfish, fish and small turtles.",
+  "fx": [
+    "In the Netherlands and Belgium its burrowing damages the dikes that hold back floods.",
+    "Royal Canadian Mounted Police winter hats are made from muskrat fur."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Muskrat",
+      "url": "https://en.wikipedia.org/wiki/Muskrat",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): ANSWER CHECK (fact): \"stays underwater for 17 minutes\" is confirmed (\"12 to 17 minutes\"), but \"chew with its mouth open below the surface\" is not in the article. Suggested wording: \"Can stay underwater for up to 17 minutes, steering with its flat, scaly tail.\" REGIONS: introduced \"in parts of Eurasia and South America\"; suggest adding \"Asia\" and \"South America\". ac \"night\" fits (\"most active at night or near dawn and dusk\"). d stays Omnivore, though plants are about 95% of the diet.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,42 @@
+{
+  "sci": "Capra falconeri",
+  "ov": "A large wild goat of the mountains of Central and South Asia. Both sexes have corkscrew horns, up to 160 cm long in males, and males grow a long shaggy mane. It is the national animal of Pakistan and is listed as Near Threatened.",
+  "why": {
+    "et": "Poached for food and for its horns, which some believe have medicinal properties."
+  },
+  "hb": [
+    "mountain",
+    "forest"
+  ],
+  "len": "132–186 cm",
+  "ht": "65–115 cm at the shoulder",
+  "wt": "32–110 kg",
+  "rg": "Mountains of Afghanistan, Pakistan, north-west India (Jammu and Kashmir), Tajikistan, Uzbekistan and Turkmenistan.",
+  "df": "Grazes in spring and summer and browses in winter, sometimes standing on its hind legs to reach high branches.",
+  "iu": "NT",
+  "fx": [
+    "Its name is often read as \"snake eater\", from an old belief that it kills and eats snakes.",
+    "Its alarm call sounds very like the bleat of a domestic goat."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Markhor",
+      "url": "https://en.wikipedia.org/wiki/Markhor",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): The fact is confirmed: \"tightly curled, corkscrew-like horns\" and \"the national animal of Pakistan\". ac \"day\" fits (\"diurnal\"). The article gives no lifespan, so lf is unchecked.",
+  "rv": "2026-09-29"
+}

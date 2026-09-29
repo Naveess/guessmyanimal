@@ -1,0 +1,37 @@
+{
+  "sci": "Pandion haliaetus",
+  "ov": "A large, fish-eating bird of prey, brown above and white below, found near water on every continent except Antarctica. It hovers, then plunges feet first, often going completely under the water. It is the only living species in its family.",
+  "hb": [
+    "coast",
+    "freshwater",
+    "wetland"
+  ],
+  "len": "50–66 cm",
+  "wt": "0.9–2.1 kg",
+  "rg": "Every continent except Antarctica. European birds winter in Africa and North American birds in South America; Australian birds stay put.",
+  "df": "Fish, which make up 99% of its diet, usually 25–35 cm long; rarely small mammals, snakes or birds.",
+  "iu": "LC",
+  "fx": [
+    "It can close its nostrils to keep water out during a dive.",
+    "Its nests can be 2 m wide and weigh about 135 kg, and some sites have been used for 70 years."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Osprey",
+      "url": "https://en.wikipedia.org/wiki/Osprey",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): ANSWER CHECK (fact): the reversible outer toe is confirmed (shared only with owls, \"allowing them to grasp their prey with two toes in front and two behind\"), but carrying fish head-first for less drag is not in the article. Suggested wording: \"Its reversible outer toe lets it grip a slippery fish with two toes in front and two behind.\" ANSWER CHECK (lf): animals.js has 15–25 years, but \"the typical lifespan is 7–10 years, though individuals rarely can live 20–25 years\". Suggest lf:\"7–10 years\".",
+  "rv": "2026-09-29"
+}

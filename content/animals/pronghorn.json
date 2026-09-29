@@ -1,0 +1,41 @@
+{
+  "sci": "Antilocapra americana",
+  "ov": "Not a true antelope but the last survivor of its own North American family, whose closest living relatives are the giraffe and okapi. It lives on the open plains of the American West and is the fastest land mammal in the Americas.",
+  "why": {
+    "et": "Once a principal food of Plains peoples, and still legally hunted for food in the western US."
+  },
+  "hb": [
+    "grassland"
+  ],
+  "len": "Males 1.3–1.5 m (nose to tail)",
+  "ht": "82–104 cm at the shoulder",
+  "wt": "Males 40–65 kg; females 34–48 kg",
+  "rg": "Western and central North America, from southern Alberta and Saskatchewan through the western US into Mexico.",
+  "df": "Mostly forbs and shrubs, plus grasses and cacti, including plants toxic to livestock.",
+  "iu": "LC",
+  "fx": [
+    "It sheds the outer sheath of its horns and regrows it every year, which no true horned animal does.",
+    "Its huge eyes give it a 320° field of view."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Pronghorn",
+      "url": "https://en.wikipedia.org/wiki/Pronghorn",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): The fact is confirmed: it may have evolved its speed \"to escape from now-extinct predators such as the American cheetah\"; top speed 88.5 km/h. lf 10–15 fits \"typically up to 10 years, rarely 15\".",
+  "rv": "2026-09-29"
+}
