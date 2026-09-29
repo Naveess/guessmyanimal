@@ -1,0 +1,48 @@
+{
+  "sci": "Oryx",
+  "ov": "Four species of large, pale antelopes with dark markings on the face and legs and long, nearly straight horns. They live in near-desert conditions, can go long periods without water, and gather in herds of up to 600.",
+  "hb": [
+    "desert"
+  ],
+  "ht": "About 0.8–1.25 m at the shoulder",
+  "wt": "100–240 kg (Arabian oryx to male gemsbok)",
+  "rg": "Dry lands of Africa and the Arabian Peninsula; gemsbok were also released in New Mexico, USA.",
+  "df": "Grasses and forbs, plus melons and cucumbers that supply water.",
+  "fx": [
+    "The Arabian oryx died out in the wild in 1972; in 2011 it became the first species moved back from \"extinct in the wild\" to vulnerable.",
+    "Its horns can be deadly: oryxes have been known to kill lions with them."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Oryx",
+      "url": "https://en.wikipedia.org/wiki/Oryx",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Gemsbok",
+      "url": "https://en.wikipedia.org/wiki/Gemsbok",
+      "for": [
+        "ht",
+        "wt",
+        "df"
+      ]
+    },
+    {
+      "title": "Wikipedia: Arabian oryx",
+      "url": "https://en.wikipedia.org/wiki/Arabian_oryx",
+      "for": [
+        "ht",
+        "wt"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. REGION: gemsbok were introduced to New Mexico in 1969–77 and now number in the thousands; suggest adding North America. ANSWER CHECK (fact): \"Lets its body temperature climb past 45C\" — the Arabian oryx article confirms it lets its body temperature rise by day to save water, but gives no figure. Suggested wording: \"Lets its body temperature rise in the heat of the day rather than lose water cooling down.\" ANSWER CHECK (activity, minor): animals.js has ac \"day\"; the Arabian oryx rests in the heat of the day and forages at night, and the gemsbok is mostly active at dawn and dusk. Owner to decide between \"day\" and \"both\".",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,37 @@
+{
+  "sci": "Cuon alpinus",
+  "ov": "A wild dog of South, East and Southeast Asia and the only member of its genus. It lives in clans of about 12, sometimes more than 40, with several breeding females, and hunts large and medium-sized hoofed animals by day. It is endangered, with fewer than 2,500 mature adults.",
+  "hb": [
+    "forest"
+  ],
+  "len": "88–113 cm, plus a 41–50 cm tail",
+  "ht": "42–50 cm at the shoulder",
+  "wt": "Females 10–17 kg, males 15–21 kg",
+  "rg": "Forests of South, East and Southeast Asia. It has died out in Central Asia and parts of Southeast Asia.",
+  "df": "Mainly deer, wild boar and other hoofed animals; also insects, lizards, and more fruit than other dogs eat.",
+  "iu": "EN",
+  "fx": [
+    "Its other English names include whistling dog, red dog and Asian wild dog.",
+    "During the Pleistocene its range stretched across Asia and into Europe."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Dhole",
+      "url": "https://en.wikipedia.org/wiki/Dhole",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CHECK (fact): \"Whistles to keep the pack together, which is why it is called the whistling dog\" is half sourced: the article confirms the name \"whistling dog\" but gives no reason for it. Suggested wording: \"Also called the whistling dog, and hunts in clans that can top 40.\"",
+  "rv": "2026-09-29"
+}

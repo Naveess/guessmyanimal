@@ -1,0 +1,31 @@
+{
+  "sci": "Mustela putorius",
+  "ov": "The European polecat: a dark brown mustelid with a pale belly and a dark mask across its face. It is famous for a foul-smelling liquid it uses to mark its territory, and is thought to be the sole wild ancestor of the ferret, domesticated over 2,000 years ago.",
+  "len": "Males 35–46 cm, females 29–39 cm (body)",
+  "wt": "Males 1–1.5 kg, females 650–815 g (central Europe)",
+  "rg": "Europe and the Rif mountains of Morocco.",
+  "df": "Small rodents, birds, amphibians and reptiles.",
+  "iu": "LC",
+  "fx": [
+    "It sometimes paralyses prey with a bite to the brain and stores it, still alive, in its burrow.",
+    "Its Latin name putorius means \"stench\", the root of the English word putrid."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: European polecat",
+      "url": "https://en.wikipedia.org/wiki/European_polecat",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Drafted as the European polecat (the \"Polecat\" article is a short list of species). REGION: the Rif mountains are in North Africa; suggest adding Africa. ANSWER CHECK (fact): \"really does stink when alarmed\" — the article describes the foul smell as a territory marker, not an alarm response. Suggested wording: \"The wild ancestor of the ferret, and its Latin name means stench.\"",
+  "rv": "2026-09-29"
+}

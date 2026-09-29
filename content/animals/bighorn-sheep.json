@@ -1,0 +1,35 @@
+{
+  "sci": "Ovis canadensis",
+  "ov": "A wild sheep of western North America named for its large horns. Its ancestors crossed from Siberia over the Bering land bridge. In the rut, rams lunge into head-butts, and their skulls are built to absorb the impact.",
+  "hb": [
+    "mountain"
+  ],
+  "len": "Males 1.6–1.85 m (nose to tail)",
+  "ht": "Males 90–105 cm at the shoulder",
+  "wt": "Males 58–143 kg, females 34–91 kg",
+  "rg": "Western North America, from southwestern Canada to Mexico.",
+  "df": "Grasses and shrubs; it also seeks out natural salt licks.",
+  "fx": [
+    "A ram’s horns can weigh 14 kg, as much as all the bones in its body.",
+    "By 1900 the population had crashed to a few thousand from livestock diseases and overhunting."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Bighorn sheep",
+      "url": "https://en.wikipedia.org/wiki/Bighorn_sheep",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CHECK (fact): the horns-as-heavy-as-the-skeleton half is confirmed; \"charge each other at 30 mph\" is not in the article. Suggested wording: \"Rams fight with head-on clashes, and their horns can weigh as much as all the bones in their body.\"",
+  "rv": "2026-09-29"
+}

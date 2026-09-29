@@ -1,0 +1,31 @@
+{
+  "sci": "Mustela erminea",
+  "ov": "A small, long-bodied hunter of Eurasia and the northern parts of North America. Its pure white winter coat is called ermine, a fur worn by monarchs and long used on the ceremonial robes of the UK House of Lords.",
+  "len": "Males 19–33 cm, females 17–27 cm (body)",
+  "wt": "Males about 258 g, females under 180 g",
+  "rg": "Eurasia and northern North America; introduced to New Zealand.",
+  "df": "Mainly mouse-like rodents, plus larger rodents, rabbits, birds, lizards and insects.",
+  "iu": "LC",
+  "fx": [
+    "Stoats were brought to New Zealand from Britain in the 1880s to control rabbits, and now threaten its native birds.",
+    "Males are roughly 25% larger than females."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Stoat",
+      "url": "https://en.wikipedia.org/wiki/Stoat",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): The animals.js fact is confirmed (white winter coat = ermine on royal and ceremonial robes). REGION: introduced to New Zealand in the 1880s; suggest adding \"New Zealand\" to r.",
+  "rv": "2026-09-29"
+}

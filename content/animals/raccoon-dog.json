@@ -1,0 +1,37 @@
+{
+  "sci": "Nyctereutes procyonoides",
+  "ov": "A heavy-set, fox-like wild dog of East Asia, named for its raccoon-like face. Unusually for a dog, it hibernates through cold winters and can climb trees. It was brought to Europe for the fur trade and has spread so widely that the EU now lists it as invasive.",
+  "len": "45–71 cm (total length)",
+  "wt": "About 3 kg in March; males 6.5–7 kg by late summer",
+  "rg": "Native to East Asia; the closely related tanuki lives in Japan. Introduced and invasive across much of Europe.",
+  "df": "Almost anything: insects, rodents, frogs and toads, birds, fish, reptiles, molluscs and crabs.",
+  "fx": [
+    "In Japanese folklore the tanuki is a mischievous, jolly master of disguise and shapeshifting.",
+    "Since 2019 it has been illegal to import, sell or release it anywhere in the European Union."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common raccoon dog",
+      "url": "https://en.wikipedia.org/wiki/Common_raccoon_dog",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Japanese raccoon dog",
+      "url": "https://en.wikipedia.org/wiki/Japanese_raccoon_dog",
+      "for": [
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Drafted from the common raccoon dog article (animals.js w: \"Raccoon_dog\" is a disambiguation page). Tanuki shapeshifter confirmed. ANSWER CHECK (fact): \"The only dog that truly hibernates\" goes further than the article, which says it is \"unusual among canids\" in hibernating. Suggested wording: \"Unusual among dogs in hibernating through cold winters, and a shapeshifter in Japanese folklore.\"",
+  "rv": "2026-09-29"
+}

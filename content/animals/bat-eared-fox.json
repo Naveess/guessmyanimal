@@ -1,0 +1,35 @@
+{
+  "sci": "Otocyon megalotis",
+  "ov": "A small fox of the African savanna named for its huge ears, which help it keep cool and hear its prey. It is the only canid that lives mainly on insects, above all harvester termites, which also give it the water it needs.",
+  "hb": [
+    "grassland"
+  ],
+  "len": "46–66 cm, plus a 23–34 cm tail",
+  "wt": "3–5.3 kg",
+  "rg": "Two separate populations: East Africa from Sudan and Ethiopia to Tanzania, and southern Africa from Angola to South Africa.",
+  "df": "Mainly insects, especially harvester termites.",
+  "iu": "LC",
+  "fx": [
+    "It has more teeth than any other non-marsupial land mammal.",
+    "It does not drink from open water; its termite prey keeps it hydrated."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Bat-eared fox",
+      "url": "https://en.wikipedia.org/wiki/Bat-eared_fox",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CHECK (fact): \"ears half the length of its head\" is not in the article, which gives the ears as 11–13 cm. Suggested wording: \"Finds its termite prey by ear, with ears up to 13 cm long.\" ANSWER CHECK (activity, minor): animals.js has ac \"night\"; the article says it is mostly nocturnal in East Africa but diurnal in the southern African winter. Owner to decide between \"night\" and \"both\".",
+  "rv": "2026-09-29"
+}

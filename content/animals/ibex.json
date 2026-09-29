@@ -1,0 +1,39 @@
+{
+  "sci": "Capra (several species)",
+  "ov": "Several species of wild goat whose males carry large curved horns, ridged across the front. They live on steep mountain slopes in Europe, Asia and North and East Africa. Their horns appear at birth and keep growing for life.",
+  "hb": [
+    "mountain"
+  ],
+  "ht": "70–110 cm at the shoulder (males)",
+  "wt": "Males 90–120 kg",
+  "rg": "Mountains of Europe, Asia, North Africa and East Africa.",
+  "df": "Mostly grass, plus herbs, dwarf shrubs and conifer shoots (Alpine ibex).",
+  "fx": [
+    "By the 19th century fewer than 100 Alpine ibexes survived, all in Italy’s Gran Paradiso park.",
+    "Male Alpine ibexes live about 16 years and females about 20."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Ibex",
+      "url": "https://en.wikipedia.org/wiki/Ibex",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "ht",
+        "wt",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: Alpine ibex",
+      "url": "https://en.wikipedia.org/wiki/Alpine_ibex",
+      "for": [
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. ANSWER CHECK (fact): \"Climbs near-vertical dam walls to lick the salt off the stone\" — the Alpine ibex article confirms the salt licking but the Cingino Dam slope is 57 degrees, not near-vertical. Suggested wording: \"Climbs the 57-degree wall of an Italian dam to lick salt off the stone.\"",
+  "rv": "2026-09-29"
+}

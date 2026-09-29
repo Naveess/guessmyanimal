@@ -1,0 +1,33 @@
+{
+  "sci": "Lycaon pictus",
+  "ov": "The largest wild canine in Africa, with a patchy brown, black and white coat. Packs hunt hoofed animals, mostly at dawn and dusk, using stamina and teamwork to run them to exhaustion. It has been listed as endangered since 1990, with an estimated 6,600 adults left.",
+  "len": "71–112 cm, plus a 29–41 cm tail",
+  "ht": "60–75 cm at the shoulder",
+  "wt": "18–36 kg",
+  "rg": "Sub-Saharan Africa, mostly Southern and East Africa; rare in North Africa.",
+  "df": "Hoofed animals such as antelopes, wildebeest and kudu calves and zebras, plus hares, cane rats and insects.",
+  "iu": "EN",
+  "fx": [
+    "Packs have 2 to 27 adults and yearling pups, and members bring up food for other adults as well as for pups.",
+    "Pups get to eat first at a kill, a privilege that ends once they are a year old."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: African wild dog",
+      "url": "https://en.wikipedia.org/wiki/African_wild_dog",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CHECK (fact): \"Wins around 80 percent of its hunts, the best strike rate of any large predator\" is contradicted by the article, which gives an average success rate of about 31%, not 80%. Suggested wording: \"Hunts in packs of up to 27, running its prey to exhaustion.\"",
+  "rv": "2026-09-29"
+}

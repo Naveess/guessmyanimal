@@ -1,0 +1,31 @@
+{
+  "sci": "Bovidae (several subfamilies)",
+  "ov": "Not a single group but 91 species of horned, hoofed bovids, most of them native to Africa. They are only distantly related to deer: antelope horns are bone covered in keratin, grow steadily and are never shed, unlike antlers.",
+  "hb": [
+    "grassland"
+  ],
+  "ht": "24 cm (royal antelope) to 178 cm (eland) at the shoulder",
+  "wt": "1.5 kg (royal antelope) to almost 950 kg (eland)",
+  "rg": "Most of Africa, the Middle East, India, Central Asia and a small area of Russia.",
+  "fx": [
+    "The pronghorn, often called the American antelope, belongs to a different family.",
+    "Africa has only one living deer species, but 25–40 antelope species share much of East Africa."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Antelope",
+      "url": "https://en.wikipedia.org/wiki/Antelope",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "ht",
+        "wt",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. The animals.js fact is confirmed (91 species, not deer). REGION (optional): the only European antelope today is the saiga in Russia's Kalmykia and Astrakhan, both in Europe; owner to decide whether to add Europe.",
+  "rv": "2026-09-29"
+}

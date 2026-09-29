@@ -1,0 +1,35 @@
+{
+  "sci": "Neogale vison",
+  "ov": "The American mink, a semiaquatic mustelid native to North America. Its long, streamlined body lets it swim easily and slip into the burrows of its prey. People have spread it to many parts of Europe, Asia and South America, and in Europe it is classed as invasive.",
+  "hb": [
+    "freshwater"
+  ],
+  "len": "Males 34–45 cm, females 31–37.5 cm (body)",
+  "wt": "Males 0.5–1.6 kg, females 0.4–0.8 kg (winter)",
+  "rg": "Native to North America; introduced to many parts of Europe, Asia and South America.",
+  "df": "Rodents, fish, crustaceans, frogs and birds; in its native range fish are its main prey.",
+  "iu": "LC",
+  "fx": [
+    "It usually dives about 30 cm for 10 seconds, but dives of 3 m lasting a minute have been recorded.",
+    "It often kills water birds by drowning them."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: American mink",
+      "url": "https://en.wikipedia.org/wiki/American_mink",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Drafted as the American mink (the European mink is a separate, critically endangered species). REGION: animals.js has North America and Europe; the article adds Asia and South America (introduced). ANSWER CHECK (fact): \"Dives up to five metres\" — the article says usually 30 cm, at most 3 m. Suggested wording: \"Can dive to 3 metres, and hunts as happily in water as on land.\"",
+  "rv": "2026-09-29"
+}

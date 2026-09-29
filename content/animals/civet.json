@@ -1,0 +1,46 @@
+{
+  "sci": "Viverridae (mostly)",
+  "ov": "Over a dozen species of small, lean, mostly nocturnal mammals of tropical Asia and Africa, most in the family Viverridae. The popular name \"civet cat\" is inaccurate: they are not cats. Civets produce a strong musk, also called civet, long used in perfume.",
+  "hb": [
+    "rainforest"
+  ],
+  "len": "43–71 cm, not counting the tail",
+  "wt": "1.4–4.5 kg",
+  "rg": "Tropical Asia and Africa, especially tropical forests; most species live in Southeast Asia.",
+  "df": "Omnivores: the African civet eats rodents and other small animals, invertebrates, eggs, carrion and plants.",
+  "fx": [
+    "Kopi luwak, one of the world’s most expensive coffees, is made from coffee cherries eaten and passed by the Asian palm civet.",
+    "The African civet sleeps in dense vegetation by day and wakes up at sunset."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Civet",
+      "url": "https://en.wikipedia.org/wiki/Civet",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: African civet",
+      "url": "https://en.wikipedia.org/wiki/African_civet",
+      "for": [
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Kopi luwak",
+      "url": "https://en.wikipedia.org/wiki/Kopi_luwak",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. ANSWER CHECK (fact): \"The world's most expensive coffee\" — the kopi luwak article says \"one of the most expensive coffees in the world\". Suggested wording: \"One of the world's most expensive coffees is made from beans it has eaten and passed.\"",
+  "rv": "2026-09-29"
+}
