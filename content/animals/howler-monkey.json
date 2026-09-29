@@ -1,0 +1,31 @@
+{
+  "sci": "Alouatta",
+  "ov": "Fifteen species of large New World monkeys, the most widespread primate genus in the Neotropics. They are famous for howls that carry through dense rainforest, made with an enlarged hyoid bone in the throat, and are the only New World monkeys that mainly eat leaves.",
+  "hb": [
+    "rainforest",
+    "forest"
+  ],
+  "len": "56–92 cm, plus a tail about as long",
+  "rg": "Forests of Central and South America.",
+  "df": "Mainly top-canopy leaves, plus fruit, buds, flowers and nuts.",
+  "fx": [
+    "Their noses are so keen they can smell food up to 2 km away.",
+    "Unlike other New World monkeys, both males and females have full (trichromatic) colour vision."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Howler monkey",
+      "url": "https://en.wikipedia.org/wiki/Howler_monkey",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry. ANSWER CHECK (fact): the animals.js fact \"One of the loudest land animals, audible three miles through forest\" is half sourced: the article says the howls \"can be heard from a distance through dense rain forest\" but gives no distance. Suggested wording: \"One of the loudest land animals, its howl carries far through dense rainforest.\"",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,46 @@
+{
+  "sci": "Callithrix, Cebuella, Callibella and Mico",
+  "ov": "Twenty-two species of tiny New World monkeys, most about 20 cm long. They have claws rather than nails and use strong lower incisors to gnaw holes in trees and feed on the gum and sap. They live in family groups of 3 to 15.",
+  "hb": [
+    "rainforest",
+    "forest"
+  ],
+  "len": "About 20 cm (most species), plus a long tail",
+  "wt": "About 100–350 g (most species)",
+  "rg": "South America: Bolivia, Brazil, Colombia, Ecuador, Paraguay and Peru.",
+  "df": "Tree sap and gum, insects, fruit, leaves and small animals.",
+  "cf": [
+    {
+      "slug": "tamarin",
+      "tip": "Tamarins are close relatives in the same family, and many have moustache-like facial hair."
+    }
+  ],
+  "fx": [
+    "About 95% of marmoset twins swap blood cells before birth, so each carries some of its twin’s cells.",
+    "Their body temperature can change by up to 4 °C in a single day."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Marmoset",
+      "url": "https://en.wikipedia.org/wiki/Marmoset",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Tamarin",
+      "url": "https://en.wikipedia.org/wiki/Tamarin",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "notes": "Group entry. The earlier sci \"Callicebus\" was wrong (that genus is the titi monkeys). The animals.js fact is confirmed: marmosets gnaw holes in trunks to feed on sap and gum.",
+  "rv": "2026-09-29"
+}

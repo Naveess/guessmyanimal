@@ -1,0 +1,41 @@
+{
+  "sci": "Pan paniscus",
+  "ov": "Along with the chimpanzee, our closest living relative. Bonobos live only south of the Congo River, in societies where females hold unusual power, and they often settle conflicts through affectionate and sexual contact. They mainly eat fruit.",
+  "hb": [
+    "rainforest"
+  ],
+  "len": "70–83 cm (nose to rump, on all fours)",
+  "wt": "34–60 kg",
+  "rg": "A 500,000 km² area of the Congo Basin in the Democratic Republic of the Congo, south of the Congo River.",
+  "df": "Mainly fruit.",
+  "iu": "EN",
+  "cf": [
+    {
+      "slug": "chimpanzee",
+      "tip": "Bonobos live south of the Congo River and chimpanzees north of it; chimps hunt far more, eating monkeys and small antelope."
+    }
+  ],
+  "fx": [
+    "Neither bonobos nor chimps swim well, so the Congo River may have split their ancestors into two species.",
+    "Bonobos typically live 40 years in captivity; their wild lifespan is unknown."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Bonobo",
+      "url": "https://en.wikipedia.org/wiki/Bonobo",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): ANSWER CHECK (fact): \"Shares almost 99 percent of our DNA and settles arguments with affection\" is half sourced: the article confirms conflict resolution through social and sexual contact, but gives no human–bonobo DNA figure. Suggested wording: \"With the chimp, our closest living relative, and it settles arguments with affection.\"",
+  "rv": "2026-09-29"
+}

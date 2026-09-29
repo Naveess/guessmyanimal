@@ -1,0 +1,46 @@
+{
+  "sci": "Saguinus",
+  "ov": "Squirrel-sized New World monkeys in 22 species, many with moustache-like facial hair. They run and leap through tropical rainforest and open forest, and usually have twins, which the whole group helps to raise.",
+  "hb": [
+    "rainforest",
+    "forest"
+  ],
+  "len": "13–30 cm, plus a 25–44 cm tail",
+  "wt": "348–575 g",
+  "rg": "From southern Central America to central South America: northwestern Colombia, the Amazon basin and the Guianas.",
+  "df": "Omnivores: fruit and other plant parts, spiders, insects, small vertebrates and birds’ eggs.",
+  "cf": [
+    {
+      "slug": "marmoset",
+      "tip": "Marmosets are close relatives in the same family; they gnaw holes in trees to feed on gum and sap."
+    }
+  ],
+  "fx": [
+    "Groups can have up to 40 members, but usually have just three to nine.",
+    "In captivity, cotton-top tamarins have lived up to 23 years."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Tamarin",
+      "url": "https://en.wikipedia.org/wiki/Tamarin",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Marmoset",
+      "url": "https://en.wikipedia.org/wiki/Marmoset",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry. REGION: animals.js has only South America; tamarins also live in southern Central America, so add Central America. The animals.js fact is confirmed by the Emperor tamarin article (https://en.wikipedia.org/wiki/Emperor_tamarin): the name allegedly comes from its beard’s likeness to Kaiser Wilhelm II’s.",
+  "rv": "2026-09-29"
+}

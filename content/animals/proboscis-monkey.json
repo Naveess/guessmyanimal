@@ -1,0 +1,36 @@
+{
+  "sci": "Nasalis larvatus",
+  "ov": "A large, reddish-brown monkey found only on Borneo, named for the male’s huge nose, which can be over 10 cm long and hangs below the mouth. Perhaps the most aquatic primate, it lives mostly in mangrove, swamp and riverside forests.",
+  "hb": [
+    "rainforest",
+    "wetland",
+    "coast"
+  ],
+  "len": "Males 66–76 cm, females 53–62 cm (head and body)",
+  "wt": "Males 16–22.5 kg, females 7–12 kg",
+  "rg": "Borneo only, in lowland mangrove, riverine and swamp forests, usually within a kilometre of water.",
+  "df": "Mostly fruit and leaves, preferring young leaves and unripe fruit, plus some flowers, seeds and insects.",
+  "iu": "EN",
+  "fx": [
+    "It can swim up to 20 m underwater.",
+    "Infants are born with a blue face, which turns grey by about 2.5 months."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Proboscis monkey",
+      "url": "https://en.wikipedia.org/wiki/Proboscis_monkey",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "The animals.js fact is confirmed: males have huge noses, and many of the toes are webbed.",
+  "rv": "2026-09-29"
+}

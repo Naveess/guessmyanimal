@@ -1,0 +1,38 @@
+{
+  "sci": "Saimiri",
+  "ov": "Small New World monkeys with short, close fur: black at the shoulders, yellow or orange on the back and limbs, and white on the face. They live in the forest canopy in groups of up to 500, and can sweat only through their palms and soles.",
+  "hb": [
+    "rainforest"
+  ],
+  "len": "22.5–29.5 cm (Central American species)",
+  "wt": "0.5–1.1 kg (Central American species)",
+  "rg": "Tropical forests of the Amazon, with one species in Costa Rica and Panama.",
+  "df": "Omnivores: mainly fruit and insects, plus seeds, leaves, flowers, nuts and eggs.",
+  "fx": [
+    "Because they sweat only through their hands and feet, they also cool off by rubbing urine on their skin.",
+    "Their calls include warnings about large falcons, a natural predator."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Squirrel monkey",
+      "url": "https://en.wikipedia.org/wiki/Squirrel_monkey",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Saimiri oerstedii",
+      "url": "https://animaldiversity.org/accounts/Saimiri_oerstedii/",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry. REGION: animals.js has only South America; the Central American squirrel monkey lives in Costa Rica and Panama, so add Central America. ANSWER CHECK (fact): \"Has the largest brain for its body size of any primate\" isn’t in the Squirrel monkey article or ADW. Suggested wording: \"Troops can be 500 strong, and it can sweat only through its palms and soles.\"",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,33 @@
+{
+  "sci": "Cebinae (Cebus and Sapajus)",
+  "ov": "Clever New World monkeys famous for their foraging skills, including using stones to crack open nuts. They are usually dark brown with a cream or off-white area around the neck, and live in groups of 6 to 40.",
+  "hb": [
+    "rainforest",
+    "forest"
+  ],
+  "len": "30–56 cm, with a tail about as long again",
+  "wt": "1.4–4 kg",
+  "rg": "Tropical forests of Central America and South America as far south as northern Argentina; Brazil has the most.",
+  "df": "Omnivores: leaves, flowers, fruit, seeds and sap, plus insects, molluscs, frogs and other small animals.",
+  "fx": [
+    "Capuchins living near water crack crabs and shellfish open with stones.",
+    "Young capuchins learn to crack nuts by watching experienced adults, which can take years of practice."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Capuchin monkey",
+      "url": "https://en.wikipedia.org/wiki/Capuchin_monkey",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): The animals.js fact is confirmed: capuchins use stones as hammer and anvil, and the young learn by watching adults. ANSWER CHECK (lifespan): animals.js says 25–45 years; the article gives up to 25 in the wild and 35 in captivity. Suggested: \"15–25 years\".",
+  "rv": "2026-09-29"
+}

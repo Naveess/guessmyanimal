@@ -1,0 +1,33 @@
+{
+  "sci": "Hylobatidae",
+  "ov": "The lesser apes: about 20 species of tailless apes of Asian forests. They swing arm over arm (brachiation) up to 15 m at a time at up to 55 km/h, and mated pairs sing duets that can carry 1 km.",
+  "why": {
+    "d": "About 60% of the diet is fruit, with leaves and twigs, but they also eat some insects and occasionally birds’ eggs."
+  },
+  "hb": [
+    "rainforest",
+    "forest"
+  ],
+  "rg": "Subtropical and tropical forests from eastern Bangladesh and Northeast India to Southeast Asia, Sumatra, Borneo and Java.",
+  "df": "About 60% fruit, plus twigs, leaves, insects, flowers and occasionally birds’ eggs.",
+  "fx": [
+    "Gibbons can leap up to 8 m.",
+    "Pairs usually keep the same mate for life, though they sometimes \"divorce\"."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Gibbon",
+      "url": "https://en.wikipedia.org/wiki/Gibbon",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry. The animals.js fact is essentially confirmed, but the article gives 55 km/h (34 mph), not 35. Suggested wording: \"Swings hand over hand at 34 mph, and mated pairs sing duets.\"",
+  "rv": "2026-09-29"
+}
