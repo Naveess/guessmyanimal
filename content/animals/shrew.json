@@ -1,0 +1,36 @@
+{
+  "sci": "Soricidae",
+  "ov": "A family of 385 species of tiny, mouse-like mammals that are not rodents at all; their closest relatives are hedgehogs and moles. Shrews have a very high metabolism and must eat almost constantly, and some species are venomous or use echolocation.",
+  "len": "3.5 cm (Etruscan shrew) to about 15 cm (Asian house shrew)",
+  "wt": "1.8 g (Etruscan shrew) to about 100 g",
+  "rg": "Almost worldwide, except New Guinea, Australia, New Zealand and most of South America (a few now live in the northern Andes).",
+  "df": "Insects, worms, seeds and nuts from leaf litter; captives eat half to twice their body weight a day.",
+  "cf": [
+    {
+      "slug": "mouse",
+      "tip": "A shrew has sharp, spiky teeth and a longer nose; a mouse is a rodent with gnawing front teeth."
+    }
+  ],
+  "fx": [
+    "The Etruscan shrew, at about 1.8 g, is the smallest known land mammal.",
+    "Young shrews \"caravan\" behind their mother, each gripping the fur of the one in front."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Shrew",
+      "url": "https://en.wikipedia.org/wiki/Shrew",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. ANSWER CHECK (fact): \"Must eat every couple of hours or starve\" goes beyond the article, which says they \"need to eat almost constantly\". Suggested wording: \"Needs to eat almost constantly, and some species are venomous.\" REGION (optional): a small naturalised population lives in the northern Andes; owner to decide whether to add South America.",
+  "rv": "2026-09-29"
+}

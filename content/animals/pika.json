@@ -1,0 +1,40 @@
+{
+  "sci": "Ochotona",
+  "ov": "Small, round, tailless relatives of rabbits with short, rounded ears, living on rocky mountain slopes in Asia and North America. They do not hibernate; instead they spend summer gathering \"haypiles\" of plants to eat in winter. Their high alarm call earned them the name whistling hare.",
+  "hb": [
+    "mountain"
+  ],
+  "len": "15–23 cm",
+  "wt": "120–350 g",
+  "rg": "Cold mountains and steppes of Asia and western North America; the large-eared pika lives above 6,000 m in the Himalayas.",
+  "df": "Grasses, flowers, sedges, shrub twigs, moss and lichens.",
+  "fx": [
+    "An American pika can make over 100 trips a day to build its haypile.",
+    "For every 1 °C rise in temperature, pikas lose about 3% of their foraging time."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Pika",
+      "url": "https://en.wikipedia.org/wiki/Pika",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: American pika",
+      "url": "https://en.wikipedia.org/wiki/American_pika",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "Group entry. The animals.js fact is confirmed (haypiles gathered in summer for winter).",
+  "rv": "2026-09-29"
+}

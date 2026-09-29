@@ -1,0 +1,29 @@
+{
+  "sci": "Heterocephalus glaber",
+  "ov": "A hairless, pink-skinned burrowing rodent of the Horn of Africa and Kenya. It lives in colonies with a single breeding queen and is almost cold-blooded. It barely feels some kinds of pain, resists cancer, and lives longer than any other rodent.",
+  "len": "8–10 cm",
+  "wt": "30–35 g (breeding females up to 80 g)",
+  "rg": "The Horn of Africa and parts of Kenya.",
+  "df": "Underground tubers; workers that find a new one call the colony to it.",
+  "fx": [
+    "Naked mole-rats can live more than 37 years, and their risk of dying does not rise with age.",
+    "It can run backwards as fast as forwards through its tunnels."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Naked mole-rat",
+      "url": "https://en.wikipedia.org/wiki/Naked_mole-rat",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "The animals.js fact is confirmed: mortality does not rise with age, high cancer resistance, and 18 minutes with no oxygen.",
+  "rv": "2026-09-29"
+}

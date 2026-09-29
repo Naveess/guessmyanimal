@@ -1,0 +1,44 @@
+{
+  "sci": "Gerbillinae",
+  "ov": "About 110 species of small desert rodents from Africa, India and Asia, including jirds and sand rats. Most are active by day and eat both plants and animals. The pet gerbil is the Mongolian gerbil, kept in the English-speaking world since 1954.",
+  "hb": [
+    "desert",
+    "grassland"
+  ],
+  "len": "15–30 cm, including a tail about half that length",
+  "wt": "About 70 g (average adult)",
+  "rg": "Dry regions of Africa, India and Asia; the Mongolian gerbil lives in China, Mongolia and Russia.",
+  "df": "Seeds of grasses, leaves, bulbs and herbs; pets also eat fruit and vegetables.",
+  "fx": [
+    "A Mongolian gerbil family shares a central burrow with 10 to 20 exits.",
+    "The name gerbil means \"little jerboa\", though jerboas are not closely related."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Gerbillinae",
+      "url": "https://en.wikipedia.org/wiki/Gerbillinae",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Mongolian gerbil",
+      "url": "https://en.wikipedia.org/wiki/Mongolian_gerbil",
+      "for": [
+        "ov",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry (the Wikipedia \"Gerbil\" page redirects to Mongolian gerbil, so the subfamily article is used as well). ANSWER CHECK (fact): \"Thumps its back legs on the ground to warn the burrow\" is not in either article (only \"foot drumming\" is mentioned, in passing, under hearing). Suggested wording: \"Lives in family groups in a burrow with 10 to 20 exits.\"",
+  "rv": "2026-09-29"
+}

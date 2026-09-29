@@ -1,0 +1,40 @@
+{
+  "sci": "Gliridae",
+  "ov": "About 28 species of small, nocturnal, tree-climbing rodents from Africa, Asia and Europe. They look like mice with furry tails, and are named for their long hibernation of six months or more. Half of all species belong to the African genus Graphiurus.",
+  "hb": [
+    "forest"
+  ],
+  "len": "6–19 cm (body)",
+  "wt": "15–180 g",
+  "rg": "Africa, Asia and Europe.",
+  "df": "Berries, flowers, fruit, insects and nuts; the hazel dormouse fattens up on hazelnuts.",
+  "fx": [
+    "The Romans fattened edible dormice in special enclosures and ate them as a delicacy.",
+    "Dormice are the only rodents without a caecum, the gut section others use to ferment plant food."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Dormouse",
+      "url": "https://en.wikipedia.org/wiki/Dormouse",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Hazel dormouse",
+      "url": "https://en.wikipedia.org/wiki/Hazel_dormouse",
+      "for": [
+        "df"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. ANSWER CHECK (fact): \"Spends over half its life asleep, hibernating for up to seven months\" is half sourced: the articles say dormice hibernate six months or longer and that the hazel dormouse spends \"a large proportion of its life sleeping\", but not \"over half\". Suggested wording: \"Named for its long hibernation of six months or more, and spends much of its life asleep.\"",
+  "rv": "2026-09-29"
+}

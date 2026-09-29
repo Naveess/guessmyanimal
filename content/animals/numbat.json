@@ -1,0 +1,31 @@
+{
+  "sci": "Myrmecobius fasciatus",
+  "ov": "A small, striped marsupial and the only marsupial fully active by day. It eats almost nothing but termites, licking them up with a long, sticky tongue. Once widespread across southern Australia, it is now endangered and survives in a few small colonies.",
+  "len": "35–45 cm, including the tail",
+  "wt": "280–700 g",
+  "rg": "Small colonies in Western Australia, plus fenced reserves in South Australia and New South Wales.",
+  "df": "Almost exclusively termites, up to 20,000 a day.",
+  "iu": "EN",
+  "fx": [
+    "It is the faunal emblem of Western Australia.",
+    "It has the sharpest eyesight of any marsupial."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Numbat",
+      "url": "https://en.wikipedia.org/wiki/Numbat",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): ANSWER CHECK (fact): \"Eats up to 20,000 termites a day and nothing else\" is half sourced: 20,000 a day is confirmed, but the article says \"almost exclusively\" termites. Suggested wording: \"Eats up to 20,000 termites a day, and almost nothing else.\"",
+  "rv": "2026-09-29"
+}

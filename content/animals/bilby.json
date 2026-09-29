@@ -1,0 +1,50 @@
+{
+  "sci": "Macrotis lagotis",
+  "ov": "The greater bilby: a long-eared, rabbit-sized marsupial of Australia that lives in burrows and comes out at night. Once widespread, it now survives only in parts of northwestern and central Australia because of habitat loss and introduced predators such as foxes. It is vulnerable.",
+  "hb": [
+    "desert",
+    "grassland"
+  ],
+  "len": "29–55 cm",
+  "wt": "Males 1–2.4 kg, females 0.8–1.1 kg",
+  "rg": "Parts of northwestern and central Australia.",
+  "df": "Insects, fruit and fungi; it gets all the water it needs from its food.",
+  "iu": "VU",
+  "fx": [
+    "The lesser bilby died out in the 1950s, leaving the greater bilby as the only one.",
+    "One bilby may dig up to a dozen spiralling burrows in its home range."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Greater bilby",
+      "url": "https://en.wikipedia.org/wiki/Greater_bilby",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Bilby",
+      "url": "https://en.wikipedia.org/wiki/Bilby",
+      "for": [
+        "iu",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Easter Bilby",
+      "url": "https://en.wikipedia.org/wiki/Easter_Bilby",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "The animals.js fact is confirmed by the Easter Bilby article: bilby-shaped chocolates are sold across Australia as an alternative to Easter bunnies, to raise money for conservation.",
+  "rv": "2026-09-29"
+}

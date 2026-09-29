@@ -1,0 +1,27 @@
+{
+  "sci": "Arvicolinae (in part)",
+  "ov": "About 155 species of small, stout rodents, sometimes called meadow or field mice, related to lemmings and hamsters. They breed fast: litters come monthly from spring to autumn, and the young can breed themselves at a month old.",
+  "len": "8–23 cm, depending on species",
+  "rg": "Across North America, Europe and Asia.",
+  "df": "Plants; a vole eats its own body weight in plant material every 24 hours.",
+  "fx": [
+    "Most voles live no longer than 16 months in the wild.",
+    "Some vole species have males and females with different numbers of chromosomes."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Vole",
+      "url": "https://en.wikipedia.org/wiki/Vole",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. ANSWER CHECK (fact): \"Blunter face and shorter tail than a mouse, and it can have a litter every three weeks\" is half sourced: the article compares voles with lemmings and hamsters, not mice, and says litters come monthly (gestation is three weeks). Suggested wording: \"A stout little rodent that can have a new litter every month from spring to autumn.\"",
+  "rv": "2026-09-29"
+}

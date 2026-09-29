@@ -1,0 +1,36 @@
+{
+  "sci": "Setonix brachyurus",
+  "ov": "A cat-sized relative of kangaroos and wallabies from southwestern Australia. It is herbivorous and mainly nocturnal, and lives mostly on Rottnest and Bald islands, which have no foxes or cats. It is listed as vulnerable.",
+  "hb": [
+    "scrub",
+    "forest"
+  ],
+  "len": "40–54 cm, plus a 25–30 cm tail",
+  "wt": "2.5–5 kg",
+  "rg": "Southwestern Australia: Rottnest Island, Bald Island and scattered spots between Perth and Albany.",
+  "df": "Grasses, shrubs and other plants.",
+  "iu": "VU",
+  "fx": [
+    "Quokkas do not really smile: the grin is just the shape of their face.",
+    "Quokkas can climb trees."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Quokka",
+      "url": "https://en.wikipedia.org/wiki/Quokka",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): ANSWER CHECK (fact): \"the most photographed animal in Australia\" is not in the article, which describes the viral \"quokka selfie\" trend. Suggested wording: \"Its face looks like a grin, which made the quokka selfie a social-media craze.\" REGION: animals.js has Australia; correct.",
+  "rv": "2026-09-29"
+}
