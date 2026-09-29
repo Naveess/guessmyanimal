@@ -1,0 +1,31 @@
+{
+  "sci": "Porifera",
+  "ov": "Simple animals fixed to the seabed, with bodies full of pores and channels. They have no true tissues, organs or nerves: beating cells pull water through the body and filter out tiny food. Most live in the sea, but some live in fresh water.",
+  "hb": [
+    "coast",
+    "ocean",
+    "freshwater"
+  ],
+  "rg": "Seas worldwide, from the tide zone to more than 8,800 m deep; freshwater sponges live on every continent except Antarctica.",
+  "df": "Bacteria-sized particles and other tiny food filtered from the water it pumps through its body.",
+  "fx": [
+    "Some sponges can rebuild their whole body from cells that have been separated from each other.",
+    "Their skeletons were the original bath and cleaning sponges, though few are used that way now."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Sponge",
+      "url": "https://en.wikipedia.org/wiki/Sponge",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, coral p left unchanged): Group entry (owner approved group pages 2026-09-30). ANSWER CHECK (fact): \"no brain, heart, muscles or nerves\" is close (they \"lack neurons or any other kind of nervous tissue\" and \"lack true tissues and organs\"), but \"some live over 2,000 years\" is not stated: most \"live for at most a few years\", some \"may live for 200 years or more\", and a very slow-growing sponge 1 m wide \"must be about 5,000 years old\" if growth is constant. Suggested wording: \"An animal with no nerves, organs or true tissues; some slow-growing sponges may be thousands of years old.\" ANSWER CHECK (lf): suggest lf:\"A few years to centuries\". REGION: suggest adding Rivers.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,35 @@
+{
+  "sci": "Tardigrada",
+  "ov": "About 1,500 species of plump, eight-legged micro-animals, usually about 0.5 mm long, also called water bears or moss piglets. They live almost everywhere, from mountaintops and rainforests to the deep sea and Antarctica, and are among the toughest animals known.",
+  "hb": [
+    "rainforest",
+    "mountain",
+    "freshwater",
+    "ocean",
+    "polar"
+  ],
+  "len": "Usually about 0.5 mm; 0.05–1.3 mm",
+  "rg": "Worldwide, on land, in fresh water and in the sea; easiest to find in moss and lichen.",
+  "df": "Fluids sucked out of plant and animal cells after piercing them with a pair of needle-like stylets, or detritus.",
+  "fx": [
+    "Dried out into a \"tun\", it can go years without food or water and survive −272 °C to +149 °C for short periods.",
+    "In 2007 dried tardigrades spent 10 days exposed to space on the FOTON-M3 mission."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Tardigrade",
+      "url": "https://en.wikipedia.org/wiki/Tardigrade",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, coral p left unchanged): Group entry (owner approved group pages 2026-09-30). The fact is confirmed: they survive \"extreme temperatures… radiation\" and \"have survived exposure to outer space\", and dried tardigrades tolerate up to +149 °C, above boiling. lg 8 is confirmed (\"four pairs of legs\"). lf \"3–30 months\" is not in the article.",
+  "rv": "2026-09-29"
+}

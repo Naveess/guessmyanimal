@@ -1,0 +1,34 @@
+{
+  "sci": "Homo sapiens",
+  "ov": "The most abundant and widespread primate: an upright-walking ape with little body hair and a large, complex brain that allows technology, culture and language. Humans arose in Africa about 300,000 years ago, now live worldwide, and form social groups from families to nations.",
+  "hb": [
+    "towns",
+    "farmland"
+  ],
+  "ht": "Average adult about 171 cm (men), 159 cm (women)",
+  "wt": "Average adult 77 kg (men), 59 kg (women)",
+  "rg": "Worldwide. Homo sapiens arose in Africa about 300,000 years ago and spread from there.",
+  "df": "Almost anything: diets range from purely vegan to mostly meat, and humans cook their food with fire.",
+  "fx": [
+    "Humans have about 2 million sweat glands, far more than chimpanzees, which helps on long runs.",
+    "A person can survive up to eight weeks without food, but only three or four days without water."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Human",
+      "url": "https://en.wikipedia.org/wiki/Human",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "ht",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, coral p left unchanged): Light page (owner approved 2026-09-30). The fact is confirmed: humans are among the best \"endurance runners in the animal kingdom, but slower over short distances\". lf 70–90 is roughly in line (global life expectancy at birth in 2018: 74.9 for girls, 70.4 for boys). dg \"yes\" is not covered by the article.",
+  "rv": "2026-09-29"
+}
