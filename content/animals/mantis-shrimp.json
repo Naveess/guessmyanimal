@@ -1,0 +1,36 @@
+{
+  "sci": "Stomatopoda",
+  "ov": "More than 520 species of predatory sea crustaceans, usually about 10 cm long, that live in burrows on shallow tropical and subtropical seabeds. \"Smashers\" club prey with a mineralised hammer and \"spearers\" stab it with spiny claws. Their eyes are among the most complex known.",
+  "why": {
+    "dg": "Nicknamed \"thumb splitter\": it can inflict painful wounds if handled carelessly.",
+    "et": "Eaten in Japan (as shako sushi), Vietnam, southern China, the Philippines, Kiribati and around the Mediterranean."
+  },
+  "hb": [
+    "coast"
+  ],
+  "len": "Usually about 10 cm; up to 38 cm",
+  "rg": "Shallow tropical and subtropical seas; most species live in the Indian and Pacific Oceans, from eastern Africa to Hawaii.",
+  "df": "Other animals: smashers crack open crabs, snails, rock oysters and other molluscs.",
+  "fx": [
+    "A club strike can reach 23 m/s, and the collapsing bubbles it leaves hit the prey a second time.",
+    "Some species pair for life, sharing a burrow with the same partner for up to 20 years."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mantis shrimp",
+      "url": "https://en.wikipedia.org/wiki/Mantis_shrimp",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"boil the water\" is not in the article; the strike makes \"vapor-filled\" cavitation bubbles. It gives \"between 12 and 16 types of photoreceptor cells\" compared with \"the four types of photoreceptor cell that humans possess\", not 16 to our three. Suggested wording: \"Its punch is so fast the water forms bubbles that hit the prey again, and its eyes have 12–16 kinds of light receptor to our four.\" ANSWER CHECK (ac): \"diurnal, nocturnal, or crepuscular (active at twilight), depending on the species\"; suggest ac:\"both\". Optional (et): eaten in at least seven countries, so et:\"yes\" could fit. Optional (p): \"Some saltwater aquarists keep stomatopods in captivity\"; p:\"some\" could fit. lf 20 fits (pairs stay together \"up to 20 years\").",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,42 @@
+{
+  "sci": "Mimus and Melanotis",
+  "ov": "About 17 species of New World songbirds, known for loudly copying other birds, insects and frogs. The northern mockingbird, the only common one in North America, is grey with white wing patches and common in towns. Other species live in the Caribbean, South America and the Galápagos.",
+  "hb": [
+    "towns",
+    "forest"
+  ],
+  "len": "20.5–28 cm (northern mockingbird)",
+  "wt": "40–58 g (northern mockingbird)",
+  "rg": "The Americas. The northern mockingbird breeds from south-eastern Canada through the US and Mexico to the Greater Antilles, and was introduced to Hawaii.",
+  "df": "Insects, spiders, earthworms, berries, fruit and seeds: mostly animal prey in the breeding season and fruit in autumn and winter.",
+  "fx": [
+    "Mockingbirds can recognise individual people who have threatened their nest.",
+    "They are known for singing late at night, even past midnight."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mockingbird",
+      "url": "https://en.wikipedia.org/wiki/Mockingbird",
+      "for": [
+        "sci",
+        "ov",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Northern mockingbird",
+      "url": "https://en.wikipedia.org/wiki/Northern_mockingbird",
+      "for": [
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): Group entry. ANSWER CHECK (fact): car alarms are confirmed, but the northern mockingbird's repertoire \"ranges from 43 to 203 song types\" (Florida estimates about 134 and 200), and it copies \"unoiled wheels\", not gates. Suggested wording: \"Can learn up to about 200 song types, and copies car alarms and squeaky wheels.\" lf 8–20 fits (\"up to 8 years, but captive birds can live up to 20\").",
+  "rv": "2026-09-29"
+}

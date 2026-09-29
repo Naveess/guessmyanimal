@@ -1,0 +1,33 @@
+{
+  "sci": "Myxini",
+  "ov": "Eel-shaped, jawless sea fish, usually about 50 cm long and dull pink to blue-grey, with loose skin and no true fins. They are the only living animals with a skull but no backbone. They eat seabed worms and burrow into dead and dying animals, and defend themselves with huge amounts of slime.",
+  "why": {
+    "et": "Rarely eaten in most of the world, but valued in South Korea, where it is grilled or stir-fried; one species is also eaten in Japan."
+  },
+  "hb": [
+    "ocean"
+  ],
+  "len": "Usually about 50 cm; up to 127 cm",
+  "df": "Seabed worms, plus dead and dying sea animals that it often enters and eats from the inside. Some hunt fish in their burrows.",
+  "fx": [
+    "Its skin is sold as \"eel skin\" leather for wallets and belts.",
+    "It has more blood for its body mass than any other chordate."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Hagfish",
+      "url": "https://en.wikipedia.org/wiki/Hagfish",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): the knot is confirmed (\"they can tie themselves in an overhand knot\"), but \"a bucket of seawater in seconds\" is not in the article, which says the slime \"expands to 10,000 times its original size in 0.4 seconds\". Suggested wording: \"Its slime swells 10,000 times in under half a second, and it ties itself in a knot to escape.\" Optional (so): hagfish \"are typically found in large clusters\"; so:\"Groups\" could fit. lf and ac are not in the article.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,54 @@
+{
+  "sci": "Hippoglossus and Reinhardtius",
+  "ov": "Three species of large flatfish of the North Atlantic, North Pacific and Arctic: the Atlantic, Pacific and Greenland halibut. The Atlantic and Pacific halibut are the world's biggest flatfish. They live on or near the seabed, dark brown on top and white underneath.",
+  "why": {
+    "et": "Highly regarded as a food fish, but the Atlantic halibut is so overfished that Seafood Watch advises avoiding it."
+  },
+  "hb": [
+    "ocean",
+    "polar"
+  ],
+  "len": "Atlantic up to 4.7 m; Pacific over 2.4 m",
+  "wt": "Atlantic up to 320 kg; Pacific females up to 230 kg",
+  "rg": "The North Atlantic (Labrador and Greenland to the Barents Sea, Biscay and Virginia), the North Pacific and Bering Sea, and the Arctic Ocean.",
+  "df": "Almost any fish or animal it can fit in its mouth: sand lance, octopus, crabs, salmon, cod, pollock, herring and other halibut.",
+  "fx": [
+    "Its scales are so small they cannot be seen with the naked eye.",
+    "Halibut do not breed until about eight years old, and an Atlantic halibut can live to 50."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Halibut",
+      "url": "https://en.wikipedia.org/wiki/Halibut",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Atlantic halibut",
+      "url": "https://en.wikipedia.org/wiki/Atlantic_halibut",
+      "for": [
+        "len",
+        "wt",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Pacific halibut",
+      "url": "https://en.wikipedia.org/wiki/Pacific_halibut",
+      "for": [
+        "len",
+        "wt"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): Group entry. The fact is confirmed: halibut are \"symmetrical at birth with one eye on each side of the head\", and \"about six months later… one eye migrates to the other side\". cv \"Skin\" fits (tiny scales \"embedded in their skin\"). lf 25–55 fits (Atlantic up to 50). Optional (r): add Arctic (Greenland halibut).",
+  "rv": "2026-09-29"
+}

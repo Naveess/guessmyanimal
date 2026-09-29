@@ -1,0 +1,45 @@
+{
+  "sci": "Istiophorus",
+  "ov": "A blue-grey billfish of the open ocean, named for the huge dorsal fin that runs almost the whole length of its back. It grows fast, reaching 1.2–1.5 m in its first year, and hunts schools of small fish by slashing and tapping them with its bill.",
+  "why": {
+    "dg": "Usually no threat, but sailfish have attacked in self-defence: one stabbed a woman with its bill when her party tried to catch it.",
+    "et": "A hard-fighting game fish, but less valued than marlin and usually released."
+  },
+  "hb": [
+    "ocean"
+  ],
+  "len": "Rarely over 3 m",
+  "wt": "Rarely over 90 kg",
+  "rg": "Open water in all the world's oceans.",
+  "df": "Small schooling fish and squid, near the surface or at middle depths.",
+  "fx": [
+    "Only about 24% of its attacks catch a fish, but the injured fish are easier for the next sailfish.",
+    "It may change colour to confuse prey or signal to other sailfish."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Sailfish",
+      "url": "https://en.wikipedia.org/wiki/Sailfish",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Indo-Pacific sailfish",
+      "url": "https://en.wikipedia.org/wiki/Indo-Pacific_sailfish",
+      "for": [
+        "why"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): the \"fastest fish\" reputation is in the article, but so is the correction: once estimated at 125 km/h, \"research published in 2015 and 2016 indicate sailfish do not exceed speeds between 10–15 m/s (35–55 km/h)\". \"Lights up in stripes when hunting\" is not in it (only that some sources say it changes colour). Suggested wording: \"Once credited with 125 km/h, it has since been measured at no more than 35–55 km/h.\" Optional (et): \"usually released\", so et:\"some\" could fit. so \"Groups\" fits (hunting groups of up to 70). lf is not in the articles.",
+  "rv": "2026-09-29"
+}

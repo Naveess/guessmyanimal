@@ -1,0 +1,34 @@
+{
+  "sci": "Bucerotidae",
+  "ov": "A family of birds of tropical Africa, Asia and Melanesia with a long, down-curved, often colourful bill, sometimes topped by a hollow casque. They range from 32 cm to about 1.3 m long, eat fruit and small animals, and nest as monogamous pairs in holes in trees.",
+  "hb": [
+    "forest",
+    "grassland"
+  ],
+  "len": "32 cm to about 1.3 m; helmeted hornbill may exceed 1.5 m",
+  "wt": "99 g (black dwarf) to 6.3 kg (southern ground)",
+  "rg": "Sub-Saharan Africa and the Indian subcontinent east to the Philippines and the Solomon Islands. No genus lives in both Africa and Asia.",
+  "df": "Fruit, insects and small animals. Forest species mostly eat fruit; open-country species eat more animals.",
+  "fx": [
+    "They are the only birds whose first two neck vertebrae are fused, probably to carry the heavy bill.",
+    "Helmeted hornbills use their solid casques as battering rams in mid-air jousts."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Hornbill",
+      "url": "https://en.wikipedia.org/wiki/Hornbill",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): Group entry. The fact is confirmed: the female closes the nest entrance with \"a wall made of mud, droppings and fruit pulp\", leaving \"one narrow aperture, big enough for the male to transfer food\". lf 35–50 is not in the article. Many Asian species are threatened by hunting and habitat loss.",
+  "rv": "2026-09-29"
+}

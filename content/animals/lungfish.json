@@ -1,0 +1,32 @@
+{
+  "sci": "Dipnoi",
+  "ov": "Six species of air-breathing freshwater fish in Africa, South America and Australia, the closest living relatives of land vertebrates. Their lobed fins have a bony skeleton inside, and their fossil record goes back more than 410 million years.",
+  "hb": [
+    "freshwater",
+    "wetland"
+  ],
+  "len": "Up to 2 m (marbled lungfish, the largest African species)",
+  "rg": "Africa, South America and Australia; lungfish once lived all over the world.",
+  "df": "Crustaceans, worms, molluscs, amphibians and plant matter, crushed with tooth plates.",
+  "fx": [
+    "An Australian lungfish called Granddad lived at Chicago's Shedd Aquarium from 1933 to 2017 and died at about 109.",
+    "The Australian lungfish has only one lung; the other species have two."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Lungfish",
+      "url": "https://en.wikipedia.org/wiki/Lungfish",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"breathing air for years\" is not in the article: African and South American lungfish burrow into mud and aestivate \"throughout the dry season\", slowing their metabolism \"to as little as one sixtieth\". Suggested wording: \"Survives droughts sealed in mud, breathing air, with its metabolism slowed to a sixtieth.\" Optional (r): add Rivers. Optional (d): the diet includes \"plant matter\", so Omnivore could fit. lf 25–100 fits (Granddad reached 109).",
+  "rv": "2026-09-29"
+}

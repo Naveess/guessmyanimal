@@ -1,0 +1,33 @@
+{
+  "sci": "Pterophyllum",
+  "ov": "Three species of tall, flat, freshwater cichlids from the Amazon, the Orinoco and rivers of the Guiana Shield in South America. Their disc-shaped, striped bodies hide them among roots and plants, where they ambush small prey. Not to be confused with the marine angelfish of coral reefs.",
+  "why": {
+    "p": "One of the most commonly kept freshwater aquarium fish."
+  },
+  "hb": [
+    "freshwater"
+  ],
+  "rg": "Tropical South America: the Amazon and Orinoco basins and rivers of the Guiana Shield.",
+  "df": "Small fish and macroinvertebrates, caught by ambush.",
+  "fx": [
+    "A female lays 100 to more than 1,200 eggs in a line on a leaf, log or other flat surface.",
+    "Aquarium angelfish have been selectively bred for more than 60 years, into many colour forms."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Pterophyllum",
+      "url": "https://en.wikipedia.org/wiki/Pterophyllum",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): The fact is confirmed: \"All Pterophyllum species form monogamous pairs\", pairs \"form long-term relationships\", and \"the pair takes turns\" fanning water over the eggs. ANSWER CHECK (r): animals.js lists \"Oceans\", but Pterophyllum is a freshwater genus (\"should not be confused with marine angelfish\"). Suggest r:[\"South America\",\"Rivers\"]. Optional (d): \"ambush predators and prey on small fish and macroinvertebrates\"; d:\"Carnivore\" would fit better than Omnivore. Optional (lf): about 12 years in captivity, up to 15 in the wild; suggest lf:\"12–15 years\".",
+  "rv": "2026-09-29"
+}

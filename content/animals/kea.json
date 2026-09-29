@@ -1,0 +1,50 @@
+{
+  "sci": "Nestor notabilis",
+  "ov": "A large olive-green parrot of the forests and mountains of New Zealand's South Island, with bright orange under its wings. It is one of the few parrots that regularly spend time above the tree line, and it is famously curious and clever, solving puzzles and working in teams.",
+  "hb": [
+    "mountain",
+    "forest"
+  ],
+  "len": "46–50 cm",
+  "wt": "750–1,000 g",
+  "rg": "The South Island of New Zealand, from lowland valleys and coastal forests on the west coast up to alpine areas such as Arthur's Pass and Aoraki / Mount Cook.",
+  "df": "More than 40 kinds of plant, plus beetle larvae, grasshoppers, snails, shearwater chicks and carrion. Some birds have learned to attack sheep.",
+  "iu": "EN",
+  "cf": [
+    {
+      "slug": "kakapo",
+      "tip": "Both are New Zealand parrots, but the kea flies and is active by day in the mountains, while the kākāpō is flightless and nocturnal."
+    }
+  ],
+  "fx": [
+    "Sheep farmers once paid bounties to have it killed; it has been fully protected since 1986.",
+    "It lives in groups of up to 13 birds, and birds kept alone in captivity do badly."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Kea",
+      "url": "https://en.wikipedia.org/wiki/Kea",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Kākāpō",
+      "url": "https://en.wikipedia.org/wiki/K%C4%81k%C4%81p%C5%8D",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): The fact is confirmed: kea \"can solve logical puzzles\" and \"will work together to achieve a certain objective\", and they \"pry apart rubber parts of cars\". lf 15–20 is not contradicted (some wild birds pass 20; the oldest known captive kea was 50).",
+  "rv": "2026-09-29"
+}

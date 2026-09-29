@@ -1,0 +1,25 @@
+{
+  "sci": "Maratus",
+  "ov": "A genus of tiny Australian jumping spiders, mostly 4–5 mm long. To court a female, the male raises a brightly coloured, often iridescent flap on his abdomen and dances, waving his legs and sending vibrations. Females are drab and camouflaged.",
+  "len": "Mostly 4–5 mm (body)",
+  "rg": "All species live in Australia; the area around Cape Riche in Western Australia is a hot spot for them.",
+  "fx": [
+    "If a female is not impressed by the dance, she may attack, kill and eat the male.",
+    "Its blues come from nanostructures in its scales rather than pigment, and they do not fade over time."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Maratus",
+      "url": "https://en.wikipedia.org/wiki/Maratus",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): the raised flap and dance are confirmed, but \"smaller than a grain of rice\" is not in the article, which gives a body length of \"mostly around 4–5 mm\". Suggested wording: \"Only 4–5 mm long, and the male dances with a raised, iridescent flap.\" ac \"day\" and lf \"1 year\" are not in the article.",
+  "rv": "2026-09-29"
+}

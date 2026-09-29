@@ -1,0 +1,55 @@
+{
+  "sci": "Strigops habroptilus",
+  "ov": "A large, nocturnal, ground-dwelling parrot found only in New Zealand, with mottled moss-green feathers and an owl-like face. It is the world's heaviest parrot and the only flightless one. Introduced cats, rats and stoats almost wiped it out; it now lives mostly on predator-free islands.",
+  "why": {
+    "et": "Māori once hunted it for its meat and feathers; today every known bird is named, tagged and kept on predator-free islands."
+  },
+  "hb": [
+    "forest",
+    "scrub",
+    "grassland"
+  ],
+  "len": "58–64 cm",
+  "wt": "Males 1.5–3 kg; females 0.95–1.6 kg",
+  "rg": "New Zealand only: four small predator-free islands, plus a mainland sanctuary at Maungatautari since 2023.",
+  "df": "Plants only. It can tell foods apart by smell while foraging at night, which only one other parrot is known to do.",
+  "iu": "CR",
+  "cf": [
+    {
+      "slug": "kea",
+      "tip": "Both are New Zealand parrots, but the kākāpō is a heavy, flightless bird of the ground at night, while the kea flies and lives in South Island forests and mountains."
+    }
+  ],
+  "fx": [
+    "It may be one of the longest-lived birds, with a reported lifespan of up to 100 years.",
+    "It is the only parrot with a lek: males gather and display from bowls they dig in the ground, and females choose between them."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Kākāpō",
+      "url": "https://en.wikipedia.org/wiki/K%C4%81k%C4%81p%C5%8D",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "cf",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Kea",
+      "url": "https://en.wikipedia.org/wiki/Kea",
+      "for": [
+        "cf"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"only a couple of hundred alive\" is out of date: \"the total known population of living individuals is 325 (as of 2026)\". Suggested wording: \"The world's only flightless parrot, with just 325 known birds alive in 2026.\" Optional (lf): \"a reported lifespan of up to 100 years\"; animals.js has 60–90. Suggested lf:\"Up to 100 years\". et stays \"no\" (protected today).",
+  "rv": "2026-09-29"
+}

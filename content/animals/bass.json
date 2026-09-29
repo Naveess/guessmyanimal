@@ -1,0 +1,33 @@
+{
+  "sci": "Micropterus nigricans",
+  "ov": "The largemouth bass, an olive-green freshwater fish with a dark, jagged stripe along each side, native to the eastern and central US, south-eastern Canada and northern Mexico. It is the largest black bass and a prized sport fish, and has been released in many other countries.",
+  "hb": [
+    "freshwater"
+  ],
+  "len": "Up to 75 cm (record)",
+  "wt": "Up to 11.4 kg (unofficial record)",
+  "rg": "Native to the eastern and central US, south-eastern Canada and northern Mexico. Introduced widely, including Japan, Namibia, Cuba, Guatemala and the Iberian Peninsula.",
+  "df": "Young bass eat small fish, water fleas, shrimp and insects; adults eat mostly fish, plus crayfish, frogs, snakes and salamanders. Prey can be half its own length.",
+  "fx": [
+    "It has been blamed for the extinction of the Atitlán grebe, a waterbird of Lake Atitlán in Guatemala.",
+    "The male guards the nest until the eggs hatch."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Largemouth bass",
+      "url": "https://en.wikipedia.org/wiki/Largemouth_bass",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (r): animals.js lists \"Oceans\", but the largemouth bass is a freshwater fish and the article gives no sea range. Suggest r:[\"North America\",\"Rivers\"], plus optional introduced ranges: Asia (Japan), Africa (Namibia), Europe (Iberia), Central America (Guatemala). ANSWER CHECK (fact): \"worth billions a year\" is not in the article. Suggested wording: \"Anglers prize its fight so much it has been released worldwide, where it often becomes invasive.\" lf 10–16 is confirmed (\"average lifespan of 10 to 16 years in the wild\").",
+  "rv": "2026-09-29"
+}

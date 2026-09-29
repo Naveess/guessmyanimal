@@ -1,0 +1,36 @@
+{
+  "sci": "Poecilia reticulata",
+  "ov": "A small freshwater fish from north-east South America that gives birth to live young. Males are smaller and splashed with bright colours; females are grey. Released on every continent except Antarctica, it is one of the most widespread tropical fish and a very popular aquarium fish.",
+  "why": {
+    "p": "One of the most popular freshwater aquarium fish.",
+    "dm": "Breeders have produced many fancy strains, bigger and more colourful than wild guppies."
+  },
+  "hb": [
+    "freshwater"
+  ],
+  "len": "Males 1.5–4 cm; females 3–7 cm",
+  "rg": "Native to Venezuela, Guyana, Brazil, Trinidad and Tobago, Barbados and Antigua; introduced to countries on every continent except Antarctica.",
+  "df": "Algae, diatoms, small invertebrates, insect larvae, plant bits and detritus. Algae are usually the biggest part.",
+  "fx": [
+    "Females can first give birth at just 10–20 weeks old.",
+    "Guppies from streams with many predators school more than those from safe streams."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Guppy",
+      "url": "https://en.wikipedia.org/wiki/Guppy",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"released guppies now control mosquitoes worldwide\" overstates it: guppies were introduced \"most often as a means of mosquito control\", but \"in many cases, these guppies have had a negative impact on native fish populations\". Suggested wording: \"Gives birth to live young, and has been released worldwide to eat mosquito larvae, often harming native fish.\" Optional (r): add Worldwide (introduced on every continent but Antarctica). lf 2–3 fits (\"typically around 2 years\").",
+  "rv": "2026-09-29"
+}

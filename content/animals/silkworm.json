@@ -1,0 +1,30 @@
+{
+  "sci": "Bombyx mori",
+  "ov": "The caterpillar of the domestic silk moth, bred in China for at least 5,000 years to make silk. It eats almost nothing but mulberry leaves, then wraps itself in a cocoon spun from a single raw-silk thread 300–900 m long. The adult moth cannot fly and depends on people to breed.",
+  "why": {
+    "et": "The pupae are eaten as a snack or dish in Korea (beondegi), China, Japan, Vietnam, Thailand and Assam in India.",
+    "dm": "Fully domesticated: thousands of years of breeding have left the moth unable to fly or to breed without human help."
+  },
+  "rg": "Kept wherever silk is farmed. It was domesticated in China from the wild silk moth, which ranges from northern India to China, Korea, Japan and far-eastern Russia.",
+  "df": "Almost only the leaves of white mulberry, though it will eat other mulberries and some other plants. The adult moth does not feed at all.",
+  "fx": [
+    "Making one kilogram of silk takes about 4,000–7,000 cocoons.",
+    "Cocoons are boiled to unwind the silk, which kills the pupa inside; \"Ahimsa silk\" lets the moth emerge first."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Bombyx mori",
+      "url": "https://en.wikipedia.org/wiki/Bombyx_mori",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"it can no longer survive in the wild\" is close but not what the article says: domestic silk moths \"are entirely dependent on humans for reproduction\" and \"cannot fly\". Suggested wording: \"Domesticated for over 5,000 years, the adult moth can no longer fly and needs people to breed.\" et \"yes\" fits (pupae eaten across East and Southeast Asia). lf \"2 months\" is not in the article.",
+  "rv": "2026-09-29"
+}
