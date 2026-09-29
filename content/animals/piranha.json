@@ -1,0 +1,33 @@
+{
+  "sci": "Serrasalminae (in part)",
+  "ov": "Freshwater fish of South American rivers and floodplains with razor-sharp teeth. Often described as ferocious fish-eaters, most actually eat a varied diet that includes plants.",
+  "why": {
+    "dg": "Despite the media image, piranhas usually aren’t a serious risk to people, though attacks do happen."
+  },
+  "hb": [
+    "freshwater",
+    "wetland",
+    "rainforest"
+  ],
+  "rg": "South American rivers, floodplains, lakes and reservoirs.",
+  "df": "Varied: fish and other animals, plus plant material.",
+  "fx": [
+    "Its name comes from an Old Tupi word first recorded in 1585 as a translation for “scissors”."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Piranha",
+      "url": "https://en.wikipedia.org/wiki/Piranha",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "Group entry. ANSWER CONFLICT: animals.js d is \"Carnivore\", but Wikipedia says piranhas also eat plants, \"leading to their classification as omnivorous\". Consider d:\"Omnivore\". ANSWER CHECK (fact): the animals.js fact mentions a \"Roosevelt stunt\", which isn’t in the article. Suggested wording: \"Its feeding-frenzy reputation is exaggerated: most piranhas also eat plants.\" RESOLVED (owner: approve all): d changed to \"Omnivore\"; fact rewritten as suggested."
+}

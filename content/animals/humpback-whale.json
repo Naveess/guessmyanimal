@@ -1,0 +1,32 @@
+{
+  "sci": "Megaptera novaeangliae",
+  "ov": "A baleen whale with very long flippers and knobbly bumps on its head, famous for breaching and for the long, complex songs males sing. It migrates between feeding grounds near the poles and breeding grounds near the equator.",
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "len": "14–17 m",
+  "wt": "Up to 40 t",
+  "rg": "Oceans worldwide.",
+  "df": "Mostly krill and small fish, often caught with bubble nets.",
+  "fx": [
+    "Male songs typically last from 4 to 33 minutes."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Humpback whale",
+      "url": "https://en.wikipedia.org/wiki/Humpback_whale",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "The existing fact is half confirmed: humpbacks hunt with bubble nets, but song changing across a season isn’t in the article. Suggested wording: \"Blows nets of bubbles to trap fish, and males sing songs up to half an hour long.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

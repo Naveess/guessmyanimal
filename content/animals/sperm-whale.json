@@ -1,0 +1,27 @@
+{
+  "sci": "Physeter macrocephalus",
+  "ov": "The largest toothed whale and the largest toothed predator. Females and young live in groups, while adult males live alone outside the breeding season. It has the largest brain on Earth.",
+  "hb": [
+    "ocean"
+  ],
+  "rg": "Oceans worldwide.",
+  "df": "Mainly squid, caught on deep dives down to 2,250 m.",
+  "fx": [
+    "Its clicks reach 236 decibels, the loudest sound made by any animal."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Sperm whale",
+      "url": "https://en.wikipedia.org/wiki/Sperm_whale",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "The existing fact is mostly confirmed: the largest brain on Earth, dives to 2,250 m, and squid is its main prey, though the article doesn’t single out giant squid. Suggested wording: \"The largest brain on Earth, and it dives over 2 km down to hunt squid.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

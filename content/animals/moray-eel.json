@@ -1,0 +1,26 @@
+{
+  "sci": "Muraenidae",
+  "ov": "About 200 species of eels found worldwide, almost all marine. They hide in crevices to ambush prey and have to keep gulping to breathe.",
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "rg": "Seas worldwide; a few in brackish or fresh water.",
+  "fx": [
+    "A moray must keep opening and closing its mouth to pass water over its gills."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Moray eel",
+      "url": "https://en.wikipedia.org/wiki/Moray_eel",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "Group entry. The existing fact is confirmed: morays have pharyngeal jaws further back in the head that move forward to seize prey. No why.dg or why.et: the source doesn’t cover these."
+}

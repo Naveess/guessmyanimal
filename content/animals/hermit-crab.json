@@ -1,0 +1,33 @@
+{
+  "sci": "Paguroidea",
+  "ov": "About 800 species of crustaceans that protect their soft abdomen in empty snail shells. Most live in the sea, and some live on land.",
+  "hb": [
+    "coast",
+    "ocean"
+  ],
+  "rg": "Almost all marine environments; some species live on land.",
+  "cf": [
+    {
+      "slug": "crab",
+      "tip": "Unlike most crabs, a hermit crab has a soft abdomen that it protects in a borrowed shell."
+    }
+  ],
+  "fx": [
+    "The oldest known hermit crab fossil is from the early Jurassic."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Hermit crab",
+      "url": "https://en.wikipedia.org/wiki/Hermit_crab",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "Group entry. The existing fact is confirmed: hermit crabs form vacancy chains, queueing by size to swap shells in order. No why.p: the article doesn’t mention pets in my check."
+}

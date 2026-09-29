@@ -1,0 +1,29 @@
+{
+  "sci": "Xiphias gladius",
+  "ov": "A large, migratory predatory fish with a long, flat, pointed bill. Adults lose all their teeth and scales. It is the only member of its family.",
+  "hb": [
+    "ocean"
+  ],
+  "len": "Commonly 3 m; up to 4.55 m",
+  "wt": "Up to 650 kg",
+  "rg": "Tropical and temperate Atlantic, Pacific and Indian oceans, usually down to 550 m.",
+  "fx": [
+    "It has been recorded as deep as 2,878 m."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Swordfish",
+      "url": "https://en.wikipedia.org/wiki/Swordfish",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "The existing fact is confirmed: heater organs next to the eyes warm its eyes and brain 10–15 °C above the water. No why.dg: the source doesn’t cover danger to people."
+}

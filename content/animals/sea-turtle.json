@@ -1,0 +1,26 @@
+{
+  "sci": "Chelonioidea",
+  "ov": "Seven species of ocean-going turtles, including the green, loggerhead, hawksbill and leatherback. Five of the seven are threatened with extinction.",
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "rg": "Oceans worldwide; females come ashore only to lay eggs.",
+  "fx": [
+    "Sea turtles navigate using the Earth’s magnetic field."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Sea turtle",
+      "url": "https://en.wikipedia.org/wiki/Sea_turtle",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "Group entry. The existing fact is mostly confirmed: some females return to the beach where they hatched. The \"30 years later\" figure isn’t in the article. Suggested wording: \"Some females return to the very beach where they hatched to lay their eggs.\" No why.et: the source doesn’t cover eating turtles. RESOLVED (owner: approve all): fact rewritten as suggested."
+}

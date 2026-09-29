@@ -1,0 +1,35 @@
+{
+  "sci": "Sepiidae",
+  "ov": "Marine cephalopods with W-shaped pupils, eight arms and two tentacles, and an internal shell, the cuttlebone, that controls buoyancy. They change colour, pattern and skin shape to hide and to signal.",
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "len": "Usually 15–25 cm; up to 50 cm (giant cuttlefish)",
+  "df": "Small molluscs, crabs, shrimp, fish, octopuses and other cuttlefish.",
+  "cf": [
+    {
+      "slug": "squid",
+      "tip": "Cuttlefish, squid and octopuses are cephalopods; the cuttlefish has an internal cuttlebone."
+    }
+  ],
+  "fx": [
+    "A cuttlefish usually lives only one to two years."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Cuttlefish",
+      "url": "https://en.wikipedia.org/wiki/Cuttlefish",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "df",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Colourblind, yet it produces the most sophisticated camouflage in the animal kingdom\" is half sourced: camouflage yes, colour blindness and \"most sophisticated\" not in my check. Suggested wording: \"Changes colour, pattern and even skin texture to hide or signal.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}

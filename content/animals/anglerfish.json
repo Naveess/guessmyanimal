@@ -1,0 +1,25 @@
+{
+  "sci": "Lophiiformes",
+  "ov": "Fish that lure prey with a modified fin ray on the head, tipped with a lure that glows in some species. They live in seas worldwide, from the seabed to the deep open ocean, and include monkfish and frogfish.",
+  "hb": [
+    "ocean"
+  ],
+  "rg": "Seas worldwide.",
+  "fx": [
+    "In some deep-sea anglerfish the female can be several orders of magnitude heavier than the male."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Anglerfish",
+      "url": "https://en.wikipedia.org/wiki/Anglerfish",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "Group entry. The existing fact is confirmed for deep-sea anglerfish: males attach to the much larger female (sexual parasitism). ANSWER CHECK: et is \"no\", but monkfish are anglerfish and widely eaten. The article doesn’t cover eating them; your call. RESOLVED (owner: approve all): et left as \"no\" (owner didn’t ask to change it)."
+}

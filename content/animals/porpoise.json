@@ -1,0 +1,35 @@
+{
+  "sci": "Phocoenidae",
+  "ov": "Eight species of small, dolphin-like toothed whales, more closely related to narwhals and belugas than to dolphins. They have spade-shaped teeth and no pronounced beak.",
+  "hb": [
+    "coast",
+    "ocean"
+  ],
+  "len": "1.4 m (vaquita) to 2.3 m (Dall’s porpoise)",
+  "wt": "54 kg (vaquita) to 220 kg (Dall’s porpoise)",
+  "cf": [
+    {
+      "slug": "dolphin",
+      "tip": "Porpoises have spade-shaped teeth and no pronounced beak; dolphins have cone-shaped teeth."
+    }
+  ],
+  "fx": [
+    "The vaquita, the smallest porpoise, is one of the smallest toothed whales."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Porpoise",
+      "url": "https://en.wikipedia.org/wiki/Porpoise",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "Group entry. The existing fact is confirmed."
+}

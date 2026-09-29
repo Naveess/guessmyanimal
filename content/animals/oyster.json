@@ -1,0 +1,28 @@
+{
+  "sci": "Ostreoidea (in part)",
+  "ov": "Saltwater bivalve molluscs with rough, often irregular shells. Some are eaten as a delicacy, and pearl oysters are harvested for their pearls.",
+  "hb": [
+    "coast",
+    "ocean"
+  ],
+  "rg": "Marine and brackish waters.",
+  "df": "Plankton filtered from the water over the gills.",
+  "fx": [
+    "There is no evidence that oysters have a brain."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Oyster",
+      "url": "https://en.wikipedia.org/wiki/Oyster",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "rv": "2026-09-29",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Filters up to 200 litres of water a day, and can change sex more than once\" is half sourced: up to 190 litres a day in ideal lab conditions (11–45 litres normally), but changing sex isn’t in the article, which says some carry both eggs and sperm. Suggested wording: \"Can filter up to 190 litres of water a day, and some carry both eggs and sperm.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+}
