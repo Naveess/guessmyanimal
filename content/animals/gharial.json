@@ -1,0 +1,35 @@
+{
+  "sci": "Gavialis gangeticus",
+  "ov": "A crocodilian of the rivers of the northern Indian subcontinent, and among the longest of all, with a very long, narrow snout and 110 interlocking teeth built for catching fish. Adult males grow a pot-shaped knob on the snout tip, the \"ghara\" that gives the animal its name.",
+  "hb": [
+    "freshwater"
+  ],
+  "len": "Females 2.6–4.5 m; males 3–6 m",
+  "wt": "Males about 160 kg on average; large males 600–750 kg",
+  "rg": "Rivers of India and Nepal, with a few in Bangladesh; locally extinct in Bhutan and Myanmar.",
+  "df": "Mainly fish, swallowed whole; young eat insects, tadpoles and frogs, and adults also take small crustaceans.",
+  "fx": [
+    "It survives in only about 2% of its former range; in 2019 there were at most about 900 in the wild.",
+    "The male’s ghara lets it make a hissing sound that can be heard 75 m away."
+  ],
+  "iu": "CR",
+  "src": [
+    {
+      "title": "Wikipedia: Gharial",
+      "url": "https://en.wikipedia.org/wiki/Gharial",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx",
+        "iu"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): ANSWER CHECK (fact): \"it only eats fish\" overstates it: adults also eat small crustaceans, and turtle remains have been found in gharial stomachs. Suggested wording: \"Its long, narrow snout and 110 interlocking teeth are built for catching fish, its main food.\" Optional: dg is \"some\", but the article describes no attacks on people and says the local belief that gharials eat humans may come from jewellery found in their stomachs. Consider dg:\"no\".",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,38 @@
+{
+  "sci": "Lithobates catesbeianus",
+  "ov": "The largest true frog in North America, named for the male’s call, which sounds like a bull bellowing. It is a generalist predator of ponds, lakes and swamps, and has been introduced to more than 40 countries, often for frog farming, where it is usually invasive.",
+  "why": {
+    "et": "Commonly eaten across its range, especially in the southern US; people eat the legs."
+  },
+  "hb": [
+    "freshwater",
+    "wetland"
+  ],
+  "len": "9–15 cm snout to vent; rarely 20 cm",
+  "wt": "Up to 500 g; rarely 800 g",
+  "rg": "Native to eastern North America; introduced to the western US, Mexico, the Caribbean, South America, Europe and Asia.",
+  "df": "Any small animal it can overpower, from insects and crayfish to snakes, rodents, small birds and bats.",
+  "fx": [
+    "It allows for light bending at the water surface, striking behind where underwater prey appears to be.",
+    "A female can lay 1,000 to 40,000 eggs, which hatch in 3 to 5 days."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: American bullfrog",
+      "url": "https://en.wikipedia.org/wiki/American_bullfrog",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: stomachs have held \"small birds\" and \"other frogs and toads\". REGION: introduced populations; suggest adding Central America, South America, Europe and Asia. Optional (p): \"Albino bullfrogs are sometimes kept as pets\"; consider p:\"some\". lf 7–10 fits \"8 to 10 years\" maximum in the wild.",
+  "rv": "2026-09-29"
+}

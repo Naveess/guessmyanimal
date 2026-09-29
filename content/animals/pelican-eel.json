@@ -1,0 +1,31 @@
+{
+  "sci": "Eurypharynx pelecanoides",
+  "ov": "A deep-sea eel of temperate and tropical oceans, living 500–3,000 m down, with a loosely hinged mouth much larger than its body. Despite its huge jaws it has only tiny teeth and eats mostly small crustaceans. Its ultra-black skin reflects less than 0.5% of light.",
+  "hb": [
+    "ocean"
+  ],
+  "len": "About 0.75 m; possibly up to 1 m",
+  "rg": "Temperate and tropical waters of all oceans.",
+  "df": "Mainly small crustaceans such as shrimp, plus squid.",
+  "fx": [
+    "The tip of its whip-like tail has a light organ that glows pink and gives off red flashes.",
+    "Many researchers believe pelican eels die shortly after breeding."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Pelican eel",
+      "url": "https://en.wikipedia.org/wiki/Pelican_eel",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: the mouth \"can be opened wide enough to swallow a fish much larger than the eel itself\", though it mostly eats small crustaceans. The 500–3,000 m depth is for the North Atlantic.",
+  "rv": "2026-09-29"
+}

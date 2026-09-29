@@ -1,0 +1,46 @@
+{
+  "sci": "Caimaninae",
+  "ov": "Six species of alligator relatives from Central and South America, living in marshes, swamps, lakes and mangrove rivers and fairly nocturnal. Most are small crocodilians of 6–40 kg, but the black caiman of the Amazon basin can top 4 m and 450 kg.",
+  "why": {
+    "et": "Humans are their main predator, hunting caimans for their meat and skin."
+  },
+  "hb": [
+    "wetland",
+    "freshwater",
+    "rainforest"
+  ],
+  "len": "Most 2–2.5 m; black caiman over 4 m",
+  "wt": "Mostly 6–40 kg; black caiman over 450 kg",
+  "rg": "Central and South America; the spectacled caiman has been introduced to Florida, Cuba and Puerto Rico.",
+  "df": "Mainly fish, plus insects, birds, small mammals and reptiles.",
+  "fx": [
+    "In droughts, caimans may dig a burrow and wait it out in a summer dormancy called aestivation.",
+    "About four million spectacled caimans live in Venezuela alone."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Caiman",
+      "url": "https://en.wikipedia.org/wiki/Caiman",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "wt",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Spectacled caiman",
+      "url": "https://en.wikipedia.org/wiki/Spectacled_caiman",
+      "for": [
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. ANSWER CHECK (fact): \"more of them in the Amazon than people in London\" is not in the sources. Suggested wording: \"A smaller relative of the alligator; spectacled caimans number in the millions, four million in Venezuela alone.\" REGION: suggest adding North America (introduced to Florida, where it is invasive).",
+  "rv": "2026-09-29"
+}

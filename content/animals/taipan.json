@@ -1,0 +1,40 @@
+{
+  "sci": "Oxyuranus",
+  "ov": "Three species of large, fast, extremely venomous snakes from Australia and New Guinea, in the cobra family. The inland taipan is widely regarded as the most venomous snake in the world, yet it is usually shy and placid and lives in remote areas, so it rarely meets people.",
+  "len": "Coastal taipan: about 2 m on average, up to 2.9 m",
+  "rg": "Australia and New Guinea.",
+  "fx": [
+    "The name comes from the Wik-Mungkan people of Cape York, who used it for the Rainbow Serpent.",
+    "Inland taipans turn darker in winter to soak up the sun’s heat, and paler in summer."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Taipan",
+      "url": "https://en.wikipedia.org/wiki/Taipan",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Inland taipan",
+      "url": "https://en.wikipedia.org/wiki/Inland_taipan",
+      "for": [
+        "ov",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Coastal taipan",
+      "url": "https://en.wikipedia.org/wiki/Coastal_taipan",
+      "for": [
+        "len",
+        "rg"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed (\"widely regarded as the most venomous snake in the world\", \"usually shy and reclusive\"). REGION: suggest adding New Guinea. lf 10–15 matches the inland taipan's 10–15 years in captivity.",
+  "rv": "2026-09-29"
+}

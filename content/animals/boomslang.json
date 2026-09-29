@@ -1,0 +1,29 @@
+{
+  "sci": "Dispholidus typus",
+  "ov": "A highly venomous tree snake of sub-Saharan Africa; its name is Afrikaans for \"tree snake\". It has very large eyes and excellent eyesight. Males are usually light green, while females may be brown. It is timid, and bites mostly happen when people try to catch or kill it.",
+  "len": "Usually 100–160 cm",
+  "wt": "175–510 g",
+  "rg": "Sub-Saharan Africa.",
+  "df": "Chameleons and other tree lizards, frogs, and sometimes small mammals, birds and eggs.",
+  "fx": [
+    "Herpetologist Karl Schmidt died in 1957 after a bite from a young boomslang he doubted could kill him.",
+    "Its venom is slow-acting, so symptoms may not appear until many hours after a bite."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Boomslang",
+      "url": "https://en.wikipedia.org/wiki/Boomslang",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): ANSWER CHECK (fact): rear fangs are confirmed, but \"stops blood clotting entirely\" is loose: the venom makes many small clots so the blood cannot clot properly, causing heavy bleeding. Suggested wording: \"Fangs sit at the back of its mouth, and its slow venom causes uncontrollable bleeding.\"",
+  "rv": "2026-09-29"
+}

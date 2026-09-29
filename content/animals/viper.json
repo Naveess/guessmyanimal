@@ -1,0 +1,48 @@
+{
+  "sci": "Viperidae",
+  "ov": "Venomous snakes with long, hinged fangs that fold back against the roof of the mouth when not in use. Vipers live in most parts of the world, but not Antarctica or Australia, and most give birth to live young. The common European adder lives farther north than any other snake.",
+  "why": {
+    "dg": "All vipers are venomous, but the common adder is not aggressive, and its bites, though very painful, are rarely fatal."
+  },
+  "hb": [
+    "grassland",
+    "scrub",
+    "forest"
+  ],
+  "len": "Common adder: 60–90 cm",
+  "wt": "Common adder: 50–180 g",
+  "rg": "The Americas, Africa, Europe and Asia. The adder ranges from Britain across Eurasia to the Pacific, north of the Arctic Circle.",
+  "df": "The adder eats mainly small mammals such as mice, voles and shrews, plus lizards, birds and amphibians.",
+  "fx": [
+    "Pit vipers, such as rattlesnakes, have heat-sensing pits near their nostrils that detect warm-blooded prey.",
+    "In Britain, male adders hibernate for about 150 days a year and females for about 180."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Viperidae",
+      "url": "https://en.wikipedia.org/wiki/Viperidae",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Vipera berus",
+      "url": "https://en.wikipedia.org/wiki/Vipera_berus",
+      "for": [
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry (alias \"adder\"). REGION: vipers are native to the Americas too; suggest adding North America, Central America and South America. ANSWER CHECK (fact): \"senses prey by body heat\" is true of pit vipers only; the adder has no heat pits. \"Britain's only venomous snake\" is confirmed. Suggested wording: \"The adder is Britain's only venomous snake, and it lives farther north than any other snake.\"",
+  "rv": "2026-09-29"
+}

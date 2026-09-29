@@ -1,0 +1,33 @@
+{
+  "sci": "Proteus",
+  "ov": "A blind, pale salamander that lives its whole life underwater in the flooded limestone caves of the Dinaric Alps, the only cave-only vertebrate genus in Europe. Long treated as one species, it was split into nine in 2026. It finds its way by smell, hearing and even magnetic fields.",
+  "hb": [
+    "freshwater"
+  ],
+  "len": "20–30 cm; up to 40 cm",
+  "rg": "Underground waters of Slovenia, southwestern Croatia, Bosnia and Herzegovina and northeastern Italy.",
+  "df": "Small crustaceans, snails and occasionally insects.",
+  "fx": [
+    "Local people once believed olms washed out of caves by heavy rain were the young of a cave dragon.",
+    "Adults live about 68.5 years on average, and the maximum lifespan is estimated at over 100."
+  ],
+  "iu": "VU",
+  "src": [
+    {
+      "title": "Wikipedia: Olm",
+      "url": "https://en.wikipedia.org/wiki/Olm",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx",
+        "iu"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: \"an olm can survive up to 10 years without food\". The IUCN rating (Vulnerable, 2022) predates the 2026 split into nine species. ANSWER CHECK (so): animals.js has \"Solitary\", but \"Olms are gregarious, and usually aggregate either under stones or in fissures\". Suggest so:\"Groups\".",
+  "rv": "2026-09-29"
+}

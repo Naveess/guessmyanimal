@@ -1,0 +1,41 @@
+{
+  "sci": "Basiliscus",
+  "ov": "Four species of large lizards from the rainforests of southern Mexico, Central America and northern South America. They are called Jesus Christ lizards because they can sprint across water on their hind legs, helped by flaps of skin along their toes. They are also good climbers and swimmers.",
+  "hb": [
+    "rainforest",
+    "freshwater"
+  ],
+  "len": "70–75 cm on average, including the tail",
+  "wt": "Female common basilisk: 135–194 g; males about double",
+  "rg": "Southern Mexico to Ecuador and Venezuela; the brown basilisk has been introduced to Florida.",
+  "df": "Common basilisk: insects, flowers and small animals such as snakes, birds, eggs and fish.",
+  "fx": [
+    "The common basilisk runs on water at about 24 km/h (15 mph), only a little slower than on land.",
+    "It can stay underwater for up to half an hour."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Basiliscus",
+      "url": "https://en.wikipedia.org/wiki/Basiliscus_(genus)",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: Common basilisk",
+      "url": "https://en.wikipedia.org/wiki/Common_basilisk",
+      "for": [
+        "ov",
+        "hb",
+        "wt",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. ANSWER CHECK (fact): \"up to 20 metres\" is for young basilisks; adults cross \"only a few meters before sinking\". Suggested wording: \"Runs across water on its back legs; young ones manage 10 to 20 metres before sinking.\" REGION: suggest adding North America (introduced to Florida). lf 7–8 matches the common basilisk's average of seven years in captivity.",
+  "rv": "2026-09-29"
+}

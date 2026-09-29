@@ -1,0 +1,35 @@
+{
+  "sci": "Cryptobranchus alleganiensis",
+  "ov": "A giant aquatic salamander of streams in the eastern and central United States, and the largest amphibian in North America. It breathes mostly through the folds of skin along its sides, which are rich in blood vessels, and walks along stream beds instead of swimming.",
+  "hb": [
+    "freshwater"
+  ],
+  "len": "30–74 cm in total",
+  "wt": "1.5–2.5 kg",
+  "rg": "Eastern and central United States.",
+  "df": "Mainly crayfish and small fish, caught at night; also insects, worms, tadpoles and smaller salamanders.",
+  "fx": [
+    "Its many nicknames include snot otter, lasagna lizard and devil dog.",
+    "Nearly 80% of eastern hellbender populations are declining or have disappeared."
+  ],
+  "iu": "VU",
+  "src": [
+    {
+      "title": "Wikipedia: Hellbender",
+      "url": "https://en.wikipedia.org/wiki/Hellbender",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx",
+        "iu"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed (largest salamander in North America; breathes through skin folds). Optional: its total length is 30–74 cm, so \"at 70 cm\" could read \"up to 74 cm\".",
+  "rv": "2026-09-29"
+}

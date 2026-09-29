@@ -1,0 +1,42 @@
+{
+  "sci": "Dendroaspis",
+  "ov": "Four species of fast, highly venomous African snakes in the cobra family. Three are green and live in trees; the black mamba is brown or grey and lives mostly on the ground. All hunt by day, and the World Health Organization classes all four as snakes of medical importance.",
+  "hb": [
+    "grassland",
+    "forest"
+  ],
+  "len": "Black mamba: usually 2–3 m; up to 4.5 m reported",
+  "wt": "Black mamba: about 1–1.6 kg",
+  "rg": "Sub-Saharan Africa.",
+  "df": "Birds, lizards and small mammals.",
+  "fx": [
+    "The black mamba is the second-longest venomous snake, after the king cobra.",
+    "Stories of black mambas chasing people are common, but they usually avoid humans and flee to their lair."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mamba",
+      "url": "https://en.wikipedia.org/wiki/Mamba",
+      "for": [
+        "sci",
+        "ov",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Black mamba",
+      "url": "https://en.wikipedia.org/wiki/Black_mamba",
+      "for": [
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is mostly confirmed: \"the colour name describes rather the inside of its mouth\". The article says its reputed speed is exaggerated: it \"cannot move more quickly than 20 km/h (12 mph)\", and up to 16 km/h (10 mph) is typical. Optional wording: \"Named for the black inside of its mouth, not its skin, and its top speed is about 12 mph.\" ANSWER CHECK (co): animals.js has grey and brown, but three of the four species are green. Consider adding \"green\".",
+  "rv": "2026-09-29"
+}

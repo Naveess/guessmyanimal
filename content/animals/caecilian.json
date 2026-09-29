@@ -1,0 +1,27 @@
+{
+  "sci": "Gymnophiona",
+  "ov": "More than 220 species of limbless, worm- or snake-shaped amphibians with small eyes or none, living hidden in soil or streambeds. They sense their surroundings with small tentacles between the eyes and nostrils. Most are small, but Caecilia thompsoni reaches 1.5 m.",
+  "len": "Mostly small; Caecilia thompsoni up to 1.5 m",
+  "rg": "Wet tropics of South and Central America, East and West Africa, India, Sri Lanka and Southeast Asia.",
+  "df": "Small underground animals such as earthworms.",
+  "fx": [
+    "In some species the mother grows a fat-rich outer skin that her young peel off and eat every three days.",
+    "About 75% of species give birth to live young, and before birth the young scrape cells from the mother’s oviduct with special teeth."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Caecilian",
+      "url": "https://en.wikipedia.org/wiki/Caecilian",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed (maternal dermatophagy). ANSWER CHECK (eg): animals.js has eg:true, but \"about 75% of caecilians are viviparous\" and only about 25% lay eggs. Suggest eg:\"some\" (\"Some species\"), or eg:false under the majority rule. REGION: suggest adding Central America.",
+  "rv": "2026-09-29"
+}

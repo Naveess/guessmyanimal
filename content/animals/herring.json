@@ -1,0 +1,41 @@
+{
+  "sci": "Clupeidae, mainly the genus Clupea",
+  "ov": "Oily forage fish that travel in huge schools through the shallow, temperate waters of the North Atlantic and North Pacific, including the Baltic Sea. Long an important food fish, they are often salted, smoked or pickled. The Atlantic herring makes up over half of the herring catch.",
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "len": "Baltic herring 14–18 cm; Atlantic herring up to about 46 cm",
+  "wt": "Atlantic herring: up to 700 g",
+  "rg": "North Atlantic and North Pacific, the Baltic Sea and off western South America.",
+  "df": "Copepods and other zooplankton, krill, and small fish and fish larvae.",
+  "fx": [
+    "At night, a passing school can set the plankton around it glowing.",
+    "In the UK, herring were once known as \"silver darlings\"."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Herring",
+      "url": "https://en.wikipedia.org/wiki/Herring",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Atlantic herring",
+      "url": "https://en.wikipedia.org/wiki/Atlantic_herring",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed: North Atlantic herring schools \"have been measured up to 4 cubic kilometres\", holding \"an estimated four billion fish\". lf 12–20 fits: mature at 3–5 years, then a life expectancy of 12–16 years.",
+  "rv": "2026-09-29"
+}

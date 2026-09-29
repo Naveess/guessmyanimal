@@ -1,0 +1,39 @@
+{
+  "sci": "Several families, mainly Hylidae and Rhacophoridae",
+  "ov": "Any frog that spends most of its life in trees. Tree frogs come from several families that are not closely related but have evolved to look alike: usually small and slender, with sticky discs on their finger and toe tips that give them a strong grip.",
+  "rg": "Hylid tree frogs: Europe, temperate Asia, Australia and the Americas. Shrub frogs: Africa and South and Southeast Asia.",
+  "df": "Mostly insects and other invertebrates; some larger species eat small vertebrates.",
+  "fx": [
+    "Gliding has evolved separately in several tree frog families, using fully webbed hands and feet and flaps of skin.",
+    "Some lay their eggs on leaves over water, so the tadpoles drop into the pond when they hatch."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Tree frog",
+      "url": "https://en.wikipedia.org/wiki/Tree_frog",
+      "for": [
+        "sci",
+        "ov",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: Hylidae",
+      "url": "https://en.wikipedia.org/wiki/Hylidae",
+      "for": [
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Flying frog",
+      "url": "https://en.wikipedia.org/wiki/Flying_frog",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. ANSWER CHECK (fact): gliding is confirmed, but \"hang from a single leaf\" is not in the sources. Suggested wording: \"Sticky toe pads give it a strong grip, and some species can glide between trees.\"",
+  "rv": "2026-09-29"
+}
