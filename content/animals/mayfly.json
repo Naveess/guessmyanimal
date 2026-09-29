@@ -1,0 +1,35 @@
+{
+  "sci": "Ephemeroptera",
+  "ov": "Over 3,000 species of ancient insects with upright wings and long tails. The nymphs live in clean fresh water, sometimes for years. The adults cannot feed and usually live from minutes to a day or two, emerging in huge synchronised hatches to mate.",
+  "why": {
+    "et": "Eaten in several cultures: pressed into kungu cakes in Malawi, collected around Lake Victoria, and eaten in parts of China and Japan."
+  },
+  "hb": [
+    "freshwater"
+  ],
+  "len": "Nymphs 3–30 mm when ready to emerge",
+  "rg": "Clean fresh water on every continent except Antarctica, though often absent from oceanic islands.",
+  "df": "Nymphs mostly eat algae, diatoms and detritus, and a few hunt small insect larvae. Adults do not feed at all.",
+  "fx": [
+    "Adult females of Dolania americana live for less than five minutes.",
+    "They are the only insects that moult again after they already have working wings."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mayfly",
+      "url": "https://en.wikipedia.org/wiki/Mayfly",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): ANSWER CHECK (et): animals.js has \"no\", but \"mayflies are eaten in several cultures\" (Malawi, Lake Victoria, China, Japan). Suggest et:\"some\". ANSWER CHECK (fact): nymphs \"may live for several years in the water\", not one year, and adults have \"vestigial\" mouthparts rather than no mouth. Suggested wording: \"Can spend years as a nymph but often less than a day as an adult, which cannot eat.\" Optional (lf): the whole life is up to several years; suggest lf:\"Up to a few years (1–2 days as an adult)\".",
+  "rv": "2026-09-29"
+}

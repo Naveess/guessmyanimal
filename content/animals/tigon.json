@@ -1,0 +1,36 @@
+{
+  "sci": "Panthera tigris × Panthera leo",
+  "ov": "The hybrid of a male tiger and a lioness. It can have both spots from its mother and stripes from its father, and males grow at most a short, ruff-like mane. Unlike the liger it grows no bigger than its parents. Tigons exist only in captivity.",
+  "hb": [
+    "towns"
+  ],
+  "wt": "Often around 180 kg",
+  "rg": "Only in captivity, because lion and tiger habitats do not overlap in the wild today.",
+  "cf": [
+    {
+      "slug": "liger",
+      "tip": "A tigon has a tiger father and a lion mother; a liger is the reverse cross and grows much bigger, often 320–550 kg."
+    }
+  ],
+  "fx": [
+    "Male tigons are sterile, but females can breed: a tigoness at India's Alipore Zoo had seven cubs with a lion.",
+    "One of those cubs, a \"litigon\" named Cubanacan, weighed at least 363 kg."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Tigon",
+      "url": "https://en.wikipedia.org/wiki/Tigon",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "wt",
+        "rg",
+        "cf",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): Hybrid page. ANSWER CHECK (fact): \"usually ends up smaller than either parent\" is not what the article says: tigons \"do not exceed the size of their parents' original species… but they do not exhibit any kind of dwarfism\". Suggested wording: \"A tiger crossed with a lioness; unlike the liger, it grows no bigger than its parents.\" hb \"towns\" stands in for zoos. sw, so and lf are not in the article.",
+  "rv": "2026-09-29"
+}

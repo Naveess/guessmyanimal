@@ -1,0 +1,34 @@
+{
+  "sci": "Tettigoniidae",
+  "ov": "More than 8,000 species of long-horned relatives of grasshoppers, also called bush crickets. Many are green and leaf-shaped, live in trees and call loudly on summer nights. Their thread-like antennae, which can be longer than the body, tell them apart from grasshoppers.",
+  "why": {
+    "dg": "Harmless, though large ones can give a painful bite or pinch if handled; it seldom breaks the skin.",
+    "et": "Some species are eaten, such as the nsenene of Uganda and neighbouring areas."
+  },
+  "hb": [
+    "forest"
+  ],
+  "len": "5–130 mm",
+  "df": "Most eat leaves, flowers, bark and seeds, but many species hunt insects, snails or even small lizards.",
+  "fx": [
+    "The name copies the loud three-part \"ka-ty-did\" song of a North American species.",
+    "Some nymphs mimic ants, spiders or assassin bugs until they are big enough to escape predators."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Tettigoniidae",
+      "url": "https://en.wikipedia.org/wiki/Tettigoniidae",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): leaf camouflage is confirmed (\"shapes and colours similar to leaves\"), but fake blemishes and bite marks are not in the article. Suggested wording: \"Many look just like leaves, and males call loudly on summer nights.\" ac \"night\" fits (\"many species are nocturnal\"). Optional (d): \"many species are exclusively predatory\", so Omnivore could fit; I would leave Herbivore. r Worldwide and lf are not in the article.",
+  "rv": "2026-09-29"
+}

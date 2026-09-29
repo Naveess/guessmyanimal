@@ -1,0 +1,34 @@
+{
+  "sci": "Pectinidae",
+  "ov": "Sea bivalves found in every ocean but never in fresh water. Unlike most bivalves, many are free-living and swim in short bursts, clapping their shells to jet away from predators such as starfish. A ring of tiny eyes lines the edge of the body inside the shell.",
+  "why": {
+    "et": "Highly prized as seafood, and some species are farmed; the part usually sold as \"scallop\" is the big adductor muscle."
+  },
+  "hb": [
+    "coast",
+    "ocean"
+  ],
+  "rg": "All the world's oceans; never in fresh water.",
+  "df": "Plankton, filtered from the water.",
+  "fx": [
+    "Its eyes focus light with curved mirrors made of guanine crystals instead of a lens.",
+    "Young scallops drift in the plankton, then settle and often anchor themselves with a thread."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Scallop",
+      "url": "https://en.wikipedia.org/wiki/Scallop",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"up to 200\" eyes and swimming by clapping are confirmed, but \"blue\" eyes are not in the article (it describes small, about 1 mm, mirror-backed eyes). Suggested wording: \"Has up to 200 tiny mirror-backed eyes around its shell, and swims by clapping.\" lf 10–20 is not in the article.",
+  "rv": "2026-09-29"
+}

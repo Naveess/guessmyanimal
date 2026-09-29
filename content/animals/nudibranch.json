@@ -1,0 +1,32 @@
+{
+  "sci": "Nudibranchia",
+  "ov": "About 3,000 species of soft-bodied sea slugs that shed their shell after the larval stage, many of them in startling colours. They live in seas worldwide, from the Arctic to Antarctica and from the shore to deep water, and every known species is a carnivore.",
+  "hb": [
+    "coast",
+    "ocean"
+  ],
+  "len": "4 mm to 60 cm",
+  "rg": "Seas worldwide, from the Arctic to the Southern Ocean; most diverse on warm, shallow reefs. One species lives near 2,500 m down.",
+  "df": "Sponges, hydroids, bryozoans, sea squirts, barnacles, anemones or other sea slugs, depending on the species.",
+  "fx": [
+    "Each one is both male and female, but it cannot fertilise itself.",
+    "Glaucus nudibranchs float upside down at the surface and prey on the Portuguese man o' war."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Nudibranch",
+      "url": "https://en.wikipedia.org/wiki/Nudibranch",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): close but mixes two things: some nudibranchs eat anemones, while the stored stingers come from hydroids (\"nudibranchs that feed on hydrozoids can store the hydrozoids' nematocysts\"). Suggested wording: \"Some eat stinging hydroids and keep the unfired stingers in their own backs for defence.\" lf \"1 year\" fits (\"a few weeks to a year\"). Optional (sw): nudibranchs \"are benthic animals, found crawling\"; only a few swim, so sw false could fit. I would leave it.",
+  "rv": "2026-09-29"
+}

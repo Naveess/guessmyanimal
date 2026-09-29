@@ -396,9 +396,9 @@
   <url><loc>https://guessmyanimal.com/animals/agouti</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/ape</loc></url>
   <url><loc>https://guessmyanimal.com/animals/human</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/liger</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/tigon</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/zonkey</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/liger</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/tigon</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/zonkey</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/mallard</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/egret</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/grouse</loc><lastmod>2026-09-29</lastmod></url>
@@ -423,8 +423,8 @@
   <url><loc>https://guessmyanimal.com/animals/lungfish</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/coelacanth</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/hagfish</loc><lastmod>2026-09-29</lastmod></url>
-  <url><loc>https://guessmyanimal.com/animals/blobfish</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/oarfish</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/blobfish</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/oarfish</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/crayfish</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/copperhead</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/taipan</loc><lastmod>2026-09-29</lastmod></url>
@@ -432,14 +432,14 @@
   <url><loc>https://guessmyanimal.com/animals/sidewinder</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/hellbender</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/olm</loc><lastmod>2026-09-29</lastmod></url>
-  <url><loc>https://guessmyanimal.com/animals/cicada</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/mayfly</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/katydid</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/nudibranch</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/limpet</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/scallop</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/zebrafish</loc></url>
-  <url><loc>https://guessmyanimal.com/animals/wrasse</loc></url>
+  <url><loc>https://guessmyanimal.com/animals/cicada</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/mayfly</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/katydid</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/nudibranch</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/limpet</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/scallop</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/zebrafish</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://guessmyanimal.com/animals/wrasse</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/vaquita</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/saiga</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://guessmyanimal.com/animals/takin</loc><lastmod>2026-09-29</lastmod></url>

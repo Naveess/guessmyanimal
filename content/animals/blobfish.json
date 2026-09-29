@@ -1,0 +1,38 @@
+{
+  "sci": "Psychrolutes marcidus",
+  "ov": "The smooth-head blobfish, a deep-sea fish of the waters off Australia, Tasmania and New Zealand, usually under 30 cm long. Its flesh is a jelly slightly less dense than water, so instead of swimming much it floats just above the seabed and eats what drifts past.",
+  "hb": [
+    "ocean"
+  ],
+  "len": "Usually under 30 cm",
+  "rg": "Deep water off mainland Australia, Tasmania and New Zealand, 600–1,200 m down.",
+  "df": "Edible matter that floats in front of it, such as deep-sea crustaceans.",
+  "fx": [
+    "It lives where the pressure is 60 to 120 times that at sea level, too deep for a swim bladder to work well.",
+    "The famous photo of \"Mr Blobby\" shows a related species, Psychrolutes microporos."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Psychrolutes marcidus",
+      "url": "https://en.wikipedia.org/wiki/Psychrolutes_marcidus",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Blobfish",
+      "url": "https://en.wikipedia.org/wiki/Blobfish",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"only looks melted out of water; pressure holds it in shape\" is not in the article, which only says its flesh is \"a gelatinous mass with a density slightly less than that of water\". Suggested wording: \"Its jelly-like body floats just above the seabed, 600–1,200 m down, without swimming.\" REGION: suggest adding Australia and New Zealand. lf 20–100, ac and so are not in the article (it is a short stub).",
+  "rv": "2026-09-29"
+}

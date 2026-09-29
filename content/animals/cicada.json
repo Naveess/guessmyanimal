@@ -1,0 +1,42 @@
+{
+  "sci": "Cicadoidea",
+  "ov": "More than 3,000 species of sap-sucking bugs with wide-set eyes and clear wings, living in trees in temperate and tropical places worldwide. Males make very loud songs by buckling drum-like tymbals. Most species appear every year, but North America's periodical cicadas emerge together every 13 or 17 years.",
+  "why": {
+    "et": "Eaten in various parts of the world, including China, Myanmar, Malaysia, central Africa and parts of Mexico."
+  },
+  "hb": [
+    "forest"
+  ],
+  "len": "Wingspan up to about 20 cm (Malaysian emperor cicada)",
+  "rg": "Temperate to tropical regions around the world; periodical cicadas live only in North America.",
+  "df": "Watery sap from the xylem of trees and other plants, sucked up through a sharp, beak-like mouthpart.",
+  "fx": [
+    "Desert cicadas can cool down by sweating excess sap out through pores in their backs.",
+    "The Australian greengrocer cicada is among the loudest insects in the world."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Cicada",
+      "url": "https://en.wikipedia.org/wiki/Cicada",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Periodical cicadas",
+      "url": "https://en.wikipedia.org/wiki/Periodical_cicadas",
+      "for": [
+        "ov"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): The fact is confirmed: periodical cicadas spend 13 or 17 years as underground nymphs, then emerge \"synchronously and in tremendous numbers\" in the same spring. ac \"day\" fits (\"the vast majority of species are active during the day\"). lf 2–17 fits (annual cicadas 1–9 or more years as nymphs).",
+  "rv": "2026-09-29"
+}

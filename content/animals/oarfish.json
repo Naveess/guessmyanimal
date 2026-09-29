@@ -1,0 +1,46 @@
+{
+  "sci": "Regalecidae",
+  "ov": "Three species of very long, ribbon-shaped silver fish with a red crest and a dorsal fin running the whole length of the body. They live in the open ocean worldwide and are rarely seen alive. The giant oarfish is the longest bony fish, and a likely source of sea serpent stories.",
+  "why": {
+    "et": "Rarely caught; the larger species are fished on a small scale, but the flesh is gelatinous and not well regarded."
+  },
+  "hb": [
+    "ocean"
+  ],
+  "len": "Giant oarfish usually about 3 m; record about 8 m",
+  "wt": "Up to 272 kg (giant oarfish)",
+  "rg": "Tropical, subtropical and warm temperate seas worldwide; the giant oarfish has been found from 72°N to 52°S.",
+  "df": "Mainly zooplankton (krill, shrimp and other small crustaceans strained from the water), plus small fish, jellyfish and squid.",
+  "fx": [
+    "It often sheds part of its own tail, and may do so more than once.",
+    "In Japan it is said to foretell earthquakes, but a 2019 study found the link to be an \"illusory correlation\"."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Oarfish",
+      "url": "https://en.wikipedia.org/wiki/Oarfish",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Giant oarfish",
+      "url": "https://en.wikipedia.org/wiki/Giant_oarfish",
+      "for": [
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): the sea serpent link is confirmed, but 11 m is only a possibility: the giant oarfish has \"a record length of about 7–8 metres, possibly up to 11 metres\". Suggested wording: \"The longest bony fish, up to about 8 metres, and the likely source of sea serpent stories.\" Optional (et): \"fished commercially on a small scale\", so et:\"some\" could fit; I would leave \"no\". ac, so and lf are not in the articles.",
+  "rv": "2026-09-29"
+}
