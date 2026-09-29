@@ -1,0 +1,42 @@
+{
+  "sci": "Acrididae (swarming species)",
+  "ov": "Short-horned grasshoppers that can switch into a swarming phase. After drought and then fast plant growth, crowding raises serotonin in their brains, and they change colour, eat more, breed faster and gather into huge migrating swarms that strip crops.",
+  "why": {
+    "et": "Eaten throughout history and considered a delicacy in many countries."
+  },
+  "hb": [
+    "desert",
+    "farmland"
+  ],
+  "rg": "Swarming species live on every continent except Antarctica; the desert locust ranges across Africa, the Middle East and Asia.",
+  "df": "Green plants: leaves, flowers, fruit, seeds, stems and bark of nearly all crops.",
+  "fx": [
+    "A desert locust swarm can hold 50 to 100 billion locusts and travel 100 to 200 km in a day.",
+    "The solitary and swarming forms of the migratory locust were once thought to be separate species."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Locust",
+      "url": "https://en.wikipedia.org/wiki/Locust",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Desert locust",
+      "url": "https://en.wikipedia.org/wiki/Desert_locust",
+      "for": [
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: crowding triggers the change, and no taxonomic line separates locusts from grasshoppers. lf 3–5 months is close to the desert locust's 3–6 months.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,37 @@
+{
+  "sci": "Mytilidae and several other bivalve families",
+  "ov": "Bivalve molluscs of salt and fresh water with long, uneven shells, often dark blue, black or brown. Marine mussels cling in clumps to wave-washed rocks with strong byssal threads, the “beard”. They filter plankton from the water, and many are farmed for food.",
+  "hb": [
+    "coast",
+    "freshwater"
+  ],
+  "rg": "Temperate and tropical coasts worldwide, plus lakes, rivers and ponds; a few live at deep-sea hydrothermal vents.",
+  "df": "Plankton and other tiny particles filtered from the water.",
+  "fx": [
+    "Freshwater mussel larvae hitch a ride on fish, living on their gills or fins for two to five weeks.",
+    "Mussels can tie down a predatory dog whelk with their threads until it starves."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mussel",
+      "url": "https://en.wikipedia.org/wiki/Mussel",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Blue mussel",
+      "url": "https://en.wikipedia.org/wiki/Blue_mussel",
+      "for": [
+        "ov"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: \"A number of studies have investigated mussel 'glues' for industrial and surgical applications.\"",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,32 @@
+{
+  "sci": "Phasmatodea",
+  "ov": "Plant-eating insects camouflaged as sticks or leaves, found on every continent except Antarctica, most of all in the tropics. They are nocturnal, feeding under leaves at night and keeping still by day. Some species are the world’s longest insects.",
+  "hb": [
+    "forest",
+    "rainforest"
+  ],
+  "len": "2 cm to 64 cm (Phryganistria “chinensis”, legs outstretched)",
+  "rg": "Worldwide except Antarctica and Patagonia; over 300 species live on Borneo alone.",
+  "df": "Leaves; the Indian stick insect kept as a pet eats vegetables such as lettuce.",
+  "fx": [
+    "Almost 300 species have been reared in laboratories or as pets; in China they have been kept since the Han dynasty.",
+    "Some sway from side to side to mimic a twig moving in the breeze."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Phasmatodea",
+      "url": "https://en.wikipedia.org/wiki/Phasmatodea",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"no males at all\" is not stated; the article says many phasmids are parthenogenic and \"do not require fertilized eggs for female offspring to be produced\". Suggested wording: \"Many species can reproduce without males: unfertilised eggs hatch into females.\" ANSWER CHECK (fl): animals.js has fl:false, but \"some species have wings and can disperse by flying\". Consider fl:\"some\".",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,31 @@
+{
+  "sci": "Tabanidae",
+  "ov": "Large, agile flies, including horse flies and deer flies. Adults feed on nectar, but females also bite land animals, including people, for the blood protein they need to make eggs. They fly in sunshine and are inactive at night. Their larvae are predators in wet ground.",
+  "why": {
+    "dg": "Bites can hurt for a day or more, and females can spread blood-borne diseases between animals."
+  },
+  "len": "Mostly 5–25 mm",
+  "rg": "Worldwide except some islands and polar regions, such as Hawaii, Greenland and Iceland.",
+  "df": "Adults: nectar and plant juices, plus blood for females. Larvae: small animals in damp soil.",
+  "fx": [
+    "Contrary to popular belief, horse flies cannot see infrared light or sense heat at a distance.",
+    "Females find hosts partly by the polarisation of light reflected from them."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Horse-fly",
+      "url": "https://en.wikipedia.org/wiki/Horse-fly",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: females have \"two pairs of sharp cutting blades\" and \"bites can be painful\". ANSWER CHECK (d): animals.js has \"Carnivore\", but adults feed on nectar and plant exudates and only females take blood; Mosquito is \"Omnivore\". Consider d:\"Omnivore\".",
+  "rv": "2026-09-29"
+}

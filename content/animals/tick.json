@@ -1,0 +1,37 @@
+{
+  "sci": "Ixodida",
+  "ov": "Parasitic arachnids, related to mites, that feed on the blood of mammals, birds and sometimes reptiles and amphibians. Adults are 3–5 mm long but swell when they feed. Because they drink blood from host after host, they spread many serious diseases.",
+  "why": {
+    "dg": "Ticks spread serious diseases, such as Lyme disease and tick-borne encephalitis."
+  },
+  "len": "Adults 3–5 mm before feeding",
+  "rg": "Worldwide, especially in warm, humid climates; ticks even feed on penguins in Antarctica.",
+  "df": "Blood only, from mammals, birds, reptiles and amphibians.",
+  "fx": [
+    "Larval ticks hatch with six legs and get their last pair after their first blood meal.",
+    "Ticks can survive in a near vacuum for as long as half an hour."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Tick",
+      "url": "https://en.wikipedia.org/wiki/Tick",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Ixodes ricinus",
+      "url": "https://en.wikipedia.org/wiki/Ixodes_ricinus",
+      "for": [
+        "why"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): Lyme disease is confirmed, but \"wait over a year for a host\" is not stated (ticks \"can fast for long periods\"). Suggested wording: \"Waits on grass tips with its front legs held out to grab a passing host, and it spreads Lyme disease.\" lf 2–3 years matches the sheep tick's 2–3 year life cycle.",
+  "rv": "2026-09-29"
+}

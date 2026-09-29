@@ -1,0 +1,31 @@
+{
+  "sci": "Latrodectus",
+  "ov": "The widow spiders: 34 species of small spiders with unusually potent venom. Females are usually shiny black with a red or orange hourglass on the underside. They hang upside down in tangled webs, and the name comes from females sometimes eating the male after mating.",
+  "why": {
+    "dg": "Only females’ bites are dangerous, and they rarely cause death; the US recorded no black widow deaths from 1983 to 2012."
+  },
+  "len": "Body 3–10 mm; females 25–38 mm including legs",
+  "rg": "Worldwide: North America, Europe, Australia (redback), New Zealand (katipō), southern Africa and South America.",
+  "df": "Insects caught in the web.",
+  "fx": [
+    "Much of the evidence for males being eaten comes from lab cages, where the males could not escape.",
+    "A trapped widow is more likely to play dead or flick silk than to bite."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Latrodectus",
+      "url": "https://en.wikipedia.org/wiki/Latrodectus",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry (w: Latrodectus). ANSWER CHECK (fact): \"15 times stronger than a rattlesnake's\" is not in the article, which says only that the venom is \"unusually potent\". Suggested wording: \"Its venom is unusually potent, yet the US recorded no deaths from black widow bites between 1983 and 2012.\"",
+  "rv": "2026-09-29"
+}

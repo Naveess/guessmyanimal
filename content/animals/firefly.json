@@ -1,0 +1,25 @@
+{
+  "sci": "Lampyridae",
+  "ov": "More than 2,400 species of soft-bodied beetles, many of which glow, mostly at twilight, to attract mates. All glow as larvae, a warning that they taste bad. They live in temperate and tropical regions, often in marshes and damp woods where their larvae find food.",
+  "rg": "Temperate and tropical regions worldwide.",
+  "df": "Larvae hunt other larvae, snails and slugs; adults vary: some hunt, some eat pollen or nectar, and some never eat.",
+  "fx": [
+    "Female Photuris fireflies copy another species’ flash code to lure its males, then eat them.",
+    "In parts of Southeast Asia and the Great Smoky Mountains, whole groups flash in sync."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Firefly",
+      "url": "https://en.wikipedia.org/wiki/Firefly",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry (alias \"glow worm\"). ANSWER CHECK (fact): \"almost 100 percent efficient\" is not in the article, which calls it a \"cold light\" with no infrared or ultraviolet. Suggested wording: \"Its glow is a cold light with no infrared, and it began as a warning that fireflies taste bad.\" Note: most fireflies hibernate as larvae; I did not flag h, to match Bee, Wasp and Ant.",
+  "rv": "2026-09-29"
+}

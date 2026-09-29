@@ -1,0 +1,32 @@
+{
+  "sci": "Isoptera (within Blattodea)",
+  "ov": "About 3,000 species of social insects that eat decaying plant matter, mostly wood, leaf litter and humus. Though called “white ants”, they are highly specialised cockroaches. A colony is founded by a king and queen that mate for life.",
+  "why": {
+    "et": "Eaten in some cultures; winged alates are high in fat and protein, and queens are regarded as a delicacy."
+  },
+  "len": "Mostly 4–15 mm; Macrotermes queens up to 15 cm",
+  "rg": "Every continent except Antarctica; about 1,000 species live in Africa.",
+  "df": "Decaying plant material: wood, leaf litter and soil humus.",
+  "fx": [
+    "About 1.1 million active termite mounds stand in the northern Kruger National Park alone.",
+    "Termites and ants are about 1% of insect species but more than half of all insect biomass."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Termite",
+      "url": "https://en.wikipedia.org/wiki/Termite",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: some mounds reach 8 to 9 metres, some face north–south to regulate temperature, and a queen can live 30 to 50 years. ANSWER CHECK (fl): animals.js has fl:true, but only the winged reproductives (alates) fly, briefly, and workers and soldiers are wingless. Consider fl:\"some\", as for ants.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,32 @@
+{
+  "sci": "Phycodurus eques",
+  "ov": "The leafy seadragon, a relative of the seahorse covered in leaf-like lobes of skin that make it look like floating seaweed. It lives only off the southern and western coasts of Australia and is the marine emblem of South Australia.",
+  "hb": [
+    "ocean",
+    "coast"
+  ],
+  "len": "About 20–24 cm",
+  "rg": "Southern Australian waters, from Wilson’s Promontory in Victoria west to Jurien Bay in Western Australia.",
+  "df": "Small crustaceans such as amphipods and mysid shrimp, plankton and larval fish, sucked up through its pipe-like snout.",
+  "fx": [
+    "As with seahorses, the male carries the eggs: up to 250, stuck to a brood patch under his tail for about nine weeks.",
+    "Only about 5% of the eggs survive to become adults."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Leafy seadragon",
+      "url": "https://en.wikipedia.org/wiki/Leafy_seadragon",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): The fact is confirmed: the protrusions \"are not used for propulsion; they serve only as camouflage\", and it swims with small, almost transparent fins. It has been totally protected in South Australia since 1987.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,35 @@
+{
+  "sci": "Grylloidea",
+  "ov": "Mostly nocturnal insects related to bush crickets and grasshoppers, with round heads, long antennae and powerful jumping legs. Males sing by rubbing their tough front wings together, and crickets hear through ears on their front legs.",
+  "why": {
+    "p": "Kept as pets from China to Europe, sometimes for cricket fighting.",
+    "et": "Eaten in Southeast Asia, where they are sold deep-fried in markets as snacks."
+  },
+  "rg": "Worldwide between about 55° north and south, with most species in the tropics.",
+  "fx": [
+    "A parasitic fly finds crickets by their song, and on Kauai in Hawaii a mutation has left many males silent.",
+    "Crickets turn food into body mass efficiently, which makes them a candidate for food production."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Cricket",
+      "url": "https://en.wikipedia.org/wiki/Cricket_(insect)",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Dolbear's law",
+      "url": "https://en.wikipedia.org/wiki/Dolbear%27s_law",
+      "for": [
+        "ov"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: chirp rate rises with temperature (Dolbear's law), and counting chirps can approximate the temperature. ANSWER CHECK (fl): animals.js has fl:true, but \"many species, however, are flightless\" and some are wingless. Consider fl:\"some\".",
+  "rv": "2026-09-29"
+}

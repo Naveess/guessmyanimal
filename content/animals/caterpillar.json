@@ -1,0 +1,31 @@
+{
+  "sci": "Larvae of Lepidoptera",
+  "ov": "The larval stage of butterflies and moths, built for eating and growing. Most eat leaves and are serious farm pests, though about 1% eat insects. They defend themselves with camouflage, warning colours, toxins taken from plants and, in some species, stinging hairs.",
+  "why": {
+    "dg": "Some have venomous hairs: the South American Lonomia caterpillar’s venom can cause fatal bleeding in humans."
+  },
+  "len": "From 1 mm up to 14 cm",
+  "rg": "Worldwide, including the Arctic.",
+  "df": "Mostly plant material, often leaves; some eat insects, and clothes moths eat wool.",
+  "fx": [
+    "A tobacco hornworm increases its weight ten-thousandfold in less than 20 days.",
+    "Monarch caterpillars store poisons from their food plants and keep them as adults."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Caterpillar",
+      "url": "https://en.wikipedia.org/wiki/Caterpillar",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"the butterfly still remembers what it learned\" is not in the article. Suggested wording: \"A tobacco hornworm caterpillar grows ten-thousandfold in weight in less than 20 days.\" ANSWER CHECK (dg): animals.js has dg:\"no\", but Lonomia venom \"is powerful enough to cause a human to hemorrhage to death\", and urticating hairs cause dermatitis. Consider dg:\"some\" (the draft has a why.dg note).",
+  "rv": "2026-09-29"
+}

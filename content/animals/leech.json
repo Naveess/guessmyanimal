@@ -1,0 +1,38 @@
+{
+  "sci": "Hirudinea",
+  "ov": "Segmented worms related to earthworms, with a sucker at each end. Of about 680 species, most live in fresh water, some on land and about 100 in the sea. The best known feed on blood, but others are predators of small invertebrates. They live everywhere except Antarctica.",
+  "hb": [
+    "freshwater",
+    "wetland"
+  ],
+  "len": "True leeches: about 1–30 cm",
+  "rg": "Worldwide except Antarctica, most abundant in temperate northern lakes and ponds.",
+  "df": "Blood of vertebrates for many species; others hunt small invertebrates.",
+  "fx": [
+    "A medicinal leech can drink up to ten times its body weight in one meal, then go a year without feeding.",
+    "The US Food and Drug Administration classed leech therapy as a medical device in 2004."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Leech",
+      "url": "https://en.wikipedia.org/wiki/Leech",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df"
+      ]
+    },
+    {
+      "title": "Wikipedia: Hirudo medicinalis",
+      "url": "https://en.wikipedia.org/wiki/Hirudo_medicinalis",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): leeches are used in microsurgery and hirudin prevents clotting, but \"better than any drug\" is not in the sources. Suggested wording: \"Still used in microsurgery: its saliva contains hirudin, which stops blood from clotting.\"",
+  "rv": "2026-09-29"
+}

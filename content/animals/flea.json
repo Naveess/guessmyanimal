@@ -1,0 +1,31 @@
+{
+  "sci": "Siphonaptera",
+  "ov": "About 2,500 species of small, wingless insects that live as external parasites of mammals and birds and feed on their blood. Their bodies are flattened sideways for slipping through fur. The rat flea carried the plague bacterium behind the Black Death.",
+  "why": {
+    "dg": "Fleas carry disease: the oriental rat flea spreads the bacterium that causes bubonic plague."
+  },
+  "len": "1.5–3.3 mm",
+  "rg": "Worldwide, wherever their host mammals and birds live.",
+  "df": "Adults drink only fresh blood; larvae eat organic debris, especially adult flea droppings.",
+  "fx": [
+    "A female can lay 5,000 or more eggs in her life.",
+    "A flea waiting inside its cocoon can sense vibrations, heat and carbon dioxide, signs that a host is near."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Flea",
+      "url": "https://en.wikipedia.org/wiki/Flea",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"100 times its own height\" is contradicted: \"A flea can jump 60 times its length in height and 110 times its length in distance\". The space-shuttle comparison is not in the article. Suggested wording: \"Jumps 60 times its body length straight up, powered by a spring-like pad of protein.\" lf 2–3 months matches \"an adult flea only lives for 2 or 3 months\".",
+  "rv": "2026-09-29"
+}

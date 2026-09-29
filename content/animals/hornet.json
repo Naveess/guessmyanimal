@@ -1,0 +1,39 @@
+{
+  "sci": "Vespa",
+  "ov": "The largest social wasps: 22 species, most in tropical Asia. The European hornet grows to 35 mm and the Asian giant hornet to over 50 mm. They build paper nests from chewed wood, and they guard them aggressively. Males are docile and have no sting.",
+  "why": {
+    "dg": "Single stings are rarely fatal except to allergic people, but multiple Asian giant hornet stings kill 30–50 people a year in Japan.",
+    "et": "In some Japanese mountain villages, Asian giant hornet larvae are a fried delicacy."
+  },
+  "len": "35 mm (European hornet) to over 50 mm (Asian giant hornet)",
+  "rg": "Mainly Asia; the European hornet ranges across Europe to Siberia and was introduced to eastern North America. The Asian hornet is spreading in Europe.",
+  "df": "Asian giant hornet: larger insects, colonies of other social insects such as honey bees, tree sap and honey.",
+  "fx": [
+    "Hornet venom contains a large amount (5%) of acetylcholine, which makes stings extra painful.",
+    "In temperate areas the nest dies over winter, and only lone queens survive, hibernating in leaf litter."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Hornet",
+      "url": "https://en.wikipedia.org/wiki/Hornet",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "len",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Asian giant hornet",
+      "url": "https://en.wikipedia.org/wiki/Asian_giant_hornet",
+      "for": [
+        "why",
+        "df"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): the numbers are off: \"Only a few hornets (under 50) can exterminate a colony of tens of thousands of bees in a few hours.\" Suggested wording: \"Fewer than 50 Asian giant hornets can wipe out a honeybee colony of tens of thousands in a few hours.\" h left false to match Wasp.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,34 @@
+{
+  "sci": "Oniscidea",
+  "ov": "Land-living crustaceans with flat, segmented bodies and seven pairs of legs. They breathe through gill-like or lung-like pleopods and need damp places, under logs and stones. Some roll into a ball for defence. They are neither lice nor insects.",
+  "why": {
+    "p": "Woodlice are popular terrarium pets because of their varied colours and textures and how easy they are to care for."
+  },
+  "hb": [
+    "forest",
+    "towns"
+  ],
+  "rg": "All kinds of habitats worldwide except the polar regions and very high altitudes.",
+  "df": "Dead plant matter, especially partly decayed leaves; they also eat their own droppings for extra nutrients.",
+  "fx": [
+    "Females carry their eggs in a brood pouch under the body, so the young appear to be born.",
+    "One desert species lives in “the driest habitat conquered by any species of crustacean”."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Woodlouse",
+      "url": "https://en.wikipedia.org/wiki/Woodlouse",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: woodlice are terrestrial isopods (crustaceans) and \"neither parasitic nor insects\". ANSWER CHECK (p): animals.js has p:\"no\", but they \"are popular as terrarium pets\". Suggest p:\"some\" (the draft has a why.p note).",
+  "rv": "2026-09-29"
+}

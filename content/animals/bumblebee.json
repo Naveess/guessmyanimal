@@ -1,0 +1,37 @@
+{
+  "sci": "Bombus",
+  "ov": "Over 250 species of large, fuzzy, social bees, mostly in the Northern Hemisphere. They can warm themselves by shivering, which lets them live in cold places up to the Arctic tundra. Colonies are much smaller than honey bee colonies, and each has a single queen.",
+  "why": {
+    "dg": "Females can sting repeatedly but generally ignore humans and other animals."
+  },
+  "hb": [
+    "grassland",
+    "mountain",
+    "polar"
+  ],
+  "len": "B. terrestris workers 11–17 mm; B. dahlbomii up to 40 mm",
+  "rg": "Mostly the Northern Hemisphere, north to Greenland; also South America and North Africa; introduced to New Zealand and Tasmania.",
+  "df": "Nectar and pollen from flowers.",
+  "fx": [
+    "Farmers use them to pollinate greenhouse tomatoes, which other pollinators cannot do.",
+    "The giant Chilean species has been called a “flying mouse” and “a monstrous fluffy ginger beast”."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Bumblebee",
+      "url": "https://en.wikipedia.org/wiki/Bumblebee",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): The fact is confirmed: buzz pollination dislodges pollen \"by creating a resonant vibration with their flight muscles\". REGION: suggest adding South America, Africa (north of the Sahara), Arctic, New Zealand and Australia (Tasmania, introduced). Note: queens hibernate, but h is left false to match Bee and Wasp.",
+  "rv": "2026-09-29"
+}

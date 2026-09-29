@@ -1,0 +1,34 @@
+{
+  "sci": "Cirripedia",
+  "ov": "About 2,100 species of marine crustaceans related to crabs and lobsters. Adults stay fixed in one place for life, cemented to rocks, ships or whales, and most sweep plankton into their shells with feathery legs. Barnacles have existed for at least 325 million years.",
+  "why": {
+    "et": "Goose barnacles and the Chilean giant barnacle are fished and eaten."
+  },
+  "hb": [
+    "coast",
+    "ocean"
+  ],
+  "rg": "Oceans worldwide; most live in shallow water, a quarter of species in the intertidal zone.",
+  "df": "Plankton and detritus drawn in by the feathery legs (cirri); some are parasites of crabs or sharks.",
+  "fx": [
+    "Relative to body size, barnacles have the longest penis of any animal, up to eight times their body length.",
+    "In folklore, barnacle geese were once thought to hatch from goose barnacles."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Barnacle",
+      "url": "https://en.wikipedia.org/wiki/Barnacle",
+      "for": [
+        "sci",
+        "ov",
+        "why",
+        "hb",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: an acorn barnacle is \"fixed upside down by means of its forehead\" and its cirri \"move it towards the mouth\". ANSWER CHECK (lg): animals.js has lg:0, but barnacles have six pairs of thoracic limbs (cirri), which the name itself calls \"curved legs\". Crab and lobster keep counted legs, so consider lg:12.",
+  "rv": "2026-09-29"
+}
