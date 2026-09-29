@@ -1,0 +1,38 @@
+{
+  "sci": "Cuculus canorus",
+  "ov": "The common cuckoo, a slender grey bird that looks like a sparrowhawk in flight. It summers in Europe and Asia and winters in Africa. It is a brood parasite: the female lays her eggs in other birds’ nests, each matching the host’s eggs.",
+  "len": "32–34 cm",
+  "wt": "Males about 130 g, females about 110 g",
+  "rg": "Breeds across Europe and Asia; winters in Africa and South Asia.",
+  "df": "Insects, especially hairy caterpillars that many birds avoid.",
+  "iu": "LC",
+  "fx": [
+    "A female may visit up to 50 nests in one breeding season.",
+    "Most of the 150 species in the cuckoo family raise their own young."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common cuckoo",
+      "url": "https://en.wikipedia.org/wiki/Common_cuckoo",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Cuckoo",
+      "url": "https://en.wikipedia.org/wiki/Cuckoo",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "Drafted as the common cuckoo, which matches the animals.js regions and fact. The animals.js fact is confirmed: hatched cuckoo chicks push host eggs out of the nest.",
+  "rv": "2026-09-29"
+}

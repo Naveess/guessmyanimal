@@ -1,0 +1,33 @@
+{
+  "sci": "Phasianidae and Odontophoridae (in part)",
+  "ov": "Mid-sized game birds of two groups: Old World quail, related to pheasants, and New World quail in a family of their own. Many larger species are farmed for meat and eggs; in 2007 the United States alone produced 40 million quail.",
+  "wt": "90–100 g (wild Japanese quail)",
+  "rg": "Worldwide; the Japanese quail lives mainly in East Asia and Russia.",
+  "fx": [
+    "Japanese quail eggs were taken to space on Soyuz 32 in 1979, and in 1990 quail eggs hatched on the Mir space station.",
+    "A group of quail is called a covey or a bevy."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Quail",
+      "url": "https://en.wikipedia.org/wiki/Quail",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Japanese quail",
+      "url": "https://en.wikipedia.org/wiki/Japanese_quail",
+      "for": [
+        "wt",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. ANSWER CHECK (fact): \"Was the first bird sent into orbit to breed in space\" is not in the article, which says quail eggs flew on Soyuz 32 (1979) and hatched on Mir (1990) but does not say \"first\" or \"breed\". Suggested wording: \"Quail eggs have hatched in orbit, aboard the Mir space station in 1990.\"",
+  "rv": "2026-09-29"
+}

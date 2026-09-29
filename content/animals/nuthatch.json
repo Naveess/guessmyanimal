@@ -1,0 +1,37 @@
+{
+  "sci": "Sitta",
+  "ov": "Small birds with big heads, short tails and strong bills and feet, mostly blue-grey above with a black eye stripe. Most live in woods of the Northern Hemisphere and nest in holes; the name comes from wedging nuts in cracks and hacking them open.",
+  "hb": [
+    "forest"
+  ],
+  "len": "About 10 cm to 19.5 cm",
+  "rg": "Woods of North America, Europe and Asia, with a few in North Africa (Algeria and Morocco).",
+  "df": "Mainly insects such as caterpillars and beetles, plus nuts and seeds in autumn and winter.",
+  "fx": [
+    "If a nest hole is too big, the female Eurasian nuthatch plasters it with mud to shrink it.",
+    "The Eurasian nuthatch stores food all year round."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Nuthatch",
+      "url": "https://en.wikipedia.org/wiki/Nuthatch",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: Eurasian nuthatch",
+      "url": "https://en.wikipedia.org/wiki/Eurasian_nuthatch",
+      "for": [
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. REGION: suggest adding Africa (Algerian nuthatch; Eurasian nuthatches in Morocco). ANSWER CHECK (fact): \"The only British bird that regularly walks head first down a tree trunk\" — the article says it forages while descending trees head first, but not that it is the only British bird to do so. Suggested wording: \"Climbs down tree trunks head first, and plasters its nest hole with mud to make it smaller.\"",
+  "rv": "2026-09-29"
+}

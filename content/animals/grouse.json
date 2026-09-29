@@ -1,0 +1,35 @@
+{
+  "sci": "Tetraonini",
+  "ov": "Compact, heavily built game birds of the Northern Hemisphere, from arctic tundra to pine forest, moorland and mountains. Their feathered legs and toes help them walk on snow and burrow into it for shelter. Many males display in groups (leks) at dawn and dusk.",
+  "hb": [
+    "forest",
+    "mountain",
+    "polar"
+  ],
+  "len": "31–115 cm",
+  "wt": "0.3–6.5 kg",
+  "rg": "Temperate and subarctic North America, Europe and Asia, as far north as 83°N.",
+  "df": "Buds, catkins, leaves and twigs make up over 95% of adults’ food; chicks eat mostly insects.",
+  "fx": [
+    "In all but two or three species, males mate with several females.",
+    "Grouse make up a large share of the animal biomass in the Arctic and subarctic."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Grouse",
+      "url": "https://en.wikipedia.org/wiki/Grouse",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. REGION: suggest adding Arctic (arctic tundra, to 83°N). ANSWER CHECK (fact): \"Burrows into snow to roost, and males inflate coloured air sacs to boom at rivals\" is half sourced: snow burrowing is confirmed, and males have \"inflatable, brightly coloured patches of bare skin\", but booming is not mentioned. Suggested wording: \"Burrows into snow for shelter, and males show off inflatable, brightly coloured skin patches.\"",
+  "rv": "2026-09-29"
+}

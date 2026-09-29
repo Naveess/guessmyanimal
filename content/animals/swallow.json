@@ -1,0 +1,37 @@
+{
+  "sci": "Hirundinidae",
+  "ov": "About 90 species of small songbirds built for catching insects in the air, with long, pointed wings and often forked tails. The barn swallow, with blue upperparts and a red face, is the most widespread swallow in the world.",
+  "len": "17–19 cm, including tail streamers (barn swallow)",
+  "wt": "16–22 g (barn swallow)",
+  "rg": "Every continent; barn swallows even turn up in Antarctica as vagrants.",
+  "df": "Flying insects.",
+  "fx": [
+    "Barn swallows from across Eurasia winter in southern Africa and tend to return to the same wintering spot each year.",
+    "The barn swallow is the national bird of Austria and Estonia."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Swallow",
+      "url": "https://en.wikipedia.org/wiki/Swallow",
+      "for": [
+        "sci",
+        "ov",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: Barn swallow",
+      "url": "https://en.wikipedia.org/wiki/Barn_swallow",
+      "for": [
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. ANSWER CHECK (fact): \"Flies from Britain to South Africa and back every year, twice\" is garbled and not in the article (a single return trip each year, and Britain is not named). Suggested wording: \"Barn swallows fly from Europe and Asia to southern Africa for the winter, and back each spring.\"",
+  "rv": "2026-09-29"
+}

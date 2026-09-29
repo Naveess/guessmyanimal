@@ -1,0 +1,36 @@
+{
+  "sci": "Turdus merula",
+  "ov": "The common blackbird, a thrush of woods and gardens. The male is black with a yellow bill and eye-ring and sings a rich, melodious song; the female is mainly dark brown. It builds a neat cup-shaped nest bound with mud.",
+  "hb": [
+    "forest",
+    "towns"
+  ],
+  "len": "23.5–29 cm",
+  "wt": "80–125 g",
+  "rg": "Europe, western Asia and North Africa; introduced to Australia and New Zealand.",
+  "df": "Insects, earthworms, berries and fruit.",
+  "iu": "LC",
+  "fx": [
+    "The oldest ringed blackbird lived 21 years and 10 months, though the average is 2.4 years.",
+    "The male sings mainly from March to June, from trees and rooftops."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common blackbird",
+      "url": "https://en.wikipedia.org/wiki/Common_blackbird",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): REGION: suggest adding Africa (native in North Africa), Australia and New Zealand (introduced). ANSWER CHECK (fact): \"Only the male is black. The female is brown, and both sing\" — the colours are confirmed, but the article describes only the male singing. Suggested wording: \"Only the male is black with a yellow bill; the female is dark brown.\"",
+  "rv": "2026-09-29"
+}

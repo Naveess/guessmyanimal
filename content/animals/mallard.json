@@ -1,0 +1,35 @@
+{
+  "sci": "Anas platyrhynchos",
+  "ov": "A dabbling duck that breeds across the Americas, Eurasia and North Africa and has been introduced to Australia, New Zealand, South America and South Africa. Males have green heads; females are mainly brown. Mallards live in wetlands in groups.",
+  "hb": [
+    "wetland",
+    "freshwater"
+  ],
+  "len": "50–65 cm",
+  "wt": "0.7–1.6 kg",
+  "rg": "Native to the Americas, Eurasia and North Africa; introduced to Australia, New Zealand, South America and South Africa.",
+  "df": "Water plants and small animals.",
+  "iu": "LC",
+  "fx": [
+    "Mallards average three years of life but can live to twenty.",
+    "Ducks were first domesticated in Southeast Asia at least 4,000 years ago."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Mallard",
+      "url": "https://en.wikipedia.org/wiki/Mallard",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "The animals.js fact is confirmed: the mallard is the main ancestor of most domestic duck breeds.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,36 @@
+{
+  "sci": "Coloeus monedula",
+  "ov": "The western jackdaw, a small, gregarious member of the crow family, black with a grey nape and striking pale eyes. Jackdaws are intelligent, have been seen using tools, and are monogamous, nesting in holes in trees, cliffs and buildings.",
+  "hb": [
+    "farmland",
+    "forest",
+    "coast",
+    "towns"
+  ],
+  "len": "34–39 cm",
+  "wt": "About 240 g",
+  "rg": "Europe, western Asia and western North Africa.",
+  "df": "Almost anything: plants, invertebrates and food waste from towns.",
+  "fx": [
+    "Linnaeus named it monedula, from the Latin for money, because of its supposed fondness for picking up coins.",
+    "A flock of jackdaws was once called a \"clattering\"."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Western jackdaw",
+      "url": "https://en.wikipedia.org/wiki/Western_jackdaw",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): ANSWER CHECK (fact): \"Pale eyes it uses to signal to other jackdaws which nest site is taken\" is not in the article, which only describes the pale iris. Suggested wording: \"A small crow with a grey nape and striking pale, silvery eyes.\" REGION: the article includes western North Africa (Morocco); suggest adding Africa.",
+  "rv": "2026-09-29"
+}

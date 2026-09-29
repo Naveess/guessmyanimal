@@ -1,0 +1,34 @@
+{
+  "sci": "Luscinia megarhynchos",
+  "ov": "The common nightingale, a plain brown bird with a reddish tail, famous for one of the most beautiful songs in nature. Only males sing, often at night as well as by day. It breeds in forest and scrub from Europe to Mongolia and winters in Africa.",
+  "hb": [
+    "forest",
+    "scrub"
+  ],
+  "len": "15–16.5 cm",
+  "rg": "Breeds in Europe, North Africa and western and central Asia; winters in sub-Saharan Africa.",
+  "df": "Insects.",
+  "iu": "LC",
+  "fx": [
+    "Unpaired males can sing through the night for 7 to 8 hours to attract a mate.",
+    "Its name means \"night songstress\", though it is the male that sings."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Common nightingale",
+      "url": "https://en.wikipedia.org/wiki/Common_nightingale",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "len",
+        "rg",
+        "df",
+        "iu",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): ANSWER CHECK (fact): \"a repertoire of over 200 different songs\" — the article gives 190 song types on average, up to 250, with exceptional males over 300. Suggested wording: \"A plain brown bird whose males can sing up to 250 different song types.\"",
+  "rv": "2026-09-29"
+}

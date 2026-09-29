@@ -1,0 +1,33 @@
+{
+  "sci": "Apodidae",
+  "ov": "About 100 species of highly aerial birds that look like swallows but are closer to hummingbirds. Swifts are among the fastest birds in level flight, and their short legs are made for clinging to walls, not walking. They live on every continent except Antarctica.",
+  "len": "16–17 cm (common swift)",
+  "rg": "Every continent except Antarctica; temperate species winter in the tropics.",
+  "df": "Insects caught in flight.",
+  "fx": [
+    "Common swifts drink, feed, and often mate and sleep on the wing.",
+    "A common swift can cover millions of kilometres in its lifetime."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Swift",
+      "url": "https://en.wikipedia.org/wiki/Swift_(bird)",
+      "for": [
+        "sci",
+        "ov",
+        "rg"
+      ]
+    },
+    {
+      "title": "Wikipedia: Common swift",
+      "url": "https://en.wikipedia.org/wiki/Common_swift",
+      "for": [
+        "len",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "Group entry. The animals.js fact is confirmed: some common swifts go 10 months without landing and sleep on the wing.",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,35 @@
+{
+  "sci": "Troglodytidae",
+  "ov": "A family of 96 species of small brown songbirds with short, barred wings and tails often held upright. All live in the Americas except the Eurasian wren, which is found across Europe, Asia and North Africa. Most are hard to see but have loud songs.",
+  "len": "9–10 cm (Eurasian wren)",
+  "rg": "The Americas, plus the Eurasian wren across Europe, Asia and North Africa.",
+  "df": "Insects, spiders and other small invertebrates; some also eat plants, frogs and lizards.",
+  "fx": [
+    "Its scientific name means \"cave-dweller\", from its habit of creeping into crevices.",
+    "The male Eurasian wren is highly polygynous, unusual for a songbird."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Wren",
+      "url": "https://en.wikipedia.org/wiki/Wren",
+      "for": [
+        "sci",
+        "ov",
+        "rg",
+        "df"
+      ]
+    },
+    {
+      "title": "Wikipedia: Eurasian wren",
+      "url": "https://en.wikipedia.org/wiki/Eurasian_wren",
+      "for": [
+        "ov",
+        "len",
+        "rg",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. REGION: animals.js has Europe, Asia and North America, but all wrens except one are New World; suggest adding Central America, South America and Africa. ANSWER CHECK (fact): \"one of the loudest birds by weight in the world\" goes beyond the article, which says the Eurasian wren is \"ten times louder, weight for weight, than a cockerel\". Suggested wording: \"Tiny, but weight for weight its song is ten times louder than a cockerel's.\"",
+  "rv": "2026-09-29"
+}

@@ -1,0 +1,29 @@
+{
+  "sci": "Serinus canaria forma domestica",
+  "ov": "The domestic form of the wild canary, a finch from the Macaronesian islands, which include Spain’s Canary Islands. Kept for about 500 years, it has been bred in many colours and for its song, and became a prized pet in 17th-century Europe.",
+  "len": "13–15 cm (common canaries)",
+  "wt": "15–20 g",
+  "rg": "Kept as a pet, especially in Europe and the United States; its wild ancestor lives in the Macaronesian islands.",
+  "df": "Seeds.",
+  "fx": [
+    "Most males sing and most females do not.",
+    "Canary Yellow, a shade of colour, is named after it."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Domestic canary",
+      "url": "https://en.wikipedia.org/wiki/Domestic_canary",
+      "for": [
+        "sci",
+        "ov",
+        "len",
+        "wt",
+        "rg",
+        "df",
+        "fx"
+      ]
+    }
+  ],
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): The animals.js fact is confirmed: canaries detected gas in British mines until 1986 (Finch and Sentinel species articles). REGION (optional): animals.js has Europe; as a domestic pet it is kept widely (Europe and the United States in the article). Owner to decide whether to change r to Worldwide like other domestic animals.",
+  "rv": "2026-09-29"
+}

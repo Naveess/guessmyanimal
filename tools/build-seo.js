@@ -395,7 +395,7 @@ ${siteBar()}
 ${siteFooter()}
 
 <script src="/sfx.js?v=20260912-1"></script>
-<script src="/animals.js?v=20260929-6"></script>
+<script src="/animals.js?v=20260929-7"></script>
 <script src="/search-core.js?v=20260913-1"></script>
 <script src="/navsearch.js?v=20260928-1"></script>
 <script src="/menu.js?v=20260928-1"></script>

@@ -1,0 +1,44 @@
+{
+  "sci": "Threskiornithidae (in part)",
+  "ov": "Twenty-nine species of long-legged wading birds with long, down-curved bills, which they use to probe mud for food, usually in groups. They nest in trees, often alongside spoonbills or herons.",
+  "hb": [
+    "wetland",
+    "grassland",
+    "forest"
+  ],
+  "rg": "Wetlands, forests and plains of the Old and New Worlds.",
+  "df": "Mostly crustaceans and other food found by probing mud.",
+  "fx": [
+    "The African sacred ibis was linked to the god Thoth in ancient Egypt, but no longer lives in Egypt.",
+    "The Australian white ibis is a native bird, not an escaped Egyptian one, whatever the urban myth says."
+  ],
+  "src": [
+    {
+      "title": "Wikipedia: Ibis",
+      "url": "https://en.wikipedia.org/wiki/Ibis",
+      "for": [
+        "sci",
+        "ov",
+        "hb",
+        "rg",
+        "df"
+      ]
+    },
+    {
+      "title": "Wikipedia: African sacred ibis",
+      "url": "https://en.wikipedia.org/wiki/African_sacred_ibis",
+      "for": [
+        "fx"
+      ]
+    },
+    {
+      "title": "Wikipedia: Australian white ibis",
+      "url": "https://en.wikipedia.org/wiki/Australian_white_ibis",
+      "for": [
+        "fx"
+      ]
+    }
+  ],
+  "notes": "Group entry. The animals.js fact is confirmed: sacred in ancient Egypt (Thoth), and the Australian white ibis is called the bin chicken.",
+  "rv": "2026-09-29"
+}
