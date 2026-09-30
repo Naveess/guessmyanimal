@@ -2,7 +2,8 @@
   "sci": "Equus ferus caballus",
   "ov": "A one-toed, hoofed grazer, domesticated on the steppes of western Eurasia. Modern breeds spread across Eurasia from about 2000 BCE, and horses have been ridden and worked ever since.",
   "why": {
-    "et": "Horse meat is eaten in many parts of the world. About 5 million horses are slaughtered for meat each year."
+    "et": "Horse meat is eaten in many parts of the world. About 5 million horses are slaughtered for meat each year.",
+    "dg": "A frightened horse's first instinct is to run; if it can't, it bites, kicks, strikes out or rears."
   },
   "hb": [
     "grassland",
@@ -53,8 +54,15 @@
       "for": [
         "cf"
       ]
+    },
+    {
+      "title": "Wikipedia: Horse behavior",
+      "url": "https://en.wikipedia.org/wiki/Horse_behavior",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact, not answer): the animals.js fact \"Sleeps standing up by locking its knees\" is only half right. Wikipedia says horses doze standing up using the stay apparatus but must lie down for REM sleep. Suggested wording: \"Dozes standing up, but has to lie down for deep sleep.\" ht/wt are for light riding horses (draft weights added); breeds vary widely. RESOLVED: animals.js fact rewritten to \"Dozes standing up, but has to lie down for deep sleep.\""
 }

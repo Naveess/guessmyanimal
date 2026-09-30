@@ -2,7 +2,8 @@
   "sci": "Camelus",
   "ov": "Three living species of humped desert animals: the one-humped dromedary (94% of the world’s camels), the two-humped Bactrian camel, and the endangered wild Bactrian camel. The humps store fat, not water.",
   "why": {
-    "dm": "Dromedaries and Bactrian camels are domestic, but the wild Bactrian camel is a separate species, with only about 1,000 left."
+    "dm": "Dromedaries and Bactrian camels are domestic, but the wild Bactrian camel is a separate species, with only about 1,000 left.",
+    "dg": "Its sheer size means it can hurt people, though with proper handling that is unlikely."
   },
   "hb": [
     "desert",
@@ -12,9 +13,6 @@
   "wt": "300–600 kg (dromedary); 300–1,000 kg (Bactrian)",
   "rg": "Mostly domestic. The dromedary comes from the hot deserts of the Arabian Peninsula and the Sahara; the Bactrian camel from the steppes of Central Asia.",
   "df": "Desert plants. A thick, leathery lining to the mouth lets camels chew thorny ones.",
-  "grp": [
-    "dromedary"
-  ],
   "cf": [
     {
       "slug": "llama",
@@ -23,6 +21,9 @@
   ],
   "fx": [
     "A dromedary can go as long as 10 days between drinks, even in very hot weather."
+  ],
+  "grp": [
+    "dromedary"
   ],
   "src": [
     {
@@ -60,8 +61,15 @@
       "for": [
         "cf"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Camelus dromedarius",
+      "url": "https://animaldiversity.org/accounts/Camelus_dromedarius/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry for the genus; grp links the dromedary page (there’s no Bactrian page). The cf \"no hump\" is general knowledge; Wikipedia’s Camel article only says llamas are not true camels. BATCH 3 HEADS-UP: the dromedary fact in animals.js says \"about 90%\" of camels, but the Camel article says 94%."
 }

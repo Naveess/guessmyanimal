@@ -2,7 +2,8 @@
   "sci": "Pinnipedia",
   "ov": "Flippered marine mammals: the true seals, the sea lions and fur seals, and the walrus, 34 species in all. They eat at sea but come ashore to breed and rest.",
   "why": {
-    "et": "Arctic Indigenous peoples have traditionally used the meat, blubber and skin of seals."
+    "et": "Arctic Indigenous peoples have traditionally used the meat, blubber and skin of seals.",
+    "dg": "Mainly the leopard seal: attacks are rare, but one killed a biologist snorkelling in Antarctica in 2003."
   },
   "hb": [
     "coast",
@@ -31,8 +32,15 @@
         "df",
         "grp"
       ]
+    },
+    {
+      "title": "Wikipedia: Leopard seal",
+      "url": "https://en.wikipedia.org/wiki/Leopard_seal",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (sleeps underwater, surfaces without waking) is confirmed: seals sleep with half the brain awake so they can surface for air. ANSWER NOTE: animals.js lg is 0, but pinnipeds have four limbs modified into flippers. That fits the whale/dolphin convention only loosely; your call. RESOLVED: lg stays 0, the same as whales and dolphins (owner’s call)."
 }

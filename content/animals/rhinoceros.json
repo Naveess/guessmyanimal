@@ -1,6 +1,9 @@
 {
   "sci": "Rhinocerotidae",
   "ov": "Five living species of huge, thick-skinned plant-eaters, two in Africa and three in South and Southeast Asia. All weigh over half a tonne, and most are endangered because poachers kill them for their horns.",
+  "why": {
+    "dg": "Black rhinos charge readily at anything they see as a threat, and some charges injure or kill people."
+  },
   "hb": [
     "grassland",
     "scrub",
@@ -32,8 +35,22 @@
         "len",
         "wt"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Diceros bicornis",
+      "url": "https://animaldiversity.org/accounts/Diceros_bicornis/",
+      "for": [
+        "why"
+      ]
+    },
+    {
+      "title": "Wikipedia: Black rhinoceros",
+      "url": "https://en.wikipedia.org/wiki/Black_rhinoceros",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry covering five species. No grp links (no species pages) and no IUCN status (the species range from Near Threatened to Critically Endangered). No why.dg: the source covers rhinos’ aggression toward each other, not danger to people. The existing fact (horn is keratin) is confirmed."
 }

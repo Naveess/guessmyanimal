@@ -2,7 +2,8 @@
   "sci": "Caimaninae",
   "ov": "Six species of alligator relatives from Central and South America, living in marshes, swamps, lakes and mangrove rivers and fairly nocturnal. Most are small crocodilians of 6–40 kg, but the black caiman of the Amazon basin can top 4 m and 450 kg.",
   "why": {
-    "et": "Humans are their main predator, hunting caimans for their meat and skin."
+    "et": "Humans are their main predator, hunting caimans for their meat and skin.",
+    "dg": "Potentially dangerous to people and pets, though smaller than other crocodilians and so less of a threat."
   },
   "hb": [
     "wetland",
@@ -39,8 +40,15 @@
         "rg",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Caiman crocodilus",
+      "url": "https://animaldiversity.org/accounts/Caiman_crocodilus/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. ANSWER CHECK (fact): \"more of them in the Amazon than people in London\" is not in the sources. Suggested wording: \"A smaller relative of the alligator; spectacled caimans number in the millions, four million in Venezuela alone.\" REGION: suggest adding North America (introduced to Florida, where it is invasive).",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. ANSWER CHECK (fact): \"more of them in the Amazon than people in London\" is not in the sources. Suggested wording: \"A smaller relative of the alligator; spectacled caimans number in the millions, four million in Venezuela alone.\" REGION: suggest adding North America (introduced to Florida, where it is invasive)."
 }
