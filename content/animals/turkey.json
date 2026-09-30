@@ -1,6 +1,9 @@
 {
   "sci": "Meleagris gallopavo",
   "ov": "A large North American game bird, the heaviest of the chicken-like birds. Domestic turkeys come from a Mexican subspecies taken to Europe by the Spanish in the 16th century.",
+  "why": {
+    "et": "Industrial farming made it cheap meat; Native Americans ate wild turkeys and their eggs."
+  },
   "hb": [
     "forest",
     "grassland",
@@ -21,7 +24,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -29,7 +33,8 @@
       "url": "https://en.wikipedia.org/wiki/Domestic_turkey",
       "for": [
         "ov",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -40,6 +45,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Wild ones fly perfectly well, at up to 55 mph\" has no speed in the source. Wikipedia says wild turkeys are agile, fast fliers. Suggested wording: \"Domestic turkeys descend from a Mexican wild turkey the Spanish took to Europe in the 1500s.\" RESOLVED: animals.js fact rewritten to \"Domestic turkeys descend from a Mexican wild turkey the Spanish took to Europe in the 1500s.\""
 }

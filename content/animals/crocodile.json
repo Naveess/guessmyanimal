@@ -2,7 +2,9 @@
   "sci": "Crocodylidae",
   "ov": "Big, armoured reptiles that ambush prey at the water’s edge across the tropics, from the 1.5 m dwarf crocodile to the saltwater crocodile, which can pass 6 m.",
   "why": {
-    "dg": "Saltwater and Nile crocodiles kill hundreds of people a year in parts of Southeast Asia and Africa."
+    "dg": "Saltwater and Nile crocodiles kill hundreds of people a year in parts of Southeast Asia and Africa.",
+    "ac": "Mostly night hunters, with very good night vision that most prey lack.",
+    "et": "Aboriginal Australians have hunted crocodiles and taken their eggs for food for thousands of years."
   },
   "hb": [
     "freshwater",

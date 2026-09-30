@@ -1,6 +1,10 @@
 {
   "sci": "Phasianidae and Odontophoridae (in part)",
   "ov": "Mid-sized game birds of two groups: Old World quail, related to pheasants, and New World quail in a family of their own. Many larger species are farmed for meat and eggs; in 2007 the United States alone produced 40 million quail.",
+  "why": {
+    "p": "The king quail is often sold in the pet trade, where it is called a \"button quail\".",
+    "et": "Many larger species are farm-raised for meat and eggs, or hunted."
+  },
   "wt": "90–100 g (wild Japanese quail)",
   "rg": "Worldwide; the Japanese quail lives mainly in East Asia and Russia.",
   "fx": [
@@ -15,7 +19,8 @@
         "sci",
         "ov",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -28,6 +33,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. ANSWER CHECK (fact): \"Was the first bird sent into orbit to breed in space\" is not in the article, which says quail eggs flew on Soyuz 32 (1979) and hatched on Mir (1990) but does not say \"first\" or \"breed\". Suggested wording: \"Quail eggs have hatched in orbit, aboard the Mir space station in 1990.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. ANSWER CHECK (fact): \"Was the first bird sent into orbit to breed in space\" is not in the article, which says quail eggs flew on Soyuz 32 (1979) and hatched on Mir (1990) but does not say \"first\" or \"breed\". Suggested wording: \"Quail eggs have hatched in orbit, aboard the Mir space station in 1990.\""
 }

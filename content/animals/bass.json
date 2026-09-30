@@ -1,6 +1,9 @@
 {
   "sci": "Micropterus nigricans",
   "ov": "The largemouth bass, an olive-green freshwater fish with a dark, jagged stripe along each side, native to the eastern and central US, south-eastern Canada and northern Mexico. It is the largest black bass and a prized sport fish, and has been released in many other countries.",
+  "why": {
+    "et": "An important food fish around the world, and a hugely popular sport fish in the US."
+  },
   "hb": [
     "freshwater"
   ],
@@ -26,8 +29,15 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Micropterus salmoides",
+      "url": "https://animaldiversity.org/accounts/Micropterus_salmoides/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (r): animals.js lists \"Oceans\", but the largemouth bass is a freshwater fish and the article gives no sea range. Suggest r:[\"North America\",\"Rivers\"], plus optional introduced ranges: Asia (Japan), Africa (Namibia), Europe (Iberia), Central America (Guatemala). ANSWER CHECK (fact): \"worth billions a year\" is not in the article. Suggested wording: \"Anglers prize its fight so much it has been released worldwide, where it often becomes invasive.\" lf 10–16 is confirmed (\"average lifespan of 10 to 16 years in the wild\").",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (r): animals.js lists \"Oceans\", but the largemouth bass is a freshwater fish and the article gives no sea range. Suggest r:[\"North America\",\"Rivers\"], plus optional introduced ranges: Asia (Japan), Africa (Namibia), Europe (Iberia), Central America (Guatemala). ANSWER CHECK (fact): \"worth billions a year\" is not in the article. Suggested wording: \"Anglers prize its fight so much it has been released worldwide, where it often becomes invasive.\" lf 10–16 is confirmed (\"average lifespan of 10 to 16 years in the wild\")."
 }

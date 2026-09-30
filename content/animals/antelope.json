@@ -1,6 +1,9 @@
 {
   "sci": "Bovidae (several subfamilies)",
   "ov": "Not a single group but 91 species of horned, hoofed bovids, most of them native to Africa. They are only distantly related to deer: antelope horns are bone covered in keratin, grow steadily and are never shed, unlike antlers.",
+  "why": {
+    "et": "Hunted for meat, and ancient Egyptians kept herds of gazelles and addax for it."
+  },
   "hb": [
     "grassland"
   ],
@@ -22,10 +25,11 @@
         "ht",
         "wt",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. The animals.js fact is confirmed (91 species, not deer). REGION (optional): the only European antelope today is the saiga in Russia's Kalmykia and Astrakhan, both in Europe; owner to decide whether to add Europe.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. The animals.js fact is confirmed (91 species, not deer). REGION (optional): the only European antelope today is the saiga in Russia's Kalmykia and Astrakhan, both in Europe; owner to decide whether to add Europe."
 }

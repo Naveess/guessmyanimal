@@ -1,6 +1,9 @@
 {
   "sci": "Lama pacos",
   "ov": "A domesticated South American camelid bred for its highly valued fibre, descended from the wild vicuña at least 5,000–6,000 years ago. It is smaller than its relative the llama.",
+  "why": {
+    "et": "Mainly bred for wool, but in the Andes alpacas were also used for their meat."
+  },
   "hb": [
     "mountain",
     "grassland",
@@ -29,7 +32,8 @@
         "ov",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -41,6 +45,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Hums to itself constantly, and to its young\" isn’t supported. Wikipedia lists humming only as a sign of stress. Suggested wording: \"Bred from the wild vicuña at least 5,000 years ago for its fine fibre.\" ANSWER CHECK: Wikipedia says alpacas spit mostly at each other, but occasionally at people. RESOLVED: animals.js fact rewritten to \"Bred from the wild vicuña at least 5,000 years ago for its fine fibre.\""
 }

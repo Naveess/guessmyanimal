@@ -1,6 +1,10 @@
 {
   "sci": "Cingulata",
   "ov": "Twenty-one species of American mammals with a leathery, armoured shell and long digging claws. Only the three-banded armadillos can roll up into a ball.",
+  "why": {
+    "ac": "Nine-banded armadillos come out at night or dusk, foraging earlier on cold or cloudy days.",
+    "et": "Nine-banded armadillos are hunted for meat in many rural areas."
+  },
   "hb": [
     "grassland",
     "forest",
@@ -30,10 +34,11 @@
       "title": "Animal Diversity Web: Dasypus novemcinctus",
       "url": "https://animaldiversity.org/accounts/Dasypus_novemcinctus/",
       "for": [
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (identical quadruplets) is confirmed: the nine-banded armadillo’s single fertilised egg splits into four identical embryos. No why.et: the sources don’t mention eating armadillos."
 }

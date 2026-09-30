@@ -2,7 +2,9 @@
   "sci": "Procyon lotor",
   "ov": "A North American omnivore with dexterous front paws, a black face mask and a ringed tail. Its most important sense is touch, through extremely sensitive front paws.",
   "why": {
-    "dg": "It can carry rabies, and a roundworm found in about 60% of adults can cause fatal brain damage in people."
+    "dg": "It can carry rabies, and a roundworm found in about 60% of adults can cause fatal brain damage in people.",
+    "ac": "Usually nocturnal; young raccoons forage with their mother at night.",
+    "et": "Eaten in some areas, and hunted mostly for fur."
   },
   "hb": [
     "forest",
@@ -40,7 +42,8 @@
       "url": "https://animaldiversity.org/accounts/Procyon_lotor/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     },
     {

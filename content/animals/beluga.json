@@ -1,6 +1,9 @@
 {
   "sci": "Delphinapterus leucas",
   "ov": "An all-white whale of the Arctic and sub-Arctic, the narwhal’s closest relative. It has no dorsal fin, which helps it swim under ice, and a very bulbous melon on its forehead for echolocation.",
+  "why": {
+    "et": "Indigenous hunters in Canada, Greenland, Alaska and Russia are allowed to hunt belugas for food."
+  },
   "hb": [
     "polar",
     "ocean",
@@ -25,10 +28,11 @@
         "ov",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Alias “beluga whale”. The existing fact is half confirmed: the \"sea canary\" name is for its high-pitched calls, but changing the shape of its forehead isn’t in the article. Suggested wording: \"Called the sea canary for its high-pitched calls, and it has no dorsal fin.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

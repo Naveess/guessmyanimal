@@ -4,7 +4,8 @@
   "why": {
     "dg": "Pythons aren’t venomous, and only the reticulated python is known to sometimes eat people. Larger species need caution as pets.",
     "p": "Many species are sold in the exotic pet trade.",
-    "et": "Pythons are sold and eaten as meat, and poached for their skins."
+    "et": "Pythons are sold and eaten as meat, and poached for their skins.",
+    "ac": "Often active at night, finding warm-blooded prey with heat-sensing pits."
   },
   "hb": [
     "rainforest",
@@ -38,6 +39,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact is confirmed by Wikipedia (Burmese python): it sometimes fasts for up to 18 months, and its digestive organs shrink while it fasts. No len: the family range isn’t in the source."
 }

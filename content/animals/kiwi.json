@@ -1,6 +1,9 @@
 {
   "sci": "Apteryx",
   "ov": "Five species of flightless bird found only in New Zealand, about the size of a chicken and the smallest ratites. Their wings are so small they’re hidden under hair-like feathers, and they smell prey through nostrils at the tip of the beak.",
+  "why": {
+    "ac": "Mostly nocturnal, perhaps because of predators, and it relies more on smell and touch than sight."
+  },
   "hb": [
     "forest",
     "scrub"
@@ -20,10 +23,11 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry (five species), so no single IUCN status. The existing fact is confirmed: the article says eggs weigh \"up to one-quarter the weight of the female\" (its lead says 20%). No len/wt: the sources I checked give no range."
 }

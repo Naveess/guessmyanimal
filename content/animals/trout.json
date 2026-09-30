@@ -1,6 +1,9 @@
 {
   "sci": "Oncorhynchus, Salmo and Salvelinus (in part)",
   "ov": "Freshwater fish closely related to salmon. Most spend their whole lives in lakes and rivers, migrating upstream to spawn in gravel beds of small headwater streams. A few, like the steelhead, go to sea.",
+  "why": {
+    "et": "A popular food fish, somewhat bonier than other salmonids."
+  },
   "hb": [
     "freshwater",
     "mountain"
@@ -24,7 +27,8 @@
         "sci",
         "ov",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -36,6 +40,6 @@
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Holds station facing upstream, letting the current bring food to it\" isn’t in the Trout or Brown trout articles. Suggested wording: \"Most trout live their whole lives in fresh water, swimming upstream to spawn.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

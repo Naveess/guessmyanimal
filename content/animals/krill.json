@@ -1,6 +1,9 @@
 {
   "sci": "Euphausiacea",
   "ov": "Small, shrimp-like marine crustaceans found in every ocean, near the bottom of the food chain. They eat phytoplankton and are the main food of many larger animals.",
+  "why": {
+    "et": "Harvested as food for people and livestock since at least the 1800s."
+  },
   "hb": [
     "ocean",
     "polar"
@@ -20,7 +23,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -31,6 +35,6 @@
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Antarctic krill together outweigh all the humans on Earth\" compares with humans, which the source doesn’t. It gives Antarctic krill a biomass of about 500 million tonnes. Suggested wording: \"Antarctic krill weigh about 500 million tonnes in total.\" No why.et. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

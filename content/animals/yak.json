@@ -2,7 +2,8 @@
   "sci": "Bos grunniens",
   "ov": "Long-haired domesticated cattle of the Himalayas, the Tibetan Plateau and the mountains of Central Asia, north to Mongolia and Siberia. It is descended from the wild yak.",
   "why": {
-    "dm": "Most yaks are domestic; they descend from the wild yak, a separate species."
+    "dm": "Most yaks are domestic; they descend from the wild yak, a separate species.",
+    "et": "Kept for milk, wool and meat, and some farmers' only meat through harsh winters."
   },
   "hb": [
     "mountain",
@@ -32,10 +33,11 @@
       "title": "Animal Diversity Web: Bos grunniens",
       "url": "https://animaldiversity.org/accounts/Bos_grunniens/",
       "for": [
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact is half confirmed: yaks have larger lungs and hearts than lowland cattle and carry more oxygen in their blood, keeping foetal haemoglobin all their lives. The 5,000 m figure isn’t in the article. Suggested wording: \"Its blood carries more oxygen than a cow’s, because it keeps foetal haemoglobin all its life.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

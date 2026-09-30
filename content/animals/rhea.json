@@ -1,6 +1,9 @@
 {
   "sci": "Rhea",
   "ov": "Large flightless birds of South American grasslands, just behind the emu in size. They spread their big wings like sails while running. Males court several females, and each female lays in the male’s ground nest.",
+  "why": {
+    "et": "Kept and bred on farms and ranches, like ostriches and emus."
+  },
   "hb": [
     "grassland"
   ],
@@ -22,10 +25,11 @@
         "ht",
         "wt",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. The animals.js fact is confirmed: the male builds the nest and incubates 10 to 60 eggs from several females. REGION (optional): a feral population lives in Germany (about 91 birds in 2023); owner to decide whether to add Europe.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. The animals.js fact is confirmed: the male builds the nest and incubates 10 to 60 eggs from several females. REGION (optional): a feral population lives in Germany (about 91 birds in 2023); owner to decide whether to add Europe."
 }

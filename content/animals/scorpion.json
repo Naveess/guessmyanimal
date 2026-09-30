@@ -2,7 +2,10 @@
   "sci": "Scorpiones",
   "ov": "Arachnids with eight legs, grasping pincers and a curved tail ending in a venomous sting. More than 2,500 species live on every continent except Antarctica, mostly in deserts. All give birth to live young.",
   "why": {
-    "dg": "Most stings don’t need medical treatment, but about 25 species, under 1%, can kill a person. Deaths happen mainly where medical help is hard to reach."
+    "dg": "Most stings don’t need medical treatment, but about 25 species, under 1%, can kill a person. Deaths happen mainly where medical help is hard to reach.",
+    "p": "Often kept as pets, needing little more than a secure, lockable tank.",
+    "ac": "Its eyes are sensitive enough for night species to navigate by starlight.",
+    "et": "Eaten in West Africa, Myanmar and East Asia; fried scorpion is a tradition in Shandong, China."
   },
   "hb": [
     "desert",
@@ -29,6 +32,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (glows blue-green under UV) is confirmed. ANSWER NOTE: animals.js eg:false fits: all known species give live birth. REGION: the source says every continent except Antarctica; animals.js r lacks Europe. Consider adding it. No why.et: the source doesn’t mention eating scorpions. RESOLVED: Europe added to r."
 }

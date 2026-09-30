@@ -2,7 +2,8 @@
   "sci": "Melopsittacus undulatus",
   "ov": "A small, long-tailed, seed-eating parrot of Australia. Wild budgies are green and yellow; captive breeding since the 19th century has produced blues, whites, yellows and greys.",
   "why": {
-    "dm": "Budgies have been bred in captivity since the 19th century, and pet birds come in colours never seen in the wild."
+    "dm": "Budgies have been bred in captivity since the 19th century, and pet birds come in colours never seen in the wild.",
+    "p": "The third most popular pet in the world, after dogs and cats: small, cheap and able to mimic speech."
   },
   "hb": [
     "grassland",
@@ -38,6 +39,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (third most popular pet after dogs and cats) is confirmed word for word."
 }

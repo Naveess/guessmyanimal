@@ -1,6 +1,9 @@
 {
   "sci": "Thunnini",
   "ov": "Fifteen species of fast, streamlined ocean predators in the mackerel family. With the opah and mackerel sharks, tuna are the only fish that keep their bodies warmer than the water around them.",
+  "why": {
+    "et": "Fished extensively for food, and some species are threatened by overfishing."
+  },
   "hb": [
     "ocean"
   ],
@@ -20,10 +23,11 @@
         "len",
         "wt",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Warm-blooded, unlike almost every other fish, and it never stops swimming\" is half sourced: the warm body yes, \"never stops swimming\" isn’t in the article. Suggested wording: \"Warm-blooded, unlike almost every other fish, and the yellowfin can hit 75 km/h.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Ovis canadensis",
   "ov": "A wild sheep of western North America named for its large horns. Its ancestors crossed from Siberia over the Bering land bridge. In the rut, rams lunge into head-butts, and their skulls are built to absorb the impact.",
+  "why": {
+    "et": "Native Americans and early settlers prized its meat as the tastiest of American big game."
+  },
   "hb": [
     "mountain"
   ],
@@ -28,8 +31,15 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Ovis canadensis",
+      "url": "https://animaldiversity.org/accounts/Ovis_canadensis/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CHECK (fact): the horns-as-heavy-as-the-skeleton half is confirmed; \"charge each other at 30 mph\" is not in the article. Suggested wording: \"Rams fight with head-on clashes, and their horns can weigh as much as all the bones in their body.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CHECK (fact): the horns-as-heavy-as-the-skeleton half is confirmed; \"charge each other at 30 mph\" is not in the article. Suggested wording: \"Rams fight with head-on clashes, and their horns can weigh as much as all the bones in their body.\""
 }

@@ -2,7 +2,8 @@
   "sci": "Canis latrans",
   "ov": "A North American wild dog, smaller than its close relative the grey wolf. It adapts well to places people have changed, and urban coyotes are now common in many cities. In 2013 one was seen across the Panama Canal for the first time.",
   "why": {
-    "dg": "Attacks on people are uncommon and rarely serious, though coyotes have targeted small children."
+    "dg": "Attacks on people are uncommon and rarely serious, though coyotes have targeted small children.",
+    "ac": "Essentially nocturnal, though sometimes seen in daylight."
   },
   "hb": [
     "grassland",
@@ -44,7 +45,8 @@
       "url": "https://animaldiversity.org/accounts/Canis_latrans/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],

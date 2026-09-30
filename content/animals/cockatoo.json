@@ -1,6 +1,9 @@
 {
   "sci": "Cacatuidae",
   "ov": "Twenty-two species of crested parrots from the Philippines and eastern Indonesia to New Guinea, the Solomon Islands and Australia. They are mostly white, grey or black, larger than most parrots, and very long-lived.",
+  "why": {
+    "p": "Popular pets, but they can be difficult ones, and trapping for the pet trade has threatened some species."
+  },
   "rg": "Australia, New Guinea, the Solomon Islands, eastern Indonesia and the Philippines.",
   "df": "Seeds, tubers, corms, fruit, flowers and insects.",
   "fx": [
@@ -16,10 +19,11 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. The animals.js fact is confirmed (long lives needing a long-term commitment from owners; wild cockatoos open bins). REGION: suggest adding New Guinea.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. The animals.js fact is confirmed (long lives needing a long-term commitment from owners; wild cockatoos open bins). REGION: suggest adding New Guinea."
 }

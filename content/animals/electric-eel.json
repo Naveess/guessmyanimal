@@ -2,7 +2,8 @@
   "sci": "Electrophorus",
   "ov": "Nocturnal freshwater fish of South America that stun prey with electric shocks. They must breathe air, have poor eyesight and find their way by electrolocation. They mainly eat fish.",
   "why": {
-    "dg": "Its shocks reach 860 volts, strong enough to drive off animals as large as horses."
+    "dg": "Its shocks reach 860 volts, strong enough to drive off animals as large as horses.",
+    "ac": "Nocturnal, with poor eyesight made up for by sensing electric fields."
   },
   "hb": [
     "freshwater",

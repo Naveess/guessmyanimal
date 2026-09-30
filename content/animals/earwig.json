@@ -1,6 +1,9 @@
 {
   "sci": "Dermaptera",
   "ov": "About 2,000 species of insects with forceps-like pincers on the tail, found on every continent except Antarctica. Mostly nocturnal, they hide in damp crevices by day and eat a wide mix of plants and insects. Most can fly but rarely do.",
+  "why": {
+    "ac": "It hides in damp crevices by day and comes out at night to feed."
+  },
   "len": "Mostly 7–50 mm",
   "rg": "Every continent except Antarctica; the common earwig was introduced to North America from Europe in 1907.",
   "df": "Mostly scavengers of dead plant and animal matter; the common earwig also eats plants, ripe fruit and small insects.",
@@ -18,10 +21,11 @@
         "len",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: earwigs \"are not known to purposefully climb into ear canals\", and \"many earwig species display maternal care, which is uncommon among insects\". lf 1 year matches \"about a year from hatching\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: earwigs \"are not known to purposefully climb into ear canals\", and \"many earwig species display maternal care, which is uncommon among insects\". lf 1 year matches \"about a year from hatching\"."
 }

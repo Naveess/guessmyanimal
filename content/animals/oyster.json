@@ -1,6 +1,9 @@
 {
   "sci": "Ostreoidea (in part)",
   "ov": "Saltwater bivalve molluscs with rough, often irregular shells. Some are eaten as a delicacy, and pearl oysters are harvested for their pearls.",
+  "why": {
+    "et": "Some species are commonly eaten, and seen as a delicacy in places."
+  },
   "hb": [
     "coast",
     "ocean"
@@ -19,10 +22,11 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Filters up to 200 litres of water a day, and can change sex more than once\" is half sourced: up to 190 litres a day in ideal lab conditions (11–45 litres normally), but changing sex isn’t in the article, which says some carry both eggs and sperm. Suggested wording: \"Can filter up to 190 litres of water a day, and some carry both eggs and sperm.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

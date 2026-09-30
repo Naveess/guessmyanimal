@@ -5,7 +5,8 @@
     "d": "Many bats eat insects, but most of the rest eat fruit or nectar, and vampire bats feed on blood.",
     "h": "Bats in temperate regions hibernate or go into torpor; tropical bats don’t.",
     "dg": "Bats carry diseases such as rabies, which makes handling them risky.",
-    "et": "Bats are eaten in parts of Asia and Africa and on some Pacific and Caribbean islands."
+    "et": "Bats are eaten in parts of Asia and Africa and on some Pacific and Caribbean islands.",
+    "ac": "Most bats are nocturnal, roosting by day in caves and other shelters."
   },
   "hb": [
     "forest",
@@ -16,12 +17,12 @@
   "len": "29–33 mm (Kitti’s hog-nosed bat) upward",
   "wt": "2 g (Kitti’s hog-nosed bat) to 1.5 kg (flying fox)",
   "df": "Insects for many species, fruit or nectar for most of the rest, and a few eat other animals or blood.",
+  "fx": [
+    "The largest bats, the flying foxes, have wingspans of up to 1.6 m."
+  ],
   "grp": [
     "fruit-bat",
     "vampire-bat"
-  ],
-  "fx": [
-    "The largest bats, the flying foxes, have wingspans of up to 1.6 m."
   ],
   "src": [
     {
@@ -39,6 +40,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (only true flying mammal) is confirmed."
 }

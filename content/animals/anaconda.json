@@ -2,7 +2,8 @@
   "sci": "Eunectes",
   "ov": "Large, semiaquatic boas of tropical South America. The green anaconda is the heaviest snake in the world and one of the longest, reaching over 6 m.",
   "why": {
-    "dg": "Encounters with people can be dangerous, but anacondas don't regularly hunt humans."
+    "dg": "Encounters with people can be dangerous, but anacondas don't regularly hunt humans.",
+    "ac": "Mostly nocturnal and aquatic, lurking almost fully submerged."
   },
   "hb": [
     "wetland",
@@ -33,7 +34,8 @@
       "for": [
         "ov",
         "len",
-        "df"
+        "df",
+        "why"
       ]
     }
   ],

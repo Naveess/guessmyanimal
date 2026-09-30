@@ -2,7 +2,8 @@
   "sci": "Columba livia",
   "ov": "The familiar city pigeon is the domestic form of the wild rock dove, native to southern Europe, North Africa and western Asia. Escaped domestic birds are the origin of feral pigeons worldwide.",
   "why": {
-    "dm": "The wild rock dove isn’t domesticated, but domestic pigeons, with about 1,000 breeds, descend from it."
+    "dm": "The wild rock dove isn’t domesticated, but domestic pigeons, with about 1,000 breeds, descend from it.",
+    "et": "Hunted and eaten as a game bird in many countries."
   },
   "hb": [
     "towns",
@@ -34,6 +35,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Passes the mirror test — one of very few non-mammals that do\" overstates it. Wikipedia (Mirror test) says pigeons passed a highly modified test only after extensive training, and \"untrained pigeons have never passed the mirror test\". Suggested wording: \"Trained pigeons have passed a modified mirror test; untrained ones never have.\" No why.p or why.et: the source doesn’t cover pets or pigeon meat. RESOLVED: fact rewritten as suggested."
 }

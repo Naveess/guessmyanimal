@@ -1,6 +1,9 @@
 {
   "sci": "Caracal caracal",
   "ov": "A slender, long-legged wild cat with a reddish-tan coat and long black ear tufts; its name comes from the Turkish for \"black ear\". It lives alone or in pairs, hunts mostly at night, and prefers dry country.",
+  "why": {
+    "ac": "Typically nocturnal, secretive and hard to spot."
+  },
   "hb": [
     "grassland",
     "scrub",
@@ -33,10 +36,11 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "The animals.js fact is confirmed: it can leap higher than 3 m and catch birds in midair.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "The animals.js fact is confirmed: it can leap higher than 3 m and catch birds in midair."
 }

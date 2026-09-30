@@ -1,6 +1,9 @@
 {
   "sci": "Phasianidae (several genera)",
   "ov": "Medium-sized, ground-dwelling game birds, between quail and pheasants in size, mostly grey and brown. They are native to Europe, Asia, Africa and the Middle East, and species such as the grey partridge have been introduced to North America for hunting.",
+  "why": {
+    "et": "Popular game birds, often reared in captivity and released for shooting."
+  },
   "hb": [
     "grassland",
     "farmland",
@@ -23,7 +26,8 @@
         "ov",
         "hb",
         "rg",
-        "df"
+        "df",
+        "why"
       ]
     },
     {
@@ -37,6 +41,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. The animals.js fact is confirmed: partridges nest on the ground, and \"a pear tree\" may be a corruption of the French \"une perdrix\". REGION: animals.js has Europe and Asia; the article adds Africa (native) and North America (introduced). Suggest adding both.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. The animals.js fact is confirmed: partridges nest on the ground, and \"a pear tree\" may be a corruption of the French \"une perdrix\". REGION: animals.js has Europe and Asia; the article adds Africa (native) and North America (introduced). Suggest adding both."
 }

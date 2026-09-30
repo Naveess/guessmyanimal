@@ -1,6 +1,9 @@
 {
   "sci": "Ovis aries",
   "ov": "Domesticated ruminants kept for wool, meat and milk, most likely descended from the wild mouflon. There were around 1.2 billion sheep in 2019, and their wool is the most widely used animal fibre.",
+  "why": {
+    "et": "Raised for meat, milk, wool and hides in nearly every country; the meat is lamb or mutton."
+  },
   "hb": [
     "farmland",
     "grassland"
@@ -24,7 +27,8 @@
         "ov",
         "rg",
         "df",
-        "cf"
+        "cf",
+        "why"
       ]
     },
     {
@@ -32,10 +36,11 @@
       "url": "https://animaldiversity.org/accounts/Ovis_aries/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing animals.js fact (remembers about 50 faces for years) is confirmed: Wikipedia quotes a 2001 Nature study, 50 faces for over 2 years."
 }

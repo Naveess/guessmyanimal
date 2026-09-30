@@ -1,6 +1,9 @@
 {
   "sci": "Dugong dugon",
   "ov": "A seagrass-eating marine mammal of the Indo-West Pacific, the manatee’s relative and the only living member of its family. Its closest relative, Steller’s sea cow, was hunted to extinction in the 1700s.",
+  "why": {
+    "et": "Hunted for thousands of years for meat and oil, and traditional hunting still matters culturally."
+  },
   "hb": [
     "coast",
     "ocean"
@@ -26,10 +29,11 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "The existing fact is confirmed: feeding trails in seagrass are observed."
 }

@@ -2,7 +2,9 @@
   "sci": "Testudines",
   "ov": "Shelled reptiles, about 360 species, including land-living tortoises, freshwater terrapins and sea turtles. Sea turtles are the only reptiles that migrate long distances to lay their eggs.",
   "why": {
-    "h": "Turtles don’t truly hibernate, but some can lie dormant for months (brumation)."
+    "h": "Turtles don’t truly hibernate, but some can lie dormant for months (brumation).",
+    "p": "Some land and freshwater species are widely kept as pets.",
+    "et": "Hunted for meat, traditional medicine and shells."
   },
   "hb": [
     "freshwater",
@@ -13,13 +15,13 @@
   "len": "Up to over 2.7 m (leatherback turtle)",
   "wt": "Up to over 500 kg (leatherback turtle)",
   "rg": "Most continents and some islands, plus much of the ocean in the case of sea turtles.",
+  "fx": [
+    "The leatherback, the largest turtle, is also the fourth-largest living reptile."
+  ],
   "grp": [
     "sea-turtle",
     "terrapin",
     "tortoise"
-  ],
-  "fx": [
-    "The leatherback, the largest turtle, is also the fourth-largest living reptile."
   ],
   "src": [
     {
@@ -37,6 +39,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Females return to the exact beach where they hatched\" is the extreme case. The Sea turtle article says \"in the extreme case, females return to the same beach where they hatched\". Suggested wording: \"Some sea turtles return to nest on the very beach where they hatched.\" RESOLVED: fact rewritten."
 }

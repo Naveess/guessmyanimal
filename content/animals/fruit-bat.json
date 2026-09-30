@@ -1,6 +1,10 @@
 {
   "sci": "Pteropodidae",
   "ov": "About 197 species of megabats, including the flying foxes, the family with the largest bats. Most are nocturnal or active at dusk, eat fruit or nectar, and find food by sight and smell rather than echolocation. Some roost in colonies of up to a million.",
+  "why": {
+    "ac": "Most are nocturnal or out at dusk, though a few fly by day.",
+    "et": "Killed and eaten as bushmeat across its range, especially in Asia."
+  },
   "hb": [
     "rainforest",
     "forest"
@@ -23,10 +27,11 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. The animals.js fact is confirmed (wingspans up to 1.7 m; most cannot echolocate and navigate by sight and smell). REGION (optional): Papua New Guinea has 36 species; suggest adding New Guinea.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. The animals.js fact is confirmed (wingspans up to 1.7 m; most cannot echolocate and navigate by sight and smell). REGION (optional): Papua New Guinea has 36 species; suggest adding New Guinea."
 }

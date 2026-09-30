@@ -2,7 +2,8 @@
   "sci": "Puma concolor",
   "ov": "A large, plain-coated cat of the Americas, also called puma, mountain lion and panther. It can purr, but it can’t roar.",
   "why": {
-    "dg": "Attacks on people are very rare. They usually involve a young or starving cougar, or one that has got used to people."
+    "dg": "Attacks on people are very rare. They usually involve a young or starving cougar, or one that has got used to people.",
+    "ac": "It varies: active by day, at twilight or at night, depending largely on how many people are around."
   },
   "hb": [
     "forest",
@@ -43,6 +44,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "fx is Wikipedia's \"largest of the Felinae that is capable of purring\", reworded. df prey list: check the Wikipedia Diet section."
 }

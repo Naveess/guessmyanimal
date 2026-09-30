@@ -1,6 +1,10 @@
 {
   "sci": "Nephropidae",
   "ov": "Large marine crustaceans with long bodies, muscular tails and big front claws, highly prized as seafood. They have blue blood, from copper-based haemocyanin.",
+  "why": {
+    "ac": "It stays in its burrow by day and wanders the sea floor at night.",
+    "et": "Usually boiled or steamed in the shell and eaten with butter and lemon."
+  },
   "hb": [
     "ocean",
     "coast"
@@ -22,7 +26,8 @@
         "sci",
         "ov",
         "df",
-        "cf"
+        "cf",
+        "why"
       ]
     },
     {
@@ -30,10 +35,11 @@
       "url": "https://animaldiversity.org/accounts/Homarus_americanus/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (doesn’t weaken with age) is confirmed: research suggests lobsters may not slow down, weaken or lose fertility with age. ANSWER NOTE: animals.js lf is \"50–100 years\", but Wikipedia says an estimated 45–50 years in the wild. Consider \"45–50 years\". RESOLVED: lf changed to \"45–50 years\" per Wikipedia; the fx that said the same was dropped."
 }

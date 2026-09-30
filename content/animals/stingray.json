@@ -2,7 +2,8 @@
   "sci": "Myliobatoidei",
   "ov": "About 220 species of flat, cartilaginous fish with a venomous barbed stinger on the tail. They are common in warm coastal seas worldwide, and some live in rivers.",
   "why": {
-    "dg": "A sting is very painful but rarely fatal. Steve Irwin’s death in 2006 was only the second recorded in Australian waters since 1945."
+    "dg": "A sting is very painful but rarely fatal. Steve Irwin’s death in 2006 was only the second recorded in Australian waters since 1945.",
+    "et": "Rays are edible, and stingray dishes are found on coasts worldwide."
   },
   "hb": [
     "coast",
@@ -26,6 +27,6 @@
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact is broadly confirmed: the blade is \"deeply barbed and usually breaks off in the wound\"; \"purely defensive\" isn’t stated. No why.et: the source doesn’t mention eating them."
 }

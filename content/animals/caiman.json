@@ -3,7 +3,8 @@
   "ov": "Six species of alligator relatives from Central and South America, living in marshes, swamps, lakes and mangrove rivers and fairly nocturnal. Most are small crocodilians of 6–40 kg, but the black caiman of the Amazon basin can top 4 m and 450 kg.",
   "why": {
     "et": "Humans are their main predator, hunting caimans for their meat and skin.",
-    "dg": "Potentially dangerous to people and pets, though smaller than other crocodilians and so less of a threat."
+    "dg": "Potentially dangerous to people and pets, though smaller than other crocodilians and so less of a threat.",
+    "ac": "It usually hunts at night, and has excellent night vision."
   },
   "hb": [
     "wetland",
@@ -38,7 +39,8 @@
       "url": "https://en.wikipedia.org/wiki/Spectacled_caiman",
       "for": [
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {

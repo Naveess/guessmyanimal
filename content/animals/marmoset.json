@@ -1,6 +1,9 @@
 {
   "sci": "Callithrix, Cebuella, Callibella and Mico",
   "ov": "Twenty-two species of tiny New World monkeys, most about 20 cm long. They have claws rather than nails and use strong lower incisors to gnaw holes in trees and feed on the gum and sap. They live in family groups of 3 to 15.",
+  "why": {
+    "p": "Sometimes kept as pets, though their diet and housing needs are demanding."
+  },
   "hb": [
     "rainforest",
     "forest"
@@ -30,7 +33,8 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -41,6 +45,6 @@
       ]
     }
   ],
-  "notes": "Group entry. The earlier sci \"Callicebus\" was wrong (that genus is the titi monkeys). The animals.js fact is confirmed: marmosets gnaw holes in trunks to feed on sap and gum.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "Group entry. The earlier sci \"Callicebus\" was wrong (that genus is the titi monkeys). The animals.js fact is confirmed: marmosets gnaw holes in trunks to feed on sap and gum."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Cynomys",
   "ov": "Five species of burrowing ground squirrels from the grasslands of North America, named for their bark-like warning call. They live in family groups inside large colonies, and their digging helps renew grass and topsoil.",
+  "why": {
+    "p": "Once taken from the wild for the exotic pet trade, but they are difficult pets needing constant care."
+  },
   "hb": [
     "grassland"
   ],
@@ -24,10 +27,11 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): The animals.js fact is confirmed, attributed in the article to researcher Con Slobodchikoff: calls encode what a predator is, how big it is and how fast it is coming; family members \"kiss\". ANSWER CHECK (lifespan): animals.js has lf \"3–5 years\"; the article gives an average of 8 to 10 years in the wild. Suggested: \"8–10 years\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): The animals.js fact is confirmed, attributed in the article to researcher Con Slobodchikoff: calls encode what a predator is, how big it is and how fast it is coming; family members \"kiss\". ANSWER CHECK (lifespan): animals.js has lf \"3–5 years\"; the article gives an average of 8 to 10 years in the wild. Suggested: \"8–10 years\"."
 }

@@ -1,6 +1,10 @@
 {
   "sci": "Phasmatodea",
   "ov": "Plant-eating insects camouflaged as sticks or leaves, found on every continent except Antarctica, most of all in the tropics. They are nocturnal, feeding under leaves at night and keeping still by day. Some species are the world’s longest insects.",
+  "why": {
+    "p": "Almost 300 species have been reared as pets or in labs, and they have been pets since China's Han dynasty.",
+    "ac": "Nocturnal, feeding under leaves at twilight or midnight and keeping still by day."
+  },
   "hb": [
     "forest",
     "rainforest"
@@ -23,10 +27,11 @@
         "len",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"no males at all\" is not stated; the article says many phasmids are parthenogenic and \"do not require fertilized eggs for female offspring to be produced\". Suggested wording: \"Many species can reproduce without males: unfertilised eggs hatch into females.\" ANSWER CHECK (fl): animals.js has fl:false, but \"some species have wings and can disperse by flying\". Consider fl:\"some\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"no males at all\" is not stated; the article says many phasmids are parthenogenic and \"do not require fertilized eggs for female offspring to be produced\". Suggested wording: \"Many species can reproduce without males: unfertilised eggs hatch into females.\" ANSWER CHECK (fl): animals.js has fl:false, but \"some species have wings and can disperse by flying\". Consider fl:\"some\"."
 }

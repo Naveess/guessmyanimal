@@ -2,7 +2,8 @@
   "sci": "Dipodidae",
   "ov": "Small, nocturnal hopping rodents of the hot deserts of North Africa and Asia, with very long back legs, a tuft-tipped tail longer than the body, and often huge ears. They move almost entirely on two legs, zigzagging and leaping to escape predators.",
   "why": {
-    "h": "It digs a special winter burrow to hibernate in, longer and deeper than its summer one."
+    "h": "It digs a special winter burrow to hibernate in, longer and deeper than its summer one.",
+    "ac": "Nocturnal hopping rodents of hot deserts."
   },
   "hb": [
     "desert"

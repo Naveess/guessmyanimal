@@ -2,7 +2,8 @@
   "sci": "Syncerus caffer",
   "ov": "A large, heavily built wild cow of sub-Saharan Africa. Males have a bony plate between the horns. Herds can number from a few to over a thousand.",
   "why": {
-    "dg": "Trophy hunters prize it for its aggression and power."
+    "dg": "Trophy hunters prize it for its aggression and power.",
+    "et": "Widely hunted for bushmeat, and farmed on private land for meat and skins."
   },
   "hb": [
     "grassland",
@@ -37,7 +38,8 @@
       "title": "Animal Diversity Web: Syncerus caffer",
       "url": "https://animaldiversity.org/accounts/Syncerus_caffer/",
       "for": [
-        "wt"
+        "wt",
+        "why"
       ]
     },
     {
@@ -48,6 +50,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Aliases include \"water buffalo\", an Asian species this page doesn’t cover. ANSWER CHECK (fact): the animals.js fact \"Nicknamed the widowmaker, and it ambushes hunters that have wounded it\" isn’t in the article. Suggested wording: \"Herds can number over a thousand animals.\" why.dg is weak: the source only says hunters value its aggression, not how often it hurts people. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

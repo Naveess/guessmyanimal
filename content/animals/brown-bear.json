@@ -3,7 +3,8 @@
   "ov": "A huge, mostly plant-eating bear of northern forests, mountains and tundra, and one of the largest land carnivores alive. Grizzlies and Kodiak bears are brown bears too.",
   "why": {
     "dg": "It usually avoids people and rarely attacks on sight, but its temper is unpredictable.",
-    "h": "Not a full hibernator: it dens up for the winter and lives off its fat, but it can be woken easily."
+    "h": "Not a full hibernator: it dens up for the winter and lives off its fat, but it can be woken easily.",
+    "et": "Once used for meat and hides, but now hunted mainly as a trophy."
   },
   "hb": [
     "forest",
@@ -42,6 +43,13 @@
         "cf",
         "fx",
         "iu"
+      ]
+    },
+    {
+      "title": "Animal Diversity Web: Ursus arctos",
+      "url": "https://animaldiversity.org/accounts/Ursus_arctos/",
+      "for": [
+        "why"
       ]
     }
   ],

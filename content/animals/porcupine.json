@@ -3,7 +3,8 @@
   "ov": "Large rodents covered in sharp quills. The Old World and New World porcupines look alike but aren’t closely related. The largest is the third-largest living rodent, after the capybara and beaver.",
   "why": {
     "et": "In Kenya, porcupines have become crop pests and are eaten as a delicacy.",
-    "dg": "Its barbed quills pierce skin, stay in and hurt more coming out."
+    "dg": "Its barbed quills pierce skin, stay in and hurt more coming out.",
+    "ac": "Old World porcupines are strictly nocturnal; North American ones often rest in trees on summer days."
   },
   "hb": [
     "forest",
@@ -36,7 +37,8 @@
       "title": "Wikipedia: North American porcupine",
       "url": "https://en.wikipedia.org/wiki/North_American_porcupine",
       "for": [
-        "df"
+        "df",
+        "why"
       ]
     }
   ],

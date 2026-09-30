@@ -1,6 +1,10 @@
 {
   "sci": "Tapirus",
   "ov": "Large, pig-shaped plant-eaters with a short, flexible trunk. Their closest living relatives are horses and rhinoceroses. They live in the forests of Central and South America and Southeast Asia.",
+  "why": {
+    "ac": "Largely nocturnal and crepuscular, though the mountain tapir is more active by day.",
+    "et": "Hunting for meat and hides has greatly reduced its numbers."
+  },
   "hb": [
     "rainforest",
     "forest",
@@ -20,10 +24,11 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact is confirmed: the trunk is a nose and upper lip together, and tapirs \"sink to the bottom and walk along the riverbed to feed\". No why.et: the source doesn’t mention eating tapirs."
 }

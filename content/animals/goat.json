@@ -1,6 +1,10 @@
 {
   "sci": "Capra hircus",
   "ov": "One of the first animals ever domesticated, from the wild goat in Iran about 10,000 years ago. Kept for milk, meat, hair and skins, there were more than 1.1 billion goats in 2022.",
+  "why": {
+    "p": "Mostly livestock, but some people keep goats as pets for the close bonds they form.",
+    "et": "About 440 million goats are slaughtered for meat each year worldwide."
+  },
   "hb": [
     "farmland"
   ],
@@ -27,7 +31,8 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -38,6 +43,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact, not answer): Wikipedia confirms the horizontal pupils and wide field of view in the animals.js fact, but not the \"almost 320°\" figure. Source the number or drop it, e.g. \"Rectangular pupils give it a very wide view to each side.\" RESOLVED: animals.js fact rewritten to \"Rectangular pupils give it a very wide view to each side.\""
 }

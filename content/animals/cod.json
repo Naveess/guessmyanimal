@@ -1,6 +1,9 @@
 {
   "sci": "Gadus morhua",
   "ov": "The Atlantic cod is a large, brown or green spotted fish of the North Atlantic, one of the most widely eaten fish in the world.",
+  "why": {
+    "et": "One of the most widely eaten fish."
+  },
   "hb": [
     "ocean",
     "coast"
@@ -21,10 +24,11 @@
         "len",
         "wt",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "The existing fact is confirmed: a female spawns between 200,000 and 15 million eggs."
 }

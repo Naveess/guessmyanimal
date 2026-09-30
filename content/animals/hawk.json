@@ -1,6 +1,9 @@
 {
   "sci": "Accipitridae (in part)",
   "ov": "Birds of prey of the eagle family, found on every continent except Antarctica. “True” hawks such as goshawks and sparrowhawks are woodland hunters with short, broad wings; in the US the name also covers the broad-winged buzzards.",
+  "why": {
+    "p": "Trained for falconry, which used to be called hawking, rather than kept as pets."
+  },
   "hb": [
     "forest",
     "grassland",
@@ -31,7 +34,8 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -49,6 +53,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Sees roughly eight times more sharply than we do\" isn’t in the article, which says hawks have \"relatively high visual acuity\" and gives red-tailed hawks 16.8 cycles per degree. Suggested wording: \"Each eye has two foveae, the patches of sharpest vision.\" No why.dg or why.p: the source doesn’t cover danger to people or keeping hawks. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

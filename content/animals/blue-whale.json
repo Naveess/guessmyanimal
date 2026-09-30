@@ -1,6 +1,9 @@
 {
   "sci": "Balaenoptera musculus",
   "ov": "A baleen whale, the largest animal known to have ever existed: up to 30 m long and 200 tonnes. Its long, slender body is blue-grey above and paler below.",
+  "why": {
+    "et": "Protected: trading its meat is illegal, though blue–fin hybrid meat has turned up in Japanese markets."
+  },
   "hb": [
     "ocean"
   ],
@@ -27,7 +30,8 @@
         "rg",
         "df",
         "iu",
-        "cf"
+        "cf",
+        "why"
       ]
     },
     {
@@ -38,6 +42,6 @@
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"…Its heart alone weighs as much as a car\" is half sourced: the largest animal ever yes, the heart comparison isn’t in the article. Suggested wording: \"The largest animal known to have ever lived, up to 30 m long.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

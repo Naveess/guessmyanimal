@@ -1,6 +1,10 @@
 {
   "sci": "Pavo cristatus, Pavo muticus and Afropavo congensis",
   "ov": "Peafowl are three species of pheasant: the Indian and green peafowl of Asia and the Congo peafowl of Central Africa. Males are peacocks and females peahens, and the male’s “tail” is a train of long covert feathers.",
+  "why": {
+    "p": "Some people keep peafowl as pets.",
+    "et": "Peafowl and their eggs have been eaten, notably at medieval feasts."
+  },
   "hb": [
     "forest",
     "grassland",
@@ -22,7 +26,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -30,10 +35,11 @@
       "url": "https://animaldiversity.org/accounts/Pavo_cristatus/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry (three species). The existing fact (structural colour, no blue pigment) is confirmed: the colours come from nanostructures in the feathers, not pigment. REGION: animals.js r is [\"Asia\"], but the Congo peafowl is native to Central Africa. Consider adding Africa. No why.p or why.et: the source doesn’t cover keeping or eating peafowl. RESOLVED: Africa added to r."
 }

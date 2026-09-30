@@ -1,6 +1,10 @@
 {
   "sci": "Vulpes zerda",
   "ov": "The smallest fox, from the deserts of North Africa. Its huge ears, the biggest for its size of any member of the dog family, shed heat and pick up prey moving underground.",
+  "why": {
+    "p": "Bred commercially as an exotic pet, and kept as one as far back as ancient Rome.",
+    "ac": "A night hunter that shelters by day from the desert heat."
+  },
   "hb": [
     "desert"
   ],
@@ -26,17 +30,19 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
       "title": "Animal Diversity Web: Vulpes zerda",
       "url": "https://animaldiversity.org/accounts/Vulpes_zerda/",
       "for": [
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact is broadly confirmed: the smallest fox, with the greatest ear-to-body ratio in the dog family. The \"a third of its body length\" figure isn’t in the article. No why.p: the source doesn’t mention pets."
 }

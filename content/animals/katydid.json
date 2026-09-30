@@ -3,7 +3,8 @@
   "ov": "More than 8,000 species of long-horned relatives of grasshoppers, also called bush crickets. Many are green and leaf-shaped, live in trees and call loudly on summer nights. Their thread-like antennae, which can be longer than the body, tell them apart from grasshoppers.",
   "why": {
     "dg": "Harmless, though large ones can give a painful bite or pinch if handled; it seldom breaks the skin.",
-    "et": "Some species are eaten, such as the nsenene of Uganda and neighbouring areas."
+    "et": "Some species are eaten, such as the nsenene of Uganda and neighbouring areas.",
+    "ac": "Many species are nocturnal, with loud calls on summer nights."
   },
   "hb": [
     "forest"
@@ -29,6 +30,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): leaf camouflage is confirmed (\"shapes and colours similar to leaves\"), but fake blemishes and bite marks are not in the article. Suggested wording: \"Many look just like leaves, and males call loudly on summer nights.\" ac \"night\" fits (\"many species are nocturnal\"). Optional (d): \"many species are exclusively predatory\", so Omnivore could fit; I would leave Herbivore. r Worldwide and lf are not in the article.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): leaf camouflage is confirmed (\"shapes and colours similar to leaves\"), but fake blemishes and bite marks are not in the article. Suggested wording: \"Many look just like leaves, and males call loudly on summer nights.\" ac \"night\" fits (\"many species are nocturnal\"). Optional (d): \"many species are exclusively predatory\", so Omnivore could fit; I would leave Herbivore. r Worldwide and lf are not in the article."
 }

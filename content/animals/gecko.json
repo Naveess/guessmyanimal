@@ -1,6 +1,10 @@
 {
   "sci": "Gekkota",
   "ov": "Nearly 2,000 species of small, mostly nocturnal lizards, the most species-rich lizard group. Most can’t blink and lick their eyes clean. Unusually for lizards, they chirp and click to each other.",
+  "why": {
+    "p": "The leopard gecko is the most commonly kept, and the crested gecko is catching up.",
+    "ac": "Unlike most lizards, usually nocturnal, and it sees colour in dim light far better than we do."
+  },
   "hb": [
     "rainforest",
     "forest",
@@ -23,10 +27,11 @@
         "len",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (\"Sticks to glass using molecular forces, not suction or glue\") is broadly confirmed: the toe pads work without liquids or suction. Wikipedia says van der Waals forces were long thought responsible, but a 2014 study points mainly to electrostatic forces. Both are molecular."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Phascolarctos cinereus",
   "ov": "A tree-dwelling marsupial of eastern and southern Australia, and not a bear. It lives on eucalyptus leaves, a diet so low in energy that koalas sleep up to 20 hours a day.",
+  "why": {
+    "ac": "It sleeps about 20 hours a day and is mostly active at night."
+  },
   "hb": [
     "forest"
   ],
@@ -31,7 +34,8 @@
         "df",
         "cf",
         "fx",
-        "iu"
+        "iu",
+        "why"
       ]
     },
     {
@@ -42,6 +46,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Since 2022 the koala is listed as Endangered in Queensland, New South Wales and the ACT; the IUCN status is Vulnerable. The existing fact (sleeps 20 hours) is confirmed."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Anas platyrhynchos",
   "ov": "A dabbling duck that breeds across the Americas, Eurasia and North Africa and has been introduced to Australia, New Zealand, South America and South Africa. Males have green heads; females are mainly brown. Mallards live in wetlands in groups.",
+  "why": {
+    "et": "An important game bird, and the ancestor of most domestic ducks raised for meat."
+  },
   "hb": [
     "wetland",
     "freshwater"
@@ -9,11 +12,11 @@
   "wt": "0.7–1.6 kg",
   "rg": "Native to the Americas, Eurasia and North Africa; introduced to Australia, New Zealand, South America and South Africa.",
   "df": "Water plants and small animals.",
-  "iu": "LC",
   "fx": [
     "Mallards average three years of life but can live to twenty.",
     "Ducks were first domesticated in Southeast Asia at least 4,000 years ago."
   ],
+  "iu": "LC",
   "src": [
     {
       "title": "Wikipedia: Mallard",
@@ -28,8 +31,22 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Anas platyrhynchos",
+      "url": "https://animaldiversity.org/accounts/Anas_platyrhynchos/",
+      "for": [
+        "why"
+      ]
+    },
+    {
+      "title": "Wikipedia: Domestic duck",
+      "url": "https://en.wikipedia.org/wiki/Domestic_duck",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "The animals.js fact is confirmed: the mallard is the main ancestor of most domestic duck breeds.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "The animals.js fact is confirmed: the mallard is the main ancestor of most domestic duck breeds."
 }

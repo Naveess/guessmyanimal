@@ -2,7 +2,8 @@
   "sci": "Felis catus",
   "ov": "The only domesticated member of the cat family. Cats were first tamed from the African wildcat in the Near East around 7500 BCE, and there are now an estimated 600 million worldwide.",
   "why": {
-    "ac": "Cats are crepuscular, most active around dawn and dusk, though pet cats partly adjust to their owners’ hours."
+    "ac": "Cats are crepuscular, most active around dawn and dusk, though pet cats partly adjust to their owners’ hours.",
+    "p": "The only domesticated member of the cat family."
   },
   "hb": [
     "towns",
@@ -46,6 +47,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact, not answer): the animals.js fact \"Purring sits in a frequency range linked to healing bone\" is not in the Wikipedia Cat article. Source it or replace it. why.ac explains the \"night\" answer: Wikipedia says crepuscular."
 }

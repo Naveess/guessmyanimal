@@ -1,6 +1,10 @@
 {
   "sci": "Didelphimorphia",
   "ov": "The largest group of marsupials in the Americas, 126 species. Only the Virginia opossum lives in the US and Canada, where it’s often called a possum. It’s usually non-aggressive and rarely carries rabies.",
+  "why": {
+    "ac": "A solitary nocturnal animal that favours dark, secure dens.",
+    "et": "Hunted for sport and food, and some believe its meat has healing properties."
+  },
   "hb": [
     "forest",
     "towns",
@@ -19,14 +23,16 @@
       "for": [
         "sci",
         "ov",
-        "rg"
+        "rg",
+        "why"
       ]
     },
     {
       "title": "Wikipedia: Virginia opossum",
       "url": "https://en.wikipedia.org/wiki/Virginia_opossum",
       "for": [
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -34,10 +40,11 @@
       "url": "https://animaldiversity.org/accounts/Didelphis_virginiana/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry (alias “possum”). ANSWER CHECK (fact): the animals.js fact \"Playing dead is involuntary: it faints, and cannot snap out of it for hours\" isn’t quite the source, which says it feigns death \"in response to extreme fear\", stops when the threat withdraws, and can keep it up for several hours. Suggested wording: \"Plays dead when terrified, lying limp for up to several hours.\" REGION: opossums originated in South America and live throughout; consider adding Central America. No why.et: the source doesn’t mention eating them. RESOLVED (owner: approve all): Central America added to r; fact rewritten as suggested."
 }

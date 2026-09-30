@@ -1,6 +1,9 @@
 {
   "sci": "Galagidae",
   "ov": "Small nocturnal primates of sub-Saharan Africa, with big eyes, sharp hearing, bat-like ears and long tails for balance. They are remarkable jumpers, and the most successful strepsirrhine primates in Africa.",
+  "why": {
+    "ac": "Small nocturnal primates; the Afrikaans name nagapie means \"night monkey\"."
+  },
   "hb": [
     "forest"
   ],
@@ -21,7 +24,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -33,6 +37,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry. ANSWER CHECK (fact): \"Named for a cry that sounds unnervingly like a human baby\" is half sourced: the article says the name comes \"from either the animal’s cries or its appearance\". Suggested wording: \"Its name may come from its baby-like cries, or from its looks.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry. ANSWER CHECK (fact): \"Named for a cry that sounds unnervingly like a human baby\" is half sourced: the article says the name comes \"from either the animal’s cries or its appearance\". Suggested wording: \"Its name may come from its baby-like cries, or from its looks.\""
 }

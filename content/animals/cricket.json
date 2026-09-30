@@ -3,7 +3,8 @@
   "ov": "Mostly nocturnal insects related to bush crickets and grasshoppers, with round heads, long antennae and powerful jumping legs. Males sing by rubbing their tough front wings together, and crickets hear through ears on their front legs.",
   "why": {
     "p": "Kept as pets from China to Europe, sometimes for cricket fighting.",
-    "et": "Eaten in Southeast Asia, where they are sold deep-fried in markets as snacks."
+    "et": "Eaten in Southeast Asia, where they are sold deep-fried in markets as snacks.",
+    "ac": "Mainly nocturnal, and best known for the males' chirping song."
   },
   "rg": "Worldwide between about 55° north and south, with most species in the tropics.",
   "fx": [
@@ -30,6 +31,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: chirp rate rises with temperature (Dolbear's law), and counting chirps can approximate the temperature. ANSWER CHECK (fl): animals.js has fl:true, but \"many species, however, are flightless\" and some are wingless. Consider fl:\"some\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: chirp rate rises with temperature (Dolbear's law), and counting chirps can approximate the temperature. ANSWER CHECK (fl): animals.js has fl:true, but \"many species, however, are flightless\" and some are wingless. Consider fl:\"some\"."
 }

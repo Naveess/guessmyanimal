@@ -2,7 +2,9 @@
   "sci": "Testudinidae",
   "ov": "Land-living turtles with domed shells and column-like, elephant-like legs. They are slow, placid plant-eaters, and most species can live 80–150 years.",
   "why": {
-    "h": "Many sit out the winter: Hermann's tortoises hibernate until late February, desert tortoises lie dormant in burrows."
+    "h": "Many sit out the winter: Hermann's tortoises hibernate until late February, desert tortoises lie dormant in burrows.",
+    "p": "Often kept as pets and famously long-lived; Adwaita, said to be Robert Clive's pet, was at least 150.",
+    "et": "Hermann's tortoises are eaten in some Asian countries, and turtles in general are hunted for meat."
   },
   "hb": [
     "grassland",
@@ -32,14 +34,16 @@
         "len",
         "wt",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
       "title": "Wikipedia: Turtle",
       "url": "https://en.wikipedia.org/wiki/Turtle",
       "for": [
-        "cf"
+        "cf",
+        "why"
       ]
     },
     {

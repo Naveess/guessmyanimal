@@ -1,6 +1,9 @@
 {
   "sci": "Pteromyini",
   "ov": "About 50 species of squirrels that glide between trees on a furred membrane stretching from wrist to ankle, steering with their limbs and tail. Most are nocturnal. They cannot truly fly, but can cover a forest faster than tree squirrels.",
+  "why": {
+    "ac": "Most flying squirrels are nocturnal."
+  },
   "hb": [
     "forest"
   ],
@@ -26,7 +29,8 @@
         "hb",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -37,6 +41,6 @@
       ]
     }
   ],
-  "notes": "Group entry. The animals.js fact is confirmed (glides up to 90 m; glows pink under UV).",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "Group entry. The animals.js fact is confirmed (glides up to 90 m; glows pink under UV)."
 }

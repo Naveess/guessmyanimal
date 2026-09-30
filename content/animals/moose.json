@@ -2,7 +2,8 @@
   "sci": "Alces alces",
   "ov": "The tallest, largest and heaviest living deer, known as “elk” in British English. A solitary browser of northern forests, it spends a lot of time in and around water.",
   "why": {
-    "dg": "Moose aren’t usually aggressive, but when provoked or frightened they attack more people than bears and wolves combined, usually with only minor injuries."
+    "dg": "Moose aren’t usually aggressive, but when provoked or frightened they attack more people than bears and wolves combined, usually with only minor injuries.",
+    "et": "Hunted across its range; in Sweden in 1983 moose made up 14% of all meat eaten."
   },
   "hb": [
     "forest",
@@ -41,10 +42,11 @@
       "url": "https://animaldiversity.org/accounts/Alces_alces/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (dives several metres for pondweed) is confirmed. REGION: animals.js r is North America and Europe, but moose also range across northern Asia (Russia, Mongolia, Kazakhstan). Consider adding Asia. RESOLVED: Region added."
 }

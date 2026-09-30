@@ -3,7 +3,8 @@
   "ov": "Large waterfowl, between ducks and swans in size. Most wild species migrate, and domestic geese come from the wild greylag goose and swan goose.",
   "why": {
     "dg": "Geese are highly aggressive and noisy when they feel threatened, and ganders stand between a threat and their family.",
-    "dm": "Wild geese aren’t domesticated, but domestic geese were bred from the greylag and swan goose."
+    "dm": "Wild geese aren’t domesticated, but domestic geese were bred from the greylag and swan goose.",
+    "et": "Domestic geese are kept for their meat, eggs and down."
   },
   "hb": [
     "wetland",
@@ -57,6 +58,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Genuinely will chase you, and remembers faces\" is half sourced (aggression yes, faces no). Suggested wording: \"Noisy and aggressive enough that geese have been kept as guards.\""
 }

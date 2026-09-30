@@ -1,6 +1,9 @@
 {
   "sci": "Nasua and Nasuella",
   "ov": "Long-nosed members of the raccoon family from the Americas. They are active by day: females and young travel in noisy bands, rooting for invertebrates with their flexible, upturned snouts, while adult males live alone.",
+  "why": {
+    "et": "Hunted for its meat in parts of its range."
+  },
   "len": "33–69 cm, plus a tail that can be as long again",
   "ht": "About 30 cm at the shoulder",
   "wt": "2–8 kg",
@@ -24,8 +27,15 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Nasua narica",
+      "url": "https://animaldiversity.org/accounts/Nasua_narica/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "Group entry. The animals.js fact is confirmed: coatis often hold their tail erect to keep the troop together in tall vegetation.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "Group entry. The animals.js fact is confirmed: coatis often hold their tail erect to keep the troop together in tall vegetation."
 }

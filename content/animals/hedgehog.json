@@ -5,7 +5,8 @@
     "d": "Mostly insects, worms and slugs, which is why gardeners like having them around.",
     "h": "All wild hedgehogs can hibernate. Body temperature drops from about 30–35 °C to as low as 2–5 °C.",
     "p": "The pet kind is mostly the African pygmy hedgehog. Keeping a wild hedgehog is illegal in some countries, such as France and Italy.",
-    "et": "Eaten in ancient Egypt and medieval Europe, and still eaten by some Romani communities."
+    "et": "Eaten in ancient Egypt and medieval Europe, and still eaten by some Romani communities.",
+    "ac": "Largely nocturnal, snuffling along and stopping often to smell the air."
   },
   "hb": [
     "forest",
@@ -36,7 +37,8 @@
       "for": [
         "len",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -47,6 +49,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry (17 species); no species pages to link. ADW gives a length of 135–165 mm, which looks low against Wikipedia's \"260 mm or more in large adults\", so I used Wikipedia. df \"eggs, carrion and fallen fruit\": check the European hedgehog Diet section."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Tarsiidae",
   "ov": "Tiny primates of the islands of Southeast Asia with enormous eyes: each eyeball is about 16 mm across and as big as the whole brain. They cling upright to trees, leap after prey, and can turn their heads 180 degrees each way.",
+  "why": {
+    "ac": "Its huge eyes and sharp hearing make it a very successful night hunter."
+  },
   "hb": [
     "rainforest",
     "forest"
@@ -30,10 +33,11 @@
       "title": "Animal Diversity Web: Tarsius syrichta",
       "url": "https://animaldiversity.org/accounts/Tarsius_syrichta/",
       "for": [
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): ANSWER CHECK (fact): the animals.js fact \"Each eyeball is as big as its brain and cannot move in its socket\" is half sourced: the eyeball and brain comparison yes, \"cannot move in its socket\" isn’t in the article. Suggested wording: \"Each eyeball is as big as its brain, and it can turn its head 180 degrees each way.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): ANSWER CHECK (fact): the animals.js fact \"Each eyeball is as big as its brain and cannot move in its socket\" is half sourced: the eyeball and brain comparison yes, \"cannot move in its socket\" isn’t in the article. Suggested wording: \"Each eyeball is as big as its brain, and it can turn its head 180 degrees each way.\""
 }

@@ -2,7 +2,8 @@
   "sci": "Formicidae",
   "ov": "Social insects living in colonies of a queen, workers and males, with more than 13,800 species described of an estimated 22,000. They live on almost every landmass on Earth.",
   "why": {
-    "et": "Many human cultures use ants in food, medicine and rituals."
+    "et": "Many human cultures use ants in food, medicine and rituals.",
+    "p": "Mostly as ant farms, which were popular educational toys from the late 1950s to the late 1970s."
   },
   "hb": [
     "forest",
@@ -37,6 +38,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"All the ants on Earth weigh roughly as much as all the people\" was E. O. Wilson’s 2009 estimate. Wikipedia says more careful 2022 estimates put the ants’ total well below that. Suggested wording: \"There may be one to ten quadrillion ants alive at any one time.\" ANSWER NOTE: animals.js fl is false, but queens and males have wings (the nuptial flight). Consider \"some\", as with the shark’s eg, or keep false (workers can’t fly). RESOLVED: fl changed to \"some\" (chip: \"Can fly: Only some\"; the second fx explains it, and game hints only say \"It can fly\" on fl === true). Fact rewritten."
 }

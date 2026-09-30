@@ -1,6 +1,9 @@
 {
   "sci": "Gazella, Eudorcas and Nanger",
   "ov": "Small, fast antelopes, mostly fawn-coloured, living in herds in the deserts, grasslands and savannas of Africa and in south-west and central Asia and India.",
+  "why": {
+    "et": "Hunted as a food source."
+  },
   "hb": [
     "grassland",
     "desert",
@@ -31,8 +34,15 @@
         "cf",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Gazella dorcas",
+      "url": "https://animaldiversity.org/accounts/Gazella_dorcas/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact is half confirmed: Thomson’s gazelles stot (jump high) when threatened, but the article doesn’t say why. Suggested wording: \"Leaps high on stiff legs when a predator is near.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

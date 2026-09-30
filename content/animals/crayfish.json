@@ -1,6 +1,10 @@
 {
   "sci": "Astacoidea and Parastacoidea",
   "ov": "Freshwater relatives of lobsters, also called crawfish or crawdads. They live in streams, swamps, ditches and paddy fields, and most can’t tolerate polluted water.",
+  "why": {
+    "p": "Kept as pets in freshwater aquariums.",
+    "et": "Eaten worldwide, though only a small part of the body is eaten."
+  },
   "hb": [
     "freshwater",
     "wetland"
@@ -24,10 +28,11 @@
         "ov",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry (aliases crawfish, yabby). ANSWER CHECK (fact): the animals.js fact \"A freshwater lobster, and it can regrow a lost claw\" is half sourced: the lobster relation yes, regrowing claws isn’t in the article. Suggested wording: \"A freshwater relative of the lobster.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

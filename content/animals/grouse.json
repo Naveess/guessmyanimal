@@ -1,6 +1,9 @@
 {
   "sci": "Tetraonini",
   "ov": "Compact, heavily built game birds of the Northern Hemisphere, from arctic tundra to pine forest, moorland and mountains. Their feathered legs and toes help them walk on snow and burrow into it for shelter. Many males display in groups (leks) at dawn and dusk.",
+  "why": {
+    "et": "A game bird: hunters kill millions each year for food and sport."
+  },
   "hb": [
     "forest",
     "mountain",
@@ -26,10 +29,11 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. REGION: suggest adding Arctic (arctic tundra, to 83°N). ANSWER CHECK (fact): \"Burrows into snow to roost, and males inflate coloured air sacs to boom at rivals\" is half sourced: snow burrowing is confirmed, and males have \"inflatable, brightly coloured patches of bare skin\", but booming is not mentioned. Suggested wording: \"Burrows into snow for shelter, and males show off inflatable, brightly coloured skin patches.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. REGION: suggest adding Arctic (arctic tundra, to 83°N). ANSWER CHECK (fact): \"Burrows into snow to roost, and males inflate coloured air sacs to boom at rivals\" is half sourced: snow burrowing is confirmed, and males have \"inflatable, brightly coloured patches of bare skin\", but booming is not mentioned. Suggested wording: \"Burrows into snow for shelter, and males show off inflatable, brightly coloured skin patches.\""
 }

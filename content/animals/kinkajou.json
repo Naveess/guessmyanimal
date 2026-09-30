@@ -1,6 +1,10 @@
 {
   "sci": "Potos flavus",
   "ov": "A tree-dwelling relative of raccoons and coatis from the rainforests of Mexico and Central and South America. It is strictly nocturnal, has a long prehensile tail, and eats mostly ripe fruit, especially figs. It is also called the honey bear.",
+  "why": {
+    "p": "Sometimes kept as an exotic pet: playful and quiet, but it can occasionally be aggressive.",
+    "ac": "So strictly nocturnal that people seldom see it."
+  },
   "hb": [
     "rainforest"
   ],
@@ -24,10 +28,11 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "The animals.js fact is confirmed (13 cm tongue, prehensile tail).",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "The animals.js fact is confirmed (13 cm tongue, prehensile tail)."
 }

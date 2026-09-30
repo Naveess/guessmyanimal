@@ -2,7 +2,8 @@
   "sci": "Vombatidae",
   "ov": "Short-legged, muscular marsupials of Australia that dig large burrows with rodent-like front teeth and powerful claws. Their pouch faces backwards, so no soil gets in while they dig.",
   "why": {
-    "ac": "Mainly crepuscular and nocturnal, though wombats come out on cool or overcast days too."
+    "ac": "Mainly crepuscular and nocturnal, though wombats come out on cool or overcast days too.",
+    "et": "Once Aboriginal bush food, and wombat stew was an Australian dish; it is now protected."
   },
   "hb": [
     "forest",
@@ -51,6 +52,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (cube-shaped droppings) is confirmed; it won a 2019 Ig Nobel Prize for Physics."
 }

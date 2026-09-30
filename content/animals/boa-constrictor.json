@@ -3,7 +3,9 @@
   "ov": "A large, heavy-bodied, non-venomous snake of tropical America, and a staple of pet collections. It’s the only animal commonly called by its scientific name in English.",
   "why": {
     "p": "Boa constrictors are frequently kept and bred in captivity.",
-    "dg": "Its bite can be painful, especially from a big snake, but is rarely dangerous to people."
+    "dg": "Its bite can be painful, especially from a big snake, but is rarely dangerous to people.",
+    "ac": "Nocturnal, though it basks by day when nights are too cold.",
+    "et": "Hunted for meat and skins, and a common sight in markets within its range."
   },
   "hb": [
     "rainforest",

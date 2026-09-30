@@ -1,6 +1,9 @@
 {
   "sci": "Lama glama",
   "ov": "A domesticated South American camelid, used by Andean cultures for meat and as a pack animal since before Columbus. Llamas are social herd animals and are also used as livestock guardians.",
+  "why": {
+    "et": "Used for meat and as a pack animal in the Andes since before Columbus."
+  },
   "hb": [
     "mountain",
     "grassland",
@@ -27,7 +30,8 @@
         "ov",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -39,6 +43,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "\"Banana-shaped\" in the cf tip is my phrasing of Wikipedia’s \"curved ears\". The existing fact (spits mostly at each other, rarely at you) is confirmed."
 }

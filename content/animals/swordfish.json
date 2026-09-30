@@ -2,7 +2,9 @@
   "sci": "Xiphias gladius",
   "ov": "A large, migratory predatory fish with a long, flat, pointed bill. Adults lose all their teeth and scales. It is the only member of its family.",
   "why": {
-    "dg": "No unprovoked attacks are known, but a harpooned swordfish can run its sword through a small boat."
+    "dg": "No unprovoked attacks are known, but a harpooned swordfish can run its sword through a small boat.",
+    "ac": "It feeds mostly at night, rising to the surface to hunt smaller fish.",
+    "et": "An oily fish sold as food, and a record-breaking game fish."
   },
   "hb": [
     "ocean"

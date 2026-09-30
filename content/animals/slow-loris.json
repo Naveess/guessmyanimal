@@ -2,7 +2,8 @@
   "sci": "Nycticebus",
   "ov": "Slow, quiet nocturnal primates of Southeast Asia with big reflective eyes and stubby tails hidden in their fur. They have a toxic bite, rare among mammals and unique among primates. When threatened, they freeze instead of running.",
   "why": {
-    "dg": "Its bite is toxic, which is rare among mammals. It gets the toxin by licking a gland on its arm, and saliva activates it."
+    "dg": "Its bite is toxic, which is rare among mammals. It gets the toxin by licking a gland on its arm, and saliva activates it.",
+    "ac": "All slow lorises are nocturnal primates."
   },
   "hb": [
     "rainforest",
@@ -32,6 +33,6 @@
       ]
     }
   ],
-  "notes": "The animals.js fact is confirmed.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "The animals.js fact is confirmed."
 }

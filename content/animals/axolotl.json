@@ -1,6 +1,9 @@
 {
   "sci": "Ambystoma mexicanum",
   "ov": "A Mexican salamander that never goes through metamorphosis: adults keep their feathery external gills and stay in the water. It’s famous for regrowing limbs, gills and parts of its eyes and brain.",
+  "why": {
+    "p": "An occasional pet in home aquariums, and white and pink ones are common in the pet trade."
+  },
   "hb": [
     "freshwater"
   ],
@@ -20,7 +23,8 @@
         "ov",
         "rg",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -32,6 +36,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact is confirmed. ANSWER CHECK: animals.js p is \"common\", but Wikipedia says axolotls are \"an occasional pet in home aquariums\". Consider p:\"some\". RESOLVED (owner: approve all): p changed to \"some\"."
 }

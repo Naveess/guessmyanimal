@@ -2,7 +2,9 @@
   "sci": "Cyprinus carpio",
   "ov": "The common carp is a large freshwater fish of lakes and rivers in Europe and Asia. It has been domesticated and spread worldwide, where it’s often invasive, though wild populations are Vulnerable.",
   "why": {
-    "dm": "Carp have been domesticated for food and ornament and introduced worldwide."
+    "dm": "Carp have been domesticated for food and ornament and introduced worldwide.",
+    "p": "Koi, the colourful ornamental carp kept in ponds, were bred in Japan from the 1820s.",
+    "et": "Farmed since Roman times, and spread across Europe as a food fish by monks."
   },
   "hb": [
     "freshwater",
@@ -27,6 +29,6 @@
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Koi are ornamental carp, and one reportedly lived to over 200\" is half sourced: koi are coloured ornamental carp, but the 200-year koi isn’t in the Koi article. Suggested wording: \"Koi are coloured ornamental carp.\" iu is for wild populations only. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

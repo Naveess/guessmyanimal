@@ -1,6 +1,9 @@
 {
   "sci": "Felis silvestris",
   "ov": "The European wildcat: bigger and stouter than a house cat, with longer striped fur, a dark stripe along the back and a bushy, black-tipped tail. It lives mainly in broad-leaved and mixed forests, avoiding farmland and towns.",
+  "why": {
+    "ac": "Mainly nocturnal, but also out by day where people leave it alone."
+  },
   "hb": [
     "forest"
   ],
@@ -30,10 +33,11 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): animals.js points this entry at the European wildcat article, so the draft now uses it (the earlier draft mixed in the African wildcat). ANSWER CHECK (fact): \"has resisted taming for thousands of years\" is half sourced: the article says it has \"the reputation for being effectively impossible to raise as a pet\". Suggested wording: \"Looks like a stocky tabby, but is said to be almost impossible to keep as a pet.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): animals.js points this entry at the European wildcat article, so the draft now uses it (the earlier draft mixed in the African wildcat). ANSWER CHECK (fact): \"has resisted taming for thousands of years\" is half sourced: the article says it has \"the reputation for being effectively impossible to raise as a pet\". Suggested wording: \"Looks like a stocky tabby, but is said to be almost impossible to keep as a pet.\""
 }

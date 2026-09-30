@@ -2,7 +2,8 @@
   "sci": "Limulidae",
   "ov": "Not a crab at all but a relative of spiders and scorpions, little changed for about 250 million years. Four species survive: one on the Atlantic coast of the US and Mexico, and three in South, Southeast and East Asia. It lives on the seabed but can swim, and comes ashore to spawn.",
   "why": {
-    "et": "Eaten as a delicacy in parts of Asia; in the United States it is caught for fishing bait and for its blood."
+    "et": "Eaten as a delicacy in parts of Asia; in the United States it is caught for fishing bait and for its blood.",
+    "ac": "Its eyes become a million times more sensitive to light at night than by day."
   },
   "hb": [
     "coast"
@@ -46,6 +47,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"used to test every vaccine on Earth\" overstates it. The blood gives Limulus amebocyte lysate, used \"to detect bacterial endotoxins in pharmaceuticals\", and Amgen and Abbott announced in 2026 that they are moving away from it. Suggested wording: \"Its blue blood is used to test medicines for bacterial contamination.\" ANSWER CHECK (lf): \"the average lifespan is thought to be 20–40 years\"; suggest lf:\"20–40 years\". Optional (r): add North America and Asia, where the four species live. c stays \"Arachnid\" (the article says it is closer to arachnids than to crabs).",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): ANSWER CHECK (fact): \"used to test every vaccine on Earth\" overstates it. The blood gives Limulus amebocyte lysate, used \"to detect bacterial endotoxins in pharmaceuticals\", and Amgen and Abbott announced in 2026 that they are moving away from it. Suggested wording: \"Its blue blood is used to test medicines for bacterial contamination.\" ANSWER CHECK (lf): \"the average lifespan is thought to be 20–40 years\"; suggest lf:\"20–40 years\". Optional (r): add North America and Asia, where the four species live. c stays \"Arachnid\" (the article says it is closer to arachnids than to crabs)."
 }

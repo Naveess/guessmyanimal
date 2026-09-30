@@ -2,7 +2,8 @@
   "sci": "Mustela furo",
   "ov": "A small domesticated member of the weasel family, most likely bred from the European polecat about 2,500 years ago. It was first kept for hunting rabbits and is now a popular pet, with over five million in the US.",
   "why": {
-    "ac": "Ferrets sleep 14–18 hours a day and are most active at dawn and dusk."
+    "ac": "Ferrets sleep 14–18 hours a day and are most active at dawn and dusk.",
+    "p": "An increasingly popular house pet: there are over five million in the United States alone."
   },
   "hb": [
     "farmland",
@@ -29,6 +30,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (domesticated over 2,000 years ago to flush rabbits) is confirmed: mitochondrial DNA suggests about 2,500 years. ANSWER CHECK: animals.js ac is \"both\", but Wikipedia says ferrets are crepuscular, and How we answer counts dawn-and-dusk animals as Night. Consider ac:\"night\". RESOLVED (owner: approve all): ac changed to \"night\"."
 }

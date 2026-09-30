@@ -3,7 +3,8 @@
   "ov": "The first animal people domesticated, bred from wolves by hunter-gatherers more than 14,000 years ago, before farming began. There are around 450 official breeds, more than for any other mammal.",
   "why": {
     "dg": "Most dogs are harmless, but dog bites affect tens of millions of people a year, and children suffer the most serious injuries.",
-    "et": "Eating dog is taboo in most of the world, but dog meat is still eaten in some East Asian countries, including China, Vietnam and Korea."
+    "et": "Eating dog is taboo in most of the world, but dog meat is still eaten in some East Asian countries, including China, Vietnam and Korea.",
+    "p": "The first animal ever domesticated, over 14,000 years ago, before farming began."
   },
   "hb": [
     "towns",
@@ -38,6 +39,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "cf tip is the same wording as the approved wolf entry’s tip (general knowledge; Wikipedia does not describe dog tails). No IUCN status: domestic."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Scincidae",
   "ov": "One of the most diverse lizard families, with more than 1,500 species. Most skinks have small legs and hardly any neck, and some have no limbs at all. Many can shed their tail to escape a predator and regrow it in about three to four months.",
+  "why": {
+    "p": "Blue-tongued skinks were among the first lizards kept as pets and are still kept today."
+  },
   "rg": "Almost worldwide, in every kind of habitat except arctic and subarctic regions.",
   "df": "Mostly insects such as flies, crickets, grasshoppers, beetles and caterpillars; some species kept as pets are omnivores.",
   "fx": [
@@ -23,10 +26,11 @@
       "title": "Wikipedia: Blue-tongued skink",
       "url": "https://en.wikipedia.org/wiki/Blue-tongued_skink",
       "for": [
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed by the blue-tongued skink article: the blue tongue \"can be bared as bluff-warning to potential enemies\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed by the blue-tongued skink article: the blue tongue \"can be bared as bluff-warning to potential enemies\"."
 }

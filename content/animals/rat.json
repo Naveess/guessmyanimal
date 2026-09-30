@@ -2,7 +2,9 @@
   "sci": "Rattus (brown rat: Rattus norvegicus)",
   "ov": "Medium-sized rodents, the best known being the brown and black rats that live alongside people. The brown rat has been bred into the pet “fancy rat” and the laboratory rat.",
   "why": {
-    "et": "Rat meat is taboo in some cultures but a dietary staple in others."
+    "et": "Rat meat is taboo in some cultures but a dietary staple in others.",
+    "p": "Fancy rats, bred from the brown rat, have been kept as pets since at least the late 1800s.",
+    "ac": "Mostly nocturnal or active at dusk."
   },
   "hb": [
     "towns",
@@ -42,7 +44,8 @@
       "url": "https://animaldiversity.org/accounts/Rattus_norvegicus/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     },
     {
@@ -53,6 +56,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (laughs when tickled) is confirmed: the Brown rat article describes ultrasonic \"chirping\" likened to laughter."
 }

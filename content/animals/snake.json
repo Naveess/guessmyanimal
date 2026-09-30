@@ -3,7 +3,9 @@
   "ov": "Limbless reptiles with more than 4,170 species, found on every continent except Antarctica. Flexible jaws let them swallow prey much larger than their own heads.",
   "why": {
     "dg": "Most snakes aren’t venomous, but snakebites kill an estimated 100,000 people a year, according to the WHO.",
-    "h": "In cold winters snakes brumate, a dormancy like hibernation, except that they stay awake but inactive."
+    "h": "In cold winters snakes brumate, a dormancy like hibernation, except that they stay awake but inactive.",
+    "p": "Docile species such as the ball python and corn snake are kept as pets, mostly captive-bred.",
+    "et": "Some are: boa constrictors are hunted for meat and sold in markets."
   },
   "hb": [
     "forest",
@@ -15,6 +17,9 @@
   "len": "10.4 cm (threadsnake) to 6.95 m (reticulated python)",
   "rg": "Every continent except Antarctica, and most islands. Ireland, Iceland, Greenland and New Zealand have none.",
   "df": "Strictly carnivorous, swallowing prey whole: lizards, frogs, other snakes, small mammals, birds, eggs, fish and more.",
+  "fx": [
+    "A few snakes, including the boa constrictor and green anaconda, nourish their young through a placenta, as mammals do."
+  ],
   "grp": [
     "python",
     "boa-constrictor",
@@ -24,9 +29,6 @@
     "viper",
     "rattlesnake",
     "grass-snake"
-  ],
-  "fx": [
-    "A few snakes, including the boa constrictor and green anaconda, nourish their young through a placenta, as mammals do."
   ],
   "src": [
     {
@@ -42,8 +44,15 @@
         "grp",
         "fx"
       ]
+    },
+    {
+      "title": "Wikipedia: Boa constrictor",
+      "url": "https://en.wikipedia.org/wiki/Boa_constrictor",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry linked to the 8 snake species on the site. eg:true is right for most snakes, though some give birth to live young (see fx). No why-notes on p/et: the source doesn’t cover snakes as pets or food."
 }

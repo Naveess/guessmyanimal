@@ -1,6 +1,10 @@
 {
   "sci": "Anatidae (in part)",
   "ov": "Waterbirds of the same family as geese and swans, but generally smaller and shorter-necked. Domestic ducks come mainly from the mallard, domesticated in China around 2000 BC.",
+  "why": {
+    "p": "Domestic ducks are raised for meat and eggs; a few are kept for show or as ornamental birds.",
+    "et": "Domestic ducks, bred from the mallard, are raised for meat and eggs."
+  },
   "hb": [
     "freshwater",
     "wetland",
@@ -10,14 +14,14 @@
   "wt": "About 1.1 kg (mallard)",
   "rg": "Every continent except Antarctica, including some subantarctic islands.",
   "df": "Dabbling ducks feed by upending at the surface of fresh water; diving and sea ducks dive for fish and shellfish.",
-  "grp": [
-    "mallard"
-  ],
   "cf": [
     {
       "slug": "goose",
       "tip": "Ducks, geese and swans are one family. Ducks are generally smaller and shorter-necked than geese and swans."
     }
+  ],
+  "grp": [
+    "mallard"
   ],
   "src": [
     {
@@ -36,7 +40,8 @@
       "url": "https://en.wikipedia.org/wiki/Domestic_duck",
       "for": [
         "ov",
-        "grp"
+        "grp",
+        "why"
       ]
     },
     {
@@ -47,6 +52,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (ducklings imprint) is confirmed by the Mallard article (filial imprinting); \"the first moving thing they see\" is the classic phrasing, not a quote."
 }

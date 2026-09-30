@@ -1,6 +1,9 @@
 {
   "sci": "Phocoenidae",
   "ov": "Eight species of small, dolphin-like toothed whales, more closely related to narwhals and belugas than to dolphins. They have spade-shaped teeth and no pronounced beak.",
+  "why": {
+    "et": "The Inuit hunt harbour porpoises, and a drive hunt for Dall's porpoise continues in Japan."
+  },
   "hb": [
     "coast",
     "ocean"
@@ -26,10 +29,11 @@
         "len",
         "wt",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact is confirmed."
 }

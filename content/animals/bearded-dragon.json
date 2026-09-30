@@ -2,7 +2,8 @@
   "sci": "Pogona",
   "ov": "Eight species of Australian lizards named for the spiny \"beard\" under the throat, which darkens and puffs up when they are stressed, threatened or courting. They live in deserts and shrublands and bask by day. The central bearded dragon is one of the most popular pet reptiles.",
   "why": {
-    "h": "In cool weather they brumate, a hibernation-like state in which they go months without eating."
+    "h": "In cool weather they brumate, a hibernation-like state in which they go months without eating.",
+    "p": "One of the most popular pet reptiles in the world, and the most kept reptile in the US in a 2021 study."
   },
   "hb": [
     "desert",
@@ -36,10 +37,11 @@
         "ov",
         "wt",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed: the challenger \"may signal submission by waving one of its arms\". ANSWER CHECK (h): animals.js has h:false, but bearded dragons go through brumation, \"a type of hibernation\", and how-we-answer counts reptile cold-season dormancy as \"Hibernates: Yes\". Suggest h:true (the draft has a why.h note ready).",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed: the challenger \"may signal submission by waving one of its arms\". ANSWER CHECK (h): animals.js has h:false, but bearded dragons go through brumation, \"a type of hibernation\", and how-we-answer counts reptile cold-season dormancy as \"Hibernates: Yes\". Suggest h:true (the draft has a why.h note ready)."
 }

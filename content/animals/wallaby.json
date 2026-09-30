@@ -1,6 +1,9 @@
 {
   "sci": "Macropodidae (in part)",
   "ov": "Small and medium-sized relatives of the kangaroo. “Wallaby” is an informal name for any macropod smaller than a kangaroo or wallaroo. Introduced populations live in New Zealand, Hawaii and the UK.",
+  "why": {
+    "et": "Hunted for meat and fur."
+  },
   "hb": [
     "forest",
     "grassland",
@@ -28,10 +31,11 @@
         "len",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"A smaller cousin of the kangaroo, and it can pause a pregnancy until conditions improve\" is half sourced: the pregnancy pause isn’t in the Wallaby article. Suggested wording: \"Any kangaroo relative smaller than a kangaroo or wallaroo is called a wallaby.\" REGION: consider adding New Guinea. No why.et. RESOLVED (owner: approve all): New Guinea added to r; fact rewritten as suggested."
 }

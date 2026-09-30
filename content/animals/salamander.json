@@ -2,7 +2,8 @@
   "sci": "Urodela",
   "ov": "Tailed amphibians with slender, lizard-like bodies and moist skin, which keeps them near water or damp places. They are best known for regrowing lost limbs and other body parts.",
   "why": {
-    "dg": "Some species’ skin contains the powerful poison tetrodotoxin, advertised by bright warning colours."
+    "dg": "Some species’ skin contains the powerful poison tetrodotoxin, advertised by bright warning colours.",
+    "ac": "Most salamanders' eyes are adapted mainly for seeing at night."
   },
   "hb": [
     "forest",
@@ -27,6 +28,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (some have no lungs) is confirmed: lungless salamanders breathe through their skin and mouth. ANSWER CHECK: animals.js has h:true, but the Salamander article doesn’t mention hibernation. REGION: r is [\"Worldwide\"], but the source says most species are in the Northern Hemisphere with some in Central and South America. Consider North America, Europe, Asia, Central America, South America. The source mentions pets only for captive breeding, so there’s no why.p. RESOLVED (owner: approve all): h changed to false; r changed to North America, Europe, Asia, Central America, South America."
 }

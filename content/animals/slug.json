@@ -1,6 +1,9 @@
 {
   "sci": "Gastropoda (in part)",
   "ov": "Land gastropods with no shell, or only a tiny internal one. “Slug” isn’t one group: losing the shell evolved many separate times, so different slugs aren’t closely related to each other.",
+  "why": {
+    "ac": "Many are most active at night or after rain, when the ground is damp."
+  },
   "hb": [
     "forest",
     "farmland",
@@ -26,7 +29,8 @@
         "sci",
         "ov",
         "df",
-        "cf"
+        "cf",
+        "why"
       ]
     },
     {
@@ -38,6 +42,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Essentially a snail that gave up its shell, and it has thousands of teeth\" is half sourced in the Slug article: losing the shell yes (many times over), but the teeth are in the Snail article, not Slug. Suggested wording: \"Essentially a snail that lost its shell, which has happened many separate times.\" No why.et: the source doesn’t mention eating slugs. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

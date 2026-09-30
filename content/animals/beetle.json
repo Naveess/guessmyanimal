@@ -3,7 +3,8 @@
   "ov": "Insects whose front wings are hardened into wing-cases. With about 400,000 described species, beetles are the largest order of insects, found in almost every habitat except the sea and the polar regions.",
   "why": {
     "h": "About 90% of beetle species go through a dormant stage as adults, and in winter this is a form of hibernation.",
-    "et": "Over 300 species are eaten, mostly as larvae, such as mealworms and rhinoceros beetle grubs."
+    "et": "Over 300 species are eaten, mostly as larvae, such as mealworms and rhinoceros beetle grubs.",
+    "p": "Some are kept as pets, such as diving beetles in a home freshwater tank."
   },
   "hb": [
     "forest",
@@ -31,6 +32,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (one in four known animal species is a beetle) is confirmed: about 25%."
 }

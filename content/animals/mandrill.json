@@ -1,6 +1,9 @@
 {
   "sci": "Mandrillus sphinx",
   "ov": "A large monkey of west-central African rainforests and one of the most colourful mammals, with red and blue skin on its face and rump. It is the most sexually dimorphic primate: males are far bigger than females, with longer canines and brighter colours.",
+  "why": {
+    "et": "Hunted for bushmeat, one of the biggest threats to it."
+  },
   "hb": [
     "rainforest"
   ],
@@ -8,11 +11,11 @@
   "wt": "Males 19–30 kg, females 10–15 kg",
   "rg": "Southern Cameroon, mainland Equatorial Guinea, Gabon and parts of the Republic of the Congo.",
   "df": "Mostly fruit and seeds, plus leaves, mushrooms and animals from insects to young duikers.",
-  "iu": "VU",
   "fx": [
     "Mandrills live in \"hordes\" that can number in the hundreds; hordes in one Gabon park averaged 620 animals.",
     "Adult males live alone and rejoin the horde only in the breeding season."
   ],
+  "iu": "VU",
   "src": [
     {
       "title": "Wikipedia: Mandrill",
@@ -25,10 +28,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): ANSWER CHECK (fact): the animals.js fact \"The largest monkey in the world, and the most colourful mammal\" is half sourced: \"the largest monkey\" yes, but the article says \"one of the most colorful mammals\". Suggested wording: \"The largest monkey in the world, and one of the most colourful mammals.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): ANSWER CHECK (fact): the animals.js fact \"The largest monkey in the world, and the most colourful mammal\" is half sourced: \"the largest monkey\" yes, but the article says \"one of the most colorful mammals\". Suggested wording: \"The largest monkey in the world, and one of the most colourful mammals.\""
 }

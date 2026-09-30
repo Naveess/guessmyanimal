@@ -2,7 +2,8 @@
   "sci": "Tragelaphus eurycerus",
   "ov": "A large, mostly nocturnal forest antelope of sub-Saharan Africa with a chestnut coat, 10–15 thin white stripes and heavy spiral horns on both sexes. The lowland bongo lives in the forests of West and Central Africa; the rare mountain bongo survives only in central Kenya.",
   "why": {
-    "et": "Hunted for its hide, horns and meat, and a common local source of bushmeat."
+    "et": "Hunted for its hide, horns and meat, and a common local source of bushmeat.",
+    "ac": "A large, mostly nocturnal forest antelope."
   },
   "hb": [
     "rainforest",
@@ -14,11 +15,11 @@
   "wt": "Males 220–405 kg; females 150–235 kg",
   "rg": "Forests of West and Central Africa, from Sierra Leone and Guinea to the Congo basin and South Sudan, plus a few mountains in central Kenya.",
   "df": "Leaves, bushes, vines, bark, roots, cereals and fruit; it visits salt licks and even eats burnt wood for minerals.",
-  "iu": "NT",
   "fx": [
     "The third-largest antelope in the world.",
     "There may be as few as 140 mountain bongos left in the wild, fewer than in zoos."
   ],
+  "iu": "NT",
   "src": [
     {
       "title": "Wikipedia: Bongo",
@@ -38,6 +39,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): The fact is confirmed: it is \"the largest and most spectacular forest antelope\", and runs through thick tangles \"laying its horns on its back so the brush cannot impede its flight\". ac \"night\" fits (\"mostly nocturnal\"); lf 12–20 fits \"up to 19 years\". iu NT is the IUCN Antelope Specialist Group listing for the lowland bongo; the mountain bongo is Critically Endangered.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): The fact is confirmed: it is \"the largest and most spectacular forest antelope\", and runs through thick tangles \"laying its horns on its back so the brush cannot impede its flight\". ac \"night\" fits (\"mostly nocturnal\"); lf 12–20 fits \"up to 19 years\". iu NT is the IUCN Antelope Specialist Group listing for the lowland bongo; the mountain bongo is Critically Endangered."
 }

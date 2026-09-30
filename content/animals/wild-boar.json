@@ -2,7 +2,9 @@
   "sci": "Sus scrofa",
   "ov": "The wild pig of Eurasia and North Africa, now one of the widest-ranging mammals in the world after introductions to the Americas and Oceania. Females and young live in family groups.",
   "why": {
-    "dg": "Attacks on people are rare but can be serious, causing deep puncture wounds."
+    "dg": "Attacks on people are rare but can be serious, causing deep puncture wounds.",
+    "ac": "Mainly nocturnal, coming out into open areas at night to search for food.",
+    "et": "A big-game animal for thousands of years, and the ancestor of domestic pigs."
   },
   "hb": [
     "forest",
@@ -40,7 +42,8 @@
       "url": "https://animaldiversity.org/accounts/Sus_scrofa/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],

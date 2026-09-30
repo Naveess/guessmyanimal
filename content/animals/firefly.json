@@ -1,6 +1,9 @@
 {
   "sci": "Lampyridae",
   "ov": "More than 2,400 species of soft-bodied beetles, many of which glow, mostly at twilight, to attract mates. All glow as larvae, a warning that they taste bad. They live in temperate and tropical regions, often in marshes and damp woods where their larvae find food.",
+  "why": {
+    "ac": "The familiar glowing fireflies are nocturnal; many day-active species do not glow."
+  },
   "rg": "Temperate and tropical regions worldwide.",
   "df": "Larvae hunt other larvae, snails and slugs; adults vary: some hunt, some eat pollen or nectar, and some never eat.",
   "fx": [
@@ -16,10 +19,11 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry (alias \"glow worm\"). ANSWER CHECK (fact): \"almost 100 percent efficient\" is not in the article, which calls it a \"cold light\" with no infrared or ultraviolet. Suggested wording: \"Its glow is a cold light with no infrared, and it began as a warning that fireflies taste bad.\" Note: most fireflies hibernate as larvae; I did not flag h, to match Bee, Wasp and Ant.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry (alias \"glow worm\"). ANSWER CHECK (fact): \"almost 100 percent efficient\" is not in the article, which calls it a \"cold light\" with no infrared or ultraviolet. Suggested wording: \"Its glow is a cold light with no infrared, and it began as a warning that fireflies taste bad.\" Note: most fireflies hibernate as larvae; I did not flag h, to match Bee, Wasp and Ant."
 }

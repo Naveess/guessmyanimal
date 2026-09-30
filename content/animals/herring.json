@@ -1,6 +1,9 @@
 {
   "sci": "Clupeidae, mainly the genus Clupea",
   "ov": "Oily forage fish that travel in huge schools through the shallow, temperate waters of the North Atlantic and North Pacific, including the Baltic Sea. Long an important food fish, they are often salted, smoked or pickled. The Atlantic herring makes up over half of the herring catch.",
+  "why": {
+    "et": "A staple food since at least 3000 BC, often salted, smoked or pickled."
+  },
   "hb": [
     "ocean",
     "coast"
@@ -25,7 +28,8 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -36,6 +40,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed: North Atlantic herring schools \"have been measured up to 4 cubic kilometres\", holding \"an estimated four billion fish\". lf 12–20 fits: mature at 3–5 years, then a life expectancy of 12–16 years.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed: North Atlantic herring schools \"have been measured up to 4 cubic kilometres\", holding \"an estimated four billion fish\". lf 12–20 fits: mature at 3–5 years, then a life expectancy of 12–16 years."
 }

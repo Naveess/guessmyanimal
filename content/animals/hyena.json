@@ -2,7 +2,8 @@
   "sci": "Hyaenidae",
   "ov": "Four species of dog-like carnivores, including the spotted, brown and striped hyenas. Spotted hyenas are powerful hunters as well as scavengers, living in large, female-led clans.",
   "why": {
-    "dg": "Spotted hyenas are usually shy around people, but they do occasionally prey on humans, and attacks are likely under-reported."
+    "dg": "Spotted hyenas are usually shy around people, but they do occasionally prey on humans, and attacks are likely under-reported.",
+    "ac": "Mainly nocturnal, sometimes out in the early morning."
   },
   "hb": [
     "grassland",
@@ -22,7 +23,8 @@
       "for": [
         "sci",
         "ov",
-        "df"
+        "df",
+        "why"
       ]
     },
     {
@@ -43,6 +45,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. No rg: the text I checked doesn’t give current ranges. ANSWER CHECK (fact): the animals.js fact \"the lowest female outranks every male\" is stronger than the source, which says females dominate males. Suggested wording: \"Clans are led by females, which are larger than the males and dominate them.\" RESOLVED: animals.js fact rewritten to \"Clans are led by females, which are larger than the males and dominate them.\""
 }

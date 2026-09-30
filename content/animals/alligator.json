@@ -4,7 +4,8 @@
   "why": {
     "dg": "Alligators can and do attack people, often when someone gets close to them or their nests.",
     "et": "Farmed commercially for meat and skins.",
-    "h": "Not true hibernation, but it goes dormant through cold winters."
+    "h": "Not true hibernation, but it goes dormant through cold winters.",
+    "ac": "It will eat at any hour, but on warm nights it hunts on land, ambushing animals by trails and roads."
   },
   "hb": [
     "wetland",
@@ -39,7 +40,8 @@
       "title": "Wikipedia: American alligator",
       "url": "https://en.wikipedia.org/wiki/American_alligator",
       "for": [
-        "cf"
+        "cf",
+        "why"
       ]
     },
     {
@@ -51,6 +53,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK: animals.js has h:false, but Wikipedia describes alligators going through winter \"brumation\", and how-we-answer counts the cold-season dormancy of reptiles as \"Hibernates: Yes\". Consider h:true with a why-note. The existing fact already covers the snout difference, so the cf tip repeats it. That's fine, or shorten it. RESOLVED: owner kept h:false, with a note that it goes dormant."
 }

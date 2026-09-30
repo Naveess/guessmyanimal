@@ -1,6 +1,9 @@
 {
   "sci": "Fratercula arctica",
   "ov": "The Atlantic puffin is a small seabird of the auk family with a big red-and-black beak. It nests in burrows on North Atlantic coasts and islands and dives for fish, swimming underwater with its wings.",
+  "why": {
+    "et": "Coastal peoples once took young puffins from their nests to eat."
+  },
   "hb": [
     "coast",
     "ocean"
@@ -29,10 +32,11 @@
       "title": "Animal Diversity Web: Fratercula arctica",
       "url": "https://animaldiversity.org/accounts/Fratercula_arctica/",
       "for": [
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Carries a dozen fish crossways in its beak at once, and the colours fade after breeding\" is half sourced: the beak colours are shed after breeding, but the fish count isn’t in the article. Suggested wording: \"Its bright beak plates are shed after breeding and grow back each spring.\" No why.et: the article doesn’t say puffins are eaten. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

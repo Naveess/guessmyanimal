@@ -2,7 +2,9 @@
   "sci": "Caridea and Dendrobranchiata",
   "ov": "Crustaceans with long bodies, long antennae and thin legs, which swim forward with paddles under the tail and flick backwards to escape. Thousands of species live in the sea and fresh water.",
   "why": {
-    "dm": "Shrimp are farmed on a huge scale: about 440 billion farmed shrimp are slaughtered each year."
+    "dm": "Shrimp are farmed on a huge scale: about 440 billion farmed shrimp are slaughtered each year.",
+    "p": "Several kinds are kept in home aquariums, such as cherry and Amano shrimp.",
+    "et": "One of the most popular shellfish, widely caught or farmed."
   },
   "hb": [
     "ocean",
@@ -34,6 +36,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry (alias “prawn”). The existing fact (the pistol shrimp’s claw stuns a fish) is confirmed."
 }

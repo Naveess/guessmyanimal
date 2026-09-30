@@ -2,7 +2,8 @@
   "sci": "Meles meles (European badger) and others",
   "ov": "Stocky, short-legged omnivores of the weasel and skunk families. The familiar European badger is nocturnal and social, living in family groups in large underground burrows called setts.",
   "why": {
-    "h": "European badgers don’t truly hibernate, but they fatten up in autumn and sleep through much of the winter."
+    "h": "European badgers don’t truly hibernate, but they fatten up in autumn and sleep through much of the winter.",
+    "ac": "It sleeps in its sett by day and is busiest around dusk and dawn."
   },
   "hb": [
     "forest",
@@ -39,10 +40,11 @@
       "title": "Animal Diversity Web: Meles meles",
       "url": "https://animaldiversity.org/accounts/Meles_meles/",
       "for": [
-        "len"
+        "len",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The Badger article lists 15 species across four subfamilies but gives no ranges, so there’s no rg. ANSWER CHECK (fact): the animals.js fact says setts are passed down \"for a century or more\"; Wikipedia says families use them \"for decades\". Suggested wording: \"Setts are used by badger families for decades, and extended over time.\" RESOLVED: animals.js fact rewritten to \"Badger families use the same sett for decades.\""
 }

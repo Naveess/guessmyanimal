@@ -1,6 +1,9 @@
 {
   "sci": "Nautilidae",
   "ov": "Nine species of shelled cephalopods from the Indo-Pacific, the last living members of an ancient group. The coiled shell is divided into chambers, and the animal swims by jet propulsion. Often called “living fossils”, they have changed little for hundreds of millions of years.",
+  "why": {
+    "ac": "Long thought to rise from the depths at night to feed, though some populations may not."
+  },
   "hb": [
     "ocean"
   ],
@@ -22,10 +25,11 @@
         "len",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"500 million years\" is not in the article, which says \"relatively unchanged for hundreds of millions of years\", and tentacle counts run \"from 50 to over 90\"; no suckers is confirmed. Suggested wording: \"Barely changed for hundreds of millions of years, with up to 90 tentacles and no suckers.\" All species are protected under CITES Appendix II.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"500 million years\" is not in the article, which says \"relatively unchanged for hundreds of millions of years\", and tentacle counts run \"from 50 to over 90\"; no suckers is confirmed. Suggested wording: \"Barely changed for hundreds of millions of years, with up to 90 tentacles and no suckers.\" All species are protected under CITES Appendix II."
 }

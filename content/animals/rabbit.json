@@ -2,7 +2,9 @@
   "sci": "Oryctolagus cuniculus",
   "ov": "Every pet and farmed rabbit belongs to one species, the European rabbit. In the wild it lives in groups in underground burrow networks called warrens.",
   "why": {
-    "dm": "Domesticated from the European rabbit, a wild species native only to Spain, Portugal and south-west France."
+    "dm": "Domesticated from the European rabbit, a wild species native only to Spain, Portugal and south-west France.",
+    "p": "Every breed of domestic rabbit descends from the European rabbit, farmed for meat and fur and bred as pets.",
+    "et": "Hunted since the Stone Age and raised for food since at least the first century BC."
   },
   "hb": [
     "grassland",
@@ -46,10 +48,11 @@
       "title": "Wikipedia: Hare",
       "url": "https://en.wikipedia.org/wiki/Hare",
       "for": [
-        "cf"
+        "cf",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "No iu on purpose: the IUCN listed the European rabbit as Endangered in 2019, but Wikipedia now says Near Threatened. Check the Red List page directly before adding one. The \"introduced to\" list is general knowledge; Wikipedia confirms introductions but I did not check each country."
 }

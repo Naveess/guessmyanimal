@@ -1,6 +1,9 @@
 {
   "sci": "Felis margarita",
   "ov": "A small, pale sandy cat of sandy and stony deserts far from water. Its low-set ears help it hear prey moving underground, and thick fur on the soles of its paws protects them from hot sand. It hunts at night.",
+  "why": {
+    "ac": "It rests in a den by day and hunts at night, covering about 5 km."
+  },
   "hb": [
     "desert"
   ],
@@ -8,11 +11,11 @@
   "wt": "1.5–3.4 kg",
   "rg": "Scattered through the deserts of North Africa, the Arabian Peninsula, the Middle East and Central Asia.",
   "df": "Small rodents, birds and lizards; it also kills venomous snakes.",
-  "iu": "LC",
   "fx": [
     "Its hearing is about 8 decibels more sensitive than a domestic cat’s.",
     "It rests in underground dens during the day."
   ],
+  "iu": "LC",
   "src": [
     {
       "title": "Wikipedia: Sand cat",
@@ -25,10 +28,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): ANSWER CHECK (fact): \"can go weeks without drinking, taking water from its prey\" is half sourced: it gets its moisture from prey, but \"weeks\" isn’t in the article. Suggested wording: \"Lives in deserts far from water, getting its moisture from its prey.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): ANSWER CHECK (fact): \"can go weeks without drinking, taking water from its prey\" is half sourced: it gets its moisture from prey, but \"weeks\" isn’t in the article. Suggested wording: \"Lives in deserts far from water, getting its moisture from its prey.\""
 }

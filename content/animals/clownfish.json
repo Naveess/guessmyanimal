@@ -1,6 +1,9 @@
 {
   "sci": "Amphiprion",
   "ov": "Small reef fish of the warm Indo-Pacific that live among sea anemones, sheltered by the stinging tentacles. In return they defend, clean and feed the anemone.",
+  "why": {
+    "p": "Popular in the aquarium trade, and easily bred in captivity; the ocellaris is among the most traded marine fish."
+  },
   "hb": [
     "ocean",
     "coast"
@@ -20,7 +23,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -31,6 +35,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"All are born male, and the dominant one becomes female\" is close but not quite the source. Wikipedia says the breeding male changes into a female when the female is lost, and the largest non-breeder becomes the male. Suggested wording: \"If the female dies, the breeding male turns into a female.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

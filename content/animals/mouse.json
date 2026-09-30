@@ -2,7 +2,8 @@
   "sci": "Mus musculus (house mouse)",
   "ov": "Small rodents best known through the house mouse, which lives alongside people almost everywhere. It was domesticated as the pet “fancy mouse” and as the laboratory mouse, one of biology’s most important model animals.",
   "why": {
-    "ac": "Mostly crepuscular or nocturnal; mice avoid bright light."
+    "ac": "Mostly crepuscular or nocturnal; mice avoid bright light.",
+    "p": "The fancy mouse, a domesticated house mouse, is a common pet, though less popular than some other rodents."
   },
   "hb": [
     "towns",
@@ -41,10 +42,11 @@
       "title": "Wikipedia: Mouse",
       "url": "https://en.wikipedia.org/wiki/Mouse",
       "for": [
-        "cf"
+        "cf",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Treated as the house mouse. The existing fact (ultrasonic songs) is confirmed: males court females with 30–110 kHz calls compared to bird song."
 }

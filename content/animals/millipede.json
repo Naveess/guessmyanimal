@@ -1,8 +1,11 @@
 {
   "sci": "Diplopoda",
   "ov": "About 12,000 species of slow-moving arthropods with two pairs of legs on most body segments. Most eat decaying leaves and dead plant matter, and many defend themselves by curling up and releasing chemicals from pores along their sides. Despite the name, only one species has over 1,000 legs.",
-  "rg": "Worldwide.",
+  "why": {
+    "p": "Larger millipedes, such as giant African species, are popular pets."
+  },
   "len": "Largest modern species 27–38 cm",
+  "rg": "Worldwide.",
   "df": "Mostly decaying leaves and other dead plant matter; some eat fungi or plant fluids.",
   "fx": [
     "Eumillipes persephone, discovered in 2020, can have over 1,300 legs.",
@@ -18,10 +21,11 @@
         "rg",
         "len",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"The first animal known to move onto land\" overstates: millipedes \"are among the first animals to have colonised land\", with the earliest body fossil about 427 million years old. Suggested wording: \"One of the first animals to live on land, over 425 million years ago.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. ANSWER CHECK (fact): \"The first animal known to move onto land\" overstates: millipedes \"are among the first animals to have colonised land\", with the earliest body fossil about 427 million years old. Suggested wording: \"One of the first animals to live on land, over 425 million years ago.\""
 }

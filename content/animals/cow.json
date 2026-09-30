@@ -2,7 +2,8 @@
   "sci": "Bos taurus",
   "ov": "Large domesticated grazers, first tamed from the wild aurochs about 10,500 years ago. Kept for meat, milk and leather and for pulling loads, there were over 940 million cattle in the world in 2022.",
   "why": {
-    "dg": "In a herd, cows with young calves are often more dangerous to people than you might expect."
+    "dg": "In a herd, cows with young calves are often more dangerous to people than you might expect.",
+    "et": "About 300 million cattle are slaughtered a year, supplying a quarter of the world's meat."
   },
   "hb": [
     "farmland",
@@ -24,7 +25,8 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {

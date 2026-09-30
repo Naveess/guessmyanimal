@@ -4,7 +4,8 @@
   "why": {
     "dg": "Most are harmless to touch, but frog skin secretions range from distasteful to toxic, and brightly coloured species warn predators they’re poisonous.",
     "et": "Frogs, especially their muscular hind legs, are eaten in many parts of the world.",
-    "h": "In colder regions many frogs hibernate through winter, and some can even survive being frozen."
+    "h": "In colder regions many frogs hibernate through winter, and some can even survive being frozen.",
+    "ac": "Some frogs became nocturnal to save water."
   },
   "hb": [
     "wetland",
@@ -13,12 +14,6 @@
   ],
   "rg": "Worldwide, from the tropics to subarctic regions. Most species live in tropical rainforests and their wetlands.",
   "df": "Mostly insects and other invertebrates, caught with a sticky tongue and swallowed whole. A few species eat plants.",
-  "grp": [
-    "tree-frog",
-    "poison-dart-frog",
-    "bullfrog",
-    "toad"
-  ],
   "cf": [
     {
       "slug": "toad",
@@ -27,6 +22,12 @@
   ],
   "fx": [
     "The oldest known “proto-frog” lived in Madagascar about 250 million years ago."
+  ],
+  "grp": [
+    "tree-frog",
+    "poison-dart-frog",
+    "bullfrog",
+    "toad"
   ],
   "src": [
     {
@@ -44,6 +45,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): Wikipedia confirms frog skin \"can absorb water\", but not the \"never takes a sip\" half of the animals.js fact. Suggested wording: \"Takes in water through its skin rather than drinking it.\" RESOLVED: animals.js fact rewritten to \"Takes in water through its skin rather than drinking it.\""
 }

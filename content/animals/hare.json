@@ -1,6 +1,10 @@
 {
   "sci": "Lepus",
   "ov": "Long-legged relatives of rabbits that live above ground and rely on speed, not burrows, to escape. North America’s “jackrabbits” are really hares.",
+  "why": {
+    "ac": "It forages mostly at night, roughly between 7 pm and 7 am.",
+    "et": "A prized game animal; its meat is said to be white and delicious."
+  },
   "hb": [
     "grassland",
     "farmland",
@@ -38,10 +42,11 @@
       "for": [
         "len",
         "wt",
-        "df"
+        "df",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry (genus Lepus, about 30 species). No species pages to link. fx 2 (\"often a female fending off a male\") is from the European hare article, which I did not download; please check it or cut it. \"Arctic tundra\" covers the Arctic hare."
 }

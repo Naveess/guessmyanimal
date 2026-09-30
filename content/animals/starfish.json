@@ -1,6 +1,9 @@
 {
   "sci": "Asteroidea",
   "ov": "Star-shaped echinoderms, not fish, with about 1,900 species on the seabed of every ocean. Most have five arms, can regrow lost arms, and some push their stomach out of their body to digest prey.",
+  "why": {
+    "et": "Mostly collected as curios, but eaten in some cultures."
+  },
   "hb": [
     "coast",
     "ocean"
@@ -19,10 +22,11 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"No brain and no blood\" is wrong on the blood. Wikipedia describes a vascular system for \"circulation of blood\", and says starfish were only traditionally thought to lack a brain. Suggested wording: \"Can regrow lost arms, and some push their stomach out to digest prey.\" RESOLVED: animals.js fact rewritten to \"Can regrow lost arms, and some push their stomach out to digest prey.\""
 }

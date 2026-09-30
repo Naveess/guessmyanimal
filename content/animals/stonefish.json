@@ -2,7 +2,8 @@
   "sci": "Synanceia",
   "ov": "Venomous reef fish of the coastal Indo-Pacific, grey and mottled so they look like a stone or a lump of coral. Needle-like spines on the back carry the strongest venom of any known fish, and most stings happen when people step on one.",
   "why": {
-    "dg": "The most venomous fish known: stings are extremely painful and can kill if untreated. Hot water and antivenom are the main treatments."
+    "dg": "The most venomous fish known: stings are extremely painful and can kill if untreated. Hot water and antivenom are the main treatments.",
+    "et": "A delicacy in parts of Asia once the venomous spines are removed; heat breaks the venom down."
   },
   "hb": [
     "coast"
@@ -37,6 +38,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): The fact is confirmed: \"the most venomous fish known\", with \"grey and mottled camouflage similar to the color of a stone\". ac, et and lf are not in the articles.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): The fact is confirmed: \"the most venomous fish known\", with \"grey and mottled camouflage similar to the color of a stone\". ac, et and lf are not in the articles."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Mobula (in part)",
   "ov": "Three species of huge rays of warm seas, with triangular fins and horn-shaped flaps by the mouth. They filter-feed on plankton and have one of the highest brain-to-body ratios of any fish.",
+  "why": {
+    "et": "Caught for meat and products; the flesh is edible but thought less tasty than other fish."
+  },
   "hb": [
     "ocean",
     "coast"
@@ -29,7 +32,8 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -40,6 +44,6 @@
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry (two of the three species are Vulnerable). ANSWER CHECK (fact): the animals.js fact \"Seven metres across, with the largest brain of any fish, and it recognises itself in mirrors\" overstates: \"one of the highest brain-to-body ratio of all fish\" and \"may understand mirror contingencies\". Suggested wording: \"Up to seven metres across, with one of the biggest brains for its size of any fish.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

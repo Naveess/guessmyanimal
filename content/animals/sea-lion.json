@@ -2,7 +2,8 @@
   "sci": "Otariinae",
   "ov": "Eared seals with external ear flaps, long front flippers and the ability to walk on all fours. There are six living species, found from subarctic to tropical waters in both hemispheres.",
   "why": {
-    "dg": "Attacks are rare, but it can be very unsafe to get within about 2.5 metres."
+    "dg": "Attacks are rare, but it can be very unsafe to get within about 2.5 metres.",
+    "et": "Seals and sea lions are hunted for meat and blubber; California sea lions were once hunted for hides and animal feed."
   },
   "hb": [
     "coast",
@@ -39,7 +40,8 @@
       "title": "Wikipedia: Pinniped",
       "url": "https://en.wikipedia.org/wiki/Pinniped",
       "for": [
-        "cf"
+        "cf",
+        "why"
       ]
     },
     {
@@ -47,7 +49,8 @@
       "url": "https://animaldiversity.org/accounts/Zalophus_californianus/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],

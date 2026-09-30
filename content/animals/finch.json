@@ -1,6 +1,9 @@
 {
   "sci": "Fringillidae",
   "ov": "The true finches: more than 200 species of small songbirds with stout, conical bills for cracking seeds and nuts, often brightly coloured. They include canaries, siskins, redpolls and grosbeaks, and most do not migrate.",
+  "why": {
+    "p": "Several finches are common cage birds, above all the domestic canary."
+  },
   "rg": "Native almost worldwide, except Australia and the polar regions.",
   "df": "Mainly seeds and nuts.",
   "fx": [
@@ -16,7 +19,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -27,6 +31,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. ANSWER CHECK (fact): \"Darwin's finches on the Galapagos gave him the idea of natural selection\" is half sourced: the article says they played \"an important part in the inception\" of the theory, but Darwin paid little attention to them at the time (the mockingbirds struck him first), and they are not true finches. Suggested wording: \"Darwin's finches of the Galápagos helped inspire his theory of evolution, though they are not true finches.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. ANSWER CHECK (fact): \"Darwin's finches on the Galapagos gave him the idea of natural selection\" is half sourced: the article says they played \"an important part in the inception\" of the theory, but Darwin paid little attention to them at the time (the mockingbirds struck him first), and they are not true finches. Suggested wording: \"Darwin's finches of the Galápagos helped inspire his theory of evolution, though they are not true finches.\""
 }

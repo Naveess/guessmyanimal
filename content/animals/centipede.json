@@ -2,7 +2,9 @@
   "sci": "Chilopoda",
   "ov": "Predatory arthropods with one pair of legs per body segment. All are venomous: the first pair of legs is modified into venom-injecting pincers called forcipules. Many avoid sunlight by hiding or being active at night. Females care for their eggs, often curling around them.",
   "why": {
-    "dg": "All centipedes are venomous and can inflict painful stings."
+    "dg": "All centipedes are venomous and can inflict painful stings.",
+    "ac": "It avoids sunlight, hiding under cover or coming out at night.",
+    "et": "Large centipedes are eaten in China, grilled on skewers or deep fried."
   },
   "len": "A few millimetres to about 30 cm",
   "rg": "Worldwide.",
@@ -26,6 +28,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: \"no species of centipede has exactly 100 legs; the number of pairs of legs is an odd number that ranges from 15 pairs to 191 pairs\". lg 30 is the minimum (15 pairs).",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: \"no species of centipede has exactly 100 legs; the number of pairs of legs is an odd number that ranges from 15 pairs to 191 pairs\". lg 30 is the minimum (15 pairs)."
 }

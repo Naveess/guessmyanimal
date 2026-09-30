@@ -1,6 +1,9 @@
 {
   "sci": "Capra (several species)",
   "ov": "Several species of wild goat whose males carry large curved horns, ridged across the front. They live on steep mountain slopes in Europe, Asia and North and East Africa. Their horns appear at birth and keep growing for life.",
+  "why": {
+    "et": "Often hunted for its meat, with other parts used in medicine."
+  },
   "hb": [
     "mountain"
   ],
@@ -22,7 +25,8 @@
         "hb",
         "ht",
         "wt",
-        "rg"
+        "rg",
+        "why"
       ]
     },
     {
@@ -34,6 +38,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. ANSWER CHECK (fact): \"Climbs near-vertical dam walls to lick the salt off the stone\" — the Alpine ibex article confirms the salt licking but the Cingino Dam slope is 57 degrees, not near-vertical. Suggested wording: \"Climbs the 57-degree wall of an Italian dam to lick salt off the stone.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. ANSWER CHECK (fact): \"Climbs near-vertical dam walls to lick the salt off the stone\" — the Alpine ibex article confirms the salt licking but the Cingino Dam slope is 57 degrees, not near-vertical. Suggested wording: \"Climbs the 57-degree wall of an Italian dam to lick salt off the stone.\""
 }

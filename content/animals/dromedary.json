@@ -2,7 +2,8 @@
   "sci": "Camelus dromedarius",
   "ov": "The one-humped camel, and the tallest of the three camel species. First domesticated in the Arabian Peninsula about 4,000 years ago, it has not lived wild for nearly 2,000 years, apart from a feral population in Australia.",
   "why": {
-    "dg": "Generally non-aggressive, except for males in the rut."
+    "dg": "Generally non-aggressive, except for males in the rut.",
+    "et": "Its meat and milk support several North African peoples."
   },
   "hb": [
     "desert",
@@ -44,6 +45,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact says \"about 90%\" of camels are dromedaries; Wikipedia’s Camel article says 94%. Suggest changing to 94%. REGION: animals.js r is Africa and Asia; there is also a feral population in Australia. The dromedary is domestic, so there’s no IUCN status. RESOLVED: fact changed to 94%."
 }

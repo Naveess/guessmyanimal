@@ -1,6 +1,10 @@
 {
   "sci": "Petaurus breviceps",
   "ov": "A small, nocturnal gliding possum named for its taste for sugary sap and nectar. It glides between trees on membranes stretching from its front to back feet, and looks much like a flying squirrel although the two are not closely related.",
+  "why": {
+    "p": "A popular exotic \"pocket pet\" in several countries, though it needs company to stay healthy.",
+    "ac": "A small nocturnal gliding possum."
+  },
   "hb": [
     "forest"
   ],
@@ -31,10 +35,11 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "The animals.js fact is confirmed (glides 50 m or more on a membrane between its fore- and hind limbs). The species was split in 2020, so the strict sugar glider is only in southeastern Australia.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "The animals.js fact is confirmed (glides 50 m or more on a membrane between its fore- and hind limbs). The species was split in 2020, so the strict sugar glider is only in southeastern Australia."
 }

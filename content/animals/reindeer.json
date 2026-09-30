@@ -2,7 +2,8 @@
   "sci": "Rangifer tarandus",
   "ov": "A deer of the Arctic and subarctic, called caribou in North America. It’s the only deer in which females can grow antlers, and the only deer semi-domesticated on a large scale.",
   "why": {
-    "dm": "Reindeer are semi-domesticated: they are herded, but wild herds are also hunted."
+    "dm": "Reindeer are semi-domesticated: they are herded, but wild herds are also hunted.",
+    "et": "Herded and hunted by northern peoples for food, clothing and transport."
   },
   "hb": [
     "polar",
@@ -43,8 +44,15 @@
         "len",
         "wt"
       ]
+    },
+    {
+      "title": "Wikipedia: Deer",
+      "url": "https://en.wikipedia.org/wiki/Deer",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Some subspecies are in decline and considered vulnerable. REGION: animals.js r is Arctic, Europe and North America. It could add Asia, since the source says circumpolar and names the Altai and Urals. RESOLVED: Region added."
 }

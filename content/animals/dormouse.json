@@ -2,7 +2,9 @@
   "sci": "Gliridae",
   "ov": "About 28 species of small, nocturnal, tree-climbing rodents from Africa, Asia and Europe. They look like mice with furry tails, and are named for their long hibernation of six months or more. Half of all species belong to the African genus Graphiurus.",
   "why": {
-    "h": "Its name comes from it: dormice in cooler places hibernate for six months or more, waking briefly to eat stored food."
+    "h": "Its name comes from it: dormice in cooler places hibernate for six months or more, waking briefly to eat stored food.",
+    "ac": "Nocturnal, spending its waking hours up in the branches looking for food.",
+    "et": "The edible dormouse was a delicacy in ancient Rome, served as a starter or dipped in honey."
   },
   "hb": [
     "forest"
@@ -35,7 +37,8 @@
       "title": "Wikipedia: Hazel dormouse",
       "url": "https://en.wikipedia.org/wiki/Hazel_dormouse",
       "for": [
-        "df"
+        "df",
+        "why"
       ]
     }
   ],

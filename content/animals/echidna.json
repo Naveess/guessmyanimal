@@ -1,8 +1,11 @@
 {
   "sci": "Tachyglossidae",
   "ov": "Four species of spiny, egg-laying mammals from Australia and New Guinea, also called spiny anteaters. Their snouts carry electrosensors for finding buried prey, and they have long sticky tongues but no teeth. Their young are called puggles.",
-  "rg": "Australia, including Tasmania, and New Guinea.",
+  "why": {
+    "et": "The rare long-beaked echidnas of New Guinea are hunted for food."
+  },
   "wt": "Females about 4.5 kg, males about 6 kg",
+  "rg": "Australia, including Tasmania, and New Guinea.",
   "df": "Short-beaked echidnas eat mostly ants and termites; long-beaked echidnas eat worms and insect larvae.",
   "cf": [
     {
@@ -25,10 +28,11 @@
         "wt",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. REGION: animals.js has Australia only; the long-beaked echidnas and a subspecies of the short-beaked live in New Guinea, so suggest adding New Guinea. ANSWER CHECK (fact): \"One of only two mammals that lay eggs, the platypus being the other\" — there are four echidna species, so strictly five egg-laying mammal species. Suggested wording: \"Echidnas and the platypus are the only mammals that lay eggs.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. REGION: animals.js has Australia only; the long-beaked echidnas and a subspecies of the short-beaked live in New Guinea, so suggest adding New Guinea. ANSWER CHECK (fact): \"One of only two mammals that lay eggs, the platypus being the other\" — there are four echidna species, so strictly five egg-laying mammal species. Suggested wording: \"Echidnas and the platypus are the only mammals that lay eggs.\""
 }

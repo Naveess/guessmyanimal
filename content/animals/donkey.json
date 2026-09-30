@@ -2,7 +2,8 @@
   "sci": "Equus africanus asinus",
   "ov": "A domesticated member of the horse family, bred from the African wild ass some 5,000–7,000 years ago and used mainly as a working animal ever since. There are more than 40 million donkeys worldwide.",
   "why": {
-    "et": "A few donkeys are raised for meat or milk; about 3.5 million donkeys and mules are slaughtered for meat each year."
+    "et": "A few donkeys are raised for meat or milk; about 3.5 million donkeys and mules are slaughtered for meat each year.",
+    "p": "Mainly a working animal, though in richer countries a few are kept as pets or to guard livestock."
   },
   "hb": [
     "farmland",
@@ -47,6 +48,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Remembers places and other donkeys it met 25 years earlier\" isn’t in the Donkey article. Suggested wording: \"Bred from the African wild ass, and used as a working animal for 5,000 years.\" RESOLVED: animals.js fact rewritten to \"Bred from the African wild ass, and used as a working animal for 5,000 years.\""
 }

@@ -3,7 +3,9 @@
   "ov": "A gastropod with a coiled shell big enough to pull itself into. Land snails are the familiar ones, but most snail species live in the sea, and many more in fresh water.",
   "why": {
     "h": "Some land snails hibernate through winter, sealing the shell opening with a dried layer of mucus to stay moist. They may also go dormant in summer droughts.",
-    "p": "Snails are occasionally kept as household pets, though land snails are better known as garden and farm pests."
+    "p": "Snails are occasionally kept as household pets, though land snails are better known as garden and farm pests.",
+    "ac": "Land snails are most active at night and after rain, when the damp air keeps them from drying out.",
+    "et": "Eaten in many cultures and farmed for food in some places."
   },
   "hb": [
     "forest",
@@ -40,6 +42,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. No grp: slug is on the site but isn’t a snail. The existing fact (thousands of microscopic teeth on a ribbon-like tongue) is confirmed: the radula."
 }

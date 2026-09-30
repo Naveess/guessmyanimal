@@ -1,6 +1,9 @@
 {
   "sci": "Cervus canadensis",
   "ov": "The second-largest deer after the moose, native to North America and Central and East Asia. Its other name, wapiti, comes from a Shawnee and Cree word for \"white rump\". Males grow large antlers and shed them every year.",
+  "why": {
+    "et": "Hunted as game; its meat is leaner and higher in protein than beef or chicken."
+  },
   "hb": [
     "forest"
   ],
@@ -9,11 +12,11 @@
   "wt": "Males 178–497 kg, females 171–292 kg",
   "rg": "North America and Central, East and North Asia; introduced to Argentina and New Zealand.",
   "df": "Grasses and sedges, plus leaves, twigs and bark.",
-  "iu": "LC",
   "fx": [
     "A bull’s bugle can reach 4,000 Hz, unusually high for such a large animal.",
     "Wild elk average 10–13 years; in captivity they can live 20 years or more."
   ],
+  "iu": "LC",
   "src": [
     {
       "title": "Wikipedia: Elk",
@@ -28,10 +31,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): REGION: introduced to Argentina and New Zealand; suggest adding South America and New Zealand. ANSWER CHECK (fact): \"carries for miles and starts as a bellow and ends as a whistle\" goes beyond the article, which says bugling advertises the male \"over great distances\" and mixes whistles, bellows and screams. Suggested wording: \"A rutting bull's bugle is a loud, high whistle that carries over great distances.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): REGION: introduced to Argentina and New Zealand; suggest adding South America and New Zealand. ANSWER CHECK (fact): \"carries for miles and starts as a bellow and ends as a whistle\" goes beyond the article, which says bugling advertises the male \"over great distances\" and mixes whistles, bellows and screams. Suggested wording: \"A rutting bull's bugle is a loud, high whistle that carries over great distances.\""
 }

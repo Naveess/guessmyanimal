@@ -2,7 +2,8 @@
   "sci": "Marmota",
   "ov": "Fifteen species of large ground squirrels, the heaviest members of the squirrel family, from Asia, Europe and North America. They live in groups in summer and whistle loudly when alarmed, then spend the winter hibernating in burrows.",
   "why": {
-    "h": "Marmots are the largest true hibernators, sleeping through the winter in their burrows."
+    "h": "Marmots are the largest true hibernators, sleeping through the winter in their burrows.",
+    "et": "Alpine marmots were once widely hunted for food."
   },
   "hb": [
     "mountain",
@@ -36,7 +37,8 @@
       "title": "Wikipedia: Alpine marmot",
       "url": "https://en.wikipedia.org/wiki/Alpine_marmot",
       "for": [
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],

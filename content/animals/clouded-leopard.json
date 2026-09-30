@@ -1,6 +1,9 @@
 {
   "sci": "Neofelis nebulosa",
   "ov": "A medium-sized wild cat of Asian forests, named for the large cloud-like blotches on its grey or ochre coat. One of the best climbers among cats, it can climb down tree trunks head first, using its long tail for balance.",
+  "why": {
+    "ac": "It rests in trees by day and hunts on the forest floor at night."
+  },
   "hb": [
     "rainforest",
     "forest",
@@ -10,11 +13,11 @@
   "wt": "11.5–23 kg",
   "rg": "From the Himalayan foothills in Nepal, Bhutan and India through mainland Southeast Asia to southern China.",
   "df": "Tree-dwelling and ground animals such as macaques, hog deer, porcupines, pangolins and squirrels.",
-  "iu": "VU",
   "fx": [
     "Called a \"modern-day sabre-tooth\", it has upper canines 4 cm or longer.",
     "It rests in trees by day and hunts on the forest floor at night."
   ],
+  "iu": "VU",
   "src": [
     {
       "title": "Wikipedia: Clouded leopard",
@@ -27,10 +30,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "The earlier draft mixed in the Sunda clouded leopard (Neofelis diardi), a separate species on Borneo and Sumatra; this entry is the mainland clouded leopard. The animals.js fact is confirmed.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "The earlier draft mixed in the Sunda clouded leopard (Neofelis diardi), a separate species on Borneo and Sumatra; this entry is the mainland clouded leopard. The animals.js fact is confirmed."
 }

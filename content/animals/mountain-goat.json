@@ -1,6 +1,9 @@
 {
   "sci": "Oreamnos americanus",
   "ov": "A sure-footed, white-coated climber of the high mountains of western North America, often seen on near-vertical cliffs. Despite its name it is not a true goat: its closest relatives are goat-antelopes such as the chamois. It stays high up, where few predators can follow.",
+  "why": {
+    "et": "Hunted, with food listed among its uses to people."
+  },
   "hb": [
     "mountain"
   ],
@@ -26,8 +29,15 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Oreamnos americanus",
+      "url": "https://animaldiversity.org/accounts/Oreamnos_americanus/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): ANSWER CHECK (fact): \"hooves have rubbery centres and hard rims, so they grip rock like climbing shoes\" is half sourced: the article says the hooves have inner pads for traction and can spread apart, but does not mention hard rims. Suggested wording: \"Its split hooves spread apart and have grippy inner pads, letting it climb slopes steeper than 60°.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): ANSWER CHECK (fact): \"hooves have rubbery centres and hard rims, so they grip rock like climbing shoes\" is half sourced: the article says the hooves have inner pads for traction and can spread apart, but does not mention hard rims. Suggested wording: \"Its split hooves spread apart and have grippy inner pads, letting it climb slopes steeper than 60°.\""
 }

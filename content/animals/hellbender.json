@@ -1,6 +1,9 @@
 {
   "sci": "Cryptobranchus alleganiensis",
   "ov": "A giant aquatic salamander of streams in the eastern and central United States, and the largest amphibian in North America. It breathes mostly through the folds of skin along its sides, which are rich in blood vessels, and walks along stream beds instead of swimming.",
+  "why": {
+    "ac": "At least somewhat nocturnal, with a peak about two hours after dark."
+  },
   "hb": [
     "freshwater"
   ],
@@ -26,10 +29,11 @@
         "rg",
         "df",
         "fx",
-        "iu"
+        "iu",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed (largest salamander in North America; breathes through skin folds). Optional: its total length is 30–74 cm, so \"at 70 cm\" could read \"up to 74 cm\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed (largest salamander in North America; breathes through skin folds). Optional: its total length is 30–74 cm, so \"at 70 cm\" could read \"up to 74 cm\"."
 }

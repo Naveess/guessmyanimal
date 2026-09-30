@@ -1,6 +1,9 @@
 {
   "sci": "Carassius auratus",
   "ov": "A small freshwater carp native to China, first bred for colour there over 1,000 years ago and now one of the most popular aquarium fish. Goldfish released into the wild have become pests in parts of North America and Australia.",
+  "why": {
+    "p": "One of the most popular aquarium fish, commonly kept in indoor tanks."
+  },
   "hb": [
     "freshwater",
     "towns"
@@ -18,7 +21,8 @@
         "sci",
         "ov",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -29,6 +33,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (three-second memory is a myth; it’s months) is confirmed: goldfish have a memory span of at least three months."
 }

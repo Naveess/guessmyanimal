@@ -3,7 +3,8 @@
   "ov": "Stout-bodied rodents with cheek pouches that stretch to their shoulders, used to carry food home. Of 19 species, the golden or Syrian hamster is the popular pet.",
   "why": {
     "ac": "Wild hamsters are crepuscular, active at twilight; pet hamsters become nocturnal, waking around sundown.",
-    "h": "Wild Syrian hamsters can hibernate for a few days at a time; pet hamsters don’t."
+    "h": "Wild Syrian hamsters can hibernate for a few days at a time; pet hamsters don’t.",
+    "p": "The golden or Syrian hamster is the most common pet; dwarf hamsters are kept too."
   },
   "hb": [
     "desert",
@@ -42,6 +43,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (pet golden hamsters descend from one 1930 litter) is confirmed: mitochondrial DNA traces them to one female captured in Aleppo in 1930."
 }

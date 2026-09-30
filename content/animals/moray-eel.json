@@ -2,7 +2,9 @@
   "sci": "Muraenidae",
   "ov": "About 200 species of eels found worldwide, almost all marine. They hide in crevices to ambush prey and have to keep gulping to breathe.",
   "why": {
-    "dg": "Mostly to eat: some large morays carry the toxin that causes ciguatera poisoning."
+    "dg": "Mostly to eat: some large morays carry the toxin that causes ciguatera poisoning.",
+    "ac": "Nocturnal, which is one reason its breeding is so rarely seen.",
+    "et": "Some big morays carry toxins that cause ciguatera poisoning, so they are not recommended to eat."
   },
   "hb": [
     "ocean",

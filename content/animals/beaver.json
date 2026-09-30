@@ -2,7 +2,8 @@
   "sci": "Castor canadensis and Castor fiber",
   "ov": "Large semiaquatic rodents, the second-largest living rodents after capybaras. Beavers fell trees to build dams and lodges, and the ponds they make create wetlands for many other species.",
   "why": {
-    "et": "Beavers have long been hunted for their fur, meat and castoreum, a scent-gland secretion once used in perfume, medicine and food flavouring."
+    "et": "Beavers have long been hunted for their fur, meat and castoreum, a scent-gland secretion once used in perfume, medicine and food flavouring.",
+    "ac": "Mainly active at night and around dusk, spending the day in its lodge."
   },
   "hb": [
     "freshwater",
@@ -32,6 +33,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Two species. The existing fact (orange, iron-reinforced teeth) is confirmed: the enamel is coloured orange by iron compounds. REGION: animals.js r is North America and Europe. The source names small native populations in Mongolia and northwestern China. Consider adding Asia. RESOLVED: Asia added to r."
 }

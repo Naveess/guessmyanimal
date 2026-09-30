@@ -1,6 +1,10 @@
 {
   "sci": "Paguroidea",
   "ov": "About 800 species of crustaceans that protect their soft abdomen in empty snail shells. Most live in the sea, and some live on land.",
+  "why": {
+    "p": "Common pets, often seen as throwaway ones, yet they can live 15 years or more; the record is 45.",
+    "ac": "Mostly nocturnal scavengers."
+  },
   "hb": [
     "coast",
     "ocean"
@@ -24,10 +28,11 @@
         "ov",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact is confirmed: hermit crabs form vacancy chains, queueing by size to swap shells in order. No why.p: the article doesn’t mention pets in my check."
 }

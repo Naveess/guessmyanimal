@@ -1,6 +1,9 @@
 {
   "sci": "Dasyurus",
   "ov": "Six species of spotted carnivorous marsupials from Australia and New Guinea, also once called native cats. They are nocturnal and mostly solitary. All species have declined since European settlement, and the eastern quoll vanished from mainland Australia in the 1960s.",
+  "why": {
+    "ac": "Mainly nocturnal, spending most of the day in a den."
+  },
   "hb": [
     "forest",
     "rainforest",
@@ -26,10 +29,11 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. The fact is mostly confirmed: a University of Sydney project \"is teaching them to avoid eating the invasive amphibians\", but the method (feeding toads that make them mildly ill) is not described. Suggested wording: \"Northern quolls are being taught to avoid eating poisonous cane toads, which can kill them.\" REGIONS: two of the six species live in New Guinea; suggest adding \"New Guinea\". lf 2–5 fits \"1–5 years (species dependent)\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. The fact is mostly confirmed: a University of Sydney project \"is teaching them to avoid eating the invasive amphibians\", but the method (feeding toads that make them mildly ill) is not described. Suggested wording: \"Northern quolls are being taught to avoid eating poisonous cane toads, which can kill them.\" REGIONS: two of the six species live in New Guinea; suggest adding \"New Guinea\". lf 2–5 fits \"1–5 years (species dependent)\"."
 }

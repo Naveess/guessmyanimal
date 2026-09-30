@@ -3,7 +3,8 @@
   "ov": "Large, often hairy spiders, over a thousand species in almost 200 genera. Most live in burrows and many New World species defend themselves by flicking irritating hairs.",
   "why": {
     "dg": "Bites from New World tarantulas usually cause only local pain, but allergic reactions can be serious, and the hairs can damage eyes.",
-    "et": "Tarantulas are eaten as a delicacy in places such as Venezuela and Cambodia, roasted over a fire to remove the bristles."
+    "et": "Tarantulas are eaten as a delicacy in places such as Venezuela and Cambodia, roasted over a fire to remove the bristles.",
+    "p": "Increasingly popular as pets, though many New World species flick hairs that irritate skin."
   },
   "hb": [
     "rainforest",
@@ -34,6 +35,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact is confirmed; the article says females live 30 to 40 years. No cf: Spider already lists tarantula as a group member."
 }

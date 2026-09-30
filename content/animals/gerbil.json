@@ -1,6 +1,9 @@
 {
   "sci": "Gerbillinae",
   "ov": "About 110 species of small desert rodents from Africa, India and Asia, including jirds and sand rats. Most are active by day and eat both plants and animals. The pet gerbil is the Mongolian gerbil, kept in the English-speaking world since 1954.",
+  "why": {
+    "p": "The Mongolian gerbil became a popular small pet in the English-speaking world after 1954."
+  },
   "hb": [
     "desert",
     "grassland"
@@ -35,10 +38,11 @@
         "hb",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry (the Wikipedia \"Gerbil\" page redirects to Mongolian gerbil, so the subfamily article is used as well). ANSWER CHECK (fact): \"Thumps its back legs on the ground to warn the burrow\" is not in either article (only \"foot drumming\" is mentioned, in passing, under hearing). Suggested wording: \"Lives in family groups in a burrow with 10 to 20 exits.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry (the Wikipedia \"Gerbil\" page redirects to Mongolian gerbil, so the subfamily article is used as well). ANSWER CHECK (fact): \"Thumps its back legs on the ground to warn the burrow\" is not in either article (only \"foot drumming\" is mentioned, in passing, under hearing). Suggested wording: \"Lives in family groups in a burrow with 10 to 20 exits.\""
 }

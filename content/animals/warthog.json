@@ -2,7 +2,8 @@
   "sci": "Phacochoerus africanus",
   "ov": "A wild pig of the grasslands and savannas of sub-Saharan Africa, with two pairs of upward-curving tusks. The short lower pair is kept razor-sharp by rubbing against the upper pair.",
   "why": {
-    "dg": "Warthogs use their razor-sharp lower tusks in fights and to defend themselves against predators."
+    "dg": "Warthogs use their razor-sharp lower tusks in fights and to defend themselves against predators.",
+    "et": "Valued for its meat, both locally and in city markets, and popular on game ranches."
   },
   "hb": [
     "grassland",
@@ -42,8 +43,15 @@
       "for": [
         "cf"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Phacochoerus africanus",
+      "url": "https://animaldiversity.org/accounts/Phacochoerus_africanus/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (reverses into its burrow) is confirmed."
 }

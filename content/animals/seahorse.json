@@ -2,7 +2,8 @@
   "sci": "Hippocampus",
   "ov": "Small bony fish, 47 species, named for their horse-like head and neck. The male carries the eggs in a brood pouch on his front until the young are ready to be born.",
   "why": {
-    "et": "Dried seahorses are widely used in traditional Chinese medicine, despite no clinical evidence that they work."
+    "et": "Dried seahorses are widely used in traditional Chinese medicine, despite no clinical evidence that they work.",
+    "p": "Kept by aquarium hobbyists, though wild-caught seahorses tend to do poorly in home tanks."
   },
   "hb": [
     "coast",
@@ -27,6 +28,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (the male gets pregnant) is confirmed."
 }

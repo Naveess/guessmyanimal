@@ -1,6 +1,9 @@
 {
   "sci": "Dasyprocta",
   "ov": "Rodents related to guinea pigs but larger and longer-legged, living in forests and wooded areas of Central and South America. They sit up to eat, holding food in their forepaws, and bury seeds and nuts in small stores, helping to plant new trees.",
+  "why": {
+    "et": "Commonly hunted for food across its range."
+  },
   "hb": [
     "rainforest",
     "forest",
@@ -38,8 +41,15 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Dasyprocta punctata",
+      "url": "https://animaldiversity.org/accounts/Dasyprocta_punctata/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. ANSWER CHECK (fact): \"the only animal whose teeth can open a Brazil nut pod\" is overstated: agoutis are \"one of the few species (along with macaws) that can open Brazil nuts without tools\". Suggested wording: \"One of the few animals that can gnaw open a Brazil nut, and it buries seeds that grow into new trees.\" Optional REGIONS: introduced to Benin in West Africa; suggest adding \"Africa\" (introduced ranges count). Articles disagree on activity (\"reports differ\"; the Central American agouti is diurnal), so ac \"day\" stays. lf 15–20 fits \"as long as 20 years\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. ANSWER CHECK (fact): \"the only animal whose teeth can open a Brazil nut pod\" is overstated: agoutis are \"one of the few species (along with macaws) that can open Brazil nuts without tools\". Suggested wording: \"One of the few animals that can gnaw open a Brazil nut, and it buries seeds that grow into new trees.\" Optional REGIONS: introduced to Benin in West Africa; suggest adding \"Africa\" (introduced ranges count). Articles disagree on activity (\"reports differ\"; the Central American agouti is diurnal), so ac \"day\" stays. lf 15–20 fits \"as long as 20 years\"."
 }

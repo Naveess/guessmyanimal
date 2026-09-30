@@ -3,7 +3,8 @@
   "ov": "A domesticated rodent first bred for meat in the Andes as early as 5000 BC, and now a popular pet. It isn’t found in the wild at all.",
   "why": {
     "ac": "Guinea pigs are crepuscular, most active at dawn and dusk.",
-    "et": "Guinea pigs, called cuy, are still raised for meat in the Andes of South America."
+    "et": "Guinea pigs, called cuy, are still raised for meat in the Andes of South America.",
+    "p": "Kept as pets worldwide, though first domesticated in the Andes for meat."
   },
   "hb": [
     "farmland",
@@ -34,6 +35,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (not a pig, nothing to do with Guinea) is confirmed: not native to Guinea, not closely related to pigs, and the origin of the name is unclear."
 }

@@ -2,7 +2,8 @@
   "sci": "Dendrobatidae",
   "ov": "Over 170 species of small, often brilliantly coloured frogs from the rainforests of Central and South America, active by day. Their bright colours warn predators of skin toxins taken from a diet of ants, mites and termites. Only four species are known to have been used to poison blow darts.",
   "why": {
-    "dg": "The golden poison frog carries enough toxin to kill ten to twenty people, but captive-bred frogs have almost none."
+    "dg": "The golden poison frog carries enough toxin to kill ten to twenty people, but captive-bred frogs have almost none.",
+    "p": "Kept by hobbyists, though collecting them for the pet trade has helped threaten some wild species."
   },
   "hb": [
     "rainforest"
@@ -30,6 +31,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed: the golden poison frog has \"enough toxin on average to kill ten to twenty men\", and \"captive-bred animals do not possess significant levels of toxins\". lf 3–15: the article says one to three years in the wild and reports of up to 25 in captivity; left as is.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed: the golden poison frog has \"enough toxin on average to kill ten to twenty men\", and \"captive-bred animals do not possess significant levels of toxins\". lf 3–15: the article says one to three years in the wild and reports of up to 25 in captivity; left as is."
 }

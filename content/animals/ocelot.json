@@ -1,6 +1,9 @@
 {
   "sci": "Leopardus pardalis",
   "ov": "A medium-sized spotted wild cat of the Americas and the largest member of its genus. It climbs, leaps and swims well, hunts mostly at night and prefers dense cover near water. Each ocelot has its own unique coat pattern.",
+  "why": {
+    "ac": "Active mainly at twilight and at night."
+  },
   "hb": [
     "rainforest",
     "forest",
@@ -10,11 +13,11 @@
   "wt": "Females 7–12 kg, males 8–18 kg",
   "rg": "From the southwestern United States (Texas and Arizona) through Mexico and Central America to northern Argentina.",
   "df": "Small mammals such as rodents, rabbits, armadillos and opossums, plus fish, crabs, insects, reptiles and birds.",
-  "iu": "LC",
   "fx": [
     "It usually hunts animals weighing less than 1 kg.",
     "Its name comes from the Nahuatl (Aztec) word ōcēlōtl."
   ],
+  "iu": "LC",
   "src": [
     {
       "title": "Wikipedia: Ocelot",
@@ -27,10 +30,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): REGION: animals.js has South and Central America; ocelots also live in Texas and Arizona, so add North America. ANSWER CHECK (fact): \"Salvador Dali kept one as a pet and took it with him to restaurants\" isn’t in the Ocelot article. Suggested wording: \"Each ocelot has its own unique pattern of spots.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): REGION: animals.js has South and Central America; ocelots also live in Texas and Arizona, so add North America. ANSWER CHECK (fact): \"Salvador Dali kept one as a pet and took it with him to restaurants\" isn’t in the Ocelot article. Suggested wording: \"Each ocelot has its own unique pattern of spots.\""
 }

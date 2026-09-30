@@ -1,6 +1,9 @@
 {
   "sci": "Ocypode",
   "ov": "A pale, box-bodied crab of tropical and subtropical sandy beaches worldwide, with long, thick eyestalks and one claw bigger than the other. It digs deep burrows, comes out mainly at night, and is among the fastest-running invertebrates on land.",
+  "why": {
+    "ac": "Mainly nocturnal, living in deep burrows on the beach."
+  },
   "hb": [
     "coast"
   ],
@@ -19,7 +22,8 @@
         "sci",
         "ov",
         "hb",
-        "rg"
+        "rg",
+        "why"
       ]
     },
     {
@@ -34,6 +38,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): The fact is confirmed: it makes \"a growling sound from the comb-like lateral teeth of their gastric mill\". ac \"night\" fits (\"primarily nocturnal\"). Optional (sw): the Atlantic ghost crab \"must return to water periodically to moisten their gills… but are otherwise terrestrial\"; sw true is arguable, I would leave it. so \"Colonies\", et \"some\" and lf are not in the articles.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional regions and kakapo lf; the other optional answer tweaks were not applied): The fact is confirmed: it makes \"a growling sound from the comb-like lateral teeth of their gastric mill\". ac \"night\" fits (\"primarily nocturnal\"). Optional (sw): the Atlantic ghost crab \"must return to water periodically to moisten their gills… but are otherwise terrestrial\"; sw true is arguable, I would leave it. so \"Colonies\", et \"some\" and lf are not in the articles."
 }

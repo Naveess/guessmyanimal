@@ -1,6 +1,9 @@
 {
   "sci": "Genetta",
   "ov": "Seventeen species of slender, cat-like carnivores with spotted fur, a dark stripe down the spine and a ringed tail almost as long as the body. All are African; the common genet also lives on the Arabian coast and was brought to Spain about 1,000 years ago.",
+  "why": {
+    "ac": "Most active just after sunset and just before dawn."
+  },
   "hb": [
     "forest",
     "scrub"
@@ -32,10 +35,11 @@
         "hb",
         "wt",
         "rg",
-        "df"
+        "df",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. REGION: animals.js has Africa and Europe; the common genet also lives on the Arabian Peninsula, so suggest adding Asia. ANSWER CHECK (fact): \"Can squeeze through any gap its head fits through\" is not in either article. Suggested wording: \"A spotted, cat-like hunter and the only viverrid that can stand on its hind legs.\" ANSWER CHECK (lifespan): animals.js has lf \"8–20 years\"; the article gives up to 13 in captivity. Suggested: \"Up to 13 years\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): Group entry. REGION: animals.js has Africa and Europe; the common genet also lives on the Arabian Peninsula, so suggest adding Asia. ANSWER CHECK (fact): \"Can squeeze through any gap its head fits through\" is not in either article. Suggested wording: \"A spotted, cat-like hunter and the only viverrid that can stand on its hind legs.\" ANSWER CHECK (lifespan): animals.js has lf \"8–20 years\"; the article gives up to 13 in captivity. Suggested: \"Up to 13 years\"."
 }

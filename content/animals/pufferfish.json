@@ -3,7 +3,8 @@
   "ov": "Fish that puff up into a ball when threatened. Most species are toxic, some among the most poisonous vertebrates in the world, because their organs and sometimes skin contain tetrodotoxin.",
   "why": {
     "dg": "Eating the wrong parts is often fatal: the liver and sometimes the skin carry tetrodotoxin.",
-    "et": "It is a delicacy in Japan (fugu), Korea and China, prepared only by specially trained chefs."
+    "et": "It is a delicacy in Japan (fugu), Korea and China, prepared only by specially trained chefs.",
+    "p": "A few puffers are kept and even bred in home aquariums."
   },
   "hb": [
     "ocean",
@@ -27,6 +28,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Contains a poison over a thousand times deadlier than cyanide\" isn’t supported. The article quotes a Philippine government warning that the toxin is \"100 times more potent than cyanide\". Suggested wording: \"Its toxin is about 100 times more potent than cyanide.\" rg is thin because the article doesn’t give a range. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

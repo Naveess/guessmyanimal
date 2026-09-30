@@ -2,7 +2,8 @@
   "sci": "Sphyraena",
   "ov": "About 26 species of long, silvery predatory fish with fang-like teeth and an underbite, found in tropical and subtropical oceans worldwide, near the surface, coral reefs and seagrass. They ambush prey with short bursts of speed and often bite smaller fish in half.",
   "why": {
-    "dg": "Bites on swimmers are rare and are thought to happen in poor visibility or when a barracuda mistakes shiny jewellery for prey."
+    "dg": "Bites on swimmers are rare and are thought to happen in poor visibility or when a barracuda mistakes shiny jewellery for prey.",
+    "et": "A popular food and game fish, usually eaten as fillets or steaks, though big ones can cause ciguatera poisoning."
   },
   "hb": [
     "ocean",
@@ -39,6 +40,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: bursts of \"up to 27 mph (43 km/h)\", and they \"may mistake things that glint and shine, like jewelry, for prey\". lf 14–18 fits \"at least 14 years\" for the great barracuda.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; h left unchanged for bumblebee, hornet and firefly): Group entry. The fact is confirmed: bursts of \"up to 27 mph (43 km/h)\", and they \"may mistake things that glint and shine, like jewelry, for prey\". lf 14–18 fits \"at least 14 years\" for the great barracuda."
 }

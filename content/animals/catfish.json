@@ -1,6 +1,11 @@
 {
   "sci": "Siluriformes",
   "ov": "A huge, varied order of fish named for their whisker-like barbels. None have scales. They range from giants like the Mekong giant catfish to the tiny parasitic candiru.",
+  "why": {
+    "p": "Smaller species such as Corydoras and plecos are popular aquarium fish.",
+    "ac": "Many catfish are nocturnal, though some are active at dusk or by day.",
+    "et": "Many larger species are farmed or fished for food, such as Pangasius."
+  },
   "hb": [
     "freshwater",
     "wetland"
@@ -17,10 +22,11 @@
         "sci",
         "ov",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Its whole body is covered in taste buds, over 100,000 of them\" is half sourced: many large catfish have taste receptors across their whole bodies, but the number isn’t in the article. Suggested wording: \"Many catfish can taste with their whole body.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

@@ -2,7 +2,8 @@
   "sci": "Orycteropus afer",
   "ov": "A burrowing, nocturnal African mammal that digs out ants and termites with powerful claws and collects them with a long, sticky tongue. It’s the only living member of its order, related to elephants and manatees.",
   "why": {
-    "et": "Some people hunt aardvarks for meat."
+    "et": "Some people hunt aardvarks for meat.",
+    "ac": "A nocturnal burrower that may walk some way from its burrow each night to forage."
   },
   "hb": [
     "grassland",
@@ -41,10 +42,11 @@
       "url": "https://animaldiversity.org/accounts/Orycteropus_afer/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact is half confirmed: up to 50,000 insects in a night is recorded, and it \"can dig extremely quickly\", but the team with shovels isn’t in the article. Suggested wording: \"Can eat up to 50,000 ants and termites in a single night.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }
