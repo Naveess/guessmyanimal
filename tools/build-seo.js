@@ -25,6 +25,7 @@ const PHOTOS = (() => {
 })();
 const { CATEGORY_BUCKETS } = require('../game-core.js');
 const { siteBar, brand, siteFooter } = require('./chrome.js');
+const { buildCollections } = require('./build-collections.js');
 
 const SITE = 'https://guessmyanimal.com';
 const MAX_DESC = 158;
@@ -33,7 +34,7 @@ const MAX_DESC = 158;
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20260930-1';
+const STYLE_VERSION = '20260930-3';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
@@ -207,7 +208,10 @@ const staticUrls = ['/', '/about', '/how-we-answer', '/browse', '/streamer', '/c
 // No build-date <lastmod>: it used to be stamped on every URL, which
 // tells a crawler every page changed every time anyone ran this. A
 // reviewed animal gets its real review date (rv); the rest get none.
-const all = staticUrls.map((loc) => ({ loc, lastmod: null })).concat(urls);
+// Collection pages (tools/build-collections.js): only the approved ones
+// are written, and only those go in the sitemap.
+const COLLECTIONS = buildCollections(PUBLISHED, { styleVersion: STYLE_VERSION });
+const all = staticUrls.map((loc) => ({ loc, lastmod: null })).concat(urls, COLLECTIONS.urls);
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${all
   .map((u) => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`)
   .join('\n')}\n</urlset>\n`;
@@ -429,6 +433,7 @@ fs.writeFileSync(path.join(DATA_DIR, '..', 'published.json'), JSON.stringify(Obj
 console.log(`wrote functions/seo-meta.json (${ANIMALS.length} animals)`);
 console.log(`wrote sitemap.xml (${all.length} urls)`);
 console.log(`wrote browse.html (${ANIMALS.length} animals)`);
+console.log(`collections: ${COLLECTIONS.live.length} live (explore/)`);
 console.log(`content: ${Object.keys(PUBLISHED).length} published, ${Object.keys(CONTENT.all).length - Object.keys(PUBLISHED).length} awaiting review`);
 
 // Last, so the hand-written pages pick up the same chrome browse.html

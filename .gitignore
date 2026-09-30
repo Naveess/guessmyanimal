@@ -9,3 +9,6 @@ node_modules/
 package-lock.json
 # Derived from content/animals/*.json by npm run review.
 content/REVIEW.md
+
+# Draft previews of generated pages (node tools/build-collections.js --drafts).
+preview/

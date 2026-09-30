@@ -1,0 +1,370 @@
+{
+  "region/africa": {
+    "title": "Animals of Africa",
+    "desc": "Every animal on Guess My Animal that lives in Africa, from savanna lions and giraffes to rainforest gorillas, each with where exactly it's found.",
+    "intro": [
+      "Africa has more of the animals people reach for in this game than anywhere except Asia: the savanna heavyweights (lion, elephant, giraffe, hippo), the antelopes, the great apes of the rainforest, and a long tail of smaller things like meerkats, jerboas and naked mole-rats.",
+      "Each line says where in Africa the animal actually lives. A few are here because people took them there, such as the largemouth bass, and the page says so."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/asia": {
+    "title": "Animals of Asia",
+    "desc": "Every animal on Guess My Animal that lives in Asia: tigers, pandas, orangutans, Komodo dragons and more, each with where it's found.",
+    "intro": [
+      "Asia is the biggest list on the site. It runs from Arctic tundra to tropical rainforest, so it holds snow leopards and yaks as well as orangutans, gibbons, Komodo dragons and slow lorises.",
+      "Some animals here also live on other continents. The line under each name says which part of Asia it's found in."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/europe": {
+    "title": "Animals of Europe",
+    "desc": "Every animal on Guess My Animal that lives wild in Europe, from badgers and hedgehogs to wolves, lynx and chamois, with where each is found.",
+    "intro": [
+      "Europe's list is mostly animals you might actually meet: badgers, hedgehogs, foxes, stoats and robins, plus the bigger survivors of its forests and mountains, like wolves, lynx, brown bears, ibex and chamois.",
+      "A few, such as the raccoon and the muntjac, were brought in from elsewhere and now live wild. Farm and pet animals found all over the world are on the Worldwide list instead."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/north-america": {
+    "title": "Animals of North America",
+    "desc": "Every animal on Guess My Animal that lives in North America: bison, grizzlies, raccoons, alligators and more, with where each is found.",
+    "intro": [
+      "North America runs from the Arctic to the deserts of Mexico, so this list has muskox and lemmings alongside roadrunners, rattlesnakes and alligators, with bison, moose, grizzlies and raccoons in between.",
+      "Central America has its own list. Animals marked as living across the whole of the Americas appear on all three."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/central-america": {
+    "title": "Animals of Central America",
+    "desc": "Every animal on Guess My Animal found in Central America: jaguars, sloths, toucans, howler monkeys, poison dart frogs and more.",
+    "intro": [
+      "The narrow land bridge between the two American continents is mostly rainforest, and it shows: sloths, howler and spider monkeys, toucans, poison dart frogs, jaguars and tapirs.",
+      "Many of these also live further south, so most of them turn up on the South America list too."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/south-america": {
+    "title": "Animals of South America",
+    "desc": "Every animal on Guess My Animal that lives in South America: capybaras, llamas, anacondas, piranhas, sloths and more, with where each is found.",
+    "intro": [
+      "South America has the Amazon, the Andes and the grasslands between them, which gives it capybaras, anacondas, piranhas and electric eels in the rivers, llamas, vicuñas and condors in the mountains, and maned wolves on the plains.",
+      "The line under each animal says which part of the continent it lives in."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/australia": {
+    "title": "Animals of Australia",
+    "desc": "Every animal on Guess My Animal that lives in Australia: kangaroos, koalas, platypuses, wombats, emus and more, with where each is found.",
+    "intro": [
+      "Australia is where the odd answers live: egg-laying mammals (platypus and echidna), pouched ones (kangaroo, koala, wombat, Tasmanian devil) and some of the world's most venomous snakes.",
+      "It's a good list to know for the game, because so many of these animals break the usual rules."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/new-zealand": {
+    "title": "Animals of New Zealand",
+    "desc": "Animals on Guess My Animal that live in New Zealand: kiwi, kea, kākāpō and tuatara, plus animals people brought there.",
+    "intro": [
+      "New Zealand's own animals are birds and reptiles, not land mammals: the kiwi, the kea, the flightless kākāpō and the tuatara.",
+      "Several others on this list, such as the stoat, the chamois and the blackbird, were brought in by people and now live wild."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/new-guinea": {
+    "title": "Animals of New Guinea",
+    "desc": "Animals on Guess My Animal that live in New Guinea: birds of paradise, cassowaries, tree kangaroos' relatives and more.",
+    "intro": [
+      "New Guinea shares many animals with northern Australia, like wallabies, bandicoots, quolls and echidnas, but it is best known for its birds of paradise and cassowaries.",
+      "Everything here is listed for New Guinea because its sources name it, not because it's near Australia."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/madagascar": {
+    "title": "Animals of Madagascar",
+    "desc": "Animals on Guess My Animal that live in Madagascar: lemurs, the aye-aye, the indri, the fossa and tenrecs.",
+    "intro": [
+      "Madagascar has animals found nowhere else: lemurs, the aye-aye and the indri, the cat-like fossa that hunts them, and tenrecs.",
+      "It's a short list, but a useful one, because \"Madagascar\" is often the clue that settles a game."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/arctic": {
+    "title": "Arctic animals",
+    "desc": "Animals on Guess My Animal that live in the Arctic: polar bears, walruses, narwhals, Arctic foxes, muskox and more.",
+    "intro": [
+      "The animals of the far north: polar bears, walruses, narwhals and belugas at sea, and Arctic foxes, muskox, reindeer and lemmings on the tundra.",
+      "Most of them also live further south for part of the year or part of their range, so they appear on other lists too."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/antarctic": {
+    "title": "Antarctic animals",
+    "desc": "Animals on Guess My Animal that live in the Antarctic: penguins, seals, albatrosses and krill.",
+    "intro": [
+      "Very little lives on Antarctica itself. The animals that make it are the ones that feed at sea: penguins, seals, albatrosses, and the krill that much of the rest depends on.",
+      "Polar bears are not on this list. They live only in the Arctic, at the other end of the world."
+    ],
+    "rv": "2026-09-30"
+  },
+  "region/worldwide": {
+    "title": "Animals found worldwide",
+    "desc": "Animals on Guess My Animal found almost everywhere: pets, farm animals, and the insects, birds and pests that live wherever people do.",
+    "intro": [
+      "\"Worldwide\" on this site means almost everywhere people are, which is usually because people took the animal there. So this list is mostly farm animals, pets, and the creatures that follow humans around, like rats, pigeons, flies and cockroaches.",
+      "It also covers big groups whose members live on every continent, such as spiders, snakes, owls and bats."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/forest": {
+    "title": "Forest animals",
+    "desc": "Animals on Guess My Animal that live in forests and woodland, from bears and deer to woodpeckers and flying squirrels.",
+    "intro": [
+      "Forest and woodland animals, not counting tropical rainforest, which has its own list. Bears, deer, badgers and wolves live here, along with woodpeckers, owls, flying squirrels and many of the monkeys.",
+      "Habitats come from each animal's reviewed sources. An animal can have several, so many of these also appear on other habitat lists."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/rainforest": {
+    "title": "Rainforest animals",
+    "desc": "Animals on Guess My Animal that live in tropical rainforest: orangutans, jaguars, sloths, poison dart frogs, toucans and more.",
+    "intro": [
+      "Tropical rainforest holds more kinds of animal than any other habitat, and a lot of this site's great apes, monkeys, big cats and frogs come from it: orangutans, gorillas, jaguars, sloths, poison dart frogs, macaws and okapis.",
+      "Many rainforest animals live high in the trees and are rarely seen from the ground."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/grassland": {
+    "title": "Grassland animals",
+    "desc": "Animals on Guess My Animal that live on grassland and savanna: lions, zebras, giraffes, bison, kangaroos and more.",
+    "intro": [
+      "Open grassland, savanna and steppe: the plains where the big herds graze and the predators follow them. Zebras, wildebeest, giraffes and gazelles in Africa, bison in North America, kangaroos in Australia, and the lions, cheetahs and hyenas that hunt them.",
+      "Open country favours speed and good eyesight, which is why so many of the fastest runners are on this list."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/scrub": {
+    "title": "Scrubland animals",
+    "desc": "Animals on Guess My Animal that live in scrub and bushland: meerkats, kudu, wombats, roadrunners, tortoises and more.",
+    "intro": [
+      "Scrub and bushland sits between grassland and desert: dry country with low bushes and scattered trees. It's home to kudu and dik-diks, meerkats and mongooses, wombats and quokkas, roadrunners and tortoises.",
+      "Many of these animals get much of their water from the plants they eat."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/desert": {
+    "title": "Desert animals",
+    "desc": "Animals on Guess My Animal that live in deserts: camels, fennec foxes, scorpions, jerboas, sidewinders and more.",
+    "intro": [
+      "Desert animals, from the obvious (camels, scorpions, rattlesnakes) to the small specialists: fennec foxes, jerboas, gerbils, sand cats and sidewinders.",
+      "A lot of them are awake at night, when it's cooler, which is worth knowing when \"Awake when?\" comes up in a game."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/mountain": {
+    "title": "Mountain animals",
+    "desc": "Animals on Guess My Animal that live in mountains: snow leopards, yaks, ibex, llamas, condors and more.",
+    "intro": [
+      "Animals of high ground: the climbers (ibex, chamois, mountain goats, bighorn sheep), the high-altitude grazers (yaks, llamas, vicuñas) and the predators that follow them, like snow leopards.",
+      "Pandas, red pandas and mountain gorillas are here too, since their forests grow on mountainsides."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/wetland": {
+    "title": "Wetland animals",
+    "desc": "Animals on Guess My Animal that live in marshes, swamps and wetlands: alligators, herons, capybaras, frogs and more.",
+    "intro": [
+      "Marshes, swamps, mangroves and flooded grassland. Alligators, caimans and anacondas live here, along with herons, storks, flamingos, capybaras, beavers and most of the frogs.",
+      "Rivers and lakes have a separate list, though many animals appear on both."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/freshwater": {
+    "title": "River and lake animals",
+    "desc": "Animals on Guess My Animal that live in rivers and lakes: otters, hippos, piranhas, trout, platypuses and more.",
+    "intro": [
+      "Animals of fresh water: fish like trout, carp, piranhas and catfish, and the animals that live in and around rivers and lakes, such as otters, beavers, hippos, platypuses and kingfishers.",
+      "It includes a few you might not expect, such as river dolphins, freshwater crabs and the axolotl, which spends its whole life underwater."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/coast": {
+    "title": "Coastal animals",
+    "desc": "Animals on Guess My Animal that live on coasts, shores and reefs: crabs, seals, puffins, octopuses and more.",
+    "intro": [
+      "Shores, rock pools, coral reefs and shallow seas. Crabs, limpets, starfish and sea anemones live between the tides, with seals, sea otters and puffins on the rocks, and octopuses and clownfish on the reefs.",
+      "The open sea further out has its own list."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/ocean": {
+    "title": "Open-ocean animals",
+    "desc": "Animals on Guess My Animal that live in the open ocean and deep sea: whales, sharks, tuna, squid, anglerfish and more.",
+    "intro": [
+      "The open sea and the deep: whales, dolphins, sharks, tuna, swordfish and squid, and the strange animals of deep water such as anglerfish, oarfish, blobfish and the coelacanth.",
+      "Remember in a game that whales and dolphins are mammals, and that on this site flippers don't count as legs."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/polar": {
+    "title": "Polar animals",
+    "desc": "Animals on Guess My Animal that live in polar regions: polar bears, penguins, walruses, Arctic foxes and more.",
+    "intro": [
+      "Animals of the coldest places on Earth, at either end of it. Polar bears, walruses and Arctic foxes live in the north, and penguins live in the south.",
+      "Some, like orcas and seals, live at both ends."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/farmland": {
+    "title": "Farmland animals",
+    "desc": "Animals on Guess My Animal that live on farmland: farm animals, and the wild ones that live alongside them.",
+    "intro": [
+      "Two kinds of animal share this list: the farm animals people keep (cows, sheep, pigs, goats, chickens, horses) and the wild ones that thrive around fields and hedges, like hares, foxes, crows, kestrels, moles and badgers.",
+      "Domesticated animals are marked as such on their own pages."
+    ],
+    "rv": "2026-09-30"
+  },
+  "habitat/towns": {
+    "title": "Animals that live in towns",
+    "desc": "Animals on Guess My Animal that live in towns and cities: pigeons, foxes, raccoons, rats, and the pets indoors.",
+    "intro": [
+      "Animals that live where people do: the ones that moved into cities by themselves (pigeons, rats, red foxes, raccoons, magpies, seagulls) and the pets that came with us.",
+      "If an animal in a game \"lives near people\", this is the list to check."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/mammals": {
+    "title": "Mammals",
+    "desc": "Every mammal on Guess My Animal, from aardvarks to zebras, including the ones that fly, swim or lay eggs.",
+    "intro": [
+      "Nearly half the animals on the site are mammals. As well as the obvious ones, the list includes a few that catch people out in the game: whales, dolphins and seals (mammals that live in the sea), bats (mammals that fly), and the platypus and echidna (mammals that lay eggs).",
+      "Humans are here too. Yes, you count."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/birds": {
+    "title": "Birds",
+    "desc": "Every bird on Guess My Animal, from albatrosses to wrens, including the flightless ones like penguins, emus and the kākāpō.",
+    "intro": [
+      "Every bird on the site. All of them lay eggs and have two legs, but not all of them fly: penguins, ostriches, emus, rheas, cassowaries, kiwi and the kākāpō can't, and the dodo is here too, though it's extinct.",
+      "\"Can fly\" is one of the most useful questions in the game for exactly that reason."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/reptiles": {
+    "title": "Reptiles",
+    "desc": "Every reptile on Guess My Animal: snakes, lizards, crocodiles, turtles, tortoises and the tuatara.",
+    "intro": [
+      "Snakes, lizards, crocodilians, turtles and tortoises, plus the tuatara, which looks like a lizard but belongs to a group of its own.",
+      "The slow worm is here too. It looks like a snake, but it's a legless lizard."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/amphibians": {
+    "title": "Amphibians",
+    "desc": "Every amphibian on Guess My Animal: frogs, toads, newts, salamanders, the axolotl and the caecilian.",
+    "intro": [
+      "Frogs, toads, newts and salamanders, and two stranger ones: the caecilian, which has no legs, and the olm, a blind cave salamander.",
+      "Most amphibians start life in water and move onto land as adults. The axolotl never does, and stays a swimmer all its life."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/fish": {
+    "title": "Fish",
+    "desc": "Every fish on Guess My Animal, from goldfish and salmon to sharks, seahorses, lungfish and the coelacanth.",
+    "intro": [
+      "Every fish on the site, including sharks and rays, seahorses, eels and the air-breathing lungfish and mudskipper.",
+      "Whales, dolphins, starfish and jellyfish are not fish, and you'll find them on the Mammals and Other invertebrates lists."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/insects": {
+    "title": "Insects",
+    "desc": "Every insect on Guess My Animal: bees, ants, butterflies, beetles, mosquitoes, cicadas and more.",
+    "intro": [
+      "Six legs, three body parts: bees, ants, beetles, butterflies and moths, flies, grasshoppers and the rest.",
+      "Spiders, scorpions, woodlice, centipedes and millipedes are not insects and are listed separately. That's a common trap in the game."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/arachnids": {
+    "title": "Arachnids",
+    "desc": "Every arachnid on Guess My Animal: spiders, scorpions, ticks, mites and the horseshoe crab.",
+    "intro": [
+      "Eight legs and no antennae: spiders, scorpions, ticks and mites.",
+      "The horseshoe crab is here because it's more closely related to spiders and scorpions than to real crabs."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/crustaceans": {
+    "title": "Crustaceans",
+    "desc": "Every crustacean on Guess My Animal: crabs, lobsters, shrimp, krill, barnacles and woodlice.",
+    "intro": [
+      "Crabs, lobsters, shrimp and their relatives, most of them in the sea. Two surprises: barnacles, which look like shellfish but are crustaceans stuck head-down to a rock, and the woodlouse, which lives on land."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/molluscs": {
+    "title": "Molluscs",
+    "desc": "Every mollusc on Guess My Animal: snails, slugs, octopuses, squid, oysters, scallops and more.",
+    "intro": [
+      "Soft-bodied animals, most with a shell: snails, limpets, oysters, mussels and scallops. The group also includes slugs and nudibranchs, which have lost their shells, and the octopus, squid and cuttlefish, some of the cleverest animals without a backbone.",
+      "The nautilus is the only living relative of the octopus that still keeps an outside shell."
+    ],
+    "rv": "2026-09-30"
+  },
+  "kind/other-invertebrates": {
+    "title": "Other invertebrates",
+    "desc": "The rest of the animals without backbones on Guess My Animal: jellyfish, coral, starfish, worms, centipedes, sponges and tardigrades.",
+    "intro": [
+      "Animals without backbones that aren't insects, arachnids, crustaceans or molluscs: jellyfish, coral and sea anemones, starfish, sea urchins and sea cucumbers, worms and leeches, centipedes and millipedes, sponges and tardigrades.",
+      "Coral and sponges are animals, not plants, which surprises a lot of people."
+    ],
+    "rv": "2026-09-30"
+  },
+  "answer/dangerous": {
+    "title": "Dangerous animals",
+    "desc": "Every animal Guess My Animal answers \"Dangerous: yes\" or \"can be\" for, and why, from lions and box jellyfish to swans.",
+    "intro": [
+      "The site asks \"could it seriously hurt a person?\", not \"is it fierce?\". \"Yes\" means it's known to seriously injure or kill people: big predators, heavyweights like hippos and buffalo, venomous animals, and disease carriers like mosquitoes and ticks. \"Can be\" means it can hurt you, but usually only if it's provoked, cornered or handled.",
+      "The note under each animal explains its answer where one is needed. This is a guide for a game, not safety advice."
+    ],
+    "rv": "2026-09-30"
+  },
+  "answer/pets": {
+    "title": "Animals people keep as pets",
+    "desc": "Every animal Guess My Animal says is kept as a pet, commonly or sometimes, from cats and goldfish to tarantulas.",
+    "intro": [
+      "\"Commonly\" means an ordinary pet you'd find in a pet shop or a neighbour's house. \"Sometimes\" means some people keep it somewhere, usually enthusiasts or where it's legal, like tortoises, tarantulas and pet pigs.",
+      "Being kept as a pet isn't the same as being domesticated, and many animals on this list are still wild animals."
+    ],
+    "rv": "2026-09-30"
+  },
+  "answer/nocturnal": {
+    "title": "Nocturnal animals",
+    "desc": "Every animal Guess My Animal says is awake at night, including dawn-and-dusk animals, from owls and bats to lions.",
+    "intro": [
+      "Animals that are mostly active at night. Following how most people play, this includes animals active at dawn and dusk. Animals that keep no strong schedule are answered \"Day & night\" and aren't listed here.",
+      "Some are surprising: lions, hippos and domestic cats are all on it."
+    ],
+    "rv": "2026-09-30"
+  },
+  "answer/hibernate": {
+    "title": "Animals that hibernate",
+    "desc": "Every animal Guess My Animal says hibernates, including bears' winter sleep and the winter dormancy of snakes and frogs.",
+    "intro": [
+      "The site counts any long winter shutdown, not just textbook hibernation: a hedgehog's or dormouse's deep hibernation, a bear's lighter winter sleep, and the cold-season dormancy of snakes, tortoises, frogs and some insects. It's asking \"does it disappear for the winter?\", which is what the game really means.",
+      "Queen bees and wasps that overwinter alone don't count, so bees and wasps aren't listed."
+    ],
+    "rv": "2026-09-30"
+  },
+  "answer/eaten": {
+    "title": "Animals people eat",
+    "desc": "Every animal Guess My Animal says people eat, widely or in places, and where, from cows and salmon to silkworms.",
+    "intro": [
+      "\"Yes\" means widely eaten, the kind of thing on a normal menu somewhere. \"In places\" means eaten in some countries or cultures, now or traditionally, but not widely, and the note says where.",
+      "This is a factual answer about the world, not a recommendation. Some animals marked \"in places\" are protected, and eating them is illegal in most of the world."
+    ],
+    "rv": "2026-09-30"
+  }
+}

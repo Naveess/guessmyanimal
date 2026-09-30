@@ -72,6 +72,7 @@ function menuItems(variant) {
   return [
     '<a class="menu-item" href="/about"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>',
     '<a class="menu-item" href="/browse"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>',
+    '<a class="menu-item" href="/explore"><span class="mi-full">Explore by list</span><span class="mi-short">Explore</span></a>',
     mystery,
     party,
     '<a class="menu-item" href="/streamer"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>',
@@ -167,6 +168,61 @@ function siteFooter(variant) {
 </footer>`;
 }
 
+// The <head> of a generated page (tools/build-collections.js): the same
+// meta, theme bootstrap, stylesheet and ad scripts browse.html carries.
+// Values arrive already HTML-escaped.
+function docHead({ title, description, canonical, styleVersion, robots }) {
+  return `<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${title}</title>
+<meta name="description" content="${description}">
+${robots ? `<meta name="robots" content="${robots}">\n` : ''}<meta name="theme-color" content="#ffce1f">
+
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+<link rel="canonical" href="${canonical}">
+<meta property="og:url" content="${canonical}">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://guessmyanimal.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" href="/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){try{var t=localStorage.getItem('gma-theme');
+if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="stylesheet" href="/style.css?v=${styleVersion}">
+<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
+     crossorigin="anonymous"></script>
+<!-- Funding Choices - see privacy.html for what this pair does. -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-2495070274777193?ers=1"></script>
+<script>
+(function() {
+  function signalGooglefcPresent() {
+    if (!window.frames['googlefcPresent']) {
+      if (document.body) {
+        var iframe = document.createElement('iframe');
+        iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
+        iframe.style.display = 'none';
+        iframe.name = 'googlefcPresent';
+        document.body.appendChild(iframe);
+      } else {
+        setTimeout(signalGooglefcPresent, 0);
+      }
+    }
+  }
+  signalGooglefcPresent();
+})();
+</script>`;
+}
+
 const BLOCKS = {
   'site-bar': siteBar,
   'site-bar-index': () => siteBar('index'),
@@ -175,4 +231,4 @@ const BLOCKS = {
   'site-footer-index': () => siteFooter('index'),
 };
 
-module.exports = { siteBar, brand, siteFooter, BLOCKS };
+module.exports = { siteBar, brand, siteFooter, docHead, BLOCKS };

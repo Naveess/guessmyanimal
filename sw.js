@@ -9,7 +9,7 @@
 // strings in index.html - bump both together whenever a shell file
 // changes, or a returning visitor keeps the stale cached version
 // forever instead of picking up the new one.
-const VERSION = 'gma-20260930-2';
+const VERSION = 'gma-20260930-4';
 
 // Only '/' and the files index.html itself loads. The standalone pages
 // (about/browse/privacy/streamer) aren't precached, so neither are the
@@ -18,7 +18,7 @@ const VERSION = 'gma-20260930-2';
 // there's nothing for an offline copy of it to be.
 const SHELL = [
   '/',
-  '/style.css?v=20260930-1',
+  '/style.css?v=20260930-3',
   '/sfx.js?v=20260912-1',
   '/animals.js?v=20260930-1',
   '/render-data.js?v=20260928-4',

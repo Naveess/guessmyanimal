@@ -1,9 +1,6 @@
 {
   "sci": "Panthera leo × Panthera tigris",
   "ov": "The hybrid of a male lion and a female tiger, and the largest living cat. It is tawny like a lion with faint tiger stripes, likes swimming like a tiger and is sociable like a lion. Ligers exist only in captivity; male ligers are sterile, but females can breed.",
-  "hb": [
-    "towns"
-  ],
   "len": "Males 3–3.6 m in total",
   "wt": "Males up to about 500 kg; females about 320 kg",
   "rg": "Only in captivity. Lion and tiger ranges overlap only in India's Gir National Park, and no ligers have been found there.",
@@ -24,7 +21,6 @@
       "for": [
         "sci",
         "ov",
-        "hb",
         "len",
         "wt",
         "rg",
@@ -40,6 +36,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): Hybrid page (owner decided 2026-09-29 to publish hybrids). The fact is confirmed: \"ligers typically grow larger than either parent species\". hb \"towns\" stands in for zoos and animal parks; I can drop hb if you prefer. ANSWER CHECK (so): \"very sociable like lions\"; animals.js has Solitary. Suggest so:\"Groups\". ANSWER CHECK (lf): \"life expectancy of between 13 and 18 years\" (occasionally into the 20s); suggest lf:\"13–18 years\". sw true is confirmed (\"they enjoy swimming\"). r Worldwide stays (zoos only).",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, including the optional region and mayfly lf; the other optional answer tweaks were not applied): Hybrid page (owner decided 2026-09-29 to publish hybrids). The fact is confirmed: \"ligers typically grow larger than either parent species\". ANSWER CHECK (so): \"very sociable like lions\"; animals.js has Solitary. Suggest so:\"Groups\". ANSWER CHECK (lf): \"life expectancy of between 13 and 18 years\" (occasionally into the 20s); suggest lf:\"13–18 years\". sw true is confirmed (\"they enjoy swimming\"). r Worldwide stays (zoos only). hb removed 2026-09-30 (a zoo is not a habitat; it put hybrids on the Towns collection page).",
   "rv": "2026-09-29"
 }

@@ -5,6 +5,11 @@
 //
 //   npm run approve -- lion tiger
 //
+// A collection page's intro (content/collections.json) is approved the
+// same way, by its URL path:
+//
+//   npm run approve -- explore/region/africa explore/answer/dangerous
+//
 // Then npm run seo to bake it into the pages.
 
 const fs = require('fs');
@@ -20,7 +25,21 @@ if (!slugs.length) {
 const { all, errors } = loadContent();
 const today = new Date().toISOString().slice(0, 10);
 let failed = false;
-for (const slug of slugs) {
+
+const cols = slugs.filter((s) => s.startsWith('explore/'));
+if (cols.length) {
+  const { FILE, loadIntros } = require('./collections.js');
+  const intros = loadIntros();
+  for (const arg of cols) {
+    const key = arg.slice('explore/'.length);
+    if (!intros[key]) { console.error(`${arg}: no "${key}" in content/collections.json`); failed = true; continue; }
+    intros[key].rv = today;
+    console.log(`${arg}: reviewed ${today}`);
+  }
+  fs.writeFileSync(FILE, JSON.stringify(intros, null, 2) + '\n');
+}
+
+for (const slug of slugs.filter((s) => !s.startsWith('explore/'))) {
   if (!all[slug]) { console.error(`${slug}: no content/animals/${slug}.json`); failed = true; continue; }
   const own = errors.filter((e) => e.startsWith(slug + ':'));
   if (own.length) { console.error(own.join('\n')); failed = true; continue; }
