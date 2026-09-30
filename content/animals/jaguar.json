@@ -2,7 +2,8 @@
   "sci": "Panthera onca",
   "ov": "The biggest cat in the Americas and the only one of the roaring big cats native there. A stocky, heavily spotted hunter that sticks close to rivers and swamps.",
   "why": {
-    "ac": "Varies by region: largely active by day in parts of the Amazon and the Pantanal, and mainly by night in the Atlantic Forest."
+    "ac": "Varies by region: largely active by day in parts of the Amazon and the Pantanal, and mainly by night in the Atlantic Forest.",
+    "dg": "Attacks on people are rare, and most happened when a jaguar was cornered or wounded."
   },
   "hb": [
     "rainforest",
@@ -43,6 +44,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "\"Only one of the roaring big cats native there\" is Wikipedia's \"only living member of the genus Panthera native to the Americas\". The dataset says Active: \"Day & night\", and the why-note supports it."
 }

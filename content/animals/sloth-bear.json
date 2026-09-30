@@ -1,16 +1,19 @@
 {
   "sci": "Melursus ursinus",
   "ov": "A shaggy bear of the Indian subcontinent with a mane around its face, a long lower lip and long, sickle-shaped claws. It feeds on termites, ants and fruit, blowing away soil and sucking the insects up through its muzzle.",
+  "why": {
+    "dg": "One of the most aggressive bears, and attacks are fairly frequent where people live close to it."
+  },
   "len": "1.4–1.9 m (body)",
   "ht": "60–92 cm at the shoulder",
   "wt": "Females 55–105 kg, males 80–145 kg",
   "rg": "The Indian subcontinent.",
   "df": "Termites, ants and bees, plus fruit such as mangoes and jackfruit, mahua flowers, honey and carrion.",
-  "iu": "VU",
   "fx": [
     "It finds termite mounds and bee nests by smell, and can sniff out grubs 3 ft below ground.",
     "It has the longest tail of any bear, up to 15–18 cm."
   ],
+  "iu": "VU",
   "src": [
     {
       "title": "Wikipedia: Sloth bear",
@@ -24,10 +27,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CHECK (fact): \"can be heard 100 metres away\" — the article says the sucking sound can be heard 180 m away. Suggested wording: \"Vacuums termites out of mounds so loudly it can be heard 180 metres away.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CHECK (fact): \"can be heard 100 metres away\" — the article says the sucking sound can be heard 180 m away. Suggested wording: \"Vacuums termites out of mounds so loudly it can be heard 180 metres away.\""
 }

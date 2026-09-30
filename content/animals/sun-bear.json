@@ -1,6 +1,9 @@
 {
   "sci": "Helarctos malayanus",
   "ov": "The smallest bear, from the tropical forests of Southeast Asia, named for the orange to cream patch on its chest. It is the most tree-dwelling of all bears, sleeping and sunbathing 2 to 7 m up, and is mainly active during the day.",
+  "why": {
+    "dg": "It doesn't usually attack people unless provoked, injured or with cubs."
+  },
   "hb": [
     "rainforest"
   ],
@@ -9,11 +12,11 @@
   "wt": "25–65 kg",
   "rg": "Tropical forests of Southeast Asia.",
   "df": "Ants, bees, beetles, honey and termites, plus seeds and many kinds of fruit.",
-  "iu": "VU",
   "fx": [
     "It is also called the honey bear, and tears open hollow trees to reach wild bees and their honey.",
     "Its population is thought to have fallen by 35% since the 1990s."
   ],
+  "iu": "VU",
   "src": [
     {
       "title": "Wikipedia: Sun bear",
@@ -28,10 +31,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CONFLICT (activity): animals.js has ac \"night\"; the article says it is \"mainly active during the day\". Suggested: ac \"day\". ANSWER CHECK (fact): \"a tongue up to 25 cm long\" is half sourced: the article calls the tongue \"exceptionally long\" but gives no length. Suggested wording: \"The smallest bear, using its exceptionally long tongue to raid honeycomb.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; maned wolf ac set to \"both\"): ANSWER CONFLICT (activity): animals.js has ac \"night\"; the article says it is \"mainly active during the day\". Suggested: ac \"day\". ANSWER CHECK (fact): \"a tongue up to 25 cm long\" is half sourced: the article calls the tongue \"exceptionally long\" but gives no length. Suggested wording: \"The smallest bear, using its exceptionally long tongue to raid honeycomb.\""
 }

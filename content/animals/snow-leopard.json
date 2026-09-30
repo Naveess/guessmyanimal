@@ -1,6 +1,9 @@
 {
   "sci": "Panthera uncia",
   "ov": "A big cat of the high mountains of Central and South Asia, with thick whitish-grey fur and a long, bushy tail. It lives alone at 3,000–4,500 m, among cliffs and ridges.",
+  "why": {
+    "dg": "Only three attacks on people have ever been reported, and none was fatal."
+  },
   "hb": [
     "mountain"
   ],
@@ -20,10 +23,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact (can’t roar, wraps its tail round itself) is confirmed: its short vocal folds can’t roar, and it uses the tail \"like a blanket to protect its face\". ANSWER CHECK: ac is \"both\", but Wikipedia says it is \"mostly active at dawn and twilight\", which How we answer counts as Night. Consider ac:\"night\". RESOLVED (owner: approve all): ac changed to \"night\"."
 }

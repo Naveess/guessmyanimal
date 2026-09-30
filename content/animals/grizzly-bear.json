@@ -1,6 +1,9 @@
 {
   "sci": "Ursus arctos horribilis",
   "ov": "The North American brown bear, a population or subspecies of the brown bear. Some brown bears elsewhere, such as the Kodiak and Kamchatka bears, are sometimes also called grizzlies.",
+  "why": {
+    "dg": "It normally avoids people. Mothers defending cubs cause 70% of the deaths grizzlies are responsible for."
+  },
   "hb": [
     "forest",
     "mountain",
@@ -29,7 +32,8 @@
         "ov",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -40,6 +44,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Loses a third of its body weight over winter without eating or drinking\" isn’t in the Grizzly bear or Brown bear articles. Suggested wording: \"Its name probably means grizzled, from the grey-tipped hairs in its coat.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

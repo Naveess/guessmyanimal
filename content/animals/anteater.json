@@ -1,6 +1,9 @@
 {
   "sci": "Vermilingua",
   "ov": "Four species of toothless mammals that eat ants and termites, related to sloths: the giant anteater, the silky anteater and two tamanduas. Pangolins, aardvarks and echidnas are sometimes called anteaters but aren’t related.",
+  "why": {
+    "dg": "Cornered, a giant anteater rears up and slashes with front claws strong enough to kill a jaguar."
+  },
   "hb": [
     "grassland",
     "rainforest",
@@ -36,7 +39,8 @@
       "url": "https://en.wikipedia.org/wiki/Giant_anteater",
       "for": [
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -54,6 +58,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (no teeth, tongue flicks 150 times a minute) is confirmed; the giant anteater article says about 160 times a minute. No why.dg: the sources don’t cover danger to people."
 }

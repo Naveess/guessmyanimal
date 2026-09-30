@@ -2,7 +2,8 @@
   "sci": "Naja (true cobras) and others",
   "ov": "Venomous snakes that rear up and spread a hood when threatened. Most belong to the genus Naja; the king cobra, the longest venomous snake, isn’t a true cobra despite its name.",
   "why": {
-    "et": "King cobras are poached and sold as bushmeat, turned into snake leather and used in traditional Chinese medicine."
+    "et": "King cobras are poached and sold as bushmeat, turned into snake leather and used in traditional Chinese medicine.",
+    "dg": "A king cobra's bite is a medical emergency, but it usually avoids people and attacks when cornered or guarding its eggs."
   },
   "hb": [
     "forest",
@@ -38,6 +39,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry (alias “king cobra”). The existing fact is confirmed: the king cobra is \"the only ophidian that constructs an above-ground nest for its eggs\". Sizes are for the king cobra; true cobras are smaller. The king cobra is IUCN Vulnerable, but I left iu out because this entry covers all cobras."
 }

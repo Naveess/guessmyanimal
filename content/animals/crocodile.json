@@ -1,6 +1,9 @@
 {
   "sci": "Crocodylidae",
   "ov": "Big, armoured reptiles that ambush prey at the water’s edge across the tropics, from the 1.5 m dwarf crocodile to the saltwater crocodile, which can pass 6 m.",
+  "why": {
+    "dg": "Saltwater and Nile crocodiles kill hundreds of people a year in parts of Southeast Asia and Africa."
+  },
   "hb": [
     "freshwater",
     "wetland",
@@ -30,10 +33,11 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry (family Crocodylidae, the true crocodiles). No species pages to link; Caiman and Gharial exist on the site but are not crocodiles. No why-notes: the \"Dangerous: Yes\" and \"Eaten: In places\" answers are right, but I did not find attack or farming figures in the text I checked. Worth adding with a source (crocodile farming, Nile and saltwater attacks)."
 }

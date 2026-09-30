@@ -1,6 +1,9 @@
 {
   "sci": "Panthera pardus",
   "ov": "The most widespread wild cat, a spotted, secretive hunter that survives almost anywhere with cover: rainforest, savanna, mountains and semi-desert across Africa and Asia.",
+  "why": {
+    "dg": "Some became man-eaters: the Leopard of Rudraprayag killed more than 125 people."
+  },
   "hb": [
     "forest",
     "rainforest",
@@ -34,7 +37,8 @@
         "wt",
         "rg",
         "df",
-        "iu"
+        "iu",
+        "why"
       ]
     },
     {
@@ -52,6 +56,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact already covers tree-hauling, so df only mentions it briefly. Trim it if it reads as repetitive."
 }

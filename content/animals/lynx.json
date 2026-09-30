@@ -1,6 +1,9 @@
 {
   "sci": "Lynx",
   "ov": "Four species of medium-sized wild cat, the Canada, Eurasian and Iberian lynx and the bobcat, with black ear tufts, a short tail and big padded paws for walking on snow.",
+  "why": {
+    "dg": "It doesn't usually attack people unless it is injured, trapped or ill."
+  },
   "hb": [
     "forest",
     "mountain"
@@ -8,11 +11,11 @@
   "len": "70–130 cm (Eurasian lynx)",
   "wt": "18–36 kg (Eurasian lynx)",
   "rg": "Europe, Asia and North America; the Iberian lynx only on the Iberian Peninsula.",
-  "grp": [
-    "bobcat"
-  ],
   "fx": [
     "The name comes from a Greek root meaning light, after the glow of its reflective eyes."
+  ],
+  "grp": [
+    "bobcat"
   ],
   "src": [
     {
@@ -31,10 +34,11 @@
       "url": "https://animaldiversity.org/accounts/Lynx_lynx/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"The black ear tufts work like antennae, and it hears worse without them\" isn’t in the article. Suggested wording: \"Has black ear tufts and big padded paws for walking on snow.\" No why.dg: the sources don’t cover attacks on people. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

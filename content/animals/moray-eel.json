@@ -1,6 +1,9 @@
 {
   "sci": "Muraenidae",
   "ov": "About 200 species of eels found worldwide, almost all marine. They hide in crevices to ambush prey and have to keep gulping to breathe.",
+  "why": {
+    "dg": "Mostly to eat: some large morays carry the toxin that causes ciguatera poisoning."
+  },
   "hb": [
     "ocean",
     "coast"
@@ -17,10 +20,11 @@
         "sci",
         "ov",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact is confirmed: morays have pharyngeal jaws further back in the head that move forward to seize prey. No why.dg or why.et: the source doesn’t cover these."
 }

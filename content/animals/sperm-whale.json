@@ -1,6 +1,9 @@
 {
   "sci": "Physeter macrocephalus",
   "ov": "The largest toothed whale and the largest toothed predator. Females and young live in groups, while adult males live alone outside the breeding season. It has the largest brain on Earth.",
+  "why": {
+    "dg": "Not to swimmers, but sperm whales famously rammed and sank the whaling ships Essex and Ann Alexander."
+  },
   "hb": [
     "ocean"
   ],
@@ -18,10 +21,11 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-29",
+  "rv": "2026-09-30",
   "notes": "The existing fact is mostly confirmed: the largest brain on Earth, dives to 2,250 m, and squid is its main prey, though the article doesn’t single out giant squid. Suggested wording: \"The largest brain on Earth, and it dives over 2 km down to hunt squid.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

@@ -3,7 +3,8 @@
   "ov": "About 94 species of lizards with long necks, powerful tails and claws and strong legs, from 20 cm long to the 3 m Komodo dragon. Most are carnivores. They have the highest resting metabolism of any living reptile and hunt by active pursuit, like mammals of a similar size.",
   "why": {
     "p": "Monitors are a staple of the reptile pet trade; the savannah monitor and Ackie dwarf monitor are the most commonly kept.",
-    "et": "Some peoples in India, Nepal, the Philippines, Australia and Africa eat their meat, and in Vietnam and Thailand it is a delicacy."
+    "et": "Some peoples in India, Nepal, the Philippines, Australia and Africa eat their meat, and in Vietnam and Thailand it is a delicacy.",
+    "dg": "Bites from monitors cause rapid swelling, bleeding problems and shooting pain, likely from mild venom."
   },
   "len": "20 cm to over 3 m (Komodo dragon)",
   "rg": "Africa, Asia and Oceania, including New Guinea and Australia; the Nile monitor is invasive in South Florida.",
@@ -25,8 +26,15 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Wikipedia: Komodo dragon",
+      "url": "https://en.wikipedia.org/wiki/Komodo_dragon",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: some monitors can count, and they have \"the highest standard metabolic rates of all extant reptiles\" with \"active-pursuit hunting techniques\". REGION: suggest adding New Guinea, and North America (the Nile monitor is invasive in Florida).",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: some monitors can count, and they have \"the highest standard metabolic rates of all extant reptiles\" with \"active-pursuit hunting techniques\". REGION: suggest adding New Guinea, and North America (the Nile monitor is invasive in Florida)."
 }

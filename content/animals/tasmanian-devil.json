@@ -1,6 +1,9 @@
 {
   "sci": "Sarcophilus harrisii",
   "ov": "A dog-sized carnivorous marsupial, now found only on Tasmania, and the largest carnivorous marsupial since the thylacine died out in 1936. It’s known for its black fur, strong smell, ear-splitting screech and ferocity when feeding.",
+  "why": {
+    "dg": "It can bite and scratch out of fear when held."
+  },
   "hb": [
     "forest",
     "scrub",
@@ -24,7 +27,8 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -36,6 +40,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "The existing fact is confirmed: among the strongest bites per unit body mass of any land predator, strong enough to crush bones. The IUCN reclassified it as Endangered in 2009, mainly because of devil facial tumour disease."
 }

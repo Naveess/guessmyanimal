@@ -1,13 +1,9 @@
 {
   "sci": "Hominoidea",
-  "grp": [
-    "gorilla",
-    "chimpanzee",
-    "bonobo",
-    "orangutan",
-    "gibbon"
-  ],
   "ov": "The tailless primates of sub-Saharan Africa and Southeast Asia: the gibbons, or lesser apes, and the great apes, which are the orangutans, gorillas, chimpanzees, bonobos and, scientifically, humans. The answers here are for the non-human apes; each species has its own page.",
+  "why": {
+    "dg": "Chimpanzees in particular can be dangerous, even to adult humans, when frightened or aggressive."
+  },
   "hb": [
     "rainforest",
     "forest"
@@ -24,6 +20,13 @@
     "Every non-human ape species is threatened with extinction; all orangutans and gorillas are critically endangered.",
     "Ebola has killed at least a third of all gorillas and chimpanzees since 1990."
   ],
+  "grp": [
+    "gorilla",
+    "chimpanzee",
+    "bonobo",
+    "orangutan",
+    "gibbon"
+  ],
   "src": [
     {
       "title": "Wikipedia: Ape",
@@ -38,8 +41,15 @@
         "fx",
         "grp"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Pan troglodytes",
+      "url": "https://animaldiversity.org/accounts/Pan_troglodytes/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, coral p left unchanged): Group entry, light page (owner approved 2026-09-30). The fact is confirmed: \"apes do not have tails\", and \"ape\" came to mean \"a tailless… primate\" once \"monkey\" entered English. et stays \"no\": some populations are hunted for bushmeat, but they are protected and threatened. lf 30–50 is not in the article.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29, coral p left unchanged): Group entry, light page (owner approved 2026-09-30). The fact is confirmed: \"apes do not have tails\", and \"ape\" came to mean \"a tailless… primate\" once \"monkey\" entered English. et stays \"no\": some populations are hunted for bushmeat, but they are protected and threatened. lf 30–50 is not in the article."
 }

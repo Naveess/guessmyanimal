@@ -1,6 +1,9 @@
 {
   "sci": "Ursus americanus",
   "ov": "The smallest and most widespread bear in North America, mostly living in forests. There are about twice as many as all other bear species combined.",
+  "why": {
+    "dg": "It usually avoids people. Fewer than 36 human deaths were caused by black bears in the whole 20th century."
+  },
   "hb": [
     "forest",
     "mountain",
@@ -35,10 +38,11 @@
       "title": "Animal Diversity Web: Ursus americanus",
       "url": "https://animaldiversity.org/accounts/Ursus_americanus/",
       "for": [
-        "wt"
+        "wt",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Climbs trees better than any other bear, and cubs are sent up at the first sign of trouble\" overstates the source. It says black bears are among the most arboreal bears, alongside the Asian black bear and the sun bear, and says nothing about cubs. Suggested wording: \"One of the most tree-loving bears: it climbs to feed, escape danger and even hibernate.\" No why.dg or why.et: the source doesn’t cover these. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

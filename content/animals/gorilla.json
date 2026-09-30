@@ -1,6 +1,9 @@
 {
   "sci": "Gorilla",
   "ov": "The largest living primates: great apes of the tropical forests of equatorial Africa, living in troops led by a silverback male. There are two species, the eastern and the western gorilla.",
+  "why": {
+    "dg": "Silverbacks posture and charge when threatened, and groups of young males are the most aggressive."
+  },
   "hb": [
     "rainforest",
     "forest",
@@ -33,7 +36,8 @@
         "df",
         "cf",
         "fx",
-        "iu"
+        "iu",
+        "why"
       ]
     },
     {
@@ -44,6 +48,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Both species are Critically Endangered; the mountain gorilla subspecies is Endangered. The existing fact \"a fresh nest every single night\" fits Wikipedia, which says gorillas build nests for day and night use."
 }

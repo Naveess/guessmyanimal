@@ -2,7 +2,8 @@
   "sci": "Anthophila",
   "ov": "Flying insects that feed on nectar and pollen, with over 20,000 species. Honey bees and bumblebees live in colonies, but more than 90% of bee species live alone.",
   "why": {
-    "dm": "The western honey bee was one of the first domesticated insects and is kept by beekeepers for honey and pollination."
+    "dm": "The western honey bee was one of the first domesticated insects and is kept by beekeepers for honey and pollination.",
+    "dg": "Honey bees sting to defend the hive, and the more aggressive Africanised bees have caused many deaths."
   },
   "hb": [
     "grassland",
@@ -13,9 +14,6 @@
   "len": "10–20 mm (western honey bee)",
   "rg": "Every continent except Antarctica, wherever there are insect-pollinated flowering plants.",
   "df": "Nectar for energy and pollen for protein, which is mostly fed to the larvae.",
-  "grp": [
-    "bumblebee"
-  ],
   "cf": [
     {
       "slug": "wasp",
@@ -24,6 +22,9 @@
   ],
   "fx": [
     "Honey bee workers born in spring and summer live only a few weeks."
+  ],
+  "grp": [
+    "bumblebee"
   ],
   "src": [
     {
@@ -50,10 +51,11 @@
       "title": "Animal Diversity Web: Apis mellifera",
       "url": "https://animaldiversity.org/accounts/Apis_mellifera/",
       "for": [
-        "len"
+        "len",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (waggle dance) is confirmed. ANSWER NOTE: animals.js so is \"Colonies\", which fits honey bees and bumblebees but not the 90%+ of species that are solitary. Your call; ov says so. No why.dg: the source doesn’t cover stings in people. RESOLVED: so changed to \"Solitary\" (owner’s call: most species live alone). The chip reads \"Lives alone\" and the overview mentions the colony-living honey bees and bumblebees. Fact reworded to \"Honey bees tell the hive…\" to match so:\"Solitary\"."
 }

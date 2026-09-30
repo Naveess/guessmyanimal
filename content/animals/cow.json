@@ -1,6 +1,9 @@
 {
   "sci": "Bos taurus",
   "ov": "Large domesticated grazers, first tamed from the wild aurochs about 10,500 years ago. Kept for meat, milk and leather and for pulling loads, there were over 940 million cattle in the world in 2022.",
+  "why": {
+    "dg": "In a herd, cows with young calves are often more dangerous to people than you might expect."
+  },
   "hb": [
     "farmland",
     "grassland"
@@ -23,8 +26,15 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Wikipedia: Bull",
+      "url": "https://en.wikipedia.org/wiki/Bull",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CONFLICT: animals.js has p:\"no\", but Wikipedia says \"Small breeds such as the miniature Zebu are kept as pets.\" Consider p:\"some\", or keep \"no\" (pet cattle are rare). ANSWER CHECK (fact): the animals.js fact \"Has best friends, and gets stressed when separated from them\" is not in the Wikipedia Cattle article. No why.dg: nothing in the source covers danger to people. Weight uses Hereford as a typical breed. RESOLVED: p stays \"no\" (owner’s call: pet cattle are rare)."
 }

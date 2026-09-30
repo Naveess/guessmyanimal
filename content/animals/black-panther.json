@@ -1,6 +1,9 @@
 {
   "sci": "Panthera pardus and Panthera onca (black forms)",
   "ov": "Not a species: a black panther is a black (melanistic) leopard or jaguar. Its coat has excess black pigment, but the usual rosettes are still there underneath. Black leopards live in Africa and Asia, and black jaguars in Central and South America.",
+  "why": {
+    "dg": "A black panther is a leopard or a jaguar, and both have killed people."
+  },
   "hb": [
     "rainforest",
     "forest"
@@ -31,8 +34,22 @@
         "cf",
         "fx"
       ]
+    },
+    {
+      "title": "Wikipedia: Leopard",
+      "url": "https://en.wikipedia.org/wiki/Leopard",
+      "for": [
+        "why"
+      ]
+    },
+    {
+      "title": "Wikipedia: Jaguar",
+      "url": "https://en.wikipedia.org/wiki/Jaguar",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): REGION: animals.js has Asia, Africa and South America; black jaguars are also recorded in Mexico, Costa Rica and Panama, so add Central America. The animals.js fact is confirmed. No sizes given: they are the leopard’s or jaguar’s.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): REGION: animals.js has Asia, Africa and South America; black jaguars are also recorded in Mexico, Costa Rica and Panama, so add Central America. The animals.js fact is confirmed. No sizes given: they are the leopard’s or jaguar’s."
 }

@@ -2,7 +2,8 @@
   "sci": "Boa constrictor",
   "ov": "A large, heavy-bodied, non-venomous snake of tropical America, and a staple of pet collections. It’s the only animal commonly called by its scientific name in English.",
   "why": {
-    "p": "Boa constrictors are frequently kept and bred in captivity."
+    "p": "Boa constrictors are frequently kept and bred in captivity.",
+    "dg": "Its bite can be painful, especially from a big snake, but is rarely dangerous to people."
   },
   "hb": [
     "rainforest",
@@ -34,6 +35,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Alias “boa”. ANSWER CHECK (fact): the animals.js fact \"Does not crush its prey. It tightens until blood cannot circulate\" isn’t in the Boa constrictor article. Suggested wording: \"The only animal usually called by its scientific name in English.\" Region: the article says tropical South America; animals.js also has Central America, which fits the closely related Boa imperator. I’ve left it. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Tremarctos ornatus",
   "ov": "The only bear native to South America, living in the Andes, and the last of the short-faced bears. It is named for the pale markings on its face and chest, which can look like spectacles. It eats more plants than most bears; only about 5–7% of its diet is meat.",
+  "why": {
+    "dg": "Only one human death has ever been reported, and that bear was being hunted and had already been shot."
+  },
   "hb": [
     "mountain"
   ],
@@ -9,11 +12,11 @@
   "wt": "Males 100–200 kg, females 35–82 kg",
   "rg": "The Andes of northern and western South America.",
   "df": "Mostly plants such as cactus and bromeliads, crops such as sugarcane and maize, some honey and a little meat.",
-  "iu": "VU",
   "fx": [
     "The children’s character Paddington Bear is a spectacled bear from Peru.",
     "A captive spectacled bear in Maryland lived to 37 years and 11 months."
   ],
+  "iu": "VU",
   "src": [
     {
       "title": "Wikipedia: Spectacled bear",
@@ -28,10 +31,11 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "The animals.js fact is confirmed (only bear native to South America; Paddington Bear is a spectacled bear from Peru).",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "The animals.js fact is confirmed (only bear native to South America; Paddington Bear is a spectacled bear from Peru)."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Dendroaspis",
   "ov": "Four species of fast, highly venomous African snakes in the cobra family. Three are green and live in trees; the black mamba is brown or grey and lives mostly on the ground. All hunt by day, and the World Health Organization classes all four as snakes of medical importance.",
+  "why": {
+    "dg": "Highly venomous, but a black mamba attacks people only when it is threatened or cornered."
+  },
   "hb": [
     "grassland",
     "forest"
@@ -33,10 +36,11 @@
         "len",
         "wt",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is mostly confirmed: \"the colour name describes rather the inside of its mouth\". The article says its reputed speed is exaggerated: it \"cannot move more quickly than 20 km/h (12 mph)\", and up to 16 km/h (10 mph) is typical. Optional wording: \"Named for the black inside of its mouth, not its skin, and its top speed is about 12 mph.\" ANSWER CHECK (co): animals.js has grey and brown, but three of the four species are green. Consider adding \"green\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is mostly confirmed: \"the colour name describes rather the inside of its mouth\". The article says its reputed speed is exaggerated: it \"cannot move more quickly than 20 km/h (12 mph)\", and up to 16 km/h (10 mph) is typical. Optional wording: \"Named for the black inside of its mouth, not its skin, and its top speed is about 12 mph.\" ANSWER CHECK (co): animals.js has grey and brown, but three of the four species are green. Consider adding \"green\"."
 }

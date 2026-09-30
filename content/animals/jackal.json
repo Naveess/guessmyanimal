@@ -2,7 +2,8 @@
   "sci": "Canis aureus and Lupulella",
   "ov": "Wild dogs of Africa and Eurasia: the black-backed and side-striped jackals of Africa and the golden jackal of south-central Europe and Asia. They aren’t one natural group; the golden jackal is closer to wolves and coyotes.",
   "why": {
-    "ac": "Jackals are crepuscular: most active at dawn and dusk."
+    "ac": "Jackals are crepuscular: most active at dawn and dusk.",
+    "dg": "In one Indian forest district, 220 jackal attacks on people were reported in 1998–2005, none of them fatal."
   },
   "hb": [
     "grassland",
@@ -39,7 +40,8 @@
       "title": "Wikipedia: Golden jackal",
       "url": "https://en.wikipedia.org/wiki/Golden_jackal",
       "for": [
-        "ov"
+        "ov",
+        "why"
       ]
     },
     {
@@ -57,6 +59,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Mates for life, and pairs hunt far more successfully than singles\" is half sourced: golden jackals \"remain with the one partner until death\", but the article says it \"often hunts alone\" and gives no success comparison. Suggested wording: \"Golden jackal pairs stay together until one of them dies.\" RESOLVED (owner: approve all): fact rewritten as suggested."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Cervidae",
   "ov": "Hoofed plant-eaters whose males, in almost every species, grow and shed a new set of bony antlers every year. Reindeer are the only deer in which females grow antlers too.",
+  "why": {
+    "dg": "Mostly on the road: in the US, collisions with deer kill about 150 people a year."
+  },
   "hb": [
     "forest",
     "grassland",
@@ -11,13 +14,13 @@
   "wt": "Up to 800 kg (moose)",
   "rg": "Native to every continent except Antarctica and Australia; Africa has only one native deer, the Barbary stag.",
   "df": "Plants: grasses, weeds, herbs and the leaves and shoots of woody plants.",
+  "fx": [
+    "The only male deer that don’t grow antlers are water deer."
+  ],
   "grp": [
     "moose",
     "elk",
     "reindeer"
-  ],
-  "fx": [
-    "The only male deer that don’t grow antlers are water deer."
   ],
   "src": [
     {
@@ -31,10 +34,11 @@
         "rg",
         "df",
         "grp",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. REGION: animals.js r is [\"Worldwide\"], but deer aren’t native to Australia (they were introduced there), so \"Worldwide\" is fair as-is. No why.dg: the source doesn’t cover danger to people."
 }

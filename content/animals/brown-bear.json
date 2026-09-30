@@ -1,6 +1,9 @@
 {
   "sci": "Ursus arctos",
   "ov": "A huge, mostly plant-eating bear of northern forests, mountains and tundra, and one of the largest land carnivores alive. Grizzlies and Kodiak bears are brown bears too.",
+  "why": {
+    "dg": "It usually avoids people and rarely attacks on sight, but its temper is unpredictable."
+  },
   "hb": [
     "forest",
     "mountain",
@@ -41,6 +44,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "why.h repeats the existing fact (\"Does not truly hibernate\"); keep one or the other, or rewrite the animals.js fact. Did not add an et note: brown bear meat is eaten, but I found no source in the checked text. RESOLVED: why.h dropped; it repeated the existing fact."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Papio",
   "ov": "Six species of large, ground-dwelling monkeys with long, dog-like muzzles and powerful jaws. Each is native to its own part of Africa, and the hamadryas baboon also lives in part of the Arabian Peninsula. At night they sleep in trees or on cliffs, away from predators.",
+  "why": {
+    "dg": "Often blamed for attacking people, though people are more likely to attack baboons or move into their territory."
+  },
   "hb": [
     "grassland",
     "forest"
@@ -24,10 +27,11 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "Group entry (six Papio species). The animals.js fact is confirmed: troops range from 5 to 250, and in South Africa baboons break into homes and cars for food.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "Group entry (six Papio species). The animals.js fact is confirmed: troops range from 5 to 250, and in South Africa baboons break into homes and cars for food."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Sus scrofa",
   "ov": "The wild pig of Eurasia and North Africa, now one of the widest-ranging mammals in the world after introductions to the Americas and Oceania. Females and young live in family groups.",
+  "why": {
+    "dg": "Attacks on people are rare but can be serious, causing deep puncture wounds."
+  },
   "hb": [
     "forest",
     "farmland",
@@ -28,7 +31,8 @@
         "ov",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -40,6 +44,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"Every domestic pig alive descends from this animal\" is stronger than the source: \"the ancestor of most domestic pig breeds\". Suggested wording: \"The ancestor of most domestic pig breeds.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

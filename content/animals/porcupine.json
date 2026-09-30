@@ -2,7 +2,8 @@
   "sci": "Hystricidae and Erethizontidae",
   "ov": "Large rodents covered in sharp quills. The Old World and New World porcupines look alike but aren’t closely related. The largest is the third-largest living rodent, after the capybara and beaver.",
   "why": {
-    "et": "In Kenya, porcupines have become crop pests and are eaten as a delicacy."
+    "et": "In Kenya, porcupines have become crop pests and are eaten as a delicacy.",
+    "dg": "Its barbed quills pierce skin, stay in and hurt more coming out."
   },
   "hb": [
     "forest",
@@ -39,6 +40,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (can’t shoot its quills) is confirmed. REGION: animals.js r is Africa, Asia and North America; the source adds Italy and northern South America. Consider adding Europe and South America. No why.dg: the sources don’t cover injuries to people. RESOLVED (owner: approve all): Europe and South America added to r."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Procyon lotor",
   "ov": "A North American omnivore with dexterous front paws, a black face mask and a ringed tail. Its most important sense is touch, through extremely sensitive front paws.",
+  "why": {
+    "dg": "It can carry rabies, and a roundworm found in about 60% of adults can cause fatal brain damage in people."
+  },
   "hb": [
     "forest",
     "towns",
@@ -28,7 +31,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -47,6 +51,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "REGION: animals.js r is [\"North America\"], but raccoons are now established in central Europe, the Caucasus and Japan. Consider adding Europe and Asia. RESOLVED: Europe and Asia added to r."
 }

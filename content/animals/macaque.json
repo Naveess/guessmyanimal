@@ -1,6 +1,9 @@
 {
   "sci": "Macaca",
   "ov": "A genus of 23 species of sturdy, social monkeys. Apart from humans, macaques are the most widespread primates, from Japan to the Indian subcontinent, with the Barbary macaque in North Africa and Gibraltar. They mostly eat fruit and carry food in cheek pouches.",
+  "why": {
+    "dg": "Macaques bite and injure people in raids for food, and carry herpes B, rare in people but potentially fatal."
+  },
   "hb": [
     "rainforest",
     "forest"
@@ -23,7 +26,8 @@
         "len",
         "wt",
         "rg",
-        "df"
+        "df",
+        "why"
       ]
     },
     {
@@ -37,10 +41,11 @@
       "title": "Wikipedia: Rhesus macaque",
       "url": "https://en.wikipedia.org/wiki/Rhesus_macaque",
       "for": [
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry (23 species). REGION: animals.js has Asia and Africa; the Barbary macaque also lives in Gibraltar, so add Europe. The animals.js fact (hot springs) is confirmed by the Japanese macaque article.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry (23 species). REGION: animals.js has Asia and Africa; the Barbary macaque also lives in Gibraltar, so add Europe. The animals.js fact (hot springs) is confirmed by the Japanese macaque article."
 }

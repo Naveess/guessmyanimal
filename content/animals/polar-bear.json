@@ -2,7 +2,8 @@
   "sci": "Ursus maritimus",
   "ov": "The largest bear and the largest land carnivore, living on Arctic sea ice and hunting seals. It’s classed as a marine mammal because it depends on the sea.",
   "why": {
-    "h": "Only pregnant females den up for the winter, to give birth; other polar bears keep hunting on the ice."
+    "h": "Only pregnant females den up for the winter, to give birth; other polar bears keep hunting on the ice.",
+    "dg": "An estimated 73 polar bear attacks on people between 1870 and 2014 caused 20 deaths."
   },
   "hb": [
     "polar",
@@ -34,6 +35,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK: animals.js says et:\"no\", but Wikipedia says polar bears have been hunted \"for their coats, meat and other items\", including by the Inuit. By how-we-answer's own rule (\"In places: eaten in some countries or cultures, now or traditionally\") this should probably be \"some\". why.h \"only pregnant females\": Wikipedia says mothers give birth in maternity dens; the \"others keep hunting\" half is standard but not quoted."
 }

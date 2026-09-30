@@ -3,7 +3,8 @@
   "ov": "The fastest land animal: a lightweight, long-legged cat built for short sprints across open ground. Fewer than 7,000 adults are left in the wild.",
   "why": {
     "ac": "Hunts mainly by day, unusually for a big cat.",
-    "p": "Tamed cheetahs were kept for hunting in ancient Egypt, Arabia and India, but the cheetah was never domesticated and isn’t a pet."
+    "p": "Tamed cheetahs were kept for hunting in ancient Egypt, Arabia and India, but the cheetah was never domesticated and isn’t a pet.",
+    "dg": "No wild cheetah is known to have killed a person, but captive cheetahs have mauled people."
   },
   "hb": [
     "grassland",
@@ -43,6 +44,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "why.dg is our own reasoning for the \"Can be\" answer; Wikipedia gives no attack statistics. Check you agree with the wording. \"Fewer than 7,000\" is Wikipedia's 6,517 mature individuals (2021). RESOLVED: unsourced why.dg dropped."
 }

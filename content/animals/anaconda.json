@@ -1,6 +1,9 @@
 {
   "sci": "Eunectes",
   "ov": "Large, semiaquatic boas of tropical South America. The green anaconda is the heaviest snake in the world and one of the longest, reaching over 6 m.",
+  "why": {
+    "dg": "Encounters with people can be dangerous, but anacondas don't regularly hunt humans."
+  },
   "hb": [
     "wetland",
     "freshwater",
@@ -20,7 +23,8 @@
         "sci",
         "ov",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -33,6 +37,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The existing fact (heaviest snake, gives birth to live young) is confirmed: litters of 20–40, up to 100. No why.et: the sources don’t mention eating anacondas. No why.dg either; dg is \"yes\", and the source doesn’t cover attacks on people."
 }

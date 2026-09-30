@@ -1,6 +1,9 @@
 {
   "sci": "Casuarius",
   "ov": "Three species of huge, flightless birds from the tropical forests of New Guinea, nearby islands and northeastern Australia. The southern cassowary is the third-heaviest living bird. They eat mainly fruit, swim well, and can jump 1.5 m.",
+  "why": {
+    "dg": "Wary of people, but if provoked it can cause serious, even fatal, injuries by kicking with its dagger-like inner claw."
+  },
   "hb": [
     "rainforest"
   ],
@@ -24,10 +27,11 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. The animals.js fact is confirmed: often labelled \"the world's most dangerous bird\", with a dagger-like inner claw up to 12.5 cm. REGION: suggest adding New Guinea.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. The animals.js fact is confirmed: often labelled \"the world's most dangerous bird\", with a dagger-like inner claw up to 12.5 cm. REGION: suggest adding New Guinea."
 }

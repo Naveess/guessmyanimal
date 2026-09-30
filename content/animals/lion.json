@@ -2,7 +2,8 @@
   "sci": "Panthera leo",
   "ov": "Africa's social big cat. Lions live in prides of related females and their cubs, defended by one or a few males, and a small population also survives in India's Gir Forest.",
   "why": {
-    "ac": "Mostly active at night and around dawn and dusk; lions spend much of the hot day resting."
+    "ac": "Mostly active at night and around dawn and dusk; lions spend much of the hot day resting.",
+    "dg": "Lions usually run from people on foot, but some kill: the man-eaters of Tsavo killed 135 railway workers."
   },
   "hb": [
     "grassland",
@@ -40,7 +41,8 @@
       "url": "https://animaldiversity.org/accounts/Panthera_leo/",
       "for": [
         "len",
-        "wt"
+        "wt",
+        "why"
       ]
     },
     {
@@ -51,6 +53,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Length/weight are ADW's species-wide ranges (both sexes, tail included). why.ac \"much of the day resting\" is standard; the Wikipedia Behaviour section covers it. rg adds India to the page's \"Found in: Africa\"."
 }

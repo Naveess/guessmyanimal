@@ -1,6 +1,9 @@
 {
   "sci": "Oxyuranus",
   "ov": "Three species of large, fast, extremely venomous snakes from Australia and New Guinea, in the cobra family. The inland taipan is widely regarded as the most venomous snake in the world, yet it is usually shy and placid and lives in remote areas, so it rarely meets people.",
+  "why": {
+    "dg": "One inland taipan bite holds enough venom to kill over 100 adults, though the coastal taipan is the bigger danger in practice."
+  },
   "len": "Coastal taipan: about 2 m on average, up to 2.9 m",
   "rg": "Australia and New Guinea.",
   "fx": [
@@ -23,7 +26,8 @@
       "url": "https://en.wikipedia.org/wiki/Inland_taipan",
       "for": [
         "ov",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -35,6 +39,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed (\"widely regarded as the most venomous snake in the world\", \"usually shy and reclusive\"). REGION: suggest adding New Guinea. lf 10–15 matches the inland taipan's 10–15 years in captivity.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed (\"widely regarded as the most venomous snake in the world\", \"usually shy and reclusive\"). REGION: suggest adding New Guinea. lf 10–15 matches the inland taipan's 10–15 years in captivity."
 }

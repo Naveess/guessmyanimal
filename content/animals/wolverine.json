@@ -1,6 +1,9 @@
 {
   "sci": "Gulo gulo",
   "ov": "The largest land-dwelling member of the weasel family, a solitary, muscular carnivore of the far north. It has a reputation for ferocity and strength out of all proportion to its size.",
+  "why": {
+    "dg": "It has a reputation for ferocity and strength out of all proportion to its size."
+  },
   "hb": [
     "forest",
     "polar",
@@ -20,7 +23,8 @@
         "sci",
         "ov",
         "rg",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -32,6 +36,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "ANSWER CHECK (fact): the animals.js fact \"The size of a dog, but will drive a bear off a carcass\" isn’t in the article, which says bears can kill adult wolverines. It does say it can \"kill prey many times larger than itself\". Suggested wording: \"Can kill prey many times larger than itself.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Crotalus cerastes",
   "ov": "A small rattlesnake of the deserts of the southwestern US and northwestern Mexico. It moves by sidewinding, which leaves J-shaped tracks in loose sand, and has horn-like scales over its eyes. Females are larger than males, which is unique among US rattlesnakes.",
+  "why": {
+    "dg": "Its venom is weaker than most rattlesnakes', but any rattlesnake bite can be fatal."
+  },
   "hb": [
     "desert"
   ],
@@ -24,10 +27,11 @@
         "rg",
         "df",
         "fx",
-        "iu"
+        "iu",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): ANSWER CHECK (fact): \"only two points touch the burning sand\" is not in the article. Suggested wording: \"Moves sideways across loose sand, leaving J-shaped tracks, and can climb dunes without slipping.\" ANSWER CHECK (ac): animals.js has \"night\", but it is \"nocturnal during hot months and diurnal during the cooler months\". Suggest ac:\"both\". Optional (lf): wild females live about 5 years and males up to 13; over 20 in captivity. Current \"10–20 years\" could be \"5–13 years\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): ANSWER CHECK (fact): \"only two points touch the burning sand\" is not in the article. Suggested wording: \"Moves sideways across loose sand, leaving J-shaped tracks, and can climb dunes without slipping.\" ANSWER CHECK (ac): animals.js has \"night\", but it is \"nocturnal during hot months and diurnal during the cooler months\". Suggest ac:\"both\". Optional (lf): wild females live about 5 years and males up to 13; over 20 in captivity. Current \"10–20 years\" could be \"5–13 years\"."
 }

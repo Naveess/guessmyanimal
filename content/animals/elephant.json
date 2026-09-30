@@ -2,7 +2,8 @@
   "sci": "Loxodonta and Elephas",
   "ov": "Three living species, the African bush elephant, the African forest elephant and the Asian elephant, and the largest land animals alive.",
   "why": {
-    "dm": "Asian elephants have been working animals for over 4,000 years, but they’re usually caught from the wild and trained, not bred as a domestic form."
+    "dm": "Asian elephants have been working animals for over 4,000 years, but they’re usually caught from the wild and trained, not bred as a domestic form.",
+    "dg": "Elephants killed 1,500 people in India between 2019 and 2022, often in conflicts over crops and villages."
   },
   "hb": [
     "grassland",
@@ -36,6 +37,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry covering three species. No grp links, because none of the three has its own page on the site. Adding \"African bush elephant\" and \"Asian elephant\" to animals.js would let this entry link to them. No IUCN status for the same reason (bush EN, forest CR, Asian EN)."
 }
