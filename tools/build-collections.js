@@ -24,19 +24,46 @@ const path = require('path');
 const { published: collections } = require('./collections.js');
 const { siteBar, brand, siteFooter, docHead } = require('./chrome.js');
 const jsonld = require('./jsonld.js');
+const { ANIMALS } = require('../animals.js');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://guessmyanimal.com';
 
 const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-// Hub groups, in the order they appear there.
+// Hub groups, in the order they appear there: [group, anchor id, heading,
+// jump-row label, line under the heading]. The game questions lead,
+// because a player arriving mid-game usually has one of them in mind.
 const GROUPS = [
-  ['region', 'Where they live'],
-  ['habitat', 'Habitats'],
-  ['kind', 'Kinds of animal'],
-  ['answer', 'Quick-answer lists'],
+  ['answer', 'questions', 'Game questions', 'Questions',
+    'The animals where the answer is yes, or “can be”.'],
+  ['region', 'places', 'Where they live', 'Places', null],
+  ['habitat', 'habitats', 'Habitats', 'Habitats', null],
+  ['kind', 'kinds', 'Kinds of animal', 'Kinds', null],
 ];
+
+// The hub's short label for each list. Its heading already says "where
+// they live" or "habitats", so "Africa" rather than "Animals of Africa";
+// the answer lists are worded as the question the animal page asks.
+const HUB_LABEL = {
+  'answer/dangerous': 'Is it dangerous?',
+  'answer/pets': 'Is it kept as a pet?',
+  'answer/nocturnal': 'Is it nocturnal?',
+  'answer/hibernate': 'Does it hibernate?',
+  'answer/eaten': 'Do people eat it?',
+  'habitat/freshwater': 'Rivers and lakes',
+  'habitat/coast': 'Coasts',
+  'habitat/ocean': 'Open ocean',
+  'habitat/towns': 'Towns',
+  'habitat/mountain': 'Mountains',
+  'habitat/wetland': 'Wetlands',
+  'habitat/grassland': 'Grassland',
+};
+function hubLabel(c) {
+  if (HUB_LABEL[c.key]) return HUB_LABEL[c.key];
+  const t = c.title.replace(/^Animals (of|found) /, '').replace(/ animals$/, '');
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
 
 // The page shell every generated page shares (also used by
 // tools/build-compare.js and tools/build-reviewed.js). `ld` is a JSON-LD
@@ -66,8 +93,8 @@ ${siteFooter()}
 <script src="/sfx.js?v=20260912-1"></script>
 <script src="/animals.js?v=20260930-2"></script>
 <script src="/search-core.js?v=20260913-1"></script>
-<script src="/navsearch.js?v=20260930-1"></script>
-<script src="/menu.js?v=20260930-1"></script>
+<script src="/navsearch.js?v=20260930-2"></script>
+<script src="/menu.js?v=20260930-2"></script>
 </body>
 </html>
 `;
@@ -94,28 +121,29 @@ ${sections}
 }
 
 function hubBody(cols) {
-  const groups = GROUPS.map(([g, heading]) => {
-    const mine = cols.filter((c) => c.group === g);
-    if (!mine.length) return '';
-    const links = mine.map((c) => `<li><a href="/explore/${c.key}">${escapeHtml(c.title)}</a> <span class="coll-count">${c.count}</span></li>`).join('\n    ');
-    return `  <h2>${heading}</h2>\n  <ul class="coll-hub">\n    ${links}\n  </ul>`;
-  }).filter(Boolean).join('\n\n');
+  const live = GROUPS.filter(([g]) => cols.some((c) => c.group === g));
+  const groups = live.map(([g, id, heading, , note]) => {
+    const links = cols.filter((c) => c.group === g).map((c) =>
+      `<li><a href="/explore/${c.key}"><span class="hub-name">${escapeHtml(hubLabel(c))}</span><span class="hub-n">${c.count}<span class="sr-only"> animals</span></span></a></li>`
+    ).join('\n    ');
+    return `  <h2 id="${id}">${heading}</h2>\n${note ? `  <p class="hub-note">${escapeHtml(note)}</p>\n` : ''}  <ul class="hub-list">\n    ${links}\n  </ul>`;
+  }).join('\n\n');
+  const jump = live.map(([, id, , label]) => `<a href="#${id}">${label}</a>`).join('');
   return `  <h1>Explore animals</h1>
-  <p class="lede">Lists of the animals on this site that share one thing: where they live,
-    the kind of place they live in, what kind of animal they are, or one of the quick answers.</p>
+  <p class="lede">Lists of the animals on this site that share one thing: an answer to
+    a game question, where they live, the kind of place they live in, or what kind of animal they are.</p>
   <p>Each list covers one question only. That's on purpose: a page that combined them
     would be a way to look up the answer mid-game, and this site doesn't do that.</p>
+  <p class="hub-search">Checking one animal? <a href="/" data-open-search>Search for it</a>, it's quicker.</p>
 
-  <h2>All animals</h2>
-  <ul class="coll-hub">
-    <li><a href="/browse">Every animal, A to Z</a></li>
-  </ul>
+  <div class="hub-ways">
+    <a class="hub-way" href="/browse"><span class="hub-way-t">Every animal, A to Z</span><span class="hub-way-s">All ${ANIMALS.length} in one list</span></a>
+    <a class="hub-way" href="/compare"><span class="hub-way-t">Look-alikes</span><span class="hub-way-s">Animals people mix up, side by side</span></a>
+  </div>
 
-${groups}
+  <nav class="hub-jump" aria-label="Lists on this page">${jump}</nav>
 
-  <h2>Look-alikes</h2>
-  <p>Animals people often mix up, compared side by side with how to tell them apart:
-    <a href="/compare">Side by side</a>.</p>`;
+${groups}`;
 }
 
 // Removes every .html under dir that isn't in keep (absolute paths),

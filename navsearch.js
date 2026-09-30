@@ -138,6 +138,14 @@
     if (isOpen() && !wrap.contains(e.target)) setOpen(false);
   });
   document.addEventListener('gma:menu-open', () => setOpen(false));
+  // In-page "search for it" links (the /explore hub's) open this instead
+  // of following their href, which is the homepage search as a fallback.
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('[data-open-search]');
+    if (!link) return;
+    e.preventDefault();
+    setOpen(true);
+  });
 })();
 
 (function () {

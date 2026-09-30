@@ -743,7 +743,7 @@ body:has(#partyview:not([hidden])) .sb-start > #partyLeave { display: grid; }
   display: inline-flex; align-items: center; gap: 9px;
   font-size: 15.5px; font-weight: 600; letter-spacing: -.02em;
   color: var(--ink); text-decoration: none;
-  border-radius: 8px;
+  border-radius: 5px;
   transition: opacity .16s var(--ease);
 }
 .brand:hover { opacity: .72; }
@@ -2080,6 +2080,12 @@ body:has(#sharePanel:not([hidden]))::before {
   .navsearch-toggle svg { width: 17px; height: 17px; }
   .navsearch-toggle:hover,
   .navsearch-toggle[aria-expanded="true"] { background: var(--flat-bg); }
+  /* Restated here: the rule above resets every pill item to transparent
+     and weight 500, which would otherwise win over the shared hover and
+     aria-current rules (same specificity, earlier in the file). */
+  .menu-panel .menu-item:hover,
+  .menu-panel .menu-item[aria-current="page"] { background: var(--flat-bg); }
+  .menu-panel .menu-item[aria-current="page"] { font-weight: 600; }
   .navsearch-toggle:active { transform: none; }
   .navsearch-label { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
   .menu-item .mi-full { display: none; }
@@ -2815,6 +2821,54 @@ body.view-page { background: var(--paper); }
 @media (min-width: 560px) { .coll-hub { columns: 2; } }
 .coll-hub li { break-inside: avoid; padding: 6px 0; font-size: 16px; }
 .prose .coll-foot { margin-top: 30px; font-size: 14.5px; color: var(--muted); }
+
+/* The /explore hub (hubBody in tools/build-collections.js): a pointer to
+   Search for anyone checking one animal, the two whole-site lists as
+   flush cards, a row of jumps to the groups below (anchors, never
+   filters), then each group as full-width rows - the same ruled rows as
+   the lists they open, the whole row the link and at least 48px tall. */
+.prose .hub-search { margin-top: 14px; font-size: 15px; color: var(--muted); }
+.prose .hub-search a { color: var(--ink); font-weight: 600; }
+.hub-ways { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 22px 0 0; }
+@media (min-width: 560px) { .hub-ways { grid-template-columns: 1fr 1fr; } }
+.prose .hub-way {
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  min-height: 66px; padding: 12px 16px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  color: var(--ink); text-decoration: none;
+  transition: background .13s var(--ease);
+}
+.prose .hub-way:hover { background: var(--flat-bg); }
+.hub-way-t { font-size: 16.5px; font-weight: 700; letter-spacing: -.015em; }
+.hub-way-s { font-size: 14px; color: var(--muted); }
+.hub-jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 0; }
+.prose .hub-jump a {
+  display: inline-flex; align-items: center;
+  min-height: 44px; padding: 0 14px;
+  background: var(--flat-bg); border-radius: 999px;
+  font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none;
+}
+.prose .hub-jump a:hover { background: var(--line); }
+/* Clears the sticky site bar when a jump lands on the heading. */
+.prose.coll h2[id] { scroll-margin-top: 96px; }
+.prose .hub-note { margin-top: 4px; font-size: 14.5px; color: var(--muted); }
+.prose .hub-list {
+  display: grid; grid-template-columns: 1fr; column-gap: 28px;
+  max-width: none; margin: 12px 0 0; padding: 0; list-style: none;
+}
+.hub-list li { border-bottom: 1px solid var(--line); }
+.hub-list li:first-child { border-top: 1px solid var(--line); }
+@media (min-width: 560px) {
+  .prose .hub-list { grid-template-columns: 1fr 1fr; }
+  .hub-list li:nth-child(2) { border-top: 1px solid var(--line); }
+}
+.prose .hub-list a {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 48px; padding: 4px 2px;
+  font-size: 16.5px; font-weight: 600; color: var(--ink); text-decoration: none;
+}
+.prose .hub-list a:hover .hub-name { text-decoration: underline; text-underline-offset: .18em; }
+.hub-n { font-size: 13.5px; font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
 .coll-draft {
   padding: 8px 12px; border: 1px dashed var(--muted); border-radius: 10px;
   font-size: 13.5px; font-weight: 700; color: var(--muted);

@@ -37,7 +37,7 @@ const MAX_DESC = 158;
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20260930-5';
+const STYLE_VERSION = '20260930-6';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
@@ -421,8 +421,8 @@ ${siteFooter()}
 <script src="/sfx.js?v=20260912-1"></script>
 <script src="/animals.js?v=20260930-2"></script>
 <script src="/search-core.js?v=20260913-1"></script>
-<script src="/navsearch.js?v=20260930-1"></script>
-<script src="/menu.js?v=20260930-1"></script>
+<script src="/navsearch.js?v=20260930-2"></script>
+<script src="/menu.js?v=20260930-2"></script>
 <!-- Decoration only, and only on this page: marks the letter you're
      currently reading in the rail. Every jump link works with this
      disabled - see atoz.js. -->
