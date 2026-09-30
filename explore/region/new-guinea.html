@@ -27,7 +27,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="/style.css?v=20260930-4">
+<link rel="stylesheet" href="/style.css?v=20260930-5">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -63,11 +63,16 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <nav class="menu" id="menu" aria-label="Main">
     <div class="menu-panel" id="menuPanel" hidden>
       <a class="menu-item" href="/about"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>
-      <a class="menu-item" href="/browse"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>
-      <a class="menu-item" href="/explore"><span class="mi-full">Explore by list</span><span class="mi-short">Explore</span></a>
-      <a class="menu-item" href="/?mystery=1">Mystery Animal</a>
-      <a class="menu-item" href="/?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
-      <a class="menu-item" href="/streamer"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+      <a class="menu-item" href="/explore"><span class="mi-full">Explore animals</span><span class="mi-short">Explore</span></a>
+      <div class="menu-group" id="modesGroup">
+        <button class="menu-item menu-group-toggle" id="modesToggle" type="button" aria-expanded="false" aria-controls="modesList">Game modes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
+        <p class="menu-group-label" id="modesLabel">Game modes</p>
+        <div class="menu-group-list" id="modesList" role="group" aria-labelledby="modesLabel">
+          <a class="menu-item" href="/?mystery=1">Mystery Animal</a>
+          <a class="menu-item" href="/?party=1"><span class="mi-full">Party Mode</span><span class="mi-short">Party</span> <span class="beta-tag">beta</span></a>
+          <a class="menu-item" href="/streamer"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>
+        </div>
+      </div>
       <a class="menu-item menu-desktop-hide" href="/?report=1">Report a problem</a>
       <a class="menu-item menu-desktop-hide" href="/privacy">Privacy</a>
       <a class="menu-item menu-desktop-hide" href="https://github.com/Naveess/guessmyanimal" target="_blank" rel="noopener">Source on GitHub</a>
@@ -158,7 +163,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <script src="/sfx.js?v=20260912-1"></script>
 <script src="/animals.js?v=20260930-2"></script>
 <script src="/search-core.js?v=20260913-1"></script>
-<script src="/navsearch.js?v=20260928-1"></script>
-<script src="/menu.js?v=20260928-1"></script>
+<script src="/navsearch.js?v=20260930-1"></script>
+<script src="/menu.js?v=20260930-1"></script>
 </body>
 </html>

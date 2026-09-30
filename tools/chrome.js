@@ -31,6 +31,7 @@ const ICON = {
   menu: svg('<path d="M4 7h16M4 12h16M4 17h16"/>'),
   mag: svg('<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>', { w: 2.4 }),
   close: svg('<path d="M6 6l12 12M18 6 6 18"/>', { w: 2.4 }),
+  chev: svg('<path d="m7 10 5 5 5-5"/>', { w: 2.4, join: true }),
   sound: svg('<path d="M4 9.5v5h3.2L12 18V6L7.2 9.5H4Z"/><path class="sw-waves" d="M16 9.2a4 4 0 0 1 0 5.6M18.3 6.8a7.5 7.5 0 0 1 0 10.4"/><path class="sw-mute" d="M15.5 9.5l5 5m0-5l-5 5"/>', { join: true }),
   light: svg('<circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>'),
   dark: svg('<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>', { join: true }),
@@ -47,9 +48,8 @@ function backSlot(variant) {
     // (see .sb-start in style.css). Each keeps the id its own script
     // already binds - app.js #back, mystery.js #mysteryBack, party.js
     // #partyLeave - so no view's back behaviour changes. The splash has
-    // no "back", so the slot carries its "How it works" link instead.
+    // no "back", so the slot is empty there (About is in the menu).
     return [
-      '<a class="play-link" id="playLink" href="/about">How it works</a>',
       `<button class="back" id="back" type="button" aria-label="Back to search">${ICON.back}</button>`,
       `<button class="back" id="mysteryBack" type="button" aria-label="Back to search">${ICON.back}</button>`,
       `<button class="back" id="partyLeave" type="button" aria-label="Leave the party">${ICON.back}</button>`,
@@ -69,13 +69,26 @@ function menuItems(variant) {
   const report = idx
     ? '<button class="menu-item menu-desktop-hide" type="button" data-report>Report a problem</button>'
     : '<a class="menu-item menu-desktop-hide" href="/?report=1">Report a problem</a>';
+  // The three ways to play share one entry. On phones the panel has the
+  // room to list them under a plain heading; on the desktop pill the
+  // heading gives way to a "Game modes" button that drops them down
+  // (wired in navsearch.js, which every page loads).
+  const modes = [
+    '<div class="menu-group" id="modesGroup">',
+    `  <button class="menu-item menu-group-toggle" id="modesToggle" type="button" aria-expanded="false" aria-controls="modesList">Game modes ${ICON.chev}</button>`,
+    '  <p class="menu-group-label" id="modesLabel">Game modes</p>',
+    '  <div class="menu-group-list" id="modesList" role="group" aria-labelledby="modesLabel">',
+    '    ' + mystery,
+    '    ' + party,
+    '    <a class="menu-item" href="/streamer"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>',
+    '  </div>',
+    '</div>',
+  ].join('\n      ');
   return [
     '<a class="menu-item" href="/about"><span class="mi-full">About the game</span><span class="mi-short">About</span></a>',
-    '<a class="menu-item" href="/browse"><span class="mi-full">Browse all animals</span><span class="mi-short">Browse</span></a>',
-    '<a class="menu-item" href="/explore"><span class="mi-full">Explore by list</span><span class="mi-short">Explore</span></a>',
-    mystery,
-    party,
-    '<a class="menu-item" href="/streamer"><span class="mi-full">Twitch stream mode</span><span class="mi-short">Stream</span> <span class="beta-tag">beta</span></a>',
+    // /browse (A to Z) is linked from the top of /explore, not here.
+    '<a class="menu-item" href="/explore"><span class="mi-full">Explore animals</span><span class="mi-short">Explore</span></a>',
+    modes,
     // Phone-only extras: past 860px these move to the page footer and
     // the theme dial in the bar (see .menu-desktop-hide).
     report,

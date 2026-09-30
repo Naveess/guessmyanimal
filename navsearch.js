@@ -139,3 +139,46 @@
   });
   document.addEventListener('gma:menu-open', () => setOpen(false));
 })();
+
+(function () {
+  'use strict';
+
+  /* The desktop pill's "Game modes" dropdown (markup in tools/chrome.js).
+   * Here rather than in app.js/menu.js because this file is the one bar
+   * script every page loads. On phones the toggle is display:none and
+   * the three items always show inside the hamburger panel, so none of
+   * this ever runs there. Opening it closes Search, and Search opening
+   * closes it, through the same 'gma:menu-open' / 'gma:search-open'
+   * events as the hamburger.
+   */
+
+  const group = document.getElementById('modesGroup');
+  const toggle = document.getElementById('modesToggle');
+  if (!group || !toggle) return;
+
+  function isOpen() { return group.classList.contains('is-open'); }
+  function setOpen(open, opts) {
+    if (open === isOpen()) return;
+    group.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) document.dispatchEvent(new CustomEvent('gma:menu-open'));
+    else if (opts && opts.refocus) toggle.focus();
+  }
+
+  toggle.addEventListener('click', () => setOpen(!isOpen()));
+  // Picking a mode (a link, or on index.html a button that opens the
+  // view in place) is done with the list.
+  group.addEventListener('click', (e) => {
+    if (e.target.closest('#modesList .menu-item')) setOpen(false);
+  });
+  group.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) { e.stopPropagation(); setOpen(false, { refocus: true }); }
+  });
+  group.addEventListener('focusout', (e) => {
+    if (e.relatedTarget && !group.contains(e.relatedTarget)) setOpen(false);
+  });
+  document.addEventListener('click', (e) => {
+    if (isOpen() && !group.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('gma:search-open', () => setOpen(false));
+})();

@@ -66,8 +66,8 @@ ${siteFooter()}
 <script src="/sfx.js?v=20260912-1"></script>
 <script src="/animals.js?v=20260930-2"></script>
 <script src="/search-core.js?v=20260913-1"></script>
-<script src="/navsearch.js?v=20260928-1"></script>
-<script src="/menu.js?v=20260928-1"></script>
+<script src="/navsearch.js?v=20260930-1"></script>
+<script src="/menu.js?v=20260930-1"></script>
 </body>
 </html>
 `;
@@ -105,6 +105,11 @@ function hubBody(cols) {
     the kind of place they live in, what kind of animal they are, or one of the quick answers.</p>
   <p>Each list covers one question only. That's on purpose: a page that combined them
     would be a way to look up the answer mid-game, and this site doesn't do that.</p>
+
+  <h2>All animals</h2>
+  <ul class="coll-hub">
+    <li><a href="/browse">Every animal, A to Z</a></li>
+  </ul>
 
 ${groups}
 

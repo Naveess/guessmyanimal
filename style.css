@@ -708,17 +708,15 @@ body.view-home .site-bar {
 .sb-end { display: flex; align-items: center; gap: 8px; order: 1; }
 .menu { order: 2; display: flex; align-items: center; gap: 8px; }
 
-/* index.html's back slot carries one control per view (see chrome.js):
-   the splash's "How it works" link, and a back button for each of the
-   animal, Mystery and Party views - each still bound by its own
-   script. Exactly one shows, picked by which view is on screen. */
+/* index.html's back slot carries a back button for each of the
+   animal, Mystery and Party views (see chrome.js) - each still bound by
+   its own script. At most one shows, picked by which view is on screen;
+   the splash shows none. */
 .sb-start > * { display: none; }
 .sb-start > .back:only-child,
-body.view-home .sb-start > .play-link,
 body.view-animal .sb-start > #back,
 body:has(#mysteryview:not([hidden])) .sb-start > #mysteryBack,
 body:has(#partyview:not([hidden])) .sb-start > #partyLeave { display: grid; }
-body.view-home .sb-start > .play-link { display: inline-flex; }
 
 /* No display here - which of the slot's controls shows is decided by
    the .sb-start rules above, and a display on .back itself would
@@ -1863,30 +1861,10 @@ body.view-home .site-foot {
 }
 body.view-home .sf-links a, body.view-home .sf-links button { color: var(--home-ink); }
 
-/* The splash's occupant of the site bar's back slot (there's nothing to
-   go back to from the splash) - the same outline treatment as the
-   bar's other controls on the yellow, but carrying words instead of an
-   icon, since what it links to is worth naming. Shown only on the
-   splash - see .sb-start. */
-.play-link {
-  align-items: center;
-  height: 44px; padding: 0 16px;
-  white-space: nowrap;
-  font: inherit; font-size: 14.5px; font-weight: 600;
-  color: var(--home-ink);
-  text-decoration: none;
-  background: transparent;
-  border: 1px solid color-mix(in srgb, var(--home-ink) 24%, transparent);
-  border-radius: 13px;
-  transition: background .16s var(--ease), transform .16s var(--ease);
-}
-.play-link:hover { background: color-mix(in srgb, var(--home-ink) 9%, transparent); }
-.play-link:active { transform: scale(.97); }
-
 /* A second thing to do on the splash, for the visitor who came to play
    rather than settle an argument mid-game - but the search box above it
    is the splash's one decisive action now, so this stays in the same
-   quiet-outline register as .play-link and .chip (transparent fill,
+   quiet-outline register as .chip (transparent fill,
    Home-Ink text and border) rather than competing with it for the
    screen's one solid fill. */
 .mystery-play {
@@ -1933,7 +1911,7 @@ body.view-home .sf-links a, body.view-home .sf-links button { color: var(--home-
 .mystery-play.settled { animation: none; }
 
 /* -- Home-screen party-code entry: quiet outline register, matching the
-   splash's other secondary controls (.play-link, .chip, .mystery-play).
+   splash's other secondary controls (.chip, .mystery-play).
    ------------------------------------------------------------------- */
 .home-code-link {
   display: flex; align-items: center; justify-content: center;
@@ -2032,6 +2010,11 @@ body:has(#sharePanel:not([hidden]))::before {
    keeps .mi-full and never sees .mi-short at all. */
 .menu-item .mi-short { display: none; }
 
+/* Game modes (see chrome.js). Phones: a small heading over the three
+   items, always shown - the toggle is the desktop pill's (below). */
+.menu-group, .menu-group-list { display: flex; flex-direction: column; }
+.menu-group-toggle { display: none; }
+
 
 /* -- Desktop-only: the hamburger becomes the nav itself --------------
    There's no reason to hide six options behind a click when a desktop
@@ -2118,6 +2101,43 @@ body:has(#sharePanel:not([hidden]))::before {
   body.view-home .menu-panel .menu-item:hover,
   body.view-home .navsearch-toggle:hover,
   body.view-home .navsearch-toggle[aria-expanded="true"] {
+    background: color-mix(in srgb, var(--home-ink) 9%, transparent);
+  }
+}
+/* Desktop: Game modes is one pill item that drops its three down, a
+   card under the item itself (navsearch.js opens and closes it). Inside
+   the card the items are rows again, with their full names. */
+@media (min-width: 860px) {
+  .menu-group { position: relative; }
+  .menu-group-label { display: none; }
+  .menu-panel .menu-group-toggle { display: flex; align-items: center; gap: 6px; }
+  .menu-group-toggle svg { width: 15px; height: 15px; flex: none; transition: transform .16s var(--ease); }
+  .menu-group-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .menu-panel .menu-group-toggle[aria-expanded="true"],
+  .menu-group:has([aria-current="page"]) .menu-group-toggle { background: var(--flat-bg); }
+  .menu-group:has([aria-current="page"]) .menu-group-toggle { font-weight: 600; }
+  .menu-group-list {
+    display: none;
+    position: absolute; left: 0; top: calc(100% + 19px);
+    min-width: 230px; padding: 6px;
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: var(--shadow-l);
+    animation: rise .2s var(--ease) backwards;
+  }
+  .menu-group.is-open .menu-group-list { display: flex; }
+  .menu-panel .menu-group-list .menu-item {
+    padding: 12px 13px; border-radius: 11px;
+    color: var(--ink);
+  }
+  .menu-panel .menu-group-list .menu-item:hover { background: var(--flat-bg); }
+  .menu-group-list .menu-item .mi-full { display: inline; }
+  .menu-group-list .menu-item .mi-short { display: none; }
+  /* The splash tints the pill's items for the yellow ground; the card
+     is a plain surface, so its rows keep the normal ink. */
+  body.view-home .menu-panel .menu-group-list .menu-item { color: var(--ink); }
+  body.view-home .menu-panel .menu-group-list .menu-item:hover { background: var(--flat-bg); }
+  body.view-home .menu-panel .menu-group-toggle[aria-expanded="true"] {
     background: color-mix(in srgb, var(--home-ink) 9%, transparent);
   }
 }
@@ -3665,7 +3685,8 @@ body.view-page { background: var(--paper); }
   font-weight: 600;
   box-shadow: 0 1px 2px rgba(29,30,25,.14);
 }
-.theme-label {
+.theme-label,
+.menu-group-label {
   margin: 9px 13px 2px;
   font-size: 11.5px; font-weight: 600;
   letter-spacing: .09em; text-transform: uppercase;

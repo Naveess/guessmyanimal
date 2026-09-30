@@ -68,7 +68,10 @@
   // query links (/?mystery=1) that should never match here. aria-current does the
   // announcing (a screen reader gets "current page" for free); the CSS
   // hook is the same attribute, not a class only sighted users would see.
-  const herePage = location.pathname.split('/').pop() || 'index.html';
+  // /browse has no menu item of its own: it's reached from /explore, so
+  // Explore stands for it.
+  let herePage = location.pathname.split('/').pop() || 'index.html';
+  if (herePage === 'browse') herePage = 'explore';
   for (const a of document.querySelectorAll('.menu-item[href]')) {
     if (a.getAttribute('href').split('/').pop() === herePage) a.setAttribute('aria-current', 'page');
   }
