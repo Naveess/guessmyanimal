@@ -157,6 +157,7 @@ function siteFooter(variant) {
     <a href="/about">About</a>
     <a href="/how-we-answer">How we answer</a>
     <a href="/browse">All animals</a>
+    <a href="/reviewed">Review log</a>
     <a href="/contact">Contact</a>
     ${report}
     <a href="/privacy">Privacy</a>
@@ -170,8 +171,9 @@ function siteFooter(variant) {
 
 // The <head> of a generated page (tools/build-collections.js): the same
 // meta, theme bootstrap, stylesheet and ad scripts browse.html carries.
-// Values arrive already HTML-escaped.
-function docHead({ title, description, canonical, styleVersion, robots }) {
+// Values arrive already HTML-escaped; ld is a ready-made JSON-LD
+// <script> tag (tools/jsonld.js), or nothing.
+function docHead({ title, description, canonical, styleVersion, robots, ld }) {
   return `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${title}</title>
@@ -188,7 +190,7 @@ ${robots ? `<meta name="robots" content="${robots}">\n` : ''}<meta name="theme-c
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
-
+${ld ? ld + '\n' : ''}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">

@@ -47,6 +47,9 @@ class SetAttrs {
   constructor(map) { this.map = map; }
   element(el) { for (const k in this.map) el.setAttribute(k, this.map[k]); }
 }
+class Remove {
+  element(el) { el.remove(); }
+}
 class Retag {
   constructor(tag) { this.tag = tag; }
   element(el) { el.tagName = this.tag; }
@@ -84,7 +87,11 @@ export async function renderAnimal(context, slug, entry) {
     .on('#wiki', new SetAttr('href', entry.wikiHref))
     .on('#answers', new SetHtml(entry.answersHtml))
     .on('#glance', new SetHtml(entry.glanceHtml))
-    .on('#related', new SetHtml(entry.relatedHtml));
+    .on('#related', new SetHtml(entry.relatedHtml))
+    // The homepage's WebSite structured data, swapped for this page's own
+    // (WebPage + breadcrumbs, built by tools/build-seo.js).
+    .on('script#ld-website', new Remove());
+  if (entry.ld) rewriter.on('head', new AppendHead(entry.ld));
 
   // Reviewed editorial content (tools/content.js), pre-rendered by the
   // build with the same sections() app.js uses. Each section is unhidden

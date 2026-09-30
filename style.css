@@ -1105,6 +1105,12 @@ body.view-home .sb-start > .play-link { display: inline-flex; }
 }
 .conf-name .r-emoji { font-size: 16px; line-height: 1; }
 .conf-tip { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
+.conf-cmp {
+  display: inline-block; margin-top: 6px;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--muted); text-underline-offset: 2px;
+}
+.conf-cmp:hover { color: var(--ink); }
 
 .src-list {
   margin: 0; padding-left: 1.4em;
@@ -2792,6 +2798,43 @@ body.view-page { background: var(--paper); }
 .coll-draft {
   padding: 8px 12px; border: 1px dashed var(--muted); border-radius: 10px;
   font-size: 13.5px; font-weight: 700; color: var(--muted);
+}
+
+/* -- Look-alike compare pages (/compare) -----------------------------
+   Two animals, how to tell them apart, then their answers in one table
+   with the rows that differ tinted (a tint, not solid Sun: the One-Yellow
+   Rule). Written by tools/build-compare.js. */
+.cmp-cards { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.prose .cmp-card {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 0 16px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+  font-size: 16px; font-weight: 600; text-decoration: none;
+}
+.prose .cmp-card:hover { border-color: var(--muted); }
+.cmp-or { color: var(--muted); font-size: 14.5px; font-weight: 600; }
+.prose .cmp-tip { font-size: 17px; }
+.cmp-scroll { margin-top: 14px; overflow-x: auto; }
+.cmp-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.cmp-table th, .cmp-table td {
+  padding: 9px 10px; text-align: left; vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+}
+.cmp-table thead th { font-size: 14px; font-weight: 700; color: var(--muted); }
+.cmp-table tbody th { font-weight: 600; width: 36%; }
+.cmp-table td { width: 32%; line-height: 1.4; }
+.cmp-table .pill { display: inline-block; font-size: 14px; padding: 4px 11px; }
+.cmp-table tr.is-diff { background: color-mix(in srgb, var(--sun) 14%, transparent); }
+.cmp-flag {
+  display: block; margin-top: 1px;
+  font-size: 12px; font-weight: 700; letter-spacing: .02em; color: var(--muted);
+}
+.prose.cmp h3 { margin: 22px 0 0; font-size: 18px; font-weight: 700; letter-spacing: -.02em; }
+.prose .cmp-more { margin-top: 8px; font-size: 14.5px; font-weight: 600; }
+.prose .cmp-more a::after { content: " →"; }
+@media (max-width: 419px) {
+  .cmp-table th, .cmp-table td { padding: 8px 6px; }
+  .cmp-table { font-size: 14px; }
 }
 
 /* -- A to Z browse page ----------------------------------------------

@@ -17,6 +17,10 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
+<!-- The homepage's structured data. Animal pages reuse this document as
+     their shell, so functions/_shared/animal-page.js removes it there
+     and appends that animal's own (tools/jsonld.js). -->
+<script type="application/ld+json" id="ld-website">{"@context":"https://schema.org","@type":"WebSite","@id":"https://guessmyanimal.com/#website","url":"https://guessmyanimal.com/","name":"Guess My Animal","description":"Type an animal, get the answers. Carnivore? Nocturnal? Dangerous? Everything you keep googling mid-game, on one screen.","inLanguage":"en-GB"}</script>
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -36,7 +40,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="/style.css?v=20260930-3">
+<link rel="stylesheet" href="/style.css?v=20260930-4">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -868,6 +872,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a href="/about">About</a>
     <a href="/how-we-answer">How we answer</a>
     <a href="/browse">All animals</a>
+    <a href="/reviewed">Review log</a>
     <a href="/contact">Contact</a>
     <button type="button" id="footerReport">Report a problem</button>
     <a href="/privacy">Privacy</a>
@@ -881,7 +886,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <script src="/sfx.js?v=20260912-1"></script>
 <script src="/animals.js?v=20260930-2"></script>
-<script src="/render-data.js?v=20260928-4"></script>
+<script src="/render-data.js?v=20260930-1"></script>
 <script src="/related.js?v=20260908-1"></script>
 <script src="/photo-credit.js?v=20260928-1"></script>
 <script src="/game-core.js?v=20260928-3"></script>
@@ -901,7 +906,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
 <script src="/mystery.js?v=20260928-1"></script>
-<script src="/app.js?v=20260930-1"></script>
+<script src="/app.js?v=20260930-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

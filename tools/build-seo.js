@@ -26,6 +26,9 @@ const PHOTOS = (() => {
 const { CATEGORY_BUCKETS } = require('../game-core.js');
 const { siteBar, brand, siteFooter } = require('./chrome.js');
 const { buildCollections } = require('./build-collections.js');
+const { buildCompare } = require('./build-compare.js');
+const { buildReviewed } = require('./build-reviewed.js');
+const jsonld = require('./jsonld.js');
 
 const SITE = 'https://guessmyanimal.com';
 const MAX_DESC = 158;
@@ -34,7 +37,7 @@ const MAX_DESC = 158;
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20260930-3';
+const STYLE_VERSION = '20260930-4';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
@@ -187,7 +190,15 @@ for (const a of ANIMALS) {
     // Only for animals with reviewed content (see sections() in
     // render-data.js). `json` is what app.js would otherwise fetch from
     // /data/animals/, embedded so the first render needs no second request.
-    content: c ? Object.assign({ overview: c.ov || '', json: JSON.stringify(c) }, sections(c, lookup)) : null,
+    // JSON-LD for the Function to append (tools/jsonld.js): the page, its
+    // real review date, and the path back up through All animals.
+    ld: jsonld.scriptTag(jsonld.page({
+      path: `/animals/${slug}`, name: `${a.n}: quick answers and facts`, description,
+      dateModified: c ? c.rv : null,
+      image: PHOTOS[slug] ? PHOTOS[slug].src : null,
+      crumbs: [['Home', '/'], ['All animals', '/browse'], [a.n, `/animals/${slug}`]],
+    })),
+    content: c ? Object.assign({ overview: c.ov || '', json: JSON.stringify(c) }, sections(c, lookup, slug)) : null,
   };
   urls.push({ loc: `${SITE}/animals/${slug}`, lastmod: c ? c.rv : null });
 }
@@ -211,7 +222,11 @@ const staticUrls = ['/', '/about', '/how-we-answer', '/browse', '/streamer', '/c
 // Collection pages (tools/build-collections.js): only the approved ones
 // are written, and only those go in the sitemap.
 const COLLECTIONS = buildCollections(PUBLISHED, { styleVersion: STYLE_VERSION });
-const all = staticUrls.map((loc) => ({ loc, lastmod: null })).concat(urls, COLLECTIONS.urls);
+// Look-alike compare pages (tools/build-compare.js) and the review log
+// (tools/build-reviewed.js), both built only from published content.
+const COMPARE = buildCompare(PUBLISHED, { styleVersion: STYLE_VERSION });
+const REVIEWED = buildReviewed(PUBLISHED, COLLECTIONS.live, { styleVersion: STYLE_VERSION });
+const all = staticUrls.map((loc) => ({ loc, lastmod: null })).concat(urls, COLLECTIONS.urls, COMPARE.urls, REVIEWED.urls);
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${all
   .map((u) => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`)
   .join('\n')}\n</urlset>\n`;
@@ -299,6 +314,11 @@ function browseHtml() {
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
+${jsonld.scriptTag(jsonld.page({
+  type: 'CollectionPage', path: '/browse', name: 'Every animal, A to Z',
+  description: `All ${ANIMALS.length} animals on Guess My Animal, listed A to Z.`,
+  crumbs: [['Home', '/'], ['All animals', '/browse']],
+}))}
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -434,6 +454,7 @@ console.log(`wrote functions/seo-meta.json (${ANIMALS.length} animals)`);
 console.log(`wrote sitemap.xml (${all.length} urls)`);
 console.log(`wrote browse.html (${ANIMALS.length} animals)`);
 console.log(`collections: ${COLLECTIONS.live.length} live (explore/)`);
+console.log(`compare: ${COMPARE.pairs.length} pairs (compare/)`);
 console.log(`content: ${Object.keys(PUBLISHED).length} published, ${Object.keys(CONTENT.all).length - Object.keys(PUBLISHED).length} awaiting review`);
 
 // Last, so the hand-written pages pick up the same chrome browse.html

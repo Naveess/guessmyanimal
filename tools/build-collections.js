@@ -23,6 +23,7 @@ const fs = require('fs');
 const path = require('path');
 const { published: collections } = require('./collections.js');
 const { siteBar, brand, siteFooter, docHead } = require('./chrome.js');
+const jsonld = require('./jsonld.js');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://guessmyanimal.com';
@@ -37,11 +38,14 @@ const GROUPS = [
   ['answer', 'Quick-answer lists'],
 ];
 
-function page({ title, description, canonical, styleVersion, draft, body }) {
+// The page shell every generated page shares (also used by
+// tools/build-compare.js and tools/build-reviewed.js). `ld` is a JSON-LD
+// <script> tag, left off draft previews.
+function page({ title, description, canonical, styleVersion, draft, body, ld, mainClass = 'coll' }) {
   return `<!doctype html>
 <html lang="en-GB">
 <head>
-${docHead({ title: escapeHtml(title), description: escapeHtml(description), canonical, styleVersion, robots: draft ? 'noindex' : null })}
+${docHead({ title: escapeHtml(title), description: escapeHtml(description), canonical, styleVersion, robots: draft ? 'noindex' : null, ld: draft ? null : ld })}
 </head>
 <body class="view-page">
 
@@ -53,7 +57,7 @@ ${siteBar()}
   ${brand()}
 </div>
 
-<main class="prose coll" id="main">
+<main class="prose ${mainClass}" id="main">
 ${draft ? '  <p class="coll-draft">DRAFT preview: not approved, not published.</p>\n' : ''}${body}
 </main>
 
@@ -102,7 +106,11 @@ function hubBody(cols) {
   <p>Each list covers one question only. That's on purpose: a page that combined them
     would be a way to look up the answer mid-game, and this site doesn't do that.</p>
 
-${groups}`;
+${groups}
+
+  <h2>Look-alikes</h2>
+  <p>Animals people often mix up, compared side by side with how to tell them apart:
+    <a href="/compare">Side by side</a>.</p>`;
 }
 
 // Removes every .html under dir that isn't in keep (absolute paths),
@@ -146,6 +154,11 @@ function buildCollections(content, { styleVersion, drafts = false } = {}) {
       canonical: `${SITE}/explore/${col.key}`,
       styleVersion, draft: drafts && !col.rv,
       body: collectionBody(col),
+      ld: jsonld.scriptTag(jsonld.page({
+        type: 'CollectionPage', path: `/explore/${col.key}`, name: col.title,
+        description: col.desc || col.intro[0], dateModified: col.rv,
+        crumbs: [['Home', '/'], ['Explore', '/explore'], [col.title, `/explore/${col.key}`]],
+      })),
     }));
   }
   if (cols.length) {
@@ -155,6 +168,11 @@ function buildCollections(content, { styleVersion, drafts = false } = {}) {
       canonical: `${SITE}/explore`,
       styleVersion, draft: drafts,
       body: hubBody(cols),
+      ld: jsonld.scriptTag(jsonld.page({
+        type: 'CollectionPage', path: '/explore', name: 'Explore animals',
+        description: 'Lists of the animals on Guess My Animal that share one thing: a region, a habitat, a kind of animal or one quick answer.',
+        crumbs: [['Home', '/'], ['Explore', '/explore']],
+      })),
     }));
   }
   prune(outRoot, written);
@@ -170,7 +188,7 @@ function buildCollections(content, { styleVersion, drafts = false } = {}) {
   };
 }
 
-module.exports = { buildCollections };
+module.exports = { buildCollections, page, prune, escapeHtml };
 
 if (require.main === module) {
   const { loadContent } = require('./content.js');

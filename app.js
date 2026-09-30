@@ -348,7 +348,7 @@
   // no reviewed content, which puts the page back to its base shape.
   function renderContent(entry, c) {
     const a = entry.a;
-    const s = RenderData.sections(c, lookupSlug);
+    const s = RenderData.sections(c, lookupSlug, entry.slug);
     if (c) {
       renderAnswers(a, c);
       renderGlance(a, c);

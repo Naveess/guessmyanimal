@@ -156,8 +156,10 @@
      tools/build-seo.js set the exact same markup.
 
      `lookup(slug)` returns the animals.js entry for a slug (for names and
-     emoji on links), or null. */
-  function sections(c, lookup) {
+     emoji on links), or null. `self` is this animal's own slug, for the
+     look-alikes' side-by-side links (tools/build-compare.js writes a
+     page for every cf pair on a published animal). */
+  function sections(c, lookup, self) {
     const out = { group: '', profile: '', confused: '', moreFacts: '', sources: '' };
     if (!c) return out;
     const link = (slug) => {
@@ -184,7 +186,8 @@
       out.confused = c.cf.map((x) => {
         const b = lookup(x.slug);
         if (!b) return '';
-        return `<li class="conf-item"><a class="conf-name" href="/animals/${esc(x.slug)}"><span class="r-emoji" aria-hidden="true">${b.e || '🐾'}</span>${esc(b.n)}</a><p class="conf-tip">${esc(x.tip)}</p></li>`;
+        return `<li class="conf-item"><a class="conf-name" href="/animals/${esc(x.slug)}"><span class="r-emoji" aria-hidden="true">${b.e || '🐾'}</span>${esc(b.n)}</a><p class="conf-tip">${esc(x.tip)}</p>` +
+          (self ? `<a class="conf-cmp" href="/compare/${esc(pairSlug(self, x.slug))}">Compare side by side</a>` : '') + '</li>';
       }).join('');
     }
 
@@ -199,7 +202,13 @@
     return out;
   }
 
-  const RenderData = { answers, glanceGroups, sections, longDate, esc, cap, ICONS, WHY_KEYS, HABITATS, IUCN, GOOD, WARN, BAD, FLAT };
+  // The address of a look-alike pair's compare page: the two slugs in
+  // A to Z order, so either animal's page links to the same one.
+  function pairSlug(x, y) {
+    return x < y ? `${x}-vs-${y}` : `${y}-vs-${x}`;
+  }
+
+  const RenderData = { pairSlug, answers, glanceGroups, sections, longDate, esc, cap, ICONS, WHY_KEYS, HABITATS, IUCN, GOOD, WARN, BAD, FLAT };
   if (typeof module !== 'undefined' && module.exports) module.exports = RenderData;
   if (typeof root !== 'undefined') root.RenderData = RenderData;
 })(typeof window !== 'undefined' ? window : globalThis);
