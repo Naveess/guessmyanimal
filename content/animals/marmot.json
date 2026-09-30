@@ -1,6 +1,9 @@
 {
   "sci": "Marmota",
   "ov": "Fifteen species of large ground squirrels, the heaviest members of the squirrel family, from Asia, Europe and North America. They live in groups in summer and whistle loudly when alarmed, then spend the winter hibernating in burrows.",
+  "why": {
+    "h": "Marmots are the largest true hibernators, sleeping through the winter in their burrows."
+  },
   "hb": [
     "mountain",
     "grassland"
@@ -25,7 +28,8 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -36,6 +40,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. ANSWER CHECK (fact): \"Hibernates for up to eight months with its heart down to five beats a minute\" — the heart rate is confirmed for the Alpine marmot, but the article says up to nine months. Suggested wording: \"Hibernates for up to nine months with its heart down to five beats a minute.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. ANSWER CHECK (fact): \"Hibernates for up to eight months with its heart down to five beats a minute\" — the heart rate is confirmed for the Alpine marmot, but the article says up to nine months. Suggested wording: \"Hibernates for up to nine months with its heart down to five beats a minute.\""
 }

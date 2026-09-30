@@ -2,7 +2,8 @@
   "sci": "Viperidae",
   "ov": "Venomous snakes with long, hinged fangs that fold back against the roof of the mouth when not in use. Vipers live in most parts of the world, but not Antarctica or Australia, and most give birth to live young. The common European adder lives farther north than any other snake.",
   "why": {
-    "dg": "All vipers are venomous, but the common adder is not aggressive, and its bites, though very painful, are rarely fatal."
+    "dg": "All vipers are venomous, but the common adder is not aggressive, and its bites, though very painful, are rarely fatal.",
+    "h": "The adder hibernates for about five to six months in Britain, and up to nine in northern Sweden."
   },
   "hb": [
     "grassland",
@@ -43,6 +44,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry (alias \"adder\"). REGION: vipers are native to the Americas too; suggest adding North America, Central America and South America. ANSWER CHECK (fact): \"senses prey by body heat\" is true of pit vipers only; the adder has no heat pits. \"Britain's only venomous snake\" is confirmed. Suggested wording: \"The adder is Britain's only venomous snake, and it lives farther north than any other snake.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry (alias \"adder\"). REGION: vipers are native to the Americas too; suggest adding North America, Central America and South America. ANSWER CHECK (fact): \"senses prey by body heat\" is true of pit vipers only; the adder has no heat pits. \"Britain's only venomous snake\" is confirmed. Suggested wording: \"The adder is Britain's only venomous snake, and it lives farther north than any other snake.\""
 }

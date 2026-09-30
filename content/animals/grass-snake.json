@@ -1,6 +1,9 @@
 {
   "sci": "Natrix natrix",
   "ov": "A non-venomous, semi-aquatic Eurasian snake, usually dark green or brown with a yellow or white collar behind the head. It is a strong swimmer, often found near water, and feeds almost entirely on amphibians, which it swallows alive without constricting them.",
+  "why": {
+    "h": "Like most reptiles it can't survive freezing, so it spends the winter underground."
+  },
   "hb": [
     "freshwater",
     "forest",
@@ -24,10 +27,11 @@
         "len",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): REGION: the article adds northwestern Africa; suggest adding Africa. ANSWER CHECK (fact): playing dead is confirmed, but the tongue detail isn't in the article, which says it goes \"completely limp\" and may bleed from its mouth and nose. Suggested wording: \"Plays dead convincingly, going limp and even bleeding from its mouth and nose.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): REGION: the article adds northwestern Africa; suggest adding Africa. ANSWER CHECK (fact): playing dead is confirmed, but the tongue detail isn't in the article, which says it goes \"completely limp\" and may bleed from its mouth and nose. Suggested wording: \"Plays dead convincingly, going limp and even bleeding from its mouth and nose.\""
 }

@@ -1,6 +1,9 @@
 {
   "sci": "Marmota monax",
   "ov": "A large ground squirrel, also called the woodchuck, and the only lowland marmot. It lives across much of the eastern United States, Canada and Alaska, and is one of the most solitary marmots. Despite its heavy build it swims well and sometimes climbs trees.",
+  "why": {
+    "h": "It fattens up by as much as 100% in autumn, then hibernates in its burrow without eating."
+  },
   "hb": [
     "forest",
     "grassland",
@@ -26,10 +29,11 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "The animals.js fact is confirmed: besides the nest, a groundhog burrow has a separate excrement chamber.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "The animals.js fact is confirmed: besides the nest, a groundhog burrow has a separate excrement chamber."
 }

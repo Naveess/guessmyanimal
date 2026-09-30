@@ -1,6 +1,9 @@
 {
   "sci": "Dipodidae",
   "ov": "Small, nocturnal hopping rodents of the hot deserts of North Africa and Asia, with very long back legs, a tuft-tipped tail longer than the body, and often huge ears. They move almost entirely on two legs, zigzagging and leaping to escape predators.",
+  "why": {
+    "h": "It digs a special winter burrow to hibernate in, longer and deeper than its summer one."
+  },
   "hb": [
     "desert"
   ],
@@ -22,10 +25,11 @@
         "len",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. The fact is confirmed: \"run at up to 24 km/h (15 mph)\" and \"jerboas do not drink water but instead get their water intake from the food they eat\". ANSWER CHECK (h): animals.js has h:false, but the article says \"Jerboas hibernate during the winter\" in a permanent winter burrow. Suggest h:true. lg 2 matches Kangaroo. lf 2–6 is a little long (\"typical lifespan ... around 2–3 years\"); optional lf:\"2–3 years\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29; ac left unchanged for eland, springbok and muntjac): Group entry. The fact is confirmed: \"run at up to 24 km/h (15 mph)\" and \"jerboas do not drink water but instead get their water intake from the food they eat\". ANSWER CHECK (h): animals.js has h:false, but the article says \"Jerboas hibernate during the winter\" in a permanent winter burrow. Suggest h:true. lg 2 matches Kangaroo. lf 2–6 is a little long (\"typical lifespan ... around 2–3 years\"); optional lf:\"2–3 years\"."
 }

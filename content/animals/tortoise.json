@@ -1,6 +1,9 @@
 {
   "sci": "Testudinidae",
   "ov": "Land-living turtles with domed shells and column-like, elephant-like legs. They are slow, placid plant-eaters, and most species can live 80–150 years.",
+  "why": {
+    "h": "Many sit out the winter: Hermann's tortoises hibernate until late February, desert tortoises lie dormant in burrows."
+  },
   "hb": [
     "grassland",
     "desert",
@@ -38,8 +41,22 @@
       "for": [
         "cf"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Testudo hermanni",
+      "url": "https://animaldiversity.org/accounts/Testudo_hermanni/",
+      "for": [
+        "why"
+      ]
+    },
+    {
+      "title": "Wikipedia: Desert tortoise",
+      "url": "https://en.wikipedia.org/wiki/Desert_tortoise",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "REGION: animals.js r is [\"Worldwide\"], but land tortoises aren’t native to Australia. No why.h: the article I used doesn’t cover tortoise hibernation."
 }

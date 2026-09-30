@@ -2,7 +2,8 @@
   "sci": "Malaclemys terrapin (diamondback terrapin)",
   "ov": "Terrapins are turtles of fresh or brackish water with clawed feet rather than flippers. The name comes from an Algonquian word for the diamondback terrapin, a turtle of salt marshes on the US East and Gulf coasts, named for the diamond pattern on its shell.",
   "why": {
-    "et": "The diamondback was a gourmet delicacy in the early 1900s and was hunted almost to extinction."
+    "et": "The diamondback was a gourmet delicacy in the early 1900s and was hunted almost to extinction.",
+    "h": "In most of its range it hibernates through the colder months in the mud of creeks and marshes."
   },
   "hb": [
     "wetland",
@@ -40,6 +41,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): animals.js points w: at the diamondback terrapin, so the detail is for that species (IUCN Vulnerable; iu left out because the entry also covers other terrapins). ANSWER CHECK (d): animals.js has \"Omnivore\", but the diamondback eats animals plus only \"small amounts of plant material\", and the Terrapin article says \"a great many terrapins are mainly carnivorous\". Consider d:\"Carnivore\". ANSWER CHECK (fact): \"A freshwater turtle\" is contradicted: the name was first used for \"brackish-water turtles that inhabited neither freshwater habitats nor the sea\". Suggested wording: \"Lives in salty coastal marshes, neither fresh water nor the open sea, between pond turtles and sea turtles.\" h:true is confirmed (they hibernate in creek and marsh mud). The regions Europe and Asia are not in these articles; left as is.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): animals.js points w: at the diamondback terrapin, so the detail is for that species (IUCN Vulnerable; iu left out because the entry also covers other terrapins). ANSWER CHECK (d): animals.js has \"Omnivore\", but the diamondback eats animals plus only \"small amounts of plant material\", and the Terrapin article says \"a great many terrapins are mainly carnivorous\". Consider d:\"Carnivore\". ANSWER CHECK (fact): \"A freshwater turtle\" is contradicted: the name was first used for \"brackish-water turtles that inhabited neither freshwater habitats nor the sea\". Suggested wording: \"Lives in salty coastal marshes, neither fresh water nor the open sea, between pond turtles and sea turtles.\" h:true is confirmed (they hibernate in creek and marsh mud). The regions Europe and Asia are not in these articles; left as is."
 }

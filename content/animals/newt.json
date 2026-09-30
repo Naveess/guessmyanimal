@@ -2,7 +2,8 @@
   "sci": "Pleurodelinae",
   "ov": "Over 100 species of semiaquatic salamanders in North America, Europe, North Africa and Asia. They go from water-living larva to a land-living juvenile called an eft, and adults return to water each year to breed.",
   "why": {
-    "dg": "Many newts have toxic skin. The rough-skinned newt of the Pacific Northwest carries enough tetrodotoxin to kill an adult human."
+    "dg": "Many newts have toxic skin. The rough-skinned newt of the Pacific Northwest carries enough tetrodotoxin to kill an adult human.",
+    "h": "Over most of its range it hibernates in winter, often with many newts sharing one underground hiding place."
   },
   "hb": [
     "freshwater",
@@ -30,10 +31,11 @@
       "title": "Wikipedia: Great crested newt",
       "url": "https://en.wikipedia.org/wiki/Great_crested_newt",
       "for": [
-        "len"
+        "len",
+        "why"
       ]
     }
   ],
-  "rv": "2026-09-28",
+  "rv": "2026-09-30",
   "notes": "Group entry. The Newt article mentions hibernation physiology, which fits h:true. ANSWER CHECK (fact): the animals.js fact \"Protected by law in the UK, to the eternal grief of builders\" is only partly sourced: the great crested newt is a European Protected Species, but the article doesn’t mention UK law or builders. Suggested wording: \"Some newts carry enough poison in their skin to kill a person.\" REGION: the source adds North Africa; consider adding Africa. RESOLVED (owner: approve all): Africa added to r; fact rewritten as suggested."
 }

@@ -2,7 +2,8 @@
   "sci": "Agkistrodon contortrix",
   "ov": "A heavy-bodied pit viper of the eastern United States, camouflaged by dark hourglass bands on a copper to brown background. Instead of fleeing it often freezes, so people step on it: copperheads cause half of the treated snakebites in the US, though bites are rarely fatal.",
   "why": {
-    "dg": "Venomous but not aggressive; bites are rarely fatal, and many are \"dry\", with little or no venom."
+    "dg": "Venomous but not aggressive; bites are rarely fatal, and many are \"dry\", with little or no venom.",
+    "h": "It hibernates through winter in dens or limestone crevices, often alongside timber rattlesnakes and rat snakes."
   },
   "hb": [
     "forest",
@@ -35,6 +36,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: \"half of the treated snake bites in the United States\" and \"bites are rarely fatal\". ANSWER CHECK (ac): animals.js has \"night\", but copperheads \"are nocturnal during the hot summer, but are commonly active during the day during the spring and fall\". Suggest ac:\"both\".",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: \"half of the treated snake bites in the United States\" and \"bites are rarely fatal\". ANSWER CHECK (ac): animals.js has \"night\", but copperheads \"are nocturnal during the hot summer, but are commonly active during the day during the spring and fall\". Suggest ac:\"both\"."
 }

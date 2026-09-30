@@ -1,6 +1,9 @@
 {
   "sci": "Gliridae",
   "ov": "About 28 species of small, nocturnal, tree-climbing rodents from Africa, Asia and Europe. They look like mice with furry tails, and are named for their long hibernation of six months or more. Half of all species belong to the African genus Graphiurus.",
+  "why": {
+    "h": "Its name comes from it: dormice in cooler places hibernate for six months or more, waking briefly to eat stored food."
+  },
   "hb": [
     "forest"
   ],
@@ -24,7 +27,8 @@
         "wt",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "why"
       ]
     },
     {
@@ -35,6 +39,6 @@
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. ANSWER CHECK (fact): \"Spends over half its life asleep, hibernating for up to seven months\" is half sourced: the articles say dormice hibernate six months or longer and that the hazel dormouse spends \"a large proportion of its life sleeping\", but not \"over half\". Suggested wording: \"Named for its long hibernation of six months or more, and spends much of its life asleep.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29): Group entry. ANSWER CHECK (fact): \"Spends over half its life asleep, hibernating for up to seven months\" is half sourced: the articles say dormice hibernate six months or longer and that the hazel dormouse spends \"a large proportion of its life sleeping\", but not \"over half\". Suggested wording: \"Named for its long hibernation of six months or more, and spends much of its life asleep.\""
 }

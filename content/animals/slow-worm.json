@@ -1,6 +1,9 @@
 {
   "sci": "Anguis fragilis",
   "ov": "A legless lizard native to Europe: neither a worm nor a snake. Unlike snakes, it has eyelids it can close. It spends much of its time hidden under objects, and it can shed its tail to escape a predator, though the tail regrows only as a short stub.",
+  "why": {
+    "h": "It spends the winter months in an underground burrow."
+  },
   "hb": [
     "grassland",
     "towns"
@@ -25,8 +28,15 @@
         "df",
         "fx"
       ]
+    },
+    {
+      "title": "Animal Diversity Web: Anguis fragilis",
+      "url": "https://animaldiversity.org/accounts/Anguis_fragilis/",
+      "for": [
+        "why"
+      ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: it has \"movable, closable eyelids (these are fused in snakes)\". In the UK it is common in gardens and allotments, hence towns.",
-  "rv": "2026-09-29"
+  "rv": "2026-09-30",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: it has \"movable, closable eyelids (these are fused in snakes)\". In the UK it is common in gardens and allotments, hence towns."
 }
