@@ -40,7 +40,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="/style.css?v=20260930-6">
+<link rel="stylesheet" href="/style.css?v=20260930-7">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -425,207 +425,236 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      ============================================================ -->
 <div class="mysteryview" id="mysteryview" hidden>
 
-  <div class="page-head">
-    <!-- chrome:brand -->
+  <main class="ma">
+
+    <!-- Title row: where you are and which game, on the left; what the
+         next animal is drawn from (Endless) or the Daily orientation and
+         archive (Daily), on the right. -->
+    <div class="ma-head">
+      <div class="ma-head-l">
+        <!-- chrome:brand -->
 <a class="brand" href="/"><svg class="brand-paw" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="41" rx="14.5" ry="12"/><ellipse cx="14.5" cy="27" rx="6.4" ry="8"/><ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="49.5" cy="27" rx="6.4" ry="8"/></svg>Guess My Animal</a>
 <!-- /chrome:brand -->
-    <p class="page-title">Mystery Animal</p>
-  </div>
-
-  <main class="feed">
-
-    <!-- Wrapped in two named groups purely for the desktop two-column
-         layout below (see style.css's 860px block) - grid-area placement
-         needs a small, fixed number of explicit rows to size predictably,
-         and "everything before the photo" / "everything after it" is
-         exactly the split that already exists in this markup's own
-         reading order. Mobile ignores these entirely (plain divs, no
-         layout of their own below 860px), so nothing here changes the
-         mobile DOM order or visual result. -->
-    <div class="mystery-panel-top">
-    <div class="mystery-tabs" role="group" aria-label="Game mode">
-      <button class="mystery-tab" type="button" id="mysteryTabEndless" aria-pressed="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M17 2.5 21 6l-4 3.5"/>
-          <path d="M3 12.5v-2a4 4 0 0 1 4-4h14"/>
-          <path d="M7 21.5 3 18l4-3.5"/>
-          <path d="M21 11.5v2a4 4 0 0 1-4 4H3"/>
-        </svg>
-        Endless
-      </button>
-      <button class="mystery-tab" type="button" id="mysteryTabDaily" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3.5" y="5" width="17" height="15" rx="2.5"/>
-          <path d="M3.5 9.5h17M8 3v4M16 3v4"/>
-        </svg>
-        Daily
-      </button>
-    </div>
-
-    <!-- Orientation before personality: shown once, ever, before a
-         first-time player's first Daily round finishes - otherwise the
-         three stat tiles below mean nothing yet. Toggled in
-         updateStats() in mystery.js. -->
-    <p class="mystery-daily-intro" id="mysteryDailyIntro" hidden>One animal, once a day, the same one for everyone — miss a day and the streak resets.</p>
-
-    <!-- Daily-only, and only once a second day exists to look back on -
-         visibility set alongside mysteryFilters in switchMode(). Missing
-         a day used to mean that puzzle was gone for good; this is the
-         fix - playing it back doesn't touch the real streak (still just
-         about consecutive *today*s), but the puzzle itself is never
-         truly lost. -->
-    <button class="btn mystery-archive-open" type="button" id="mysteryArchiveOpen" hidden>Play a past day</button>
-
-    <div class="mystery-stats">
-      <!-- .mystery-stat-arrow is populated and animated from mystery.js's
-           animateStatChange() only at the moment the number itself
-           changes - empty and invisible the rest of the time, so nothing
-           here says "this could move" until it actually does. -->
-      <div class="mystery-stat mystery-stat-streak"><b id="mysteryStreak">0</b><span id="mysteryStreakLabel">Day streak</span><span class="mystery-stat-arrow" aria-hidden="true"></span></div>
-      <div class="mystery-stat"><b id="mysteryBest">0</b><span>Best</span></div>
-      <div class="mystery-stat"><b id="mysteryScore">0</b><span>Score</span><span class="mystery-stat-arrow" aria-hidden="true"></span></div>
-    </div>
-
-    <!-- Inner wrapper carries the padded/tinted surface so the outer
-         element can be a pure grid-row height animator - see style.css,
-         the grid-template-rows trick needs padding off the collapsing
-         box itself or it never reaches zero height. -->
-    <div class="mystery-milestone" id="mysteryMilestone" aria-live="polite"><p class="mystery-milestone-in" id="mysteryMilestoneText"></p></div>
-
-    <div class="mystery-filters" id="mysteryFilters" hidden></div>
-    </div>
-
-    <!-- Reuses the animal page's own Photo Card component (.pcard and
-         its children, see style.css's "The photo card" section) rather
-         than a bespoke tile, so this screen's one hero image gets the
-         same blurred-backdrop fill, loading pulse, and arrival motion
-         the rest of the site already spent on getting right. The name/
-         category overlay stays hidden (via #mysteryHero.revealed) until
-         a round resolves, since showing it early would give the game
-         away; the fallback glyph is always the site's own paw mark,
-         never the animal's own emoji, for the same reason. -->
-    <article class="pcard mystery-hero" id="mysteryHero">
-      <!-- Transparent 1x1 until a real photo lands, same placeholder as
-           the animal page's own #photoBg/#photo, so this is never a
-           broken-image box while Wikipedia is still being asked. -->
-      <img class="pcard-bg" id="mysteryPhotoBg" alt="" aria-hidden="true"
-           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <img class="pcard-img" id="mysteryPhotoImg" alt="" loading="lazy"
-           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <div class="pcard-fallback" aria-hidden="true">
-        <span class="pcard-fallback-emoji">🐾</span>
-      </div>
-      <div class="pcard-scrim" aria-hidden="true"></div>
-      <div class="pcard-meta" id="mysteryPhotoMeta">
-        <h2 class="pcard-name"><span id="mysteryPhotoName"></span> <span class="pcard-emoji" id="mysteryPhotoEmoji" aria-hidden="true"></span></h2>
-        <p class="pcard-sub" id="mysteryPhotoSub"></p>
-      </div>
-    </article>
-
-    <div class="mystery-panel-bottom">
-    <!-- Everything below is one unit toggled against #mysteryArchive -
-         opening the archive list swaps this whole thing out rather than
-         hiding pieces of it individually, since a round in progress and
-         a list of other rounds to start have nothing to say to each
-         other on screen at once. -->
-    <!-- tabindex="-1": a programmatic focus target for keyboard users
-         returning from the archive list (see the archive-close handler
-         in mystery.js) - which of Daily's locked/resume/fresh sub-states
-         ends up visible varies, so this focuses the container itself
-         rather than guessing which specific control is on screen. -->
-    <div id="mysteryRound" tabindex="-1">
-    <h3 class="label">Guess the animal</h3>
-    <div class="card mystery-hintcard">
-      <!-- Rebuilt wholesale on every reveal (renderHints() in mystery.js
-           clears and re-appends), so aria-live re-reads from hint 1 each
-           time rather than announcing only the newest one - a real but
-           minor tradeoff against the alternative this was fixing:
-           complete silence on every hint reveal for a screen-reader
-           player. -->
-      <div class="mystery-hints" id="mysteryHints" aria-live="polite"></div>
-    </div>
-
-    <form class="mystery-form" id="mysteryForm" data-sfx="off">
-      <input id="mysteryGuess" type="text" autocomplete="off" autocorrect="off"
-             autocapitalize="off" spellcheck="false" placeholder="Type your guess…"
-             aria-label="Your guess">
-      <button class="btn btn-solid" type="submit">Guess</button>
-    </form>
-    <p class="mystery-feedback" id="mysteryFeedback" role="status" aria-live="polite"></p>
-
-    <!-- Until this existed the only way to advance a hint was to submit a
-         deliberately wrong guess, which is fine alone and daft out loud -
-         someone playing to an audience had to type junk to say "go on,
-         give us another one". Costs exactly what a wrong guess costs
-         (a hint, so 20 points off the win), just without the theatre. -->
-    <button class="btn mystery-hintbtn" type="button" id="mysteryHint" data-sfx="off">Next hint</button>
-
-    <button class="btn mystery-giveup" type="button" id="mysteryGiveUp" data-sfx="off">Give up, show the answer</button>
-    <!-- Reuses the same report dialog the animal page uses (#reportDlg in
-         this file, wired in app.js) - a wrong hint or a bad hint photo is
-         exactly the same kind of report, so nothing new was built here,
-         just a second trigger with mystery-aware context. -->
-    <button class="btn mystery-report" type="button" id="mysteryReport">Report a problem</button>
-
-    <div class="mystery-result" id="mysteryResult" hidden>
-      <div class="mystery-result-card">
-        <span class="mystery-result-emoji" id="mysteryAnswerEmoji" aria-hidden="true"></span>
-        <span class="mystery-result-name" id="mysteryAnswerName"></span>
-        <!-- Populated only on an actual win (see celebrate() in mystery.js)
-             - a give-up or a Daily-history replay reveals the same card
-             with this left empty, so the burst stays a real "you got it"
-             signal instead of decorating every reveal alike. -->
-        <div class="mystery-celebrate" id="mysteryCelebrate" aria-hidden="true"></div>
-      </div>
-      <p class="mystery-result-note" id="mysteryResultNote" hidden></p>
-      <p class="mystery-countdown" id="mysteryCountdown" hidden></p>
-
-      <div class="share" id="mysteryShare" hidden>
-        <button class="btn" id="mysteryShareBtn" type="button"
-                aria-expanded="false" aria-controls="mysterySharePanel">Share result</button>
-        <div class="share-panel" id="mysterySharePanel" hidden>
-          <a class="share-item" id="mysteryShareWa" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/></svg>
-            WhatsApp
-          </a>
-          <a class="share-item" id="mysteryShareX" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>
-            X
-          </a>
-          <a class="share-item" id="mysteryShareFb" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
-            Facebook
-          </a>
-          <button class="share-item" id="mysteryShareCopy" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10 13.5a3.5 3.5 0 0 0 5 0l3-3a3.54 3.54 0 0 0-5-5l-1 1"/><path d="M14 10.5a3.5 3.5 0 0 0-5 0l-3 3a3.54 3.54 0 0 0 5 5l1-1"/></svg>
-            Copy link
-          </button>
+        <div class="ma-titlerow">
+          <!-- A <p>, not an <h1>: this markup also ships inside every
+               /animals/<slug> page, whose one real h1 is the animal's name. -->
+          <p class="ma-title">Mystery Animal</p>
+          <div class="ma-modes" role="group" aria-label="Game mode">
+            <button class="ma-mode" type="button" id="mysteryTabEndless" aria-pressed="true">Endless</button>
+            <button class="ma-mode" type="button" id="mysteryTabDaily" aria-pressed="false">Daily <span class="ma-mode-tag" id="mysteryDayTag"></span></button>
+          </div>
         </div>
       </div>
-      <p class="copied" id="mysteryCopied" aria-live="polite"></p>
 
-      <button class="btn btn-solid" type="button" id="mysteryNext">Next animal</button>
-      <!-- Only ever shown resolving an archived day (see showResultCard
-           in mystery.js) - "Next animal" makes no sense for a single
-           fixed past puzzle, so this replaces it in that one state
-           rather than trying to make one button mean two things. -->
-      <button class="btn btn-solid" type="button" id="mysteryArchiveResultBack" hidden>Back to past days</button>
-    </div>
-    </div>
-
-    <!-- Populated by renderArchiveList() in mystery.js each time it
-         opens - never rendered until then, since it depends on today's
-         date and there's no reason to build it for a visitor who never
-         asks to see it. -->
-    <div class="mystery-archive" id="mysteryArchive" hidden>
-      <div class="mystery-archive-head">
-        <h3 class="label">Past days</h3>
-        <button class="btn" type="button" id="mysteryArchiveClose">Back to today</button>
+      <div class="ma-head-r">
+        <div class="ma-filterwrap" id="mysteryFilterWrap">
+          <span class="ma-kicker" id="mysteryFilterLabel">Next animal from</span>
+          <div class="ma-chips" id="mysteryFilters" role="group" aria-labelledby="mysteryFilterLabel"></div>
+        </div>
+        <!-- Daily's stand-in for the filter row: the once-ever orientation
+             line (updateStats() in mystery.js) and the way into past days. -->
+        <div class="ma-dailywrap" id="mysteryDailyWrap" hidden>
+          <p class="ma-daily-intro" id="mysteryDailyIntro" hidden>One animal, once a day, the same one for everyone. Miss a day and the streak resets.</p>
+          <button class="ma-btn ma-btn-quiet" type="button" id="mysteryArchiveOpen" hidden>Play a past day</button>
+        </div>
       </div>
-      <div class="mystery-archive-list" id="mysteryArchiveList"></div>
-    </div>
     </div>
 
+    <div class="ma-body">
+
+      <!-- The photo. Never a CSS blur: each step is a genuinely tiny
+           Wikimedia thumbnail (PIXEL_WIDTH_STEPS in mystery.js), so the
+           bytes on the wire are as blocky as what is on screen. -->
+      <div class="ma-side" id="mysterySide">
+        <div class="ma-card ma-photocard">
+          <div class="ma-cardhead">
+            <span class="ma-kicker">The photo</span>
+            <span class="ma-pill" id="mysterySharp"></span>
+          </div>
+
+          <article class="pcard ma-photo" id="mysteryHero">
+            <img class="pcard-bg" id="mysteryPhotoBg" alt="" aria-hidden="true"
+                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            <img class="pcard-img" id="mysteryPhotoImg" alt="" loading="lazy"
+                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            <!-- Always the site's own paw, never the animal's emoji -
+                 that would give the round away before a single hint. -->
+            <div class="pcard-fallback" aria-hidden="true">
+              <svg class="ma-photo-paw" viewBox="0 0 64 64"><ellipse cx="32" cy="41" rx="14.5" ry="12"/><ellipse cx="14.5" cy="27" rx="6.4" ry="8"/><ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="49.5" cy="27" rx="6.4" ry="8"/></svg>
+            </div>
+            <span class="ma-bracket tl" aria-hidden="true"></span>
+            <span class="ma-bracket tr" aria-hidden="true"></span>
+            <span class="ma-bracket bl" aria-hidden="true"></span>
+            <span class="ma-bracket br" aria-hidden="true"></span>
+            <span class="ma-roundtag" id="mysteryRoundTag"></span>
+            <div class="pcard-scrim" aria-hidden="true"></div>
+            <!-- Hidden until the round resolves (#mysteryHero.revealed). -->
+            <div class="pcard-meta" id="mysteryPhotoMeta">
+              <p class="pcard-name"><span id="mysteryPhotoName"></span> <span class="pcard-emoji" id="mysteryPhotoEmoji" aria-hidden="true"></span></p>
+              <p class="pcard-sub" id="mysteryPhotoSub"></p>
+            </div>
+          </article>
+
+          <div class="ma-ladder-wrap">
+            <div class="ma-ladder-head">
+              <span class="ma-ladder-title">Sharpens with every hint</span>
+              <span class="ma-ladder-note" id="mysteryLadderNote"></span>
+            </div>
+            <div class="ma-ladder" id="mysteryLadder" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="ma-tip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <p><b>100 points on the first hint</b>, 20 fewer for each one after. Answer inside 20 seconds for +15, or 45 for +5.</p>
+        </div>
+      </div>
+
+      <div class="ma-main">
+
+        <!-- Streak milestone toast. The inner element carries the surface
+             so the outer one can collapse to zero height (style.css). -->
+        <div class="mystery-milestone" id="mysteryMilestone" aria-live="polite"><p class="mystery-milestone-in" id="mysteryMilestoneText"></p></div>
+
+        <div class="ma-card ma-stats">
+          <!-- .mystery-stat-arrow is filled and animated only when the
+               number itself changes (animateStatChange() in mystery.js). -->
+          <div class="ma-stat">
+            <span class="ma-kicker" id="mysteryStreakLabel">Streak</span>
+            <span class="ma-stat-val ma-stat-big"><b id="mysteryStreak">0</b><svg class="ma-flame" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 3.5 5 5.8 5 10.5A5 5 0 0 1 12 18a5 5 0 0 1-5-5.5c0-2 1-3.3 2-4.5.3 1.6 1.2 2.6 2.2 2.6C11 8 11.2 5 12 2Z"/></svg></span>
+            <span class="mystery-stat-arrow" aria-hidden="true"></span>
+          </div>
+          <div class="ma-stat">
+            <span class="ma-kicker">Best</span>
+            <span class="ma-stat-val"><b id="mysteryBest">0</b></span>
+          </div>
+          <div class="ma-stat">
+            <span class="ma-kicker">Score</span>
+            <span class="ma-stat-val"><b id="mysteryScore">0</b></span>
+            <span class="mystery-stat-arrow" aria-hidden="true"></span>
+          </div>
+          <div class="ma-stat ma-stat-worth">
+            <span class="ma-kicker" id="mysteryWorthLabel">On the line</span>
+            <span class="ma-stat-val"><b id="mysteryWorth">100</b><small>pts</small></span>
+          </div>
+        </div>
+
+        <!-- One unit, swapped wholesale against #mysteryArchive below.
+             tabindex="-1": a focus target for keyboard users coming back
+             from the archive list (see the archive-close handler). -->
+        <div class="ma-round" id="mysteryRound" tabindex="-1">
+
+          <div class="ma-card ma-clues">
+            <div class="ma-cardhead">
+              <h2 class="ma-kicker">Clues</h2>
+              <span class="ma-pill" id="mysteryCluesCount"></span>
+            </div>
+            <!-- Rebuilt on every reveal, so it is not itself a live region
+                 (it would re-read four locked rows each time) - the newest
+                 hint alone is announced through #mysteryHintSay. -->
+            <ol class="ma-cluelist" id="mysteryHints"></ol>
+            <p class="sr-only" id="mysteryHintSay" aria-live="polite"></p>
+          </div>
+
+          <div class="ma-card ma-play">
+            <div class="ma-playing" id="mysteryPlaying">
+              <div class="ma-cardhead">
+                <h2 class="ma-kicker">Your guess</h2>
+                <span class="ma-cardnote">Typos are fine · Enter to submit</span>
+              </div>
+              <form class="ma-form" id="mysteryForm" data-sfx="off">
+                <label class="ma-input">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+                  <input id="mysteryGuess" type="text" autocomplete="off" autocorrect="off"
+                         autocapitalize="off" spellcheck="false" placeholder="Type an animal…"
+                         aria-label="Your guess">
+                </label>
+                <button class="ma-btn ma-btn-sun ma-guessbtn" type="submit">Guess <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              </form>
+              <p class="ma-feedback" id="mysteryFeedback" role="status" aria-live="polite"></p>
+
+              <div class="ma-wrongwrap" id="mysteryWrongWrap" hidden>
+                <span class="ma-kicker">Not it</span>
+                <ul class="ma-wrong" id="mysteryWrong"></ul>
+              </div>
+
+              <div class="ma-actions">
+                <!-- Costs exactly what a wrong guess costs (one hint, 20
+                     points off the win), without having to type junk. -->
+                <button class="ma-btn ma-hintbtn" type="button" id="mysteryHint" data-sfx="off">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></svg>
+                  <span id="mysteryHintLabel">Next hint</span>
+                  <span class="ma-cost">−20 pts</span>
+                </button>
+                <button class="ma-btn ma-giveup" type="button" id="mysteryGiveUp" data-sfx="off">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>
+                  <span id="mysteryGiveUpLabel">Give up, show the answer</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="ma-result" id="mysteryResult" hidden>
+              <div class="ma-banner" id="mysteryBanner">
+                <span class="ma-banner-emoji" id="mysteryAnswerEmoji" aria-hidden="true"></span>
+                <div class="ma-banner-text">
+                  <span class="ma-kicker" id="mysteryResultKicker"></span>
+                  <span class="ma-banner-name" id="mysteryAnswerName"></span>
+                </div>
+                <span class="ma-banner-pts" id="mysteryResultPts" hidden></span>
+                <!-- Filled only on a genuine, just-happened win (celebrate()). -->
+                <div class="mystery-celebrate" id="mysteryCelebrate" aria-hidden="true"></div>
+              </div>
+              <p class="ma-result-note" id="mysteryResultNote" role="status"></p>
+              <p class="ma-countdown" id="mysteryCountdown" hidden></p>
+
+              <div class="ma-result-actions">
+                <button class="ma-btn ma-btn-sun ma-nextbtn" type="button" id="mysteryNext">Next animal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                <!-- Stands in for Next animal when the round was a past day. -->
+                <button class="ma-btn ma-btn-sun ma-nextbtn" type="button" id="mysteryArchiveResultBack" hidden>Back to past days</button>
+                <div class="share" id="mysteryShare" hidden>
+                  <button class="ma-btn ma-btn-line" id="mysteryShareBtn" type="button"
+                          aria-expanded="false" aria-controls="mysterySharePanel">Share result</button>
+                  <div class="share-panel" id="mysterySharePanel" hidden>
+                    <a class="share-item" id="mysteryShareWa" href="#" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/></svg>
+                      WhatsApp
+                    </a>
+                    <a class="share-item" id="mysteryShareX" href="#" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>
+                      X
+                    </a>
+                    <a class="share-item" id="mysteryShareFb" href="#" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+                      Facebook
+                    </a>
+                    <button class="share-item" id="mysteryShareCopy" type="button">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10 13.5a3.5 3.5 0 0 0 5 0l3-3a3.54 3.54 0 0 0-5-5l-1 1"/><path d="M14 10.5a3.5 3.5 0 0 0-5 0l-3 3a3.54 3.54 0 0 0 5 5l1-1"/></svg>
+                      Copy link
+                    </button>
+                  </div>
+                </div>
+                <a class="ma-btn ma-btn-line" id="mysteryFacts" href="/">See all its facts</a>
+              </div>
+              <p class="copied" id="mysteryCopied" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="ma-reportrow">
+            <!-- Same report dialog the animal page uses (#reportDlg, app.js). -->
+            <button class="ma-report" type="button" id="mysteryReport">Report a problem with this clue</button>
+          </div>
+        </div>
+
+        <!-- Built by renderArchiveList() each time it opens. -->
+        <div class="ma-card ma-archive" id="mysteryArchive" hidden>
+          <div class="ma-cardhead">
+            <h2 class="ma-kicker">Past days</h2>
+            <button class="ma-btn ma-btn-quiet" type="button" id="mysteryArchiveClose">Back to today</button>
+          </div>
+          <div class="mystery-archive-list" id="mysteryArchiveList"></div>
+        </div>
+      </div>
+    </div>
   </main>
 </div>
 
@@ -909,7 +938,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 <!-- Before app.js: routeFromURL() runs at the bottom of app.js's own
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
-<script src="/mystery.js?v=20260928-1"></script>
+<script src="/mystery.js?v=20260930-1"></script>
 <script src="/app.js?v=20260930-2"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.

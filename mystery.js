@@ -212,6 +212,17 @@
   let roundMode = mode;     // which mode the *current* round/state belongs to
   let archiveDate = null;  // set while roundMode is 'daily' but the round is a past day, not today
   let roundStart = 0;
+  let roundNo = 0;          // Endless rounds this visit, for the photo's round tag
+  let roundFilter = 'all';  // the filter the *current* round was drawn from
+  let wrongGuesses = [];    // { name, at } - this round's misses, for the "Not it" list
+  let lastPts = null;       // what the resolved round scored; null if unknown
+  let roundWon = false;
+
+  // What each of hintsFor()'s five picks is (two broad, one behaviour,
+  // one detail, then the fact), named on each clue row - and on the
+  // locked ones, so a player can see what kind of clue they would buy.
+  const TIERS = ['Broad', 'Broad', 'Behaviour', 'Detail', 'Fun fact'];
+  const tierOf = (i) => TIERS[i] || 'Extra';
 
   // Endless: avoid repeating anything from recent memory, not just the
   // single last pick - a filtered pool (say, 25 Australian animals) can
@@ -344,7 +355,7 @@
   function animateStatChange(id, direction) {
     const node = el(id);
     wobble(node);
-    const stat = node.closest('.mystery-stat');
+    const stat = node.closest('.ma-stat');
     const arrow = stat && stat.querySelector('.mystery-stat-arrow');
     if (!arrow) return;
     arrow.className = 'mystery-stat-arrow ' + direction;
@@ -391,17 +402,123 @@
     el('mysteryHero').classList.add('revealed');
   }
 
+  const LOCK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+
+  function span(cls, text) {
+    const s = document.createElement('span');
+    s.className = cls;
+    if (text != null) s.textContent = text;
+    return s;
+  }
+
+  // Every clue slot is always on screen: the ones already revealed, the
+  // newest one lifted with a Sun tint, and the rest locked with what
+  // they would cost. Once the round resolves they all open, and any the
+  // player never needed say so.
   function renderHints() {
     const box = el('mysteryHints');
     box.innerHTML = '';
-    for (let i = 0; i < shown; i++) {
-      const p = document.createElement('p');
-      p.className = 'mystery-hint' + (i === shown - 1 ? ' anim-rise' : '');
-      p.textContent = (i + 1) + '. ' + hints[i];
-      box.appendChild(p);
+    for (let i = 0; i < hints.length; i++) {
+      const revealed = i < shown;
+      const open = revealed || resolved;
+      const newest = revealed && i === shown - 1 && !resolved;
+      // Only a win can leave clues unneeded - after a give-up the rest
+      // simply open, as the answer's own supporting evidence.
+      const unused = resolved && roundWon && !revealed;
+      const li = document.createElement('li');
+      li.className = 'ma-clue' +
+        (newest ? ' is-newest anim-rise' : open && !unused ? ' is-open' : unused ? ' is-unused' : ' is-locked');
+      li.appendChild(span('ma-clue-num', String(i + 1)));
+      if (open) {
+        const body = document.createElement('div');
+        body.className = 'ma-clue-body';
+        body.appendChild(span('ma-clue-tier', tierOf(i)));
+        const p = document.createElement('p');
+        p.className = 'ma-clue-text';
+        p.textContent = hints[i];
+        body.appendChild(p);
+        li.appendChild(body);
+        if (unused) li.appendChild(span('ma-clue-unused', 'Not needed'));
+      } else {
+        const body = document.createElement('div');
+        body.className = 'ma-clue-body ma-clue-lockbody';
+        body.appendChild(span('ma-clue-lockname', tierOf(i) + ' clue'));
+        body.appendChild(span('sr-only', ', locked,'));
+        const cost = span('ma-lock');
+        cost.innerHTML = LOCK_SVG;
+        cost.appendChild(span('ma-lock-cost', '−20 pts'));
+        body.appendChild(cost);
+        li.appendChild(body);
+      }
+      box.appendChild(li);
     }
+    el('mysteryCluesCount').textContent = resolved
+      ? 'All ' + hints.length + ' shown'
+      : shown + ' of ' + hints.length + ' revealed';
     applyPixelation();
+    renderSharpness();
     updateHintBtn();
+    updateWorth();
+  }
+
+  // Only the newest hint is announced - the list itself is rebuilt on
+  // every reveal, and re-reading four locked rows each time is noise.
+  function announceHint() {
+    if (!hints[shown - 1]) return;
+    el('mysteryHintSay').textContent = 'Hint ' + shown + ': ' + hints[shown - 1];
+  }
+
+  // The meter under the photo: one segment per step of PIXEL_WIDTH_STEPS,
+  // filled as far as the photo has sharpened.
+  function renderSharpness() {
+    const total = PIXEL_WIDTH_STEPS.length;
+    const level = Math.min(shown, total);
+    el('mysterySharp').textContent = resolved ? 'Full photo' : 'Sharpness ' + level + ' / ' + total;
+    el('mysteryLadderNote').textContent = resolved ? 'Revealed' : level < total ? 'Sharper at hint ' + (level + 1) : 'Fully sharp';
+    const ladder = el('mysteryLadder');
+    if (ladder.children.length !== total) {
+      ladder.innerHTML = '';
+      for (let i = 0; i < total; i++) ladder.appendChild(span('ma-ladder-seg'));
+    }
+    for (let i = 0; i < total; i++) ladder.children[i].classList.toggle('is-on', resolved || i < level);
+  }
+
+  function roundTagText() {
+    if (roundMode === 'daily') {
+      return archiveDate ? 'Past day · Day ' + dailyNumber(archiveDate) : 'Daily · Day ' + dailyNumber(todayStr());
+    }
+    return 'Round ' + roundNo + ' · ' + bucketOf(roundFilter).label;
+  }
+
+  // The fourth stat tile: what a right answer is worth right now (before
+  // any speed bonus), and once resolved, what the round actually scored.
+  function updateWorth() {
+    if (resolved) {
+      el('mysteryWorthLabel').textContent = lastPts > 0 ? 'You scored' : 'Scored';
+      el('mysteryWorth').textContent = lastPts == null ? '–' : String(lastPts);
+    } else {
+      el('mysteryWorthLabel').textContent = 'On the line';
+      el('mysteryWorth').textContent = String(pointsForHints(shown));
+    }
+  }
+
+  function renderWrong() {
+    const list = el('mysteryWrong');
+    list.innerHTML = '';
+    for (const w of wrongGuesses) {
+      const li = document.createElement('li');
+      li.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+      li.appendChild(span('ma-wrong-name', w.name));
+      li.appendChild(span('ma-wrong-note', 'Unlocked hint ' + Math.min(w.at + 1, hints.length)));
+      list.appendChild(li);
+    }
+    el('mysteryWrongWrap').hidden = wrongGuesses.length === 0;
+  }
+
+  function setFeedback(text, tone) {
+    const f = el('mysteryFeedback');
+    f.textContent = text;
+    f.className = 'ma-feedback' + (tone ? ' ' + tone : '');
   }
 
   function updateStats() {
@@ -414,7 +531,7 @@
       el('mysteryStreak').textContent = String(streak);
       el('mysteryBest').textContent = String(getBest());
     }
-    el('mysteryScore').textContent = String(lifetimeScore);
+    el('mysteryScore').textContent = lifetimeScore.toLocaleString('en-GB');
     // Orient before adding personality: a first-timer otherwise lands on
     // three unexplained "0" tiles with no idea Daily is one shared puzzle.
     // Shown once, ever, and only pre-round - once a round's resolved they
@@ -556,15 +673,20 @@
     const wasArmed = giveUpArmed;
     giveUpArmed = false;
     if (giveUpArmTimer) { clearTimeout(giveUpArmTimer); giveUpArmTimer = null; }
-    el('mysteryGiveUp').textContent = GIVEUP_LABEL;
+    el('mysteryGiveUpLabel').textContent = GIVEUP_LABEL;
+    el('mysteryGiveUp').classList.remove('is-armed');
     // Only clear the feedback line if it was actually announcing the
     // armed state - never stomp some other message (a fresh round already
     // clears it separately, and a confirmed give-up is about to overwrite
     // it via endRound() anyway).
-    if (wasArmed) {
-      el('mysteryFeedback').textContent = '';
-      el('mysteryFeedback').className = 'mystery-feedback';
-    }
+    if (wasArmed) setFeedback('');
+  }
+
+  // preventScroll: a new round focuses the guess box, and on a phone
+  // that box sits below the photo and the clues - scrolling to it would
+  // push the very things you need to read off the top of the screen.
+  function focusGuess() {
+    el('mysteryGuess').focus({ preventScroll: true });
   }
 
   // forArchiveDate, when given, starts a Daily round for that past date
@@ -578,32 +700,37 @@
     const bucket = forMode === 'endless' ? bucketOf(filter) : null;
     const skipCategory = !!(bucket && bucket.cats && bucket.cats.length === 1);
     target = forMode === 'endless' ? pickEndless() : pickDailyFor(archiveDate || todayStr());
+    if (forMode === 'endless') { roundNo += 1; roundFilter = filter; }
     hints = GameCore.hintsFor(target, skipCategory);
     shown = 1;
+    wrongGuesses = [];
+    lastPts = null;
+    roundWon = false;
     roundStart = Date.now();
     el('mysteryGuess').value = '';
-    el('mysteryForm').hidden = false;
-    el('mysteryGiveUp').hidden = false;
-    el('mysteryFeedback').textContent = '';
-    el('mysteryFeedback').className = 'mystery-feedback';
+    el('mysteryPlaying').hidden = false;
+    setFeedback('');
+    renderWrong();
     el('mysteryResult').hidden = true;
     el('mysteryNext').hidden = false;
     el('mysteryArchiveResultBack').hidden = true;
-    el('mysteryResultNote').hidden = true;
     el('mysteryCountdown').hidden = true;
     el('mysteryShare').hidden = true;
+    el('mysteryCopied').textContent = '';
     el('mysteryCelebrate').innerHTML = '';
-    for (const a of document.querySelectorAll('.mystery-stat-arrow')) { a.className = 'mystery-stat-arrow'; a.innerHTML = ''; }
+    for (const a of document.querySelectorAll('#mysteryview .mystery-stat-arrow')) { a.className = 'mystery-stat-arrow'; a.innerHTML = ''; }
+    el('mysteryRoundTag').textContent = roundTagText();
     resetGiveUpArm();
     hideToast();
     clearCountdown();
     closeArchive();
-    renderHints();
     resetHero();
+    renderHints();
+    announceHint();
     dealHero();
     loadPhoto(target);
     updateStats();
-    el('mysteryGuess').focus();
+    focusGuess();
   }
 
   // Only ever populated on a genuine, just-happened win (see the
@@ -637,19 +764,31 @@
     }
   }
 
-  function showResultCard(won, lostDailyStreak, celebrateWin, endlessStreakForShare) {
+  const solvedIn = (n) => 'Solved in ' + n + (n === 1 ? ' hint.' : ' hints.');
+
+  // endlessNote: what Endless says under the banner - the loss line
+  // naming the streak that just went, or nothing special on a win.
+  function showResultCard(won, lostDailyStreak, celebrateWin, endlessStreakForShare, endlessNote) {
     resolved = true;
-    applyPixelation();
-    updateHintBtn();
+    roundWon = won;
+    el('mysteryPlaying').hidden = true;
+    renderHints();
     revealHero();
+    el('mysteryBanner').classList.toggle('is-won', won);
+    el('mysteryResultKicker').textContent = won ? 'You got it' : 'It was';
     el('mysteryAnswerEmoji').textContent = target.e || '🐾';
     el('mysteryAnswerName').textContent = target.n;
+    const pts = el('mysteryResultPts');
+    pts.hidden = !(won && lastPts > 0);
+    pts.textContent = '+' + lastPts;
+    el('mysteryFacts').href = '/animals/' + GameCore.slugify(target.n);
     if (celebrateWin) celebrate(); else el('mysteryCelebrate').innerHTML = '';
     el('mysteryResult').hidden = false;
     el('mysteryResult').classList.remove('anim-rise');
     void el('mysteryResult').offsetWidth;
     el('mysteryResult').classList.add('anim-rise');
 
+    const note = el('mysteryResultNote');
     if (roundMode === 'daily' && archiveDate) {
       // A past day, not today - no countdown (there's nothing to wait
       // for), no share (the grid's day number would read as today's),
@@ -657,57 +796,45 @@
       // is the one state where its stand-in takes over instead.
       el('mysteryNext').hidden = true;
       el('mysteryArchiveResultBack').hidden = false;
-      const note = el('mysteryResultNote');
-      note.hidden = false;
-      note.textContent = 'Day ' + dailyNumber(archiveDate) + ' — ' +
-        (won ? 'solved in ' + shown + (shown === 1 ? ' hint.' : ' hints.') : 'missed it.');
+      note.textContent = 'Day ' + dailyNumber(archiveDate) + ': ' +
+        (won ? solvedIn(shown).toLowerCase() : 'missed it.');
       el('mysteryCountdown').hidden = true;
       el('mysteryShare').hidden = true;
     } else if (roundMode === 'daily') {
       el('mysteryNext').hidden = true;
       el('mysteryArchiveResultBack').hidden = true;
-      const note = el('mysteryResultNote');
-      note.hidden = false;
       note.textContent = won
-        ? 'Solved in ' + shown + (shown === 1 ? ' hint.' : ' hints.')
-        : (lostDailyStreak >= 3 ? 'Streak of ' + lostDailyStreak + ' gone — see you tomorrow.' : 'Streak reset — see you tomorrow.');
+        ? solvedIn(shown)
+        : (lostDailyStreak >= 3 ? 'Streak of ' + lostDailyStreak + ' gone. See you tomorrow.' : 'Streak reset. See you tomorrow.');
       el('mysteryCountdown').hidden = false;
       startCountdown();
       renderDailyShare();
     } else {
       el('mysteryNext').hidden = false;
-      el('mysteryResultNote').hidden = true;
+      el('mysteryArchiveResultBack').hidden = true;
+      note.textContent = won ? solvedIn(shown) : (endlessNote || '');
       el('mysteryCountdown').hidden = true;
       renderEndlessShare(endlessStreakForShare);
     }
-  }
-
-  // The two extremes of a win are the ones worth naming - solved cold on
-  // the first hint, or dragged out to the very last one. Everything in
-  // between stays the plain, steady line: not every win needs a line
-  // written for it, or the ones that do stop landing.
-  function winFeedback(pts) {
-    if (shown === 1) return 'First hint. Nailed it. +' + pts + ' points.';
-    if (shown === hints.length) return 'Right at the wire — +' + pts + ' points.';
-    return 'Got it — +' + pts + ' points.';
+    note.hidden = !note.textContent;
   }
 
   // Only a streak that was actually something says so by name on the way
   // out - a streak of 0 or 1 has nothing to mourn, so the plain line
   // covers it.
   function lossFeedback(lostStreak) {
-    return lostStreak >= 3 ? "That's the one. Streak of " + lostStreak + ' gone.' : "That's the one — streak reset.";
+    return lostStreak >= 3 ? 'Streak of ' + lostStreak + ' gone.' : lostStreak > 0 ? 'Streak reset.' : '';
   }
 
   function endRound(won) {
     resolved = true;
-    el('mysteryForm').hidden = true;
-    el('mysteryGiveUp').hidden = true;
     sfx(won ? 'win' : 'lose');
 
     const pts = won ? pointsForHints(shown) + timeBonus(Date.now() - roundStart) : 0;
+    lastPts = pts;
     let lostDailyStreak = null;
     let lostStreakAmount = 0; // > 0 means a real streak just reset to 0 - worth a down-arrow
+    let endlessNote = '';
 
     if (roundMode === 'endless') {
       if (won) {
@@ -716,13 +843,10 @@
         setScore(lifetimeScore);
         if (streak > getBest()) setBest(streak);
         maybeToast(streak);
-        el('mysteryFeedback').textContent = winFeedback(pts);
-        el('mysteryFeedback').className = 'mystery-feedback good';
       } else {
         lostStreakAmount = streak;
         streak = 0;
-        el('mysteryFeedback').textContent = lossFeedback(lostStreakAmount);
-        el('mysteryFeedback').className = 'mystery-feedback';
+        endlessNote = lossFeedback(lostStreakAmount);
       }
     } else if (archiveDate) {
       // An archived day: real score either way, but the day streak is
@@ -731,11 +855,6 @@
       if (won) {
         lifetimeScore += pts;
         setScore(lifetimeScore);
-        el('mysteryFeedback').textContent = winFeedback(pts);
-        el('mysteryFeedback').className = 'mystery-feedback good';
-      } else {
-        el('mysteryFeedback').textContent = "That's the one.";
-        el('mysteryFeedback').className = 'mystery-feedback';
       }
       setArchiveEntry(archiveDate, { won, hintsShown: shown, hintsTotal: hints.length, animalName: target.n });
     } else {
@@ -746,17 +865,13 @@
         lifetimeScore += pts;
         setScore(lifetimeScore);
         maybeToast(dstreak);
-        el('mysteryFeedback').textContent = winFeedback(pts);
-        el('mysteryFeedback').className = 'mystery-feedback good';
       } else {
         lostStreakAmount = lostDailyStreak || 0;
-        el('mysteryFeedback').textContent = "That's the one.";
-        el('mysteryFeedback').className = 'mystery-feedback';
       }
       setDailyStreak(dstreak);
       if (dstreak > getDailyBest()) setDailyBest(dstreak);
       setDailyDate(today);
-      setDailyResult({ date: today, won, hintsShown: shown, hintsTotal: hints.length, animalName: target.n });
+      setDailyResult({ date: today, won, hintsShown: shown, hintsTotal: hints.length, animalName: target.n, pts });
       setDailyIntroSeen();
     }
 
@@ -767,7 +882,7 @@
     } else if (lostStreakAmount > 0) {
       animateStatChange('mysteryStreak', 'down');
     }
-    showResultCard(won, lostDailyStreak, won, won ? streak : lostStreakAmount);
+    showResultCard(won, lostDailyStreak, won, won ? streak : lostStreakAmount, endlessNote);
   }
 
   // Reconstructs today's already-played Daily round from storage - the
@@ -778,24 +893,27 @@
     archiveDate = null; // this is always today's own result, never an archived day's
     target = ANIMALS.find((a) => a.n === r.animalName) || null;
     resolved = true;
+    // Older saved results predate the stored score - '–' then, rather
+    // than a recomputed number missing whatever speed bonus it earned.
+    lastPts = typeof r.pts === 'number' ? r.pts : (r.won ? null : 0);
+    wrongGuesses = [];
     setDailyIntroSeen();
-    el('mysteryForm').hidden = true;
-    el('mysteryGiveUp').hidden = true;
-    el('mysteryFeedback').textContent = '';
+    el('mysteryPlaying').hidden = true;
+    setFeedback('');
     el('mysteryArchiveResultBack').hidden = true;
+    el('mysteryRoundTag').textContent = roundTagText();
     closeArchive();
     resetHero();
     dealHero();
-    if (target) {
-      hints = GameCore.hintsFor(target, false);
-      shown = hints.length;
-      renderHints();
-      loadPhoto(target);
-    } else {
-      hints = [];
-      shown = 0;
-      el('mysteryHints').innerHTML = '';
+    if (!target) {
+      // The saved animal no longer exists (animals.js changed since) -
+      // nothing to reconstruct, so start today's round fresh instead.
+      newRound('daily');
+      return;
     }
+    hints = GameCore.hintsFor(target, false);
+    shown = Math.min(Math.max(r.hintsShown || hints.length, 1), hints.length);
+    loadPhoto(target);
     updateStats();
     // Never celebrates here even if r.won - this is reopening an already-
     // settled day, not the moment of winning it, and replaying the burst
@@ -833,18 +951,17 @@
     renderArchiveList();
     clearCountdown();
     el('mysteryRound').hidden = true;
-    // The hero photo sits outside #mysteryRound (a DOM sibling, not a
-    // child - it's shared with the desktop two-column layout's own
-    // grid-area), so toggling that alone leaves today's half-pixelated
-    // photo sitting oddly above a list of other days. Hidden along with
-    // the round it belongs to instead.
-    el('mysteryHero').hidden = true;
+    // The photo column belongs to the round, not the page - left up, it
+    // would sit today's half-pixelated photo beside a list of other days.
+    el('mysterySide').hidden = true;
+    el('mysteryview').classList.add('is-archive');
     el('mysteryArchive').hidden = false;
   }
   function closeArchive() {
     el('mysteryArchive').hidden = true;
     el('mysteryRound').hidden = false;
-    el('mysteryHero').hidden = false;
+    el('mysterySide').hidden = false;
+    el('mysteryview').classList.remove('is-archive');
   }
 
   function enterDaily() {
@@ -868,7 +985,9 @@
   function updateTabsUI() {
     el('mysteryTabDaily').setAttribute('aria-pressed', String(mode === 'daily'));
     el('mysteryTabEndless').setAttribute('aria-pressed', String(mode === 'endless'));
-    el('mysteryFilters').hidden = mode !== 'endless';
+    el('mysteryDayTag').textContent = 'Day ' + dailyNumber(todayStr());
+    el('mysteryFilterWrap').hidden = mode !== 'endless';
+    el('mysteryDailyWrap').hidden = mode !== 'daily';
     // Only once a second day genuinely exists to look back on - on Day 1
     // itself the archive would just be an empty list.
     el('mysteryArchiveOpen').hidden = mode !== 'daily' || dailyNumber(todayStr()) <= 1;
@@ -896,7 +1015,7 @@
     for (const b of CATEGORY_BUCKETS) {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'mystery-chip';
+      btn.className = 'ma-chip';
       btn.textContent = b.label;
       btn.setAttribute('aria-pressed', String(b.key === filter));
       btn.addEventListener('click', () => {
@@ -917,6 +1036,7 @@
     if (resolved || shown >= hints.length) return false;
     shown += 1;
     renderHints();
+    announceHint();
     return true;
   }
 
@@ -930,7 +1050,7 @@
     const left = hints.length - shown;
     btn.hidden = resolved || left <= 0;
     if (left <= 0) return; // about to be hidden - don't leave "(0 left)" behind it
-    btn.textContent = left === 1 ? 'Last hint' : 'Next hint (' + left + ' left)';
+    el('mysteryHintLabel').textContent = left === 1 ? 'Last hint' : 'Next hint (' + left + ' left)';
   }
 
   function submitGuess(e) {
@@ -951,11 +1071,13 @@
     }
 
     sfx('wrong');
+    wrongGuesses.push({ name: val.trim().charAt(0).toUpperCase() + val.trim().slice(1), at: shown });
+    renderWrong();
+    resetGiveUpArm();
     revealHint();
-    el('mysteryFeedback').textContent = 'Not quite — another hint.';
-    el('mysteryFeedback').className = 'mystery-feedback';
+    setFeedback('Not quite. Here’s another hint.');
     el('mysteryGuess').value = '';
-    el('mysteryGuess').focus();
+    focusGuess();
   }
 
   /* -- View wiring ----------------------------------------------------- */
@@ -988,9 +1110,8 @@
     if (!revealHint()) return;
     sfx('hint');
     resetGiveUpArm();
-    el('mysteryFeedback').textContent = '';
-    el('mysteryFeedback').className = 'mystery-feedback';
-    el('mysteryGuess').focus();
+    setFeedback('');
+    focusGuess();
   });
 
   // A wrong guess only costs a hint - giving up on Daily forfeits the
@@ -1005,10 +1126,10 @@
     if (roundMode === 'daily' && !giveUpArmed) {
       giveUpArmed = true;
       sfx('tap');
-      el('mysteryGiveUp').textContent = GIVEUP_CONFIRM_LABEL;
+      el('mysteryGiveUpLabel').textContent = GIVEUP_CONFIRM_LABEL;
+      el('mysteryGiveUp').classList.add('is-armed');
       pulse('mysteryGiveUp');
-      el('mysteryFeedback').textContent = "Tap again to confirm — you won't get another animal today.";
-      el('mysteryFeedback').className = 'mystery-feedback';
+      setFeedback("Tap again to confirm. You won't get another animal today.", 'warn');
       giveUpArmTimer = setTimeout(resetGiveUpArm, 4000);
       return;
     }
