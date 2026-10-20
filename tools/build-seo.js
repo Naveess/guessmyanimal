@@ -189,9 +189,11 @@ for (const a of ANIMALS) {
   // The direct answers first - the dangerous question the title asks,
   // then what it eats, when it's awake, pets and plates - then as much
   // of our own reviewed overview as fits.
-  let description = leadAnswers(a, slug);
+  // content/names.json can replace the whole thing where the template
+  // reads badly (the human page).
+  let description = names.description(slug) || leadAnswers(a, slug);
   const rest = c && c.ov ? c.ov : a.f;
-  for (const s of rest.split(/(?<=[.!?])\s+/)) {
+  for (const s of names.description(slug) ? [] : rest.split(/(?<=[.!?])\s+/)) {
     if (description.length + 1 + s.length > MAX_DESC) break;
     description += ' ' + s;
   }

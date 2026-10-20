@@ -177,3 +177,27 @@ traffic spike the same day it happens, the same "write it down" habit
 the growth plan's own "What to watch" section already recommends —
 otherwise a month from now it's unclear whether the good Tuesday was the
 subreddit or the Facebook group.
+
+## Search: data gaps from the 2026-10-20 Search Console pass
+
+Compare and animal pages now lead with answers built only from our data
+(see `tools/build-compare.js`, `tools/names.js`). These gaps stop them
+answering searches people actually make. Each one needs sourced content
+drafted, reviewed and approved the normal way. Never fill them by guessing.
+
+- **No length or weight** for beluga, gibbon, monkey, buzzard, hawk or
+  pony (`len`/`wt` in `content/animals/`). Without them, "narwhal vs
+  beluga size" can't be answered, and those compare pages fall back to
+  the coarse size scale.
+- **Tigon lifespan** (`lf: "15–20 years"` in animals.js) has no source:
+  its own review note says the article doesn't give one. Find a source
+  or ask the owner before changing the answer.
+- **Cow vs yak size.** The game scale says cow "large" and yak "huge",
+  which matches bison, buffalo and moose. But the cow's only weight
+  figure is for Herefords (bulls 1,000–1,200 kg), which outweigh yaks
+  (300–1,000 kg). For now the compare page doesn't claim either is
+  bigger once both have weights. A general cattle weight in
+  `content/animals/cow.json` would settle it.
+- **More "Common questions"** (`content/compare.json`). Only the 11 pairs
+  people were seen searching have them. Add more as Search Console shows
+  real "is a X a Y" queries, each answer naming its source fields.

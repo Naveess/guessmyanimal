@@ -33,5 +33,8 @@
   "bird-of-paradise": { "pl": "birds of paradise" },
   "nudibranch": { "pl": "nudibranchs" },
   "dingo": { "pl": "dingoes" },
-  "human": { "pl": "humans" }
+  "human": {
+    "pl": "humans",
+    "desc": "The most abundant and widespread primate: an upright-walking ape with a large, complex brain. Humans arose in Africa about 300,000 years ago."
+  }
 }

@@ -165,7 +165,11 @@ const lowerFirst = (s) => s.charAt(0).toLowerCase() + s.slice(1);
 const DATA_DIMS = [
   ['Parents', 100, /father|mother|cross|parent/i, (A, B) => isHybrid(A.c) || isHybrid(B.c)],
   ['Size', 45, /\b(bigger|smaller|larger|size|heav|weigh|tall|hands|small|big|huge|tiny|long)/i,
-    (A, B, tip) => A.x.sz !== B.x.sz || /\b(bigger|smaller|larger|heavier|taller|hands)\b/i.test(tip)],
+    // The coarse size scale alone decides it only when there are no
+    // measured weights for both: a Hereford bull outweighs a yak, whatever
+    // "large" and "huge" say.
+    (A, B, tip) => /\b(bigger|smaller|larger|heavier|taller|hands)\b/i.test(tip) ||
+      (A.x.sz !== B.x.sz && !(A.c && A.c.wt && B.c && B.c.wt))],
   ['Flight', 55, /\bfl(y|ies|ight)\b|flightless/i, (A, B) => A.x.fl !== B.x.fl],
   ['Danger', 40, /venom|danger|bite|sting|kill/i, (A, B) => A.x.dg !== B.x.dg],
   ['Diet', 35, /\beat|diet|prey|hunt|carrion|scaveng|graz|insects|nectar|blood/i, (A, B) => A.x.d !== B.x.d],
@@ -211,11 +215,15 @@ function differences(p, ca, cb) {
 // or null when it can't be said from the data alone.
 function dataLine(key, a, ca, b, cb) {
   const pair = (fa, fb) => (fa === fb ? null : `${capFirst(the(a))} ${fa}; ${the(b)} ${fb}.`);
-  const plain = (v) => v && !/[:()]/.test(firstClause(v));
+  // Seasonal figures ("about 3 kg in March") need the context the table gives.
+  const plain = (v) => v && !/[:()]/.test(firstClause(v)) &&
+    !/\bin (spring|summer|autumn|winter|January|February|March|April|May|June|July|August|September|October|November|December)\b/.test(firstClause(v));
   switch (key) {
     case 'Size':
       if (ca && cb && plain(ca.wt) && plain(cb.wt)) return `Weight: ${midSentence(a.n)} ${lowerFirst(firstClause(ca.wt))}; ${midSentence(b.n)} ${lowerFirst(firstClause(cb.wt))}.`;
       if (ca && cb && plain(ca.len) && plain(cb.len)) return `Length: ${midSentence(a.n)} ${lowerFirst(firstClause(ca.len))}; ${midSentence(b.n)} ${lowerFirst(firstClause(cb.len))}.`;
+      // Measured weights the sentence can't use outrank the size scale.
+      if ((ca && ca.wt) || (cb && cb.wt)) return null;
       return a.sz !== b.sz ? pair(`is ${SIZE_WORD[a.sz]}`, `is ${SIZE_WORD[b.sz]}`) : null;
     case 'Flight': return pair(FLY_WORD(a), FLY_WORD(b));
     case 'Danger': return pair(DANGER_WORD(a), DANGER_WORD(b));

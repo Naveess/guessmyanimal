@@ -7,6 +7,9 @@
  *   q     the whole title question, for a name no rule fits
  *         ("Is Coral Dangerous?")
  *   mass  true for a name used without "a" and with "is" ("coral")
+ *   desc  the whole meta description, for an entry the answer template
+ *         reads badly for ("humans are dangerous to people... not kept
+ *         as pets"); built from its reviewed content, at most 158 chars
  *
  * Used by tools/build-seo.js for the animal pages' titles and
  * descriptions.
@@ -16,7 +19,7 @@ const path = require('path');
 
 const FILE = path.join(__dirname, '..', 'content', 'names.json');
 const OVERRIDES = fs.existsSync(FILE) ? JSON.parse(fs.readFileSync(FILE, 'utf8')) : {};
-const FIELDS = ['pl', 'q', 'mass'];
+const FIELDS = ['pl', 'q', 'mass', 'desc'];
 
 // Words that keep their capital mid-sentence ("Komodo dragons").
 const PROPER = /\b(arctic|african|tasmanian|komodo)\b/g;
@@ -52,6 +55,7 @@ function question(name, slug) {
 }
 
 const isMass = (slug) => !!(OVERRIDES[slug] && OVERRIDES[slug].mass);
+const description = (slug) => (OVERRIDES[slug] && OVERRIDES[slug].desc) || null;
 
 // Shape check, so a typo fails the build instead of shipping.
 function validate(knownSlugs) {
@@ -60,8 +64,9 @@ function validate(knownSlugs) {
     if (!knownSlugs.has(slug)) errs.push(`names.json: "${slug}" is not an animal`);
     for (const k of Object.keys(o)) if (!FIELDS.includes(k)) errs.push(`names.json: ${slug}: unknown field "${k}"`);
     if (o.q != null && (typeof o.q !== 'string' || !o.q.endsWith('?'))) errs.push(`names.json: ${slug}: q must end in "?"`);
+    if (o.desc != null && (typeof o.desc !== 'string' || o.desc.length > 158)) errs.push(`names.json: ${slug}: desc must be at most 158 chars`);
   }
   return errs;
 }
 
-module.exports = { plural, article, question, isMass, titleCase, validate, FILE };
+module.exports = { plural, article, question, isMass, description, titleCase, validate, FILE };
