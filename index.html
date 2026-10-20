@@ -40,16 +40,15 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="/style.css?v=20261020-1">
-<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
+<link rel="stylesheet" href="/style.css?v=20261020-2">
+<!-- chrome:ads-head -->
+<!-- Google AdSense - client ca-pub-2495070274777193. Settings: functions/_shared/ads.json. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
-
 <!-- Funding Choices: the consent message itself is authored in the
-     AdSense dashboard (Privacy & messaging), not in this file - this is
-     just the loader plus the standard "signal a CMP is present" iframe
-     every IAB TCF-compliant site carries, unchanged from Google's own
-     snippet. -->
+     AdSense dashboard (Privacy & messaging), not here - this is just the
+     loader plus the standard "signal a CMP is present" iframe, unchanged
+     from Google's own snippet. -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-2495070274777193?ers=1"></script>
 <script>
 (function() {
@@ -69,6 +68,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   signalGooglefcPresent();
 })();
 </script>
+<!-- /chrome:ads-head -->
 </head>
 <body class="view-home">
 
@@ -327,6 +327,14 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <div class="glance" id="glance" role="list"></div>
     </section>
 
+    <!-- The animal page's one ad slot (tools/ads.js): after the answers,
+         not straight under Quick answers, because on phones the
+         Mystery/Party block follows those. Empty and hidden unless
+         functions/_shared/ads.json switches slots on. -->
+    <!-- chrome:ad-slot-animal -->
+<div class="adslot" data-ad="animal" hidden></div>
+<!-- /chrome:ad-slot-animal -->
+
     <!-- The editorial sections from here down render only when the
          animal's reviewed content has something real for them - see
          sections() in render-data.js. A page has only the sections it
@@ -424,9 +432,6 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       <button class="btn" id="another" type="button">Another animal</button>
     </div>
     <p class="copied" id="copied" aria-live="polite"></p>
-
-    <!-- Reserved now so adding a unit later cannot shove the page around. -->
-    <div class="adslot" id="adslot" aria-hidden="true"></div>
 
     </div>
 

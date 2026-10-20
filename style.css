@@ -1182,17 +1182,20 @@ body:has(#partyview:not([hidden])) .sb-start > #partyLeave { display: grid; }
 .copied:not(:empty) { animation: rise .3s var(--ease) backwards; }
 
 /* -- Ad slot --------------------------------------------------------
-   The frame is reserved so an advert dropped in later cannot shove the
-   page around, but an empty frame reads as a broken component to a real
-   visitor today - so it collapses to nothing until something fills it. */
+   Written by tools/ads.js. Off (the default) it's an empty container
+   with the hidden attribute, and display: block below must not undo
+   that. On, it reserves a display ad's height before the ad arrives so
+   nothing under it jumps, with a quiet label so an ad never passes for
+   part of the answers. No border, no box: it sits on the page ground. */
 
-.adslot {
-  min-height: 100px; margin-top: 26px;
-  display: grid; place-items: center;
-  border: 1px dashed var(--line); border-radius: var(--r-card);
-  color: var(--muted); font-size: 13px; font-weight: 400;
+.adslot { display: block; margin: 26px 0 0; min-height: 280px; }
+.adslot[hidden], .adslot:empty { display: none; }
+.adslot .adslot-label {
+  margin: 0 0 6px; text-align: center; line-height: 1.3;
+  color: var(--muted); font-size: 11.5px; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
 }
-.adslot:empty { display: none; margin-top: 0; }
+.prose .adslot { margin: 30px 0; }
 
 .foot {
   margin-top: 26px; text-align: center;
@@ -1437,6 +1440,9 @@ body:has(#partyview:not([hidden])) .sb-start > #partyLeave { display: grid; }
      qualifies; the rest follow the glance in DOM order. */
   .animalview .groupnote      { order: 2; }
   .animalview .ansec-profile  { order: 6; }
+  /* Between the glance and the profile, in DOM order: two sections
+     clear of the play block (order 4). See tools/ads.js. */
+  .animalview .adslot         { order: 6; }
   .animalview .ansec-confused { order: 8; }
   .animalview .ansec-sources  { order: 9; }
   .animalview .animal-tail   { order: 10; }

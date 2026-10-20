@@ -26,16 +26,15 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="/style.css?v=20261020-1">
-<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
+<link rel="stylesheet" href="/style.css?v=20261020-2">
+<!-- chrome:ads-head -->
+<!-- Google AdSense - client ca-pub-2495070274777193. Settings: functions/_shared/ads.json. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
 <!-- Funding Choices: the consent message itself is authored in the
-     AdSense dashboard (Privacy & messaging), not in this file - this is
-     just the loader plus the standard "signal a CMP is present" iframe
-     every IAB TCF-compliant site carries, unchanged from Google's own
-     snippet. The message itself still needs publishing once, in AdSense
-     under Privacy & messaging - this loader alone shows nothing. -->
+     AdSense dashboard (Privacy & messaging), not here - this is just the
+     loader plus the standard "signal a CMP is present" iframe, unchanged
+     from Google's own snippet. -->
 <script async src="https://fundingchoicesmessages.google.com/i/pub-2495070274777193?ers=1"></script>
 <script>
 (function() {
@@ -55,6 +54,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   signalGooglefcPresent();
 })();
 </script>
+<!-- /chrome:ads-head -->
 </head>
 <body class="view-page">
 
@@ -144,9 +144,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     be attached to even if it were:</p>
 
   <ul class="ticks">
-    <li>Your theme choice (light, dark, or system)</li>
-    <li>Mystery Animal progress - streaks, best score, which filter you last used</li>
+    <li>Your theme choice (light, dark, or system), and whether sound is on</li>
+    <li>The last few animals you looked up, so the next look-up is a tap</li>
+    <li>Mystery Animal progress - streaks, best score, your Daily results, which filter you last used</li>
     <li>Whether you've seen the Daily intro before</li>
+    <li>For Party Mode and stream mode: the name and icon you picked, and the
+      code of a room you're hosting or have joined, so a refresh puts you
+      back in the game rather than out of it</li>
   </ul>
 
   <p>If you send a problem report, what you typed and which animal it was
@@ -180,9 +184,11 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <p>It asks Twitch for no permissions at all. The site reads back which
     channel is yours, once, tells Twitch to revoke the access key immediately,
     and keeps nothing from the exchange — there's no account to come back to.
-    A short-lived signed cookie (15 minutes) is the only thing that outlives
-    the request, and it exists purely so a stream can't be started under
-    someone else's channel name; it's deleted the moment you go live or
+    Two short-lived cookies are involved, and neither identifies you. While
+    you sign in, one holds a random value for up to 5 minutes, so nobody can
+    finish a sign-in you didn't start. After it, a signed cookie (15
+    minutes) exists purely so a stream can't be started under someone
+    else's channel name; it's deleted the moment you go live or
     disconnect. Twitch's own authorization screen may still say this app can
     see your email address — that's <a href="https://github.com/twitchdev/issues/issues/808" target="_blank" rel="noopener">a
     known issue on Twitch's side</a> that shows up even for apps asking for
@@ -193,15 +199,30 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   <h2>What the ads set</h2>
 
-  <p>The site runs Google AdSense, which uses its own cookies to serve and
-    measure ads. That's Google's activity on Google's terms, not something
-    this site controls - their <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">ad
-    privacy policy</a> covers what it involves and what choices you have
-    over it.</p>
+  <p>The site is free because it shows ads, served by Google AdSense. Apart
+    from the two Twitch sign-in cookies above, the ads are the only thing
+    here that uses cookies, and those cookies are Google's, not this
+    site's.</p>
 
-  <p>If you're visiting from the UK or the EEA, you'll be shown a consent
-    message before any personalised ad loads, and you can change your
-    choice at any time with the link below.</p>
+  <p>Google and its partners (other ad companies, which Google calls
+    third-party vendors) may use cookies to serve ads based on your visits
+    to this site and to other sites, and to measure how those ads perform.
+    That's Google's activity on Google's terms: this site never sees or
+    stores what those cookies collect. Google's
+    <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">advertising
+    policy</a> explains what it involves.</p>
+
+  <p>You can turn off personalised ads from Google at any time in
+    <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google's
+    Ads Settings</a>. You'll still see ads, just not ones based on your
+    browsing. To opt out of personalised ads from other ad companies, visit
+    <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info</a>,
+    or <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener">youronlinechoices.eu</a>
+    in Europe.</p>
+
+  <p>If you're visiting from the UK, the EEA or Switzerland, you're asked
+    for your consent before ad cookies are used for personalised ads, and
+    you can change your choice at any time with the link below.</p>
 
   <!-- Starts hidden and only ever revealed once window.googlefc genuinely
        exists (see the script below) - an unconfigured message means the

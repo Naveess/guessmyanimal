@@ -1,0 +1,12 @@
+{
+  "client": "ca-pub-2495070274777193",
+  "script": true,
+  "verify": false,
+  "slots": false,
+  "units": {
+    "animal": "",
+    "compare-mid": "",
+    "compare-end": ""
+  },
+  "adsTxt": "google.com, pub-2495070274777193, DIRECT, f08c47fec0942fa0"
+}

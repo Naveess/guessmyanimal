@@ -33,6 +33,7 @@ const { creditHtml } = require('../photo-credit.js');
 const { slugify } = require('./content.js');
 const { page, prune, escapeHtml } = require('./build-collections.js');
 const jsonld = require('./jsonld.js');
+const { adSlot } = require('./ads.js');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = require('../functions/_shared/site.json').url; // functions/_shared/site.json
@@ -395,11 +396,15 @@ ${qaHtml}
   <p>${escapeHtml(summary)}</p>
   ${table(`Quick answers for the ${midSentence(a.n)} and the ${midSentence(b.n)}`, a, b, ans)}
 
+  ${adSlot('compare-mid')}
+
   <h2>At a glance</h2>
   ${table(`At a glance: the ${midSentence(a.n)} and the ${midSentence(b.n)}`, a, b, glance)}
 
   <h2>About each</h2>
 ${about}
+
+  ${adSlot('compare-end')}
 ${srcItems ? `
   <h2>Sources</h2>
   <ol class="src-list">
