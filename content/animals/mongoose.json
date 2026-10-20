@@ -1,11 +1,13 @@
 {
   "sci": "Herpestidae",
-  "ov": "Small carnivores of Africa, Asia and southern Europe, 34 species in two subfamilies. A large introduced population lives in Hawaii.",
+  "ov": "Small carnivores of Africa, Asia and southern Europe, 34 species in two subfamilies. A large introduced population lives in Hawaii. Most have long faces and bodies, short legs, small rounded ears, long tapering tails and a grizzled coat.",
   "hb": [
     "grassland",
     "scrub",
     "forest"
   ],
+  "len": "24–58 cm (head and body)",
+  "wt": "320 g to 5 kg",
   "rg": "Africa, Asia and southern Europe; introduced to Hawaii.",
   "df": "Mainly insects, rodents, reptiles and birds.",
   "cf": [
@@ -15,7 +17,8 @@
     }
   ],
   "fx": [
-    "Its name comes from Indian languages, altered to end in “-goose” by folk etymology."
+    "Its name comes from Indian languages, altered to end in “-goose” by folk etymology.",
+    "A change in one of their nerve receptors stops snake venom’s nerve toxins from binding, protecting them from it."
   ],
   "src": [
     {
@@ -26,7 +29,9 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "len",
+        "wt"
       ]
     },
     {
@@ -37,6 +42,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. The existing fact is half confirmed: mongooses have mutated nerve receptors that stop snake venom binding, but \"fast enough to fight one and win\" isn’t in the article. Suggested wording: \"Its nerve receptors are mutated so that cobra venom can’t bind to them.\" REGION: the source adds southern Europe. Consider adding Europe. RESOLVED (owner: approve all): Europe added to r; fact rewritten as suggested."
+  "rv": "2026-10-20",
+  "notes": "Group entry. The existing fact is half confirmed: mongooses have mutated nerve receptors that stop snake venom binding, but \"fast enough to fight one and win\" isn’t in the article. Suggested wording: \"Its nerve receptors are mutated so that cobra venom can’t bind to them.\" REGION: the source adds southern Europe. Consider adding Europe. RESOLVED (owner: approve all): Europe added to r; fact rewritten as suggested. THIN-PAGE ADDITIONS 2026-10-20 (ov, len, wt, fx), all from Wikipedia: Mongoose."
 }
