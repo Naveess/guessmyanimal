@@ -75,6 +75,9 @@ export async function renderAnimal(context, slug, entry) {
     .on('link[rel="canonical"]', new SetAttr('href', canonical))
     .on('body', new SetAttr('class', 'view-animal'))
     .on('#home', new SetAttr('hidden', ''))
+    // The homepage's "What this is" prose: it belongs to / alone, and
+    // hidden on 438 animal pages it would only be duplicate text.
+    .on('#homeMore', new Remove())
     // The splash's wordmark is the homepage's <h1>; on an animal page it's
     // hidden, and the animal's name is the one real <h1>. Same for Party's
     // lobby headline, hidden in its own view on this page. Both are

@@ -538,6 +538,31 @@ body.view-home #q { font-size: 17px; }
 }
 .home-links a:hover { color: var(--home-ink); }
 
+/* What the site is, under the splash (#homeMore in index.html). Same
+   ground and ink pair as the splash and its footer, so the homepage
+   stays one surface: no card, no border, just the prose column. Hidden
+   in every other view, which all share this document. */
+.home-more { display: none; }
+body.view-home .home-more {
+  display: block;
+  padding-top: 8px; padding-bottom: 0;
+  color: var(--home-ink);
+}
+body.view-home .home-more a { color: var(--home-ink); }
+.home-more-list {
+  margin: 14px 0 0; padding-left: 20px; max-width: 62ch;
+  display: flex; flex-direction: column; gap: 8px;
+  font-size: 16.5px; line-height: 1.5;
+}
+.home-more-links {
+  margin: 12px 0 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; column-gap: 18px;
+}
+.home-more-links a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-size: 15px; font-weight: 600;
+}
+
 /* ==================================================================
    SEARCH UNIT  (lives in the hero, then moves into the top bar)
    ================================================================== */

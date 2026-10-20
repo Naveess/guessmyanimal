@@ -27,6 +27,10 @@ function check() {
   const read = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8');
   const META = JSON.parse(read('functions/seo-meta.json'));
   const shell = read('index.html');
+  // What an animal page is built from: the shell minus the homepage's
+  // own prose, which functions/_shared/animal-page.js removes.
+  const animalShell = shell.replace(/<section class="prose home-more"[\s\S]*?<!-- \/home-more -->/, '');
+  if (animalShell === shell) errors.push('index.html: no #homeMore section ending in <!-- /home-more -->');
   const locs = [...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
   // The HTML a crawler gets for a site path, or null if nothing serves it.
@@ -36,7 +40,7 @@ function check() {
       const e = META[m[1]];
       if (!e) return null;
       const c = e.content || {};
-      return shell + e.relatedHtml + (c.confused || '') + (c.lists || '') + (c.group || '');
+      return animalShell + e.relatedHtml + (c.confused || '') + (c.lists || '') + (c.group || '');
     }
     const file = p === '/' ? 'index.html' : p.slice(1) + '.html';
     return fs.existsSync(path.join(ROOT, file)) ? read(file) : null;

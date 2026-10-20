@@ -251,6 +251,67 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   </nav>
 </section>
 
+<!-- What the site is, for anyone who scrolls past the splash, and for a
+     search engine that otherwise finds a search box and three links.
+     Shown only on the homepage view (body.view-home, see style.css);
+     functions/_shared/animal-page.js removes it from animal pages, and
+     tools/check-site.js leaves it out of their links. Keep the end
+     marker: both find the section by it. -->
+<section class="prose home-more" id="homeMore" aria-labelledby="homeMoreTitle">
+  <h2 id="homeMoreTitle">What this is</h2>
+  <p>A cheat sheet for the animal guessing game. One person thinks of an
+    animal, everyone else asks questions that can only be answered yes or
+    no, and the game stops dead the moment the person who picked it isn't
+    sure. Is a hippo dangerous? Is an owl awake at night? Does a platypus
+    lay eggs? (Yes, yes and yes.) Type the animal into the box above and
+    the answers people actually ask for are on one screen.</p>
+
+  <h2>What each animal page answers</h2>
+  <p>Eight quick answers that come up in almost every game: what kind of
+    animal it is, whether it eats meat, whether it's dangerous or
+    domesticated, when it's awake, whether it hibernates, and whether
+    people keep it as a pet or eat it. Then the details that settle the
+    endgame: where in the world it lives, its habitat, colours, size and
+    legs, what it's covered in, whether it lives alone or in groups, how
+    long it lives and whether it lays eggs. Most pages add an overview,
+    what it eats, a few facts and the animals it gets mistaken for.</p>
+
+  <h2>Three ways to play</h2>
+  <ul class="home-more-list">
+    <li><a href="/?mystery=1"><strong>Mystery Animal</strong></a>: a photo,
+      a few hints and one guess at a time. Play Endless, or the Daily, one
+      animal a day that's the same for everyone.</li>
+    <li><a href="/?party=1"><strong>Party Mode</strong></a> (beta): one
+      screen hosts, everyone else joins on their own phone with a QR code
+      or a short code, and whoever names the animal first takes the
+      round.</li>
+    <li><a href="/streamer"><strong>Twitch stream mode</strong></a> (beta):
+      the mystery photo goes on stream and the whole chat plays by typing
+      the animal's name.</li>
+  </ul>
+
+  <h2>Written for this site, checked against sources</h2>
+  <p>Every answer is written for this site rather than pulled from a
+    database, because no database says whether people would eat an animal
+    or keep one. The overviews and notes come from published sources,
+    listed on each page, and nothing goes live until a person has checked
+    it against them. <a href="/how-we-answer">How we answer</a> explains
+    where each line is drawn, and the <a href="/reviewed">review log</a>
+    shows what was checked and when.</p>
+
+  <h2>Good places to start</h2>
+  <ul class="home-more-links">
+    <li><a href="/browse">Every animal, A to Z</a></li>
+    <li><a href="/explore/answer/nocturnal">Nocturnal animals</a></li>
+    <li><a href="/explore/answer/dangerous">Dangerous animals</a></li>
+    <li><a href="/explore/region/africa">Animals of Africa</a></li>
+    <li><a href="/compare/alligator-vs-crocodile">Alligator vs crocodile</a></li>
+    <li><a href="/compare/frog-vs-toad">Frog vs toad</a></li>
+    <li><a href="/compare/butterfly-vs-moth">Butterfly vs moth</a></li>
+  </ul>
+</section>
+<!-- /home-more -->
+
 <!-- ============================================================
      ANIMAL. Photo card first, then the answers, with more photos
      folded in between the sections as you scroll.
