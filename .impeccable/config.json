@@ -255,6 +255,24 @@
         ],
         "createdAt": "2026-09-16T12:18:00.300Z",
         "reason": "Agent: computed result of color-mix(in srgb, var(--sun) 40%, var(--line)) (--az-playline, style.css), not a hand-picked literal - both source tokens are already documented. Reviewed in the browse-page critique (2026-09-16)."
+      },
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-20T17:48:52.519Z",
+        "reason": "Claude triage 2026-10-20: the only match is #mysterySharePanel, the Share result popover (floats above its button with --shadow-l, per DESIGN.md Border-Or-Shadow Rule) - a menu, not a card nested in .ma-play; confirmed by removing its class, which clears the finding"
+      },
+      {
+        "rule": "tiny-text",
+        "value": "*",
+        "files": [
+          "reviewed.html"
+        ],
+        "createdAt": "2026-10-20T17:53:16.355Z",
+        "reason": "Claude triage 2026-10-20: only match is .coll-count (.72em inside .prose h2, 20-24px), measured in the browser at 14.4px (320px wide) to 17.28px (1280px); detector assumes a 16px parent"
       }
     ]
   },

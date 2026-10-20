@@ -361,6 +361,10 @@
     fill('profile', 'profileSec', s.profile);
     fill('moreFacts', null, s.moreFacts);
     fill('confused', 'confusedSec', s.confused);
+    fill('lists', 'listsSec', s.lists);
+    // The page title the server sets for this animal (tools/build-seo.js),
+    // carried in its published data.
+    if (c && c._t) document.title = c._t;
     fill('sources', 'sourcesSec', s.sources);
   }
 
@@ -555,10 +559,10 @@
     }
 
     if (!opts || !opts.noPush) push('/animals/' + entry.slug);
-    // Matches the title functions/index.js bakes server-side for this
-    // same animal (tools/build-seo.js), so the tab title doesn't visibly
-    // change out from under someone the moment JS finishes loading.
-    document.title = a.n + ': quick answers and facts | Guess My Animal';
+    // Until its content arrives (at once, when it's embedded in the
+    // page): renderContent() then sets the full title the server bakes
+    // for this animal (tools/build-seo.js), carried in the data as _t.
+    document.title = a.n + ' | Guess My Animal';
     window.scrollTo(0, 0);
     syncThemeColour();
     playEntrance();

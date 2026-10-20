@@ -160,7 +160,7 @@
      look-alikes' side-by-side links (tools/build-compare.js writes a
      page for every cf pair on a published animal). */
   function sections(c, lookup, self) {
-    const out = { group: '', profile: '', confused: '', moreFacts: '', sources: '' };
+    const out = { group: '', profile: '', confused: '', lists: '', moreFacts: '', sources: '' };
     if (!c) return out;
     const link = (slug) => {
       const b = lookup(slug);
@@ -182,13 +182,23 @@
     }
     out.profile = rows.map(([k, v]) => `<div class="prof-row"><dt>${k}</dt><dd>${v}</dd></div>`).join('');
 
-    if (c.cf && c.cf.length) {
-      out.confused = c.cf.map((x) => {
+    // _cf is every compare page this animal is in, worked out by the
+    // build (tools/build-seo.js) - its own look-alikes plus the ones that
+    // named it - so it links to all of them. A draft straight from
+    // content/animals/ has only its own cf.
+    const cf = c._cf || c.cf;
+    if (cf && cf.length) {
+      out.confused = cf.map((x) => {
         const b = lookup(x.slug);
         if (!b) return '';
         return `<li class="conf-item"><a class="conf-name" href="/animals/${esc(x.slug)}"><span class="r-emoji" aria-hidden="true">${b.e || '🐾'}</span>${esc(b.n)}</a><p class="conf-tip">${esc(x.tip)}</p>` +
           (self ? `<a class="conf-cmp" href="/compare/${esc(pairSlug(self, x.slug))}">Compare side by side</a>` : '') + '</li>';
       }).join('');
+    }
+
+    // The /explore lists it's on (_ls, from the build), as plain links.
+    if (c._ls && c._ls.length) {
+      out.lists = c._ls.map((l) => `<a class="related-item" href="/explore/${esc(l.key)}">${esc(l.title)}</a>`).join('');
     }
 
     if (c.fx && c.fx.length) out.moreFacts = c.fx.map((f) => `<p>${esc(f)}</p>`).join('');

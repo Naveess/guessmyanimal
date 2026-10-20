@@ -1,0 +1,157 @@
+{
+  "anteater-vs-pangolin": {
+    "qa": [
+      {
+        "q": "Is a pangolin an anteater?",
+        "a": "No. Pangolins are sometimes called scaly anteaters, but they aren't closely related. Pangolins are covered in scales and live in Asia and sub-Saharan Africa; the four true anteaters have fur and live in the Americas.",
+        "from": ["anteater.cf", "pangolin.cf", "pangolin.ov", "anteater.ov"]
+      }
+    ],
+    "rv": null
+  },
+  "beluga-vs-narwhal": {
+    "qa": [
+      {
+        "q": "Are belugas and narwhals related?",
+        "a": "Yes. They are each other's closest relatives, similarly built and known to interbreed.",
+        "from": ["beluga.ov", "narwhal.ov", "narwhal.cf"]
+      },
+      {
+        "q": "Which one has a tusk?",
+        "a": "Only the narwhal. Males have a spiralled tusk 1.5–3 m long, which is an overgrown left canine tooth.",
+        "from": ["narwhal.ov", "beluga.cf"]
+      }
+    ],
+    "rv": null
+  },
+  "buzzard-vs-hawk": {
+    "qa": [
+      {
+        "q": "Is a buzzard a hawk?",
+        "a": "In the US, yes: there the name hawk also covers the broad-winged buzzards. The “true” hawks are birds such as goshawks and sparrowhawks, woodland hunters with short, broad wings.",
+        "from": ["buzzard.cf", "hawk.ov"]
+      }
+    ],
+    "rv": null
+  },
+  "cow-vs-yak": {
+    "qa": [
+      {
+        "q": "Is a yak a cow?",
+        "a": "Not exactly. The yak is a kind of domesticated cattle, but a separate species (Bos grunniens) from the cow (Bos taurus), adapted to high altitude in the Himalayas and Central Asia.",
+        "from": ["yak.ov", "yak.sci", "cow.sci", "yak.cf"]
+      }
+    ],
+    "rv": null
+  },
+  "eagle-vs-vulture": {
+    "qa": [
+      {
+        "q": "Is a vulture an eagle?",
+        "a": "No. Both are birds of prey, and some vultures belong to the same family as eagles (Accipitridae), but vultures scavenge carrion while eagles mostly hunt live prey.",
+        "from": ["vulture.ov", "vulture.sci", "eagle.sci", "vulture.cf"]
+      },
+      {
+        "q": "Why do vultures have bald heads?",
+        "a": "Many vultures have a bare, unfeathered head that stays clean while they feed on carcasses.",
+        "from": ["vulture.cf"]
+      }
+    ],
+    "rv": null
+  },
+  "fly-vs-mosquito": {
+    "qa": [
+      {
+        "q": "Is a mosquito a fly?",
+        "a": "Yes. Mosquitoes are a family of about 3,600 species of small flies, with a long piercing proboscis and long thin legs.",
+        "from": ["mosquito.ov", "mosquito.cf"]
+      },
+      {
+        "q": "Do flies bite like mosquitoes?",
+        "a": "Most don't: most flies lap up liquids instead. Mosquitoes have a long piercing mouthpart, and the females of many species drink blood, which they need to make eggs.",
+        "from": ["fly.cf", "mosquito.ov"]
+      }
+    ],
+    "rv": null
+  },
+  "gibbon-vs-monkey": {
+    "qa": [
+      {
+        "q": "Is a gibbon a monkey?",
+        "a": "No. A gibbon is a small ape, one of the lesser apes. Like all apes it has no tail, and it swings arm over arm between branches.",
+        "from": ["monkey.cf", "gibbon.ov"]
+      }
+    ],
+    "rv": null
+  },
+  "horse-vs-pony": {
+    "qa": [
+      {
+        "q": "Is a pony a baby horse?",
+        "a": "No. A pony is a small horse, fully grown, not a young one.",
+        "from": ["pony.cf", "pony.f"]
+      },
+      {
+        "q": "What is the difference between a horse and a pony?",
+        "a": "Height, by definition: in most competitions a pony is any horse up to 14.2 hands (147 cm) at the withers when fully grown, and anything taller counts as a horse. Ponies also have thicker coats, shorter legs and heavier bones.",
+        "from": ["pony.ov", "horse.cf"]
+      }
+    ],
+    "rv": null
+  },
+  "kakapo-vs-kea": {
+    "qa": [
+      {
+        "q": "Can a kakapo fly?",
+        "a": "No. The kākāpō is the only flightless parrot. It lives on the ground and is active at night.",
+        "from": ["kakapo.ov"]
+      },
+      {
+        "q": "Is a kea a kakapo?",
+        "a": "No. Both are New Zealand parrots, but they are different species (Nestor notabilis and Strigops habroptilus). The kea flies and is active by day in the South Island's forests and mountains.",
+        "from": ["kea.sci", "kakapo.sci", "kea.ov", "kea.cf"]
+      },
+      {
+        "q": "Which is heavier, a kakapo or a kea?",
+        "a": "The kākāpō, the world's heaviest parrot: males weigh 1.5–3 kg and females 0.95–1.6 kg, while a kea weighs 750–1,000 g.",
+        "from": ["kakapo.ov", "kakapo.wt", "kea.wt"]
+      }
+    ],
+    "rv": null
+  },
+  "liger-vs-tigon": {
+    "qa": [
+      {
+        "q": "Which is bigger, a liger or a tigon?",
+        "a": "The liger. It grows bigger than both its parents, with males up to about 500 kg; a tigon grows no bigger than its parents and is often around 180 kg.",
+        "from": ["liger.ov", "liger.wt", "tigon.ov", "tigon.wt"]
+      },
+      {
+        "q": "Do ligers and tigons live in the wild?",
+        "a": "No, both exist only in captivity. Lion and tiger ranges overlap only in India's Gir National Park, and no ligers have been found there.",
+        "from": ["liger.rg", "tigon.rg"]
+      },
+      {
+        "q": "Can ligers and tigons have cubs?",
+        "a": "The females can. Male ligers and male tigons are sterile, but female ligers and tigons can breed.",
+        "from": ["liger.ov", "tigon.fx"]
+      }
+    ],
+    "rv": null
+  },
+  "warthog-vs-wild-boar": {
+    "qa": [
+      {
+        "q": "Is a warthog a pig?",
+        "a": "Yes. The warthog is a wild pig of the grasslands and savannas of sub-Saharan Africa, though not a domestic pig.",
+        "from": ["warthog.ov", "warthog.cf"]
+      },
+      {
+        "q": "Is a warthog a wild boar?",
+        "a": "No. Both are wild pigs, but the wild boar (Sus scrofa) is the wild pig of Eurasia and North Africa, while the warthog (Phacochoerus africanus) is African and has two pairs of upward-curving tusks.",
+        "from": ["wild-boar.ov", "wild-boar.sci", "warthog.sci", "warthog.cf"]
+      }
+    ],
+    "rv": null
+  }
+}

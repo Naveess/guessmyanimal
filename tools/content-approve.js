@@ -10,6 +10,11 @@
 //
 //   npm run approve -- explore/region/africa explore/answer/dangerous
 //
+// And a compare page's reviewed extras (content/compare.json: its
+// "Common questions" and any title override), by its URL path:
+//
+//   npm run approve -- compare/liger-vs-tigon
+//
 // Then npm run seo to bake it into the pages.
 
 const fs = require('fs');
@@ -39,7 +44,20 @@ if (cols.length) {
   fs.writeFileSync(FILE, JSON.stringify(intros, null, 2) + '\n');
 }
 
-for (const slug of slugs.filter((s) => !s.startsWith('explore/'))) {
+const cmps = slugs.filter((s) => s.startsWith('compare/'));
+if (cmps.length) {
+  const { FILE, loadEntries } = require('./build-compare.js');
+  const entries = loadEntries();
+  for (const arg of cmps) {
+    const key = arg.slice('compare/'.length);
+    if (!entries[key]) { console.error(`${arg}: no "${key}" in content/compare.json`); failed = true; continue; }
+    entries[key].rv = today;
+    console.log(`${arg}: reviewed ${today}`);
+  }
+  fs.writeFileSync(FILE, JSON.stringify(entries, null, 2) + '\n');
+}
+
+for (const slug of slugs.filter((s) => !s.startsWith('explore/') && !s.startsWith('compare/'))) {
   if (!all[slug]) { console.error(`${slug}: no content/animals/${slug}.json`); failed = true; continue; }
   const own = errors.filter((e) => e.startsWith(slug + ':'));
   if (own.length) { console.error(own.join('\n')); failed = true; continue; }

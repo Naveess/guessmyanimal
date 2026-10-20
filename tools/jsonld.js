@@ -11,7 +11,10 @@
  * No author, reviewedBy or rating: the site has nothing true to put in
  * them beyond what the About page already says in words.
  */
-const SITE = 'https://guessmyanimal.com';
+// The one site address (functions/_shared/site.json), shared with the
+// animal-page Function: every canonical, og:url, JSON-LD id and sitemap
+// entry is built from it.
+const SITE = require('../functions/_shared/site.json').url;
 const WEBSITE_ID = `${SITE}/#website`;
 
 // crumbs: [[name, path], ...] from the top, the last being this page.

@@ -27,7 +27,7 @@ const jsonld = require('./jsonld.js');
 const { ANIMALS } = require('../animals.js');
 
 const ROOT = path.join(__dirname, '..');
-const SITE = 'https://guessmyanimal.com';
+const SITE = require('../functions/_shared/site.json').url; // functions/_shared/site.json
 
 const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -100,7 +100,18 @@ ${siteFooter()}
 `;
 }
 
-function collectionBody(col) {
+// The other lists in the same hub group (the other regions, say), as
+// plain links, so every list leads on to its neighbours.
+function moreLists(col, cols) {
+  const group = GROUPS.find(([g]) => g === col.group);
+  const sibs = cols.filter((c) => c.group === col.group && c.key !== col.key);
+  if (!sibs.length) return '';
+  const links = sibs.map((c) => `<a class="related-item" href="/explore/${c.key}">${escapeHtml(hubLabel(c))}</a>`).join('');
+  return `\n\n  <h2>More lists: ${escapeHtml(group ? group[2].toLowerCase() : 'explore')}</h2>
+  <div class="related coll-more">${links}</div>`;
+}
+
+function collectionBody(col, cols) {
   const intro = col.intro.map((p) => `  <p${col.intro[0] === p ? ' class="lede"' : ''}>${escapeHtml(p)}</p>`).join('\n');
   const sections = col.sections.filter((s) => s.items.length).map((s) => {
     const items = s.items.map(({ a, slug, line }) =>
@@ -114,10 +125,11 @@ function collectionBody(col) {
 ${intro}
   <p class="coll-total">${col.count} animal${col.count === 1 ? '' : 's'}, A to Z.</p>
 
-${sections}
+${sections}${moreLists(col, cols)}
 
   <p class="coll-foot">How each answer is decided: <a href="/how-we-answer">How we answer</a>.
-    Every animal, in one list: <a href="/browse">All animals</a>.</p>`;
+    Every animal, in one list: <a href="/browse">All animals</a>. Animals people mix up:
+    <a href="/compare">Commonly confused animals</a>.</p>`;
 }
 
 function hubBody(cols) {
@@ -138,7 +150,7 @@ function hubBody(cols) {
 
   <div class="hub-ways">
     <a class="hub-way" href="/browse"><span class="hub-way-t">Every animal, A to Z</span><span class="hub-way-s">All ${ANIMALS.length} in one list</span></a>
-    <a class="hub-way" href="/compare"><span class="hub-way-t">Look-alikes</span><span class="hub-way-s">Animals people mix up, side by side</span></a>
+    <a class="hub-way" href="/compare"><span class="hub-way-t">Commonly confused animals</span><span class="hub-way-s">Animals people mix up, side by side</span></a>
   </div>
 
   <nav class="hub-jump" aria-label="Lists on this page">${jump}</nav>
@@ -186,7 +198,7 @@ function buildCollections(content, { styleVersion, drafts = false } = {}) {
       description: col.desc || col.intro[0],
       canonical: `${SITE}/explore/${col.key}`,
       styleVersion, draft: drafts && !col.rv,
-      body: collectionBody(col),
+      body: collectionBody(col, cols),
       ld: jsonld.scriptTag(jsonld.page({
         type: 'CollectionPage', path: `/explore/${col.key}`, name: col.title,
         description: col.desc || col.intro[0], dateModified: col.rv,

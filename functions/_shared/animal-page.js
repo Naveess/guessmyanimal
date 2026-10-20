@@ -3,8 +3,10 @@
 // it exports no onRequest handler, so Pages never serves it.
 
 import META from '../seo-meta.json';
+import SITE_JSON from './site.json';
 
-export const SITE = 'https://guessmyanimal.com';
+// The one site address, shared with the build (tools/jsonld.js).
+export const SITE = SITE_JSON.url;
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 // Hyphens become spaces first, or "snow-leopard" normalises to
@@ -104,6 +106,7 @@ export async function renderAnimal(context, slug, entry) {
     if (c.profile) rewriter.on('#profile', new SetHtml(c.profile)).on('#profileSec', new RemoveAttr('hidden'));
     if (c.moreFacts) rewriter.on('#moreFacts', new SetHtml(c.moreFacts));
     if (c.confused) rewriter.on('#confused', new SetHtml(c.confused)).on('#confusedSec', new RemoveAttr('hidden'));
+    if (c.lists) rewriter.on('#lists', new SetHtml(c.lists)).on('#listsSec', new RemoveAttr('hidden'));
     if (c.sources) rewriter.on('#sources', new SetHtml(c.sources)).on('#sourcesSec', new RemoveAttr('hidden'));
     // "<" escaped so no string in the content can close the script tag.
     const json = c.json.replace(/</g, '\\u003c');

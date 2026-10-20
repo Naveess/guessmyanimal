@@ -17,7 +17,7 @@ const { page, escapeHtml } = require('./build-collections.js');
 const jsonld = require('./jsonld.js');
 
 const ROOT = path.join(__dirname, '..');
-const SITE = 'https://guessmyanimal.com';
+const SITE = require('../functions/_shared/site.json').url; // functions/_shared/site.json
 
 const BY_SLUG = {};
 for (const a of ANIMALS) BY_SLUG[slugify(a.n)] = a;

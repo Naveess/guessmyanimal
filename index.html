@@ -40,7 +40,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      Cache-Control's 4-hour max-age - and, since sw.js started
      precaching these, keeps the service worker's own cached shell in
      step too. Bump sw.js's VERSION and SHELL list to match. -->
-<link rel="stylesheet" href="/style.css?v=20260930-7">
+<link rel="stylesheet" href="/style.css?v=20261020-1">
 <!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
      crossorigin="anonymous"></script>
@@ -242,6 +242,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
   </div>
   <p class="home-foot" id="count"></p>
+  <!-- Plain links into the site's three indexes, so every page is a few
+       ordinary clicks from here without typing a search. -->
+  <nav class="home-links" aria-label="Browse the site">
+    <a href="/browse">Every animal, A to Z</a>
+    <a href="/compare">Commonly confused animals</a>
+    <a href="/explore">Explore lists</a>
+  </nav>
 </section>
 
 <!-- ============================================================
@@ -337,6 +344,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <section class="ansec ansec-confused" id="confusedSec" hidden>
       <h2 class="label">Often confused with</h2>
       <ul class="confused" id="confused"></ul>
+    </section>
+
+    <!-- The /explore lists this animal is on, as real links (built
+         server-side too, from the same render-data.js sections()). -->
+    <section class="ansec ansec-lists" id="listsSec" hidden>
+      <h2 class="label">On these lists</h2>
+      <div class="related" id="lists"></div>
     </section>
 
     <section class="ansec ansec-sources" id="sourcesSec" hidden>
@@ -905,6 +919,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a href="/about">About</a>
     <a href="/how-we-answer">How we answer</a>
     <a href="/browse">All animals</a>
+    <a href="/compare">Commonly confused animals</a>
     <a href="/reviewed">Review log</a>
     <a href="/contact">Contact</a>
     <button type="button" id="footerReport">Report a problem</button>
@@ -919,7 +934,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
 
 <script src="/sfx.js?v=20260912-1"></script>
 <script src="/animals.js?v=20260930-2"></script>
-<script src="/render-data.js?v=20260930-1"></script>
+<script src="/render-data.js?v=20261020-1"></script>
 <script src="/related.js?v=20260908-1"></script>
 <script src="/photo-credit.js?v=20260928-1"></script>
 <script src="/game-core.js?v=20260928-3"></script>
@@ -939,7 +954,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
      boot sequence and checks window.openMystery on that very first
      call, for a direct/refreshed link to ?mystery=1 to work. -->
 <script src="/mystery.js?v=20260930-1"></script>
-<script src="/app.js?v=20260930-2"></script>
+<script src="/app.js?v=20261020-1"></script>
 <script>
 // Registered from here only - one scope (/), one registration point.
 // Failing quietly (a browser with no SW support, a file:// preview) is

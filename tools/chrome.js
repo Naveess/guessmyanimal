@@ -41,6 +41,7 @@ const ICON = {
 const PAW = `<svg class="brand-paw" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="41" rx="14.5" ry="12"/><ellipse cx="14.5" cy="27" rx="6.4" ry="8"/><ellipse cx="26" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="38" cy="16.5" rx="6.4" ry="8.6"/><ellipse cx="49.5" cy="27" rx="6.4" ry="8"/></svg>`;
 
 const GITHUB = 'https://github.com/Naveess/guessmyanimal';
+const SITE = require('../functions/_shared/site.json').url;
 
 function backSlot(variant) {
   if (variant === 'index') {
@@ -170,6 +171,7 @@ function siteFooter(variant) {
     <a href="/about">About</a>
     <a href="/how-we-answer">How we answer</a>
     <a href="/browse">All animals</a>
+    <a href="/compare">Commonly confused animals</a>
     <a href="/reviewed">Review log</a>
     <a href="/contact">Contact</a>
     ${report}
@@ -198,7 +200,7 @@ ${robots ? `<meta name="robots" content="${robots}">\n` : ''}<meta name="theme-c
 <link rel="canonical" href="${canonical}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://guessmyanimal.com/og.png">
+<meta property="og:image" content="${SITE}/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">

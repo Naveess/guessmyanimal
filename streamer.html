@@ -27,7 +27,7 @@
 (function(){try{var t=localStorage.getItem('gma-theme');
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
-<link rel="stylesheet" href="/style.css?v=20260930-7">
+<link rel="stylesheet" href="/style.css?v=20261020-1">
 </head>
 <body class="view-page">
 
@@ -259,7 +259,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
       </p>
       <h1 class="streamer-consent-headline">Zero permissions requested</h1>
       <p class="streamer-consent-sub">This is the smallest request Twitch allows.
-        It confirms which channel is yours — so your chat can play — and nothing else.</p>
+        It confirms which channel is yours, so your chat can play, and nothing else.</p>
     </div>
 
     <div class="streamer-consent-readout">
@@ -297,10 +297,10 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         About Twitch's next screen
       </h2>
       <p>Twitch's own authorization page may say this app can get your email
-        address and whether it's verified. It can't — reading an email needs a
+        address and whether it's verified. It can't. Reading an email needs a
         Twitch permission called <code>user:read:email</code>, and this app never
         asks for it, so Twitch never sends it. That line is Twitch's standard
-        wording, shown even to apps that request nothing — a
+        wording, shown even to apps that request nothing. It's a
         <a href="https://github.com/twitchdev/issues/issues/808" target="_blank" rel="noopener">known
         Twitch issue</a>, not something this app requested.</p>
     </div>
@@ -311,7 +311,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
         <li><i aria-hidden="true">1</i><p><b>You approve it at twitch.tv</b>
           <span>On Twitch's own page, never here. Your password is only ever typed at Twitch.</span></p></li>
         <li><i aria-hidden="true">2</i><p><b>Twitch tells us which channel is yours</b>
-          <span>We read one thing back — your channel name.</span></p></li>
+          <span>We read one thing back: your channel name.</span></p></li>
         <li><i aria-hidden="true">3</i><p><b>The access key goes straight back</b>
           <span>Handed back to Twitch the moment it's used. Nothing from it is stored,
             and there's no account to come back to.</span></p></li>
@@ -321,13 +321,13 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <div class="streamer-consent-pair">
       <div class="card">
         <h2 class="label">Your chat</h2>
-        <p>Is read the way anyone can read a public Twitch chat — anonymously,
+        <p>Is read the way anyone can read a public Twitch chat: anonymously,
           with no login at all, straight from this browser tab.</p>
       </div>
       <div class="card">
         <h2 class="label">What we keep</h2>
         <p>Your channel name, plus the names and guesses of people who play, for
-          as long as the stream runs — deleted when you end it, and automatically
+          as long as the stream runs. It's deleted when you end it, and automatically
           after 48 hours either way. See the <a href="/privacy" target="_blank" rel="noopener">privacy page</a>
           for the rest.</p>
       </div>
@@ -347,19 +347,19 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
   <div id="streamerGoLive" hidden>
     <h1 class="consent-title">You've connected Twitch.</h1>
     <div class="streamer-connectedas-row">
-      <p class="dlg-note">Playing as <b id="streamerConnectedAs"></b> —
+      <p class="dlg-note">Playing as <b id="streamerConnectedAs"></b> ·
         <a id="streamerConnectedLink" href="#" target="_blank" rel="noopener"></a></p>
       <button class="streamer-textbtn" type="button" id="streamerDisconnect">Disconnect</button>
     </div>
     <p class="dlg-note dlg-note-tight">Twitch has already been told to
-      forget the access key it gave us for this — nothing about this
+      forget the access key it gave us for this; nothing about this
       login is stored. Pick a category and go live to start reading your
       chat.</p>
     <label class="fld">
       <span class="fld-label">Animals to use</span>
       <select id="streamerCategory" class="party-select"></select>
     </label>
-    <p class="dlg-note dlg-note-tight">Once you go live, this category is locked for the whole stream — ending the stream early is the only way to change it.</p>
+    <p class="dlg-note dlg-note-tight">Once you go live, this category is locked for the whole stream. Ending the stream early is the only way to change it.</p>
     <p class="party-msg" id="streamerGoLiveMsg" role="status"></p>
     <button class="btn btn-solid" type="button" id="streamerGoLiveBtn">Go live</button>
     <p class="streamer-fineprint">Remove access any time at
@@ -486,6 +486,7 @@ if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)
     <a href="/about">About</a>
     <a href="/how-we-answer">How we answer</a>
     <a href="/browse">All animals</a>
+    <a href="/compare">Commonly confused animals</a>
     <a href="/reviewed">Review log</a>
     <a href="/contact">Contact</a>
     <a href="/?report=1">Report a problem</a>

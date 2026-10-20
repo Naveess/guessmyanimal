@@ -26,18 +26,20 @@ const PHOTOS = (() => {
 const { CATEGORY_BUCKETS } = require('../game-core.js');
 const { siteBar, brand, siteFooter } = require('./chrome.js');
 const { buildCollections } = require('./build-collections.js');
-const { buildCompare } = require('./build-compare.js');
+const { buildCompare, pairsFrom } = require('./build-compare.js');
+const { published: liveCollections } = require('./collections.js');
+const names = require('./names.js');
 const { buildReviewed } = require('./build-reviewed.js');
 const jsonld = require('./jsonld.js');
 
-const SITE = 'https://guessmyanimal.com';
+const SITE = require('../functions/_shared/site.json').url; // functions/_shared/site.json
 const MAX_DESC = 158;
 // browse.html is generated whole by this script (see below), not hand-
 // edited, so its own style.css link needs this kept in step by hand -
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20260930-7';
+const STYLE_VERSION = '20261020-1';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
@@ -50,6 +52,45 @@ if (CONTENT.errors.length) {
   process.exit(1);
 }
 const PUBLISHED = CONTENT.published;
+const nameErrors = names.validate(new Set(ANIMALS.map((a) => slugify(a.n))));
+if (nameErrors.length) {
+  console.error(nameErrors.join('\n'));
+  process.exit(1);
+}
+
+// Links every animal page carries beyond its own content, worked out
+// here so the page and app.js render the same thing from the same data:
+//   _cf  every compare page the animal is in. Its own "Often confused
+//        with" entries, plus the pairs only the other animal named (the
+//        cow names no look-alike, but the yak names the cow) with the
+//        other animal's tip.
+//   _ls  the live /explore lists it's on.
+//   _t   its page title, for app.js to set on in-app navigation.
+const PAIRS_OF = {};
+for (const p of pairsFrom(PUBLISHED)) {
+  for (const [self, other] of [[p.s1, p.s2], [p.s2, p.s1]]) {
+    const own = p.allTips.find((t) => t.from === self);
+    const theirs = p.allTips.find((t) => t.from === other);
+    (PAIRS_OF[self] = PAIRS_OF[self] || []).push({ slug: other, tip: (own || theirs).tip });
+  }
+}
+const LISTS_OF = {};
+for (const col of liveCollections(PUBLISHED).live) {
+  for (const s of col.sections) for (const it of s.items) {
+    (LISTS_OF[it.slug] = LISTS_OF[it.slug] || []).push({ key: col.key, title: col.title });
+  }
+}
+// Own entries first, in the order the author listed them.
+const withLinks = (slug, c, title) => c && Object.assign({}, c, {
+  _cf: (PAIRS_OF[slug] || []).sort((x, y) => {
+    const i = (c.cf || []).findIndex((z) => z.slug === x.slug);
+    const j = (c.cf || []).findIndex((z) => z.slug === y.slug);
+    return (i < 0 ? 99 : i) - (j < 0 ? 99 : j) || x.slug.localeCompare(y.slug);
+  }),
+  _ls: LISTS_OF[slug] || [],
+  _t: title,
+});
+const LINKED = {};
 const lookup = (slug) => {
   const a = ANIMALS.find((x) => slugify(x.n) === slug);
   return a ? { n: a.n, e: a.e } : null;
@@ -106,63 +147,53 @@ function relatedHtml(a) {
     .join('');
 }
 
+// The meta description's lead: "No, halibut aren't dangerous to people.
+// They're large carnivores, active by day, not kept as pets, and people
+// eat them." Every claim is one of the page's own quick answers
+// (answers() in render-data.js) or its size, put into a sentence.
+const SIZE_ADJ = { tiny: 'tiny', small: 'small', medium: 'medium-sized', large: 'large', huge: 'huge' };
+function leadAnswers(a, slug) {
+  const mass = names.isMass(slug);
+  const pl = mass ? a.n.toLowerCase() : names.plural(a.n, slug);
+  const Pl = pl.charAt(0).toUpperCase() + pl.slice(1);
+  const danger = a.dg === 'yes' ? `Yes, ${pl} ${mass ? 'is' : 'are'} dangerous to people.`
+    : a.dg === 'some' ? `${Pl} can be dangerous to people.`
+    : `No, ${pl} ${mass ? "isn't" : "aren't"} dangerous to people.`;
+  const kind = {
+    Carnivore: ['carnivore', 'carnivores'], Herbivore: ['herbivore', 'herbivores'],
+    Omnivore: ['omnivore', 'omnivores'], Insectivore: ['insect-eater', 'insect-eaters'],
+  }[a.d] || ['animal', 'animals'];
+  const size = SIZE_ADJ[a.sz] || '';
+  const what = mass ? `It's ${/^[aeiou]/.test(size) ? 'an' : 'a'} ${size} ${kind[0]}` : `They're ${size} ${kind[1]}`;
+  const awake = a.ac === 'night' ? 'active at night' : a.ac === 'day' ? 'active by day' : 'active by day and night';
+  const pet = a.p === 'common' ? 'commonly kept as pets' : a.p === 'some' ? 'sometimes kept as pets' : 'not kept as pets';
+  const eaten = a.et === 'yes' ? `people eat ${mass ? 'it' : 'them'}` : a.et === 'some' ? 'eaten in some places' : 'not eaten by people';
+  return `${danger} ${what.replace(/\s+/g, ' ')}, ${awake}, ${mass ? pet.replace('pets', 'a pet') : pet}, and ${eaten}.`;
+}
+
 const meta = {};
 const urls = [];
 let longest = 0;
 
 for (const a of ANIMALS) {
   const slug = slugify(a.n);
-  const lower = a.n.toLowerCase();
-  // "Is a elephant dangerous?" - the indefinite article has to match the
-  // sound the name starts with, not just its spelling ("a hour" is wrong
-  // for the same reason "an elephant" is right), but every name in this
-  // dataset is a plain animal noun with no silent-consonant exceptions,
-  // so a vowel-letter check is the whole rule here.
-  const article = /^[aeiou]/i.test(lower) ? 'an' : 'a';
 
-  const c = PUBLISHED[slug] || null;
+  // Question-led, the way people search: "Is a Halibut Dangerous? Diet,
+  // Size & Quick Facts". The site name goes last, and only when the
+  // whole title still fits a results page. app.js sets the same title.
+  const heading = `${names.question(a.n, slug)} Diet, Size & Quick Facts`;
+  const title = heading.length + 18 <= 70 ? `${heading} | Guess My Animal` : heading;
+  const c = withLinks(slug, PUBLISHED[slug] || null, title);
+  if (c) LINKED[slug] = c;
 
-  // Not "X — is it dangerous?" any more: that stamped one question on
-  // every page, and the page answers eight. app.js sets the same title.
-  const title = `${a.n}: quick answers and facts | Guess My Animal`;
-
-  // Our own reviewed overview when there is one; the fact-based
-  // template otherwise.
-  let description;
-  if (c && c.ov) {
-    // As many whole sentences as fit. If that leaves too little to be a
-    // description ("Africa's social big cat."), the word-boundary cut
-    // below takes over instead.
-    description = c.ov;
-    if (description.length > MAX_DESC) {
-      let kept = '';
-      for (const s of c.ov.split(/(?<=[.!?])\s+/)) {
-        const next = kept ? kept + ' ' + s : s;
-        if (next.length > MAX_DESC) break;
-        kept = next;
-      }
-      if (kept.length >= 90) description = kept;
-    }
-  } else {
-    description = `${a.f} Is ${article} ${lower} dangerous, and could you keep one as a pet? Get instant answers on Guess My Animal.`;
-    if (description.length > MAX_DESC) {
-      // Keep the hand-written fact whole - it's the one truly unique part
-      // of the description - and drop the templated tail instead of
-      // chopping mid-sentence.
-      description = `${a.f} Is ${article} ${lower} dangerous? Get the answer on Guess My Animal.`;
-    }
-    if (description.length > MAX_DESC) {
-      // The fact alone is already long (e.g. Poison dart frog). Drop the
-      // templated tail entirely rather than truncate mid-sentence - the
-      // fact by itself is still a perfectly good description.
-      description = a.f;
-    }
-  }
-  if (description.length > MAX_DESC) {
-    // The fact itself runs past the limit - truncate at the last whole
-    // word inside the budget, never mid-word.
-    const cut = description.slice(0, MAX_DESC - 1);
-    description = cut.slice(0, cut.lastIndexOf(' ')) + '…';
+  // The direct answers first - the dangerous question the title asks,
+  // then what it eats, when it's awake, pets and plates - then as much
+  // of our own reviewed overview as fits.
+  let description = leadAnswers(a, slug);
+  const rest = c && c.ov ? c.ov : a.f;
+  for (const s of rest.split(/(?<=[.!?])\s+/)) {
+    if (description.length + 1 + s.length > MAX_DESC) break;
+    description += ' ' + s;
   }
   longest = Math.max(longest, description.length);
 
@@ -193,7 +224,7 @@ for (const a of ANIMALS) {
     // JSON-LD for the Function to append (tools/jsonld.js): the page, its
     // real review date, and the path back up through All animals.
     ld: jsonld.scriptTag(jsonld.page({
-      path: `/animals/${slug}`, name: `${a.n}: quick answers and facts`, description,
+      path: `/animals/${slug}`, name: heading, description,
       dateModified: c ? c.rv : null,
       image: PHOTOS[slug] ? PHOTOS[slug].src : null,
       crumbs: [['Home', '/'], ['All animals', '/browse'], [a.n, `/animals/${slug}`]],
@@ -215,7 +246,9 @@ fs.writeFileSync(
 // Cloudflare Pages' clean-URLs feature 308-redirects /about.html to
 // /about, so the sitemap should point straight at the URL that actually
 // serves, not the one that immediately bounces.
-const staticUrls = ['/', '/about', '/how-we-answer', '/browse', '/streamer', '/contact', '/privacy', '/terms'].map((p) => SITE + p);
+// Not /streamer: it's noindex (a tool for a live stream, not a page to
+// land on), and the sitemap lists only pages meant for search results.
+const staticUrls = ['/', '/about', '/how-we-answer', '/browse', '/contact', '/privacy', '/terms'].map((p) => SITE + p);
 // No build-date <lastmod>: it used to be stamped on every URL, which
 // tells a crawler every page changed every time anyone ran this. A
 // reviewed animal gets its real review date (rv); the rest get none.
@@ -306,10 +339,10 @@ function browseHtml() {
 
 <meta property="og:title" content="Every animal, A to Z — Guess My Animal">
 <meta property="og:description" content="All ${ANIMALS.length} animals on Guess My Animal, listed A to Z.">
-<link rel="canonical" href="https://guessmyanimal.com/browse">
-<meta property="og:url" content="https://guessmyanimal.com/browse">
+<link rel="canonical" href="${SITE}/browse">
+<meta property="og:url" content="${SITE}/browse">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://guessmyanimal.com/og.png">
+<meta property="og:image" content="${SITE}/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
@@ -373,6 +406,8 @@ ${siteBar()}
 
   <p class="lede">All ${ANIMALS.length}, in one list. Pick one to see if it's dangerous,
     what it eats, and everything else people ask mid-game.</p>
+  <p class="atoz-more">Animals people mix up, side by side: <a href="/compare">Commonly confused animals</a>.
+    Lists by region, habitat and answer: <a href="/explore">Explore</a>.</p>
 
   <!-- Always visible, unlike the site bar's own Search popover - this
        is the one page whose entire job is finding a name, so the
@@ -444,7 +479,7 @@ for (const f of fs.readdirSync(DATA_DIR)) {
   if (f.endsWith('.json') && !PUBLISHED[f.slice(0, -5)]) fs.unlinkSync(path.join(DATA_DIR, f));
 }
 for (const slug of Object.keys(PUBLISHED)) {
-  fs.writeFileSync(path.join(DATA_DIR, slug + '.json'), JSON.stringify(PUBLISHED[slug]));
+  fs.writeFileSync(path.join(DATA_DIR, slug + '.json'), JSON.stringify(LINKED[slug] || PUBLISHED[slug]));
 }
 // The list app.js checks before fetching, so the ~400 animals without
 // content yet don't each cost a 404 round trip.
@@ -460,3 +495,12 @@ console.log(`content: ${Object.keys(PUBLISHED).length} published, ${Object.keys(
 // Last, so the hand-written pages pick up the same chrome browse.html
 // just got - see tools/build-chrome.js.
 require('./build-chrome.js');
+
+// And then the whole site, as built: clean, self-canonical, indexable
+// sitemap URLs, each a few plain clicks from the homepage (tools/check-site.js).
+const SITE_CHECK = require('./check-site.js').check();
+console.log(`site check: ${SITE_CHECK.count} sitemap URLs, by clicks from home ${JSON.stringify(SITE_CHECK.deepest)}`);
+if (SITE_CHECK.errors.length) {
+  console.error('site check failed:\n  ' + [...new Set(SITE_CHECK.errors)].join('\n  '));
+  process.exit(1);
+}
