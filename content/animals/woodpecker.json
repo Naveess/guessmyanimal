@@ -1,14 +1,17 @@
 {
   "sci": "Picidae",
-  "ov": "Birds that drill into trees for insects and drum on them to communicate. Their skulls and long tongue bone absorb the shock of pecking. Old woodpecker holes become homes for many other birds.",
+  "ov": "Birds that drill into trees for insects and drum on them to communicate. Their skulls and long tongue bone absorb the shock of pecking, repeated at decelerations of around 1,000 g. Old woodpecker holes become homes for many other birds.",
   "hb": [
     "forest",
     "towns"
   ],
+  "len": "7.5 cm (bar-breasted piculet) to 55 cm (great slaty)",
+  "wt": "8.9 g (bar-breasted piculet) to 563 g (great slaty)",
   "rg": "Worldwide except Australia, New Guinea, New Zealand, Madagascar and the polar regions.",
   "df": "Mainly insects dug from wood; some species also eat fruit, eggs, sap, carrion and scraps.",
   "fx": [
-    "The Gila woodpecker specialises in nesting in cacti."
+    "The Gila woodpecker specialises in nesting in cacti.",
+    "Two of the largest, the ivory-billed and imperial woodpeckers, are generally thought to have died out in the 20th century."
   ],
   "src": [
     {
@@ -19,10 +22,12 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "len",
+        "wt"
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. The existing fact (tongue wraps around the skull as a shock absorber) is confirmed. REGION: animals.js r is [\"Worldwide\"], but woodpeckers are absent from Australia, New Guinea, New Zealand and Madagascar. That matters for an “Is it found in Australia?” question. Consider Europe, Asia, Africa, North America, South America. RESOLVED (owner: approve all): r changed to Europe, Asia, Africa, North America, South America."
+  "rv": "2026-10-30",
+  "notes": "Group entry. The existing fact (tongue wraps around the skull as a shock absorber) is confirmed. REGION: animals.js r is [\"Worldwide\"], but woodpeckers are absent from Australia, New Guinea, New Zealand and Madagascar. That matters for an “Is it found in Australia?” question. Consider Europe, Asia, Africa, North America, South America. RESOLVED (owner: approve all): r changed to Europe, Asia, Africa, North America, South America. PAGE ADDITIONS 2026-10-20 (ov, len, wt, fx), from the cached Wikipedia text."
 }

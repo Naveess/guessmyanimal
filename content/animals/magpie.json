@@ -1,15 +1,19 @@
 {
   "sci": "Pica pica",
-  "ov": "The Eurasian magpie is a black-and-white member of the crow family found across northern Europe and Asia, and one of the most intelligent birds. It’s one of the few birds known to pass the mirror test.",
+  "ov": "The Eurasian magpie is a black-and-white member of the crow family found across northern Europe and Asia, and one of the most intelligent birds. It’s one of the few birds known to pass the mirror test. More than half its length is tail.",
   "hb": [
     "farmland",
     "towns",
     "forest",
     "grassland"
   ],
+  "len": "44–46 cm (male)",
+  "wt": "182–214 g (female), 210–272 g (male)",
   "rg": "The northern part of Europe and Asia.",
+  "df": "Almost anything: young birds and eggs, small mammals, insects, scraps, carrion, acorns and grain.",
   "fx": [
-    "Relative to its size, part of its brain is about as big as the equivalent area in chimpanzees and humans."
+    "Relative to its size, part of its brain is about as big as the equivalent area in chimpanzees and humans.",
+    "The oldest magpie on record, ringed near Coventry, lived 21 years and 8 months."
   ],
   "src": [
     {
@@ -19,10 +23,13 @@
         "sci",
         "ov",
         "rg",
-        "fx"
+        "fx",
+        "len",
+        "wt",
+        "df"
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "The existing fact is confirmed: it passes the mirror test, and \"a recent study has cast doubt\" on the belief that it steals shiny things. animals.js r includes North America, which belongs to other magpie species (this entry has no w, so it may mean magpies generally). I’ve left the region alone."
+  "rv": "2026-10-30",
+  "notes": "The existing fact is confirmed: it passes the mirror test, and \"a recent study has cast doubt\" on the belief that it steals shiny things. animals.js r includes North America, which belongs to other magpie species (this entry has no w, so it may mean magpies generally). I’ve left the region alone. PAGE ADDITIONS 2026-10-20 (ov, len, wt, df, fx), from the cached Wikipedia text."
 }

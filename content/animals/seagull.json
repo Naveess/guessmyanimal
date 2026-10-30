@@ -1,16 +1,19 @@
 {
   "sci": "Larinae",
-  "ov": "Seabirds, usually grey and white, with strong bills and webbed feet. Gulls eat almost anything and mostly stay near coasts or inland, rarely far out at sea.",
+  "ov": "Seabirds, usually grey and white, with strong bills and webbed feet. Gulls eat almost anything and mostly stay near coasts or inland, rarely far out at sea. They can drink salt water, getting rid of the salt through glands in the skull that drain out of the nostrils.",
   "hb": [
     "coast",
     "towns",
     "farmland",
     "freshwater"
   ],
+  "len": "29 cm (little gull) to 76 cm (great black-backed gull)",
+  "wt": "120 g (little gull) to 1.75 kg (great black-backed gull)",
   "rg": "Coasts and inland waters; few species venture far out to sea.",
   "df": "Almost anything: fish, invertebrates, earthworms, rodents, eggs, carrion, seeds, fruit and human refuse.",
   "fx": [
-    "A gull’s jaws can unhinge to swallow large prey."
+    "A gull’s jaws can unhinge to swallow large prey.",
+    "Gulls have been seen landing on surfacing whales to peck off pieces of flesh."
   ],
   "src": [
     {
@@ -21,10 +24,12 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "len",
+        "wt"
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry (alias “gull”). ANSWER CHECK (fact): the animals.js fact \"Drums its feet on grass to imitate rain and fool the worms up\" isn’t in the article, which only says gulls \"foot paddle\" on water to bring invertebrates to the surface. Suggested wording: \"Paddles its feet on the water to bring food up to the surface.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-10-30",
+  "notes": "Group entry (alias “gull”). ANSWER CHECK (fact): the animals.js fact \"Drums its feet on grass to imitate rain and fool the worms up\" isn’t in the article, which only says gulls \"foot paddle\" on water to bring invertebrates to the surface. Suggested wording: \"Paddles its feet on the water to bring food up to the surface.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-10-20 (ov, len, wt, fx), from the cached Wikipedia text."
 }

@@ -1,14 +1,16 @@
 {
   "sci": "Folivora (Bradypus and Choloepus)",
-  "ov": "Slow-moving tree mammals of Central and South American rainforests, named for their very low metabolism. There are seven species: three-toed and two-toed sloths.",
+  "ov": "Slow-moving tree mammals of Central and South American rainforests, named for their very low metabolism. There are seven species: three-toed and two-toed sloths. Muscle is only 25–30% of their weight, and though almost helpless on the ground, they can swim.",
   "hb": [
     "rainforest"
   ],
+  "len": "60–80 cm",
   "wt": "3.5–5.2 kg (three-toed); 4–8 kg (two-toed)",
   "rg": "Tropical rainforests of Central and South America.",
   "df": "Leaves, a low-energy diet that their slowness helps them live on.",
   "fx": [
-    "Sloths climb down to the ground about once every eight days to defecate."
+    "Sloths climb down to the ground about once every eight days to defecate.",
+    "All sloths have three toes on each back foot; “two-toed” sloths have two only on the front feet."
   ],
   "src": [
     {
@@ -19,7 +21,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "len"
       ]
     },
     {
@@ -37,6 +40,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry (seven species). The existing fact (green algae in the fur) is confirmed. sw:true is confirmed: sloths are almost helpless on the ground but can swim."
+  "rv": "2026-10-30",
+  "notes": "Group entry (seven species). The existing fact (green algae in the fur) is confirmed. sw:true is confirmed: sloths are almost helpless on the ground but can swim. PAGE ADDITIONS 2026-10-20 (ov, len, fx), from the cached Wikipedia text."
 }

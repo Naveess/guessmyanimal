@@ -1,6 +1,6 @@
 {
   "sci": "Ardeidae (in part)",
-  "ov": "White or buff herons with long legs that grow fine, milky-white plumes in the breeding season. There is no clear line between egrets and herons. They live on every continent, in fresh and salt-water marshes.",
+  "ov": "White or buff herons with long legs that grow fine, milky-white plumes in the breeding season. There is no clear line between egrets and herons. They live on every continent, in fresh and salt-water marshes. The great egret has a yellow bill and black legs.",
   "hb": [
     "wetland",
     "coast"
@@ -8,6 +8,7 @@
   "len": "80–104 cm (great egret)",
   "wt": "700–1,500 g (great egret)",
   "rg": "Every continent, avoiding the coldest regions, deserts and high mountains.",
+  "df": "Mainly fish, frogs and other amphibians, mice, snakes, crayfish and water insects (great egret).",
   "fx": [
     "The word egret comes from the French aigrette, meaning both \"silver heron\" and \"brush\".",
     "Great egrets nest in colonies in trees close to water."
@@ -30,10 +31,12 @@
       "for": [
         "len",
         "wt",
-        "fx"
+        "fx",
+        "ov",
+        "df"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. ANSWER CHECK (fact): \"Hunted almost to extinction for hat feathers, which is what started the conservation movement\" is half sourced: the article says plume hunting for European and American hat makers endangered several egret species, but does not say it started the conservation movement. Suggested wording: \"Plume hunting for fashionable hats once endangered several egret species.\"",
-  "rv": "2026-09-29"
+  "rv": "2026-10-30",
+  "notes": "RESOLVED (owner approved all suggestions, 2026-09-29; lyrebird fl set to true): Group entry. ANSWER CHECK (fact): \"Hunted almost to extinction for hat feathers, which is what started the conservation movement\" is half sourced: the article says plume hunting for European and American hat makers endangered several egret species, but does not say it started the conservation movement. Suggested wording: \"Plume hunting for fashionable hats once endangered several egret species.\" PAGE ADDITIONS 2026-10-20 (ov, df), from the cached Wikipedia text. fx already has 2, so no new fact."
 }

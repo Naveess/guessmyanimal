@@ -1,6 +1,6 @@
 {
   "sci": "Gulo gulo",
-  "ov": "The largest land-dwelling member of the weasel family, a solitary, muscular carnivore of the far north. It has a reputation for ferocity and strength out of all proportion to its size.",
+  "ov": "The largest land-dwelling member of the weasel family, a solitary, muscular carnivore of the far north. It has a reputation for ferocity and strength out of all proportion to its size. Males can weigh 30–40% more than females.",
   "why": {
     "dg": "It has a reputation for ferocity and strength out of all proportion to its size."
   },
@@ -12,8 +12,10 @@
   "len": "65–105 cm",
   "wt": "9–30 kg",
   "rg": "Northern forests and tundra of the Northern Hemisphere: Canada, Alaska, the Nordic countries, Russia and Siberia.",
+  "df": "Mainly a scavenger, but it can kill prey many times its size and tear meat from carcasses frozen solid.",
   "fx": [
-    "Its pungent scent glands earned it the nicknames “skunk bear” and “nasty cat”."
+    "Its pungent scent glands earned it the nicknames “skunk bear” and “nasty cat”.",
+    "Only the sea otter, giant otter and African clawless otter are bigger members of its family."
   ],
   "src": [
     {
@@ -24,7 +26,8 @@
         "ov",
         "rg",
         "fx",
-        "why"
+        "why",
+        "df"
       ]
     },
     {
@@ -36,6 +39,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "ANSWER CHECK (fact): the animals.js fact \"The size of a dog, but will drive a bear off a carcass\" isn’t in the article, which says bears can kill adult wolverines. It does say it can \"kill prey many times larger than itself\". Suggested wording: \"Can kill prey many times larger than itself.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-10-30",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"The size of a dog, but will drive a bear off a carcass\" isn’t in the article, which says bears can kill adult wolverines. It does say it can \"kill prey many times larger than itself\". Suggested wording: \"Can kill prey many times larger than itself.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-10-20 (ov, df, fx), from the cached Wikipedia text."
 }

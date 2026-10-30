@@ -1,6 +1,6 @@
 {
   "sci": "Thunnini",
-  "ov": "Fifteen species of fast, streamlined ocean predators in the mackerel family. With the opah and mackerel sharks, tuna are the only fish that keep their bodies warmer than the water around them.",
+  "ov": "Fifteen species of fast, streamlined ocean predators in the mackerel family. With the opah and mackerel sharks, tuna are the only fish that keep their bodies warmer than the water around them. The first fin on the back folds flat into a groove.",
   "why": {
     "et": "Fished extensively for food, and some species are threatened by overfishing."
   },
@@ -11,7 +11,8 @@
   "wt": "Up to 684 kg (Atlantic bluefin)",
   "rg": "Warmer seas worldwide.",
   "fx": [
-    "The yellowfin tuna can swim at up to 75 km/h."
+    "The yellowfin tuna can swim at up to 75 km/h.",
+    "In Japan, tuna as a food can be called “sea chicken” (shī chikin)."
   ],
   "src": [
     {
@@ -28,6 +29,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Warm-blooded, unlike almost every other fish, and it never stops swimming\" is half sourced: the warm body yes, \"never stops swimming\" isn’t in the article. Suggested wording: \"Warm-blooded, unlike almost every other fish, and the yellowfin can hit 75 km/h.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-10-30",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Warm-blooded, unlike almost every other fish, and it never stops swimming\" is half sourced: the warm body yes, \"never stops swimming\" isn’t in the article. Suggested wording: \"Warm-blooded, unlike almost every other fish, and the yellowfin can hit 75 km/h.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-10-20 (ov, fx), from the cached Wikipedia text. The article doesn't say what tuna eat, so no df."
 }
