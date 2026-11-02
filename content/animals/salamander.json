@@ -1,6 +1,6 @@
 {
   "sci": "Urodela",
-  "ov": "Tailed amphibians with slender, lizard-like bodies and moist skin, which keeps them near water or damp places. They are best known for regrowing lost limbs and other body parts.",
+  "ov": "Tailed amphibians with slender, lizard-like bodies and moist skin, which keeps them near water or damp places. Some live in water all their lives, others only on land as adults. They are best known for regrowing lost limbs, and some have powerfully poisonous skin.",
   "why": {
     "dg": "Some species’ skin contains the powerful poison tetrodotoxin, advertised by bright warning colours.",
     "ac": "Most salamanders' eyes are adapted mainly for seeing at night."
@@ -11,9 +11,13 @@
     "wetland",
     "mountain"
   ],
+  "len": "27 mm (minute salamanders) to 1.8 m (Chinese giant)",
+  "wt": "Up to 65 kg (Chinese giant salamander)",
   "rg": "Mostly the Northern Hemisphere, richest in eastern North America; some in Central and South America.",
+  "df": "Small invertebrates such as earthworms, insects, spiders, snails and worms, often caught with a sticky tongue.",
   "fx": [
-    "Salamanders never have more than four toes on their front feet."
+    "Salamanders never have more than four toes on their front feet.",
+    "A salamander can flick out its sticky tongue and catch prey in under half a second."
   ],
   "src": [
     {
@@ -24,10 +28,13 @@
         "ov",
         "why",
         "rg",
-        "fx"
+        "fx",
+        "len",
+        "wt",
+        "df"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. The existing fact (some have no lungs) is confirmed: lungless salamanders breathe through their skin and mouth. ANSWER CHECK: animals.js has h:true, but the Salamander article doesn’t mention hibernation. REGION: r is [\"Worldwide\"], but the source says most species are in the Northern Hemisphere with some in Central and South America. Consider North America, Europe, Asia, Central America, South America. The source mentions pets only for captive breeding, so there’s no why.p. RESOLVED (owner: approve all): h changed to false; r changed to North America, Europe, Asia, Central America, South America."
+  "rv": "2026-11-02",
+  "notes": "Group entry. The existing fact (some have no lungs) is confirmed: lungless salamanders breathe through their skin and mouth. ANSWER CHECK: animals.js has h:true, but the Salamander article doesn’t mention hibernation. REGION: r is [\"Worldwide\"], but the source says most species are in the Northern Hemisphere with some in Central and South America. Consider North America, Europe, Asia, Central America, South America. The source mentions pets only for captive breeding, so there’s no why.p. RESOLVED (owner: approve all): h changed to false; r changed to North America, Europe, Asia, Central America, South America. PAGE ADDITIONS 2026-11-02 (ov, len, wt, df, fx), from the cached Wikipedia text."
 }

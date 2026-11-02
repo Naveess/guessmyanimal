@@ -1,6 +1,6 @@
 {
   "sci": "Delphinapterus leucas",
-  "ov": "An all-white whale of the Arctic and sub-Arctic, the narwhal’s closest relative. It has no dorsal fin, which helps it swim under ice, and a very bulbous melon on its forehead for echolocation.",
+  "ov": "An all-white whale of the Arctic and sub-Arctic, the narwhal’s closest relative. It has no dorsal fin, which helps it swim under ice, and a very bulbous melon on its forehead for echolocation, which also helps it find breathing holes in sea ice.",
   "why": {
     "et": "Indigenous hunters in Canada, Greenland, Alaska and Russia are allowed to hunt belugas for food."
   },
@@ -9,7 +9,10 @@
     "ocean",
     "coast"
   ],
+  "len": "3.5–5.5 m (males); 3–4.1 m (females)",
+  "wt": "Up to 1,600 kg (males)",
   "rg": "Arctic and sub-Arctic waters.",
+  "df": "Mainly fish, such as Arctic cod, salmon, herring, capelin and halibut, plus shrimp; it varies with place and season.",
   "cf": [
     {
       "slug": "narwhal",
@@ -17,7 +20,8 @@
     }
   ],
   "fx": [
-    "Its melon is so bulbous and lobed that its head shape is unlike any other whale’s."
+    "Its melon is so bulbous and lobed that its head shape is unlike any other whale’s.",
+    "The most abundant toothed whale in the Arctic, it can dive to 700 m."
   ],
   "src": [
     {
@@ -29,10 +33,13 @@
         "rg",
         "cf",
         "fx",
-        "why"
+        "why",
+        "len",
+        "wt",
+        "df"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Alias “beluga whale”. The existing fact is half confirmed: the \"sea canary\" name is for its high-pitched calls, but changing the shape of its forehead isn’t in the article. Suggested wording: \"Called the sea canary for its high-pitched calls, and it has no dorsal fin.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "Alias “beluga whale”. The existing fact is half confirmed: the \"sea canary\" name is for its high-pitched calls, but changing the shape of its forehead isn’t in the article. Suggested wording: \"Called the sea canary for its high-pitched calls, and it has no dorsal fin.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov, len, wt, df, fx), from the cached Wikipedia text."
 }

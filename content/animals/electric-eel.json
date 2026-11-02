@@ -1,6 +1,6 @@
 {
   "sci": "Electrophorus",
-  "ov": "Nocturnal freshwater fish of South America that stun prey with electric shocks. They must breathe air, have poor eyesight and find their way by electrolocation. They mainly eat fish.",
+  "ov": "Nocturnal freshwater fish of South America that stun prey with electric shocks; in 2019 they were split into three species. They must breathe air, gulping it about every two minutes, have poor eyesight, and find their way by electrolocation.",
   "why": {
     "dg": "Its shocks reach 860 volts, strong enough to drive off animals as large as horses.",
     "ac": "Nocturnal, with poor eyesight made up for by sensing electric fields."
@@ -10,10 +10,13 @@
     "wetland",
     "rainforest"
   ],
+  "len": "Up to 2 m (Electrophorus electricus)",
+  "wt": "Up to 20 kg (Electrophorus electricus)",
   "rg": "South America.",
   "df": "Mainly fish.",
   "fx": [
-    "Studies of electric eels in the 1770s helped lead to the invention of the battery in 1800."
+    "Studies of electric eels in the 1770s helped lead to the invention of the battery in 1800.",
+    "Because it breathes air, it can live in water that is low in oxygen."
   ],
   "src": [
     {
@@ -25,10 +28,12 @@
         "rg",
         "df",
         "fx",
-        "why"
+        "why",
+        "len",
+        "wt"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry (three species since 2019). The existing fact is confirmed: up to 860 volts, and a knifefish, not a true eel."
+  "rv": "2026-11-02",
+  "notes": "Group entry (three species since 2019). The existing fact is confirmed: up to 860 volts, and a knifefish, not a true eel. PAGE ADDITIONS 2026-11-02 (ov, len, wt, fx), from the cached Wikipedia text."
 }

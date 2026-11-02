@@ -1,6 +1,6 @@
 {
   "sci": "Eunectes",
-  "ov": "Large, semiaquatic boas of tropical South America. The green anaconda is the heaviest snake in the world and one of the longest, reaching over 6 m.",
+  "ov": "Large, semiaquatic boas of tropical South America, from Ecuador, Colombia, Venezuela and Brazil south to northern Argentina. The green anaconda is the heaviest snake in the world and one of the longest, reaching over 6 m.",
   "why": {
     "dg": "Encounters with people can be dangerous, but anacondas don't regularly hunt humans.",
     "ac": "Mostly nocturnal and aquatic, lurking almost fully submerged."
@@ -11,10 +11,12 @@
     "rainforest"
   ],
   "len": "Up to 6.32 m (green anaconda)",
+  "wt": "30–80 kg (typical adult green anaconda)",
   "rg": "Tropical South America.",
   "df": "Large prey such as capybaras, deer, caimans and even jaguars, though such big meals are rare.",
   "fx": [
-    "Its genus name, Eunectes, means “good swimmer”."
+    "Its genus name, Eunectes, means “good swimmer”.",
+    "The heaviest of more than 900 anacondas one researcher examined was a female 5.21 m long, weighing 97.5 kg."
   ],
   "src": [
     {
@@ -35,10 +37,12 @@
         "ov",
         "len",
         "df",
-        "why"
+        "why",
+        "wt",
+        "fx"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. The existing fact (heaviest snake, gives birth to live young) is confirmed: litters of 20–40, up to 100. No why.et: the sources don’t mention eating anacondas. No why.dg either; dg is \"yes\", and the source doesn’t cover attacks on people."
+  "rv": "2026-11-02",
+  "notes": "Group entry. The existing fact (heaviest snake, gives birth to live young) is confirmed: litters of 20–40, up to 100. No why.et: the sources don’t mention eating anacondas. No why.dg either; dg is \"yes\", and the source doesn’t cover attacks on people. PAGE ADDITIONS 2026-11-02 (ov, wt, fx), from the cached Wikipedia text."
 }

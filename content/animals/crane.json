@@ -1,11 +1,13 @@
 {
   "sci": "Gruidae",
-  "ov": "Fifteen species of tall birds with long legs and necks. Cranes fly with their necks stretched out, unlike herons, and form large flocks outside the breeding season.",
+  "ov": "Fifteen species of large birds with long legs and necks, often called the world’s tallest flying birds. Most are grey or white with red bare skin on the face; crowned cranes have golden crests. They fly with the neck stretched out, unlike herons.",
   "hb": [
     "wetland",
     "grassland",
     "farmland"
   ],
+  "len": "90 cm (demoiselle crane) to 176 cm (sarus crane)",
+  "wt": "Up to 12 kg (red-crowned crane, the heaviest)",
   "rg": "Every continent except Antarctica and South America.",
   "df": "Opportunistic: small rodents, birds’ eggs, fish, amphibians, insects, grain and berries.",
   "cf": [
@@ -15,7 +17,8 @@
     }
   ],
   "fx": [
-    "Both parents raise the chicks, which stay with them until the next breeding season."
+    "Both parents raise the chicks, which stay with them until the next breeding season.",
+    "The plight of North America’s whooping crane inspired some of the first US laws protecting endangered species."
   ],
   "src": [
     {
@@ -27,10 +30,12 @@
         "rg",
         "df",
         "cf",
-        "fx"
+        "fx",
+        "len",
+        "wt"
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. REGION: animals.js r is [\"Worldwide\"], but the source says cranes live on most continents \"with the exception of Antarctica and South America\". Consider Europe, Asia, Africa, North America, Australia. ANSWER CHECK (fact): the animals.js fact \"Pairs dance together, and some species fly over the Himalayas on migration\" is half sourced: the dances yes, the Himalayas not in this article. Suggested wording: \"Pairs perform spectacular dances when courting.\" RESOLVED (owner: approve all): r changed to Europe, Asia, Africa, North America, Australia; fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "Group entry. REGION: animals.js r is [\"Worldwide\"], but the source says cranes live on most continents \"with the exception of Antarctica and South America\". Consider Europe, Asia, Africa, North America, Australia. ANSWER CHECK (fact): the animals.js fact \"Pairs dance together, and some species fly over the Himalayas on migration\" is half sourced: the dances yes, the Himalayas not in this article. Suggested wording: \"Pairs perform spectacular dances when courting.\" RESOLVED (owner: approve all): r changed to Europe, Asia, Africa, North America, Australia; fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov, len, wt, fx), from the cached Wikipedia text."
 }

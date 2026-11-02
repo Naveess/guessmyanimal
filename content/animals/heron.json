@@ -1,6 +1,6 @@
 {
   "sci": "Ardeidae",
-  "ov": "About 75 species of long-legged, long-necked wading birds of fresh water and coasts, including the egrets and bitterns. They fly with the neck pulled back, unlike storks and cranes.",
+  "ov": "About 75 species of long-legged, long-necked wading birds of fresh water and coasts, including the egrets and bitterns. They range from the 25–30 cm dwarf bittern to the goliath heron, up to 152 cm tall, and fly with the neck folded back, unlike storks and cranes.",
   "hb": [
     "wetland",
     "freshwater",
@@ -8,6 +8,7 @@
   ],
   "len": "84–102 cm (grey heron)",
   "rg": "Every continent except Antarctica.",
+  "df": "Fish, reptiles, amphibians, crustaceans, molluscs and water insects; sometimes birds, eggs and rodents.",
   "cf": [
     {
       "slug": "crane",
@@ -15,7 +16,8 @@
     }
   ],
   "fx": [
-    "Herons have “powder down”, special feathers that crumble into a powder they use to clean off fish slime."
+    "Herons have “powder down”, special feathers that crumble into a powder they use to clean off fish slime.",
+    "Before striking, a heron moves its head from side to side to judge where prey really is under the water’s surface."
   ],
   "src": [
     {
@@ -26,7 +28,8 @@
         "ov",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "df"
       ]
     },
     {
@@ -44,6 +47,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. The existing fact (some herons drop bait and wait) is confirmed: little egrets and grey herons have been documented using bait."
+  "rv": "2026-11-02",
+  "notes": "Group entry. The existing fact (some herons drop bait and wait) is confirmed: little egrets and grey herons have been documented using bait. PAGE ADDITIONS 2026-11-02 (ov, df, fx), from the cached Wikipedia text. The article gives no weight."
 }

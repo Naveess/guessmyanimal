@@ -1,6 +1,6 @@
 {
   "sci": "Didelphimorphia",
-  "ov": "The largest group of marsupials in the Americas, 126 species. Only the Virginia opossum lives in the US and Canada, where it’s often called a possum. It’s usually non-aggressive and rarely carries rabies.",
+  "ov": "The largest group of marsupials in the Americas, 126 species, mostly omnivores that spend some time in trees. Only the Virginia opossum lives in the US and Canada, where it’s often called a possum. It’s usually non-aggressive and rarely carries rabies.",
   "why": {
     "ac": "A solitary nocturnal animal that favours dark, secure dens.",
     "et": "Hunted for sport and food, and some believe its meat has healing properties."
@@ -13,8 +13,10 @@
   "len": "33–55 cm (Virginia opossum)",
   "wt": "1.9–6 kg (Virginia opossum)",
   "rg": "The Americas, from Canada to South America.",
+  "df": "A wide range of plants, plus insects (mostly grasshoppers, crickets and beetles), carrion, eggs and small animals.",
   "fx": [
-    "Gestation lasts only 11–13 days, and a litter can be over 20 young."
+    "Gestation lasts only 11–13 days, and a litter can be over 20 young.",
+    "Opossums came from South America, and reached North America after the two continents joined."
   ],
   "src": [
     {
@@ -24,7 +26,8 @@
         "sci",
         "ov",
         "rg",
-        "why"
+        "why",
+        "fx"
       ]
     },
     {
@@ -32,7 +35,8 @@
       "url": "https://en.wikipedia.org/wiki/Virginia_opossum",
       "for": [
         "fx",
-        "why"
+        "why",
+        "df"
       ]
     },
     {
@@ -45,6 +49,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry (alias “possum”). ANSWER CHECK (fact): the animals.js fact \"Playing dead is involuntary: it faints, and cannot snap out of it for hours\" isn’t quite the source, which says it feigns death \"in response to extreme fear\", stops when the threat withdraws, and can keep it up for several hours. Suggested wording: \"Plays dead when terrified, lying limp for up to several hours.\" REGION: opossums originated in South America and live throughout; consider adding Central America. No why.et: the source doesn’t mention eating them. RESOLVED (owner: approve all): Central America added to r; fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "Group entry (alias “possum”). ANSWER CHECK (fact): the animals.js fact \"Playing dead is involuntary: it faints, and cannot snap out of it for hours\" isn’t quite the source, which says it feigns death \"in response to extreme fear\", stops when the threat withdraws, and can keep it up for several hours. Suggested wording: \"Plays dead when terrified, lying limp for up to several hours.\" REGION: opossums originated in South America and live throughout; consider adding Central America. No why.et: the source doesn’t mention eating them. RESOLVED (owner: approve all): Central America added to r; fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov, df, fx), from the cached Wikipedia text."
 }

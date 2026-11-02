@@ -1,6 +1,6 @@
 {
   "sci": "Phocoenidae",
-  "ov": "Eight species of small, dolphin-like toothed whales, more closely related to narwhals and belugas than to dolphins. They have spade-shaped teeth and no pronounced beak.",
+  "ov": "Eight species of small, dolphin-like toothed whales, more closely related to narwhals and belugas than to dolphins. They have spade-shaped teeth and no pronounced beak, find their way mainly by echolocation, and keep warm with a layer of blubber.",
   "why": {
     "et": "The Inuit hunt harbour porpoises, and a drive hunt for Dall's porpoise continues in Japan."
   },
@@ -10,6 +10,8 @@
   ],
   "len": "1.4 m (vaquita) to 2.3 m (Dall’s porpoise)",
   "wt": "54 kg (vaquita) to 220 kg (Dall’s porpoise)",
+  "rg": "Rivers, coasts and open ocean, in waters from tropical (the vaquita, in the Sea of Cortez) to polar (the harbour porpoise, off Greenland).",
+  "df": "Mainly fish from the seabed and open water; also squid, shrimp and krill.",
   "cf": [
     {
       "slug": "dolphin",
@@ -17,7 +19,8 @@
     }
   ],
   "fx": [
-    "The vaquita, the smallest porpoise, is one of the smallest toothed whales."
+    "The vaquita, the smallest porpoise, is one of the smallest toothed whales.",
+    "In several species the females are larger than the males."
   ],
   "src": [
     {
@@ -30,10 +33,12 @@
         "wt",
         "cf",
         "fx",
-        "why"
+        "why",
+        "df",
+        "rg"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. The existing fact is confirmed."
+  "rv": "2026-11-02",
+  "notes": "Group entry. The existing fact is confirmed. PAGE ADDITIONS 2026-11-02 (ov, df, rg, fx), from the cached Wikipedia text."
 }

@@ -1,6 +1,6 @@
 {
   "sci": "Hydrochoerus hydrochaeris",
-  "ov": "The largest living rodent, a semiaquatic grazer found in every South American country except Chile. It lives in groups of 10–20, sometimes up to 100, near rivers, lakes and marshes.",
+  "ov": "The largest living rodent, a semiaquatic grazer with slightly webbed feet, found in every South American country except Chile. It lives in groups of 10–20, sometimes up to 100, near rivers, lakes and marshes, and its teeth keep growing all its life.",
   "why": {
     "et": "Capybaras are hunted for their meat, hide and fat, and farmed in some areas."
   },
@@ -15,7 +15,8 @@
   "rg": "All of South America except Chile.",
   "df": "Mainly grasses and water plants, plus fruit and bark.",
   "fx": [
-    "Birds sometimes ride on a capybara’s back to catch the insects it disturbs."
+    "Birds sometimes ride on a capybara’s back to catch the insects it disturbs.",
+    "Capybaras eat their own droppings, for the gut bacteria that help them digest grass."
   ],
   "src": [
     {
@@ -39,6 +40,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "The existing fact (largest rodent, relaxed about animals sitting on it) is confirmed: birds perch on its back and it is \"unaffected\". No why.p: the source doesn’t mention pets."
+  "rv": "2026-11-02",
+  "notes": "The existing fact (largest rodent, relaxed about animals sitting on it) is confirmed: birds perch on its back and it is \"unaffected\". No why.p: the source doesn’t mention pets. PAGE ADDITIONS 2026-11-02 (ov, fx), from the cached Wikipedia text."
 }
