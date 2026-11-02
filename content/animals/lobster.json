@@ -1,6 +1,6 @@
 {
   "sci": "Nephropidae",
-  "ov": "Large marine crustaceans with long bodies, muscular tails and big front claws, highly prized as seafood. They have blue blood, from copper-based haemocyanin.",
+  "ov": "Clawed sea crustaceans with long bodies and muscular tails that live in crevices and burrows on the sea floor. Three of their five pairs of legs have claws, the first pair much the largest. Highly prized as seafood, they have blue blood from copper-based haemocyanin and can live 45–50 years.",
   "why": {
     "ac": "It stays in its burrow by day and wanders the sea floor at night.",
     "et": "Usually boiled or steamed in the shell and eaten with butter and lemon."
@@ -11,6 +11,7 @@
   ],
   "len": "Up to 1.1 m (American lobster)",
   "wt": "Up to 20 kg (American lobster)",
+  "rg": "All oceans, on rocky, sandy or muddy bottoms from the shoreline to beyond the edge of the continental shelf.",
   "df": "Live prey such as fish, molluscs, other crustaceans and worms, plus some plants. They scavenge if they need to.",
   "cf": [
     {
@@ -27,7 +28,8 @@
         "ov",
         "df",
         "cf",
-        "why"
+        "why",
+        "rg"
       ]
     },
     {
@@ -40,6 +42,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. The existing fact (doesn’t weaken with age) is confirmed: research suggests lobsters may not slow down, weaken or lose fertility with age. ANSWER NOTE: animals.js lf is \"50–100 years\", but Wikipedia says an estimated 45–50 years in the wild. Consider \"45–50 years\". RESOLVED: lf changed to \"45–50 years\" per Wikipedia; the fx that said the same was dropped."
+  "rv": "2026-11-02",
+  "notes": "Group entry. The existing fact (doesn’t weaken with age) is confirmed: research suggests lobsters may not slow down, weaken or lose fertility with age. ANSWER NOTE: animals.js lf is \"50–100 years\", but Wikipedia says an estimated 45–50 years in the wild. Consider \"45–50 years\". RESOLVED: lf changed to \"45–50 years\" per Wikipedia; the fx that said the same was dropped. PAGE ADDITIONS 2026-11-02 (ov, rg), from the cached source text."
 }

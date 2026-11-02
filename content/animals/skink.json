@@ -4,6 +4,7 @@
   "why": {
     "p": "Blue-tongued skinks were among the first lizards kept as pets and are still kept today."
   },
+  "len": "Body about 12 cm (most); up to 35 cm (Solomon Islands skink)",
   "rg": "Almost worldwide, in every kind of habitat except arctic and subarctic regions.",
   "df": "Mostly insects such as flies, crickets, grasshoppers, beetles and caterpillars; some species kept as pets are omnivores.",
   "fx": [
@@ -19,7 +20,8 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "len"
       ]
     },
     {
@@ -31,6 +33,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed by the blue-tongued skink article: the blue tongue \"can be bared as bluff-warning to potential enemies\"."
+  "rv": "2026-11-02",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): Group entry. The fact is confirmed by the blue-tongued skink article: the blue tongue \"can be bared as bluff-warning to potential enemies\". PAGE ADDITIONS 2026-11-02 (len), from the cached source text."
 }

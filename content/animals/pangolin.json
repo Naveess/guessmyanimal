@@ -1,6 +1,6 @@
 {
   "sci": "Manidae",
-  "ov": "Scale-covered, ant-eating mammals of Asia and sub-Saharan Africa, also called scaly anteaters. They are nocturnal and solitary, and raise their one to three young for about two years.",
+  "ov": "Mammals covered in large, protective keratin scales, also called scaly anteaters, found in Asia and sub-Saharan Africa. They are nocturnal and solitary, sleep in hollow trees or burrows, and eat mainly ants and termites. Poached for meat and scales, they are the most trafficked mammals in the world.",
   "why": {
     "et": "Pangolins are poached for their meat and for their scales, which are used in traditional medicine.",
     "ac": "Nocturnal, feeding mainly on ants and termites."
@@ -45,6 +45,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"The only mammal covered in scales, and the most trafficked\" is half sourced: \"most trafficked mammals in the world\" yes, \"only mammal covered in scales\" isn’t in the article. Suggested wording: \"The most trafficked mammal in the world.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"The only mammal covered in scales, and the most trafficked\" is half sourced: \"most trafficked mammals in the world\" yes, \"only mammal covered in scales\" isn’t in the article. Suggested wording: \"The most trafficked mammal in the world.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov), from the cached source text."
 }

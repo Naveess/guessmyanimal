@@ -1,6 +1,9 @@
 {
   "sci": "Phalacrocoracidae",
   "ov": "About 40 species of dark, fish-eating water birds, including the shags. They dive from the surface and swim with their feet, and short wings give them among the highest flying costs of any bird. Many have bare blue, orange, red or yellow facial skin, brightest when breeding.",
+  "why": {
+    "p": "Not kept as a pet, but people in China and Japan have long trained cormorants to catch fish for them."
+  },
   "hb": [
     "coast",
     "freshwater",
@@ -25,10 +28,11 @@
         "rg",
         "df",
         "fx",
-        "len"
+        "len",
+        "why"
       ]
     }
   ],
-  "rv": "2026-10-30",
+  "rv": "2026-11-02",
   "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"Its feathers are not waterproof, which is why it stands with wings spread to dry\" is disputed. Wikipedia says some sources call the feathers waterproof, others water-permeable, and others say only the outer layer gets wet. Suggested wording: \"Often stands with its wings spread after diving, though nobody agrees exactly why.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-10-20 (ov, len, fx), from the cached Wikipedia text."
 }

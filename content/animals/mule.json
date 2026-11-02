@@ -3,6 +3,7 @@
   "ht": "Up to 180 cm at the withers (large draught mules)",
   "wt": "Typically about 370–460 kg",
   "rg": "Kept worldwide; in 2018 Mexico had the most, with over 3.2 million.",
+  "df": "Herbivorous, closer to a donkey’s diet than a horse’s: mainly grains, hay and greens, plus fruit and vegetables.",
   "cf": [
     {
       "slug": "donkey",
@@ -23,10 +24,11 @@
         "wt",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "df"
       ]
     }
   ],
-  "notes": "The animals.js fact is confirmed (horse × donkey, usually infertile).",
-  "rv": "2026-09-29"
+  "rv": "2026-11-02",
+  "notes": "The animals.js fact is confirmed (horse × donkey, usually infertile). PAGE ADDITIONS 2026-11-02 (df), from the cached source text. why.et: the Mule article never mentions mule meat, so \"Do people eat it? Some\" has no note."
 }

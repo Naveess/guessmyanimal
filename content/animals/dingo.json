@@ -11,7 +11,11 @@
     "forest",
     "scrub"
   ],
+  "len": "About 125 cm (wild males, average)",
+  "ht": "About 59 cm at the shoulder (wild males, average)",
+  "wt": "Wild males about 15.8 kg, females 14.1 kg (average)",
   "rg": "Australia.",
+  "df": "177 prey species, about 72% of them mammals and 19% birds. Eleven make up 80% of its diet, including red kangaroos, swamp wallabies, cattle, sheep and rabbits.",
   "cf": [
     {
       "slug": "dog",
@@ -31,10 +35,14 @@
         "why",
         "rg",
         "cf",
-        "fx"
+        "fx",
+        "len",
+        "ht",
+        "wt",
+        "df"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "The existing fact is confirmed: dingoes can rotate their wrists to turn doorknobs and raise latches, and their flexible shoulders let them climb fences. The article says fences, not trees. Suggested wording: \"Can rotate its wrists to open latches, and climbs fences.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "The existing fact is confirmed: dingoes can rotate their wrists to turn doorknobs and raise latches, and their flexible shoulders let them climb fences. The article says fences, not trees. Suggested wording: \"Can rotate its wrists to open latches, and climbs fences.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (len, ht, wt, df), from the cached source text."
 }

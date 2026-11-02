@@ -9,6 +9,8 @@
     "rainforest",
     "forest"
   ],
+  "len": "42–58 cm, with no tail (lar gibbon)",
+  "wt": "4.4–7.6 kg (lar gibbon)",
   "rg": "Subtropical and tropical forests from eastern Bangladesh and Northeast India to Southeast Asia, Sumatra, Borneo and Java.",
   "df": "About 60% fruit, plus twigs, leaves, insects, flowers and occasionally birds’ eggs.",
   "fx": [
@@ -32,10 +34,12 @@
       "title": "Animal Diversity Web: Hylobates lar",
       "url": "https://animaldiversity.org/accounts/Hylobates_lar/",
       "for": [
-        "why"
+        "why",
+        "len",
+        "wt"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry. The animals.js fact is essentially confirmed, but the article gives 55 km/h (34 mph), not 35. Suggested wording: \"Swings hand over hand at 34 mph, and mated pairs sing duets.\""
+  "rv": "2026-11-02",
+  "notes": "RESOLVED 2026-09-29 (owner: approve all; animals.js updated): Group entry. The animals.js fact is essentially confirmed, but the article gives 55 km/h (34 mph), not 35. Suggested wording: \"Swings hand over hand at 34 mph, and mated pairs sing duets.\" PAGE ADDITIONS 2026-11-02 (len, wt), from the cached source text."
 }

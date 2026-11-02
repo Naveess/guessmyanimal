@@ -1,6 +1,6 @@
 {
   "sci": "Myliobatoidei",
-  "ov": "About 220 species of flat, cartilaginous fish with a venomous barbed stinger on the tail. They are common in warm coastal seas worldwide, and some live in rivers.",
+  "ov": "About 220 species of flat, cartilaginous fish with a venomous barbed stinger on the tail, common in warm coastal seas worldwide; some live in rivers or the deep ocean. Most lie on the sea floor, camouflaged against the sand, and their mouths are on the underside of the body.",
   "why": {
     "dg": "A sting is very painful but rarely fatal. Steve Irwin’s death in 2006 was only the second recorded in Australian waters since 1945.",
     "et": "Rays are edible, and stingray dishes are found on coasts worldwide."
@@ -11,6 +11,7 @@
     "freshwater"
   ],
   "rg": "Tropical and subtropical coastal waters worldwide; river stingrays in fresh water.",
+  "df": "Mostly molluscs and crustaceans, occasionally small fish. They find prey with electrical sensors around the mouth, and Amazon river stingrays eat insects.",
   "fx": [
     "Stingrays give birth to live young, in litters of five to thirteen."
   ],
@@ -23,10 +24,11 @@
         "ov",
         "why",
         "rg",
-        "fx"
+        "fx",
+        "df"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. The existing fact is broadly confirmed: the blade is \"deeply barbed and usually breaks off in the wound\"; \"purely defensive\" isn’t stated. No why.et: the source doesn’t mention eating them."
+  "rv": "2026-11-02",
+  "notes": "Group entry. The existing fact is broadly confirmed: the blade is \"deeply barbed and usually breaks off in the wound\"; \"purely defensive\" isn’t stated. No why.et: the source doesn’t mention eating them. PAGE ADDITIONS 2026-11-02 (ov, df), from the cached source text. size: the Stingray article gives no sizes."
 }

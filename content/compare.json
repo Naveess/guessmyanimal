@@ -259,7 +259,8 @@
           "ostrich.fx"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "seal-vs-walrus": {
     "qa": [
@@ -291,7 +292,8 @@
           "seal.rg"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "duck-vs-goose": {
     "qa": [
@@ -324,7 +326,8 @@
           "duck.dg"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "aardvark-vs-anteater": {
     "qa": [
@@ -356,7 +359,8 @@
           "anteater.rg"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "crayfish-vs-lobster": {
     "qa": [
@@ -381,7 +385,8 @@
           "lobster.wt"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "kangaroo-vs-wallaby": {
     "qa": [
@@ -411,7 +416,8 @@
           "wallaby.rg"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "dugong-vs-manatee": {
     "qa": [
@@ -442,7 +448,8 @@
           "manatee.df"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "dolphin-vs-orca": {
     "qa": [
@@ -472,7 +479,8 @@
           "dolphin.dg"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "goose-vs-swan": {
     "qa": [
@@ -504,7 +512,8 @@
           "swan.why"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "fennec-fox-vs-red-fox": {
     "qa": [
@@ -534,7 +543,8 @@
           "red-fox.rg"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "falcon-vs-kestrel": {
     "qa": [
@@ -565,7 +575,8 @@
           "kestrel.ov"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "condor-vs-vulture": {
     "qa": [
@@ -594,7 +605,8 @@
           "condor.rg"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   },
   "parrotfish-vs-wrasse": {
     "qa": [
@@ -624,6 +636,7 @@
           "wrasse.ov"
         ]
       }
-    ]
+    ],
+    "rv": "2026-11-02"
   }
 }

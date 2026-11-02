@@ -1,6 +1,9 @@
 {
   "sci": "Proteus",
   "ov": "A blind, pale salamander that lives its whole life underwater in the flooded limestone caves of the Dinaric Alps, the only cave-only vertebrate genus in Europe. Long treated as one species, it was split into nine in 2026. It finds its way by smell, hearing and even magnetic fields.",
+  "why": {
+    "ac": "It lives in the complete darkness of underground waters, where day and night make no difference."
+  },
   "hb": [
     "freshwater"
   ],
@@ -24,10 +27,11 @@
         "rg",
         "df",
         "fx",
-        "iu"
+        "iu",
+        "why"
       ]
     }
   ],
-  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: \"an olm can survive up to 10 years without food\". The IUCN rating (Vulnerable, 2022) predates the 2026 split into nine species. ANSWER CHECK (so): animals.js has \"Solitary\", but \"Olms are gregarious, and usually aggregate either under stones or in fissures\". Suggest so:\"Groups\".",
-  "rv": "2026-09-29"
+  "rv": "2026-11-02",
+  "notes": "RESOLVED (owner approved all suggestions, including the optional ones, 2026-09-29): The fact is confirmed: \"an olm can survive up to 10 years without food\". The IUCN rating (Vulnerable, 2022) predates the 2026 split into nine species. ANSWER CHECK (so): animals.js has \"Solitary\", but \"Olms are gregarious, and usually aggregate either under stones or in fissures\". Suggest so:\"Groups\"."
 }

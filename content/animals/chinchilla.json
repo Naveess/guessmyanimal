@@ -11,6 +11,7 @@
   ],
   "wt": "0.5–0.8 kg",
   "rg": "The Andes; wild colonies are now known only in Chile.",
+  "df": "Mainly grass and seeds, among many kinds of plants; it may occasionally eat insects and bird eggs (long-tailed chinchilla).",
   "fx": [
     "Each follicle grows about 50 hairs, around 20,000 hairs per square centimetre."
   ],
@@ -33,10 +34,11 @@
       "url": "https://animaldiversity.org/accounts/Chinchilla_lanigera/",
       "for": [
         "wt",
-        "why"
+        "why",
+        "df"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry (two species, both Endangered). ANSWER CHECK (fact): the animals.js fact \"The densest fur of any land mammal, and it bathes in volcanic dust rather than water\" is half sourced: the fur yes, the dust bath isn’t in the article. Suggested wording: \"The densest fur of any land mammal, about 20,000 hairs per square centimetre.\" ANSWER CHECK: p is \"common\" but Wikipedia says domestic chinchillas are \"sometimes kept as pets\". Consider p:\"some\". RESOLVED (owner: approve all): p changed to \"some\"; fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "Group entry (two species, both Endangered). ANSWER CHECK (fact): the animals.js fact \"The densest fur of any land mammal, and it bathes in volcanic dust rather than water\" is half sourced: the fur yes, the dust bath isn’t in the article. Suggested wording: \"The densest fur of any land mammal, about 20,000 hairs per square centimetre.\" ANSWER CHECK: p is \"common\" but Wikipedia says domestic chinchillas are \"sometimes kept as pets\". Consider p:\"some\". RESOLVED (owner: approve all): p changed to \"some\"; fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (df), from the cached source text."
 }
