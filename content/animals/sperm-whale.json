@@ -1,16 +1,18 @@
 {
   "sci": "Physeter macrocephalus",
-  "ov": "The largest toothed whale and the largest toothed predator. Females and young live in groups, while adult males live alone outside the breeding season. It has the largest brain on Earth.",
+  "ov": "The largest toothed whale and the largest toothed predator. Females and young live in groups, while adult males live alone outside the breeding season. It has the largest brain on Earth, more than five times heavier than a human’s.",
   "why": {
     "dg": "Not to swimmers, but sperm whales famously rammed and sank the whaling ships Essex and Ann Alexander."
   },
   "hb": [
     "ocean"
   ],
+  "len": "Males about 16 m on average; females up to 12 m",
   "rg": "Oceans worldwide.",
   "df": "Mainly squid, caught on deep dives down to 2,250 m.",
   "fx": [
-    "Its clicks reach 236 decibels, the loudest sound made by any animal."
+    "Its clicks reach 236 decibels, the loudest sound made by any animal.",
+    "Newborn sperm whales are already 3.5–4.5 m long."
   ],
   "src": [
     {
@@ -22,10 +24,11 @@
         "rg",
         "df",
         "fx",
-        "why"
+        "why",
+        "len"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "The existing fact is mostly confirmed: the largest brain on Earth, dives to 2,250 m, and squid is its main prey, though the article doesn’t single out giant squid. Suggested wording: \"The largest brain on Earth, and it dives over 2 km down to hunt squid.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-10-30",
+  "notes": "The existing fact is mostly confirmed: the largest brain on Earth, dives to 2,250 m, and squid is its main prey, though the article doesn’t single out giant squid. Suggested wording: \"The largest brain on Earth, and it dives over 2 km down to hunt squid.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-10-20 (ov, len, fx), from the cached Wikipedia text. The article's weights are for single individuals, so no wt."
 }

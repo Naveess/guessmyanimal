@@ -1,6 +1,6 @@
 {
   "sci": "Monodon monoceros",
-  "ov": "A toothed whale of the Arctic, closely related to the beluga. Males have a spiralled tusk 1.5–3 m long, an overgrown left canine tooth.",
+  "ov": "A toothed whale of the Arctic waters of Canada, Greenland and Russia, closely related to the beluga; the two can interbreed. Males have a spiralled tusk 1.5–3 m long, an overgrown left canine tooth. It has no true dorsal fin, only a shallow ridge.",
   "why": {
     "et": "The Inuit have hunted narwhals for meat and ivory for thousands of years, and still do under regulation."
   },
@@ -11,6 +11,7 @@
   "len": "4–5 m",
   "wt": "900–1,600 kg",
   "rg": "Arctic waters.",
+  "df": "Mainly polar and Arctic cod, Greenland halibut, cuttlefish, shrimp and armhook squid.",
   "cf": [
     {
       "slug": "beluga",
@@ -18,7 +19,8 @@
     }
   ],
   "fx": [
-    "Narwhals spend long periods at great depths."
+    "Narwhals spend long periods at great depths.",
+    "Narwhals usually travel in groups of three to eight, but in summer up to 1,000 gather together."
   ],
   "src": [
     {
@@ -30,7 +32,8 @@
         "rg",
         "cf",
         "fx",
-        "why"
+        "why",
+        "df"
       ]
     },
     {
@@ -42,6 +45,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "The existing fact is mostly confirmed: the tusk is the left tooth with \"millions of nerve endings\". The article doesn’t say ten million. Suggested wording: \"The tusk is an overgrown left tooth, packed with millions of nerve endings.\" No why.et: the source doesn’t mention it being eaten. RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "The existing fact is mostly confirmed: the tusk is the left tooth with \"millions of nerve endings\". The article doesn’t say ten million. Suggested wording: \"The tusk is an overgrown left tooth, packed with millions of nerve endings.\" No why.et: the source doesn’t mention it being eaten. RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov, df, fx), from the cached Wikipedia text."
 }

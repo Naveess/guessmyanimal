@@ -124,8 +124,10 @@ lookup remains the default and the reason people arrive.
 - **Monetization**: AdSense Auto ads are live, behind a Funding Choices
   consent message, to cover hosting costs. Design and layout work must keep
   ads from interfering with the answers — the About page commits to that
-  priority in writing, and `.adslot` reserves its height whether or not a
-  unit fills it so nothing shifts on load.
+  priority in writing. Manual ad slots exist (animal pages after the
+  answers, compare pages between sections) but stay hidden until switched
+  on in `functions/_shared/ads.json`. No ad ever sits in or next to the
+  game: the guess box, Mystery, Party Mode, a party code or stream mode.
 - **Hosting**: static site plus Cloudflare Pages Functions, deployed to
   Cloudflare Pages (production branch `main`), with a Cloudflare D1 database
   for reports and party sessions.

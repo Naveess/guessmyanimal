@@ -1,6 +1,6 @@
 {
   "sci": "Apodidae",
-  "ov": "About 100 species of highly aerial birds that look like swallows but are closer to hummingbirds. Swifts are among the fastest birds in level flight, and their short legs are made for clinging to walls, not walking. They live on every continent except Antarctica.",
+  "ov": "About 100 species of highly aerial birds that look like swallows but are closer to hummingbirds; their family name means “footless”. Swifts are among the fastest birds in level flight, and their short legs are made for clinging to walls, not walking. They live on every continent except Antarctica.",
   "len": "16–17 cm (common swift)",
   "rg": "Every continent except Antarctica; temperate species winter in the tropics.",
   "df": "Insects caught in flight.",
@@ -28,6 +28,6 @@
       ]
     }
   ],
-  "notes": "Group entry. The animals.js fact is confirmed: some common swifts go 10 months without landing and sleep on the wing.",
-  "rv": "2026-09-29"
+  "rv": "2026-11-02",
+  "notes": "Group entry. The animals.js fact is confirmed: some common swifts go 10 months without landing and sleep on the wing. PAGE ADDITIONS 2026-11-02 (ov), from the cached Wikipedia text. Neither article gives a weight; fx already holds two facts."
 }

@@ -1,16 +1,20 @@
 {
   "sci": "Panthera uncia",
-  "ov": "A big cat of the high mountains of Central and South Asia, with thick whitish-grey fur and a long, bushy tail. It lives alone at 3,000–4,500 m, among cliffs and ridges.",
+  "ov": "A big cat of the high mountains of Central and South Asia, slightly smaller than the other big cats in its genus. Its thick whitish-grey fur has black spots and rosettes, and it lives alone at 3,000–4,500 m, among cliffs and ridges.",
   "why": {
     "dg": "Only three attacks on people have ever been reported, and none was fatal."
   },
   "hb": [
     "mountain"
   ],
+  "len": "75–150 cm head and body, plus an 80–105 cm tail",
+  "ht": "Up to 56 cm at the shoulder",
+  "wt": "Males 45–55 kg, females 35–40 kg",
   "rg": "Mountains of Asia, from the Hindu Kush, Himalayas and Tibetan Plateau to southern Siberia, Mongolia and western China.",
   "df": "Wild hoofed animals, and domestic livestock.",
   "fx": [
-    "Fewer than 10,000 mature snow leopards are thought to be left in the wild."
+    "Fewer than 10,000 mature snow leopards are thought to be left in the wild.",
+    "Its fur hairs are 5–12 cm long, and its broad paws and thick tail suit it to cold mountains."
   ],
   "iu": "VU",
   "src": [
@@ -24,10 +28,13 @@
         "df",
         "iu",
         "fx",
-        "why"
+        "why",
+        "len",
+        "ht",
+        "wt"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "The existing fact (can’t roar, wraps its tail round itself) is confirmed: its short vocal folds can’t roar, and it uses the tail \"like a blanket to protect its face\". ANSWER CHECK: ac is \"both\", but Wikipedia says it is \"mostly active at dawn and twilight\", which How we answer counts as Night. Consider ac:\"night\". RESOLVED (owner: approve all): ac changed to \"night\"."
+  "rv": "2026-11-02",
+  "notes": "The existing fact (can’t roar, wraps its tail round itself) is confirmed: its short vocal folds can’t roar, and it uses the tail \"like a blanket to protect its face\". ANSWER CHECK: ac is \"both\", but Wikipedia says it is \"mostly active at dawn and twilight\", which How we answer counts as Night. Consider ac:\"night\". RESOLVED (owner: approve all): ac changed to \"night\". PAGE ADDITIONS 2026-11-02 (ov, len, ht, wt, fx), from the cached Wikipedia text."
 }

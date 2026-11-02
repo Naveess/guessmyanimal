@@ -1,6 +1,6 @@
 {
   "sci": "Mantodea",
-  "ov": "Over 2,400 species of predatory insects with big, grasping front legs held folded as if praying. Their closest relatives are termites and cockroaches.",
+  "ov": "Over 2,400 species of predatory insects with big, grasping front legs held folded as if praying. Their closest relatives are termites and cockroaches. Most wait motionless to ambush passing insects, and most live for only about a year.",
   "why": {
     "p": "Mantises are among the insects most commonly kept as pets."
   },
@@ -13,7 +13,8 @@
   "rg": "Temperate and tropical habitats worldwide.",
   "df": "Mostly ambush predators of other insects.",
   "fx": [
-    "Mantises are sometimes mistaken for stick insects and grasshoppers."
+    "Mantises are sometimes mistaken for stick insects and grasshoppers.",
+    "Some mantises can turn their heads almost 180 degrees."
   ],
   "src": [
     {
@@ -29,6 +30,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"The only insect that can turn its head to look behind it\" overstates it. The article says \"some species of mantis can rotate their heads nearly 180°\", not that it’s the only insect. Suggested wording: \"Some can turn their heads nearly 180 degrees.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-10-20",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"The only insect that can turn its head to look behind it\" overstates it. The article says \"some species of mantis can rotate their heads nearly 180°\", not that it’s the only insect. Suggested wording: \"Some can turn their heads nearly 180 degrees.\" RESOLVED (owner: approve all): fact rewritten as suggested. THIN-PAGE ADDITIONS 2026-10-20 (ov, fx), all from Wikipedia: Mantis. The article gives no body length, so no len."
 }

@@ -1,6 +1,6 @@
 {
   "sci": "Gadus morhua",
-  "ov": "The Atlantic cod is a large, brown or green spotted fish of the North Atlantic, one of the most widely eaten fish in the world.",
+  "ov": "The Atlantic cod is a large, brown or green spotted fish of the North Atlantic, one of the most widely eaten fish in the world. It lives in shoals, which move inshore to feed after spawning. A 1996 IUCN assessment lists it as Vulnerable.",
   "why": {
     "et": "One of the most widely eaten fish."
   },
@@ -11,8 +11,10 @@
   "len": "Usually 100–140 cm; over 180 cm recorded",
   "wt": "Over 50 kg recorded",
   "rg": "The North Atlantic: from North Carolina to Greenland in the west, and from the Bay of Biscay to the Arctic Ocean, the Baltic and the North Sea in the east.",
+  "df": "Fish such as herring, capelin and sand eels, plus squid, mussels, clams, crustaceans and worms. Small cod eat mainly crustaceans.",
   "fx": [
-    "Females release their eggs in 5–20 batches, a few days apart."
+    "Females release their eggs in 5–20 batches, a few days apart.",
+    "Larger cod act as scouts, leading the shoal’s direction."
   ],
   "src": [
     {
@@ -25,10 +27,11 @@
         "wt",
         "rg",
         "fx",
-        "why"
+        "why",
+        "df"
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "The existing fact is confirmed: a female spawns between 200,000 and 15 million eggs."
+  "rv": "2026-11-02",
+  "notes": "The existing fact is confirmed: a female spawns between 200,000 and 15 million eggs. PAGE ADDITIONS 2026-11-02 (ov, df, fx), from the cached Wikipedia text."
 }

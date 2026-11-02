@@ -103,9 +103,12 @@
     "desc": "Animals on Guess My Animal that live in the Antarctic: penguins, seals, albatrosses and krill.",
     "intro": [
       "Very little lives on Antarctica itself. The animals that make it are the ones that feed at sea: penguins, seals, albatrosses, and the krill that much of the rest depends on.",
+      "Krill are the base of it. These small, shrimp-like crustaceans eat phytoplankton, and Antarctic krill weigh about 500 million tonnes in total. They are the main food of many larger animals, penguins among them.",
+      "Penguins live almost entirely in the Southern Hemisphere, but not only in the Antarctic: they range from Antarctica to the Galápagos Islands on the equator. Seals feed at sea, mainly on fish and other sea animals, and come ashore to breed and rest.",
+      "Albatrosses are among the biggest flying birds, with a wingspan of up to 3.5 m. They nest in colonies on remote islands and pair for life. Orcas, found in every ocean from the Arctic to the Antarctic, hunt fish, seals and other sea mammals.",
       "Polar bears are not on this list. They live only in the Arctic, at the other end of the world."
     ],
-    "rv": "2026-09-30"
+    "rv": "2026-10-20"
   },
   "region/worldwide": {
     "title": "Animals found worldwide",

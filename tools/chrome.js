@@ -42,6 +42,7 @@ const PAW = `<svg class="brand-paw" viewBox="0 0 64 64" aria-hidden="true"><elli
 
 const GITHUB = 'https://github.com/Naveess/guessmyanimal';
 const SITE = require('../functions/_shared/site.json').url;
+const { adsHead, adSlot } = require('./ads.js');
 
 function backSlot(variant) {
   if (variant === 'index') {
@@ -185,7 +186,7 @@ function siteFooter(variant) {
 }
 
 // The <head> of a generated page (tools/build-collections.js): the same
-// meta, theme bootstrap, stylesheet and ad scripts browse.html carries.
+// meta, theme bootstrap, stylesheet and ad scripts (tools/ads.js) browse.html carries.
 // Values arrive already HTML-escaped; ld is a ready-made JSON-LD
 // <script> tag (tools/jsonld.js), or nothing.
 function docHead({ title, description, canonical, styleVersion, robots, ld }) {
@@ -215,29 +216,7 @@ ${ld ? ld + '\n' : ''}
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
 <link rel="stylesheet" href="/style.css?v=${styleVersion}">
-<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
-     crossorigin="anonymous"></script>
-<!-- Funding Choices - see privacy.html for what this pair does. -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-2495070274777193?ers=1"></script>
-<script>
-(function() {
-  function signalGooglefcPresent() {
-    if (!window.frames['googlefcPresent']) {
-      if (document.body) {
-        var iframe = document.createElement('iframe');
-        iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
-        iframe.style.display = 'none';
-        iframe.name = 'googlefcPresent';
-        document.body.appendChild(iframe);
-      } else {
-        setTimeout(signalGooglefcPresent, 0);
-      }
-    }
-  }
-  signalGooglefcPresent();
-})();
-</script>`;
+${adsHead()}`;
 }
 
 const BLOCKS = {
@@ -246,6 +225,8 @@ const BLOCKS = {
   brand,
   'site-footer': siteFooter,
   'site-footer-index': () => siteFooter('index'),
+  'ads-head': adsHead,
+  'ad-slot-animal': () => adSlot('animal'),
 };
 
 module.exports = { siteBar, brand, siteFooter, docHead, BLOCKS };

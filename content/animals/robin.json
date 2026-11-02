@@ -1,16 +1,18 @@
 {
   "sci": "Erithacus rubecula",
-  "ov": "The European robin is a small insect-eating songbird with an orange-red breast and face, found across Europe to Western Siberia and North Africa. It’s unrelated to the larger American robin, a thrush.",
+  "ov": "The European robin is a small insect-eating songbird with an orange-red breast and face, found across Europe to Western Siberia and North Africa. It’s unrelated to the larger American robin, a thrush. Unafraid of people, it follows gardeners for the worms they dig up.",
   "hb": [
     "forest",
     "towns",
     "farmland"
   ],
   "len": "12.5–14 cm",
+  "wt": "16–22 g",
   "rg": "Europe, east to Western Siberia and south to North Africa.",
   "df": "Mainly insects, plus seed mixtures and scraps from bird tables; occasionally small vertebrates.",
   "fx": [
-    "Because so many die in their first year, a robin’s average life expectancy is just 1.1 years."
+    "Because so many die in their first year, a robin’s average life expectancy is just 1.1 years.",
+    "Males fight fiercely over territory; in some areas fights cause up to 10% of adult robin deaths."
   ],
   "src": [
     {
@@ -22,7 +24,8 @@
         "len",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "wt"
       ]
     },
     {
@@ -33,6 +36,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "The existing fact (fights to the death) is confirmed: territorial fights cause up to 10% of adult deaths in some areas. REGION: animals.js r includes North America, but the European robin doesn’t live there; the North American “robin” is a different bird, the American robin. Consider removing North America. RESOLVED (owner: approve all): North America removed from r."
+  "rv": "2026-10-30",
+  "notes": "The existing fact (fights to the death) is confirmed: territorial fights cause up to 10% of adult deaths in some areas. REGION: animals.js r includes North America, but the European robin doesn’t live there; the North American “robin” is a different bird, the American robin. Consider removing North America. RESOLVED (owner: approve all): North America removed from r. PAGE ADDITIONS 2026-10-20 (ov, wt, fx), from the cached Wikipedia text."
 }

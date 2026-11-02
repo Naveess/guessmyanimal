@@ -1,6 +1,6 @@
 {
   "sci": "Arini (in part)",
-  "ov": "Large, long-tailed and often colourful New World parrots in six genera. They’re popular as companion birds, though several wild species are of conservation concern.",
+  "ov": "Large, long-tailed and often colourful New World parrots in six genera. They’re popular as companion birds, though several wild species are of conservation concern. The biggest are the hyacinth, great green and green-winged macaws; the smallest is no bigger than some parakeets.",
   "why": {
     "p": "Macaws are popular companion parrots, though several species are threatened in the wild."
   },
@@ -12,7 +12,8 @@
   "rg": "Mexico, Central America and South America; formerly the Caribbean.",
   "df": "Seeds, nuts, fruits, leaves, flowers and shoots.",
   "fx": [
-    "Macaws have a large bare patch of pale skin on the face."
+    "Macaws have a large bare patch of pale skin on the face.",
+    "A macaw’s facial feather pattern is as unique as a fingerprint."
   ],
   "src": [
     {
@@ -28,6 +29,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. The existing fact is confirmed, with a hedge: \"it has been suggested\" macaws eat clay from river banks to neutralise toxins in their food."
+  "rv": "2026-10-30",
+  "notes": "Group entry. The existing fact is confirmed, with a hedge: \"it has been suggested\" macaws eat clay from river banks to neutralise toxins in their food. PAGE ADDITIONS 2026-10-20 (ov, fx), from the cached Wikipedia text. The article gives no measurements, so no len or wt."
 }

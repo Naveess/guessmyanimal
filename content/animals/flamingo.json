@@ -1,6 +1,6 @@
 {
   "sci": "Phoenicopteridae",
-  "ov": "Tall, long-legged filter-feeding wading birds. There are six species: four in the Americas and the Caribbean, and two in Africa and Eurasia.",
+  "ov": "Tall, long-legged filter-feeding wading birds. There are six species: four in the Americas and the Caribbean, and two in Africa and Eurasia. They filter food from the water with hair-like plates lining the bill and a large, rough tongue.",
   "hb": [
     "wetland",
     "coast"
@@ -10,7 +10,8 @@
   "rg": "The Americas and the Caribbean (four species), and Africa, Europe and Asia (two species).",
   "df": "Filter-feeds on brine shrimp, cyanobacteria, insect larvae, molluscs and crustaceans.",
   "fx": [
-    "Flamingos usually stand on one leg, and nobody fully knows why."
+    "Flamingos usually stand on one leg, and nobody fully knows why.",
+    "Wingspans range from 95–100 cm in the lesser flamingo to 140–165 cm in the greater and American flamingos."
   ],
   "src": [
     {
@@ -33,6 +34,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. The existing fact (born grey, pink from food) is confirmed: chicks hatch greyish-red and get their colour from beta-carotene in their food. REGION: animals.js r is Africa, South America and Europe; the source adds North America/the Caribbean and Asia. Consider adding North America and Asia. RESOLVED: Region added."
+  "rv": "2026-10-30",
+  "notes": "Group entry. The existing fact (born grey, pink from food) is confirmed: chicks hatch greyish-red and get their colour from beta-carotene in their food. REGION: animals.js r is Africa, South America and Europe; the source adds North America/the Caribbean and Asia. Consider adding North America and Asia. RESOLVED: Region added. PAGE ADDITIONS 2026-10-20 (ov, fx), from the cached Wikipedia text."
 }

@@ -1,14 +1,17 @@
 {
   "sci": "Ramphastidae",
-  "ov": "Over 40 species of brightly marked birds of the American tropics with huge, often colourful bills. They live in trees, mostly eat fruit, and nest in holes made by other animals.",
+  "ov": "Over 40 species of brightly marked birds of the American tropics with huge, often colourful bills. They live in trees, mostly eat fruit, and nest in holes made by other animals. The bill is surprisingly light, built of bony struts and foam-like keratin.",
   "hb": [
     "rainforest",
     "forest"
   ],
+  "len": "29 cm (lettered aracari) to 63 cm (toco toucan)",
+  "wt": "130 g (lettered aracari) to 680 g (toco toucan)",
   "rg": "Central and South America.",
   "df": "Mostly fruit.",
   "fx": [
-    "Toucans sometimes fence and wrestle with their bills, probably to settle who ranks higher."
+    "Toucans sometimes fence and wrestle with their bills, probably to settle who ranks higher.",
+    "The tooth-like edges of the bill once led naturalists to think toucans caught fish."
   ],
   "src": [
     {
@@ -19,10 +22,12 @@
         "ov",
         "rg",
         "df",
-        "fx"
+        "fx",
+        "len",
+        "wt"
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. The existing fact is mostly confirmed: the bill is a \"highly efficient thermoregulation system\". But it isn’t \"mostly hollow\": it’s very light, with bone struts and foam-like keratin. Suggested wording: \"The huge beak is light, filled with foam-like keratin, and works as a radiator to shed heat.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-10-20",
+  "notes": "Group entry. The existing fact is mostly confirmed: the bill is a \"highly efficient thermoregulation system\". But it isn’t \"mostly hollow\": it’s very light, with bone struts and foam-like keratin. Suggested wording: \"The huge beak is light, filled with foam-like keratin, and works as a radiator to shed heat.\" RESOLVED (owner: approve all): fact rewritten as suggested. THIN-PAGE ADDITIONS 2026-10-20 (ov, len, wt, fx), all from Wikipedia: Toucan."
 }

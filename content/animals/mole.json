@@ -1,6 +1,6 @@
 {
   "sci": "Talpidae",
-  "ov": "Small burrowing mammals with velvety fur, tiny eyes and ears, and big, powerful front paws for digging. Gardeners see them as pests, but they aerate the soil and eat slugs and root-eating grubs.",
+  "ov": "Small burrowing mammals with velvety fur, tiny eyes and ears, and big, powerful front paws for digging. Gardeners see them as pests, but they aerate the soil and eat slugs and root-eating grubs. Their saliva paralyses earthworms, so they can store live prey for later.",
   "hb": [
     "grassland",
     "farmland",
@@ -11,7 +11,8 @@
   "rg": "Most of North America, Europe (except Ireland) and Asia.",
   "df": "Earthworms and other small soil invertebrates.",
   "fx": [
-    "African golden moles and Australian marsupial moles live the same way but aren’t related."
+    "African golden moles and Australian marsupial moles live the same way but aren’t related.",
+    "Moles have an extra thumb on each front paw, next to the usual one."
   ],
   "src": [
     {
@@ -34,6 +35,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. The existing fact (paralysed live earthworms in a larder) is confirmed: toxic saliva paralyses the worms, and larders with over a thousand have been found."
+  "rv": "2026-10-30",
+  "notes": "Group entry. The existing fact (paralysed live earthworms in a larder) is confirmed: toxic saliva paralyses the worms, and larders with over a thousand have been found. PAGE ADDITIONS 2026-10-20 (ov, fx), from the cached Wikipedia text."
 }

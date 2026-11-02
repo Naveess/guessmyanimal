@@ -25,6 +25,7 @@ const PHOTOS = (() => {
 })();
 const { CATEGORY_BUCKETS } = require('../game-core.js');
 const { siteBar, brand, siteFooter } = require('./chrome.js');
+const { adsHead } = require('./ads.js');
 const { buildCollections } = require('./build-collections.js');
 const { buildCompare, pairsFrom } = require('./build-compare.js');
 const { published: liveCollections } = require('./collections.js');
@@ -39,7 +40,7 @@ const MAX_DESC = 158;
 // same manual-lockstep convention index.html/about.html/privacy.html/
 // sw.js already use for every other shell asset. Bump this alongside
 // them, then re-run node tools/build-seo.js.
-const STYLE_VERSION = '20261020-1';
+const STYLE_VERSION = '20261020-2';
 
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
 const slugify = (s) => norm(String(s || '').replace(/-/g, ' ')).replace(/ /g, '-');
@@ -364,29 +365,7 @@ ${jsonld.scriptTag(jsonld.page({
 if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
 <link rel="stylesheet" href="/style.css?v=${STYLE_VERSION}">
-<!-- Google AdSense (Auto ads) - client ca-pub-2495070274777193. -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2495070274777193"
-     crossorigin="anonymous"></script>
-<!-- Funding Choices - see privacy.html for what this pair does. -->
-<script async src="https://fundingchoicesmessages.google.com/i/pub-2495070274777193?ers=1"></script>
-<script>
-(function() {
-  function signalGooglefcPresent() {
-    if (!window.frames['googlefcPresent']) {
-      if (document.body) {
-        var iframe = document.createElement('iframe');
-        iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
-        iframe.style.display = 'none';
-        iframe.name = 'googlefcPresent';
-        document.body.appendChild(iframe);
-      } else {
-        setTimeout(signalGooglefcPresent, 0);
-      }
-    }
-  }
-  signalGooglefcPresent();
-})();
-</script>
+${adsHead()}
 </head>
 <body class="view-page">
 
@@ -456,7 +435,7 @@ ${siteBar()}
 ${siteFooter()}
 
 <script src="/sfx.js?v=20260912-1"></script>
-<script src="/animals.js?v=20260930-2"></script>
+<script src="/animals.js?v=20261020-1"></script>
 <script src="/search-core.js?v=20260913-1"></script>
 <script src="/navsearch.js?v=20260930-2"></script>
 <script src="/menu.js?v=20260930-2"></script>

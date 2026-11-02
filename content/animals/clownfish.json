@@ -1,6 +1,6 @@
 {
   "sci": "Amphiprion",
-  "ov": "Small reef fish of the warm Indo-Pacific that live among sea anemones, sheltered by the stinging tentacles. In return they defend, clean and feed the anemone.",
+  "ov": "Small reef fish of the warm Indo-Pacific, usually with white bars on an orange, red, yellow, brown or black body. They shelter among the stinging tentacles of sea anemones and in return defend, clean and fan the anemone. Finding Nemo made them famous.",
   "why": {
     "p": "Popular in the aquarium trade, and easily bred in captivity; the ocellaris is among the most traded marine fish."
   },
@@ -12,7 +12,8 @@
   "rg": "Warm and tropical waters of the Indian and Pacific oceans.",
   "df": "Omnivores, mostly plankton.",
   "fx": [
-    "Groups have a strict size order: the female is largest, then the breeding male, then the non-breeders."
+    "Groups have a strict size order: the female is largest, then the breeding male, then the non-breeders.",
+    "Young clownfish drift in the open ocean as larvae, then settle on the bottom and search for an anemone to live in."
   ],
   "src": [
     {
@@ -35,6 +36,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"All are born male, and the dominant one becomes female\" is close but not quite the source. Wikipedia says the breeding male changes into a female when the female is lost, and the largest non-breeder becomes the male. Suggested wording: \"If the female dies, the breeding male turns into a female.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"All are born male, and the dominant one becomes female\" is close but not quite the source. Wikipedia says the breeding male changes into a female when the female is lost, and the largest non-breeder becomes the male. Suggested wording: \"If the female dies, the breeding male turns into a female.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov, fx), from the cached Wikipedia text. The article gives no weight."
 }

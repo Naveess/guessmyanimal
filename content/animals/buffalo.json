@@ -1,6 +1,6 @@
 {
   "sci": "Syncerus caffer",
-  "ov": "A large, heavily built wild cow of sub-Saharan Africa. Males have a bony plate between the horns. Herds can number from a few to over a thousand.",
+  "ov": "A large, heavily built wild cow of sub-Saharan Africa, the only living species in its genus. Males have a bony plate, the “boss”, between the horns. Herds can number from a few to over a thousand, and its power and size mean it has few natural predators, though calves are vulnerable.",
   "why": {
     "dg": "Trophy hunters prize it for its aggression and power.",
     "et": "Widely hunted for bushmeat, and farmed on private land for meat and skins."
@@ -11,8 +11,10 @@
     "wetland",
     "scrub"
   ],
+  "len": "2.1–3 m head and body (Cape buffalo, the largest)",
   "wt": "Under 300 to over 835 kg",
   "rg": "Sub-Saharan Africa.",
+  "df": "Mainly grass: 6.5–15 kg a day, about 2.2% of its body weight.",
   "cf": [
     {
       "slug": "bison",
@@ -20,7 +22,8 @@
     }
   ],
   "fx": [
-    "Females usually stay with their herd for life."
+    "Females usually stay with their herd for life.",
+    "Herds “vote” on where to go: after resting, adult females stand and point their heads in the direction they want."
   ],
   "src": [
     {
@@ -31,7 +34,9 @@
         "ov",
         "why",
         "rg",
-        "fx"
+        "fx",
+        "len",
+        "df"
       ]
     },
     {
@@ -50,6 +55,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Aliases include \"water buffalo\", an Asian species this page doesn’t cover. ANSWER CHECK (fact): the animals.js fact \"Nicknamed the widowmaker, and it ambushes hunters that have wounded it\" isn’t in the article. Suggested wording: \"Herds can number over a thousand animals.\" why.dg is weak: the source only says hunters value its aggression, not how often it hurts people. RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "Aliases include \"water buffalo\", an Asian species this page doesn’t cover. ANSWER CHECK (fact): the animals.js fact \"Nicknamed the widowmaker, and it ambushes hunters that have wounded it\" isn’t in the article. Suggested wording: \"Herds can number over a thousand animals.\" why.dg is weak: the source only says hunters value its aggression, not how often it hurts people. RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov, len, df, fx), from the cached Wikipedia text."
 }

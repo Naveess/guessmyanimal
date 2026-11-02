@@ -1,14 +1,16 @@
 {
   "sci": "Diomedeidae",
-  "ov": "Large seabirds of the Southern Ocean and North Pacific, among the biggest flying birds. They are highly efficient fliers, nest in colonies on remote islands, and pair for life after years of courtship dances.",
+  "ov": "Large seabirds of the Southern Ocean and North Pacific, among the biggest flying birds. They are highly efficient fliers, nest in colonies on remote islands, and pair for life after years of courtship dances. Each breeding attempt is one egg, and a season can last over a year.",
   "hb": [
     "ocean",
     "coast"
   ],
   "len": "Body over 1 m; wingspan up to 2.5–3.5 m (great albatrosses)",
   "rg": "The Southern Ocean and the North Pacific; absent from the North Atlantic.",
+  "df": "Squid, fish and krill, scavenged, seized at the surface or caught by diving.",
   "fx": [
-    "A Laysan albatross named Wisdom, first ringed in 1956, is the oldest known wild bird."
+    "A Laysan albatross named Wisdom, first ringed in 1956, is the oldest known wild bird.",
+    "Wandering albatrosses feed only over water deeper than 1,000 m."
   ],
   "src": [
     {
@@ -19,10 +21,11 @@
         "ov",
         "len",
         "rg",
-        "fx"
+        "fx",
+        "df"
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"The longest wingspan of any bird, and it can stay at sea for years without landing\" isn’t in the article, which says great albatrosses are \"among the largest of flying birds\" with 2.5–3.5 m wingspans. Suggested wording: \"A wingspan of up to 3.5 m, and pairs stay together for life.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-10-30",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"The longest wingspan of any bird, and it can stay at sea for years without landing\" isn’t in the article, which says great albatrosses are \"among the largest of flying birds\" with 2.5–3.5 m wingspans. Suggested wording: \"A wingspan of up to 3.5 m, and pairs stay together for life.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-10-20 (ov, df, fx), from the cached Wikipedia text. The article gives no weight."
 }

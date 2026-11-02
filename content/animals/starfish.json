@@ -1,6 +1,6 @@
 {
   "sci": "Asteroidea",
-  "ov": "Star-shaped echinoderms, not fish, with about 1,900 species on the seabed of every ocean. Most have five arms, can regrow lost arms, and some push their stomach out of their body to digest prey.",
+  "ov": "Star-shaped echinoderms, not fish, with about 1,900 species on the seabed of every ocean. Most have five arms, but some have 10–15 and one Antarctic species can have over 50. They move on tube feet worked by a water-pumping system, with the mouth underneath.",
   "why": {
     "et": "Mostly collected as curios, but eaten in some cultures."
   },
@@ -11,7 +11,8 @@
   "rg": "Every ocean, from warm tropical seas to frigid polar waters, down to 6,000 m.",
   "df": "Mostly predators of slow or fixed seabed animals such as molluscs; some filter-feed.",
   "fx": [
-    "Starfish can shed arms to escape predators and grow them back."
+    "Starfish can shed arms to escape predators and grow them back.",
+    "Gene studies suggest a starfish’s outside is mostly head, with lips attached to the tube feet, and its inside a torso."
   ],
   "src": [
     {
@@ -27,6 +28,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"No brain and no blood\" is wrong on the blood. Wikipedia describes a vascular system for \"circulation of blood\", and says starfish were only traditionally thought to lack a brain. Suggested wording: \"Can regrow lost arms, and some push their stomach out to digest prey.\" RESOLVED: animals.js fact rewritten to \"Can regrow lost arms, and some push their stomach out to digest prey.\""
+  "rv": "2026-11-02",
+  "notes": "Group entry. ANSWER CHECK (fact): the animals.js fact \"No brain and no blood\" is wrong on the blood. Wikipedia describes a vascular system for \"circulation of blood\", and says starfish were only traditionally thought to lack a brain. Suggested wording: \"Can regrow lost arms, and some push their stomach out to digest prey.\" RESOLVED: animals.js fact rewritten to \"Can regrow lost arms, and some push their stomach out to digest prey.\" PAGE ADDITIONS 2026-11-02 (ov, fx), from the cached Wikipedia text. The article gives no adult sizes."
 }

@@ -96,9 +96,21 @@ Run `npm run seo` afterwards so the new animal gets its meta tags.
 
 ## Ads
 
-`.adslot` in `index.html` reserves its height whether or not anything fills it,
-so dropping a unit in later cannot shove the page around on load. AdSense Auto
-ads are live, behind a Funding Choices consent message.
+AdSense is live, behind a Funding Choices consent message. Everything about it
+comes from one file, `functions/_shared/ads.json` (its fields are documented at
+the top of `tools/ads.js`):
+
+- `script`: the AdSense + consent-message scripts in every page's head that has
+  ads (not 404, stream mode, Terms or Contact).
+- `verify`: the `google-adsense-account` meta tag. Off by default.
+- `slots` + `units`: the manual ad slots. Off by default, each is an empty
+  hidden container. To switch one on, create a display ad unit in AdSense, put
+  its ID under `units`, set `slots` to true and run `npm run seo`.
+- `adsTxt`: what `/ads.txt` serves (`functions/ads.txt.js`). An `ADS_TXT`
+  environment variable in Cloudflare Pages overrides it.
+
+Auto ads are set in the AdSense dashboard, not here, so this code cannot stop
+them landing near the game. Anchor and vignette formats are the risky ones.
 
 ## Commands
 

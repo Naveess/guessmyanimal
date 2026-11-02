@@ -1,6 +1,6 @@
 {
   "sci": "Connochaetes",
-  "ov": "Two species of antelope from eastern and southern Africa, also called gnus: the blue wildebeest and the black wildebeest. In East Africa the blue wildebeest is the most abundant big-game species.",
+  "ov": "Two species of antelope from eastern and southern Africa, also called gnus: the blue wildebeest and the black wildebeest. The blue is the most abundant big-game species in East Africa and a famous sight in the Serengeti and the Maasai Mara. Calves can soon keep up with the herd.",
   "why": {
     "et": "Traditionally hunted for hides and meat, though the meat is coarse and tough."
   },
@@ -8,11 +8,13 @@
     "grassland",
     "scrub"
   ],
+  "ht": "108–150 cm at the shoulder",
   "wt": "118–270 kg (blue wildebeest)",
   "rg": "Eastern and southern Africa.",
   "df": "Grass on the short-grass plains.",
   "fx": [
-    "Some populations migrate each year to follow the rains and fresh grass; the black wildebeest is only nomadic."
+    "Some populations migrate each year to follow the rains and fresh grass; the black wildebeest is only nomadic.",
+    "Hunting pushed the black wildebeest out of its old range; it now lives mostly on game farms and in reserves."
   ],
   "src": [
     {
@@ -22,7 +24,8 @@
         "sci",
         "ov",
         "rg",
-        "fx"
+        "fx",
+        "ht"
       ]
     },
     {
@@ -41,6 +44,6 @@
       ]
     }
   ],
-  "rv": "2026-09-30",
-  "notes": "Group entry (alias “gnu”). ANSWER CHECK (fact): the animals.js fact \"Over a million of them make the same circular migration every year\" isn’t stated. The blue wildebeest population is about 1.5 million, and three populations migrate, but no migrating total is given. Suggested wording: \"The most abundant big-game animal in East Africa, and some herds migrate every year.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "Group entry (alias “gnu”). ANSWER CHECK (fact): the animals.js fact \"Over a million of them make the same circular migration every year\" isn’t stated. The blue wildebeest population is about 1.5 million, and three populations migrate, but no migrating total is given. Suggested wording: \"The most abundant big-game animal in East Africa, and some herds migrate every year.\" No why.dg: the source doesn’t cover danger to people. RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov, ht, fx), from the cached Wikipedia text. The article gives no body length."
 }

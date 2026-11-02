@@ -5,7 +5,8 @@
  *     and isn't noindex;
  *   - no page links to the old /?a=<slug> addresses;
  *   - every sitemap URL is at most MAX_CLICKS plain <a href> clicks from
- *     the homepage - no JavaScript, no search box.
+ *     the homepage - no JavaScript, no search box;
+ *   - no ad slot (tools/ads.js) sits in or next to the game.
  *
  * Animal pages aren't files: they're index.html rewritten by
  * functions/_shared/animal-page.js from functions/seo-meta.json, so
@@ -26,6 +27,10 @@ function check() {
   const read = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8');
   const META = JSON.parse(read('functions/seo-meta.json'));
   const shell = read('index.html');
+  // What an animal page is built from: the shell minus the homepage's
+  // own prose, which functions/_shared/animal-page.js removes.
+  const animalShell = shell.replace(/<section class="prose home-more"[\s\S]*?<!-- \/home-more -->/, '');
+  if (animalShell === shell) errors.push('index.html: no #homeMore section ending in <!-- /home-more -->');
   const locs = [...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
   // The HTML a crawler gets for a site path, or null if nothing serves it.
@@ -35,7 +40,7 @@ function check() {
       const e = META[m[1]];
       if (!e) return null;
       const c = e.content || {};
-      return shell + e.relatedHtml + (c.confused || '') + (c.lists || '') + (c.group || '');
+      return animalShell + e.relatedHtml + (c.confused || '') + (c.lists || '') + (c.group || '');
     }
     const file = p === '/' ? 'index.html' : p.slice(1) + '.html';
     return fs.existsSync(path.join(ROOT, file)) ? read(file) : null;
@@ -83,6 +88,21 @@ function check() {
       if (!depth.has(q)) { depth.set(q, d + 1); queue.push(q); }
     }
   }
+  // Ad slots (tools/ads.js) stay out of the game: none in the homepage
+  // splash, Mystery or Party views, stream mode or the 404, and the
+  // animal page's one slot inside its facts column, never in the play
+  // block or the actions under it.
+  const slotsIn = (html) => [...html.matchAll(/class="adslot"/g)].map((m) => m.index);
+  for (const f of ['streamer.html', '404.html', 'terms.html', 'contact.html']) {
+    if (slotsIn(read(f)).length) errors.push(`${f}: has an ad slot; this page carries no ads`);
+  }
+  // The facts column ends where the related rail begins; the play block,
+  // the actions and every other view come after it.
+  const facts = [shell.indexOf('<div class="feed-content">'), shell.indexOf('<section class="ansec ansec-related">')];
+  for (const at of slotsIn(shell)) {
+    if (!(facts[0] >= 0 && at > facts[0] && at < facts[1])) errors.push('index.html: an ad slot outside the animal facts column');
+  }
+
   const deepest = {};
   for (const loc of locs) {
     const p = loc.slice(SITE.length);

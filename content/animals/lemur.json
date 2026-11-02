@@ -1,6 +1,6 @@
 {
   "sci": "Lemur catta",
-  "ov": "The ring-tailed lemur is the best-known lemur, with a long black-and-white ringed tail. Like all lemurs it lives wild only on Madagascar, in troops of up to 30 led by females.",
+  "ov": "The ring-tailed lemur is the best-known lemur, with a long black-and-white ringed tail. Like all lemurs it lives wild only on Madagascar, in troops of up to 30 led by females. It sunbathes sitting upright, its white belly turned to the sun.",
   "why": {
     "et": "Ring-tailed lemurs are hunted locally for bushmeat, one reason they’re endangered."
   },
@@ -8,11 +8,13 @@
     "forest",
     "scrub"
   ],
+  "len": "39–46 cm head and body, plus a 56–63 cm tail",
   "wt": "About 2.2 kg",
   "rg": "Southern Madagascar, from gallery forest to spiny scrub.",
   "df": "An omnivore.",
   "fx": [
-    "It is the most ground-dwelling of all living lemurs."
+    "It is the most ground-dwelling of all living lemurs.",
+    "In “stink fights”, males soak their tails in scent and waft them at rivals."
   ],
   "iu": "EN",
   "src": [
@@ -26,7 +28,8 @@
         "rg",
         "df",
         "iu",
-        "fx"
+        "fx",
+        "len"
       ]
     },
     {
@@ -37,6 +40,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "Alias “ring-tailed lemur”. The existing fact (males hold stink fights) is confirmed. As few as 2,000 were thought to remain in the wild in 2017."
+  "rv": "2026-10-30",
+  "notes": "Alias “ring-tailed lemur”. The existing fact (males hold stink fights) is confirmed. As few as 2,000 were thought to remain in the wild in 2017. PAGE ADDITIONS 2026-10-20 (ov, len, fx), from the cached Wikipedia text."
 }

@@ -1,6 +1,6 @@
 {
   "sci": "Phasianus colchicus",
-  "ov": "The common pheasant is a game bird native to Asia and the far south-east of Europe, introduced widely elsewhere for shooting. Males are brightly coloured, and many have a white neck ring.",
+  "ov": "The common pheasant is a game bird native to Asia and the far south-east of Europe, and one of the world’s most hunted birds, introduced widely and bred on game farms. Males are brightly coloured, and many have a white neck ring.",
   "why": {
     "et": "Pheasants are a popular game bird, introduced to many countries to be shot by hunters."
   },
@@ -12,8 +12,10 @@
   "len": "42.5–53.6 cm",
   "wt": "About 1.26 kg (average)",
   "rg": "Native to Asia and the Caucasus foothills; introduced widely in Europe and elsewhere.",
+  "df": "Fruit, seeds, grain, berries and leaves, plus slugs, earthworms, caterpillars, grasshoppers and other invertebrates.",
   "fx": [
-    "It usually cruises at 43–61 km/h, but can reach 90 km/h when chased."
+    "It usually cruises at 43–61 km/h, but can reach 90 km/h when chased.",
+    "Its scientific name, colchicus, comes from Colchis, in modern Georgia, where Europeans first came to know the bird."
   ],
   "src": [
     {
@@ -24,7 +26,8 @@
         "ov",
         "why",
         "rg",
-        "fx"
+        "fx",
+        "df"
       ]
     },
     {
@@ -36,6 +39,6 @@
       ]
     }
   ],
-  "rv": "2026-09-28",
-  "notes": "ANSWER CHECK (fact): the animals.js fact \"Explodes almost vertically off the ground, but tires after a few hundred metres\" is half sourced: it can \"suddenly burst upwards at great speed\", but tiring after a few hundred metres isn’t in the article. Suggested wording: \"Bursts upward with a whirr of wings, and can hit 90 km/h when chased.\" RESOLVED (owner: approve all): fact rewritten as suggested."
+  "rv": "2026-11-02",
+  "notes": "ANSWER CHECK (fact): the animals.js fact \"Explodes almost vertically off the ground, but tires after a few hundred metres\" is half sourced: it can \"suddenly burst upwards at great speed\", but tiring after a few hundred metres isn’t in the article. Suggested wording: \"Bursts upward with a whirr of wings, and can hit 90 km/h when chased.\" RESOLVED (owner: approve all): fact rewritten as suggested. PAGE ADDITIONS 2026-11-02 (ov, df, fx), from the cached Wikipedia text."
 }
