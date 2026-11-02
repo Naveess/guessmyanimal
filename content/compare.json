@@ -225,5 +225,405 @@
       }
     ],
     "rv": "2026-10-20"
+  },
+  "emu-vs-ostrich": {
+    "qa": [
+      {
+        "q": "Which is bigger, an emu or an ostrich?",
+        "a": "The ostrich, the tallest and heaviest living bird: males stand 2.1–2.75 m and weigh 100–130 kg. An emu stands up to 1.9 m and weighs 36–40 kg, making it the third-tallest living bird after the two ostrich species.",
+        "from": [
+          "ostrich.ov",
+          "ostrich.ht",
+          "ostrich.wt",
+          "emu.ht",
+          "emu.wt",
+          "emu.ov"
+        ]
+      },
+      {
+        "q": "Where do emus and ostriches live?",
+        "a": "The emu is found only in Australia, across most of the mainland. The ostrich is native to parts of Africa, and once lived in Arabia too.",
+        "from": [
+          "emu.ov",
+          "emu.rg",
+          "ostrich.ov",
+          "ostrich.rg"
+        ]
+      },
+      {
+        "q": "Can emus or ostriches fly?",
+        "a": "No, both are flightless, and both are fast runners. An emu can sprint at 48 km/h; the ostrich is the fastest runner on two legs, keeping up 55 km/h for a long time with short bursts of about 70 km/h.",
+        "from": [
+          "emu.ov",
+          "ostrich.ov",
+          "ostrich.fx"
+        ]
+      }
+    ]
+  },
+  "seal-vs-walrus": {
+    "qa": [
+      {
+        "q": "Is a walrus a seal?",
+        "a": "Not a true seal. The walrus, the true seals, and the sea lions and fur seals are all pinnipeds, flippered marine mammals, 34 species in all. The walrus is the one with long ivory tusks.",
+        "from": [
+          "seal.ov",
+          "seal.sci",
+          "walrus.ov"
+        ]
+      },
+      {
+        "q": "Which is bigger, a seal or a walrus?",
+        "a": "A walrus is bigger than any seal except the elephant seals. Walruses weigh 600–1,500 kg, and Pacific males can top 2,000 kg; seals range from 45 kg (Baikal seal) to 3,200 kg (southern elephant seal).",
+        "from": [
+          "walrus.cf",
+          "walrus.wt",
+          "seal.wt"
+        ]
+      },
+      {
+        "q": "How can you tell a walrus from a seal?",
+        "a": "Look for tusks and skin: a walrus has long ivory tusks, bristly whiskers and an almost hairless body. It lives only in shallow Arctic seas, while seals are found in oceans worldwide.",
+        "from": [
+          "walrus.ov",
+          "walrus.cf",
+          "walrus.rg",
+          "seal.rg"
+        ]
+      }
+    ]
+  },
+  "duck-vs-goose": {
+    "qa": [
+      {
+        "q": "What is the difference between a duck and a goose?",
+        "a": "Mostly size and neck. Ducks, geese and swans are one family; ducks are generally smaller and shorter-necked, and geese sit between ducks and swans in size. A mallard weighs about 1.1 kg, a greylag goose 2.2–4.6 kg.",
+        "from": [
+          "duck.cf",
+          "duck.ov",
+          "goose.ov",
+          "duck.wt",
+          "goose.wt"
+        ]
+      },
+      {
+        "q": "Where do domestic ducks and geese come from?",
+        "a": "Domestic ducks come mainly from the mallard, domesticated in China around 2000 BC. Domestic geese were bred from the wild greylag goose and swan goose.",
+        "from": [
+          "duck.ov",
+          "goose.ov",
+          "goose.why"
+        ]
+      },
+      {
+        "q": "Are geese more dangerous than ducks?",
+        "a": "Geese are the ones to watch: they get aggressive and noisy when they feel threatened, and ganders stand between a threat and their family. Ducks aren’t dangerous to people.",
+        "from": [
+          "goose.why",
+          "goose.dg",
+          "duck.dg"
+        ]
+      }
+    ]
+  },
+  "aardvark-vs-anteater": {
+    "qa": [
+      {
+        "q": "Is an aardvark an anteater?",
+        "a": "No. The aardvark is sometimes called an anteater, but it isn’t related to the anteaters of Central and South America, which are related to sloths. The aardvark is the only living member of its order, related to elephants and manatees.",
+        "from": [
+          "aardvark.cf",
+          "aardvark.ov",
+          "anteater.ov",
+          "anteater.rg"
+        ]
+      },
+      {
+        "q": "Which is bigger, an aardvark or an anteater?",
+        "a": "By weight, the aardvark: 40–82 kg, against 18–39 kg for the giant anteater, the largest anteater. Their lengths overlap: an aardvark is 100–158 cm long, a giant anteater up to 1.8 m with its tail.",
+        "from": [
+          "aardvark.wt",
+          "aardvark.len",
+          "anteater.wt",
+          "anteater.len"
+        ]
+      },
+      {
+        "q": "Where do aardvarks and anteaters live?",
+        "a": "Aardvarks live in Africa, across much of the southern two-thirds of the continent. Anteaters live in Central and South America.",
+        "from": [
+          "aardvark.rg",
+          "anteater.rg"
+        ]
+      }
+    ]
+  },
+  "crayfish-vs-lobster": {
+    "qa": [
+      {
+        "q": "Is a crayfish a lobster?",
+        "a": "Not quite. Crayfish, also called crawfish or crawdads, are the lobster’s freshwater relatives and among its closest living relatives. Lobsters live in the sea.",
+        "from": [
+          "crayfish.ov",
+          "crayfish.cf",
+          "lobster.cf",
+          "lobster.r"
+        ]
+      },
+      {
+        "q": "What is the difference between a crayfish and a lobster?",
+        "a": "Water and size. Crayfish live in fresh water, such as streams, swamps and paddy fields, and average about 17.5 cm long. Lobsters are marine and can be far bigger: the American lobster reaches 1.1 m and 20 kg.",
+        "from": [
+          "crayfish.ov",
+          "crayfish.len",
+          "lobster.ov",
+          "lobster.len",
+          "lobster.wt"
+        ]
+      }
+    ]
+  },
+  "kangaroo-vs-wallaby": {
+    "qa": [
+      {
+        "q": "What is the difference between a kangaroo and a wallaby?",
+        "a": "Size. They belong to the same family: “kangaroo” means its four largest species, wallaroos come in between, and any smaller relative is called a wallaby.",
+        "from": [
+          "kangaroo.cf",
+          "kangaroo.ov",
+          "wallaby.cf",
+          "wallaby.ov"
+        ]
+      },
+      {
+        "q": "How big is a wallaby compared to a kangaroo?",
+        "a": "A male red kangaroo’s body is 1.3–1.6 m long, plus a 1.2 m tail. A brush wallaby’s is 45–105 cm, plus a 33–75 cm tail.",
+        "from": [
+          "kangaroo.len",
+          "wallaby.len"
+        ]
+      },
+      {
+        "q": "Where do kangaroos and wallabies live?",
+        "a": "Both are native to Australia and New Guinea. Wallabies have also been introduced to New Zealand, Hawaii and the UK.",
+        "from": [
+          "kangaroo.rg",
+          "wallaby.rg"
+        ]
+      }
+    ]
+  },
+  "dugong-vs-manatee": {
+    "qa": [
+      {
+        "q": "Are dugongs and manatees the same?",
+        "a": "No, but they are close relatives: the three manatee species and the dugong are the four living sirenians. The dugong is the only living member of its family.",
+        "from": [
+          "dugong.cf",
+          "dugong.ov",
+          "manatee.ov"
+        ]
+      },
+      {
+        "q": "Where do dugongs and manatees live?",
+        "a": "The dugong lives in the coastal waters of some 40 countries across the Indian Ocean and western Pacific. Manatees live in the Caribbean, the Gulf of Mexico, the Amazon basin and West Africa, in rivers as well as the sea.",
+        "from": [
+          "dugong.rg",
+          "manatee.rg",
+          "manatee.ov"
+        ]
+      },
+      {
+        "q": "What do dugongs and manatees eat?",
+        "a": "Both eat plants. The dugong eats seagrass, and its feeding trails have been seen as deep as 33 m; manatees eat over 60 kinds of freshwater and saltwater plants.",
+        "from": [
+          "dugong.df",
+          "dugong.fx",
+          "manatee.df"
+        ]
+      }
+    ]
+  },
+  "dolphin-vs-orca": {
+    "qa": [
+      {
+        "q": "Is an orca a dolphin?",
+        "a": "Yes. The orca is the largest member of the dolphin family, at up to 9.5 m. The smallest dolphin is the 1.7 m Maui’s dolphin.",
+        "from": [
+          "orca.ov",
+          "dolphin.ov"
+        ]
+      },
+      {
+        "q": "How big is an orca compared to a dolphin?",
+        "a": "Far bigger. Male orcas are 6–8 m long and weigh over 6 tonnes; a common bottlenose dolphin is 2.3–3.8 m and 260–500 kg.",
+        "from": [
+          "orca.len",
+          "orca.wt",
+          "dolphin.len",
+          "dolphin.wt"
+        ]
+      },
+      {
+        "q": "Are orcas more dangerous than dolphins?",
+        "a": "Orcas can be, though so far only in captivity: no fatal attack by a wild orca has ever been recorded, but captive orcas have injured and killed handlers in marine parks. Dolphins aren’t considered dangerous to people.",
+        "from": [
+          "orca.why",
+          "dolphin.dg"
+        ]
+      }
+    ]
+  },
+  "goose-vs-swan": {
+    "qa": [
+      {
+        "q": "Is a swan a goose?",
+        "a": "No. Swans, geese and ducks are one family, but swans are their own group (Cygnus) and the largest waterfowl; geese sit between ducks and swans in size.",
+        "from": [
+          "swan.cf",
+          "swan.sci",
+          "swan.ov",
+          "goose.ov"
+        ]
+      },
+      {
+        "q": "Which is bigger, a goose or a swan?",
+        "a": "The swan. A mute swan is 1.44–1.58 m long and weighs 7.6–14.3 kg; a greylag goose is 76–89 cm and 2.2–4.6 kg.",
+        "from": [
+          "swan.len",
+          "swan.wt",
+          "goose.len",
+          "goose.wt"
+        ]
+      },
+      {
+        "q": "Are geese and swans aggressive?",
+        "a": "Both can be. Geese get aggressive and noisy when threatened, and ganders guard their family; a mute swan defending its nest hisses, then strikes with bony spurs on its wings and bites.",
+        "from": [
+          "goose.why",
+          "swan.why"
+        ]
+      }
+    ]
+  },
+  "fennec-fox-vs-red-fox": {
+    "qa": [
+      {
+        "q": "How big is a fennec fox compared to a red fox?",
+        "a": "Much smaller. The fennec is the smallest fox, weighing 0.8–1.5 kg. A red fox is 45–90 cm long plus a 30–55 cm tail, and stands 35–50 cm at the shoulder.",
+        "from": [
+          "fennec-fox.ov",
+          "fennec-fox.wt",
+          "red-fox.len",
+          "red-fox.ht"
+        ]
+      },
+      {
+        "q": "Why does a fennec fox have such big ears?",
+        "a": "Its ears, the biggest for its size of any member of the dog family, shed heat in the desert and pick up prey moving underground.",
+        "from": [
+          "fennec-fox.ov"
+        ]
+      },
+      {
+        "q": "Where do fennec foxes and red foxes live?",
+        "a": "The fennec lives in the Sahara, from Western Sahara and Mauritania to the Sinai Peninsula. The red fox is the most widespread wild carnivore on Earth, across Europe, Asia, North America and North Africa, and was introduced to Australia.",
+        "from": [
+          "fennec-fox.rg",
+          "red-fox.ov",
+          "red-fox.rg"
+        ]
+      }
+    ]
+  },
+  "falcon-vs-kestrel": {
+    "qa": [
+      {
+        "q": "Is a kestrel a falcon?",
+        "a": "Yes. Kestrels are small falcons; the name is given to the species that hover while hunting. The common kestrel, Falco tinnunculus, is in the same genus as the other falcons.",
+        "from": [
+          "kestrel.cf",
+          "kestrel.sci",
+          "falcon.sci"
+        ]
+      },
+      {
+        "q": "Which is bigger, a falcon or a kestrel?",
+        "a": "It depends on the falcon, since kestrels are small falcons. A common kestrel is 30–36 cm long and weighs 150–190 g; a peregrine falcon averages about 840–910 g, and the gyrfalcon reaches 65 cm.",
+        "from": [
+          "kestrel.len",
+          "kestrel.wt",
+          "falcon.wt",
+          "falcon.len"
+        ]
+      },
+      {
+        "q": "Why is the kestrel called a windhover?",
+        "a": "From its habit of hovering on the spot into the wind while it scans the ground.",
+        "from": [
+          "kestrel.fx",
+          "kestrel.ov"
+        ]
+      }
+    ]
+  },
+  "condor-vs-vulture": {
+    "qa": [
+      {
+        "q": "Is a condor a vulture?",
+        "a": "Yes. Condors are New World vultures, the largest ones. The Old World vultures of Africa, Asia and Europe look similar but aren’t closely related.",
+        "from": [
+          "condor.cf",
+          "condor.ov",
+          "vulture.ov"
+        ]
+      },
+      {
+        "q": "How big is a condor?",
+        "a": "The two condors are the largest flying land birds in the Western Hemisphere. The Andean condor weighs 7.7–15 kg and is often called the largest bird of prey in the world.",
+        "from": [
+          "condor.ov",
+          "condor.wt"
+        ]
+      },
+      {
+        "q": "Where do condors live?",
+        "a": "The Andean condor lives in the Andes and along the Pacific coast of western South America; the California condor in the mountains of California, Arizona and northern Mexico.",
+        "from": [
+          "condor.ov",
+          "condor.rg"
+        ]
+      }
+    ]
+  },
+  "parrotfish-vs-wrasse": {
+    "qa": [
+      {
+        "q": "Is a parrotfish a wrasse?",
+        "a": "Yes, as now classified: parrotfish are placed inside the wrasse family, Labridae. What sets them apart is their teeth, fused into a parrot-like beak for scraping algae.",
+        "from": [
+          "wrasse.cf",
+          "wrasse.sci",
+          "parrotfish.ov"
+        ]
+      },
+      {
+        "q": "What do parrotfish and wrasses eat?",
+        "a": "Parrotfish scrape algae from coral and rock, grind it up and excrete the rest as sand. Wrasses eat small invertebrates; some smash clams, sea urchins and crabs on a favourite rock, and cleaner wrasses eat parasites off other fish.",
+        "from": [
+          "parrotfish.ov",
+          "parrotfish.df",
+          "wrasse.df"
+        ]
+      },
+      {
+        "q": "Do parrotfish and wrasses change sex?",
+        "a": "Many do. Most parrotfish start life as females and later change into males, and many wrasses do the same as they grow.",
+        "from": [
+          "parrotfish.ov",
+          "wrasse.ov"
+        ]
+      }
+    ]
   }
 }
