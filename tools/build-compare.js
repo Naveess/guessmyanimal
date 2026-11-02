@@ -33,6 +33,7 @@ const { creditHtml } = require('../photo-credit.js');
 const { slugify } = require('./content.js');
 const { page, prune, escapeHtml } = require('./build-collections.js');
 const jsonld = require('./jsonld.js');
+const indexable = require('./indexable.js');
 const { adSlot } = require('./ads.js');
 
 const ROOT = path.join(__dirname, '..');
@@ -475,11 +476,14 @@ function buildCompare(published, { styleVersion, drafts = false }) {
     const entry = raw && (raw.rv || drafts) ? raw : null;
     const { rv, head, html } = pairBody(p, published, entry, true);
     heads[p.key] = head;
+    // Indexable only with approved Common questions, the pair's one piece
+    // of hand-written explanation (the thin-content rule, tools/indexable.js).
+    const indexed = !!(raw && raw.rv && raw.qa && raw.qa.length);
     write(path.join(outRoot, p.key + '.html'), page({
       title: head.title,
       description: head.description,
       canonical: `${SITE}/compare/${p.key}`,
-      styleVersion, mainClass: 'coll cmp', draft: drafts,
+      styleVersion, mainClass: 'coll cmp', draft: drafts, noindex: !indexed,
       body: html,
       ld: jsonld.scriptTag(jsonld.page({
         path: `/compare/${p.key}`, name: head.h1, description: head.description, dateModified: rv,
@@ -487,7 +491,7 @@ function buildCompare(published, { styleVersion, drafts = false }) {
         crumbs: [['Home', '/'], ['Commonly confused animals', '/compare'], [head.h1, `/compare/${p.key}`]],
       })),
     }));
-    urls.push({ loc: `${SITE}/compare/${p.key}`, lastmod: rv || null });
+    if (indexed) urls.push({ loc: `${SITE}/compare/${p.key}`, lastmod: rv || null });
   }
 
   const hub = drafts ? path.join(ROOT, 'preview', 'compare.html') : path.join(ROOT, 'compare.html');
@@ -496,7 +500,7 @@ function buildCompare(published, { styleVersion, drafts = false }) {
       title: HUB_TITLE,
       description: HUB_DESC,
       canonical: `${SITE}/compare`,
-      styleVersion, draft: drafts,
+      styleVersion, draft: drafts, noindex: !indexable.page('/compare'),
       body: hubBody(pairs),
       ld: jsonld.scriptTag(jsonld.page({
         type: 'CollectionPage', path: '/compare', name: 'Commonly confused animals', description: HUB_DESC,
@@ -508,7 +512,8 @@ function buildCompare(published, { styleVersion, drafts = false }) {
   }
   prune(outRoot, written);
 
-  return { pairs, heads, urls: pairs.length ? [{ loc: `${SITE}/compare`, lastmod: null }].concat(urls) : [] };
+  const hubUrl = pairs.length && indexable.page('/compare') ? [{ loc: `${SITE}/compare`, lastmod: null }] : [];
+  return { pairs, heads, urls: hubUrl.concat(urls) };
 }
 
 module.exports = { buildCompare, pairsFrom, headline, loadEntries, FILE };

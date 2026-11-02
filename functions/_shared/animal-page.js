@@ -97,6 +97,9 @@ export async function renderAnimal(context, slug, entry) {
     // (WebPage + breadcrumbs, built by tools/build-seo.js).
     .on('script#ld-website', new Remove());
   if (entry.ld) rewriter.on('head', new AppendHead(entry.ld));
+  // Not on the approved index list (tools/indexable.js): still a page for
+  // players, kept out of search results.
+  if (entry.noindex) rewriter.on('head', new AppendHead('<meta name="robots" content="noindex,follow">'));
 
   // Reviewed editorial content (tools/content.js), pre-rendered by the
   // build with the same sections() app.js uses. Each section is unhidden

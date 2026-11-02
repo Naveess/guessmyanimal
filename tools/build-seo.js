@@ -32,6 +32,7 @@ const { published: liveCollections } = require('./collections.js');
 const names = require('./names.js');
 const { buildReviewed } = require('./build-reviewed.js');
 const jsonld = require('./jsonld.js');
+const indexable = require('./indexable.js');
 
 const SITE = require('../functions/_shared/site.json').url; // functions/_shared/site.json
 const MAX_DESC = 158;
@@ -234,7 +235,10 @@ for (const a of ANIMALS) {
     })),
     content: c ? Object.assign({ overview: c.ov || '', json: JSON.stringify(c) }, sections(c, lookup, slug)) : null,
   };
-  urls.push({ loc: `${SITE}/animals/${slug}`, lastmod: c ? c.rv : null });
+  // Off the approved list (tools/indexable.js): the Function adds
+  // noindex,follow and the page stays out of the sitemap.
+  if (indexable.animal(slug)) urls.push({ loc: `${SITE}/animals/${slug}`, lastmod: c ? c.rv : null });
+  else meta[slug].noindex = true;
 }
 
 if (longest > MAX_DESC) {
@@ -251,7 +255,9 @@ fs.writeFileSync(
 // serves, not the one that immediately bounces.
 // Not /streamer: it's noindex (a tool for a live stream, not a page to
 // land on), and the sitemap lists only pages meant for search results.
-const staticUrls = ['/', '/about', '/how-we-answer', '/browse', '/contact', '/privacy', '/terms'].map((p) => SITE + p);
+// /browse only while it's on the approved list (tools/indexable.js).
+const staticUrls = ['/', '/about', '/how-we-answer', '/browse', '/contact', '/privacy', '/terms']
+  .filter((p) => indexable.page(p)).map((p) => SITE + p);
 // No build-date <lastmod>: it used to be stamped on every URL, which
 // tells a crawler every page changed every time anyone ran this. A
 // reviewed animal gets its real review date (rv); the rest get none.
@@ -339,7 +345,7 @@ function browseHtml() {
 <title>Every animal, A to Z — Guess My Animal</title>
 <meta name="description" content="All ${ANIMALS.length} animals on Guess My Animal, listed A to Z. Pick one to see if it's dangerous, if you could keep it as a pet, and everything else people ask.">
 <meta name="theme-color" content="#ffce1f">
-
+${indexable.page('/browse') ? '' : `<meta name="robots" content="${indexable.NOINDEX}">\n`}
 <meta property="og:title" content="Every animal, A to Z — Guess My Animal">
 <meta property="og:description" content="All ${ANIMALS.length} animals on Guess My Animal, listed A to Z.">
 <link rel="canonical" href="${SITE}/browse">

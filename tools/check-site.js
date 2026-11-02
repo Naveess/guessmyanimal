@@ -6,7 +6,9 @@
  *   - no page links to the old /?a=<slug> addresses;
  *   - every sitemap URL is at most MAX_CLICKS plain <a href> clicks from
  *     the homepage - no JavaScript, no search box;
- *   - no ad slot (tools/ads.js) sits in or next to the game.
+ *   - no ad slot (tools/ads.js) sits in or next to the game;
+ *   - the sitemap matches content/indexable.json, and every built page
+ *     outside it is noindex and still reachable by plain links.
  *
  * Animal pages aren't files: they're index.html rewritten by
  * functions/_shared/animal-page.js from functions/seo-meta.json, so
@@ -101,6 +103,27 @@ function check() {
   const facts = [shell.indexOf('<div class="feed-content">'), shell.indexOf('<section class="ansec ansec-related">')];
   for (const at of slotsIn(shell)) {
     if (!(facts[0] >= 0 && at > facts[0] && at < facts[1])) errors.push('index.html: an ad slot outside the animal facts column');
+  }
+
+  // The approved index list (tools/indexable.js): everything on it is in
+  // the sitemap, and every built page left out is noindex yet still a few
+  // plain clicks from home, since those pages stay for players.
+  const inMap = new Set(locs.map((l) => l.slice(SITE.length)));
+  const LIST = require('./indexable.js').LIST;
+  for (const p of [...LIST.pages, ...LIST.animals.map((s) => `/animals/${s}`), ...LIST.explore.map((k) => `/explore/${k}`)]) {
+    if (!inMap.has(p)) errors.push(`content/indexable.json: ${p} is listed but not in the sitemap`);
+  }
+  const htmlFiles = (dir) => fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })
+    .flatMap((d) => d.isDirectory() ? htmlFiles(`${dir}/${d.name}`) : d.name.endsWith('.html') ? [`/${dir}/${d.name.slice(0, -5)}`] : []);
+  const built = Object.keys(META).map((s) => `/animals/${s}`)
+    .concat(htmlFiles('compare'), htmlFiles('explore'), ['/browse', '/explore', '/compare', '/reviewed']);
+  for (const p of built) {
+    if (inMap.has(p)) continue;
+    const slug = (p.match(/^\/animals\/([^/]+)$/) || [])[1];
+    const noindex = slug ? META[slug].noindex
+      : /<meta name="robots" content="[^"]*noindex/.test(htmlFor(p).slice(0, htmlFor(p).indexOf('</head>')));
+    if (!noindex) errors.push(`${p}: not in the sitemap but indexable`);
+    if (!depth.has(p)) errors.push(`${p}: noindex page more than ${MAX_CLICKS} clicks from the homepage`);
   }
 
   const deepest = {};

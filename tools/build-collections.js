@@ -24,6 +24,7 @@ const path = require('path');
 const { published: collections } = require('./collections.js');
 const { siteBar, brand, siteFooter, docHead } = require('./chrome.js');
 const jsonld = require('./jsonld.js');
+const indexable = require('./indexable.js');
 const { ANIMALS } = require('../animals.js');
 
 const ROOT = path.join(__dirname, '..');
@@ -67,12 +68,13 @@ function hubLabel(c) {
 
 // The page shell every generated page shares (also used by
 // tools/build-compare.js and tools/build-reviewed.js). `ld` is a JSON-LD
-// <script> tag, left off draft previews.
-function page({ title, description, canonical, styleVersion, draft, body, ld, mainClass = 'coll' }) {
+// <script> tag, left off draft previews. `noindex`: a live page kept out
+// of search results (tools/indexable.js).
+function page({ title, description, canonical, styleVersion, draft, noindex, body, ld, mainClass = 'coll' }) {
   return `<!doctype html>
 <html lang="en-GB">
 <head>
-${docHead({ title: escapeHtml(title), description: escapeHtml(description), canonical, styleVersion, robots: draft ? 'noindex' : null, ld: draft ? null : ld })}
+${docHead({ title: escapeHtml(title), description: escapeHtml(description), canonical, styleVersion, robots: draft ? 'noindex' : noindex ? indexable.NOINDEX : null, ld: draft ? null : ld })}
 </head>
 <body class="view-page">
 
@@ -197,7 +199,7 @@ function buildCollections(content, { styleVersion, drafts = false } = {}) {
       title: `${col.title} | Guess My Animal`,
       description: col.desc || col.intro[0],
       canonical: `${SITE}/explore/${col.key}`,
-      styleVersion, draft: drafts && !col.rv,
+      styleVersion, draft: drafts && !col.rv, noindex: !indexable.explore(col.key),
       body: collectionBody(col, cols),
       ld: jsonld.scriptTag(jsonld.page({
         type: 'CollectionPage', path: `/explore/${col.key}`, name: col.title,
@@ -211,7 +213,7 @@ function buildCollections(content, { styleVersion, drafts = false } = {}) {
       title: 'Explore animals | Guess My Animal',
       description: 'Lists of the animals on Guess My Animal that share one thing: a region, a habitat, a kind of animal or one quick answer.',
       canonical: `${SITE}/explore`,
-      styleVersion, draft: drafts,
+      styleVersion, draft: drafts, noindex: !indexable.page('/explore'),
       body: hubBody(cols),
       ld: jsonld.scriptTag(jsonld.page({
         type: 'CollectionPage', path: '/explore', name: 'Explore animals',
@@ -224,10 +226,12 @@ function buildCollections(content, { styleVersion, drafts = false } = {}) {
   const hub = path.join(outRoot, '..', 'explore.html');
   if (!cols.length && fs.existsSync(hub)) fs.unlinkSync(hub);
 
+  // Sitemap: only the pages on the approved index list.
   return {
     live,
     urls: live.length
-      ? [{ loc: `${SITE}/explore`, lastmod: null }].concat(live.map((c) => ({ loc: `${SITE}/explore/${c.key}`, lastmod: c.rv })))
+      ? [{ loc: `${SITE}/explore`, lastmod: null }].filter(() => indexable.page('/explore'))
+        .concat(live.filter((c) => indexable.explore(c.key)).map((c) => ({ loc: `${SITE}/explore/${c.key}`, lastmod: c.rv })))
       : [],
     written: written.size,
   };

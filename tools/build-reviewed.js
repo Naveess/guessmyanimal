@@ -15,6 +15,7 @@ const { longDate } = require('../render-data.js');
 const { slugify } = require('./content.js');
 const { page, escapeHtml } = require('./build-collections.js');
 const jsonld = require('./jsonld.js');
+const indexable = require('./indexable.js');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = require('../functions/_shared/site.json').url; // functions/_shared/site.json
@@ -73,13 +74,14 @@ ${sections}`;
     description: DESC,
     canonical: `${SITE}/reviewed`,
     styleVersion,
+    noindex: !indexable.page('/reviewed'),
     body,
     ld: jsonld.scriptTag(jsonld.page({
       path: '/reviewed', name: 'Review log', description: DESC, dateModified: dates[0],
       crumbs: [['Home', '/'], ['Review log', '/reviewed']],
     })),
   }));
-  return { urls: [{ loc: `${SITE}/reviewed`, lastmod: dates[0] }] };
+  return { urls: indexable.page('/reviewed') ? [{ loc: `${SITE}/reviewed`, lastmod: dates[0] }] : [] };
 }
 
 module.exports = { buildReviewed };
